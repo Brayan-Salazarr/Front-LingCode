@@ -1,0 +1,12 @@
+header {
+    display: flex;
+    background: black;
+    width: 2500px;
+    height: 1400px;
+    position: absolute;
+    border-radius: 50% / 100%;
+    left: -140px;
+    top: -700px;
+    transform: skewY(-15deg); /* inclina la curva */
+    z-index: 1;
+}
