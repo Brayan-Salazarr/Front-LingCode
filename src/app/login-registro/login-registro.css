@@ -1,0 +1,91 @@
+#spaceImg {
+    position: relative;
+}
+
+#imgWheel {
+    position: absolute;
+    z-index: -1;
+    right: 300px;
+    width: 600px;
+}
+
+#BlackBackg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 70%;
+    width: 70%;
+}
+
+#tittle {
+    font-family: "Anton SC", sans-serif;
+    font-size: 48px;
+    background: linear-gradient(90deg, white 0%, #AFA9A9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 80px;
+    letter-spacing: 2px;
+}
+
+#line {
+    background: linear-gradient(90deg, #FF00FB 0%, #FFA109 100%);
+    border-radius: 5px;
+    margin-left: 200px;
+    height: 10px;
+    width: 211px;
+}
+
+@media (max-width: 1280px) {
+    #imgWheel {
+        right: 270px;
+        width: 400px;
+    }
+
+    #BlackBackg {
+    width: 50%;
+}
+
+    #tittle {
+        font-size: 38px;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+    }
+
+    #spaceLine{
+        margin-bottom: 50px;
+    }
+
+    #line {
+        margin-left: 100px;
+        height: 7px;
+        width: 130px;
+    }
+
+    #infoBox {
+        display: flex;
+        flex-direction: row;
+        font-family: "Poppins", sans-serif;
+        font-size: 15px;
+        background: linear-gradient(90deg, white 0%, #AFA9A9 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    #regisInfo {
+        width: 250px;
+    }
+
+    p {
+        margin-top: 20px;
+    }
+
+    #recordFields {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        margin-top: 20px;
+    }
+}
