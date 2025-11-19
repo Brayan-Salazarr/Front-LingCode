@@ -8,7 +8,7 @@ header {
     left: -7vw;
     top: -80vh;
     transform: skewY(-15deg);
-    z-index: 1;
+    z-index: 5;
 }
 
 #imgCircle {
@@ -18,4 +18,28 @@ header {
     width: 430px;
     transform: skewY(15deg)
 }
-
+#background{
+    width: 150vw;
+    height: 156vh;
+    background: #0CB9D8; 
+    position: absolute;
+    border-radius: 50% / 100%;
+    left: -7vw; 
+    top: -84vh; 
+    transform: skewY(-17deg);
+    z-index: 4;
+}
+.information{
+    position: absolute; 
+    top: 115vh;
+    left: 20vw;
+    transform: skewY(15deg);
+    font-family: "Anton SC", sans-serif;
+    z-index: 10;
+}
+h1{
+    width: 45%;
+    font-size: 68px;
+    color: white;
+    letter-spacing: 3px;
+}
