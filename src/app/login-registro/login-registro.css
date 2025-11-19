@@ -6,15 +6,14 @@
     position: absolute;
     z-index: -1;
     right: 300px;
-    width: 600px;
+    width: 500px;
 }
 
 #BlackBackg {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    height: 70%;
+    height: 80%;
     width: 70%;
 }
 
@@ -24,16 +23,64 @@
     background: linear-gradient(90deg, white 0%, #AFA9A9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-top: 80px;
+    margin-top: 70px;
     letter-spacing: 2px;
+}
+
+#spaceLine {
+    margin-top: -3px;
 }
 
 #line {
     background: linear-gradient(90deg, #FF00FB 0%, #FFA109 100%);
     border-radius: 5px;
-    margin-left: 200px;
+    margin-left: 170px;
     height: 10px;
     width: 211px;
+}
+
+#infoBox {
+    display: flex;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 60px;
+    height: 40vh;
+    width: 55vw;
+}
+
+#regisInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.74) 0%, #AFA9A9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 250px;
+}
+
+#recordFields {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+}
+
+input {
+    color: black;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background: linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(90deg, #AF02FF, #0051FF) border-box;
+    padding: 0 0 0 5px;
+    height: 25px;
+}
+
+#spaceButton{
+    display: flex;
+    align-items: flex-end;
+    height: 40px;
+    width: 45%;
 }
 
 @media (max-width: 1280px) {
@@ -43,8 +90,8 @@
     }
 
     #BlackBackg {
-    width: 50%;
-}
+        width: 50%;
+    }
 
     #tittle {
         font-size: 38px;
@@ -52,7 +99,7 @@
         margin-bottom: 10px;
     }
 
-    #spaceLine{
+    #spaceLine {
         margin-bottom: 50px;
     }
 
