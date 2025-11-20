@@ -113,17 +113,17 @@ input {
 .line1 {
     width: 122px;
     height: 1px;
-    background: #6E6D6D;
+    background: #6e6d6d8c;
 }
 
 #letter {
     margin: 0;
     font-size: 14px;
-    color: #6E6D6D;
+    color: #6e6d6d57;
     font-weight: 300;
 }
 
-#socialAuth{
+#socialAuth {
     display: flex;
     justify-content: space-around;
     margin-right: 630px;
@@ -131,11 +131,11 @@ input {
     width: 200px;
 }
 
-.social{
+.social {
     width: 40px;
 }
 
-#terms{
+#terms {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -145,70 +145,115 @@ input {
     width: 210px;
 }
 
-#termsUse{
+#termsUse {
     color: #00BBFF;
 }
 
-span{
+span {
     margin-right: 5px;
     color: white;
 }
 
-a{
+a {
     text-decoration-line: none;
     color: #00BBFF;
 }
 
-@media (max-width: 1280px) {
+@media(max-width: 1366px) {
     #imgWheel {
-        right: 270px;
+        right: 110px;
         width: 400px;
     }
 
     #BlackBackg {
-        width: 50%;
+        width: 75%;
     }
 
     #tittle {
-        font-size: 38px;
-        letter-spacing: 2px;
-        margin-bottom: 10px;
+        font-size: 28px;
+        margin-top: 50px;
     }
 
     #spaceLine {
-        margin-bottom: 50px;
+        margin-bottom: 40px;
     }
 
     #line {
-        margin-left: 100px;
+        margin-left: 120px;
         height: 7px;
-        width: 130px;
+        width: 150px;
     }
 
     #infoBox {
-        display: flex;
-        flex-direction: row;
-        font-family: "Poppins", sans-serif;
-        font-size: 15px;
-        background: linear-gradient(90deg, white 0%, #AFA9A9 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        margin-top: 0;
+        width: 60vw;
     }
 
     #regisInfo {
-        width: 250px;
+        height: 18vw;
     }
 
     p {
-        margin-top: 20px;
+        font-size: 13px;
+        margin-top: 1vw;
     }
 
     #recordFields {
-        display: flex;
-        flex-direction: column;
+        height: 250px;
     }
 
     input {
-        margin-top: 20px;
+        height: 30px;
+    }
+
+    #spaceButton {
+        margin-top: 50px;
+        width: 50%;
+    }
+
+    .buttonRegist {
+        font-size: 13px;
+        padding: 10px 30px;
+    }
+
+    .division {
+        margin-right: 360px;
+        margin-top: 12px;
+    }
+
+    .line1 {
+        width: 70px;
+    }
+
+    #letter {
+        font-size: 13px;
+    }
+
+    #socialAuth {
+        margin-right: 360px;
+        margin-top: 6px;
+    }
+
+    .social {
+        width: 30px;
+    }
+
+    #terms {
+        margin-right: 360px;
+        margin-top: 5px;
+        width: 155px;
+    }
+
+    #termsUse {
+        margin-top: 0;
+    }
+
+    span {
+        font-size: 11px;
+        margin-right: 4px;
+    }
+
+    a {
+        font-size: 11px;
     }
 }
