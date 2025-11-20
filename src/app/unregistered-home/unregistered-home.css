@@ -1,0 +1,72 @@
+.component {
+    height: 200vh;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    top: 100vh;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#img1 {
+    width: 40vw;
+}
+
+.information {
+    width: 35vw;
+    height: 50vh;
+}
+
+.caption {
+    color: #20BAE4;
+    font-family: "Anton SC", sans-serif;
+    font-size: 48px;
+    letter-spacing: 1px;
+}
+
+.text {
+    font-family: "Poppins", sans-serif;
+    font-size: 33px;
+    margin: 20px 0 0 0;
+}
+
+.container-with-triangle {
+    width: 55vw;
+    height: 110vh;
+    background-color: black;
+    clip-path: polygon(0 0, 0 0, 100% 50%, 0 100%);
+    margin-top: 100px;
+    z-index: -10;
+}
+
+#img2 {
+    position: relative;
+    top: -80vh;
+    left: 13vw;
+    width: 40vw;
+}
+
+.content-avatar {
+    height: 150vh;
+}
+
+.information-avatar {
+    width: 35vw;
+    height: 50vh;
+    margin: 0 7vw 0 0;
+}
+
+.field-avatar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

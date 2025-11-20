@@ -1,0 +1,11 @@
+.shared-button{
+    background: #04C9FF;
+    border: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    border-radius: 15px;
+    margin: 70px 0 0 0;
+    height:7vh;
+    width: 12vw;
+}
