@@ -256,4 +256,21 @@ a {
     a {
         font-size: 11px;
     }
+
+    #line2 {
+    background-color: #00D9FF;
+    top: 88vh;
+    width: 100vw;
+    height: 5px;
+    position: absolute;          
+    left: 3vw;      
+    transform: rotate(-25deg);
+    transform-origin: left center;
+    z-index: 2;
+    }
+
+    #line3 {
+
+    }
 }
+
