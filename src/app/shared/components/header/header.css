@@ -215,3 +215,9 @@ h1 {
     z-index: 15;
     transform: rotate(90deg);
 }
+
+@media (max-width: 1537px){
+    h1{
+        font-size: 54px;
+    }
+}

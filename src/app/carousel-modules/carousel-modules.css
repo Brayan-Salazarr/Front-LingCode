@@ -1,0 +1,32 @@
+.component-carousel{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 40vh;
+}
+.module{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    width: 22vw;
+    height: 22vh;
+}
+
+#mysql-module{
+    position: absolute;
+    top: 234vh;
+    left: 3vw;
+    width: 15vw;    
+}
+#git-module{
+    position: absolute;
+    top: 234vh;
+    left: 35vw;
+    width: 25vw;    
+}
+#ai-module{
+    position: absolute;
+    top: 234vh;
+    left: 78vw;
+    width: 25vw;    
+}

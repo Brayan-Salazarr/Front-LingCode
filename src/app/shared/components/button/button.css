@@ -9,3 +9,9 @@
     height:7vh;
     width: 12vw;
 }
+
+@media (max-width: 1537px){
+    .shared-button{
+        font-size: 22px;
+    }
+}
