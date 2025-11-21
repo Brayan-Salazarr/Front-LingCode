@@ -132,7 +132,12 @@ input {
 }
 
 .social {
+    transition: transform 0.2s ease;
     width: 40px;
+}
+
+.social:hover {
+    transform: scale(1.15);
 }
 
 #terms {
@@ -177,7 +182,7 @@ a {
     width: 130vw;
     height: 5px;
     position: absolute;
-    left:5.5vw;
+    left: 5.5vw;
     transform: rotate(-25deg);
     transform-origin: left center;
     z-index: 2;
@@ -186,10 +191,10 @@ a {
 #WhiteBackg {
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: absolute;
     top: 68vh;
-    align-items: end;
-    width: 92%;
+    margin-left: 62vw;
 }
 
 #tittle2 {
@@ -200,7 +205,7 @@ a {
     -webkit-text-fill-color: transparent;
 }
 
-#spaceButton2{
+#spaceButton2 {
     display: flex;
     margin-top: 6vh;
     width: 18%;
@@ -255,7 +260,7 @@ a {
 
     #spaceButton {
         margin-top: 50px;
-        width: 50%;
+        width: 55%;
     }
 
     .buttonRegist {
@@ -264,7 +269,7 @@ a {
     }
 
     .division {
-        margin-right: 360px;
+        margin-right: 420px;
         margin-top: 12px;
     }
 
@@ -277,16 +282,21 @@ a {
     }
 
     #socialAuth {
-        margin-right: 360px;
+        margin-right: 420px;
         margin-top: 6px;
     }
 
     .social {
+        transition: transform 0.2s ease;
         width: 30px;
     }
 
+    .social:hover {
+        transform: scale(1.15);
+    }
+
     #terms {
-        margin-right: 360px;
+        margin-right: 420px;
         margin-top: 5px;
         width: 155px;
     }
@@ -305,16 +315,28 @@ a {
     }
 
     #line2 {
-        background-color: #00D9FF;
-        top: 88vh;
-        width: 100vw;
-        height: 5px;
-        position: absolute;
-        left: 3vw;
-        transform: rotate(-25deg);
-        transform-origin: left center;
-        z-index: 2;
+        top: 117vh;
+        width: 110vw;
     }
 
-    #line3 {}
+    #line3 {
+        top: 117.3vh;
+        width: 130vw;
+    }
+
+    #WhiteBackg {
+        top: 68vh;
+        margin-left: 70vw;
+    }
+
+    #tittle2 {
+        font-size: 28px;
+    }
+
+    #spaceButton2 {
+        justify-content: center;
+        margin-top: 3vh;
+        height: 50px;
+        width: 75%;
+    }
 }
