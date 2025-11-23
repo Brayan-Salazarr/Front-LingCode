@@ -1,5 +1,5 @@
 .component {
-    height: 200vh;
+    height: 500vh;
 }
 
 section {
@@ -70,11 +70,49 @@ section {
     align-items: center;
 }
 
-@media (max-width: 1537px){
-   .caption{
-    font-size: 38px;
-   }
-   .text{
-    font-size: 24px;
-   }
+.field-modules {
+    display: flex;
+    justify-content: space-around;
+}
+
+.information-modules {
+    width: 45vw;
+}
+
+.field-invitaion {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+}
+
+.information-invitation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 32vw;
+}
+
+.text-invitation {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 33px;
+    margin: 20px 0 0 0;
+}
+
+#img-cybro-gray {
+    width: 50vw;
+}
+
+@media (max-width: 1537px) {
+    .caption {
+        font-size: 38px;
+    }
+
+    .text {
+        font-size: 24px;
+    }
+
+    .text-invitation{
+        font-size: 24px;
+    }
 }

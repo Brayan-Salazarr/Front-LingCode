@@ -1,6 +1,7 @@
-<div class="component">
-    <app-nav></app-nav>
+  <app-nav></app-nav>
     <app-header></app-header>
+<div class="component">
+  
 
     <section>
         <div class="field">
@@ -15,19 +16,44 @@
         </div>
 
         <div class="field-avatar">
-            <div class="content-avatar"><div class="container-with-triangle"></div>
-            <img id="img2" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763675096/Group_30_qhhmlk.png"
-                alt=""></div>
-            
+            <div class="content-avatar">
+                <div class="container-with-triangle"></div>
+                <img id="img2" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763675096/Group_30_qhhmlk.png"
+                    alt="">
+            </div>
+
 
 
             <div class="information-avatar">
                 <h2 class="caption">Cada héroe tiene su imagen </h2>
-                <p class="text">Podrás escoger tu avatar y empezar tu historia con tu propia identidad. <br>¡Haz que tu presencia se note desde el primer clic!</p>
+                <p class="text">Podrás escoger tu avatar y empezar tu historia con tu propia identidad. <br>¡Haz que tu
+                    presencia se note desde el primer clic!</p>
                 <app-button></app-button>
             </div>
         </div>
 
-        <app-carousel-modules></app-carousel-modules>
+        <div class="field-modules">
+            <div class="information-modules">
+                 <h2 class="caption">Interactúa con nuestros módulos </h2>
+                <p class="text">Nuestros módulos están diseñados para ayudarte a crecer paso a paso, prueba uno y descubre lo fácil y divertido que puede ser aprender con nosotros.<br>¡Regístrate y desbloquea todo tu potencial!</p>
+            </div>
+            <app-carousel-modules></app-carousel-modules>
+        </div>
+
+        <div class="field-invitaion">
+            <div class="img-cybro">
+                <img id="img-cybro-gray" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763926501/cybro-gris_a7o7ir.png" alt="Cybro">
+            </div>
+
+            <div class="information-invitation">
+                 <h2 class="caption">Prepárate para hablar el idioma del código </h2>
+                <p class="text-invitation">Aprende inglés técnico practicando como en el mundo real.</p>
+                <app-button></app-button>
+            </div>
+        </div>
+       
     </section>
+
+    
 </div>
+<app-footer></app-footer>

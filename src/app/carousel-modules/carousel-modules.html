@@ -1,15 +1,12 @@
-<div class="component-carousel">
-    <div class="module">
-       
+<div class="carousel-container">
+  <div class="carousel">
+    <div class="card"
+         *ngFor="let item of items; let i = index"
+         [class.active]="i === currentIndex"
+         (click)="setActive(i)"
+         [style.transform]="getPosition(i)">
+         <div class="bg-black"></div>
+      <img class="images" [src]="item.img">
     </div>
-     <img id="mysql-module" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763695172/mysql-removebg-preview-removebg-preview_2_hc65ln.png" alt="MySQL">
-
-     <div class="module">
-       
-    </div>
-     <img id="git-module" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696348/Group_25_fnpomn.png" alt="GitHub">
-     <div class="module">
-       
-    </div>
-     <img id="ai-module" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696367/Group_31_mmwojn.png" alt="AI">
+  </div>
 </div>
