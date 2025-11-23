@@ -1,5 +1,5 @@
 .component {
-    height: 500vh;
+    height: 530vh;
 }
 
 section {
@@ -83,6 +83,8 @@ section {
     display: flex;
     justify-content: space-between;
     background-color: black;
+    margin: 200px 0 0 0;
+    height: 90vh;
 }
 
 .information-invitation {
@@ -98,11 +100,26 @@ section {
     font-size: 33px;
     margin: 20px 0 0 0;
 }
-
+.img-cybro{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
 #img-cybro-gray {
     width: 50vw;
 }
 
+#img-symbols{
+    position: absolute;
+    width: 58vw;
+    top: 295vh;
+    left: -5vh;
+}
+
+#line {
+    background: linear-gradient(to left,rgba(190, 177, 248, 1), rgba(0, 217, 255, 1));
+    height: 5px;    
+}
 @media (max-width: 1537px) {
     .caption {
         font-size: 38px;

@@ -1,0 +1,16 @@
+<div class="carousel-wrapper">
+  <button class="nav left" (click)="prev()">❮</button>
+
+  <div class="carousel">
+    <div
+      class="card"
+      *ngFor="let item of items; let i = index"
+      [class.active]="i === currentIndex"
+      [style.transform]="getTransform(i)"
+    >
+      <img [src]="item.img"/>
+    </div>
+  </div>
+
+  <button class="nav right" (click)="next()">❯</button>
+</div>

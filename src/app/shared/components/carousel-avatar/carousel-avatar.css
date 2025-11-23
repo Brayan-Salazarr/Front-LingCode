@@ -1,0 +1,52 @@
+.carousel-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.carousel {
+  position: relative;
+  width: 500px;
+  height: 220px;
+  overflow: hidden;
+}
+
+.card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 120px;
+  height: 120px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00bfff, #0047ff);
+  padding: 6px;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: white;
+}
+
+.card.active {
+  z-index: 5;
+  box-shadow: 0 0 20px rgba(0,150,255,0.8);
+}
+
+.nav {
+  background: #1e90ff;
+  color: white;
+  border: none;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.nav.left { margin-right: 20px; }
+.nav.right { margin-left: 20px; }
