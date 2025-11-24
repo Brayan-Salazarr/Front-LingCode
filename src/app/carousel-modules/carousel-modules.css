@@ -9,7 +9,7 @@
 
 .carousel {
     position: relative;
-    width: 600px;
+    width: 800px;
     height: 220px;
 }
 
@@ -40,11 +40,12 @@
     pointer-events: none;
 }
 
-/* tarjeta central */
 .card.active {
+    position: absolute;
     transform: translate(-50%, -50%) scale(1.2);
     filter: blur(0);
     opacity: 1;
+    top: 20vh;
     z-index: 10;
 }
 

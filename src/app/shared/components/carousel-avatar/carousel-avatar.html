@@ -1,16 +1,28 @@
 <div class="carousel-wrapper">
-  <button class="nav left" (click)="prev()">❮</button>
+  
+  <button class="nav left" (click)="cambiarImagenAtras()">❮</button>
+<div class="carousel"> 
+    
+    @for (i of [0, 1, 2]; track i) {
+      @let realIndex = (currentIndex() + i) % items.length;
 
-  <div class="carousel">
-    <div
-      class="card"
-      *ngFor="let item of items; let i = index"
-      [class.active]="i === currentIndex"
-      [style.transform]="getTransform(i)"
-    >
-      <img [src]="item.img"/>
-    </div>
+      @let item = items[realIndex];
+
+      <div 
+        class="card"
+        [class.active]="realIndex === currentIndex()" 
+        [style.transform]="getTransformForGroup(i)">
+        
+        <img
+          [ngClass]="item.clase" 
+          [src]="item.ruta" 
+          [alt]="item.nombre"
+        />
+        
+      </div>
+    }
+
   </div>
 
-  <button class="nav right" (click)="next()">❯</button>
+  <button class="nav right" (click)="cambiarImagen()">❯</button>
 </div>
