@@ -1,67 +1,135 @@
-<div id="spaceImg">
-    <img id="imgWheel"
-        src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763498717/Gemini_Generated_Image_f60f2qf60f2qf60f-removebg-preview_1_2_tufp18.png"
-        alt="wheel">
-</div>
+<div id="authContainer" [class.show-login]="showLogin">
 
-<div id="BlackBackg">
-    <h1 id="tittle">Registro</h1>
-    <div id="spaceLine">
-        <div id="line"></div>
-    </div>
-
-    <div id="infoBox">
-        <div id="regisInfo">
-            <p>Nombre completo</p>
-            <p>Apodo</p>
-            <p>Correo eléctronico</p>
-            <p>Contraseña</p>
-            <p>Confirmar contraseña</p>
+    <div id="registerSection">
+        <div id="spaceImg">
+            <img id="imgWheel"
+                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763498717/Gemini_Generated_Image_f60f2qf60f2qf60f-removebg-preview_1_2_tufp18.png"
+                alt="wheel">
         </div>
 
-        <div id="recordFields">
-            <input class="field" id="name" type="">
-            <input class="field" id="nickname" type="">
-            <input class="field" id="email" type="">
-            <input class="field" id="password" type="">
-            <input class="field" id="confirmPass" type="">
+        <div id="BlackBackgReg">
+            <h1 class="tittle">Registro</h1>
+            <div class="spaceLine">
+                <div class="line"></div>
+            </div>
+
+            <div class="infoBox">
+                <div class="regisInfo">
+                    <p>Nombre completo</p>
+                    <p>Apodo</p>
+                    <p>Correo eléctronico</p>
+                    <p>Contraseña</p>
+                    <p>Confirmar contraseña</p>
+                </div>
+
+                <div class="recordFields">
+                    <input class="field" id="name" type="">
+                    <input class="field" id="nickname" type="">
+                    <input class="field" id="email" type="">
+                    <input class="field" id="password" type="">
+                    <input class="field" id="confirmPass" type="">
+                </div>
+            </div>
+
+            <div class="spaceButton">
+                <button class="buttonRegist" id="buttonRegist">Registrarme</button>
+            </div>
+
+            <div class="division">
+                <div class="line1"></div>
+                <p class="letter">O</p>
+                <div class="line1"></div>
+            </div>
+
+            <div class="socialAuth">
+                <a href="facebook"><img class="social"
+                        src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586678/fs-removebg-preview_1_pfxzqj.png"
+                        alt=""></a>
+                <a href="gmail"><img class="social"
+                        src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586357/go-removebg-preview_1_ci2skk.png"
+                        alt=""></a>
+                <a href="microsoft"><img class="social"
+                        src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586361/mi-removebg-preview_1_xe39zn.png"
+                        alt=""></a>
+            </div>
+
+            <div class="terms">
+                <input id="checkbox" type="checkbox">
+                <p class="termsUse"> <span>Acepto</span> <a href="">términos de uso</a></p>
+            </div>
+        </div>
+
+        <div class="line2"></div>
+        <div class="line3"></div>
+
+        <div id="WhiteBackg">
+            <h1 class="questionTittle" id="tittle2">¿Ya tienes una cuenta?</h1>
+            <div id="spaceButton2">
+                <button class="buttonRegist" id="buttonRegis" (click)="toggleAuth()">Inicia Sesión</button>
+            </div>
         </div>
     </div>
 
-    <div id="spaceButton">
-        <button class="buttonRegist" id="buttonRegist">Registrarme</button>
-    </div>
+    <div id="loginSection">
+        <div id="WhiteBackgLogin">
+            <h1 class="questionTittle" id="Whitetittle">¿No tienes una cuenta?</h1>
+            <div id="spaceButtonLogin">
+                <button class="buttonRegist" id="buttonLogin" (click)="toggleAuth()">Registrarme</button>
+            </div>
+        </div>
 
-    <div class="division">
-        <div class="line1"></div>
-        <p id="letter">O</p>
-        <div class="line1"></div>
-    </div>
+        <div id="BlackBackgLogin">
+            <h1 class="tittle" id="tittleLogin">Inicio sesión</h1>
+            <div class="spaceLine">
+                <div class="line" id="lineLogin"></div>
+            </div>
 
-    <div id="socialAuth">
-        <a href="facebook"><img class="social"
-                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586678/fs-removebg-preview_1_pfxzqj.png"
-                alt=""></a>
-        <a href="gmail"><img class="social"
-                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586357/go-removebg-preview_1_ci2skk.png"
-                alt=""></a>
-        <a href="microsoft"><img class="social"
-                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586361/mi-removebg-preview_1_xe39zn.png"
-                alt=""></a>
-    </div>
+            <div class="infoBox" id="infoLogin">
+                <div class="regisInfo" id="loginP">
+                    <p>Correo eléctronico</p>
+                    <p>Contraseña</p>
+                </div>
 
-    <div id="terms">
-        <input id="checkbox" type="checkbox">
-        <p id="termsUse"> <span>Acepto</span> <a href="">términos de uso</a></p>
-    </div>
-</div>
+                <div class="recordFields" id="loginFields">
+                    <input id="email" type="">
+                    <input id="password" type="">
+                </div>
+            </div>
 
-<div id="line2"></div>
-<div id="line3"></div>
+            <div class="spaceButton" id="spaceButtonLogin">
+                <button class="buttonRegist" id="buttonRegist">Inicia Sesión</button>
+            </div>
 
-<div id="WhiteBackg">
-    <h1 id="tittle2">¿Ya tienes una cuenta?</h1>
-    <div id="spaceButton2">
-        <button class="buttonRegist" id="buttonLogin">Inicia Sesión</button>
+            <div class="terms" id="termsLogin">
+                <p class="termsUse"><a href="">¿Olvidaste tu contraseña?</a></p>
+            </div>
+
+            <div class="division" id="divisionLogin">
+                <div class="line1"></div>
+                <p class="letter">O</p>
+                <div class="line1"></div>
+            </div>
+
+            <div class="socialAuth" id="socialAuthLogin">
+                <a href="facebook"><img class="social"
+                        src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586678/fs-removebg-preview_1_pfxzqj.png"
+                        alt=""></a>
+                <a href="gmail"><img class="social"
+                        src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586357/go-removebg-preview_1_ci2skk.png"
+                        alt=""></a>
+                <a href="microsoft"><img class="social"
+                        src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586361/mi-removebg-preview_1_xe39zn.png"
+                        alt=""></a>
+            </div>
+        </div>
+
+        <div class="spaceImg" id="spaceImgLogin">
+            <img class="imgWheel" id="imgWheelLogin"
+                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763694862/Gemini_Generated_Image_f60f2qf60f2qf60f-removebg-preview_1_mynpzm.png"
+                alt="wheel">
+        </div>
+
+        <div class="line2" id="line2Login"></div>
+        <div class="line3" id="line3Login"></div>
     </div>
 </div>

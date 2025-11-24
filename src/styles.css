@@ -5,9 +5,18 @@
     margin: 0;
 }
 
+html, body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/*
 body {
     height: 100vh;
-    background: linear-gradient(155deg, #000 60%, #f5f5f5 50%);
+    background: linear-gradient(155deg, #ffffff 40%, #000000 40%);
     position: relative;
     overflow: hidden;
 }
@@ -17,13 +26,14 @@ body::before {
     position: absolute;
     inset: 0;
     background: url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763671748/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_2_3_tbp1wq.png") no-repeat 40vw 10vh / 60vw;
-    mask-image: linear-gradient(155deg, transparent 60%, white 63%);
+    mask-image: linear-gradient(155deg, transparent 60%, rgb(0, 0, 0) 63%);
     z-index: -5;
     opacity: 0.9;
 }
 
 @media(max-width: 1366px) {
     body {
-        background: linear-gradient(155deg, #000 61%, #f5f5f5 50%);
+        background: linear-gradient(155deg, #ffffff 40%, #000000 40%);
     }
 }
+*/
