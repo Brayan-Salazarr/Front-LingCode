@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-* {
-    margin: 0;
-}
-
 html, body {
     height: 100vh;
     width: 100vw;
@@ -12,28 +8,3 @@ html, body {
     padding: 0;
     overflow-x: hidden;
 }
-
-/*
-body {
-    height: 100vh;
-    background: linear-gradient(155deg, #ffffff 40%, #000000 40%);
-    position: relative;
-    overflow: hidden;
-}
-
-body::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763671748/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_2_3_tbp1wq.png") no-repeat 40vw 10vh / 60vw;
-    mask-image: linear-gradient(155deg, transparent 60%, rgb(0, 0, 0) 63%);
-    z-index: -5;
-    opacity: 0.9;
-}
-
-@media(max-width: 1366px) {
-    body {
-        background: linear-gradient(155deg, #ffffff 40%, #000000 40%);
-    }
-}
-*/
