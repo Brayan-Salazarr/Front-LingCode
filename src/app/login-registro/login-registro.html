@@ -1,13 +1,13 @@
 <div id="authContainer" [class.show-login]="showLogin">
 
-    <div id="registerSection">
+    <div class="authClass" id="registerSection">
         <div id="spaceImg">
             <img id="imgWheel"
                 src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763498717/Gemini_Generated_Image_f60f2qf60f2qf60f-removebg-preview_1_2_tufp18.png"
                 alt="wheel">
         </div>
 
-        <div id="BlackBackgReg">
+        <div class="containers" id="BlackBackgReg">
             <h1 class="tittle">Registro</h1>
             <div class="spaceLine">
                 <div class="line"></div>
@@ -15,11 +15,11 @@
 
             <div class="infoBox">
                 <div class="regisInfo">
-                    <p>Nombre completo</p>
-                    <p>Apodo</p>
-                    <p>Correo eléctronico</p>
-                    <p>Contraseña</p>
-                    <p>Confirmar contraseña</p>
+                    <p class="text">Nombre completo</p>
+                    <p class="text">Apodo</p>
+                    <p class="text">Correo eléctronico</p>
+                    <p class="text">Contraseña</p>
+                    <p class="text">Confirmar contraseña</p>
                 </div>
 
                 <div class="recordFields">
@@ -62,7 +62,7 @@
         <div class="line2"></div>
         <div class="line3"></div>
 
-        <div id="WhiteBackg">
+        <div class="containers" id="WhiteBackg">
             <h1 class="questionTittle" id="tittle2">¿Ya tienes una cuenta?</h1>
             <div id="spaceButton2">
                 <button class="buttonRegist" id="buttonRegis" (click)="toggleAuth()">Inicia Sesión</button>
@@ -70,15 +70,15 @@
         </div>
     </div>
 
-    <div id="loginSection">
-        <div id="WhiteBackgLogin">
+    <div class="authClass" id="loginSection">
+        <div class="containers" id="WhiteBackgLogin">
             <h1 class="questionTittle" id="Whitetittle">¿No tienes una cuenta?</h1>
             <div id="spaceButtonLogin">
                 <button class="buttonRegist" id="buttonLogin" (click)="toggleAuth()">Registrarme</button>
             </div>
         </div>
 
-        <div id="BlackBackgLogin">
+        <div class="containers" id="BlackBackgLogin">
             <h1 class="tittle" id="tittleLogin">Inicio sesión</h1>
             <div class="spaceLine">
                 <div class="line" id="lineLogin"></div>

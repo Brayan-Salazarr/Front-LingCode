@@ -2,28 +2,32 @@
     display: flex;
     flex-direction: row;
     height: 100vh;
-    width: 200%; /* El ancho total es el doble de la pantalla */
-    transition: transform 0.6s ease-in-out; /* La transición va en el padre */
+    width: 200%;
+    /* El ancho total es el doble de la pantalla */
+    transition: transform 0.6s ease-in-out;
+    /* La transición va en el padre */
 }
 
 /* 2. Clase para Mostrar Login */
 #authContainer.show-login {
     /* Mueve el contenedor 50% de su ancho (es decir, 100% de la pantalla) a la izquierda */
-    transform: translateX(-50%); 
+    transform: translateX(-50%);
 }
 
 /* 3. Secciones Individuales (100% de Ancho Visual) */
-#registerSection, #loginSection {
-    width: 50%; /* Cada sección ocupa el 50% del contenedor 200%, lo que equivale al 100% de la pantalla */
+#registerSection,
+#loginSection {
+    width: 50%;
+    /* Cada sección ocupa el 50% del contenedor 200%, lo que equivale al 100% de la pantalla */
     height: 100vh;
     flex-shrink: 0;
     overflow: hidden;
-    position: relative; 
+    position: relative;
     /* ¡IMPORTANTE! Asegúrate de que el fondo de cada sección sea completamente 
        opaco para ocultar la sección adyacente que está deslizando por debajo. */
 }
 
-#registerSection {
+.authClass {
     display: flex;
     flex-direction: column;
     background:
@@ -41,24 +45,27 @@
     position: absolute;
     z-index: 1;
     right: 25vh;
-    width: 450px;
+    width: 600px;
 }
 
-#BlackBackgReg {
+.containers {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#BlackBackgReg {
     height: 90%;
     width: 75%;
 }
 
 .tittle {
     font-family: "Anton SC", sans-serif;
-    font-size: 28px;
+    font-size: 38px;
     background: linear-gradient(90deg, white 0%, #AFA9A9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-top: 50px;
+    margin: 50px 0 0 0;
     letter-spacing: 2px;
 }
 
@@ -76,6 +83,7 @@
 
 .infoBox {
     display: flex;
+    align-items: center;
     font-family: "Poppins", sans-serif;
     font-size: 15px;
     font-weight: bold;
@@ -95,8 +103,8 @@
     width: 250px;
 }
 
-p {
-    font-size: 13px;
+.text {
+    font-size: 15px;
     margin-top: 1vw;
 }
 
@@ -104,7 +112,7 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 250px;
+    height: 17vw;
     width: 50%;
 }
 
@@ -123,9 +131,8 @@ input {
 .spaceButton {
     display: flex;
     align-items: flex-end;
-    margin-top: 50px;
-    height: 80px;
-    width: 55%;
+    height: 70px;
+    width: 60%;
 }
 
 .buttonRegist {
@@ -150,8 +157,8 @@ input {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    margin-right: 420px;
-    margin-top: 12px;
+    margin-right: 76.5vh;
+    margin-top: 30px;
 }
 
 .line1 {
@@ -170,7 +177,7 @@ input {
 .socialAuth {
     display: flex;
     justify-content: space-around;
-    margin-right: 420px;
+    margin-right: 76.5vh;
     margin-top: 6px;
     width: 200px;
 }
@@ -187,16 +194,16 @@ input {
 .terms {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: end;
     font-family: "Poppins", sans-serif;
-    margin-right: 420px;
-    margin-top: 5px;
+    margin-right: 76.5vh;
+    height: 50px;
     width: 155px;
 }
 
 .termsUse {
     color: #00BBFF;
-    margin-top: 0;
+    margin: -3px 0 0 0;
 }
 
 span {
@@ -212,7 +219,6 @@ a {
 }
 
 .line2 {
-    background: linear-gradient(90deg, #EA02FF, #00D9FF);
     top: 117vh;
     position: absolute;
     left: 5vw;
@@ -236,9 +242,6 @@ a {
 }
 
 #WhiteBackg {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     position: absolute;
     top: 68vh;
     margin-left: 70vw;
@@ -252,24 +255,17 @@ a {
     -webkit-text-fill-color: transparent;
 }
 
-#buttonRegis{
+#buttonRegis {
     margin-top: 30px;
 }
 
 #loginSection {
-    display: flex;
-    flex-direction: column;
     background:
         linear-gradient(155deg, #f5f5f500 45%, #000 45%),
         url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763938373/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_2_jxe5ow.png") no-repeat -1vw -10vh / 45vw;
-    position: relative;
-    height: 100vh;
 }
 
 #WhiteBackgLogin {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     height: 500vh;
     width: 50%;
 }
@@ -288,20 +284,17 @@ a {
     margin-top: 8vh;
 }
 
-#buttonLogin{
+#buttonLogin {
     margin-left: -80px;
 }
 
 #BlackBackgLogin {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     position: absolute;
     top: 32vh;
     margin-left: 40vw;
 }
 
-#infoLogin{
+#infoLogin {
     justify-content: center;
     height: 100px;
 }
@@ -311,20 +304,20 @@ a {
     margin-left: 150px;
 }
 
-#lineLogin{
+#lineLogin {
     margin-left: 215px;
 }
 
-#loginP{
+#loginP {
     height: 7vw;
     width: 160px;
 }
 
-#loginFields{
+#loginFields {
     height: 7vw;
 }
 
-#spaceButtonLogin{
+#spaceButtonLogin {
     justify-content: end;
     margin-top: 30px;
     margin-right: -140px;
@@ -332,36 +325,231 @@ a {
     width: 19%;
 }
 
-#termsLogin{
+#termsLogin {
     margin-right: -150px;
     margin-top: 25px;
 }
 
-#divisionLogin{
+#divisionLogin {
     margin-right: -150px;
 }
 
-#socialAuthLogin{
+#socialAuthLogin {
     margin-right: -150px;
 }
 
-#line2Login{
+#line2Login {
     width: 200vw;
     left: -5vw;
-    transform: rotate(-25deg) translateY(-20vh); 
+    transform: rotate(-25deg) translateY(-20vh);
 }
 
-#line3Login{
+#line3Login {
     width: 200vw;
     left: -5vw;
     transform: rotate(-25deg) translateY(-19.5vh);
 }
 
-#spaceImgLogin{
+#spaceImgLogin {
     margin-left: 300px;
 }
 
-#imgWheelLogin{
+#imgWheelLogin {
+    width: 450px;
+}
+
+/*
+@media(max-width: 1366px) {
+    #imgWheel {
+    width: 450px;
+    }
+
+    .tittle {
+    font-size: 28px;
+    }
+
+    .infoBox {
+    align-items: center;
+    }
+
+    p {
+    font-size: 13px;
+    }
+
+    .recordFields {
+    height: 250px;
+    }
+
+    .spaceButton {
+    margin-top: 50px;
+    height: 80px;
+    width: 55%;
+    }
+
+    .division {
+    margin-right: 420px;
+    margin-top: 12px;
+    }
+
+    .socialAuth {
+    margin-right: 420px;
+    }
+
+    .terms {
+    margin-right: 420px;
+    }
+}
+
+span {
+    font-size: 11px;
+    margin-right: 4px;
+    color: white;
+}
+
+a {
+    text-decoration-line: none;
+    color: #00BBFF;
+    font-size: 11px;
+}
+
+.line2 {
+    
+    top: 117vh;
+    position: absolute;
+    left: 5vw;
+    transform: rotate(-25deg);
+    transform-origin: left center;
+    z-index: 2;
+    height: 5px;
+    width: 110vw;
+}
+
+.line3 {
+    background: linear-gradient(90deg, #00D9FF, #EA02FF);
+    top: 117.3vh;
+    position: absolute;
+    left: 5.5vw;
+    transform: rotate(-25deg);
+    transform-origin: left center;
+    z-index: 2;
+    height: 5px;
+    width: 130vw;
+}
+
+#WhiteBackg {
+    position: absolute;
+    top: 68vh;
+    margin-left: 70vw;
+}
+
+.questionTittle {
+    font-family: "Anton SC", sans-serif;
+    font-size: 28px;
+    background: linear-gradient(90deg, rgb(48, 48, 48) 0%, #AFA9A9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#buttonRegis {
+    margin-top: 30px;
+}
+
+#loginSection {
+    background:
+        linear-gradient(155deg, #f5f5f500 45%, #000 45%),
+        url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763938373/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_2_jxe5ow.png") no-repeat -1vw -10vh / 45vw;
+}
+
+#WhiteBackgLogin {
+    height: 500vh;
+    width: 50%;
+}
+
+#Whitetittle {
+    font-family: "Anton SC", sans-serif;
+    font-size: 28px;
+    background: linear-gradient(90deg, rgb(48, 48, 48) 0%, #AFA9A9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 20vh;
+    left: 100px;
+}
+
+#spaceButtonLogin {
+    margin-top: 8vh;
+}
+
+#buttonLogin {
+    margin-left: -80px;
+}
+
+#BlackBackgLogin {
+    position: absolute;
+    top: 32vh;
+    margin-left: 40vw;
+}
+
+#infoLogin {
+    justify-content: center;
+    height: 100px;
+}
+
+#tittleLogin {
+    margin-top: 0;
+    margin-left: 150px;
+}
+
+#lineLogin {
+    margin-left: 215px;
+}
+
+#loginP {
+    height: 7vw;
+    width: 160px;
+}
+
+#loginFields {
+    height: 7vw;
+}
+
+#spaceButtonLogin {
+    justify-content: end;
+    margin-top: 30px;
+    margin-right: -140px;
+    height: 45px;
+    width: 19%;
+}
+
+#termsLogin {
+    margin-right: -150px;
+    margin-top: 25px;
+}
+
+#divisionLogin {
+    margin-right: -150px;
+}
+
+#socialAuthLogin {
+    margin-right: -150px;
+}
+
+#line2Login {
+    width: 200vw;
+    left: -5vw;
+    transform: rotate(-25deg) translateY(-20vh);
+}
+
+#line3Login {
+    width: 200vw;
+    left: -5vw;
+    transform: rotate(-25deg) translateY(-19.5vh);
+}
+
+#spaceImgLogin {
+    margin-left: 300px;
+}
+
+#imgWheelLogin {
     width: 450px;
 }
 
