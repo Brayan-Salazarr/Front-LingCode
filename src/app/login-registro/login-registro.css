@@ -55,6 +55,7 @@
 }
 
 #BlackBackgReg {
+    margin: 30px 0 0 0;
     height: 90%;
     width: 75%;
 }
@@ -88,31 +89,31 @@
     font-size: 15px;
     font-weight: bold;
     margin-top: 0;
-    height: 40vh;
+    height: 35vh;
     width: 60vw;
 }
 
 .regisInfo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.74) 0%, #AFA9A9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    height: 18vw;
+    height: 100%;
     width: 250px;
 }
 
 .text {
     font-size: 15px;
-    margin-top: 1vw;
+    margin: 0;
 }
 
 .recordFields {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 17vw;
+    height: 100%;
     width: 50%;
 }
 
@@ -125,13 +126,13 @@ input {
     background: linear-gradient(#fff, #fff) padding-box,
         linear-gradient(90deg, #AF02FF, #0051FF) border-box;
     padding: 0 0 0 5px;
-    height: 27px;
+    height: 30px;
 }
 
 .spaceButton {
     display: flex;
     align-items: flex-end;
-    height: 70px;
+    height: 120px;
     width: 60%;
 }
 
@@ -220,7 +221,7 @@ a {
 
 .line2 {
     background: linear-gradient(90deg, #00D9FF, #EA02FF);
-    top: 117vh;
+    top: 113.5vh;
     position: absolute;
     left: 5vw;
     transform: rotate(-25deg);
@@ -232,7 +233,7 @@ a {
 
 .line3 {
     background: linear-gradient(90deg, #00D9FF, #EA02FF);
-    top: 117.3vh;
+    top: 113.5vh;
     position: absolute;
     left: 5.5vw;
     transform: rotate(-25deg);
@@ -426,371 +427,3 @@ a {
         width: 400px;
     }
 }
-
-/*#spaceImg {
-    position: relative;
-}
-
-#imgWheel {
-    position: absolute;
-    z-index: -1;
-    right: 300px;
-    width: 600px;
-}
-
-#BlackBackg {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 50%;
-    width: 70%;
-}
-
-#tittle {
-    font-family: "Anton SC", sans-serif;
-    font-size: 48px;
-    background: linear-gradient(90deg, white 0%, #AFA9A9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-top: 70px;
-    letter-spacing: 2px;
-}
-
-#spaceLine {
-    margin-top: -3px;
-}
-
-#line {
-    background: linear-gradient(90deg, #FF00FB 0%, #FFA109 100%);
-    border-radius: 5px;
-    margin-left: 170px;
-    height: 10px;
-    width: 211px;
-}
-
-#infoBox {
-    display: flex;
-    font-family: "Poppins", sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-    margin-top: 60px;
-    height: 40vh;
-    width: 55vw;
-}
-
-#regisInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.74) 0%, #AFA9A9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    width: 250px;
-}
-
-#recordFields {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 50%;
-}
-
-input {
-    color: black;
-    font-family: "Poppins", sans-serif;
-    font-size: 15px;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    background: linear-gradient(#fff, #fff) padding-box,
-        linear-gradient(90deg, #AF02FF, #0051FF) border-box;
-    padding: 0 0 0 5px;
-    height: 33px;
-}
-
-#spaceButton {
-    display: flex;
-    align-items: flex-end;
-    margin-top: 50px;
-    height: 80px;
-    width: 60%;
-}
-
-.buttonRegist {
-    cursor: pointer;
-    font-family: "Poppins", sans-serif;
-    font-size: 15px;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    border: 2px solid transparent;
-    border-radius: 12px;
-    background:
-        linear-gradient(0, rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
-        linear-gradient(90deg, #EA02FF, #00D9FF) border-box;
-    padding: 15px 40px;
-}
-
-.division {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-right: 630px;
-    margin-top: 30px;
-}
-
-.line1 {
-    width: 122px;
-    height: 1px;
-    background: #6e6d6d8c;
-}
-
-#letter {
-    margin: 0;
-    font-size: 14px;
-    color: #6e6d6d57;
-    font-weight: 300;
-}
-
-#socialAuth {
-    display: flex;
-    justify-content: space-around;
-    margin-right: 630px;
-    margin-top: 30px;
-    width: 200px;
-}
-
-.social {
-    transition: transform 0.2s ease;
-    width: 40px;
-}
-
-.social:hover {
-    transform: scale(1.15);
-}
-
-#terms {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-family: "Poppins", sans-serif;
-    margin-right: 640px;
-    margin-top: 30px;
-    width: 210px;
-}
-
-#termsUse {
-    color: #00BBFF;
-}
-
-span {
-    margin-right: 5px;
-    color: white;
-}
-
-a {
-    text-decoration-line: none;
-    color: #00BBFF;
-}
-
-#line2 {
-    background: linear-gradient(90deg, #EA02FF, #00D9FF);
-    position: absolute;
-    width: 200vw;
-    height: 5px;
-    left: -5vw;
-    transform: rotate(-25deg) translateY(8.8vh); 
-    transform-origin: bottom left;
-    z-index: 2;
-}
-
-#line3 {
-    background: linear-gradient(90deg, #EA02FF, #00D9FF);
-    position: absolute;
-    width: 200vw;
-    height: 5px;
-    left: -5vw;
-    transform: rotate(-25deg) translateY(9vh); 
-    transform-origin: bottom left;
-    z-index: 2;;
-}
-
-#WhiteBackg {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 68vh;
-    margin-left: 62vw;
-}
-
-#tittle2 {
-    font-family: "Anton SC", sans-serif;
-    font-size: 48px;
-    background: linear-gradient(90deg, rgb(48, 48, 48) 0%, #AFA9A9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-#spaceButton2 {
-    display: flex;
-    margin-top: 6vh;
-    width: 18%;
-}
-
-@media(max-width: 1366px) {
-    #imgWheel {
-        right: -160px;
-        top: -210px;
-        width: 500px;
-    }
-
-    #BlackBackg {
-        justify-content: end;
-        height: 50%;
-        width: 75%;
-    }
-    
-    #spaceLine {
-        margin-top: -3px;
-    }
-    
-    #line {
-        border-radius: 5px;
-        margin-left: 170px;
-        height: 10px;
-        width: 211px;
-    }
-
-    #tittle {
-        font-size: 28px;
-        right: 30px;
-        margin-top: 80px;
-    }
-
-    #spaceLine {
-        margin-bottom: 40px;
-    }
-
-    #line {
-        margin-left: 120px;
-        height: 7px;
-        width: 150px;
-    }
-
-    #infoBox {
-        margin-top: 0;
-        width: 60vw;
-    }
-
-    #regisInfo {
-        height: 18vw;
-    }
-
-    p {
-        font-size: 13px;
-        margin-top: 1vw;
-    }
-
-    #recordFields {
-        height: 250px;
-    }
-
-    input {
-        height: 30px;
-    }
-
-    #spaceButton {
-        margin-top: 50px;
-        width: 55%;
-    }
-
-    .buttonRegist {
-        font-size: 13px;
-        padding: 10px 30px;
-    }
-
-    .division {
-        margin-right: 420px;
-        margin-top: 12px;
-    }
-
-    .line1 {
-        width: 70px;
-    }
-
-    #letter {
-        font-size: 13px;
-    }
-
-    #socialAuth {
-        margin-right: 420px;
-        margin-top: 6px;
-    }
-
-    .social {
-        transition: transform 0.2s ease;
-        width: 30px;
-    }
-
-    .social:hover {
-        transform: scale(1.15);
-    }
-
-    #terms {
-        margin-right: 420px;
-        margin-top: 5px;
-        width: 155px;
-    }
-
-    #termsUse {
-        margin-top: 0;
-    }
-
-    span {
-        font-size: 11px;
-        margin-right: 4px;
-    }
-
-    a {
-        font-size: 11px;
-    }
-    #line2 {
-        background: linear-gradient(90deg, #EA02FF, #00D9FF);
-        position: absolute;
-        width: 200vw;
-        height: 5px;
-        left: -50vw;
-        transform: rotate(-25deg) translateY(25vh); 
-        transform-origin: bottom left;
-        z-index: 2;
-    }
-    
-    #line3 {
-        background: linear-gradient(90deg, #EA02FF, #00D9FF);
-        position: absolute;
-        width: 200vw;
-        height: 5px;
-        left: -50vw;
-        transform: rotate(-25deg) translateY(24.5vh); 
-        transform-origin: bottom left;
-        z-index: 2;
-    }
-
-    #WhiteBackg {
-        top: 68vh;
-        margin-left: 70vw;
-    }
-
-    #tittle2 {
-        font-size: 28px;
-    }
-
-    #spaceButton2 {
-        justify-content: center;
-        margin-top: 3vh;
-        height: 50px;
-        width: 75%;
-    }
-}
-    */
