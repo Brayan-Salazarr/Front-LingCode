@@ -195,11 +195,15 @@ input {
 .terms {
     display: flex;
     justify-content: space-around;
-    align-items: end;
+    align-items: center;
     font-family: "Poppins", sans-serif;
     margin-right: 76.5vh;
     height: 50px;
     width: 155px;
+}
+
+#checkbox {
+    margin: 0 0 0 0;
 }
 
 .termsUse {
@@ -283,17 +287,19 @@ a {
 }
 
 #spaceButtonLogin {
-    margin-top: 8vh;
+    margin: 30px 0 0 0;
+    width: 100vw;
 }
 
 #buttonLogin {
-    margin-left: -80px;
+    margin-left: -85px;
 }
 
 #BlackBackgLogin {
     position: absolute;
-    top: 32vh;
+    top: 40vh;
     margin-left: 40vw;
+    height: 45%;
 }
 
 #infoLogin {
@@ -320,16 +326,17 @@ a {
 }
 
 #spaceButtonLogin {
-    justify-content: end;
-    margin-top: 30px;
+    justify-content: center;
     margin-right: -140px;
-    height: 45px;
-    width: 19%;
+    width: 13%;
+}
+
+#buttonRegistL{
+    margin: 30px 0 0 0;
 }
 
 #termsLogin {
     margin-right: -150px;
-    margin-top: 25px;
 }
 
 #divisionLogin {
@@ -407,12 +414,7 @@ a {
     }
 
     .terms {
-        align-items: center;
         margin-right: 420px;
-    }
-
-    #checkbox {
-        margin: 0 0 0 0;
     }
 
     #termsLogin {
