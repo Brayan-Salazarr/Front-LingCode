@@ -9,7 +9,7 @@
 
 .carousel {
     position: relative;
-    width: 800px;
+    width: 42vw;
     height: 220px;
 }
 
@@ -17,15 +17,15 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 30vw;
+    width: 50vw;
     height: 300px;
     border-radius: 12px;
     overflow: hidden !important;
     transition: all 0.6s ease;
     transform-style: preserve-3d;
     cursor: pointer;
-    filter: blur(2px);
-    opacity: 0.5;
+    filter: blur(8px);
+    opacity: 0.7;
 }
 
 .images {
@@ -33,18 +33,18 @@
     top: 22vh;
     left: 50%;
     width: 20vw;
-    height: 25vh;
-    object-fit: cover;
     transform: translate(-50%, -60%);
     z-index: 10;
     pointer-events: none;
 }
 
+
+
 .card.active {
-    position: absolute;
     transform: translate(-50%, -50%) scale(1.2);
     filter: blur(0);
-    opacity: 1;
+    opacity: 8;
+    width: 30vw;
     top: 20vh;
     z-index: 10;
 }

@@ -11,9 +11,9 @@ export class CarouselModules {
   currentIndex = 0;
 
   items = [
-    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763695172/mysql-removebg-preview-removebg-preview_2_hc65ln.png' },
-    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696348/Group_25_fnpomn.png' },
-    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696367/Group_31_mmwojn.png' }
+    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763695172/mysql-removebg-preview-removebg-preview_2_hc65ln.png', class: 'img1' },
+    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696348/Group_25_fnpomn.png', class: 'img2' },
+    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696367/Group_31_mmwojn.png', class: 'img3' }
   ];
 
   setActive(index: number) {
