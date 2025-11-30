@@ -6,7 +6,7 @@
          (click)="setActive(i)"
          [style.transform]="getPosition(i)">
          <div class="bg-black"></div>
-      <img class="images" [src]="item.img">
+      <img class="images" [ngClass]="item.class" [src]="item.img">
     </div>
   </div>
 </div>
