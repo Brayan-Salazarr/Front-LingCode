@@ -19,6 +19,7 @@ export class CarouselModules {
   setActive(index: number) {
     this.currentIndex = index;
   }
+  
 
   getPosition(index: number) {
     const total = this.items.length;

@@ -1,5 +1,5 @@
-.component {
-    height: 530vh;
+    .component {
+    height: 545vh;
 }
 
 section {
@@ -91,6 +91,7 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 0 100px 0 0;
     width: 32vw;
 }
 
@@ -112,7 +113,7 @@ section {
 #img-symbols{
     position: absolute;
     width: 58vw;
-    top: 285vh;
+    top: 289vh;
     left: -5vh;
 }
 
@@ -189,6 +190,26 @@ section {
     left: 10vw;
     z-index: 15;
     transform: rotate(90deg);
+}
+
+.subtitle-field{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0 0 0;
+}
+
+.avatar-caption{
+    font-family: "Anton SC", sans-serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+}
+
+.line-avatar{
+    background: linear-gradient(to left,rgba(176, 172, 205, 1), rgba(0, 111, 255, 1));
+    border-radius: 30px;
+    width: 300px;
+    height: 15px;
 }
 @media (max-width: 1537px) {
     .caption {
