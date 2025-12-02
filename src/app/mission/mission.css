@@ -1,0 +1,85 @@
+.component {
+    height: 300vh;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    top: 120vh;
+}
+
+.mission-information {
+    display: flex;
+    justify-content: end;
+}
+
+.text {
+    width: 52vw;
+    font-size: 35px;
+}
+
+.line{
+    background: linear-gradient(to left,rgba(255, 161, 9, 0.5), rgba(255, 0, 251, 0.5));
+    height: 10px;  
+    width: 60vw;
+    border-radius: 30px;
+}
+
+.separation{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 25vh;
+    width: 60vw;
+}
+
+.container-with-triangle{
+    position: relative;
+    width: 80vw;
+    left: 3vw;
+    height: 120vh;
+    background-color: black;
+    clip-path: polygon(0 0, 0 0, 100% 50%, 0 100%);
+    margin-top: 100px;
+}
+
+.container-with-triangle1 {
+    position: absolute;
+    top: 41vh;
+    width: 65vw;
+    height: 110vh;
+}
+
+.container-with-triangle1::before {
+    content: ''; 
+    position: absolute;
+    top: -5px; 
+    left: -5px; 
+    width: calc(99% + 10px);
+    height: calc(99% + 20px);
+    
+    /* El degradado de color (El borde) */
+    background: linear-gradient(to right, #00c6ff, #0072ff); 
+    
+    /* Aplicamos el clip-path al borde más grande */
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    
+    z-index: 1; /* Lo ponemos en una capa superior temporal */
+}
+
+.container-with-triangle1::after {
+    content: ''; 
+    position: absolute;
+    top: -0.60vh; 
+    left: -1vw; 
+    width: 100%;
+    height: 111vh;
+    background-color: black; 
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    transform: scale(0.99); 
+    
+    z-index: 2; /* Lo ponemos por encima del borde azul (::before) */
+}

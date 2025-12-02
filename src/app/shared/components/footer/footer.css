@@ -33,6 +33,7 @@ ul{
 
 li {
     list-style: none;
+    cursor: pointer;
 }
 
 .place-views {

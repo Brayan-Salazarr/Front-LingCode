@@ -52,21 +52,8 @@ h1 {
     margin: 0 0 0 50px;
 }
 
-.color-word1 {
-    background: linear-gradient(to right,
-            #ff6600,
-            #c13838,
-            #993399);
-    background-clip: text;
-    color: transparent;
-}
-
-.color-word2 {
-    background: linear-gradient(to right,
-            #00b7ff,
-            #007bff);
-    background-clip: text;
-    color: transparent;
+.space .information{
+    justify-content: space-evenly;
 }
 
 .line {
