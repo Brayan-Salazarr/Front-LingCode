@@ -29,7 +29,7 @@ export class CarouselModules {
     return `
       translate(-50%, -50%)
       rotateY(${rotate}deg)
-      translateZ(300px)
+      translateZ(250px)
     `;
   }
 }

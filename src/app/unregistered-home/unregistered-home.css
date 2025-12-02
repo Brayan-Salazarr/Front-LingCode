@@ -72,7 +72,7 @@ section {
 
 .field-modules {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .information-modules {

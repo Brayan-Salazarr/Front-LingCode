@@ -54,21 +54,22 @@
     pointer-events: auto;
     z-index: 1;
 }
+
 .card:not(.active) .bg-black,
 .card:not(.active) .images {
     transform: scaleX(1.6);
 }
 
 .card:not(.active) .img1 {
-     transform: translate(-60%, -60%) scaleX(-1.6);
+    transform: translate(-60%, -60%) scaleX(-1.6);
 }
 
 .card:not(.active) .img2 {
-     transform: translate(-25%, -60%) scaleX(-1.6);
+    transform: translate(-25%, -60%) scaleX(-1.6);
 }
 
 .card:not(.active) .img3 {
-     transform: translate(-65%, -60%) scaleX(-1.6);
+    transform: translate(-65%, -60%) scaleX(-1.6);
 }
 
 .img1 {
@@ -83,27 +84,35 @@
     left: 44%;
 }
 
-.img3{
+.img3 {
     width: 27vw;
-     top: 25vh;
+    top: 25vh;
     left: 55%;
 }
 
 @media (max-width: 1537px) {
-   .img1 {
-    width: 23vw;
-    top: 20vh;
-}
+    .img1 {
+        width: 23vw;
+        top: 20vh;
+    }
 
-.img2 {
-    width: 35vw;
-    top: 20vh;
-    left: 43%;
-}
+    .img2 {
+        width: 33vw;
+        top: 20vh;
+        left: 43%;
+    }
 
-.img3{
-    width: 34vw;
-     top: 27vh;
-    left: 55%;
-}
+    .img3 {
+        width: 34vw;
+        top: 27vh;
+        left: 55%;
+    }
+
+    .bg-black {
+        left: 5vw;
+    }
+
+    .card {
+        left: 45%;
+    }
 }
