@@ -9,6 +9,9 @@
     position: absolute;
     z-index: 10;
 }
+.backgroundNav.component {
+    background: rgba(1, 1, 1, 0.88);
+}
 
 #img{
     width: 108px;
