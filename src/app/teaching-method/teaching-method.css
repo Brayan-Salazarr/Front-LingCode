@@ -1,0 +1,67 @@
+.component {
+    height: 340vh;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    height: 220vh;
+    top: 110vh;
+}
+
+.teaching-information {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.teaching-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: end;
+    height: 45vh;
+    width: 50vw;
+}
+
+.teaching-img {
+    width: 25vw;
+}
+
+.caption {
+    color: #20BAE4;
+    font-family: "Anton SC", sans-serif;
+    font-size: 48px;
+    letter-spacing: 1px;
+    width: 100%;
+}
+
+.text {
+    font-family: "Poppins", sans-serif;
+}
+
+.line {
+    position: relative;
+    background: linear-gradient(to left, rgba(0, 217, 255, 1), rgba(202, 75, 214, 1));
+    height: 10px;
+    width: 30vw;
+    border-radius: 30px;
+    left: 10vw;
+}
+
+#line-two{
+    top: 3vh;
+    left: -30vw;
+     background: linear-gradient(to left, rgba(101, 75, 214, 1), rgba(0, 217, 255, 1));
+}
+
+@media (max-width: 1537px) {
+    .caption {
+        font-size: 38px;
+    }
+
+    .text {
+        font-size: 24px;
+    }
+}

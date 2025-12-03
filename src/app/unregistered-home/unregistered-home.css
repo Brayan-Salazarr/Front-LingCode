@@ -118,6 +118,7 @@ section {
 }
 
 #line {
+    position: relative;
     background: linear-gradient(to left,rgba(190, 177, 248, 1), rgba(0, 217, 255, 1));
     height: 5px;    
 }
