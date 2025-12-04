@@ -1,10 +1,30 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
 .component {
-        height: 300vh;
-    }
+    display: flex;
+    justify-content: center;
+    height: 365vh;
+}
 
 section {
+    position: relative;
+    top: 25vh;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.information {
     display: flex;
     flex-direction: column;
-    position: relative; 
-    top: 25vh;
+    justify-content: space-around;
+    width: 50vw;
+    height: 320vh;
+}
+
+#titleNor{
+    margin: 70px 0 0 0;
 }
