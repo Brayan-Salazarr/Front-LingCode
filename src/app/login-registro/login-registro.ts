@@ -62,7 +62,6 @@ export class LoginRegistro {
       overlay!.classList.remove(slideClass);
 
       const listener = (event: Event) => {
-
         if ((event as TransitionEvent).propertyName === 'transform') {
 
           overlay!.classList.remove(exitClass);
