@@ -6,7 +6,7 @@ header {
     position: relative;
     border-radius: 50% / 100%;
     left: -7vw;
-    top: -80vh;
+    top: -94vh;
     transform: skewY(-15deg);
     z-index: 5;
 }

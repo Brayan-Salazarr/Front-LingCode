@@ -111,6 +111,7 @@ section {
     #img-symbols {
         position: absolute;
         width: 58vw;
+        top: 100px;
         left: -5vh;
     }
 
