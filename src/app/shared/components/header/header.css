@@ -3,7 +3,7 @@ header {
     background: black;
     width: 150vw;
     height: 150vh;
-    position: absolute;
+    position: relative;
     border-radius: 50% / 100%;
     left: -7vw;
     top: -80vh;

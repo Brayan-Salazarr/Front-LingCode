@@ -1,14 +1,8 @@
-    .component {
-        height: 545vh;
-        overflow-x: hidden;
-    }
 
-    section {
+section {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        position: relative;
-        top: 100vh;
     }
 
     .field {
@@ -69,6 +63,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
     }
 
     .field-modules {
@@ -116,7 +111,6 @@
     #img-symbols {
         position: absolute;
         width: 58vw;
-        top: 289vh;
         left: -5vh;
     }
 
@@ -137,7 +131,7 @@
                 0% 75%,
                 0% 25%);
         position: absolute;
-        top: 180vh;
+        top: 100vh;
         left: 2vw;
         z-index: 15;
         transform: rotate(90deg);
@@ -154,7 +148,7 @@
                 0% 75%,
                 0% 25%);
         position: absolute;
-        top: 175vh;
+        top: 95vh;
         left: 10vw;
         z-index: 15;
         transform: rotate(90deg);
@@ -171,7 +165,7 @@
                 0% 75%,
                 0% 25%);
         position: absolute;
-        top: 185vh;
+        top: 105vh;
         left: 7vw;
         z-index: 15;
         transform: rotate(90deg);
@@ -190,8 +184,8 @@
                 0% 75%,
                 0% 25%);
         position: absolute;
-        top: 130vh;
-        left: 10vw;
+        top: 60vh;
+        left: 13vw;
         z-index: 15;
         transform: rotate(90deg);
     }
