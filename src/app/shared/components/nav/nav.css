@@ -1,41 +1,44 @@
-.component{
+.component {
     display: flex;
     justify-content: space-around;
     align-items: center;
     background: rgba(1, 1, 1, 0.616);
-    box-shadow:0 1px 10px 0 rgba(85, 81, 81, 1);
+    box-shadow: 0 1px 10px 0 rgba(85, 81, 81, 1);
     width: 100%;
     height: 110px;
     position: relative;
     z-index: 10;
 }
+
 .backgroundNav.component {
     background: rgba(1, 1, 1, 0.88);
 }
 
-#img{
+#img {
     width: 108px;
 }
-.nav{
+
+.nav {
     display: flex;
     justify-content: space-around;
     width: 30%;
-    
+
 }
-.place{
+
+.place {
     font-size: 18px;
     color: white;
     text-decoration: none;
     font-family: "Poppins", sans-serif;
 }
 
-.buttons{
+.buttons {
     display: flex;
     justify-content: space-around;
     width: 25vw;
 }
 
-.button1{
+.button1 {
     border-radius: 15px;
     font-size: 18px;
     background-color: #0F0F0F;
@@ -48,7 +51,7 @@
     height: 50px;
 }
 
-.button2{
+.button2 {
     border-radius: 15px;
     font-size: 18px;
     font-family: "Poppins", sans-serif;
@@ -61,11 +64,19 @@
 }
 
 @media (max-width: 1366px) {
-    .button1{
-    font-size: 16px;
-}
+    .button1 {
+        font-size: 16px;
+        width: 140px;
+        height: 45px;
+    }
 
-.button2{
-    font-size: 17px;
-}
+    .button2 {
+        font-size: 16px;
+        width: 140px;
+        height: 45px;
+    }
+
+    .place {
+        font-size: 16px;
+    }
 }
