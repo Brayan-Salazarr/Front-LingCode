@@ -1,27 +1,31 @@
 <div class="component" [ngClass]="colorBackground">
     <img id="img" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763490191/Group_27_xduqke.png" alt="Logo">
 
-    <nav class="nav"> 
-        <a class="place" routerLink="">Inicio</a>
+    <nav class="nav">
+        <a class="place" (click)="goHome()">Inicio</a>
         <a class="place" routerLink="">Módulos</a>
         <a class="place" routerLink="">Sobre nosotros</a>
     </nav>
 
-    <div class="buttons">
-        <button class="button1" (click) = "goLogin()">
+    <div class="buttons" *ngIf="!user">
+        <button class="button1" (click)="goLogin()">
             Iniciar Sesión
         </button>
 
-         <button class="button2" routerLink="/login-registro">
+        <button class="button2" routerLink="/login-registro">
             Registrarme
         </button>
     </div>
 
     <!-- LOGUEADO -->
-  <div class="user-info" *ngIf="user as u">
-    <img class="avatar" [src]="u.avatar" />
-    <span>{{ u.nickName }}</span>
-    <button (click)="logout()">Cerrar sesión</button>
-  </div>
+    <div class="user-info" *ngIf="user as u">
+        <img class="avatar" [src]="user.avatar" />
+
+        <div class="separator">
+            <span>{{ u.nickName }}</span>
+            <button class="close-button" (click)="logout()">Cerrar sesión</button>
+        </div>
+
+    </div>
 
 </div>

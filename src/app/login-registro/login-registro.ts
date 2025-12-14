@@ -59,8 +59,7 @@ export class LoginRegistro {
       name: this.registerData.fullName,
       nickName: this.registerData.nickName,
       email: this.registerData.email,
-      password: this.registerData.password,
-      avatar: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png'
+      password: this.registerData.password
     });
     if (success) {
       alert('Registro exitoso');
