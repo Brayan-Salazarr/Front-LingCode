@@ -140,6 +140,7 @@
 
 .text {
     font-size: clamp(10px, 1.1vw, 30px);
+    margin: 17px 0 17px 0;
 }
 
 .recordFields {
@@ -203,6 +204,7 @@ input {
     font-size: 13px;
     color: #6e6d6d57;
     font-weight: 300;
+    margin: 13px 0 13px 0;
 }
 
 .socialAuth {
@@ -276,6 +278,7 @@ a {
 .questionTittle {
     font-family: "Anton SC", sans-serif;
     font-size: clamp(38px, 2vw, 50px);
+    margin: 25px 0 25px 0;
     background: linear-gradient(90deg, rgb(48, 48, 48) 0%, #AFA9A9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
