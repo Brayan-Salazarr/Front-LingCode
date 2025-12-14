@@ -6,6 +6,7 @@ import { Mission } from './mission/mission';
 import { TeachingMethod } from './teaching-method/teaching-method';
 import { NormsPolitics } from './norms-politics/norms-politics';
 import { RegisteredHome } from './registered-home/registered-home';
+import { EditProfile } from './edit-profile/edit-profile';
 
 export const routes: Routes = [
     { path: '', component: UnregisteredHome},
@@ -15,5 +16,6 @@ export const routes: Routes = [
     {path: 'login-registro', component:LoginRegistro},
     {path: 'new-password', component:NewPassword},
     {path: 'login-registro', redirectTo: 'login-registro', pathMatch: 'full'},
-    {path: 'registered-home', component: RegisteredHome}
+    {path: 'registered-home', component: RegisteredHome},
+    {path: 'edit-profile', component: EditProfile},
 ];
