@@ -11,6 +11,20 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 export class LoginRegistro {
   showLogin: boolean = false;
 
+  loginDate = {
+    email: '',
+    apodo: '',
+    password: ''
+  };
+
+  registerData = {
+    fullName: '',
+    nickName: '',
+    email: '',
+    password:'',
+    confirmPassword:''
+  };
+
   constructor(
     private router: Router,
     private route: ActivatedRoute

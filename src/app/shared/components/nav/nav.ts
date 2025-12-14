@@ -10,6 +10,7 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class Nav {
   @Input() colorBackground = '';
+  @Input() perfil = '';
 
   constructor (private router : Router){}
 
