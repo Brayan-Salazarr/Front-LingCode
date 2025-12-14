@@ -10,10 +10,10 @@ footer {
 }
 
 .information-footer {
-    display: flex;  
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow:0 0 5px 0 rgba(85, 81, 81, 1);
+    box-shadow: 0 0 5px 0 rgba(85, 81, 81, 1);
     width: 100%;
     height: 25vh;
 }
@@ -23,7 +23,7 @@ footer {
     width: 10vw;
 }
 
-ul{
+ul {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -45,15 +45,22 @@ li {
 }
 
 #line {
-    background: linear-gradient(to right,rgba(190, 177, 248, 1), rgba(0, 217, 255, 1));
-    height: 5px;    
+    background: linear-gradient(to right, rgba(190, 177, 248, 1), rgba(0, 217, 255, 1));
+    height: 5px;
 }
-p{
+
+p {
     margin: 0 0 10px 0;
 }
 
 @media (max-width: 1537px) {
-    footer{
+    footer {
         height: 31vh;
+    }
+}
+
+@media (max-width: 1366px) {
+    p {
+        font-size: 12px;
     }
 }
