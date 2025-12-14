@@ -1,67 +1,51 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject} from 'rxjs';
+
+export interface User {
+  name: string;
+  nickName: string;
+  email: string;
+  avatar?: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  
-  private USERS_KEY = 'users';
-  private TOKEN_KEY = 'token';
+  private USER_KEY = 'currentUser';
+
+  private currentUserSubject = new BehaviorSubject<User | null>(
+    JSON.parse(localStorage.getItem(this.USER_KEY) || 'null')
+  );
+
+  currentUser$ = this.currentUserSubject.asObservable();
 
   constructor() {}
 
-  // 🔐 REGISTRO
-  register(userData: {
-    name: string;
-    nickName: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-  }): boolean {
-
-    const users = this.getUsers();
-
-    const userExists = users.some(
-      u => u.email === userData.email || u.nickName === userData.nickName
-    );
-
-    if (userExists) {
-      return false;
-    }
-
-    users.push(userData);
-    localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
-
+  register(user: User & { password: string }): boolean {
+    localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+    this.currentUserSubject.next(user);
     return true;
   }
 
-  // 🔓 LOGIN
   login(email: string, nickName: string, password: string): boolean {
-    const users = this.getUsers();
-
-    const user = users.find(
-      u =>
-        (u.email === email || u.nickName === nickName) &&
-        u.password === password
-    );
-
+    const user = JSON.parse(localStorage.getItem(this.USER_KEY) || 'null');
     if (!user) return false;
 
-    localStorage.setItem(this.TOKEN_KEY, 'logged');
-    return true;
+    if (user.email === email || user.nickName === nickName) {
+      this.currentUserSubject.next(user);
+      return true;
+    }
+
+    return false;
   }
 
   logout(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem(this.USER_KEY);
+    this.currentUserSubject.next(null);
   }
 
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem(this.TOKEN_KEY);
-  }
-
-  private getUsers(): any[] {
-    return JSON.parse(localStorage.getItem(this.USERS_KEY) || '[]');
+  getCurrentUser(): User | null {
+    return this.currentUserSubject.value;
   }
 }

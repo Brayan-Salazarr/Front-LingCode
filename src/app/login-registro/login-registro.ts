@@ -34,47 +34,41 @@ export class LoginRegistro {
     private authService: AuthService
   ) { }
 
-   login() {
-  if (!this.loginData.email && !this.loginData.nickName || !this.loginData.password) {
-    alert('Completa todos los campos');
-    return;
+    login() {
+    const success = this.authService.login(
+      this.loginData.email,
+      this.loginData.nickName,
+      this.loginData.password
+    );
+
+    if (success) {
+      this.router.navigate(['/registered-home']);
+    } else {
+      alert('Credenciales incorrectas');
+    }
   }
 
-  const success = this.authService.login(
-    this.loginData.email,
-    this.loginData.nickName,
-    this.loginData.password
-  );
 
-  if (success) {
-    this.router.navigate(['/registered-home']);
-  } else {
-    alert('Credenciales incorrectas');
+   register() {
+    if (this.registerData.password !== this.registerData.confirmPassword) {
+      alert('Las contraseñas no coinciden');
+      return;
+    }
+
+    const success = this.authService.register({
+      name: this.registerData.fullName,
+      nickName: this.registerData.nickName,
+      email: this.registerData.email,
+      password: this.registerData.password,
+      avatar: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png'
+    });
+    if (success) {
+      alert('Registro exitoso');
+      this.showLogin = true;
+    } else {
+      alert('El usuario ya existe');
+    }
   }
-}
-
-
- register() {
-  if (this.registerData.password !== this.registerData.confirmPassword) {
-    alert('Las contraseñas no coinciden');
-    return;
-  }
-
-  const success = this.authService.register({
-    name: this.registerData.fullName,
-    nickName: this.registerData.nickName,
-    email: this.registerData.email,
-    password: this.registerData.password,
-    confirmPassword: this.registerData.confirmPassword
-  });
-
-  if (success) {
-    alert('Registro exitoso');
-    this.showLogin = true;
-  } else {
-    alert('El usuario ya existe');
-  }
-}
 
 
   ngOnInit() {

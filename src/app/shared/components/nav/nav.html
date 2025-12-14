@@ -16,4 +16,12 @@
             Registrarme
         </button>
     </div>
+
+    <!-- LOGUEADO -->
+  <div class="user-info" *ngIf="user as u">
+    <img class="avatar" [src]="u.avatar" />
+    <span>{{ u.nickName }}</span>
+    <button (click)="logout()">Cerrar sesión</button>
+  </div>
+
 </div>
