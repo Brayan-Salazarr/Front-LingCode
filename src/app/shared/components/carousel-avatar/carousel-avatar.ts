@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 
 interface ImagenItem {
   nombre: string;
@@ -8,13 +9,15 @@ interface ImagenItem {
 }
 @Component({
   selector: 'app-carousel-avatar',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './carousel-avatar.html',
   styleUrl: './carousel-avatar.css',
 })
 export class CarouselAvatar {
 
- // 1. Array de objetos que contiene la información de la imagen
+  constructor(private router: Router) { }
+
+  // 1. Array de objetos que contiene la información de la imagen
   readonly items: ImagenItem[] = [
     { nombre: 'imagen1', ruta: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013632/Group_40_dkpsvv.png', clase: 'img' },
     { nombre: 'imagen2', ruta: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013630/Group_34_1_mq8ced.png', clase: 'img' },
@@ -33,7 +36,7 @@ export class CarouselAvatar {
     const nextIndex = (this.currentIndex() + 1) % this.items.length;
     this.currentIndex.set(nextIndex);
   }
-  
+
   // Opcional: Para ir hacia atrás
   cambiarImagenAtras() {
     const prevIndex = (this.currentIndex() - 1 + this.items.length) % this.items.length;
@@ -41,18 +44,22 @@ export class CarouselAvatar {
   }
 
   getTransformForGroup(groupIndex: number): string {
-  // Ajusta estos valores según el tamaño de tus tarjetas y el espaciado
-  const cardSpacing = 160; 
-  
-  // Posición del elemento: 0 (centro), 1 (derecha), 2 (más a la derecha/wrap)
-  const position = groupIndex; 
+    // Ajusta estos valores según el tamaño de tus tarjetas y el espaciado
+    const cardSpacing = 160;
 
-  const translateX = position * cardSpacing;
+    // Posición del elemento: 0 (centro), 1 (derecha), 2 (más a la derecha/wrap)
+    const position = groupIndex;
 
-  // Escala: Si estás en la posición 0 del grupo (el principal), escala 1.2, si no 0.9
-  const scale = groupIndex === 0 ? 0.9 : 0.9;
-  
-  // Combinamos las transformaciones
-  return `translate(-50%, -50%) translateX(${translateX}px) scale(${scale})`;
-}
+    const translateX = position * cardSpacing;
+
+    // Escala: Si estás en la posición 0 del grupo (el principal), escala 1.2, si no 0.9
+    const scale = groupIndex === 0 ? 0.9 : 0.9;
+
+    // Combinamos las transformaciones
+    return `translate(-50%, -50%) translateX(${translateX}px) scale(${scale})`;
+  }
+
+  toggleAuth(): void {
+    this.router.navigate(['/login-registro'])
+  }
 }
