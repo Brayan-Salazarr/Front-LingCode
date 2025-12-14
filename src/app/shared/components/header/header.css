@@ -1,3 +1,9 @@
+.header-wrapper {
+    position: relative;
+    height: 100vh; 
+}
+
+
 header {
     display: flex;
     background: black;
@@ -6,7 +12,7 @@ header {
     position: relative;
     border-radius: 50% / 100%;
     left: -7vw;
-    top: -94vh;
+    top: -95vh;
     transform: skewY(-15deg);
     z-index: 5;
 }
