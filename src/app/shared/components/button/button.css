@@ -1,4 +1,4 @@
-.shared-button{
+.shared-button {
     background: #04C9FF;
     border: 0;
     font-family: "Poppins", sans-serif;
@@ -7,12 +7,19 @@
     font-size: 24px;
     border-radius: 15px;
     margin: 70px 0 0 0;
-    height:7vh;
+    height: 7vh;
     width: 12vw;
 }
 
-@media (max-width: 1537px){
-    .shared-button{
+@media (max-width: 1537px) {
+    .shared-button {
         font-size: 22px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .shared-button {
+        height: 8vh;
+        width: 14vw;
     }
 }

@@ -227,3 +227,9 @@ section {
         top: 294vh;
     }
 }
+
+@media (max-width: 1366px) {
+    .field-avatar {
+        height: 140vh;
+    }
+}
