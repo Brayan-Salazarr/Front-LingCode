@@ -213,6 +213,10 @@ h1 {
     h1 {
         font-size: 54px;
     }
+
+    .space h1{
+        margin: 0 0 0 150px;
+    }
 }
 
 @media (max-width: 1366px) {
@@ -269,5 +273,9 @@ h1 {
     #imgCircle {
         top: 85vh;
         left: 84vw;
+    }
+
+    .space h1{
+        margin: 0 0 0 150px;
     }
 }
