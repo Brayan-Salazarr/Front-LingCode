@@ -23,7 +23,7 @@
   z-index: 1;
 }
 
-.img{
+.img {
   width: 20vw;
   cursor: pointer;
 }
@@ -45,5 +45,16 @@
   background: #007bff;
 }
 
-.nav.left { margin-right: 20px; }
-.nav.right { margin-left: 20px; }
+.nav.left {
+  margin-right: 20px;
+}
+
+.nav.right {
+  margin-left: 20px;
+}
+
+@media (max-width: 1366px) {
+  .carousel {
+    width: 65vw;
+  }
+}
