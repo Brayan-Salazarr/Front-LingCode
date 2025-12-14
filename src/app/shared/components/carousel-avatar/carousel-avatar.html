@@ -1,25 +1,18 @@
 <div class="carousel-wrapper">
-  
+
   <button class="nav left" (click)="cambiarImagenAtras()">❮</button>
-<div class="carousel"> 
-    
+  <div class="carousel">
+
     @for (i of [0, 1, 2]; track i) {
-      @let realIndex = (currentIndex() + i) % items.length;
+    @let realIndex = (currentIndex() + i) % items.length;
 
-      @let item = items[realIndex];
+    @let item = items[realIndex];
 
-      <div 
-        class="card"
-        [class.active]="realIndex === currentIndex()" 
-        [style.transform]="getTransformForGroup(i)">
-        
-        <img
-          [ngClass]="item.clase" 
-          [src]="item.ruta" 
-          [alt]="item.nombre"
-        />
-        
-      </div>
+    <div class="card" [class.active]="realIndex === currentIndex()" [style.transform]="getTransformForGroup(i)">
+
+      <img [ngClass]="item.clase" [src]="item.ruta" [alt]="item.nombre" (click)="toggleAuth()" />
+
+    </div>
     }
 
   </div>
