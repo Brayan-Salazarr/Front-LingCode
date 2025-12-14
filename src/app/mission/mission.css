@@ -1,13 +1,11 @@
 .component {
-    height: 340vh;
 }
 
 section {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    position: relative;
-    top: 120vh;
+    margin: 0 0 100px 0;
 }
 
 .mission-information {
@@ -44,12 +42,12 @@ section {
     height: 120vh;
     background-color: black;
     clip-path: polygon(0 0, 0 0, 100% 50%, 0 100%);
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .container-with-triangle1 {
     position: absolute;
-    top: 48vh;
+    top: 156vh;
     width: 75vw;
     height: 110vh;
 }
