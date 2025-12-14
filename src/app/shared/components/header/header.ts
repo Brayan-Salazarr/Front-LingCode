@@ -1,13 +1,27 @@
-import { NgClass } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { AuthService, User } from '../../../auth/services/authService';
 
 @Component({
   selector: 'app-header',
-  imports: [NgClass],
+  imports: [NgClass,CommonModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
 export class Header {
   @Input() title = '';
   @Input() classSpace = '';
+
+    user: User | null = null;
+
+  constructor(private authService: AuthService) {
+    this.authService.currentUser$.subscribe(user => {
+      this.user = user;
+    });
+  }
+  
+  get formattedDate(): string {
+    if (!this.user) return '';
+    return new Date(this.user.createdAt).toLocaleDateString();
+  }
 }

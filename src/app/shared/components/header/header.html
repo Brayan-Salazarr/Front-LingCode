@@ -6,7 +6,24 @@
 
         <h1 [innerHTML]="title"></h1>
         <div class="line"></div>
+
+        <!-- INFO DEL USUARIO -->
+       <div class="user-header" *ngIf="user">
+      <img class="avatar" [src]="user?.avatar" />
+
+      <div class="user-data">
+        <p class="nickname">@{{ user?.nickName }}</p>
+        <p class="name">{{ user?.name }}</p>
+        <p class="email">{{ user?.email }}</p>
+        <p class="date">
+          Registrado: {{ user?.createdAt | date: 'dd/MM/yyyy' }}
+        </p>
+      </div>
+
+      </div>
     </div>
+
+    
 </header>
 </div>
 <div id="background"></div>

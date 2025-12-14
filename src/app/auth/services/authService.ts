@@ -6,6 +6,7 @@ export interface User {
   nickName: string;
   email: string;
   avatar?: string;
+  createdAt: string;
 }
 
 @Injectable({
@@ -28,11 +29,12 @@ export class AuthService {
       name: user.name,
       nickName: user.nickName,
       email: user.email,
-      avatar: user.avatar ?? 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png'
+      avatar: user.avatar || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png',
+      createdAt: new Date().toISOString()
     };
 
-    localStorage.setItem(this.USER_KEY, JSON.stringify(userToSave));
-    this.currentUserSubject.next(userToSave);
+   localStorage.setItem('currentUser', JSON.stringify(userToSave));
+  this.currentUserSubject.next(userToSave);
 
     return true;
   }

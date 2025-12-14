@@ -59,8 +59,10 @@ export class LoginRegistro {
       name: this.registerData.fullName,
       nickName: this.registerData.nickName,
       email: this.registerData.email,
-      password: this.registerData.password
+      password: this.registerData.password,
+     createdAt: ''
     });
+    
     if (success) {
       alert('Registro exitoso');
       this.showLogin = true;
