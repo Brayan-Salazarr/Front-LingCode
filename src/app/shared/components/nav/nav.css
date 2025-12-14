@@ -60,4 +60,12 @@
     height: 50px;
 }
 
-   
+@media (max-width: 1366px) {
+    .button1{
+    font-size: 16px;
+}
+
+.button2{
+    font-size: 17px;
+}
+}
