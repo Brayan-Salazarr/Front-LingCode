@@ -140,7 +140,7 @@
 
 .text {
     font-size: clamp(10px, 1.1vw, 30px);
-    margin: 17px 0 17px 0;
+    margin: 2.2vh 0 2.2vh 0;
 }
 
 .recordFields {
