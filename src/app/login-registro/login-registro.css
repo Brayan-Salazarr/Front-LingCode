@@ -170,6 +170,10 @@ input {
     width: 100%;
 }
 
+#spaceButton2{
+    margin: 0;
+}
+
 .buttonRegist {
     cursor: pointer;
     font-family: "Poppins", sans-serif;
