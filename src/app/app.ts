@@ -5,7 +5,7 @@ import { LoginRegistro } from './login-registro/login-registro';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,LoginRegistro],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
