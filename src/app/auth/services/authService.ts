@@ -12,6 +12,7 @@ export interface User {
   providedIn: 'root',
 })
 export class AuthService {
+
   private USER_KEY = 'currentUser';
 
   private currentUserSubject = new BehaviorSubject<User | null>(
@@ -23,17 +24,29 @@ export class AuthService {
   constructor() {}
 
   register(user: User & { password: string }): boolean {
-    localStorage.setItem(this.USER_KEY, JSON.stringify(user));
-    this.currentUserSubject.next(user);
+    const userToSave: User = {
+      name: user.name,
+      nickName: user.nickName,
+      email: user.email,
+      avatar: user.avatar ?? 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png'
+    };
+
+    localStorage.setItem(this.USER_KEY, JSON.stringify(userToSave));
+    this.currentUserSubject.next(userToSave);
+
     return true;
   }
 
   login(email: string, nickName: string, password: string): boolean {
-    const user = JSON.parse(localStorage.getItem(this.USER_KEY) || 'null');
-    if (!user) return false;
+    const storedUser = JSON.parse(localStorage.getItem(this.USER_KEY) || 'null');
 
-    if (user.email === email || user.nickName === nickName) {
-      this.currentUserSubject.next(user);
+    if (!storedUser) return false;
+
+    if (
+      storedUser.email === email ||
+      storedUser.nickName === nickName
+    ) {
+      this.currentUserSubject.next(storedUser);
       return true;
     }
 
@@ -47,5 +60,9 @@ export class AuthService {
 
   getCurrentUser(): User | null {
     return this.currentUserSubject.value;
+  }
+
+   isAuthenticated(): boolean {
+    return !!this.currentUserSubject.value;
   }
 }

@@ -29,6 +29,7 @@
     font-size: 18px;
     color: white;
     text-decoration: none;
+    cursor: pointer;
     font-family: "Poppins", sans-serif;
 }
 
@@ -63,9 +64,39 @@
     height: 50px;
 }
 
+.avatar{
+    width: 70px;
+    border-radius: 50%;
+}
+
 .user-info{
-    width: 100px;
-    background: white;
+    display: flex;
+    justify-content: space-evenly;
+    width: 200px;
+}
+
+span{
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.separator{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.close-button{
+    color: white;
+    background: none;
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    border: 0;
+}
+
+.close-button:hover{
+    color: rgb(249, 21, 21);
 }
 
 @media (max-width: 1366px) {

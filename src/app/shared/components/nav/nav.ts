@@ -1,11 +1,11 @@
-import { NgClass } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService, User } from '../../../auth/services/authService';
 
 @Component({
   selector: 'app-nav',
-  imports: [RouterModule, NgClass],
+  imports: [RouterModule, NgClass, CommonModule],
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })
@@ -32,5 +32,13 @@ export class Nav{
   logout() {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  goHome() {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/registered-home']);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }
