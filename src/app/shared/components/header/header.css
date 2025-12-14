@@ -209,8 +209,65 @@ h1 {
     transform: rotate(90deg);
 }
 
-@media (max-width: 1537px){
-    h1{
+@media (max-width: 1537px) {
+    h1 {
         font-size: 54px;
+    }
+}
+
+@media (max-width: 1366px) {
+    header {
+        top: -92vh;
+    }
+
+    #background {
+        top: -77vh;
+        transform: skewY(-17deg);
+    }
+
+    h1 {
+        font-size: 43px;
+    }
+
+    .information {
+        height: 38vh;
+    }
+
+    .line {
+        height: 15px;
+        width: 230px;
+    }
+
+    .hexagon1 {
+        top: 25vh;
+    }
+
+    .hexagon2 {
+        top: 33vh;
+    }
+
+    .hexagon3 {
+        top: 85vh;
+        left: 6vw;
+    }
+
+    .hexagon4 {
+        top: 91vh;
+    }
+
+    .hexagon5 {
+        top: 82vh;
+    }
+
+    .hexagon6 {
+        top: 30vh;
+        left: 67vw;
+        width: 2vw;
+        height: 5vh;
+    }
+
+    #imgCircle {
+        top: 85vh;
+        left: 84vw;
     }
 }
