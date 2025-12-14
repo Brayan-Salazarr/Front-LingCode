@@ -4,13 +4,13 @@ import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
+  standalone: true,
   imports: [RouterModule, NgClass],
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })
 export class Nav {
   @Input() colorBackground = '';
-  @Input() perfil = '';
 
   constructor (private router : Router){}
 

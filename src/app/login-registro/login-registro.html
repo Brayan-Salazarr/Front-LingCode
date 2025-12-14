@@ -24,16 +24,16 @@
                         </div>
 
                         <div class="recordFields">
-                            <input class="field" id="name" type="">
-                            <input class="field" id="nickname" type="">
-                            <input class="field" id="email" type="email">
-                            <input class="field" id="password" type="password">
-                            <input class="field" id="confirmPass" type="password">
+                            <input class="field" id="name" [(ngModel)]="registerData.fullName">
+                            <input class="field" id="nickname" [(ngModel)]="registerData.nickName">
+                            <input class="field" id="email" type="email" [(ngModel)]="registerData.email">
+                            <input class="field" id="password" type="password" [(ngModel)]="registerData.password">
+                            <input class="field" id="confirmPass" type="password" [(ngModel)]="registerData.confirmPassword">
                         </div>
                     </div>
 
                     <div class="spaceButton">
-                        <button class="buttonRegist" id="buttonRegist">Registrarme</button>
+                        <button class="buttonRegist" id="buttonRegist" (click)="register()">Registrarme</button>
                     </div>
 
                     <div class="division">
@@ -144,13 +144,13 @@
                         </div>
 
                         <div class="recordFields" id="loginFields">
-                            <input id="email" type="email">
-                            <input id="password" type="password">
+                            <input id="email" type="email" [(ngModel)]="loginData.email">
+                            <input id="password" type="password" [(ngModel)]="loginData.password">
                         </div>
                     </div>
 
                     <div class="spaceButton" id="spaceButtonLogin">
-                        <button class="buttonRegist" id="buttonRegist" routerLink="/registered-home">Inicia
+                        <button class="buttonRegist" id="buttonRegist" (click)="login()">Inicia
                             Sesión</button>
                     </div>
 

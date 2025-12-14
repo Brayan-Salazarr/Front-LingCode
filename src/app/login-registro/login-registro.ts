@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { AuthService } from '../auth/services/authService';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login-registro',
-  imports: [CommonModule, RouterModule],
+  standalone: true,
+  imports: [CommonModule, RouterModule,FormsModule],
   templateUrl: './login-registro.html',
   styleUrl: './login-registro.css',
 })
 export class LoginRegistro {
   showLogin: boolean = false;
 
-  loginDate = {
+  loginData = {
     email: '',
-    apodo: '',
+    nickName: '',
     password: ''
   };
 
@@ -27,8 +30,52 @@ export class LoginRegistro {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) { }
+
+   login() {
+  if (!this.loginData.email && !this.loginData.nickName || !this.loginData.password) {
+    alert('Completa todos los campos');
+    return;
+  }
+
+  const success = this.authService.login(
+    this.loginData.email,
+    this.loginData.nickName,
+    this.loginData.password
+  );
+
+  if (success) {
+    this.router.navigate(['/registered-home']);
+  } else {
+    alert('Credenciales incorrectas');
+  }
+}
+
+
+ register() {
+  if (this.registerData.password !== this.registerData.confirmPassword) {
+    alert('Las contraseñas no coinciden');
+    return;
+  }
+
+  const success = this.authService.register({
+    name: this.registerData.fullName,
+    nickName: this.registerData.nickName,
+    email: this.registerData.email,
+    password: this.registerData.password,
+    confirmPassword: this.registerData.confirmPassword
+  });
+
+  if (success) {
+    alert('Registro exitoso');
+    this.showLogin = true;
+  } else {
+    alert('El usuario ya existe');
+  }
+}
+
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -122,4 +169,6 @@ export class LoginRegistro {
     this.closeConfirmModal();
     this.router.navigate(['/new-password'])
   }
+
+
 }
