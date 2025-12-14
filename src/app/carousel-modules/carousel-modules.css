@@ -116,3 +116,42 @@
         left: 45%;
     }
 }
+
+@media (max-width: 1366px) {
+    .carousel-container {
+        perspective: 800px;
+    }
+
+    .card {
+        top: 60%;
+        left: 40%;
+    }
+
+    .card.active {
+        top: 35vh;
+    }
+
+    .bg-black {
+        width: 320px;
+        height: 170px;
+    }
+
+    .img1 {
+        top: 19vh;
+        width: 19vw;
+        left: 43%;
+
+    }
+
+    .img2 {
+        top: 19vh;
+        width: 26vw;
+        left: 38%;
+    }
+
+    .img3 {
+        top: 25vh;
+        width: 28vw;
+        left: 47%;
+    }
+}

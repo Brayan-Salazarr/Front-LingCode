@@ -232,4 +232,9 @@ section {
     .field-avatar {
         height: 140vh;
     }
+
+    #img-symbols {
+        width: 58vw;
+        margin: 0 0 34vh 0;
+    }
 }
