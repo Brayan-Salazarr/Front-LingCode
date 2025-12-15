@@ -4,7 +4,7 @@
     <div id="location">
         <img src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png" alt="">
         <div id="info">
-            <h2>Elige un avatar</h2>
+            <h2 class="colorTittle">Elige un avatar</h2>
             <div class="line"></div>
             <div class="carousel-wrapper">
 
@@ -28,14 +28,39 @@
 
                 <button class="nav right" (click)="cambiarImagen()">❯</button>
             </div>
-            <h2>O elige tu propia foto</h2>
+            <h2 class="colorTittle">O elige tu propia foto</h2>
             <div class="line" id="lineId"></div>
             <button id="UpdatePhoto">Subir imagen</button>
-            <p>Tamaño máximo= 1MB</p>
+            <p id="textSize">Tamaño máximo= 1MB</p>
         </div>
     </div>
 </div>
+<div id="line"></div>
 
+<section>
+    <h2 class="tittle" id="textColor">Editar información personal</h2>
+    <div class="infoBox">
+                        <div class="regisInfo">
+                            <p class="textEdit">Nombre completo</p>
+                            <p class="textEdit">Apodo</p>
+                            <p class="textEdit">Correo eléctronico</p>
+                            <p class="textEdit">Contraseña</p>
+                            <p class="textEdit">Confirmar contraseña</p>
+                        </div>
 
+                        <div class="recordFields">
+                            <input class="field" id="name">
+                            <input class="field" id="nickname">
+                            <input class="field" id="email" type="email">
+                            <input class="field" id="password" type="password">
+                            <input class="field" id="confirmPass" type="password">
+                        </div>
+                    </div>
+
+    <div class="buttons">
+        <button id="Save">Guardar cambios</button>
+        <button id="Cancel">Eliminar mi cuenta</button>
+    </div>
+</section>
 
 <app-footer></app-footer>
