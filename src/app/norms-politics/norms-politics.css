@@ -1,12 +1,14 @@
-*{
+* {
     font-family: 'Poppins', sans-serif;
 }
+
 .component {
     display: flex;
     justify-content: center;
     height: 460vh;
 }
-section{
+
+section {
     height: 440vh;
     margin: 70px;
 }
@@ -24,6 +26,20 @@ section{
     height: 100%;
 }
 
-#titleNor{
+#titleNor {
     margin: 70px 0 0 0;
+}
+
+@media (max-width: 1366px) {
+    .component {
+        height: 580vh;
+    }
+
+    section {
+        height: 550vh;
+    }
+
+    #titleNor {
+        margin: 0 0 0 0;
+    }
 }
