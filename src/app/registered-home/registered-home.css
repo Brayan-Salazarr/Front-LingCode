@@ -1,14 +1,34 @@
 .content-target-streak {
     display: flex;
+    justify-content: space-around;
 }
 
-.content-box .target-box {
+.content-box{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    height: 600px;
+}
+
+.subTitle{
+    font-family: "Anton SC", sans-serif;
+    font-size: 3em;
+    background-image: linear-gradient(
+        to bottom,
+        #7B00FF 10%, 
+        #171717 100% 
+    );
+    -webkit-background-clip: text; 
+    background-clip: text;
+    color: transparent;
+
 }
 
 .target-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-around;
     border-radius: 20px;
     outline: 2px solid transparent;
@@ -32,6 +52,8 @@
 
 .title-target {
     font-size: 36px;
+    font-family: "Anton SC", sans-serif;
+    letter-spacing: 1px;
 }
 
 #img-gitHub {
@@ -39,7 +61,11 @@
 }
 
 #img-Cybro {
-    width: 300px;
+    position: absolute;
+    width: 400px;
+    top: 145vh;
+    left: 55vw;
+    z-index: 10;
 }
 
 #img-line{
@@ -54,4 +80,51 @@
     display: flex;
     flex-direction: column;
     margin: 0 20% 0 0;
+}
+
+#text-target{
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;font-weight: bold;
+}
+
+.button-target{
+    color: white;
+    background-color: rgba(61, 61, 61, 1);
+    border-radius: 25px;
+    border: none;
+    height: 50px;
+    width: 130px;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow:13px 13px 13px -1px rgba(0, 0, 0, 0.4);
+    transition: all 0.15s ease;
+    transform: translateY(0);
+}
+
+.button-target:active {
+    transform: translateY(4px); 
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4); 
+}
+
+.content-streak{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    background-color: black;
+    width: 500px;
+}
+
+strong{
+    font-size: 12em;
+    margin: 0 60px 0 0;
+}
+
+.box-img{
+    display: flex;
+    justify-content: end;
+    width: 100%;
 }

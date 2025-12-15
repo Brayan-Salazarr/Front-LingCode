@@ -29,6 +29,9 @@
     h2 {
         font-size: 33px;
         font-family: "Anton SC", sans-serif;
+    }
+
+    .colorTittle {
         background: linear-gradient(90deg, white 0%, #AFA9A9 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -110,11 +113,106 @@
         border: #04C9FF 1px solid;
     }
 
-    p{
+    #textSize {
         font-family: "Poppins", sans-serif;
         font-size: 10px;
         color: white;
         margin-top: -25px;
+    }
+
+    #line {
+        background: linear-gradient(to right, rgba(190, 177, 248, 1), rgba(0, 217, 255, 1));
+        height: 5px;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: white;
+        height: 90vh;
+    }
+
+    #textColor {
+        letter-spacing: 2px;
+        color: #20BAE4;
+    }
+
+    .infoBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        font-family: "Poppins", sans-serif;
+        font-weight: bold;
+        height: 50vh;
+        width: 59vw;
+    }
+
+    .regisInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: black;
+        height: 20vw;
+    }
+
+    .textEdit {
+        font-size: clamp(10px, 1.1vw, 30px);
+        margin: 0 0 0 0;
+    }
+
+    .recordFields {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 21vw;
+        width: 60%;
+    }
+
+    input {
+        color: black;
+        font-family: "Poppins", sans-serif;
+        font-size: clamp(10px, 1.1vw, 30px);
+        border: 2px solid transparent;
+        border-radius: 7.5px;
+        background: linear-gradient(#F4F4F4) padding-box,
+            linear-gradient(90deg, #AF02FF, #0051FF) border-box;
+        padding: 0 0 0 5px;
+        height: 5vh;
+    }
+
+    .buttons{
+        display: flex;
+        justify-content: space-around;
+        width: 50%;
+    }
+
+    #Save{
+        cursor: pointer;
+        font-weight: bold;
+        height: 7vh;
+        width: 12vw;
+        font-family: "Poppins", sans-serif;
+        font-size: clamp(15px, 1vw, 30px);
+        border-radius: 8px;
+        background-color: #04C9FF;
+        border: 2px solid transparent;
+    }
+
+    #Save:hover{
+        color: white;
+        background: linear-gradient(#000000) padding-box,
+            linear-gradient(90deg, #EA02FF, #00D9FF) border-box;
+    }
+
+    #Cancel{
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: red;
+        font-weight: bold;
+        font-size: clamp(15px, 1vw, 30px);
     }
 
 @media(max-width: 1366px) {
