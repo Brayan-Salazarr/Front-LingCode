@@ -1,5 +1,5 @@
 <div class="header-wrapper">
-  <header [ngClass]="classSpace" [ngClass]="classMove">
+  <header [ngClass]="classSpace">
     <img id="imgCircle" *ngIf="showDecorativeCircle"
       src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763574993/Gemini_Generated_Image_f60f2qf60f2qf60f-removebg-preview_1_zgnbfa.png"
       alt="">
@@ -7,7 +7,7 @@
     <div class="information">
 
       <h1 [innerHTML]="title"></h1>
-      <div class="line" *ngIf="showLine "></div>
+      <div class="line" *ngIf="showLine"></div>
 
       <!-- INFO DEL USUARIO -->
       <div class="user-header" *ngIf="showUserInfo && user">
@@ -62,4 +62,4 @@
 <div class="hexagon5"></div>
 <div class="hexagon6"></div>
 <div class="hexagon7"></div>
-<div class="hexagon8"></div>
+<div class="hexagon8" *ngIf="showHexagon"></div>
