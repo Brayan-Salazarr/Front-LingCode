@@ -18,4 +18,5 @@ export const routes: Routes = [
     {path: 'login-registro', redirectTo: 'login-registro', pathMatch: 'full'},
     {path: 'registered-home', component: RegisteredHome},
     {path: 'edit-profile', component: EditProfile},
+
 ];

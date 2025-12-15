@@ -72,7 +72,7 @@
 .user-info{
     display: flex;
     justify-content: space-evenly;
-    width: 200px;
+    width: 250px;
 }
 
 span{
@@ -88,11 +88,13 @@ span{
 }
 
 .close-button{
+    display: flex;
     color: white;
     background: none;
     font-family: "Poppins", sans-serif;
     padding: 0;
     border: 0;
+    cursor: pointer;
 }
 
 .close-button:hover{
