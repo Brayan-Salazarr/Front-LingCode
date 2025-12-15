@@ -1,5 +1,5 @@
 <div class="header-wrapper">
-  <header [ngClass]="classSpace">
+  <header [ngClass]="classSpace" [ngClass]="classMove">
     <img id="imgCircle" *ngIf="showDecorativeCircle"
       src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763574993/Gemini_Generated_Image_f60f2qf60f2qf60f-removebg-preview_1_zgnbfa.png"
       alt="">
@@ -46,7 +46,7 @@
 
         </div>
 
-        <button class="button-edit">Editar perfil</button>
+        <button class="button-edit" routerLink="/edit-profile">Editar perfil</button>
 
       </div>
     </div>

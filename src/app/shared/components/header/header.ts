@@ -11,6 +11,7 @@ import { AuthService, User } from '../../../auth/services/authService';
 export class Header {
   @Input() title = '';
   @Input() classSpace = '';
+  @Input() classMove = '';
   @Input() showUserInfo = false;
    @Input() showDecorativeCircle = false;
   @Input() showLine = false;

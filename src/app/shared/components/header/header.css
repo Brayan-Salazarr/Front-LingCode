@@ -209,6 +209,11 @@ h1 {
     transform: rotate(90deg);
 }
 
+.move-hexagon .hexagon8{
+    width: 20px;
+    left: 80vw;
+}
+
 .avatar{
     width: 310px;
 }
