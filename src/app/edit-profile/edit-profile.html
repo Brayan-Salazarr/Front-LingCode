@@ -39,6 +39,30 @@
 
 <section>
     <h2 class="tittle" id="textColor">Editar información personal</h2>
+    <div class="dropdownContainer">
+        <button id="gear" (click)="toggleDropdown()"><img id="styleGear"
+                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765828524/image-removebg-preview_pacdbd.png"
+                alt=""></button>
+
+        <div class="dropdownM" *ngIf="isDropdownOpen">
+            <div class="setting-row" id="settingSound">
+                <label class="switch">
+                    <input type="checkbox" id="email-alerts">
+                    <span class="slider round"></span>
+                </label>
+                <label for="sound">Sonido</label>
+            </div>
+
+            <div class="setting-row">
+                <label class="switch">
+                    <input type="checkbox" id="notification-alerts">
+                    <span class="slider round"></span>
+                </label>
+                <label for="email-alerts">Notificaciones</label>
+            </div>
+        </div>
+    </div>
+
     <div class="infoBox">
         <div class="regisInfo">
             <p class="textEdit">Nombre completo</p>
@@ -61,20 +85,20 @@
         <button id="Save">Guardar cambios</button>
         <button id="Cancel" (click)="openModal()">Eliminar mi cuenta</button>
 
-        <div class="modal" (click)="onBackdropClick($event)" [class.hidden]="!isModalOpen">
+        <div *ngIf="isModalOpen" class="modal" (click)="onBackdropClick($event)">
             <div class="modalContent" (click)="$event.stopPropagation()">
 
                 <div *ngIf="!isAccountDeleted">
-                    <h3>¿Estas seguro de eliminar tu cuenta?</h3>
+                    <h3 id="question">¿Estas seguro de eliminar tu cuenta?</h3>
                     <div class="modalExit">
-                        <button class="delete" (click)="deleteAccount()">Confirmar</button>
-                        <button class="closeButton" (click)="closeModal()">Cancelar</button>
+                        <button class="buttonStyle" id="delete" (click)="deleteAccount()">Confirmar</button>
+                        <button class="buttonStyle" id="closeBut" (click)="closeModal()">Cancelar</button>
                     </div>
                 </div>
 
                 <div *ngIf="isAccountDeleted" class="succes-message">
                     <h3>Cuenta eliminada exitosamente</h3>
-                    <p>Lamentamos verte ir. Te esperamos en una próxima ocasión</p>
+                    <p id="textMod">Lamentamos verte ir. Estaremos aquí si decides volver.</p>
                 </div>
             </div>
         </div>

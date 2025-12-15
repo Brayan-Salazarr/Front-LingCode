@@ -77,4 +77,14 @@ export class EditProfile {
       this.closeModal();
     }
   }
+
+  isDropdownOpen: boolean = false;
+
+  toggleDropdown(){
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  closeDropdown(){
+    this.isDropdownOpen = false;
+  }
 }
