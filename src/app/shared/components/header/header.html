@@ -1,30 +1,58 @@
 <div class="header-wrapper">
-<header [ngClass]="classSpace">
-    <img id="imgCircle" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763574993/Gemini_Generated_Image_f60f2qf60f2qf60f-removebg-preview_1_zgnbfa.png" alt="">
+  <header [ngClass]="classSpace">
+    <img id="imgCircle" *ngIf="showDecorativeCircle"
+      src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763574993/Gemini_Generated_Image_f60f2qf60f2qf60f-removebg-preview_1_zgnbfa.png"
+      alt="">
 
     <div class="information">
 
-        <h1 [innerHTML]="title"></h1>
-        <div class="line"></div>
+      <h1 [innerHTML]="title"></h1>
+      <div class="line" *ngIf="showLine "></div>
 
-        <!-- INFO DEL USUARIO -->
-       <div class="user-header" *ngIf="user">
-      <img class="avatar" [src]="user?.avatar" />
+      <!-- INFO DEL USUARIO -->
+      <div class="user-header" *ngIf="showUserInfo && user">
 
-      <div class="user-data">
-        <p class="nickname">@{{ user?.nickName }}</p>
-        <p class="name">{{ user?.name }}</p>
-        <p class="email">{{ user?.email }}</p>
-        <p class="date">
-          Registrado: {{ user?.createdAt | date: 'dd/MM/yyyy' }}
-        </p>
-      </div>
+        <div class="field">
+          
+            <img class="avatar" [src]="user?.avatar" />
+            <img id="imgCirclee" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png"
+              alt="">
+         
+
+
+          <div class="user-data">
+            <p class="nickname">{{ user?.nickName }}</p>
+            <div class="line" id="line"></div>
+
+            <div class="space">
+              <img class="img" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760082/image-Photoroom_4_1_veuvti.png" alt="">
+              <p class="name">{{ user?.name }}</p>
+            </div>
+            
+            
+            <div class="space">
+              <img class="img" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760081/image-Photoroom_3_2_ervkjd.png" alt="">
+              <p class="email">{{ user?.email }}</p>
+            </div>
+
+            <div class="space">
+              <img class="img" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760447/image-Photoroom_2_2_nzwcic.png" alt="">
+               <p class="date">
+              Registrado: {{ user?.createdAt | date: 'dd/MM/yyyy' }}
+            </p>
+            </div>
+           
+          </div>
+
+        </div>
+
+        <button class="button-edit">Editar perfil</button>
 
       </div>
     </div>
 
-    
-</header>
+
+  </header>
 </div>
 <div id="background"></div>
 <div class="hexagon1"></div>

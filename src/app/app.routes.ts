@@ -12,8 +12,8 @@ export const routes: Routes = [
     { path: 'mission', component: Mission},
     { path: 'teaching-method', component: TeachingMethod},
     { path: 'norms-politics', component: NormsPolitics},
-    {path: 'login-registro', component:LoginRegistro},
-    {path: 'new-password', component:NewPassword},
-    {path: 'login-registro', redirectTo: 'login-registro', pathMatch: 'full'},
-    {path: 'registered-home', component: RegisteredHome}
+    { path: 'login-registro', component:LoginRegistro},
+    { path: 'new-password', component:NewPassword},
+    { path: 'login-registro', redirectTo: 'login-registro', pathMatch: 'full'},
+    { path: 'registered-home', component: RegisteredHome}
 ];

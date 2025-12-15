@@ -11,6 +11,9 @@ import { AuthService, User } from '../../../auth/services/authService';
 export class Header {
   @Input() title = '';
   @Input() classSpace = '';
+  @Input() showUserInfo = false;
+   @Input() showDecorativeCircle = false;
+  @Input() showLine = false;
 
     user: User | null = null;
 
@@ -19,7 +22,7 @@ export class Header {
       this.user = user;
     });
   }
-  
+
   get formattedDate(): string {
     if (!this.user) return '';
     return new Date(this.user.createdAt).toLocaleDateString();

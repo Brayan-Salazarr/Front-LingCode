@@ -8,7 +8,9 @@
 }
 section{
     height: 440vh;
-    margin: 70px;}
+    margin: 70px;
+}
+
 .title {
     display: flex;
     justify-content: center;
