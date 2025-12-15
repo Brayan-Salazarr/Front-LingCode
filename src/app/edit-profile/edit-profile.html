@@ -40,26 +40,44 @@
 <section>
     <h2 class="tittle" id="textColor">Editar información personal</h2>
     <div class="infoBox">
-                        <div class="regisInfo">
-                            <p class="textEdit">Nombre completo</p>
-                            <p class="textEdit">Apodo</p>
-                            <p class="textEdit">Correo eléctronico</p>
-                            <p class="textEdit">Contraseña</p>
-                            <p class="textEdit">Confirmar contraseña</p>
-                        </div>
+        <div class="regisInfo">
+            <p class="textEdit">Nombre completo</p>
+            <p class="textEdit">Apodo</p>
+            <p class="textEdit">Correo eléctronico</p>
+            <p class="textEdit">Contraseña</p>
+            <p class="textEdit">Confirmar contraseña</p>
+        </div>
 
-                        <div class="recordFields">
-                            <input class="field" id="name">
-                            <input class="field" id="nickname">
-                            <input class="field" id="email" type="email">
-                            <input class="field" id="password" type="password">
-                            <input class="field" id="confirmPass" type="password">
-                        </div>
-                    </div>
+        <div class="recordFields">
+            <input class="field" id="name">
+            <input class="field" id="nickname">
+            <input class="field" id="email" type="email">
+            <input class="field" id="password" type="password">
+            <input class="field" id="confirmPass" type="password">
+        </div>
+    </div>
 
     <div class="buttons">
         <button id="Save">Guardar cambios</button>
-        <button id="Cancel">Eliminar mi cuenta</button>
+        <button id="Cancel" (click)="openModal()">Eliminar mi cuenta</button>
+
+        <div class="modal" (click)="onBackdropClick($event)" [class.hidden]="!isModalOpen">
+            <div class="modalContent" (click)="$event.stopPropagation()">
+
+                <div *ngIf="!isAccountDeleted">
+                    <h3>¿Estas seguro de eliminar tu cuenta?</h3>
+                    <div class="modalExit">
+                        <button class="delete" (click)="deleteAccount()">Confirmar</button>
+                        <button class="closeButton" (click)="closeModal()">Cancelar</button>
+                    </div>
+                </div>
+
+                <div *ngIf="isAccountDeleted" class="succes-message">
+                    <h3>Cuenta eliminada exitosamente</h3>
+                    <p>Lamentamos verte ir. Te esperamos en una próxima ocasión</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

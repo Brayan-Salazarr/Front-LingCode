@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { Nav } from '../shared/components/nav/nav';
 import { Footer } from '../shared/components/footer/footer';
 import { RouterModule } from '@angular/router';
-import { NgClass } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 
 interface ImagenItem {
   nombre: string;
@@ -12,7 +12,7 @@ interface ImagenItem {
 
 @Component({
   selector: 'app-edit-profile',
-  imports: [RouterModule, Nav, Footer,NgClass],
+  imports: [RouterModule, Nav, Footer, NgClass, NgIf],
   templateUrl: './edit-profile.html',
   styleUrl: './edit-profile.css',
 })
@@ -50,5 +50,31 @@ export class EditProfile {
     const scale = groupIndex === 0 ? 0.9 : 0.9;
 
     return `translate(-50%, -50%) translateX(${translateX}px) scale(${scale})`;
+  }
+
+  isModalOpen: boolean = false;
+  isAccountDeleted : boolean = false;
+
+  openModal() {
+    this.isAccountDeleted = false;
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+    this.isAccountDeleted = false;
+  }
+
+  deleteAccount(){
+    this.isAccountDeleted = true;
+    setTimeout(()=>{
+      this.closeModal();
+    }, 3000)
+  }
+
+  onBackdropClick(event: MouseEvent) {
+    if (event.target === event.currentTarget) {
+      this.closeModal();
+    }
   }
 }
