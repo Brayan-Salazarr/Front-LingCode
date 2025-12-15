@@ -1,3 +1,41 @@
-<app-nav></app-nav>
+<app-nav [colorBackground]="'backgroundNav'"></app-nav>
+
+<div id="Back">
+    <div id="location">
+        <img src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png" alt="">
+        <div id="info">
+            <h2>Elige un avatar</h2>
+            <div class="line"></div>
+            <div class="carousel-wrapper">
+
+                <button class="nav left" (click)="cambiarImagenAtras()">❮</button>
+                <div class="carousel">
+
+                    @for (i of [0, 1, 2]; track i) {
+                    @let realIndex = (currentIndex() + i) % items.length;
+
+                    @let item = items[realIndex];
+
+                    <div class="card" [class.active]="realIndex === currentIndex()"
+                        [style.transform]="getTransformForGroup(i)">
+
+                        <img [ngClass]="item.clase" [src]="item.ruta" [alt]="item.nombre" />
+
+                    </div>
+                    }
+
+                </div>
+
+                <button class="nav right" (click)="cambiarImagen()">❯</button>
+            </div>
+            <h2>O elige tu propia foto</h2>
+            <div class="line" id="lineId"></div>
+            <button id="UpdatePhoto">Subir imagen</button>
+            <p>Tamaño máximo= 1MB</p>
+        </div>
+    </div>
+</div>
+
+
 
 <app-footer></app-footer>
