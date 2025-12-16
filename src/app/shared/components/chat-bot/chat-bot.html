@@ -1,0 +1,28 @@
+<div class="chat-container">
+  <div class="chat-window" *ngIf="isOpen">
+    <div class="chat-header">
+      <span>Asistente Cybro</span>
+      <button id="button-cancel" (click)="toggleChat()">×</button>
+    </div>
+   <div class="chat-body">
+      <div *ngFor="let msg of messages" [ngClass]="['msg-bubble', msg.type]">
+        {{ msg.text }}
+      </div>
+    </div>
+
+    <div class="chat-footer">
+      <input 
+        type="text" 
+        placeholder="Escribe un mensaje..." 
+        [(ngModel)]="newMessage" 
+        (keyup.enter)="sendMessage()">
+      <button (click)="sendMessage()">
+        <i class="send-icon">➤</i>
+      </button>
+    </div>
+  </div>
+
+  <button class="floating-btn" (click)="toggleChat()" [class.active]="isOpen">
+    <img src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765915938/Gemini_Generated_Image_oq1gh0oq1gh0oq1g-removebg-preview_2_h5rmq9.png" alt="Bot">
+  </button>
+</div>
