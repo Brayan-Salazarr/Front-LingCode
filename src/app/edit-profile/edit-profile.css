@@ -1,4 +1,9 @@
- #Back {
+section {
+    height: 100vh;
+}
+ 
+
+#Back {
      background-color: black;
      background-image: url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765758301/Group_62_1_hlbzur.png");
      background-repeat: no-repeat;
@@ -372,17 +377,29 @@
 
  .slider.round {
      border-radius: 35px;
-     ;
  }
 
  .slider.round:before {
      border-radius: 50%;
  }
 
+ .dropdownContainer {
+     height: 20vh;
+     margin: 0 0 0 0;
+ }
+
+ #settingSound {
+     width: 26%;
+ }
+
+ .setting-row {
+     width: 40%;
+ }
+
+
+
  @media(max-width: 1366px) {
-     section {
-         height: 100vh;
-     }
+
 
      #textMod {
          text-align: center;
@@ -398,22 +415,11 @@
          width: 6.5vw;
      }
 
-     .dropdownContainer {
-         height: 20vh;
-         margin: 0 0 0 0;
-     }
 
      .dropdownM {
          margin: -40px 0 0 0;
      }
 
-     .setting-row {
-         width: 40%;
-     }
-
-     #settingSound {
-         width: 26%;
-     }
 
      #gear {
          margin: -65px 0 0 48.5vw;

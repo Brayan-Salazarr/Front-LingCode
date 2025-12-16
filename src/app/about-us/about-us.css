@@ -1,4 +1,4 @@
-@media(max-width:1366px) {
+
     section {
         display: flex;
         justify-content: center;
@@ -7,7 +7,7 @@
 
     p {
         font-family: "Poppins", sans-serif;
-        font-size: 33px;
+        font-size: 24px;
         width: 80%;
     }
 
@@ -109,4 +109,10 @@
     .blueLine.right {
         right: 0;
     }
+
+@media (max-width: 1336px) {
+       p {
+        font-size: 33px;
+    }
+
 }
