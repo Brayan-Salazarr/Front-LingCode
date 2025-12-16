@@ -17,8 +17,6 @@
 
     .aboutContainer {
         position: relative;
-        display: flex;
-        align-items: center;
         height: 100vh;
     }
 
@@ -88,11 +86,27 @@
 
     .blueLine {
         position: absolute;
-        background: linear-gradient(to left, rgba(0, 217, 255, 1), rgba(202, 75, 214, 1));
-        height: 10px;
+        height: 6px;
         width: 50%;
-        border-radius: 30px;
-        left: -70vw;
-        bottom: 20px;
+        border-radius: 10px;
+        background: linear-gradient(to right,
+                rgba(190, 177, 248, 1),
+                rgba(0, 217, 255, 1));
+    }
+
+    .blueLine.top {
+        top: -6px;
+    }
+
+    .blueLine.bottom {
+        bottom: 0;
+    }
+
+    .blueLine.left {
+        left: 0;
+    }
+
+    .blueLine.right {
+        right: 0;
     }
 }

@@ -1,23 +1,23 @@
 <app-nav [colorBackground]="'backgroundNav'"></app-nav>
 <app-header title="Sobre Nosotros" [classSpace]="'space'" [showLine]="true" [showHexagon]="true"
-    [showDecorativeCircle]="true"></app-header>
+  [showDecorativeCircle]="true"></app-header>
 
 <section>
-    <p id="AboutInfo">Somos un grupo de aprendices del programa Análisis y Desarrollo de Software (ADSO), nosotros como
-        aprendices,
-        combinamos teoría y práctica para aprender y desarrollar habilidades en programación, diseño de interfaces y
-        gestión de bases de datos.
+  <p id="AboutInfo">Somos un grupo de aprendices del programa Análisis y Desarrollo de Software (ADSO), nosotros como
+    aprendices,
+    combinamos teoría y práctica para aprender y desarrollar habilidades en programación, diseño de interfaces y
+    gestión de bases de datos.
 
-        Cada uno de nosotros aporta conocimientos, creatividad y dedicación para fortalecer nuestras competencias y
-        avanzar hacia un perfil profesional sólido dentro del sector tecnológico.</p>
+    Cada uno de nosotros aporta conocimientos, creatividad y dedicación para fortalecer nuestras competencias y
+    avanzar hacia un perfil profesional sólido dentro del sector tecnológico.</p>
 </section>
 
-<div class="blueLine"></div>
-<section
-  class="aboutContainer"
-  *ngFor="let item of team; let i = index"
-  [ngClass]="i % 2 === 0 ? 'black' : 'white'"
->
+<section class="aboutContainer" *ngFor="let item of team; let i = index" [ngClass]="i % 2 === 0 ? 'black' : 'white'">
+
+  <div class="blueLine top"
+       [ngClass]="i % 2 === 0 ? 'right' : 'left'">
+  </div>
+
   <div class="card" [ngClass]="i % 2 === 0 ? 'imageFirst' : 'infoFirst'">
 
     <!-- Imagen siempre primero en bloque negro, después en blanco -->
@@ -28,7 +28,12 @@
       <img class="avatar" [src]="item.imgAvatar">
       <p id="fontSize">{{ item.text }}</p>
     </div>
-    <div class="blueLine" id="lineLocation"></div>
   </div>
+
+  <div *ngIf="!last"
+       class="blueLine bottom"
+       [ngClass]="i % 2 === 0 ? 'left' : 'right'">
+  </div>
+
 </section>
 <app-footer></app-footer>
