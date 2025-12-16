@@ -3,7 +3,7 @@
 }
 
 .supportContainer {
-    height: 245vh;
+    height: 200vh;
     display: flex;
     flex-direction: column;
 }
@@ -93,4 +93,10 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+@media (max-width: 1366px) {
+    .supportContainer {
+    height: 245vh
+}
 }

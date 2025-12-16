@@ -38,17 +38,17 @@ export class RegisteredHome {
   practicas: Practica[] = [
     {
       modulo: 'GitHub',
-      resultado: '75%',
-      fecha: '09/12/2026',
-      estado: 'completado' // Usaremos esto para el estilo (borde magenta/negro)
+      resultado: '0%',
+      fecha: '00/00/0000',
+      estado: 'completado'
     },
     {
       modulo: 'MySQL',
       resultado: '0%',
       fecha: '00/00/0000',
-      estado: 'pendiente' // Usaremos esto para el estilo
+      estado: 'pendiente' 
     }
-    // Puedes agregar más objetos aquí y se generarán más tarjetas automáticamente
+   
   ];
 
   logros: Logro[] = [
