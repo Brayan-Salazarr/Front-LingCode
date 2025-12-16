@@ -88,7 +88,86 @@
     </div>
 
     <div class="content-achievement">
-        
+        <h2 class="title-record" id="title-achievement">Logros</h2>
+        <div class="field-achievements">
+             <div class="achievement-card" *ngFor="let logro of logros"
+            [ngStyle]="{'box-shadow': '0 0 10px 1px ' + logro.bordeColor, 'border-color': logro.bordeColor}">
+            <div class="container-icon">
+                <img [src]="logro.icono" alt="Icono de logro" class="achievement-icon" />
+            </div>
+
+            <p class="message-achievement">{{ logro.mensaje }}</p>
+        </div>
+        </div>
+       
+    </div>
+
+    <div class="line"></div>
+    <div class="content-subscriptions">
+        <h2 class="title-record" id="title-achievement">Suscripciones</h2>
+
+        <div class="box-card">
+            <div class="card-sus">
+                <div class="price-field">
+                    <h2 class="suntitle-subsc">Basic</h2>
+                    <div class="line-susbsc"></div>
+                    <strong class="cost">$ <span class="size-number">9.900</span> COP  </strong>
+                    <p class="type">Mensual</p>
+                </div>
+
+                <ul class="information-field">
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Energía ilimitadas</li>
+                    </div>
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Una interacción sin anuncios</li>
+                    </div>
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Interactúar con cualquier módulo</li>
+                    </div>
+                    <div class="space">
+                        <img class="iconss" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861264/image-Photoroom_2_3_3_vnea0z.png" alt="">
+                        <li>Interacción con Chat voz con IA</li>
+                    </div>
+                </ul>
+
+                <button class="button-subscription">Suscribirse</button>
+            </div>
+            <img id="img-avatar" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765858158/image-Photoroom_1_1_xctvke.png" alt="">
+            <div class="card-sus">
+                  <div class="price-field">
+                    <h2 class="suntitle-subsc">Premium</h2>
+                    <div class="line-susbsc"></div>
+                    <strong class="cost">$ <span class="size-number">19.900</span> COP  </strong>
+                    <p class="type">Mensual</p>
+                </div>
+
+                <ul class="information-field">
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Energía ilimitadas</li>
+                    </div>
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Una interacción sin anuncios</li>
+                    </div>
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Interactúar con cualquier módulo</li>
+                    </div>
+                    <div class="space">
+                        <img class="iconss" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Interacción con Chat voz con IA</li>
+                    </div>
+                </ul>
+
+                <button class="button-subscription">Suscribirse</button>
+            </div>
+
+        </div>
     </div>
 
 </section>
