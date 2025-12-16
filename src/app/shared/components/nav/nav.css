@@ -101,6 +101,10 @@ span{
 }
 
 @media (max-width: 1366px) {
+    .backgroundNav1.component{
+        background: black;
+    }
+
     .button1 {
         font-size: 16px;
         width: 140px;
