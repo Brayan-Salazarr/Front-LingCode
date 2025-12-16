@@ -8,6 +8,7 @@ import { NormsPolitics } from './norms-politics/norms-politics';
 import { RegisteredHome } from './registered-home/registered-home';
 import { EditProfile } from './edit-profile/edit-profile';
 import { AboutUs } from './about-us/about-us';
+import { HelpSupport } from './help-support/help-support';
 
 export const routes: Routes = [
     { path: '', component: UnregisteredHome},
@@ -19,5 +20,6 @@ export const routes: Routes = [
     {path: 'login-registro', redirectTo: 'login-registro', pathMatch: 'full'},
     {path: 'registered-home', component: RegisteredHome},
     {path: 'edit-profile', component: EditProfile},
-    {path: 'about-us', component:AboutUs}
+    {path: 'about-us', component:AboutUs},
+    {path: 'help-support', component: HelpSupport}
 ];
