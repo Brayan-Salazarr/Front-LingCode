@@ -9,14 +9,14 @@
             <h2>{{group.mainTitle}}</h2>
         </div>
 
-        <div class="questionBox" *ngFor="let item of group.support" (click)="item.open = !item.open">
+        <div class="questionBox" *ngFor="let item of group.support" (click)="toggleItem(item)">
 
             <div class="questionHeader">
                 <p>{{item.title}}</p>
-                <span class="arrow" [class.rotate]="item.open">⌵</span>
+                <span class="arrow" [class.rotate]="activeItem === item">⌵</span>
             </div>
 
-            <div class="answer" *ngIf="item.open">
+            <div class="answer" *ngIf="activeItem === item">
                 <p>{{item.answer}}</p>
             </div>
 

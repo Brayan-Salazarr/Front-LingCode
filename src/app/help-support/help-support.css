@@ -3,10 +3,9 @@
 }
 
 .supportContainer {
-    height: 220vh;
+    height: 245vh;
     display: flex;
     flex-direction: column;
-   
 }
 
 .title {
@@ -17,7 +16,7 @@
     width: 100%;
 }
 
-.subtitle{
+.subtitle {
     font-weight: normal;
     margin: 20px 0 30px 100px;
 }
@@ -80,6 +79,7 @@
 .answer p {
     font-family: "Poppins", sans-serif;
     font-size: 16px;
+    white-space: pre-line;
 }
 
 /* ===== ANIMACIÓN ===== */
