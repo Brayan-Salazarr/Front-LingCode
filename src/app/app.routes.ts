@@ -9,6 +9,7 @@ import { RegisteredHome } from './registered-home/registered-home';
 import { EditProfile } from './edit-profile/edit-profile';
 import { AboutUs } from './about-us/about-us';
 import { HelpSupport } from './help-support/help-support';
+import { PaymentMethods } from './payment-methods/payment-methods';
 
 export const routes: Routes = [
     { path: '', component: UnregisteredHome},
@@ -21,5 +22,6 @@ export const routes: Routes = [
     {path: 'registered-home', component: RegisteredHome},
     {path: 'edit-profile', component: EditProfile},
     {path: 'about-us', component:AboutUs},
-    {path: 'help-support', component: HelpSupport}
+    {path: 'help-support', component: HelpSupport},
+    {path: 'payment-methods', component: PaymentMethods}
 ];
