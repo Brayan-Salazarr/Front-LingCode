@@ -1,3 +1,29 @@
 import { Routes } from '@angular/router';
+import { NewPassword } from './new-password/new-password';
+import { LoginRegistro } from './login-registro/login-registro';
+import { UnregisteredHome } from './unregistered-home/unregistered-home';
+import { Mission } from './mission/mission';
+import { TeachingMethod } from './teaching-method/teaching-method';
+import { NormsPolitics } from './norms-politics/norms-politics';
+import { RegisteredHome } from './registered-home/registered-home';
+import { EditProfile } from './edit-profile/edit-profile';
+import { AboutUs } from './about-us/about-us';
+import { HelpSupport } from './help-support/help-support';
+import { PaymentMethods } from './payment-methods/payment-methods';
+import { ModuleView } from './module-view/module-view';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    { path: '', component: UnregisteredHome},
+    { path: 'mission', component: Mission},
+    { path: 'teaching-method', component: TeachingMethod},
+    { path: 'norms-politics', component: NormsPolitics},
+    {path: 'login-registro', component:LoginRegistro},
+    {path: 'new-password', component:NewPassword},
+    {path: 'login-registro', redirectTo: 'login-registro', pathMatch: 'full'},
+    {path: 'registered-home', component: RegisteredHome},
+    {path: 'edit-profile', component: EditProfile},
+    {path: 'about-us', component:AboutUs},
+    {path: 'help-support', component: HelpSupport},
+    {path: 'payment-methods', component: PaymentMethods},
+    {path: 'module-view', component: ModuleView}
+];

@@ -1,0 +1,45 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.component {
+    display: flex;
+    justify-content: center;
+    height: 460vh;
+}
+
+section {
+    height: 440vh;
+    margin: 70px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50vw;
+    height: 100%;
+}
+
+#titleNor {
+    margin: 70px 0 0 0;
+}
+
+@media (max-width: 1366px) {
+    .component {
+        height: 580vh;
+    }
+
+    section {
+        height: 550vh;
+    }
+
+    #titleNor {
+        margin: 0 0 0 0;
+    }
+}

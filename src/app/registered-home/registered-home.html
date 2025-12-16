@@ -1,0 +1,175 @@
+<app-nav></app-nav>
+<app-header [showUserInfo]="true"></app-header>
+
+<section>
+    <div class="content-target-streak">
+        <div class="content-box">
+            <h2 class="subTitle">¡Hola {{ user?.nickName }}!</h2>
+            <div class="target-box">
+                <div class="box-up">
+                    <img id="img-trophy"
+                        src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765767308/image_48_yjz4fs.png" alt="">
+
+                    <div class="box-title">
+                        <h3 class="title-target">Objetivo</h3>
+                        <img id="img-line"
+                            src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765767382/Line_15_flbxgp.png"
+                            alt="">
+                    </div>
+                </div>
+
+                <p id="text-target">Practicar en el módulo</p>
+
+                <img id="img-gitHub"
+                    src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765767508/github_1_1_2_mnq7ct.png" alt="">
+
+                <button class="button-target">Empieza</button>
+            </div>
+        </div>
+
+        <div class="border-streak">
+            <div class="content-streak">
+                <h3 id="title-streak">Días de racha</h3>
+
+                <div class="box-img">
+                    <img id="img-Cybro"
+                        src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765768099/Group_63_ielsay.png" alt="">
+
+                    <strong id="streak">0</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="line"></div>
+    <div class="content-progress">
+
+        <div class="box-progress">
+            <h2 class="title-progress">Asi va tu progreso</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 10%;">
+                    <img id="percentage" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765902113/Cybro_1_1_u15dlm.png" alt="">
+                </div>
+            </div>
+            <p id="progress">0% Completado</p>
+            <p id="state">Sistema Operativo en modo <span class="different-color">Aprendizaje...</span></p>
+        </div>
+
+        <div class="box-energy">
+            <img id="cybro-energy"
+                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765829985/Group_64_hoogvs.png" alt="">
+            <div class="field">
+                <h3 id="tilte-energy">Energía 20</h3>
+                <img id="img-energy"
+                    src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765830002/image-removebg-preview_1_1_of8ae2.png"
+                    alt="">
+            </div>
+
+        </div>
+
+    </div>
+    <div class="line" id="line"></div>
+
+    <div class="content-record">
+        <h2 class="title-record">Historial</h2>
+
+        <div class="box-record">
+            <div *ngFor="let item of practicas" class="card"
+                [ngClass]="{'completada': item.estado === 'completado', 'pendiente': item.estado === 'pendiente'}">
+                <h2 class="practical-degree">PRÁCTICA DE VOCABULARIO</h2>
+
+                <div class="content">
+                    <p class="text-record">Módulo: <strong class="results">{{ item.modulo }}</strong></p>
+                    <p class="text-record">Resultado: <strong class="results">{{ item.resultado }}</strong></p>
+                    <p class="text-record">Fecha: <strong class="results">{{ item.fecha }}</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-achievement">
+        <h2 class="title-record" id="title-achievement">Logros</h2>
+        <div class="field-achievements">
+             <div class="achievement-card" *ngFor="let logro of logros"
+            [ngStyle]="{'box-shadow': '0 0 10px 1px ' + logro.bordeColor, 'border-color': logro.bordeColor}">
+            <div class="container-icon">
+                <img [src]="logro.icono" [ngClass]="logro.classIcon" alt="Icono de logro" class="achievement-icon" />
+            </div>
+
+            <p class="message-achievement">{{ logro.mensaje }}</p>
+        </div>
+        </div>
+       
+    </div>
+
+    <div class="line"></div>
+    <div class="content-subscriptions">
+        <h2 class="title-record" id="title-achievement">Suscripciones</h2>
+
+        <div class="box-card">
+            <div class="card-sus">
+                <div class="price-field">
+                    <h2 class="suntitle-subsc">Basic</h2>
+                    <div class="line-susbsc"></div>
+                    <strong class="cost">$ <span class="size-number">9.900</span> COP  </strong>
+                    <p class="type">Mensual</p>
+                </div>
+
+                <ul class="information-field">
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Energía ilimitada</li>
+                    </div>
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Una interacción sin anuncios</li>
+                    </div>
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Interactúar con cualquier módulo</li>
+                    </div>
+                    <div class="space">
+                        <img class="iconss" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861264/image-Photoroom_2_3_3_vnea0z.png" alt="">
+                        <li>Interacción con Chat voz con IA</li>
+                    </div>
+                </ul>
+
+                <button class="button-subscription" routerLink="/payment-methods">Suscribirse</button>
+            </div>
+            <img id="img-avatar" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765858158/image-Photoroom_1_1_xctvke.png" alt="">
+            <div class="card-sus">
+                  <div class="price-field">
+                    <h2 class="suntitle-subsc">Premium</h2>
+                    <div class="line-susbsc"></div>
+                    <strong class="cost">$ <span class="size-number">19.900</span> COP  </strong>
+                    <p class="type">Mensual</p>
+                </div>
+
+                <ul class="information-field">
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Energía ilimitadas</li>
+                    </div>
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Una interacción sin anuncios</li>
+                    </div>
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Interactúar con cualquier módulo</li>
+                    </div>
+                    <div class="space">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <li>Interacción con Chat voz con IA</li>
+                    </div>
+                </ul>
+
+                <button class="button-subscription" routerLink="/payment-methods">Suscribirse</button>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<app-footer></app-footer>

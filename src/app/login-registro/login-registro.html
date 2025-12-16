@@ -1,0 +1,220 @@
+<div id="authContainer">
+    <div id="panelWrapper">
+
+        <div id="blackOverlay"></div>
+
+        <!-- PANEL DE REGISTRO -->
+        <div class="panel" id="panelRegister" [class.active]="!showLogin" [class.inactive]="showLogin">
+
+            <div class="authClass" id="registerSection">
+
+                <div class="containers" id="BlackBackgReg">
+                    <h1 class="tittle">Registro</h1>
+                    <div class="spaceLine">
+                        <div class="line"></div>
+                    </div>
+
+                    <div class="infoBox">
+                        <div class="regisInfo">
+                            <p class="text">Nombre completo</p>
+                            <p class="text">Apodo</p>
+                            <p class="text">Correo eléctronico</p>
+                            <p class="text">Contraseña</p>
+                            <p class="text">Confirmar contraseña</p>
+                        </div>
+
+                        <div class="recordFields">
+                            <input class="field" id="name" [(ngModel)]="registerData.fullName">
+                            <input class="field" id="nickname" [(ngModel)]="registerData.nickName">
+                            <input class="field" id="email" type="email" [(ngModel)]="registerData.email">
+                            <input class="field" id="password" type="password" [(ngModel)]="registerData.password">
+                            <input class="field" id="confirmPass" type="password" [(ngModel)]="registerData.confirmPassword">
+                        </div>
+                    </div>
+
+                    <div class="spaceButton">
+                        <button class="buttonRegist" id="buttonRegist" (click)="register()">Registrarme</button>
+                    </div>
+
+                    <div class="division">
+                        <div class="line1"></div>
+                        <p class="letter">O</p>
+                        <div class="line1"></div>
+                    </div>
+
+                    <div class="socialAuth">
+                        <a href="gitHub"><img class="social"
+                                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764126164/image_56_dcx5oi.png"
+                                alt=""></a>
+                        <a href="gmail"><img class="social"
+                                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586357/go-removebg-preview_1_ci2skk.png"
+                                alt=""></a>
+                    </div>
+
+                    <div class="terms">
+                        <input id="checkbox" type="checkbox">
+                        <p class="termsUse"> <span>Acepto</span> <a (click)="openModal()">términos de uso</a></p>
+                    </div>
+                </div>
+
+                <div class="modal" (click)="onBackdropClick($event)" [class.hidden]="!isModalOpen">
+                    <div class="modalContent" (click)="$event.stopPropagation()">
+
+                        <div class="modalExit">
+                            <button class="closeButton" (click)="closeModal()">x</button>
+                        </div>
+
+                        <h3>Términos y Condiciones de Uso</h3>
+
+                        <div class="modalBody">
+                            <p>Bienvenido al aplicativo educativo de inglés técnico aplicado al desarrollo de software.
+                                Antes de continuar con tu registro, ten en cuenta lo siguiente:</p>
+                            <h4>1. Finalidad</h4>
+                            <p>El aplicativo tiene fines exclusivamente educativos, para mejorar tus habilidades en
+                                inglés técnico aplicado al desarrollo de software.</p>
+                            <h4>2. Uso responsable:</h4>
+                            <p>Utiliza la plataforma de forma ética, sin modificar, dañar ni usar indebidamente las
+                                herramientas o contenidos.</p>
+                            <h4>3. Privacidad:</h4>
+                            <p>Tus datos personales se usarán solo con fines académicos y estarán protegidos conforme a
+                                la política de privacidad.</p>
+                            <h4>4. Propiedad intelectual:</h4>
+                            <p>Los textos, audios, ejercicios, simulaciones e interfaz son propiedad del aplicativo.
+                                Está prohibido copiarlos o distribuirlos sin autorización.</p>
+                            <h4>5. Inteligencia artificial:</h4>
+                            <p>Las respuestas generadas por IA son de apoyo educativo y pueden contener errores o
+                                imprecisiones.</p>
+                            <h4>6. Normas de uso:</h4>
+                            <ul>
+                                <li>No compartas tus credenciales.</li>
+                                <li>Completa las actividades de manera personal y honesta.</li>
+                                <li>Usa el contenido solo con fines de aprendizaje.</li>
+                            </ul>
+                            <h4>7. Actualizaciones:</h4>
+                            <p>El aplicativo puede modificar sus funciones o políticas sin previo aviso. Al registrarte,
+                                confirmas que has leído y aceptas estos términos y normas de uso.</p>
+
+                            <div class="modalFooter">
+                                <div class="terms" id="termsModal">
+                                    <input id="checkbox" type="checkbox">
+                                    <p class="termsUse" id="termsUseModal"> <span id="textSpan">Acepto</span>
+                                        <a>términos de uso</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line2"></div>
+                <div class="line3"></div>
+
+                <div class="containers" id="WhiteBackg">
+                    <h1 class="questionTittle" id="tittle2">¿Ya tienes una cuenta?</h1>
+                    <div id="spaceButton2">
+                        <button class="buttonRegist" id="buttonRegis" (click)="toggleAuth()">Inicia Sesión</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PANEL DE LOGIN -->
+        <div class="panel" id="panelLogin" [class.active]="showLogin" [class.inactive]="!showLogin">
+
+            <div class="authClass" id="loginSection">
+
+                <div class="containers" id="WhiteBackgLogin">
+                    <h1 class="questionTittle" id="Whitetittle">¿No tienes una cuenta?</h1>
+                    <div id="spaceButton2" class="spaceButton">
+                        <button class="buttonRegist" (click)="toggleAuth()">Registrarme</button>
+                    </div>
+                </div>
+
+                <div class="containers" id="BlackBackgLogin">
+                    <h1 class="tittle" id="tittleLogin">Inicio sesión</h1>
+                    <div class="spaceLine" id="spaceLineLogin">
+                        <div class="line" id="lineLogin"></div>
+                    </div>
+
+                    <div class="infoBox" id="infoLogin">
+                        <div class="regisInfo" id="loginP">
+                            <p class="text">Correo eléctronico o Apodo</p>
+                            <p class="text">Contraseña</p>
+                        </div>
+
+                        <div class="recordFields" id="loginFields">
+                            <input id="email" type="email" [(ngModel)]="loginData.email">
+                            <input id="password" type="password" [(ngModel)]="loginData.password">
+                        </div>
+                    </div>
+
+                    <div class="spaceButton" id="spaceButtonLogin">
+                        <button class="buttonRegist" id="buttonRegist" (click)="login()">Inicia
+                            Sesión</button>
+                    </div>
+
+                    <div class="terms" id="termsLogin">
+                        <p class="termsUse"><a (click)="openModal()">¿Olvidaste tu contraseña?</a></p>
+                    </div>
+
+                    <div class="division" id="divisionLogin">
+                        <div class="line1"></div>
+                        <p class="letter">O</p>
+                        <div class="line1"></div>
+                    </div>
+
+                    <div class="socialAuth" id="socialAuthLogin">
+                        <a href="gitHub"><img class="social"
+                                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764126164/image_56_dcx5oi.png"
+                                alt=""></a>
+                        <a href="gmail"><img class="social"
+                                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586357/go-removebg-preview_1_ci2skk.png"
+                                alt=""></a>
+                    </div>
+                </div>
+
+                <div class="modal" (click)="onBackdropClick($event)" [class.hidden]="!isModalOpen">
+                    <div class="modalContent" id="modalContentLogin" (click)="$event.stopPropagation()">
+
+                        <div class="modalBody" id="modalBodyLogin">
+                            <p id="textModal">Ingresa tu correo electrónico para enviarte un código de verificación.</p>
+                            <input type="text" id="inputSize">
+                            <div class="modalFooter" id="modalFooterLogin">
+                                <button class="buttons" id="buttonCancel" (click)="closeModal()">Cancelar</button>
+                                <button class="buttons" id="buttonAccept" (click)="openConfirmModal()">Aceptar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line2" id="line2Login"></div>
+                <div class="line3" id="line3Login"></div>
+
+                <div class="modal" (click)="onBackdropClick($event)" [class.hidden]="!isConfirmModal">
+                    <div class="modalContent" id="modalContentLogin" (click)="$event.stopPropagation()">
+
+                        <div class="modalBody" id="modalBodyLogin">
+                            <p id="textModal">Ingresa el código que ha sido enviado a tu correo eléctronico.</p>
+                            <div id="spaceInputs">
+                                <input type="text" class="inputs" id="code1">
+                                <input type="text" class="inputs" id="code2">
+                                <input type="text" class="inputs" id="code3">
+                                <input type="text" class="inputs" id="code4">
+                                <input type="text" class="inputs" id="code5">
+                                <input type="text" class="inputs" id="code6">
+                            </div>
+
+                            <div class="modalFooter" id="modalFooterLogin">
+                                <button class="buttons" id="buttonCancel" (click)="closeModal()">Cancelar</button>
+                                <button class="buttons" id="buttonAccept" (click)="goNewPassword()">Aceptar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

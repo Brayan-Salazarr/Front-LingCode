@@ -1,0 +1,27 @@
+<app-nav [colorBackground]="'backgroundNav1'"></app-nav>
+<div class="supportContainer">
+
+    <h1 class="title">Ayuda y Soporte</h1>
+    <h2 class="subtitle">Buscar ayuda</h2>
+    <div class="groupBox" *ngFor="let group of GroupBox">
+
+        <div class="mainTitle">
+            <h2>{{group.mainTitle}}</h2>
+        </div>
+
+        <div class="questionBox" *ngFor="let item of group.support" (click)="toggleItem(item)">
+
+            <div class="questionHeader">
+                <p>{{item.title}}</p>
+                <span class="arrow" [class.rotate]="activeItem === item">⌵</span>
+            </div>
+
+            <div class="answer" *ngIf="activeItem === item">
+                <p>{{item.answer}}</p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<app-footer></app-footer>

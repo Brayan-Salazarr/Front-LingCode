@@ -1,0 +1,97 @@
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#title{
+    font-size: 36px;
+    font-weight: normal;
+}
+
+#subTitle{
+    font-weight: normal;
+}
+
+.payment-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 400px;
+    width: 100%;
+}
+
+.payment-card {
+    border: 1.5px solid #333;
+    /* Borde gris oscuro por defecto */
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.payment-card.selected {
+    border-color: #000000;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
+}
+
+.bank-selection {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0;
+}
+
+.bank-selection.show {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-height: 500px;
+    height: 150px;
+    opacity: 1;
+    margin-top: 25px;
+    padding-left: 20px;
+}
+
+/* Animación de la flecha */
+.arrow {
+    border: solid #333;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.arrow.up {
+    transform: rotate(-135deg);
+    /* Gira la flecha hacia arriba */
+}
+
+.card-header {
+    cursor: pointer;
+    user-select: none;
+    /* Evita que el texto se sombree al dar clics rápidos */
+}
+
+.button-payment{
+    font-size: 17px;
+    font-weight: bold;
+    background-color: #04C9FF;
+    border: none;
+    height: 50px;
+    width: 170px;
+    border-radius: 30px;
+}

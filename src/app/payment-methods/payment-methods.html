@@ -1,0 +1,51 @@
+<app-nav [colorBackground]="'backgroundNav1'"></app-nav>
+<section>
+    <h1 id="title">Elige cómo pagar</h1>
+
+    <div class="payment-field">
+        <h2 id="subTitle">Recomendados</h2>
+
+        <div class="payment-card" [class.selected]="isPseExpanded">
+
+            <div class="card-header" (click)="togglePse()">
+                <span>Transferencia con PSE</span>
+                <i class="arrow" [class.up]="isPseExpanded"></i>
+            </div>
+
+            <div class="bank-selection" [class.show]="isPseExpanded">
+                <p class="selection-title">Seleccione el banco</p>
+
+                <label class="radio-option">
+                    <input type="radio" name="bank" value="nequi">
+                    <span class="radio-label">Nequi</span>
+                </label>
+
+                <label class="radio-option">
+                    <input type="radio" name="bank" value="daviplata">
+                    <span class="radio-label">Daviplata</span>
+                </label>
+
+                  <label class="radio-option">
+                    <input type="radio" name="bank" value="daviplata">
+                    <span class="radio-label">Bancolombia </span>
+                </label>
+
+                  <label class="radio-option">
+                    <input type="radio" name="bank" value="daviplata">
+                    <span class="radio-label">Davivienda</span>
+                </label>
+
+            </div>
+        </div>
+
+        <div class="payment-card">
+            <div class="card-header">
+                <span>Efecty</span>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="button-payment">Confirmar pago</button>
+</section>
+<app-footer></app-footer>

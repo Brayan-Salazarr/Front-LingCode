@@ -1,0 +1,108 @@
+<app-nav [colorBackground]="'backgroundNav1'"></app-nav>
+
+<div id="Back">
+    <div id="location">
+        <img src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png" alt="">
+        <div id="info">
+            <h2 class="colorTittle">Elige un avatar</h2>
+            <div class="line"></div>
+            <div class="carousel-wrapper">
+
+                <button class="nav left" (click)="cambiarImagenAtras()">❮</button>
+                <div class="carousel">
+
+                    @for (i of [0, 1, 2]; track i) {
+                    @let realIndex = (currentIndex() + i) % items.length;
+
+                    @let item = items[realIndex];
+
+                    <div class="card" [class.active]="realIndex === currentIndex()"
+                        [style.transform]="getTransformForGroup(i)">
+
+                        <img [ngClass]="item.clase" [src]="item.ruta" [alt]="item.nombre" />
+
+                    </div>
+                    }
+
+                </div>
+
+                <button class="nav right" (click)="cambiarImagen()">❯</button>
+            </div>
+            <h2 class="colorTittle">O elige tu propia foto</h2>
+            <div class="line" id="lineId"></div>
+            <button id="UpdatePhoto">Subir imagen</button>
+            <p id="textSize">Tamaño máximo= 1MB</p>
+        </div>
+    </div>
+</div>
+<div id="line"></div>
+
+<section>
+    <h2 class="tittle" id="textColor">Editar información personal</h2>
+    <div class="dropdownContainer">
+        <button id="gear" (click)="toggleDropdown()"><img id="styleGear"
+                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765828524/image-removebg-preview_pacdbd.png"
+                alt=""></button>
+
+        <div class="dropdownM" *ngIf="isDropdownOpen">
+            <div class="setting-row" id="settingSound">
+                <label class="switch">
+                    <input type="checkbox" id="email-alerts">
+                    <span class="slider round"></span>
+                </label>
+                <label for="sound">Sonido</label>
+            </div>
+
+            <div class="setting-row">
+                <label class="switch">
+                    <input type="checkbox" id="notification-alerts">
+                    <span class="slider round"></span>
+                </label>
+                <label for="email-alerts">Notificaciones</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="infoBox">
+        <div class="regisInfo">
+            <p class="textEdit">Nombre completo</p>
+            <p class="textEdit">Apodo</p>
+            <p class="textEdit">Correo eléctronico</p>
+            <p class="textEdit">Contraseña</p>
+            <p class="textEdit">Confirmar contraseña</p>
+        </div>
+
+        <div class="recordFields">
+            <input class="field" id="name">
+            <input class="field" id="nickname">
+            <input class="field" id="email" type="email">
+            <input class="field" id="password" type="password">
+            <input class="field" id="confirmPass" type="password">
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button id="Save">Guardar cambios</button>
+        <button id="Cancel" (click)="openModal()">Eliminar mi cuenta</button>
+
+        <div *ngIf="isModalOpen" class="modal" (click)="onBackdropClick($event)">
+            <div class="modalContent" (click)="$event.stopPropagation()">
+
+                <div *ngIf="!isAccountDeleted">
+                    <h3 id="question">¿Estas seguro de eliminar tu cuenta?</h3>
+                    <div class="modalExit">
+                        <button class="buttonStyle" id="delete" (click)="deleteAccount()">Confirmar</button>
+                        <button class="buttonStyle" id="closeBut" (click)="closeModal()">Cancelar</button>
+                    </div>
+                </div>
+
+                <div *ngIf="isAccountDeleted" class="succes-message">
+                    <h3>Cuenta eliminada exitosamente</h3>
+                    <p id="textMod">Lamentamos verte ir. Estaremos aquí si decides volver.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>
