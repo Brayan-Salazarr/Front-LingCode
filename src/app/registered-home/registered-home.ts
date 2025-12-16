@@ -15,7 +15,8 @@ interface Practica {
 interface Logro {
   icono: string; // Clase CSS para el ícono (ej: fa-check, fa-fire, ruta de imagen)
   mensaje: string;
-  bordeColor: string; // Color para el borde de neón (ej: '#00ffff')
+  bordeColor: string;
+  classIcon?: string; 
 }
 
 @Component({
@@ -58,7 +59,8 @@ export class RegisteredHome {
     {
       icono: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765857109/image-removebg-preview_1_mx3asn.png',
       mensaje: '¡Lograste una racha de 3 días!',
-      bordeColor: '#00ffff'
+      bordeColor: '#00ffff',
+      classIcon: 'icon'
     },
     {
       icono: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765857109/image-removebg-preview_4_1_xggd4v.png',

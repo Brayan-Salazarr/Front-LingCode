@@ -35,7 +35,7 @@
                     <img id="img-Cybro"
                         src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765768099/Group_63_ielsay.png" alt="">
 
-                    <strong>0</strong>
+                    <strong id="streak">0</strong>
                 </div>
             </div>
         </div>
@@ -47,8 +47,8 @@
         <div class="box-progress">
             <h2 class="title-progress">Asi va tu progreso</h2>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 75%;">
-                    0%
+                <div class="progress-fill" style="width: 10%;">
+                    <img id="percentage" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765902113/Cybro_1_1_u15dlm.png" alt="">
                 </div>
             </div>
             <p id="progress">0% Completado</p>
@@ -93,7 +93,7 @@
              <div class="achievement-card" *ngFor="let logro of logros"
             [ngStyle]="{'box-shadow': '0 0 10px 1px ' + logro.bordeColor, 'border-color': logro.bordeColor}">
             <div class="container-icon">
-                <img [src]="logro.icono" alt="Icono de logro" class="achievement-icon" />
+                <img [src]="logro.icono" [ngClass]="logro.classIcon" alt="Icono de logro" class="achievement-icon" />
             </div>
 
             <p class="message-achievement">{{ logro.mensaje }}</p>
@@ -159,7 +159,7 @@
                         <li>Interactúar con cualquier módulo</li>
                     </div>
                     <div class="space">
-                        <img class="iconss" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
                         <li>Interacción con Chat voz con IA</li>
                     </div>
                 </ul>
