@@ -71,22 +71,26 @@
     <div class="line" id="line"></div>
 
     <div class="content-record">
-        <h2 class="titile-record">Historial</h2>
+        <h2 class="title-record">Historial</h2>
 
         <div class="box-record">
             <div *ngFor="let item of practicas" class="card"
                 [ngClass]="{'completada': item.estado === 'completado', 'pendiente': item.estado === 'pendiente'}">
                 <h2 class="practical-degree">PRÁCTICA DE VOCABULARIO</h2>
 
-                <div class="contenido">
-                    <p>Módulo: <strong>{{ item.modulo }}</strong></p>
-                    <p>Resultado: <strong>{{ item.resultado }}</strong></p>
-                    <p>Fecha: <strong>{{ item.fecha }}</strong></p>
+                <div class="content">
+                    <p class="text-record">Módulo: <strong class="results">{{ item.modulo }}</strong></p>
+                    <p class="text-record">Resultado: <strong class="results">{{ item.resultado }}</strong></p>
+                    <p class="text-record">Fecha: <strong class="results">{{ item.fecha }}</strong></p>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <div class="content-achievement">
+        
+    </div>
+
 </section>
 
 <app-footer></app-footer>
