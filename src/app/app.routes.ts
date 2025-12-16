@@ -10,6 +10,7 @@ import { EditProfile } from './edit-profile/edit-profile';
 import { AboutUs } from './about-us/about-us';
 import { HelpSupport } from './help-support/help-support';
 import { PaymentMethods } from './payment-methods/payment-methods';
+import { ModuleView } from './module-view/module-view';
 
 export const routes: Routes = [
     { path: '', component: UnregisteredHome},
@@ -23,5 +24,6 @@ export const routes: Routes = [
     {path: 'edit-profile', component: EditProfile},
     {path: 'about-us', component:AboutUs},
     {path: 'help-support', component: HelpSupport},
-    {path: 'payment-methods', component: PaymentMethods}
+    {path: 'payment-methods', component: PaymentMethods},
+    {path: 'module-view', component: ModuleView}
 ];
