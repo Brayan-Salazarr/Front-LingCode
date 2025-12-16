@@ -1,6 +1,7 @@
 .content-target-streak {
     display: flex;
     justify-content: space-around;
+    margin: 0 0 100px 0;
 }
 
 .content-box {
@@ -8,7 +9,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 600px;
+    height: 750px;
 }
 
 .subTitle {
@@ -27,7 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     border-radius: 20px;
     outline: 2px solid transparent;
     background:
@@ -35,7 +36,7 @@
         linear-gradient(10deg, rgba(248, 86, 207, 1), rgb(32, 1, 32)) border-box;
     border: 3px solid transparent;
     width: 550px;
-    height: 500px;
+    height: 600px;
 }
 
 .box-up {
@@ -110,7 +111,7 @@
     width: 600px;
     padding: 3px;
     box-sizing: border-box;
-    clip-path: path(" M 0 700 L 600 700 L 600 25 Q 590 10 560 10 Q 310 100 0 130 Q 0 0 0 0 Z");
+    clip-path: path(" M 0 750 L 600 750 L 600 25 Q 590 10 560 10 Q 310 100 0 130 Q 0 0 0 0 Z");
     border-radius: 30px;
 }
 
@@ -125,12 +126,13 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    clip-path: path(" M 0 700 L 600 700 L 600 30 Q 590 10 560 10 Q 310 100 0 130 Q 0 0 0 0 Z");
+    clip-path: path(" M 0 750 L 600 750 L 600 30 Q 590 10 560 10 Q 310 100 0 130 Q 0 0 0 0 Z");
     border-radius: 30px;
 }
 
-strong {
-    font-size: 12em;
+#streak {
+    font-size: 11em;
+    font-family: "Anton SC", sans-serif;
 }
 
 .box-img {
@@ -145,7 +147,7 @@ strong {
     font-weight: bold;
     font-size: 34px;
     letter-spacing: 1px;
-    top: 8vh;
+    top: 10vh;
     background-image: linear-gradient(to bottom,
             #a0a0a0 50%,
             #696969 70%);
@@ -175,7 +177,7 @@ strong {
     display: flex;
     align-items: center;
     color: black;
-    height: 100%;
+    height: 70px;
     margin: 0 0 0 10px;
     background-image: linear-gradient(45deg,
             rgba(255, 255, 255, 0.15) 25%,
@@ -187,6 +189,7 @@ strong {
             transparent);
     background-size: 40px 40px;
     animation: move-stripes 2s linear infinite;
+    position: absolute;
 }
 
 .box-energy {
@@ -200,6 +203,8 @@ strong {
 
 .field {
     display: flex;
+    justify-content: space-evenly;
+    width: 200px;
 }
 
 #cybro-energy {
@@ -229,6 +234,10 @@ strong {
     flex-direction: column;
     color: white;
     height: 500px;
+}
+
+#percentage {
+    width: 85px;
 }
 
 #progress {
@@ -282,11 +291,11 @@ strong {
     width: 100%;
     height: 4px;
     background-image: linear-gradient(to right, #00D9FF, #BEB1F8);
-    margin: 130px 0 0 0;
+    margin: 30px 0 0 0;
 }
 
 #line {
-    margin: 0 0 130px 0;
+    margin: 0 0 80px 0;
 }
 
 .content-record {
@@ -350,6 +359,7 @@ strong {
 
 .text-record {
     font-size: 22px;
+    font-family: "Poppins", sans-serif;
 }
 
 .title-record {
@@ -365,60 +375,65 @@ strong {
 }
 
 .content-achievement {
-  display: flex;
-  flex-direction: column; 
-  gap: 70px; 
-  justify-content: center; 
-  align-items: center;
-  padding: 20px;
-  background-color: #000; 
-  margin: 150px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #000;
+    margin: 150px 0 0 0;
 }
 
-.field-achievements{
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  width: 80%;
-  height: 400px;
+.field-achievements {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 80%;
+    height: 400px;
 }
 
 .achievement-card {
-  display: flex;
-  align-items: center;
-  width: 350px;
-  height: 90px;
-  gap: 15px;
-  padding: 15px 30px;
-  border-radius: 12px; 
-  max-width: 400px;
-  min-height: 70px;
-  background-color: #000;
-  border: 1px solid; 
-  transition: box-shadow 0.3s ease; 
+    display: flex;
+    align-items: center;
+    width: 350px;
+    height: 90px;
+    gap: 15px;
+    padding: 15px 30px;
+    border-radius: 12px;
+    max-width: 400px;
+    min-height: 70px;
+    background-color: #000;
+    border: 1px solid;
+    transition: box-shadow 0.3s ease;
 }
 
 .message-achievement {
-  color: #fff; 
-  font-family: 'Poppins', sans-serif;
-  font-size: 25px; 
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
 }
 
 .container-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+
+.achievement-icon.icon{
+    height: 65px;
 }
 
 .achievement-icon {
-  width: 80px;
-  height: 80px;
+    width: 80px;
+    height: 80px;
 }
 
-.content-subscriptions{
+.content-subscriptions {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -427,13 +442,15 @@ strong {
     height: 800px;
 }
 
-.box-card{
+.box-card {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     width: 100%;
+    height: 550px;
 }
 
-.card-sus{
+.card-sus {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -442,11 +459,17 @@ strong {
     color: white;
     width: 400px;
     height: 500px;
-    background: transparent; 
-    position: relative; 
+    background: transparent;
+    position: relative;
     z-index: 1;
     border-radius: 20px;
     overflow: hidden;
+}
+
+.card-sus:hover{
+    width: 410px;
+    height: 510px;
+    box-shadow: 1px 1px 10px 11px rgba(255, 191, 239, 0.43);
 }
 
 .card-sus::before {
@@ -456,14 +479,12 @@ strong {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -2; 
-    border-radius: 20px; 
-    background: linear-gradient(
-        135deg, 
-        #DF2B2E, 
-        #8E19DB
-    );
-    filter: drop-shadow(0 0 10px rgba(223, 43, 46, 0.7)); 
+    z-index: -2;
+    border-radius: 20px;
+    background: linear-gradient(135deg,
+            #DF2B2E,
+            #8E19DB);
+    filter: drop-shadow(0 0 10px rgba(223, 43, 46, 0.7));
 }
 
 .card-sus::after {
@@ -473,13 +494,13 @@ strong {
     left: 7px;
     right: 7px;
     bottom: 7px;
-    z-index: -1; 
+    z-index: -1;
     background: rgba(91, 91, 91, 0.97);
-    border-radius: 13px; 
+    border-radius: 13px;
 }
 
-.line-susbsc{
-     background: linear-gradient(to right,
+.line-susbsc {
+    background: linear-gradient(to right,
             #FF00FB,
             #FFA109);
     border-radius: 30px;
@@ -487,32 +508,32 @@ strong {
     height: 7px;
 }
 
-.cost{
+.cost {
     font-size: 26px;
     font-family: 'Poppins', sans-serif;
 }
 
-.size-number{
+.size-number {
     font-size: 36px;
 }
 
-.type{
+.type {
     font-size: 26px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
 }
 
-#img-avatar{
+#img-avatar {
     width: 400px;
 }
 
-.suntitle-subsc{
+.suntitle-subsc {
     font-size: 46px;
     font-family: 'Anton SC', sans-serif;
     letter-spacing: 1px;
 }
 
-.price-field{
+.price-field {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -520,44 +541,44 @@ strong {
     height: 170px;
 }
 
-.information-field{
+.information-field {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 130px;
 }
 
-li{
+li {
     list-style: none;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     margin: 0 0 0 20px;
 }
 
-.space{
+.space {
     display: flex;
     width: 100%;
 }
 
-.icons{
+.icons {
     width: 27px;
 }
 
-.iconss{
+.iconss {
     width: 21px;
     margin: 0 6px 0 0;
 }
 
-.button-subscription{
-  width: 80%;
-  height: 60px;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  background: linear-gradient(90deg, #ff00ff, #ff9900);
-  color: #000; 
-  font-family: 'Poppins', sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-  letter-spacing: 1px;
+.button-subscription {
+    width: 80%;
+    height: 60px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #ff00ff, #ff9900);
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }

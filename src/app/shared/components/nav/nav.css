@@ -63,30 +63,30 @@
     height: 50px;
 }
 
-.avatar{
+.avatar {
     width: 70px;
     border-radius: 50%;
 }
 
-.user-info{
+.user-info {
     display: flex;
     justify-content: space-evenly;
     width: 250px;
 }
 
-span{
+span {
     font-family: "Poppins", sans-serif;
     font-weight: bold;
     color: white;
 }
 
-.separator{
+.separator {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-.close-button{
+.close-button {
     display: flex;
     color: white;
     background: none;
@@ -96,15 +96,16 @@ span{
     cursor: pointer;
 }
 
-.close-button:hover{
+.close-button:hover {
     color: rgb(249, 21, 21);
 }
 
+.backgroundNav1.component,
+.backgroundNav2.component {
+    background: black;
+}
+
 @media (max-width: 1366px) {
-    .backgroundNav1.component,
-    .backgroundNav2.component{
-        background: black;
-    }
 
     .button1 {
         font-size: 16px;

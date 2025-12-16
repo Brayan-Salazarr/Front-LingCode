@@ -16,6 +16,9 @@ section {
 }
 
 .information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 35vw;
     height: 50vh;
 }
