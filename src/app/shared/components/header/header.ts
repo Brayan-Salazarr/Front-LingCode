@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 export class Header {
   @Input() title = '';
   @Input() classSpace = '';
+  @Input() showTitle= false;
   @Input() showHexagon = false;
   @Input() showUserInfo = false;
    @Input() showDecorativeCircle = false;
