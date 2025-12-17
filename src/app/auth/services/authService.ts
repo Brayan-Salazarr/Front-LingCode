@@ -48,6 +48,21 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+// Método para decodificar el JWT
+private decodeToken(token: string): any {
+  try {
+    const payload = token.split('.')[1];
+    return JSON.parse(atob(payload));
+  } catch (error) {
+    return null;
+  }
+}
+
+// Método para obtener un usuario por ID
+getUserById(userId: number) {
+  return this.http.get<User>(`${environment.apiUrl}/users/${userId}`);
+}
+
 // 🔐 LOGIN REAL CON BACKEND
 login(identifier: string, password: string) {
   return this.http.post<AuthResponse>(
@@ -60,21 +75,44 @@ login(identifier: string, password: string) {
     tap(res => {
       localStorage.setItem(this.TOKEN_KEY, res.token);
 
-      // El backend puede devolver la data del usuario de diferentes formas
-      const user: User = res.user || {
-        fullName: res.fullName || '',
-        nickName: res.nickName || res.nickname || '',
+      // Decodificar el JWT para obtener la información del usuario
+      const decodedToken = this.decodeToken(res.token);
+
+      // Obtener datos del usuario del token o de la respuesta
+      const userId = decodedToken?.user_id;
+      const user: User = {
+        fullName: decodedToken?.full_name || res.fullName || '',
+        nickName: res.nickName || res.nickname || decodedToken?.sub || '',
         email: res.email || '',
         createdAt: res.createdAt
       };
 
-      localStorage.setItem(this.USER_KEY, JSON.stringify(user));
-      this.currentUserSubject.next(user);
+      // Si tenemos el user_id, obtener los datos completos del backend
+      if (userId) {
+        this.getUserById(userId).subscribe({
+          next: (fullUserData: any) => {
+            const completeUser: User = {
+              ...user,
+              ...fullUserData
+            };
+            localStorage.setItem(this.USER_KEY, JSON.stringify(completeUser));
+            this.currentUserSubject.next(completeUser);
+          },
+          error: () => {
+            // Si falla, usar los datos del token
+            localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+            this.currentUserSubject.next(user);
+          }
+        });
+      } else {
+        localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+        this.currentUserSubject.next(user);
+      }
     })
   );
 }
 
-   // 📝 REGISTER REAL
+   //  REGISTER REAL
   register(user: User & { password: string }) {
     return this.http.post<AuthResponse>(
       `${this.api}/register`,
