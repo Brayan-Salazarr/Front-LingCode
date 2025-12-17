@@ -58,6 +58,8 @@ export class LoginRegistro {
 
 */
   register() {
+console.log('REGISTER CLICKED');
+
     if (this.registerData.password !== this.registerData.confirmPassword) {
       alert('Las contraseñas no coinciden');
       return;
