@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-login-registro',
   standalone: true,
-  imports: [CommonModule, RouterModule,FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './login-registro.html',
   styleUrl: './login-registro.css',
 })
@@ -15,8 +15,7 @@ export class LoginRegistro {
   showLogin: boolean = false;
 
   loginData = {
-    email: '',
-    nickName: '',
+    identifier: '',
     password: ''
   };
 
@@ -24,8 +23,8 @@ export class LoginRegistro {
     fullName: '',
     nickName: '',
     email: '',
-    password:'',
-    confirmPassword:''
+    password: '',
+    confirmPassword: ''
   };
 
   constructor(
@@ -34,10 +33,9 @@ export class LoginRegistro {
     private authService: AuthService
   ) { }
 
-    login() {
+  login() {
     const success = this.authService.login(
-      this.loginData.email,
-      this.loginData.nickName,
+      this.loginData.identifier,
       this.loginData.password
     );
 
@@ -49,7 +47,7 @@ export class LoginRegistro {
   }
 
 
-   register() {
+  register() {
     if (this.registerData.password !== this.registerData.confirmPassword) {
       alert('Las contraseñas no coinciden');
       return;
@@ -60,9 +58,9 @@ export class LoginRegistro {
       nickName: this.registerData.nickName,
       email: this.registerData.email,
       password: this.registerData.password,
-     createdAt: ''
+      createdAt: ''
     });
-    
+
     if (success) {
       alert('Registro exitoso');
       this.showLogin = true;
@@ -92,7 +90,7 @@ export class LoginRegistro {
     const goingToLogin = !this.showLogin;
 
     this.showLogin = !this.showLogin;
-    
+
     if (goingToLogin) {
 
       overlay?.classList.add("slide-right");

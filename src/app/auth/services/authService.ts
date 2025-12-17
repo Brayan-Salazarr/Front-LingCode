@@ -24,6 +24,11 @@ interface AuthResponse {
   providedIn: 'root',
 })
 export class AuthService {
+  
+  loginData = {
+  identifier: '',
+  password: ''
+};
 
   private USER_KEY = 'currentUser';
   private TOKEN_KEY = 'token';
@@ -37,7 +42,7 @@ export class AuthService {
   private api = environment.apiUrl + '/auth';
 
   constructor(private http: HttpClient) { }
-  
+
 // 🔐 LOGIN REAL CON BACKEND
 login(identifier: string, password: string) {
   return this.http.post<AuthResponse>(
