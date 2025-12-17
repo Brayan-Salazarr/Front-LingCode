@@ -3,11 +3,11 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
 
 export interface User {
-  name: string;
+  fullName: string;
   nickName: string;
   email: string;
   avatar?: string;
-  createdAt: string;
+  createdAt?: string;
 }
 
 export const environment = {
@@ -17,7 +17,12 @@ export const environment = {
 
 interface AuthResponse {
   token: string;
-  user: User;
+  user?: User;
+  nickname?: string;
+  fullName?: string;
+  nickName?: string;
+  email?: string;
+  createdAt?: string;
 }
 
 @Injectable({
@@ -48,14 +53,23 @@ login(identifier: string, password: string) {
   return this.http.post<AuthResponse>(
     `${this.api}/login`,
     {
-      identifier,
+      loginIdentifier: identifier,
       password
     }
   ).pipe(
     tap(res => {
       localStorage.setItem(this.TOKEN_KEY, res.token);
-      localStorage.setItem(this.USER_KEY, JSON.stringify(res.user));
-      this.currentUserSubject.next(res.user);
+
+      // El backend puede devolver la data del usuario de diferentes formas
+      const user: User = res.user || {
+        fullName: res.fullName || '',
+        nickName: res.nickName || res.nickname || '',
+        email: res.email || '',
+        createdAt: res.createdAt
+      };
+
+      localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+      this.currentUserSubject.next(user);
     })
   );
 }
@@ -68,8 +82,17 @@ login(identifier: string, password: string) {
     ).pipe(
       tap(res => {
         localStorage.setItem(this.TOKEN_KEY, res.token);
-        localStorage.setItem(this.USER_KEY, JSON.stringify(res.user));
-        this.currentUserSubject.next(res.user);
+
+        // El backend puede devolver la data del usuario de diferentes formas
+        const userData: User = res.user || {
+          fullName: res.fullName || '',
+          nickName: res.nickName || res.nickname || '',
+          email: res.email || '',
+          createdAt: res.createdAt
+        };
+
+        localStorage.setItem(this.USER_KEY, JSON.stringify(userData));
+        this.currentUserSubject.next(userData);
       })
     );
   }

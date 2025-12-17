@@ -27,7 +27,7 @@ export class Header {
   }
 
   get formattedDate(): string {
-    if (!this.user) return '';
+    if (!this.user || !this.user.createdAt) return '';
     return new Date(this.user.createdAt).toLocaleDateString();
   }
 }

@@ -39,11 +39,11 @@ export class LoginRegistro {
       this.loginData.password
     ).subscribe({
       next:(res)=>{
-        console.log('Login OK',res);
         this.router.navigate(['/registered-home']);
       },
       error: (err) => {
-        console.error('Error login', err);
+        console.error('Error login:', err);
+        alert('Error en el login: ' + (err.error?.message || 'Credenciales incorrectas'));
       }
     });
   }
@@ -58,26 +58,26 @@ export class LoginRegistro {
 
 */
   register() {
-console.log('REGISTER CLICKED');
-
     if (this.registerData.password !== this.registerData.confirmPassword) {
       alert('Las contraseñas no coinciden');
       return;
     }
 
-    const success = this.authService.register({
-      name: this.registerData.fullName,
-      nickName: this.registerData.nickName,
-      email: this.registerData.email,
-      password: this.registerData.password,
-      createdAt: ''
-    }).subscribe({
+    const payload = {
+      full_name: this.registerData.fullName.trim(),
+      nickname: this.registerData.nickName.trim(),
+      email: this.registerData.email.trim(),
+      password: this.registerData.password
+    };
+
+    const success = this.authService.register(payload as any).subscribe({
     next: () => {
-      console.log('Registro OK');
+      alert('Registro exitoso. Por favor inicia sesión.');
       this.router.navigate(['/login-registro'], { queryParams: { view: 'login' } });
     },
     error: err => {
-      console.error('Error registro', err);
+      console.error('Error registro:', err);
+      alert('Error en el registro: ' + (err.error?.message || 'Error desconocido'));
     }
   });
 };
