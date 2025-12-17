@@ -37,8 +37,18 @@ export class LoginRegistro {
     const success = this.authService.login(
       this.loginData.identifier,
       this.loginData.password
-    );
+    ).subscribe({
+      next:(res)=>{
+        console.log('Login OK',res);
+        this.router.navigate(['/registered-home']);
+      },
+      error: (err) => {
+        console.error('Error login', err);
+      }
+    });
+  }
 
+  /*
     if (success) {
       this.router.navigate(['/registered-home']);
     } else {
@@ -46,7 +56,7 @@ export class LoginRegistro {
     }
   }
 
-
+*/
   register() {
     if (this.registerData.password !== this.registerData.confirmPassword) {
       alert('Las contraseñas no coinciden');
@@ -59,8 +69,17 @@ export class LoginRegistro {
       email: this.registerData.email,
       password: this.registerData.password,
       createdAt: ''
-    });
-
+    }).subscribe({
+    next: () => {
+      console.log('Registro OK');
+      this.router.navigate(['/login-registro'], { queryParams: { view: 'login' } });
+    },
+    error: err => {
+      console.error('Error registro', err);
+    }
+  });
+};
+/*
     if (success) {
       alert('Registro exitoso');
       this.showLogin = true;
@@ -68,7 +87,7 @@ export class LoginRegistro {
       alert('El usuario ya existe');
     }
   }
-
+*/
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
