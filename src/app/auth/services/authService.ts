@@ -37,20 +37,23 @@ export class AuthService {
   private api = environment.apiUrl + '/auth';
 
   constructor(private http: HttpClient) { }
-
- // 🔐 LOGIN REAL CON BACKEND
-  login(emailOrNick: string, password: string) {
-    return this.http.post<AuthResponse>(
-      `${this.api}/login`,
-      { emailOrNick, password }
-    ).pipe(
-      tap(res => {
-        localStorage.setItem(this.TOKEN_KEY, res.token);
-        localStorage.setItem(this.USER_KEY, JSON.stringify(res.user));
-        this.currentUserSubject.next(res.user);
-      })
-    );
-  }
+  
+// 🔐 LOGIN REAL CON BACKEND
+login(identifier: string, password: string) {
+  return this.http.post<AuthResponse>(
+    `${this.api}/login`,
+    {
+      identifier,
+      password
+    }
+  ).pipe(
+    tap(res => {
+      localStorage.setItem(this.TOKEN_KEY, res.token);
+      localStorage.setItem(this.USER_KEY, JSON.stringify(res.user));
+      this.currentUserSubject.next(res.user);
+    })
+  );
+}
 
    // 📝 REGISTER REAL
   register(user: User & { password: string }) {
