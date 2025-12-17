@@ -84,11 +84,11 @@ login(identifier: string, password: string) {
         localStorage.setItem(this.TOKEN_KEY, res.token);
 
         // El backend puede devolver la data del usuario de diferentes formas
-        const userData: User = res.user || {
-          fullName: res.fullName || '',
-          nickName: res.nickName || res.nickname || '',
-          email: res.email || '',
-          createdAt: res.createdAt
+        const userData: User =  {
+          fullName: user.fullName,
+          nickName: user.nickName,
+          email: user.email,
+          createdAt: new Date().toISOString()
         };
 
         localStorage.setItem(this.USER_KEY, JSON.stringify(userData));
