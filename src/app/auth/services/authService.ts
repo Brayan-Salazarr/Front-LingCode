@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject} from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 
 export interface User {
   name: string;
@@ -9,12 +10,23 @@ export interface User {
   createdAt: string;
 }
 
+export const environment = {
+  production: false,
+  apiUrl: 'https://li-ms-security.onrender.com'
+};
+
+interface AuthResponse {
+  token: string;
+  user: User;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
 
   private USER_KEY = 'currentUser';
+  private TOKEN_KEY = 'token';
 
   private currentUserSubject = new BehaviorSubject<User | null>(
     JSON.parse(localStorage.getItem(this.USER_KEY) || 'null')
@@ -22,49 +34,55 @@ export class AuthService {
 
   currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor() {}
+  private api = environment.apiUrl + '/auth';
 
-  register(user: User & { password: string }): boolean {
-    const userToSave: User = {
-      name: user.name,
-      nickName: user.nickName,
-      email: user.email,
-      avatar: user.avatar || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png',
-      createdAt: new Date().toISOString()
-    };
+  constructor(private http: HttpClient) { }
 
-   localStorage.setItem('currentUser', JSON.stringify(userToSave));
-  this.currentUserSubject.next(userToSave);
-
-    return true;
+ // 🔐 LOGIN REAL CON BACKEND
+  login(emailOrNick: string, password: string) {
+    return this.http.post<AuthResponse>(
+      `${this.api}/login`,
+      { emailOrNick, password }
+    ).pipe(
+      tap(res => {
+        localStorage.setItem(this.TOKEN_KEY, res.token);
+        localStorage.setItem(this.USER_KEY, JSON.stringify(res.user));
+        this.currentUserSubject.next(res.user);
+      })
+    );
   }
 
-  login(email: string, nickName: string, password: string): boolean {
-    const storedUser = JSON.parse(localStorage.getItem(this.USER_KEY) || 'null');
-
-    if (!storedUser) return false;
-
-    if (
-      storedUser.email === email ||
-      storedUser.nickName === nickName
-    ) {
-      this.currentUserSubject.next(storedUser);
-      return true;
-    }
-
-    return false;
+   // 📝 REGISTER REAL
+  register(user: User & { password: string }) {
+    return this.http.post<AuthResponse>(
+      `${this.api}/register`,
+      user
+    ).pipe(
+      tap(res => {
+        localStorage.setItem(this.TOKEN_KEY, res.token);
+        localStorage.setItem(this.USER_KEY, JSON.stringify(res.user));
+        this.currentUserSubject.next(res.user);
+      })
+    );
   }
+
+
 
   logout(): void {
     localStorage.removeItem(this.USER_KEY);
+    localStorage.removeItem(this.TOKEN_KEY);
     this.currentUserSubject.next(null);
+  }
+
+ getToken(): string | null {
+    return localStorage.getItem(this.TOKEN_KEY);
   }
 
   getCurrentUser(): User | null {
     return this.currentUserSubject.value;
   }
 
-   isAuthenticated(): boolean {
+  isAuthenticated(): boolean {
     return !!this.currentUserSubject.value;
   }
 }
