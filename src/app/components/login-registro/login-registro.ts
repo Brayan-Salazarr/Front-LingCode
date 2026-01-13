@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-login-registro',
   standalone: true,
-  imports: [CommonModule, RouterModule,FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './login-registro.html',
   styleUrl: './login-registro.css',
 })
@@ -15,8 +15,7 @@ export class LoginRegistro {
   showLogin: boolean = false;
 
   loginData = {
-    email: '',
-    nickName: '',
+    identifier: '',
     password: ''
   };
 
@@ -24,8 +23,8 @@ export class LoginRegistro {
     fullName: '',
     nickName: '',
     email: '',
-    password:'',
-    confirmPassword:''
+    password: '',
+    confirmPassword: ''
   };
 
   constructor(
@@ -34,13 +33,22 @@ export class LoginRegistro {
     private authService: AuthService
   ) { }
 
-    login() {
+  login() {
     const success = this.authService.login(
-      this.loginData.email,
-      this.loginData.nickName,
+      this.loginData.identifier,
       this.loginData.password
-    );
+    ).subscribe({
+      next:(res)=>{
+        this.router.navigate(['/registered-home']);
+      },
+      error: (err) => {
+        console.error('Error login:', err);
+        alert('Error en el login: ' + (err.error?.message || 'Credenciales incorrectas'));
+      }
+    });
+  }
 
+  /*
     if (success) {
       this.router.navigate(['/registered-home']);
     } else {
@@ -48,21 +56,32 @@ export class LoginRegistro {
     }
   }
 
-
-   register() {
+*/
+  register() {
     if (this.registerData.password !== this.registerData.confirmPassword) {
       alert('Las contraseñas no coinciden');
       return;
     }
 
-    const success = this.authService.register({
-      name: this.registerData.fullName,
-      nickName: this.registerData.nickName,
-      email: this.registerData.email,
-      password: this.registerData.password,
-     createdAt: ''
-    });
-    
+    const payload = {
+      full_name: this.registerData.fullName.trim(),
+      nickname: this.registerData.nickName.trim(),
+      email: this.registerData.email.trim(),
+      password: this.registerData.password
+    };
+
+    const success = this.authService.register(payload as any).subscribe({
+    next: () => {
+      alert('Registro exitoso. Por favor inicia sesión.');
+      this.router.navigate(['/login-registro'], { queryParams: { view: 'login' } });
+    },
+    error: err => {
+      console.error('Error registro:', err);
+      alert('Error en el registro: ' + (err.error?.message || 'Error desconocido'));
+    }
+  });
+};
+/*
     if (success) {
       alert('Registro exitoso');
       this.showLogin = true;
@@ -70,7 +89,7 @@ export class LoginRegistro {
       alert('El usuario ya existe');
     }
   }
-
+*/
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -92,7 +111,7 @@ export class LoginRegistro {
     const goingToLogin = !this.showLogin;
 
     this.showLogin = !this.showLogin;
-    
+
     if (goingToLogin) {
 
       overlay?.classList.add("slide-right");

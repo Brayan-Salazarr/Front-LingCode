@@ -6,14 +6,14 @@
 
     <div class="information">
 
-      <h1 [innerHTML]="title"></h1>
+      <h1 [innerHTML]="title" *ngIf="showTitle"></h1>
       <div class="line" *ngIf="showLine"></div>
 
       <!-- INFO DEL USUARIO -->
       <div class="user-header" *ngIf="showUserInfo && user">
 
         <div class="field">
-          
+
             <img class="avatar" [src]="user?.avatar || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png'" />
             <img id="imgCirclee" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png"
               alt="">
@@ -26,7 +26,7 @@
 
             <div class="space">
               <img class="img" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760082/image-Photoroom_4_1_veuvti.png" alt="">
-              <p class="name">{{ user?.name }}</p>
+              <p class="name">{{ user?.fullName }}</p>
             </div>
             
             
@@ -35,7 +35,7 @@
               <p class="email">{{ user?.email }}</p>
             </div>
 
-            <div class="space">
+            <div class="space" *ngIf="user?.createdAt">
               <img class="img" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760447/image-Photoroom_2_2_nzwcic.png" alt="">
                <p class="date">
               Registrado: {{ user?.createdAt | date: 'dd/MM/yyyy' }}

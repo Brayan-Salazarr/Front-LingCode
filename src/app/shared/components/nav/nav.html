@@ -19,7 +19,7 @@
 
     <!-- LOGUEADO -->
     <div class="user-info" *ngIf="user as u">
-        <img class="avatar" [src]="user.avatar" />
+        <img class="avatar" [src]="user.avatar || 'https://images-ext-1.discordapp.net/external/6YkuxX8P1o52p98xUBb42PdwR5XT0l-ZURiu6mbU-Qg/https/res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png?format=webp&quality=lossless&width=930&height=930' " />
 
         <div class="separator">
             <span>{{ u.nickName }}</span>
