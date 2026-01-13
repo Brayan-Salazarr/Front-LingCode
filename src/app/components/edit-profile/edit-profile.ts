@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { Nav } from '../shared/components/nav/nav';
-import { Footer } from '../shared/components/footer/footer';
+import { Nav } from '../../shared/components/nav/nav';
+import { Footer } from '../../shared/components/footer/footer';
 import { RouterModule } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 

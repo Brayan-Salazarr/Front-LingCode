@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { LoginRegistro } from '../../../login-registro/login-registro';
+import { LoginRegistro } from '../../../components/login-registro/login-registro'; 
 
 @Component({
   selector: 'app-button',

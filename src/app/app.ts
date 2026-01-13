@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';import { ChatBot } from './shared/components/chat-bot/chat-bot';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';import { ChatBot } from './shared/components/chat-bot/chat-bot';
+import { filter } from 'rxjs';
 ;
 
 
@@ -11,5 +12,5 @@ import { RouterOutlet } from '@angular/router';import { ChatBot } from './shared
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('LingCodeF');
+  protected readonly title = signal('LingCodeF');  
 }
