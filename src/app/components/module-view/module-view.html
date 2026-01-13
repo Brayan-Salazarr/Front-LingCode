@@ -1,38 +1,58 @@
 <app-nav></app-nav>
-<app-header [showUserInfo]="true"></app-header>
-<div class="roadmap-container">
-  <div
-    *ngFor="let mod of modules; let i = index; let last = last"
-    class="module-row"
-    [class.reverse]="i % 2 !== 0"
-  >
-    
-    <!-- CARD -->
-    <div class="module-card">
-      <img [src]="mod.img" class="module-icon" />
-      <h3>{{ mod.title }}</h3>
+<app-header title="Módulos" [showLine]="true" [classSpace]="'space'" [showUserInfo]="true" ></app-header>
 
-      <div class="progress-info">
-        <span>Progreso</span>
-        <div class="bar">
-          <div class="fill" [style.width.%]="mod.progress"></div>
+<h1 class="mainTitle">Módulos</h1>
+
+<section class="modulesContainer">
+  <div class="moduleRow" *ngFor="let module of modules; let i = index; let isLast = last; let isFirst = first" [class.left]="i % 2 === 0"
+  [class.right]="i % 2 !== 0"
+  [class.last-module]="isLast"
+   [class.first-module]="isFirst">
+
+    <!-- Tarjeta -->
+    <div class="moduleCard">
+
+      <div class="cardBg" [style.background-image]="'url(' + module.bgImage + ')'"></div>
+
+      <div class="cardContent">
+        <img [src]="module.image" [class]="module.size">
+        <h3>{{ module.title }}</h3>
+
+        <p class="textProgres">{{module.text}}</p>
+        <div class="progressBar">
+          <div class="progress" [style.width.%]="module.progress"></div>
         </div>
+
+        <button>Practicar</button>
       </div>
 
-      <button class="btn-action">Practicar</button>
     </div>
 
-    <!-- CONECTORES -->
-    <div class="connector-group">
-      <div class="horizontal-path">
-        <span class="line"></span>
-        <span class="circle active">{{ i * 2 + 1 }}</span>
-        <span class="line"></span>
-        <span class="circle gray">{{ i * 2 + 2 }}</span>
+    <!-- Nodos -->
+    <div class="steps" [ngClass]="i % 2 === 0 ? 'normal' : 'reverse'">
+
+      <!-- Camino horizontal -->
+      <div class="path-horizontal">
+        <div class="line-step h"></div>
+        <div class="line-step h"></div>
+
+        <span class="step">1</span>
+        
+        <div class="line-step h"></div>
+        <div class="line-step h"></div>
+
+        <span class="step">2</span>
       </div>
 
-      <span class="vertical-line" *ngIf="!last"></span>
+      <!-- Camino vertical -->
+      <div class="path-vertical">
+        <div class="line-step v"></div>
+        <div class="line-step v"></div>
+      </div>
+
     </div>
 
   </div>
-</div>
+</section>
+
+<app-footer></app-footer>

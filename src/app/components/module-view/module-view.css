@@ -1,103 +1,211 @@
-.roadmap-container {
+.modulesContainer {
   display: flex;
   flex-direction: column;
-  gap: 120px;
-  padding: 60px 80px;
+  height: 170vh;
 }
 
-.module-row {
+.moduleRow {
   display: flex;
+  justify-content: space-around;
   align-items: center;
+}
+
+.moduleRow.left {
+  flex-direction: row;
+  gap: 10px;
   justify-content: center;
 }
 
-.module-row.reverse {
+.moduleRow.right {
   flex-direction: row-reverse;
 }
 
-.module-card {
-  width: 340px;
-  background: #000;
-  border: 2px solid #00d4ff;
-  border-radius: 22px;
-  padding: 24px;
-  text-align: center;
-  color: white;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+.moduleRow.right .path-horizontal {
+  padding: 0 0 0 23px;
+  margin-right: -600px; /* ajusta este valor */
 }
 
-.module-icon {
-  width: 150px;
-  margin-bottom: 15px;
-}
-
-.progress-info {
-  margin: 15px 0;
-}
-
-.bar {
-  width: 100%;
-  height: 8px;
-  background: #333;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.fill {
-  height: 100%;
-  background: linear-gradient(90deg, #00d4ff, #0084ff);
-}
-
-.connector-group {
-  position: relative;
-  width: 360px;
+.steps {
   display: flex;
-  justify-content: center;
-}
-
-.horizontal-path {
-  display: flex;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  gap: 20px;
   align-items: center;
-  width: 100%;
+  margin: 50px 0 0 0;
+  position: relative;
+  margin-left: 20px;
 }
 
-.line {
-  flex: 1;
-  border-top: 6px dashed #0084ff;
-}
-
-.circle {
-  width: 58px;
-  height: 58px;
+.step {
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
+  background: #e0e0e0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
 }
 
-.circle.active {
-  background: #0084ff;
-  color: white;
-  box-shadow: 0 0 12px rgba(0, 132, 255, 0.6);
+.moduleCard {
+  position: relative;
+  width: 30vw;
+  height: 50vh;
+  border: 3px solid transparent;
+  border-radius: 12px;
+  background:
+    linear-gradient(#000, #000) padding-box,
+    linear-gradient(90deg, #EA02FF, #00D9FF) border-box;
 }
 
-.circle.gray {
-  background: #e0e0e0;
-  color: #666;
-}
-
-.vertical-line {
+.cardBg {
   position: absolute;
-  top: 58px;
-  height: 120px;
-  border-left: 6px dashed #0084ff;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
 }
 
-.module-row:not(.reverse) .vertical-line {
-  right: 29px;
+.cardContent {
+  position: relative;
+  justify-content: space-evenly;
+  z-index: 1;
+  height: 85%;
+  padding: 10px 20px 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
 }
 
-.module-row.reverse .vertical-line {
-  left: 29px;
+.mainTitle {
+  text-align: center;
+  font-family: "Anton SC", sans-serif;
+  font-size: clamp(38px, 2vw, 50px);
+  background-image: linear-gradient(to bottom,
+      #A9A9A9 10%,
+      #282828 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  width: 100%;
+  margin: 0 0 80px 0;
+}
+
+h3 {
+  font-family: 'Poppins', sans-serif;
+  margin: 0 0 0 0;
+  font-size: 15px;
+}
+
+img {
+  width: 15vw;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  height: 6vh;
+  width: 7vw;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#000000, #000000) padding-box,
+    linear-gradient(90deg, #EA02FF, #00D9FF) border-box;
+}
+
+button:hover {
+  color: black;
+  background:
+    linear-gradient(#04C9FF, #04C9FF) padding-box,
+    linear-gradient(90deg, #EA02FF, #00D9FF) border-box;
+  border: none;
+}
+
+.size-img {
+  width: 170px;
+}
+
+.bgImage {
+  width: 5vw;
+}
+
+.textProgres {
+  font-family: 'Poppins', sans-serif;
+  margin: 0 220px 0 0;
+}
+
+.progressBar {
+  width: 70%;
+  height: 15px;
+  background-color: #ccc;
+  border-radius: 8px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #04C9FF;
+  border-radius: 8px;
+}
+
+.space-steps {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.path-horizontal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.line-step.h {
+  width: 40px;
+  height: 18px;
+  background-color: #0066FF;
+}
+
+.path-vertical {
+  position: absolute;
+  left: calc(69% + 70px);
+  top: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+}
+
+.line-step.v {
+  width: 18px;
+  height: 40px;
+  background-color: #0066FF;
+
+}
+
+.steps.normal .path-horizontal {
+  flex-direction: row;
+}
+
+.steps.normal .path-vertical {
+  left: 380px; /* debajo del segundo círculo */
+}
+
+/* ---------- MODO INVERTIDO (der → izq) ---------- */
+.steps.reverse .path-horizontal {
+  flex-direction: row-reverse;
+}
+
+.steps.reverse .path-vertical {
+  right: 170px; /* debajo del segundo círculo */
+}
+
+.last-module .path-vertical {
+  display: none;
+}
+
+.first-module .path-horizontal .step:first-of-type {
+  background-color: #008CFF;
+  color: #000;
 }
