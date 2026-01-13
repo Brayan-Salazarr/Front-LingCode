@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Nav } from '../shared/components/nav/nav';
-import { Header } from '../shared/components/header/header';
-import { Footer } from '../shared/components/footer/footer';
+import { Nav } from '../../shared/components/nav/nav';
+import { Header } from '../../shared/components/header/header';
+import { Footer } from '../../shared/components/footer/footer';
 import { CommonModule } from '@angular/common';
 
 interface Step {

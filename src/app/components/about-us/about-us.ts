@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Nav } from '../shared/components/nav/nav';
-import { Footer } from '../shared/components/footer/footer';
-import { Header } from '../shared/components/header/header';
+import { Nav } from '../../shared/components/nav/nav';
+import { Footer } from '../../shared/components/footer/footer';
+import { Header } from '../../shared/components/header/header';
 import { NgClass, NgFor } from '@angular/common';
 
 @Component({

@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 export class ChatBot {
 isOpen = false;
 
+
 newMessage = '';
   // Historial de mensajes
   messages = [

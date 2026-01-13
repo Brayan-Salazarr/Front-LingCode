@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
-import { NewPassword } from './new-password/new-password';
-import { LoginRegistro } from './login-registro/login-registro';
-import { UnregisteredHome } from './unregistered-home/unregistered-home';
-import { Mission } from './mission/mission';
-import { TeachingMethod } from './teaching-method/teaching-method';
-import { NormsPolitics } from './norms-politics/norms-politics';
-import { RegisteredHome } from './registered-home/registered-home';
-import { EditProfile } from './edit-profile/edit-profile';
-import { AboutUs } from './about-us/about-us';
-import { HelpSupport } from './help-support/help-support';
-import { PaymentMethods } from './payment-methods/payment-methods';
-import { ModuleView } from './module-view/module-view';
+import { NewPassword } from './components/new-password/new-password'; 
+import { LoginRegistro } from './components/login-registro/login-registro'; 
+import { UnregisteredHome } from './components/unregistered-home/unregistered-home';
+import { Mission } from './components/mission/mission';
+import { TeachingMethod } from './components/teaching-method/teaching-method'; 
+import { NormsPolitics } from './components/norms-politics/norms-politics'; 
+import { RegisteredHome } from './components/registered-home/registered-home'; 
+import { EditProfile } from './components/edit-profile/edit-profile'; 
+import { AboutUs } from './components/about-us/about-us'; 
+import { HelpSupport } from './components/help-support/help-support'; 
+import { PaymentMethods } from './components/payment-methods/payment-methods'; 
+import { ModuleView } from './components/module-view/module-view'; 
 
 export const routes: Routes = [
     { path: '', component: UnregisteredHome},
