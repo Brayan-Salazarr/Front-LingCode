@@ -33,7 +33,7 @@ export class LoginRegistro {
     private authService: AuthService
   ) { }
 
-  login() {
+  /*login() {
     const success = this.authService.login(
       this.loginData.identifier,
       this.loginData.password
@@ -46,7 +46,22 @@ export class LoginRegistro {
         alert('Error en el login: ' + (err.error?.message || 'Credenciales incorrectas'));
       }
     });
-  }
+  }*/
+
+    login() {
+  this.authService.login(
+    this.loginData.identifier,
+    this.loginData.password
+  ).subscribe({
+    next: () => {
+      this.router.navigate(['/registered-home']);
+    },
+    error: err => {
+      alert(err.message || 'Error en el login');
+    }
+  });
+}
+
 
   /*
     if (success) {
@@ -57,7 +72,7 @@ export class LoginRegistro {
   }
 
 */
-  register() {
+  /*register() {
     if (this.registerData.password !== this.registerData.confirmPassword) {
       alert('Las contraseñas no coinciden');
       return;
@@ -80,7 +95,7 @@ export class LoginRegistro {
       alert('Error en el registro: ' + (err.error?.message || 'Error desconocido'));
     }
   });
-};
+};*/
 /*
     if (success) {
       alert('Registro exitoso');
@@ -90,6 +105,28 @@ export class LoginRegistro {
     }
   }
 */
+
+register() {
+  if (this.registerData.password !== this.registerData.confirmPassword) {
+    alert('Las contraseñas no coinciden');
+    return;
+  }
+
+  this.authService.register({
+    fullName: this.registerData.fullName.trim(),
+    nickName: this.registerData.nickName.trim(),
+    email: this.registerData.email.trim(),
+    password: this.registerData.password
+  } as any).subscribe({
+    next: () => {
+      alert('Registro exitoso');
+      this.showLogin = true;
+    },
+    error: err => {
+      alert(err.message || 'Error en el registro');
+    }
+  });
+}
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

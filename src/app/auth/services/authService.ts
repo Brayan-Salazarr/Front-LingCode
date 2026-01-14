@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, tap, throwError } from 'rxjs';
 
 export interface User {
   fullName: string;
@@ -12,7 +12,8 @@ export interface User {
 
 export const environment = {
   production: false,
-  apiUrl: 'https://li-ms-security.onrender.com'
+  apiUrl: 'https://li-ms-security.onrender.com',
+  useLocalAuth: true
 };
 
 interface AuthResponse {
@@ -30,7 +31,7 @@ interface AuthResponse {
 })
 export class AuthService {
   
-  loginData = {
+ /* loginData = {
   identifier: '',
   password: ''
 };
@@ -153,5 +154,74 @@ login(identifier: string, password: string) {
 
   isAuthenticated(): boolean {
     return !!this.currentUserSubject.value;
+  }*/
+
+     private USERS_KEY = 'users';
+  private USER_KEY = 'currentUser';
+  private TOKEN_KEY = 'token';
+
+  private currentUserSubject = new BehaviorSubject<User | null>(
+    JSON.parse(localStorage.getItem(this.USER_KEY) || 'null')
+  );
+
+  currentUser$ = this.currentUserSubject.asObservable();
+
+  // 🔐 LOGIN LOCAL
+  login(identifier: string, password: string): Observable<boolean> {
+    const users: any[] = JSON.parse(localStorage.getItem(this.USERS_KEY) || '[]');
+
+    const user = users.find(
+      u =>
+        (u.email === identifier || u.nickName === identifier) &&
+        u.password === password
+    );
+
+    if (!user) {
+      return throwError(() => new Error('Credenciales incorrectas'));
+    }
+
+    localStorage.setItem(this.TOKEN_KEY, 'fake-jwt-token');
+
+    const { password: _, ...safeUser } = user;
+    localStorage.setItem(this.USER_KEY, JSON.stringify(safeUser));
+    this.currentUserSubject.next(safeUser);
+
+    return of(true);
+  }
+
+  // 📝 REGISTER LOCAL
+  register(user: User & { password: string }): Observable<boolean> {
+    const users: any[] = JSON.parse(localStorage.getItem(this.USERS_KEY) || '[]');
+
+    const exists = users.some(
+      u => u.email === user.email || u.nickName === user.nickName
+    );
+
+    if (exists) {
+      return throwError(() => new Error('El usuario ya existe'));
+    }
+
+    users.push({
+      ...user,
+      createdAt: new Date().toISOString()
+    });
+
+    localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
+
+    return of(true);
+  }
+
+  logout(): void {
+    localStorage.removeItem(this.USER_KEY);
+    localStorage.removeItem(this.TOKEN_KEY);
+    this.currentUserSubject.next(null);
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.currentUserSubject.value;
+  }
+
+  getCurrentUser(): User | null {
+    return this.currentUserSubject.value;
   }
 }
