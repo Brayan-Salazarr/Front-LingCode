@@ -3,6 +3,7 @@ import { Nav } from '../../shared/components/nav/nav';
 import { Footer } from '../../shared/components/footer/footer';
 import { RouterModule } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
+import { CarouselAvatar } from '../../shared/components/carousel-avatar/carousel-avatar';
 
 interface ImagenItem {
   nombre: string;
@@ -12,7 +13,7 @@ interface ImagenItem {
 
 @Component({
   selector: 'app-edit-profile',
-  imports: [RouterModule, Nav, Footer, NgClass, NgIf],
+  imports: [RouterModule, Nav, Footer, NgClass, NgIf,CarouselAvatar],
   templateUrl: './edit-profile.html',
   styleUrl: './edit-profile.css',
 })
