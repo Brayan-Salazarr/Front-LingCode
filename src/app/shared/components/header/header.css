@@ -285,11 +285,14 @@ h1 {
     }
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1366px) {
    
+    header {
+        top: -92vh;
+    }
 
     #background {
-        top: -83vh;
+        top: -79vh;
     }
 
     h1 {
@@ -303,5 +306,10 @@ h1 {
     .line {
         height: 15px;
         width: 230px;
+    }
+
+     #imgCircle {
+        top: 85vh;
+        left: 84vw;
     }
 }
