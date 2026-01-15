@@ -6,28 +6,9 @@
         <div id="info">
             <h2 class="colorTittle">Elige un avatar</h2>
             <div class="line"></div>
-            <div class="carousel-wrapper">
+            
+            <app-carousel-avatar></app-carousel-avatar>
 
-                <button class="nav left" (click)="cambiarImagenAtras()">❮</button>
-                <div class="carousel">
-
-                    @for (i of [0, 1, 2]; track i) {
-                    @let realIndex = (currentIndex() + i) % items.length;
-
-                    @let item = items[realIndex];
-
-                    <div class="card" [class.active]="realIndex === currentIndex()"
-                        [style.transform]="getTransformForGroup(i)">
-
-                        <img [ngClass]="item.clase" [src]="item.ruta" [alt]="item.nombre" />
-
-                    </div>
-                    }
-
-                </div>
-
-                <button class="nav right" (click)="cambiarImagen()">❯</button>
-            </div>
             <h2 class="colorTittle">O elige tu propia foto</h2>
             <div class="line" id="lineId"></div>
             <button id="UpdatePhoto">Subir imagen</button>

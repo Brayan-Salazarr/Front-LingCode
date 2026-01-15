@@ -8,7 +8,7 @@
 
     @let item = items[realIndex];
 
-    <div class="card" [class.active]="realIndex === currentIndex()" [style.transform]="getTransformForGroup(i)">
+    <div class="card" [class.active]="realIndex === currentIndex()">
 
       <img [ngClass]="item.clase" [src]="item.ruta" [alt]="item.nombre" (click)="toggleAuth()" />
 
