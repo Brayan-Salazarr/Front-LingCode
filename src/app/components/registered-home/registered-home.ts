@@ -5,6 +5,7 @@ import { Footer } from '../../shared/components/footer/footer';
 import { AuthService, User } from '../../auth/services/authService';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Subscriptions } from '../../shared/components/subscriptions/subscriptions';
 
 interface Practica {
   modulo: string;
@@ -22,7 +23,7 @@ interface Logro {
 
 @Component({
   selector: 'app-registered-home',
-  imports: [Nav, Header, Footer, RouterModule, CommonModule],
+  imports: [Nav, Header, Footer, RouterModule, CommonModule, Subscriptions],
   templateUrl: './registered-home.html',
   styleUrl: './registered-home.css',
 })
