@@ -9,8 +9,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 70vw;
-  height: 70vh;
 }
 
 .card {
@@ -19,7 +17,6 @@
 }
 
 .img {
-  width: 20vw;
   cursor: pointer;
 }
 
