@@ -3,7 +3,6 @@
 }
 
 .supportContainer {
-    height: 200vh;
     display: flex;
     flex-direction: column;
 }
@@ -42,7 +41,7 @@
 .questionBox {
     border-top: 1px solid #00000027;
     padding: 18px 0;
-    cursor: pointer;
+    
 }
 
 /* ===== CABECERA DE PREGUNTA ===== */
@@ -50,6 +49,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 .questionHeader p {
@@ -96,7 +96,5 @@
 }
 
 @media (max-width: 1366px) {
-    .supportContainer {
-    height: 245vh
-}
+    
 }
