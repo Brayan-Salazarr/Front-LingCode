@@ -180,10 +180,6 @@ span {
 }
 
 @media (max-width: 480px) {
-    .component{
-        width: 95%;
-    }
-
     #img{
         width: 90px;
     }
