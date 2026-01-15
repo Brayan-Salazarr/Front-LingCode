@@ -19,6 +19,8 @@ export class Header implements OnInit, OnDestroy {
   @Input() showDecorativeCircle = false;
   @Input() showLine = false;
 
+  @Input() hideTitleWhenLogged = false;
+
     user: User | null = null;
     private userSubscription?: Subscription;
 

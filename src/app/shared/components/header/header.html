@@ -6,7 +6,7 @@
 
     <div class="information">
 
-      <h1 [innerHTML]="title" *ngIf="showTitle"></h1>
+      <h1 [innerHTML]="title"  *ngIf="showTitle && !(hideTitleWhenLogged && user)"></h1>
       <div class="line" *ngIf="showLine"></div>
 
       <!-- INFO DEL USUARIO -->
