@@ -1,7 +1,8 @@
 .modulesContainer {
   display: flex;
   flex-direction: column;
-  height: 170vh;
+  justify-content: center;
+  height: 180vh;
 }
 
 .moduleRow {
