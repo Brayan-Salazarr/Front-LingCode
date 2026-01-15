@@ -209,18 +209,18 @@ h1 {
     transform: rotate(90deg);
 }
 
-.avatar{
+.avatar {
     width: 310px;
 }
 
-.user-header{
+.user-header {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     width: 65vw;
 }
 
-.user-data{
+.user-data {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -229,31 +229,31 @@ h1 {
     color: white;
 }
 
-.nickname{
+.nickname {
     font-size: 55px;
     font-family: "Anton SC", sans-serif;
 }
 
-#line{
+#line {
     height: 10px;
     margin: 0 0 0 150px;
 }
 
-#imgCirclee{
-  position: absolute;
-  width: 550px;
-  margin-top: -15.50vh;
-  margin-left: -38.20vw;
-  z-index: -1;
-  opacity: 0.9;
+#imgCirclee {
+    position: absolute;
+    width: 550px;
+    margin-top: -15.50vh;
+    margin-left: -38.20vw;
+    z-index: -1;
+    opacity: 0.9;
 }
 
-.field{
+.field {
     display: flex;
     justify-content: space-around;
 }
 
-.button-edit{
+.button-edit {
     width: 150px;
     height: 40px;
     margin: 100px 0 0 150px;
@@ -265,12 +265,12 @@ h1 {
     border: none;
 }
 
-.space{
+.space {
     display: flex;
     align-items: center;
 }
 
-.img{
+.img {
     width: 30px;
     margin: 0 30px 0 0;
 }
@@ -280,19 +280,19 @@ h1 {
         font-size: 54px;
     }
 
-    .space h1{
+    .space h1 {
         margin: 0 0 0 150px;
     }
 }
 
 @media (max-width: 1366px) {
-   
+
     header {
         top: -92vh;
     }
 
     #background {
-        top: -79vh;
+        top: -77vh;
     }
 
     h1 {
@@ -308,12 +308,16 @@ h1 {
         width: 230px;
     }
 
-     #imgCircle {
+    #imgCircle {
         top: 85vh;
         left: 84vw;
     }
 
-       .hexagon3 {
+    .hexagon1 {
+        top: 25vh;
+    }
+
+    .hexagon3 {
         top: 85vh;
         left: 6vw;
     }
@@ -324,5 +328,243 @@ h1 {
 
     .hexagon5 {
         top: 82vh;
+    }
+
+    .hexagon6 {
+        top: 30vh;
+        left: 67vw;
+    }
+}
+
+@media (max-width: 1279px) {
+
+
+    .hexagon3 {
+        top: 82vh;
+    }
+
+    .hexagon4 {
+        top: 88vh;
+        left: 150px;
+    }
+
+    .hexagon5 {
+        top: 78vh;
+    }
+
+}
+
+@media (max-width: 920px) {
+
+    header {
+        height: 900px;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    #background {
+        top: -545px;
+    }
+
+    .information {
+        height: 210px;
+    }
+
+    .line {
+        height: 12px;
+    }
+
+    .hexagon1 {
+        width: 30px;
+        height: 40px;
+        top: 135px;
+    }
+
+    .hexagon2 {
+        height: 25px;
+    }
+
+    .hexagon3 {
+        height: 35px;
+        top: 455px;
+        left: 80px;
+    }
+
+    .hexagon4 {
+        height: 29px;
+        top: 470px;
+    }
+
+    .hexagon5 {
+        height: 35px;
+        top: 420px;
+        left: 120px;
+    }
+
+    .hexagon6 {
+        top: 150px;
+        width: 35px;
+        height: 40px;
+    }
+
+    .hexagon7 {
+        height: 35px;
+    }
+
+    .hexagon8 {
+        height: 35px;
+    }
+
+    #imgCircle {
+        top: 510px;
+        left: 75vw;
+        width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    header {
+        height: 850px;
+    }
+
+    #background {
+        top: -594px;
+        left: -9vw;
+    }
+
+    h1 {
+        font-size: 30px
+    }
+
+    .information {
+        height: 170px;
+    }
+
+    .line {
+        height: 10px;
+    }
+
+    #imgCircle {
+        top: 510px;
+        left: 75vw;
+        width: 260px;
+    }
+
+    .hexagon3 {
+        height: 30px;
+        top: 390px;
+        left: 80px;
+    }
+
+    .hexagon4 {
+        height: 20px;
+        top: 420px;
+    }
+
+    .hexagon5 {
+        height: 30px;
+        top: 370px;
+    }
+
+    .hexagon6 {
+        width: 25px;
+        height: 35px;
+    }
+
+    .hexagon8 {
+        height: 30px;
+        top: 340px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    header {
+        left: -15vw;
+        top: -95vh;
+        transform: skewY(-10deg);
+    }
+
+    h1 {
+        width: 320px;
+        font-size: 21px;
+    }
+
+     .line {
+        height: 9px;
+        width: 180px;
+    }
+
+    #imgCircle {
+        display: none;
+    }
+
+    .information {
+        width: 400px;
+        height: 130px;
+        top: 105vh;
+        left: 25vw;
+        transform: skewY(10deg);
+    }
+
+    #background {
+    left: -18vw;
+    top: -98vh;
+    width: 750px;
+    transform: skewY(-12deg);
+    z-index: 4;
+    }
+
+    .hexagon1{
+        width: 30px;
+        height: 32px;
+    }
+
+    .hexagon2 {
+        height: 20px;
+        width: 20px;
+    }
+
+    .hexagon3 {
+        height: 30px;
+        width: 25px;
+        top: 340px;
+        left: 50px;
+    }
+
+    .hexagon4 {
+        height: 20px;
+        width: 20px;
+        top: 350px;
+        left: 120px;
+    }
+
+    .hexagon5 {
+        width: 20px;
+        height: 25px;
+        top: 320px;
+        left: 90px;
+    }
+
+    .hexagon6 {
+        width: 30px;
+        height: 35px;
+        left: 400px;
+    }
+
+    .hexagon7 {
+        height: 20px;
+        width: 20px;
+        top: 300px;
+        left: 370px;
+    }
+
+    .hexagon8 {
+        height: 25px;
+        width: 25px;
+        top: 320px;
     }
 }
