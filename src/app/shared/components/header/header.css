@@ -285,14 +285,11 @@ h1 {
     }
 }
 
-@media (max-width: 1366px) {
-    header {
-        top: -92vh;
-    }
+@media (max-width: 1280px) {
+   
 
     #background {
-        top: -77vh;
-        transform: skewY(-17deg);
+        top: -83vh;
     }
 
     h1 {
@@ -306,42 +303,5 @@ h1 {
     .line {
         height: 15px;
         width: 230px;
-    }
-
-    .hexagon1 {
-        top: 25vh;
-    }
-
-    .hexagon2 {
-        top: 33vh;
-    }
-
-    .hexagon3 {
-        top: 85vh;
-        left: 6vw;
-    }
-
-    .hexagon4 {
-        top: 91vh;
-    }
-
-    .hexagon5 {
-        top: 82vh;
-    }
-
-    .hexagon6 {
-        top: 30vh;
-        left: 67vw;
-        width: 2vw;
-        height: 5vh;
-    }
-
-    #imgCircle {
-        top: 85vh;
-        left: 84vw;
-    }
-
-    .space h1{
-        margin: 0 0 0 150px;
     }
 }
