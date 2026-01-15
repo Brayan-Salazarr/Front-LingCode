@@ -29,12 +29,12 @@
     z-index: 1;
     border-radius: 20px;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-sus:hover{
-    width: 410px;
-    height: 510px;
-    box-shadow: 1px 1px 10px 11px rgba(255, 191, 239, 0.43);
+   transform: scale(1.03);
+  box-shadow: 1px 1px 10px 11px rgba(255, 191, 239, 0.43)
 }
 
 .card-sus::before {
