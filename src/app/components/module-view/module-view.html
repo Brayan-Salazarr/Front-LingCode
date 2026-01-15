@@ -1,8 +1,6 @@
 <app-nav></app-nav>
 <app-header title="Módulos" [showTitle]="true" [showLine]="true" [classSpace]="'space'" [showUserInfo]="true" ></app-header>
 
-<h1 class="mainTitle">Módulos</h1>
-
 <section class="modulesContainer">
   <div class="moduleRow" *ngFor="let module of modules; let i = index; let isLast = last; let isFirst = first" [class.left]="i % 2 === 0"
   [class.right]="i % 2 !== 0"
