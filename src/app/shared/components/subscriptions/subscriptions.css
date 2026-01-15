@@ -154,3 +154,50 @@ li {
     background-image: linear-gradient(to right, #00D9FF, #BEB1F8);
     margin: 30px 0 0 0;
 }
+
+@media (max-width: 1279px) {
+
+.card-sus {
+    width: 350px;
+    height: 500px;
+}
+
+.information-field {
+    padding: 0 ;
+}
+
+li {
+    margin: 0 0 0 10px;
+}
+
+#img-avatar {
+    width: 350px;
+    margin: 0 20px 0 20px;
+}
+
+.box-card {
+    justify-content: center;
+}
+}
+
+@media (max-width: 1119px) {
+
+    #img-avatar {
+        display: none;
+    }
+
+    .box-card {
+    justify-content: space-evenly;
+}
+}
+
+@media (max-width: 715px) {
+
+    .content-subscriptions {
+    height: 100%;
+}
+    .box-card {
+    flex-direction: column;
+    height: 1200px;
+    }
+}
