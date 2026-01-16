@@ -285,6 +285,26 @@ h1 {
     }
 }
 
+@media (max-width: 1497px) {
+    header{
+        height: 1050px;
+    }
+
+    .user-header{
+        position: relative;
+        top: -20px;
+    }
+
+    #imgCirclee {
+    width: 530px;
+ }
+
+#background {
+        top: -546px;
+    }
+
+}
+
 @media (max-width: 1366px) {
 
     header {
