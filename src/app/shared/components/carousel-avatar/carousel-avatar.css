@@ -52,3 +52,45 @@
     width: 65vw;
   }
 }
+
+@media (max-width: 920px) {
+
+  .carousel-wrapper {
+    height: 350px;
+  }
+
+  .nav{
+    width: 35px;
+    height: 35px;
+  }
+
+  .nav.left {
+  padding:0 2px 3px 0 ;
+}
+
+.nav.right {
+  padding: 0 0 3px 2px;
+}
+}
+
+@media (max-width: 920px) {
+
+  .nav{
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .carousel-wrapper {
+    height: 220px;
+  }
+
+  .nav{
+    width: 25px;
+    height: 25px;
+    font-size: 17px;
+  }
+}

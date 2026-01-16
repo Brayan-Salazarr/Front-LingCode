@@ -14,7 +14,7 @@ interface ImagenItem {
   styleUrl: './carousel-avatar.css',
 })
 export class CarouselAvatar {
-
+  
   @Input() carouselWidth: string = '70vw';
   @Input() carouselHeight: string = '70vh';
 
