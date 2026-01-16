@@ -17,19 +17,30 @@
                     <div class="infoBox">
                         <div class="regisInfo">
                             <p class="text">Nombre completo</p>
-                            <p class="text">Apodo</p>
-                            <p class="text">Correo eléctronico</p>
-                            <p class="text">Contraseña</p>
-                            <p class="text">Confirmar contraseña</p>
+                            <input class="field" id="name" [(ngModel)]="registerData.fullName">
                         </div>
 
-                        <div class="recordFields">
-                            <input class="field" id="name" [(ngModel)]="registerData.fullName">
+                        <div class="regisInfo">
+                            <p class="text">Apodo</p>
                             <input class="field" id="nickname" [(ngModel)]="registerData.nickName">
-                            <input class="field" id="email" type="email" [(ngModel)]="registerData.email">
-                            <input class="field" id="password" type="password" [(ngModel)]="registerData.password">
-                            <input class="field" id="confirmPass" type="password" [(ngModel)]="registerData.confirmPassword">
                         </div>
+
+                        <div class="regisInfo">
+                            <p class="text">Correo eléctronico</p>
+                            <input class="field" id="email" type="email" [(ngModel)]="registerData.email">
+                        </div>
+
+                        <div class="regisInfo">
+                            <p class="text">Contraseña</p>
+                            <input class="field" id="password" type="password" [(ngModel)]="registerData.password">
+                        </div>
+
+                        <div class="regisInfo">
+                            <p class="text">Confirmar contraseña</p>
+                            <input class="field" id="confirmPass" type="password"
+                                [(ngModel)]="registerData.confirmPassword">
+                        </div>
+
                     </div>
 
                     <div class="spaceButton">
@@ -140,13 +151,20 @@
                     <div class="infoBox" id="infoLogin">
                         <div class="regisInfo" id="loginP">
                             <p class="text">Correo eléctronico o Apodo</p>
-                            <p class="text">Contraseña</p>
+                            <input id="email" type="text" [(ngModel)]="loginData.identifier">
                         </div>
 
-                        <div class="recordFields" id="loginFields">
-                            <input id="email" type="text" [(ngModel)]="loginData.identifier">
+                        <div class="regisInfo" id="loginP">
+                            <p class="text">Contraseña</p>
                             <input id="password" type="password" [(ngModel)]="loginData.password">
                         </div>
+
+
+
+                       <!-- <div class="recordFields" id="loginFields">
+
+
+                        </div> -->
                     </div>
 
                     <div class="spaceButton" id="spaceButtonLogin">

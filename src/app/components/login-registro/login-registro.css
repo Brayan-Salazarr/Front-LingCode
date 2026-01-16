@@ -114,6 +114,7 @@
 .infoBox {
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: space-evenly;
     font-family: "Poppins", sans-serif;
     font-weight: bold;
@@ -123,8 +124,9 @@
 
 .regisInfo {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 720px;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.74) 0%, #AFA9A9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -132,16 +134,15 @@
 
 .text {
     font-size: clamp(10px, 1.1vw, 30px);
-    margin: 2.2vh 0 2.2vh 0;
 }
 
-.recordFields {
+/*.recordFields {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 18vw;
     width: 50%;
-}
+}*/
 
 input {
     color: black;
@@ -153,6 +154,7 @@ input {
         linear-gradient(90deg, #AF02FF, #0051FF) border-box;
     padding: 0 0 0 5px;
     height: 4.5vh;
+    width: 443px;
 }
 
 .spaceButton {
@@ -227,6 +229,7 @@ input {
 }
 
 #checkbox {
+    width: 15px;
     margin: 0 0 0 0;
 }
 
@@ -322,8 +325,12 @@ a {
     width: 15vw;
 }
 
-#loginFields {
+/*#loginFields {
     height: 7vw;
+}*/
+
+#loginP{
+    width: 740px;
 }
 
 #spaceButtonLogin {
