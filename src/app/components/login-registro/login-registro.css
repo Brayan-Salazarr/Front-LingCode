@@ -323,7 +323,7 @@ a {
     height: 7vw;
 }*/
 
-#loginP{
+#loginP {
     width: 740px;
 }
 
@@ -488,6 +488,18 @@ h3 {
         margin: 0 0 0 0;
     }
 
+    .infoBox {
+        height: 45%;
+    }
+
+    .regisInfo {
+        width: 680px;
+    }
+
+    input {
+        width: 420px;
+    }
+
     a {
         text-decoration-line: none;
         color: #00BBFF;
@@ -535,93 +547,286 @@ h3 {
     }
 }
 
-@media(max-width: 1326px) {
+@media(max-width: 1279px) {
     .regisInfo {
-        justify-content: space-evenly;
-        height: 110%;
+        width: 620px;
+    }
+
+    input {
+        width: 380px;
     }
 }
 
-@media(max-width: 1190px) {
-    .regisInfo {
-        height: 105%;
-    }
-
+@media(max-width: 1200px) {
     .terms {
-        justify-content: space-between;
+        width: 25%;
+    }
+
+    input {
+        width: 380px;
     }
 }
 
-@media(max-width: 1145px) {
+@media(max-width: 1150px) {
+    .regisInfo {
+        width: 570px;
+    }
+
+    input {
+        width: 340px;
+    }
+}
+
+@media(max-width: 1050px) {
+    .regisInfo {
+        width: 520px;
+    }
+
+    input {
+        width: 320px;
+    }
+
     .authClass {
-        background: linear-gradient(90deg, #000 60%, #f5f5f500 50%), url(https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png) no-repeat 60vw -10vh / 50vw;
+        background:
+            linear-gradient(90deg, #000 60%, #f5f5f500 50%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 50vw;
     }
+}
 
+@media(max-width: 1050px) {
     .regisInfo {
-        height: 100%;
+        width: 520px;
     }
 
-    .terms {
-        width: 21%;
-    }
-}
-
-@media(max-width: 1090px) {
-    .regisInfo {
-        height: 100%;
+    input {
+        width: 320px;
     }
 
-    .terms {
-        width: 22%;
-    }
-}
-
-@media(max-width: 1045px) {
-    .text {
-        margin: 2.2vh 0 2vh 0;
-    }
-
-    .terms {
-        width: 23%;
-    }
-}
-
-@media(max-width: 995px) {
-    .terms {
-        width: 24%;
+    .authClass {
+        background:
+            linear-gradient(90deg, #000 60%, #f5f5f500 50%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 50vw;
     }
 }
 
 @media(max-width: 980px) {
+    .tittle {
+        font-size: clamp(33px, 2vw, 50px);
+    }
+
+    .questionTittle {
+        font-size: clamp(33px, 2vw, 50px);
+    }
+
+    .regisInfo {
+        width: 480px;
+    }
+
     .text {
-        margin: 2.2vh 0 1.5vh 0;
+        font-size: clamp(12px, 1.1vw, 30px);
+    }
+
+    .letter {
+        font-size: 12px;
+    }
+
+    .buttonRegist {
+        font-size: clamp(12px, 1.1vw, 30px);
+    }
+
+    input {
+        width: 300px;
     }
 }
 
-@media(max-width: 944px) {
-    .tittle {
-        font-size: clamp(30px, 2vw, 50px);
+@media(max-width: 950px) {
+    .terms {
+        width: 30%;
+    }
+}
+
+@media(max-width: 900px) {
+    .regisInfo {
+        width: 450px;
     }
 
-    .text {
-        margin: 2vh 0 1.5vh 0;
+    input {
+        width: 270px;
+    }
+
+    .authClass {
+        background:
+            linear-gradient(90deg, #000 60%, #f5f5f500 50%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 63vw;
+    }
+}
+
+@media(max-width: 850px) {
+    .tittle {
+        font-size: clamp(27px, 2vw, 50px);
+    }
+
+    .questionTittle {
+        font-size: clamp(27px, 2vw, 50px);
+    }
+
+    .regisInfo {
+        width: 410px;
+    }
+
+    input {
+        width: 230px;
     }
 
     .terms {
+        width: 35%;
+    }
+}
+
+@media(max-width: 768px) {
+    .authClass {
+        flex-direction: column;
+        background: linear-gradient(180deg, #000 79%, #f5f5f500 40%), url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 50vw 100vh / 50vw;
+        height: 150vh;
+    }
+
+    .tittle {
+        font-size: clamp(38px, 2vw, 50px);
+        margin: 15px 0 0 0;
+    }
+
+    .questionTittle {
+        font-size: clamp(38px, 2vw, 50px);
+        margin: 15px 0 25px 0;
+    }
+
+    #BlackBackgReg {
+        background-color: #000;
+    }
+
+    .spaceButton {
+        margin: 20px 0 0 0;
+    }
+
+    #WhiteBackg {
+        margin: 15px 0 0 0;
+    }
+
+    #panelWrapper {
+        overflow-y: scroll;
+    }
+
+    .infoBox {
+        height: 350px;
+    }
+
+    .regisInfo {
+        flex-direction: column;
+        align-items: start;
+        margin: 0 0 20px 0;
+        width: 350px;
+    }
+
+    .text {
+        font-size: clamp(13px, 1.1vw, 30px);
+    }
+
+    input {
+        height: 5.5vh;
+        width: 400px;
+    }
+
+    .terms {
+        margin: 5px 0 0 0;
+        width: 23%;
+    }
+
+    .line2 {
+        top: 79%;
+        right: 0 !important;
+        left: 0 !important;
+        height: 5px;
+        width: 100%;
+    }
+
+    .line3 {
+        top: 79.5%;
+        right: 0 !important;
+        left: 0 !important;
+        height: 5px;
+        width: 100%;
+    }
+}
+
+@media(max-width: 768px) {
+    .terms {
         width: 25%;
+    }
+}
+
+@media(max-width: 570px) {
+    .tittle {
+        font-size: clamp(30px, 2vw, 50px);
+        margin: 20px 0 0 0;
     }
 
     .questionTittle {
         font-size: clamp(30px, 2vw, 50px);
     }
-}
 
-@media(max-width: 904px) {
-    .terms {
-        width: 28%;
+    #WhiteBackg {
+        margin: 35px 0 0 0;
+    }
+
+    input {
+        width: 350px;
     }
 
     .authClass {
-        background: linear-gradient(90deg, #000 60%, #f5f5f500 50%), url(https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png) no-repeat 60vw -10vh / 60vw;
+        background: url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 50vw 110vh / 50vw;
+    }
+
+    .terms {
+        width: 30%;
+    }
+
+    .line2 {
+        top: 77%;
+    }
+
+    .line3 {
+        top: 77.5%;
+    }
+}
+
+@media(max-width: 400px) {
+    .tittle {
+        font-size: clamp(30px, 2vw, 50px);
+        margin: 20px 0 0 0;
+    }
+
+    .line {
+        margin: 0 0 0 20vw;
+        width: 23vw;
+    }
+
+    .questionTittle {
+        font-size: clamp(30px, 2vw, 50px);
+    }
+
+    #WhiteBackg {
+        margin: 35px 0 0 0;
+    }
+
+    .regisInfo{
+        width: 300px;
+    }
+
+    input {
+        width: 300px;
+    }
+
+    .terms {
+        width: 40%;
     }
 }
