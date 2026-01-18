@@ -2,7 +2,7 @@
   <header [ngClass]="classSpace">
     <img id="imgCircle" *ngIf="showDecorativeCircle"
       src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763574993/Gemini_Generated_Image_f60f2qf60f2qf60f-removebg-preview_1_zgnbfa.png"
-      alt="">
+      alt="" >
 
     <div class="information">
 
@@ -55,11 +55,12 @@
   </header>
 </div>
 <div id="background"></div>
-<div class="hexagon1"></div>
-<div class="hexagon2"></div>
-<div class="hexagon3"></div>
-<div class="hexagon4"></div>
-<div class="hexagon5"></div>
-<div class="hexagon6"></div>
-<div class="hexagon7"></div>
+
+<div class="hexagon1" *ngIf="showHexagon1"></div>
+<div class="hexagon2" *ngIf="showHexagon2" [ngClass]="variantClass"></div>
+<div class="hexagon3" *ngIf="showHexagon3"></div>
+<div class="hexagon4" *ngIf="showHexagon4"></div>
+<div class="hexagon5" *ngIf="showHexagon5"></div>
+<div class="hexagon6" *ngIf="showHexagon6" [ngClass]="variantClass"></div>
+<div class="hexagon7" *ngIf="showHexagon7" [ngClass]="variantClass"></div>
 <div class="hexagon8" *ngIf="showHexagon"></div>

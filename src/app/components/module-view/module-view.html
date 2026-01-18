@@ -1,6 +1,7 @@
 <app-nav></app-nav>
 <app-header title="Módulos" [showTitle]="true" [showLine]="true" [classSpace]="'space'" [showUserInfo]="true" [showDecorativeCircle]="true"
-[hideTitleWhenLogged]="true"></app-header>
+[hideTitleWhenLogged]="true" [showHexagon1]="true" [showHexagon2]="true"
+        [showHexagon3]="true" [showHexagon4]="true" [showHexagon5]="true" [showHexagon6]="true" [showHexagon7]="true"></app-header>
 
 <section class="modulesContainer">
   <div class="moduleRow" *ngFor="let module of modules; let i = index; let isLast = last; let isFirst = first" [class.left]="i % 2 === 0"

@@ -214,10 +214,12 @@ h1 {
 }
 
 .user-header {
+    position: relative;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     width: 65vw;
+    left: -3vw;
 }
 
 .user-data {
@@ -275,6 +277,19 @@ h1 {
     margin: 0 30px 0 0;
 }
 
+.move-hex-home.hexagon2 {
+        left: 89vw;
+        top: 27vh;
+    }
+
+.move-hex-home.hexagon6 {
+    left: 92vw;
+}
+
+.move-hex-home.hexagon7 {
+    left: 87vw;
+}
+
 @media (max-width: 1537px) {
     h1 {
         font-size: 54px;
@@ -286,21 +301,25 @@ h1 {
 }
 
 @media (max-width: 1497px) {
-    header{
+    header {
         height: 1050px;
     }
 
-    .user-header{
+    .user-header {
         position: relative;
         top: -20px;
     }
 
     #imgCirclee {
-    width: 530px;
- }
+        width: 530px;
+    }
 
-#background {
+    #background {
         top: -546px;
+    }
+
+    #imgCircle {
+        top: 88vh;
     }
 
 }
@@ -309,6 +328,7 @@ h1 {
 
     header {
         top: -92vh;
+        height: 950px;
     }
 
     #background {
@@ -335,6 +355,7 @@ h1 {
 
     .hexagon1 {
         top: 25vh;
+        left: 10vw;
     }
 
     .hexagon3 {
@@ -354,6 +375,31 @@ h1 {
         top: 30vh;
         left: 67vw;
     }
+
+    .hexagon7 {
+        top: 55vh;
+    }
+
+    #imgCirclee {
+        width: 470px;
+    }
+
+    .avatar {
+        width: 255px;
+    }
+
+    #imgCirclee {
+        margin-top: -17vh;
+        margin-left: -39.20vw;
+    }
+
+    .button-edit {
+        margin: 100px 0 0 120px;
+    }
+
+    .move-hex-home.hexagon6 {
+        top: 20vh;
+    }
 }
 
 @media (max-width: 1279px) {
@@ -372,6 +418,106 @@ h1 {
         top: 78vh;
     }
 
+    .nickname {
+        font-size: 50px;
+    }
+
+    #line {
+        margin: 0 0 0 120px
+    }
+
+    #imgCirclee {
+        margin-left: -36vw;
+    }
+
+    .user-header {
+        width: 845px;
+    }
+
+    .field {
+        justify-content: space-evenly;
+    }
+
+    .button-edit {
+        margin: 100px 0 0 140px;
+    }
+
+}
+
+@media (max-width: 1233px) {
+      #imgCirclee {
+        margin-left: -37.40vw;
+    }
+}
+
+@media (max-width: 1196px) {
+      #imgCirclee {
+        margin-left: -38.40vw;
+    }
+}
+
+@media (max-width: 1153px) {
+
+      #imgCirclee {
+        margin-left: -40vw;
+    }
+
+    .user-header {
+        top: -1vh;
+        left: -7vw;
+    }
+}
+
+@media (max-width: 1100px) {
+
+      #imgCirclee {
+        margin-left: -41.60vw;
+    }
+}
+
+@media (max-width: 1026px) {
+
+      #imgCirclee {
+        width: 440px;
+        margin-left: -45vw;
+        top: 1vh;
+    }
+
+    .avatar{
+        position: relative;
+        width: 240px;
+    }
+
+    .user-header {
+        top: 1vh;
+    }
+
+    .button-edit{
+        margin: 90px 0 0 140px;
+    }
+}
+
+@media (max-width: 941px) {
+
+      #imgCirclee {
+        width: 410px;
+        margin-left: -49vw;
+        top: 4vh;
+    }
+
+    .avatar{
+        position: relative;
+        width: 240px;
+    }
+
+    .user-header {
+        top: 1vh;
+        left: -10vw;
+    }
+
+    .button-edit{
+        margin: 90px 0 0 140px;
+    }
 }
 
 @media (max-width: 920px) {
@@ -442,6 +588,66 @@ h1 {
         left: 75vw;
         width: 300px;
     }
+
+    .nickname {
+        font-size: 45px;
+    }
+
+    #line {
+        margin: 0 0 0 80px;
+        width: 180px;
+    }
+
+    .name {
+        font-size: 20px;
+    }
+
+    .email {
+        font-size: 20px;
+    }
+
+    .date {
+        font-size: 20px;
+    }
+
+    #imgCirclee {
+        width: 380px;
+        margin-top: -13vh;
+        margin-left: -47.10vw;
+    }
+
+    .user-header {
+        width: 750px;
+        left: -50px;
+        top: -3vh;
+    }
+
+    .field {
+        justify-content: space-around;
+    }
+
+    .button-edit {
+        margin: 90px 0 0 110px;
+        width: 130px;
+    }
+
+    .avatar {
+        position: relative;
+        top: 25px;
+        width: 215px
+    }
+
+    .move-hex-home.hexagon6 {
+        left: 92vw;
+    }
+
+    .move-hex-home.hexagon7 {
+        top: 50vh;
+    }
+}
+
+@media (max-width: 901px) {
+
 }
 
 @media (max-width: 768px) {
@@ -513,7 +719,7 @@ h1 {
         font-size: 21px;
     }
 
-     .line {
+    .line {
         height: 9px;
         width: 180px;
     }
@@ -531,14 +737,14 @@ h1 {
     }
 
     #background {
-    left: -18vw;
-    top: -98vh;
-    width: 750px;
-    transform: skewY(-12deg);
-    z-index: 4;
+        left: -18vw;
+        top: -98vh;
+        width: 750px;
+        transform: skewY(-12deg);
+        z-index: 4;
     }
 
-    .hexagon1{
+    .hexagon1 {
         width: 30px;
         height: 32px;
     }
