@@ -497,6 +497,12 @@ h1 {
     }
 }
 
+@media (max-width: 986px) {
+    #imgCirclee {
+        margin-left: -47vw;
+    }
+}
+
 @media (max-width: 941px) {
 
       #imgCirclee {
@@ -646,8 +652,57 @@ h1 {
     }
 }
 
-@media (max-width: 901px) {
+@media (max-width: 842px) {
+    #imgCirclee {
+        margin-left: -51vw;
+    }
 
+    .move-hex-home.hexagon7 {
+        left: 93vw;
+    }
+
+}
+
+@media (max-width: 795px) {
+    #imgCirclee {
+        width: 340px;
+        margin-left: -47vw;
+        top: 6vh;
+    }
+
+    .avatar{
+        width: 200px;
+    }
+
+    .nickname{
+        font-size: 40px;
+    }
+
+    .name,.email, .date{
+        font-size: 18px;
+    }
+
+    .img{
+        width: 27px;
+        margin: 0 20px 0 0;
+    }
+
+    #line{
+        width: 160px;
+        margin: 0 0 0 60px;
+    }
+
+    .field{
+        justify-content: space-evenly;
+    }
+
+    .user-header{
+        left: -10vw;
+    }
+
+    .button-edit{
+        margin: 90px 0 0 130px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -704,7 +759,42 @@ h1 {
         height: 30px;
         top: 340px;
     }
-}
+
+    .nickname{
+        font-size: 37px;
+    }
+
+    #line{
+        height: 7px;
+        width: 140px;
+    }
+
+    .name, .email, .date{
+        font-size: 16px;
+    }
+
+    .img{
+        width: 24px;
+    }
+
+    .avatar{
+        width: 180px;
+    }
+
+    #imgCirclee{
+        width: 310px;
+        top: 7vh;
+    }
+
+    .user-header{
+        left: -12vw;
+         width: 700px;
+    }
+
+    .move-hex-home.hexagon7 {
+        top: 44vh;
+    }
+}   
 
 @media (max-width: 480px) {
 
