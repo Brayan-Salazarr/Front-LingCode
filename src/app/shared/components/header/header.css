@@ -301,8 +301,31 @@ h1 {
 
 
 @media (max-width: 1366px) {
+
+    header {
+        height: 1120px;
+    }
+
+    #background {
+        width: 2304px;
+        height: 1162px;
+    }
+
     #imgCircle {
-        left: 1120px;
+        left: 1125px;
+        top: 660px;
+    }
+
+    .hexagon3 {
+        top: 555px;
+    }
+
+    .hexagon4 {
+        top: 600px;
+    }
+
+    .hexagon5 {
+        top: 540px;
     }
 
     .hexagon7 {
@@ -310,7 +333,8 @@ h1 {
     }
 
     .hexagon8 {
-        left: 900px;
+        top: 450px;
+        left: 920px;
     }
 
     h1 {
@@ -327,6 +351,68 @@ h1 {
     }
 }
 
+@media (max-width: 1279px) {
+
+    header {
+        height: 1080px;
+    }
+
+    #imgCircle {
+        width: 330px;
+        left: 1060px;
+        top: 645px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .information {
+        height: 235px;
+    }
+
+    .hexagon3 {
+        top: 530px;
+        left: 90px;
+        width: 35px;
+        height: 45px;
+    }
+
+    .hexagon4 {
+        top: 565px;
+    }
+
+    .hexagon5 {
+        top: 510px;
+        width: 35px;
+        height: 45px;
+    }
+
+    .nickname {
+        font-size: 50px;
+    }
+
+    #line {
+        margin: 0 0 0 120px
+    }
+
+    #imgCirclee {
+        margin-left: -36vw;
+    }
+
+    .user-header {
+        width: 845px;
+    }
+
+    .field {
+        justify-content: space-evenly;
+    }
+
+    .button-edit {
+        margin: 100px 0 0 140px;
+    }
+
+}
 
 
 /*@media (max-width: 1497px) {
