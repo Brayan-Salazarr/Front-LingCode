@@ -99,10 +99,16 @@ p {
 
 @media (max-width: 480px) {
     li {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     p{
         font-size: 10px;
+    }
+}
+
+@media (max-width: 352px) {
+    li {
+        font-size: 11px;
     }
 }
