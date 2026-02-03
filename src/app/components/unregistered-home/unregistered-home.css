@@ -255,3 +255,55 @@ section {
         font-size: 20px;
     }
 }
+
+@media (max-width: 920px) {
+    .caption{
+        font-size: 20px;
+    }
+
+    .text{
+        font-size: 12px;
+    }
+
+    #img1{
+        width: 30vw;
+    }
+}
+
+@media (max-width: 740px) {
+    #img1{
+        width: 32vw;
+    }
+}
+
+@media (max-width: 560px) {
+    #img1{
+        width: 43vw;
+    }
+}
+
+@media (max-width: 480px) {
+    #img1{
+        width: 50vw;
+    }
+}
+
+@media (max-width: 460px) {
+    #img1{
+        width: 55vw;
+    }
+}
+
+@media (max-width: 400px) {
+    .caption{
+        font-size: 15px;
+    }
+
+    .text{
+        font-size: 10px;
+    }
+
+    #img1{
+        width: 55vw;
+    }
+}
