@@ -388,6 +388,23 @@ h1 {
         height: 45px;
     }
 
+    .hexagon6 {
+        left: 850px;
+    }
+
+    .hexagon7 {
+        left: 950px;
+        width: 45px;
+        height: 50px;
+    }
+
+    .hexagon8 {
+        top: 430px;
+        left: 820px;
+        width: 40px;
+        height: 45px;
+    }
+
     .nickname {
         font-size: 50px;
     }
@@ -414,6 +431,276 @@ h1 {
 
 }
 
+@media (max-width: 920px) {
+
+    header {
+        height: 1000px;
+        width: 1500px;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    .information {
+        top: 735px;
+        left: 220px;
+        height: 198px;
+    }
+
+    .line {
+        height: 12px;
+    }
+
+    #imgCircle {
+        top: 653px;
+        left: 84vw;
+        width: 265px;
+    }
+
+    #background {
+        height: 1030px;
+        width: 1600px;
+    }
+
+    .hexagon1 {
+        width: 36px;
+        height: 44px;
+        top: 135px;
+        left: 101px;
+    }
+
+    .hexagon2 {
+        height: 33px;
+    }
+
+    .hexagon3 {
+        height: 32px;
+        width: 33px;
+        top: 423px;
+        left: 80px;
+    }
+
+    .hexagon4 {
+        height: 31px;
+        width: 26px;
+        top: 439px;
+    }
+
+    .hexagon5 {
+        height: 31px;
+        width: 29px;
+        top: 398px;
+
+        left: 120px;
+    }
+
+    .hexagon6 {
+        top: 150px;
+        width: 35px;
+        left: 626px;
+        height: 40px;
+    }
+
+    .hexagon7 {
+        height: 39px;
+        width: 35px;
+        left: 702px;
+        top: 278px;
+    }
+
+    .hexagon8 {
+        height: 37px;
+        width: 33px;
+        left: 616px;
+        top: 326px;
+    }
+
+    /*.nickname {
+        font-size: 45px;
+    }
+
+    #line {
+        margin: 0 0 0 80px;
+        width: 180px;
+    }
+
+    .name {
+        font-size: 20px;
+    }
+
+    .email {
+        font-size: 20px;
+    }
+
+    .date {
+        font-size: 20px;
+    }
+
+    #imgCirclee {
+        width: 380px;
+        margin-top: -13vh;
+        margin-left: -47.10vw;
+    }
+
+    .user-header {
+        width: 750px;
+        left: -50px;
+        top: -3vh;
+    }
+
+    .field {
+        justify-content: space-around;
+    }
+
+    .button-edit {
+        margin: 90px 0 0 110px;
+        width: 130px;
+    }
+
+    .avatar {
+        position: relative;
+        top: 25px;
+        width: 215px
+    }
+
+    .move-hex-home.hexagon6 {
+        left: 92vw;
+    }
+
+    .move-hex-home.hexagon7 {
+        top: 50vh;
+    }*/
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 29px;
+    }
+
+    .information {
+        left: 185px;
+        height: 165px;
+    }
+
+    #imgCircle {
+        left: 617px;
+    }
+
+    .line {
+        width: 200px;
+        height: 10px;
+    }
+
+    .hexagon2 {
+        left: 39px;
+    }
+
+    .hexagon3 {
+        width: 28px;
+        top: 412px;
+    }
+
+    .hexagon4 {
+        left: 140px;
+        top: 426px;
+    }
+
+    .hexagon5 {
+        top: 383px;
+    }
+
+    .hexagon6 {
+        display: none
+    }
+
+    .hexagon7 {
+        top: 326px;
+        left: 551px;
+    }
+
+    .hexagon8 {
+        left: 475px;
+        top: 365px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+    }
+
+    h1 {
+        width: 320px;
+        font-size: 21px;
+    }
+
+    .line {
+        height: 9px;
+        width: 180px;
+    }
+
+    #imgCircle {
+        display: none;
+    }
+
+    .information {
+        width: 400px;
+        height: 130px;
+        top: 105vh;
+        left: 25vw;
+    }
+
+    #background {
+        left: -18vw;
+        top: -98vh;
+        width: 750px;
+        z-index: 4;
+    }
+
+    .hexagon1 {
+        width: 30px;
+        height: 32px;
+    }
+
+    .hexagon2 {
+        height: 20px;
+        width: 20px;
+    }
+
+    .hexagon3 {
+        height: 30px;
+        width: 25px;
+        top: 340px;
+        left: 50px;
+    }
+
+    .hexagon4 {
+        height: 20px;
+        width: 20px;
+        top: 350px;
+        left: 120px;
+    }
+
+    .hexagon5 {
+        width: 20px;
+        height: 25px;
+        top: 320px;
+        left: 90px;
+    }
+
+    .hexagon7 {
+        height: 20px;
+        width: 20px;
+        top: 300px;
+        left: 370px;
+    }
+
+    .hexagon8 {
+        height: 25px;
+        width: 25px;
+        top: 320px;
+    }
+}
 
 /*@media (max-width: 1497px) {
     header {
