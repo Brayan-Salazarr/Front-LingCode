@@ -241,3 +241,17 @@ section {
         margin: 0 0 34vh 0;
     }
 }
+
+@media (max-width: 1098px) {
+    .caption{
+        font-size: 35px;
+    }
+
+    .text{
+        font-size: 22px;
+    }
+
+    .shared-button{
+        font-size: 20px;
+    }
+}
