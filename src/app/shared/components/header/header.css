@@ -14,6 +14,7 @@ header {
     top: -735px;
     transform: skewY(-15deg);
     z-index: 5;
+    overflow: hidden;
 }
 
 #imgCircle {
@@ -34,6 +35,7 @@ header {
     top: -650px;
     transform: skewY(-17deg);
     z-index: 4;
+    overflow: hidden;
 }
 
 .information {
@@ -287,6 +289,60 @@ h1 {
 
 .move-hex-home.hexagon7 {
     left: 87vw;
+}
+
+@media (min-width: 1700px) {
+
+    .header-wrapper{
+        height: 900px;
+    }
+
+    header {
+        width: 2630px;
+        height: 1349px;
+    }
+
+    #background {
+        width: 2606px;
+        height: 1416px;
+    }
+
+    #imgCircle {
+        top: 745px;
+        left: 1555px;
+        width: 461px;
+    }
+
+    .information {
+        height: 377px;
+    }
+
+    .hexagon3 {
+        top: 733px;
+    }
+
+    .hexagon4 {
+        top: 751px;
+        left: 184px;
+    }
+
+    .hexagon5 {
+        top: 671px;
+    }
+
+    .hexagon6{
+        left: 1193px;
+    }
+
+    .hexagon7 {
+        top: 534px;
+        left: 1304px;
+    }
+
+    .hexagon8 {
+        top: 634px;
+        left: 1016px;
+    }
 }
 
 @media (max-width: 1537px) {
@@ -626,8 +682,7 @@ h1 {
 }
 
 @media (max-width: 480px) {
-    header {
-    }
+    header {}
 
     h1 {
         width: 320px;
