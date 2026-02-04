@@ -243,67 +243,126 @@ section {
 }
 
 @media (max-width: 1098px) {
-    .caption{
+    .caption {
         font-size: 35px;
     }
 
-    .text{
+    .text {
         font-size: 22px;
     }
 
-    .shared-button{
+    .shared-button {
         font-size: 20px;
     }
 }
 
 @media (max-width: 920px) {
-    .caption{
+    .caption {
         font-size: 20px;
     }
 
-    .text{
-        font-size: 12px;
-    }
-
-    #img1{
-        width: 30vw;
-    }
-}
-
-@media (max-width: 740px) {
-    #img1{
-        width: 32vw;
-    }
-}
-
-@media (max-width: 560px) {
-    #img1{
-        width: 43vw;
-    }
-}
-
-@media (max-width: 480px) {
-    #img1{
-        width: 50vw;
-    }
-}
-
-@media (max-width: 460px) {
-    #img1{
-        width: 55vw;
-    }
-}
-
-@media (max-width: 400px) {
-    .caption{
+    .text {
         font-size: 15px;
     }
 
-    .text{
-        font-size: 10px;
+    #img1 {
+        width: 30vw;
     }
 
-    #img1{
+    .field-avatar {
+        height: 120vh;
+    }
+
+    .hexagon3 {
+        height: 6vh;
+        top: 90vh;
+    }
+
+    .hexagon4 {
+        height: 4vh;
+        top: 90vh;
+    }
+
+    .hexagon5 {
+        height: 4.5vh;
+        top: 100vh;
+    }
+
+    .hexagon6 {
+        height: 6vh;
+        top: 50vh;
+    }
+}
+
+@media (max-width: 850px) {
+    .hexagon6 {
+        top: 45vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .caption {
+        font-size: 25px;
+    }
+
+    .information {
+        width: 80%;
+    }
+
+    .text {
+        font-size: 18px;
+    }
+
+    .field {
+        flex-direction: column;
+    }
+
+    #img1 {
+        width: 42vw;
+    }
+
+    .field-avatar {
+        flex-direction: column-reverse;
+        height: 200vh;
+    }
+
+    .information-avatar {
+        margin: 0;
+        width: 80%;
+    }
+
+    .content-avatar {
+        margin: 0 350px 0 0;
+    }
+
+    .container-with-triangle {
         width: 55vw;
+        height: 110vh;
+        background-color: black;
+        clip-path: polygon(0 0, 0 0, 100% 50%, 0 100%);
+        margin-top: 0;
+    }
+
+    #img2 {
+        width: 42vw;
+    }
+}
+
+@media (max-width: 430px) {
+    .information {
+        width: 90%;
+        height: 55vh;
+    }
+
+    .text {
+        font-size: 18px;
+    }
+
+    .field {
+        flex-direction: column;
+    }
+
+    #img1 {
+        width: 44vw;
     }
 }

@@ -23,3 +23,39 @@
         width: 14vw;
     }
 }
+
+@media (max-width: 1268px) {
+    .shared-button {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1053px) {
+    .shared-button {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 945px) {
+    .shared-button {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 920px) {
+    .shared-button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 838px) {
+    .shared-button {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .shared-button {
+        margin: 30px 0 0 0;
+    }
+}
