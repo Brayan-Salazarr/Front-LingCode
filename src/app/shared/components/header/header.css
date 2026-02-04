@@ -293,7 +293,7 @@ h1 {
 
 @media (min-width: 1700px) {
 
-    .header-wrapper{
+    .header-wrapper {
         height: 900px;
     }
 
@@ -330,7 +330,7 @@ h1 {
         top: 671px;
     }
 
-    .hexagon6{
+    .hexagon6 {
         left: 1193px;
     }
 
@@ -488,6 +488,10 @@ h1 {
 }
 
 @media (max-width: 920px) {
+
+    .header-wrapper {
+        height: 400px;
+    }
 
     header {
         height: 1000px;
@@ -682,16 +686,23 @@ h1 {
 }
 
 @media (max-width: 480px) {
-    header {}
+
+    .header-wrapper{
+        height: 330px;
+    }
+    header {
+        height: 931px;
+    }
 
     h1 {
         width: 320px;
         font-size: 21px;
+        margin: 0 0 0 35px;
     }
 
     .line {
-        height: 9px;
-        width: 180px;
+        height: 8px;
+        width: 144px;
     }
 
     #imgCircle {
@@ -701,59 +712,60 @@ h1 {
     .information {
         width: 400px;
         height: 130px;
-        top: 105vh;
-        left: 25vw;
+        top: 705px;
+        left: 170px;
     }
 
     #background {
-        left: -18vw;
-        top: -98vh;
-        width: 750px;
-        z-index: 4;
+        left: -103px;
+        width: 1437px;
+        height: 964px;
     }
 
     .hexagon1 {
-        width: 30px;
-        height: 32px;
+        width: 23px;
+        height: 26px
     }
 
     .hexagon2 {
         height: 20px;
-        width: 20px;
+        width: 17px;
+        top: 200px;
     }
 
     .hexagon3 {
-        height: 30px;
-        width: 25px;
-        top: 340px;
-        left: 50px;
+        height: 25px;
+        width: 22px;
+        top: 348px;
+        left: 55px;
     }
 
     .hexagon4 {
-        height: 20px;
+        height: 22px;
         width: 20px;
-        top: 350px;
-        left: 120px;
+        top: 359px;
+        left: 94px;
     }
 
     .hexagon5 {
         width: 20px;
         height: 25px;
-        top: 320px;
-        left: 90px;
+        top: 328px;
+        left: 81px;
     }
 
     .hexagon7 {
-        height: 20px;
-        width: 20px;
-        top: 300px;
-        left: 370px;
+        height: 27px;
+        width: 24px;
+        top: 286px;
+        left: 408px;
     }
 
     .hexagon8 {
         height: 25px;
-        width: 25px;
-        top: 320px;
+        width: 23px;
+        top: 335px;
+        left: 331px;
     }
 }
 
