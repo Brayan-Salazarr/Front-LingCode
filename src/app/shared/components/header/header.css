@@ -245,8 +245,8 @@ h1 {
 #imgCirclee {
     position: absolute;
     width: 550px;
-    margin-top: -15.50vh;
-    margin-left: -38.20vw;
+    margin-top: -132px;
+    margin-left: -587px;
     z-index: -1;
     opacity: 0.9;
 }
@@ -343,6 +343,23 @@ h1 {
         top: 634px;
         left: 1016px;
     }
+
+    .move-hex-home.hexagon6 {
+        left: 93vw;
+    }
+
+    .move-hex-home.hexagon7 {
+        top: 50vh;
+    }
+
+    #imgCirclee {
+        margin-top: -123px;
+        margin-left: -714px
+    }
+
+    .button-edit {
+        margin: 161px 0 0 189px;
+    }
 }
 
 @media (max-width: 1537px) {
@@ -352,6 +369,10 @@ h1 {
 
     .space h1 {
         margin: 0 0 0 150px;
+    }
+
+    #imgCirclee {
+        margin-top: -121px;
     }
 }
 
@@ -405,12 +426,40 @@ h1 {
         height: 15px;
         width: 230px;
     }
+
+    .avatar {
+        width: 255px;
+    }
+
+    #imgCirclee {
+        width: 462px;
+        top: 18px;
+        left: 532px;
+
+    }
+
+    .user-header {
+        top: -25px;
+    }
+
+    .move-hex-home.hexagon7 {
+        top: 360px;
+    }
+
+    .button-edit {
+        margin: 110px 0 0 108px;
+    }
 }
 
 @media (max-width: 1279px) {
 
     header {
         height: 1080px;
+    }
+
+    #background {
+        width: 2145px;
+        height: 1146px;
     }
 
     #imgCircle {
@@ -483,6 +532,21 @@ h1 {
 
     .button-edit {
         margin: 100px 0 0 140px;
+    }
+
+    #imgCirclee {
+        left: 422px;
+        width: 415px;
+    }
+
+    .avatar {
+        width: 227px;
+        margin-left: -30px;
+        margin-top: -10px;
+    }
+
+    .button-edit {
+        margin: 100px 0 0 102px
     }
 
 }
@@ -576,7 +640,7 @@ h1 {
         top: 326px;
     }
 
-    /*.nickname {
+    .nickname {
         font-size: 45px;
     }
 
@@ -598,9 +662,9 @@ h1 {
     }
 
     #imgCirclee {
-        width: 380px;
-        margin-top: -13vh;
-        margin-left: -47.10vw;
+        width: 340px;
+        margin-top: -40px;
+        margin-left: -478px;
     }
 
     .user-header {
@@ -614,23 +678,42 @@ h1 {
     }
 
     .button-edit {
-        margin: 90px 0 0 110px;
-        width: 130px;
+        margin: 91px 0 0 70px;
+        width: 101px;
+        font-size: 12px;
+        height: 34px;
     }
 
     .avatar {
         position: relative;
-        top: 25px;
-        width: 215px
+        top: 65px;
+        width: 187px;
+        height: 187px;
+        left: -14px;
+    }
+
+    .user-data {
+        margin-top: 24px;
+        height: 193px;
+    }
+
+    .move-hex-home.hexagon2 {
+        width: 20px;
+        height: 23px;
+        top: 215px;
     }
 
     .move-hex-home.hexagon6 {
-        left: 92vw;
+        left: 93vw;
+        width: 24px;
+        height: 30px;
     }
 
     .move-hex-home.hexagon7 {
-        top: 50vh;
-    }*/
+        top: 32vh;
+        width: 26px;
+        height: 32px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -683,13 +766,63 @@ h1 {
         left: 475px;
         top: 365px;
     }
+
+    .nickname {
+        font-size: 37px;
+    }
+
+    #line {
+        height: 7px;
+        width: 140px;
+    }
+
+    .name,
+    .email,
+    .date {
+        font-size: 16px;
+    }
+
+    .img {
+        width: 24px;
+    }
+
+    .avatar {
+        width: 173px;
+        height: 173px;
+        left: 66px;
+        top: 48px;
+    }
+
+    #imgCirclee {
+        width: 305px;
+        top: 11px;
+        left: 518px;
+    }
+
+    .user-data {
+        margin: 0;
+    }
+
+    .button-edit {
+        margin: 88px 0 0 148px;
+    }
+
+    .user-header {
+        left: -12vw;
+        width: 700px;
+    }
+
+    .move-hex-home.hexagon7 {
+        top: 35vh;
+    }
 }
 
 @media (max-width: 480px) {
 
-    .header-wrapper{
+    .header-wrapper {
         height: 330px;
     }
+
     header {
         height: 931px;
     }
@@ -766,6 +899,65 @@ h1 {
         width: 23px;
         top: 335px;
         left: 331px;
+    }
+
+    #imgCirclee {
+        width: 229px;
+        left: 480px;
+    }
+
+    .avatar {
+        width: 125px;
+        height: 125px;
+        left: 24px;
+        top: 34px;
+    }
+
+    .user-header {
+        width: 546px;
+    }
+
+    .nickname {
+        font-size: 30px;
+    }
+
+    .name,
+    .email,
+    .date {
+        font-size: 13px;
+    }
+
+    #line {
+        width: 102px;
+        margin: 0px 0 0 44px;
+    }
+
+    .user-data {
+        height: 162px;
+        position: relative;
+        left: -44px;
+    }
+
+    .img {
+        margin: 0 14px 0 0;
+    }
+
+    .button-edit {
+        margin: 42px 0 0 81px;
+        width: 79px;
+        font-size: 10px;
+        height: 28px;
+    }
+
+    .move-hex-home.hexagon2 {
+        top: 161px;
+    }
+
+    .move-hex-home.hexagon7 {
+        top: 120px;
+        left: 437px;
+        width: 23px;
+        height: 26px;
     }
 }
 
