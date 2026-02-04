@@ -19,8 +19,8 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 35vw;
-    height: 50vh;
+    width: 547px;
+    height: 429px;
 }
 
 .caption {
@@ -37,8 +37,8 @@ section {
 }
 
 .container-with-triangle {
-    width: 55vw;
-    height: 110vh;
+    width: 860px;
+    height: 943px;
     background-color: black;
     clip-path: polygon(0 0, 0 0, 100% 50%, 0 100%);
     margin-top: 100px;
@@ -46,19 +46,19 @@ section {
 
 #img2 {
     position: relative;
-    top: -80vh;
-    left: 13vw;
+    top: -686px;
+    left: 203px;
     width: 40vw;
 }
 
 .content-avatar {
-    height: 150vh;
+    height: 1287px;
 }
 
 .information-avatar {
-    width: 35vw;
-    height: 50vh;
-    margin: 0 7vw 0 0;
+    width: 547px;
+    height: 429px;
+    margin: 0 109px 0 0
 }
 
 .field-avatar {
@@ -74,7 +74,7 @@ section {
 }
 
 .information-modules {
-    width: 40vw;
+    width: 626px;
 }
 
 .field-invitaion {
@@ -82,7 +82,7 @@ section {
     justify-content: space-between;
     background-color: black;
     margin: 200px 0 0 0;
-    height: 90vh;
+    height: 772px;
 }
 
 .information-invitation {
@@ -90,7 +90,7 @@ section {
     flex-direction: column;
     justify-content: center;
     margin: 0 100px 0 0;
-    width: 32vw;
+    width: 500px;
 }
 
 .text-invitation {
@@ -113,7 +113,7 @@ section {
 }
 
 #img-symbols {
-    width: 58vw;
+    width: 907px;
     margin: 0 0 39vh 0;
 }
 
@@ -124,8 +124,8 @@ section {
 }
 
 .hexagon3 {
-    width: 3vw;
-    height: 7vh;
+    width: 46px;
+    height: 60px;
     background: rgba(121, 0, 201, 1);
     clip-path: polygon(50% 0%,
             100% 25%,
@@ -134,15 +134,15 @@ section {
             0% 75%,
             0% 25%);
     position: absolute;
-    top: 100vh;
-    left: 2vw;
+    top: 858px;
+    left: 31px;
     z-index: 15;
     transform: rotate(90deg);
 }
 
 .hexagon4 {
-    width: 2vw;
-    height: 5vh;
+    width: 31px;
+    height: 42px;
     background: rgba(121, 0, 201, 1);
     clip-path: polygon(50% 0%,
             100% 25%,
@@ -151,15 +151,15 @@ section {
             0% 75%,
             0% 25%);
     position: absolute;
-    top: 95vh;
-    left: 10vw;
+    top: 815px;
+    left: 156px;
     z-index: 15;
     transform: rotate(90deg);
 }
 
 .hexagon5 {
-    width: 2.5vw;
-    height: 6.5vh;
+    width: 39px;
+    height: 55px;
     background: #09E6FF;
     clip-path: polygon(50% 0%,
             100% 25%,
@@ -168,15 +168,15 @@ section {
             0% 75%,
             0% 25%);
     position: absolute;
-    top: 105vh;
-    left: 7vw;
+    top: 900px;
+    left: 109px;
     z-index: 15;
     transform: rotate(90deg);
 }
 
 .hexagon6 {
-    width: 3vw;
-    height: 7vh;
+    width: 46px;
+    height: 60px;
     background: linear-gradient(to top,
             #FF9500,
             #C900BC);
@@ -187,10 +187,12 @@ section {
             0% 75%,
             0% 25%);
     position: absolute;
-    top: 60vh;
-    left: 13vw;
+    top: 514px;
+    left: 203px;
     z-index: 15;
     transform: rotate(90deg);
+
+
 }
 
 .subtitle-field {
@@ -227,13 +229,13 @@ section {
     }
 
     #img-symbols {
-        top: 294vh;
+        top: 2522px;
     }
 }
 
 @media (max-width: 1366px) {
     .field-avatar {
-        height: 140vh;
+        height: 1201px;
     }
 
     #img-symbols {
@@ -270,7 +272,7 @@ section {
     }
 
     .field-avatar {
-        height: 120vh;
+        height: 1029px;
     }
 
     .hexagon3 {
@@ -327,7 +329,7 @@ section {
     }
 
     .information-avatar {
-        margin: 0;
+        margin: 100px 0 0 0;
         width: 80%;
     }
 
@@ -336,15 +338,87 @@ section {
     }
 
     .container-with-triangle {
-        width: 55vw;
-        height: 110vh;
-        background-color: black;
-        clip-path: polygon(0 0, 0 0, 100% 50%, 0 100%);
-        margin-top: 0;
+        width: 140vw;
+        height: 130vh;
+        margin-top: -260px;
     }
 
     #img2 {
-        width: 42vw;
+        margin: -100px 0 0 350px;
+        width: 70vw;
+    }
+
+    .hexagon3 {
+        width: 4vw;
+        height: 4vh;
+        top: 110vh;
+    }
+
+    .hexagon4 {
+        width: 3vw;
+        height: 3vh;
+        top: 120vh;
+    }
+
+    .hexagon5 {
+        width: 4.5vw;
+        top: 100vh;
+        left: 15vw;
+    }
+
+    .hexagon6 {
+        width: 4vw;
+        height: 4vh;
+        top: 70vh;
+        left: 18vw;
+    }
+}
+
+@media (max-width: 676px) {
+    .content-avatar {
+        margin: 0 350px 70px 0;
+    }
+
+    .hexagon4 {
+        top: 115vh;
+    }
+}
+
+@media (max-width: 610px) {
+    .content-avatar {
+        margin: 0 350px 120px 0;
+    }
+
+    .container-with-triangle {
+        width: 150vw;
+    }
+
+    .hexagon3 {
+        height: 3vh;
+        left: 5vw;
+        top: 109vh;
+    }
+
+    .hexagon4 {
+        height: 2vh;
+        left: 14vw;
+        top: 110vh;
+    }
+
+    .hexagon5 {
+        height: 3vh;
+    }
+
+    #img2 {
+        margin: -100px 0 0 350px;
+        width: 80vw;
+    }
+}
+
+@media (max-width: 540px) {
+    .hexagon6 {
+        width: 4vw;
+        height: 3vh;
     }
 }
 
