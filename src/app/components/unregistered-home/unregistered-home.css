@@ -191,8 +191,6 @@ section {
     left: 203px;
     z-index: 15;
     transform: rotate(90deg);
-
-
 }
 
 .subtitle-field {
@@ -234,6 +232,35 @@ section {
 }
 
 @media (max-width: 1366px) {
+    .container-with-triangle {
+        width: 830px;
+        clip-path: polygon(0 0, 0 0, 95% 50%, 0 100%);
+    }
+
+    .hexagon6 {
+        width: 40px;
+        height: 50px;
+        top: 450px;
+    }
+
+    .hexagon3 {
+        width: 40px;
+        height: 50px;
+        top: 820px;
+    }
+
+    .hexagon4 {
+        width: 31px;
+        height: 40px;
+        top: 800px;
+    }
+
+    .hexagon5 {
+        width: 39px;
+        height: 49px;
+        top: 850px;
+    }
+
     .field-avatar {
         height: 1201px;
     }
@@ -244,17 +271,143 @@ section {
     }
 }
 
+@media (max-width: 1266px) {
+    .hexagon3 {
+        top: 780px;
+    }
+
+    .hexagon4 {
+        top: 750px;
+    }
+
+    .hexagon5 {
+        top: 830px;
+    }
+
+    .hexagon6 {
+        top: 410px;
+    }
+
+    .content-avatar {
+        height: 1200px;
+    }
+}
+
+@media (max-width: 1189px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 78% 50%, 0 100%);
+    }
+
+    .information-avatar {
+        margin: 0;
+        width: 450px;
+    }
+
+    .text{
+        width: 430px;
+    }
+
+    .content-avatar {
+        width: 695px;
+    }
+}
+
+@media (max-width: 1120px) {
+    .field-avatar {
+        height: 1065px;
+    }
+
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 85% 50%, 0 100%);
+    }
+
+    .hexagon6 {
+        top: 350px;
+    }
+
+    .information-avatar {
+        width: 350px;
+    }
+
+    .text{
+        width: 350px;
+    }
+}
+
 @media (max-width: 1098px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 80% 50%, 0 90%);
+    }
+
     .caption {
         font-size: 35px;
+    }
+
+    .hexagon3 {
+        top: 700px;
     }
 
     .text {
         font-size: 22px;
     }
 
-    .shared-button {
-        font-size: 20px;
+    .hexagon4 {
+        top: 650px;
+    }
+
+    .hexagon5 {
+        top: 750px;
+    }
+}
+
+@media(max-width: 1050px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 75% 50%, 0 90%);
+    }
+
+    .content-avatar {
+        width: 700px;
+    }
+
+    #img2 {
+        width: 45vw;
+    }
+
+    .hexagon3 {
+        height: 45px;
+        top: 730px;
+    }
+
+    .hexagon4 {
+        height: 35px;
+        top: 690px;
+    }
+
+    .hexagon5 {
+        height: 45px;
+        top: 800px;
+    }
+
+    .information-avatar {
+        width: 320px;
+    }
+
+    .text{
+        width: 300px;
+    }
+}
+
+@media (max-width: 1005px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 70% 50%, 0 90%);
+    }
+
+    .content-avatar {
+        width: 620px;
+    }
+
+    .text {
+        width: 280px;
     }
 }
 
