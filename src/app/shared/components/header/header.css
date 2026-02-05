@@ -14,7 +14,6 @@ header {
     top: -735px;
     transform: skewY(-15deg);
     z-index: 5;
-    overflow: hidden;
 }
 
 #imgCircle {
@@ -35,7 +34,6 @@ header {
     top: -650px;
     transform: skewY(-17deg);
     z-index: 4;
-    overflow: hidden;
 }
 
 .information {
@@ -219,7 +217,7 @@ h1 {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    width: 65vw;
+    width: 998px;
     left: -3vw;
 }
 
@@ -245,8 +243,8 @@ h1 {
 #imgCirclee {
     position: absolute;
     width: 550px;
-    margin-top: -132px;
-    margin-left: -587px;
+    top: -122px;
+    left: -69px;
     z-index: -1;
     opacity: 0.9;
 }
@@ -317,6 +315,10 @@ h1 {
         height: 377px;
     }
 
+    .user-header{
+        width: 1250px;
+    }
+
     .hexagon3 {
         top: 733px;
     }
@@ -353,8 +355,7 @@ h1 {
     }
 
     #imgCirclee {
-        margin-top: -123px;
-        margin-left: -714px
+        left: -6px;
     }
 
     .button-edit {
@@ -369,10 +370,6 @@ h1 {
 
     .space h1 {
         margin: 0 0 0 150px;
-    }
-
-    #imgCirclee {
-        margin-top: -121px;
     }
 }
 
@@ -433,8 +430,8 @@ h1 {
 
     #imgCirclee {
         width: 462px;
-        top: 18px;
-        left: 532px;
+        top: -104px;
+        left: -54px;
 
     }
 
@@ -518,10 +515,6 @@ h1 {
         margin: 0 0 0 120px
     }
 
-    #imgCirclee {
-        margin-left: -36vw;
-    }
-
     .user-header {
         width: 845px;
     }
@@ -535,7 +528,7 @@ h1 {
     }
 
     #imgCirclee {
-        left: 422px;
+        left: -41px;
         width: 415px;
     }
 
@@ -663,8 +656,8 @@ h1 {
 
     #imgCirclee {
         width: 340px;
-        margin-top: -40px;
-        margin-left: -478px;
+        top: -22px;
+        left: -58px;
     }
 
     .user-header {
@@ -795,8 +788,8 @@ h1 {
 
     #imgCirclee {
         width: 305px;
-        top: 11px;
-        left: 518px;
+        top: -30px;
+        left: 38px;
     }
 
     .user-data {
@@ -903,7 +896,8 @@ h1 {
 
     #imgCirclee {
         width: 229px;
-        left: 480px;
+        top: -29px;
+        left: 1px;
     }
 
     .avatar {
@@ -958,6 +952,57 @@ h1 {
         left: 437px;
         width: 23px;
         height: 26px;
+    }
+}
+
+@media (max-width: 310px) {
+
+    .avatar {
+        width: 85px;
+        height: 85px;
+        left: -54px;
+        top: -3px;
+    }
+
+    #imgCirclee {
+        width: 156px;
+        left: 48px;
+        top: -48px;
+    }
+
+    .field {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user-header {
+        width: 100%;
+    }
+
+    #line {
+        display: none;
+    }
+
+    .nickname {
+        text-align: center;
+        font-size: 19px;
+    }
+
+    .name,
+    .email,
+    .date {
+        font-size: 11px;
+    }
+
+    .img {
+        margin: 0px 9px 0 0;
+        width: 19px;
+    }
+
+    .user-data {
+        height: 121px;
+        top: 22px;
+        left: -62px;
     }
 }
 
