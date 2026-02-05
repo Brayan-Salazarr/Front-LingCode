@@ -261,7 +261,7 @@ section {
         top: 850px;
     }
 
-    .field-avatar {
+    .content-avatar {
         height: 1201px;
     }
 
@@ -300,10 +300,10 @@ section {
 
     .information-avatar {
         margin: 0;
-        width: 450px;
+        width: 100%;
     }
 
-    .text{
+    #text2 {
         width: 430px;
     }
 
@@ -313,7 +313,7 @@ section {
 }
 
 @media (max-width: 1120px) {
-    .field-avatar {
+    .content-avatar {
         height: 1065px;
     }
 
@@ -325,11 +325,8 @@ section {
         top: 350px;
     }
 
-    .information-avatar {
-        width: 350px;
-    }
 
-    .text{
+    #text2 {
         width: 350px;
     }
 }
@@ -388,11 +385,8 @@ section {
         top: 800px;
     }
 
-    .information-avatar {
-        width: 320px;
-    }
 
-    .text{
+    #text2 {
         width: 300px;
     }
 }
@@ -406,7 +400,7 @@ section {
         width: 620px;
     }
 
-    .text {
+    #text2 {
         width: 280px;
     }
 }
@@ -424,43 +418,89 @@ section {
         width: 30vw;
     }
 
-    .field-avatar {
-        height: 1029px;
+    .content-avatar {
+        height: 1065px;
     }
 
     .hexagon3 {
-        height: 6vh;
-        top: 90vh;
+        height: 43px;
+        top: 600px;
     }
 
     .hexagon4 {
-        height: 4vh;
-        top: 90vh;
+        height: 32px;
+        top: 650px;
     }
 
     .hexagon5 {
-        height: 4.5vh;
-        top: 100vh;
+        height: 43px;
+        top: 700px;
     }
 
     .hexagon6 {
-        height: 6vh;
-        top: 50vh;
+        height: 48px;
+        top: 400px;
     }
 }
 
 @media (max-width: 850px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 60% 50%, 0 85%);
+        margin: 0;
+    }
+
+    #caption2 {
+        width: 200px;
+    }
+
+    #text2 {
+        width: 200px;
+    }
+
+    #img2 {
+        left: 140px;
+        width: 50vw;
+    }
+
     .hexagon6 {
-        top: 45vh;
+        left: 100px;
+    }
+
+    .content-avatar {
+        width: 550px;
+        height: 900px;
+    }
+
+    .information {
+        width: 377px;
+        height: 200px;
     }
 }
 
 @media (max-width: 768px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 90% 50%, 0 85%);
+        margin: 0;
+    }
+
+    #img2 {
+        left: 150px;
+    }
+
     .caption {
         font-size: 25px;
     }
 
+    #caption2 {
+        width: 300px;
+    }
+
+    #text2 {
+        width: 100%;
+    }
+
     .information {
+        margin: 60px 0 0 0;
         width: 80%;
     }
 
@@ -478,100 +518,57 @@ section {
 
     .field-avatar {
         flex-direction: column-reverse;
-        height: 200vh;
     }
 
     .information-avatar {
-        margin: 100px 0 0 0;
+        margin: 60px 0 0 0;
         width: 80%;
+        height: 100%;
     }
 
     .content-avatar {
         margin: 0 350px 0 0;
-    }
-
-    .container-with-triangle {
-        width: 140vw;
-        height: 130vh;
-        margin-top: -260px;
+        height: 899px;
     }
 
     #img2 {
-        margin: -100px 0 0 350px;
+        margin: -100px 0 0 120px;
         width: 70vw;
     }
 
     .hexagon3 {
-        width: 4vw;
-        height: 4vh;
-        top: 110vh;
+        top: 858px;
     }
 
     .hexagon4 {
-        width: 3vw;
-        height: 3vh;
-        top: 120vh;
+        top: 858px;
     }
 
     .hexagon5 {
-        width: 4.5vw;
-        top: 100vh;
-        left: 15vw;
+        top: 772px;
     }
 
     .hexagon6 {
-        width: 4vw;
-        height: 4vh;
-        top: 70vh;
-        left: 18vw;
-    }
-}
-
-@media (max-width: 676px) {
-    .content-avatar {
-        margin: 0 350px 70px 0;
-    }
-
-    .hexagon4 {
-        top: 115vh;
+        top: 450px;
+        left: 50px;
     }
 }
 
 @media (max-width: 610px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 80% 50%, 0 85%);
+    }
+
     .content-avatar {
         margin: 0 350px 120px 0;
     }
 
     .container-with-triangle {
-        width: 150vw;
-    }
-
-    .hexagon3 {
-        height: 3vh;
-        left: 5vw;
-        top: 109vh;
-    }
-
-    .hexagon4 {
-        height: 2vh;
-        left: 14vw;
-        top: 110vh;
-    }
-
-    .hexagon5 {
-        height: 3vh;
+        width: 915px;
     }
 
     #img2 {
-        margin: -100px 0 0 350px;
-        width: 80vw;
-    }
-}
-
-@media (max-width: 540px) {
-    .hexagon6 {
-        width: 4vw;
-        height: 3vh;
+        margin: -40px 0 0 100px;
     }
 }
 
