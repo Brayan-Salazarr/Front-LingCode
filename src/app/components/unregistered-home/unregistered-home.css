@@ -232,6 +232,10 @@ section {
 }
 
 @media (max-width: 1366px) {
+    .field-modules {
+        width: 100%;
+    }
+
     .container-with-triangle {
         width: 830px;
         clip-path: polygon(0 0, 0 0, 95% 50%, 0 100%);
@@ -268,6 +272,14 @@ section {
     #img-symbols {
         width: 58vw;
         margin: 0 0 34vh 0;
+    }
+
+    #text3 {
+        width: 450px;
+    }
+
+    .carousel-container {
+        width: 1175px;
     }
 }
 
