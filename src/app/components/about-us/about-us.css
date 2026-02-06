@@ -109,6 +109,13 @@ h2 {
     right: 0;
 }
 
+@media (min-width: 1700px) {
+   #AboutInfo{
+    display: flex;
+    align-items: center;
+   }
+}
+
 @media (max-width: 1336px) {
     p {
         font-size: 33px;
