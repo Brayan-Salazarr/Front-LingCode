@@ -43,3 +43,25 @@ section {
         margin: 0 0 0 0;
     }
 }
+
+@media (max-width: 920px) {
+   
+    .information{
+        width: 69vw;
+    }
+}
+
+@media (max-width: 590px) {
+   
+    .text{
+        font-size: 14px;
+    }
+
+    .title{
+        font-size: 29px;
+    }
+
+    .subtitle{
+        font-size: 17px;
+    }
+}

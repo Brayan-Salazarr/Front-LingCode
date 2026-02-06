@@ -217,7 +217,7 @@ section {
         height: 142px;
     }
 
-    .line{
+    .line {
         width: 675px;
         height: 7px;
     }
@@ -255,5 +255,88 @@ section {
         width: 34px;
         height: 40px;
         top: 251px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .line {
+        width: 577px;
+    }
+
+    .text {
+        font-size: 18px;
+    }
+
+    #text {
+        width: 330px;
+        top: 6%;
+    }
+
+    .hexagon5 {
+        width: 31px;
+        height: 37px;
+        top: -20px;
+    }
+
+    .hexagon6 {
+        width: 31px;
+        height: 36px;
+        top: -23px;
+    }
+
+    .hexagon3 {
+        width: 30px;
+        height: 37px;
+        top: 294px;
+    }
+
+    .separation {
+        height: 172px;
+    }
+
+    .container-with-triangle1 {
+        top: 1062px;
+        height: 641px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .container-with-triangle {
+        background: transparent;
+    }
+
+    .container-with-triangle1 {
+        top: 868px;
+        width: 100%;
+    }
+
+    .mission-information {
+        justify-content: center;
+    }
+
+    .text {
+        width: 100%;
+        margin: 0;
+    }
+
+    #text {
+        margin: 0 0 0 25px;
+        width: 286px;
+    }
+
+    .separation {
+        width: 100%;
+        align-items: center;
+        padding: 25px;
+    }
+
+    .line {
+        display: none;
+    }
+
+    .hexagon3{
+        top: 337px;
     }
 }
