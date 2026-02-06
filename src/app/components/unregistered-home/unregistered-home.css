@@ -397,11 +397,11 @@ section {
     }
 
     .content-avatar {
-        width: 620px;
+        width: 660px;
     }
 
     #text2 {
-        width: 280px;
+        width: 260px;
     }
 }
 
@@ -420,6 +420,15 @@ section {
 
     .content-avatar {
         height: 1065px;
+        width: 630px;
+    }
+
+    #caption2 {
+        width: 190px;
+    }
+
+    #text2 {
+        width: 190px;
     }
 
     .hexagon3 {
@@ -467,7 +476,7 @@ section {
     }
 
     .content-avatar {
-        width: 550px;
+        width: 570px;
         height: 900px;
     }
 
@@ -500,7 +509,7 @@ section {
     }
 
     .information {
-        margin: 60px 0 0 0;
+        margin: 0 0 0 0;
         width: 80%;
     }
 
@@ -513,7 +522,7 @@ section {
     }
 
     #img1 {
-        width: 42vw;
+        width: 60vw;
     }
 
     .field-avatar {
@@ -557,14 +566,11 @@ section {
 @media (max-width: 610px) {
     .container-with-triangle {
         clip-path: polygon(0 0, 0 0, 80% 50%, 0 85%);
+        width: 915px;
     }
 
     .content-avatar {
-        margin: 0 350px 120px 0;
-    }
-
-    .container-with-triangle {
-        width: 915px;
+        margin: 0 350px 0 0;
     }
 
     #img2 {
@@ -572,9 +578,66 @@ section {
     }
 }
 
+@media (max-width: 565px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 75% 50%, 0 85%);
+    }
+
+    .hexagon3 {
+        top: 950px;
+    }
+
+    .hexagon6 {
+        top: 600px;
+    }
+
+    .hexagon4 {
+        top: 900px;
+    }
+
+    .hexagon5 {
+        top: 850px;
+    }
+}
+
+@media (max-width: 490px) {
+    .information {
+        margin: 0 0 0 0;
+        height: 300px;
+    }
+
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 70% 50%, 0 85%);
+    }
+
+    .hexagon3 {
+        top: 950px;
+    }
+
+    .hexagon6 {
+        top: 500px;
+    }
+
+    .hexagon4 {
+        top: 900px;
+    }
+
+    .hexagon5 {
+        top: 850px;
+    }
+
+    #img2 {
+        width: 80vw;
+    }
+
+    .hexagon5 {
+        left: 50px;
+    }
+}
+
 @media (max-width: 430px) {
     .information {
-        width: 90%;
+        width: 80%;
         height: 55vh;
     }
 
@@ -586,7 +649,21 @@ section {
         flex-direction: column;
     }
 
-    #img1 {
-        width: 44vw;
+    #img2 {
+        margin: -40px 0 0 170px;
+    }
+}
+
+@media (max-width: 390px) {
+    #caption2 {
+        width: 80%;
+    }
+
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 65% 50%, 0 85%);
+    }
+
+    #img2 {
+        margin: -40px 0 0 160px;
     }
 }
