@@ -697,7 +697,7 @@ section {
     }
 
     #text3 {
-        margin: 20px 0 0 -175px !important;
+        margin: 20px 0 0 -78px  !important;
         width: 70%;
     }
 
@@ -749,13 +749,8 @@ section {
     }
 
     .information-modules {
-        margin: 0 0 0 60px;
+        margin: 0px 0 0 119px;
         width: 100%;
-    }
-
-    #text3 {
-        margin: 20px 0 0 -175px;
-        width: 65%;
     }
 }
 
