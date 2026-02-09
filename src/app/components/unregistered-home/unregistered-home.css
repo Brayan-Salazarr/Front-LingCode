@@ -271,7 +271,7 @@ section {
 
     #img-symbols {
         width: 58vw;
-        margin: 0 0 34vh 0;
+        margin: 0px 0 289px 0
     }
 
     #text3 {
@@ -280,6 +280,10 @@ section {
 
     .information-modules {
         width: 24%;
+    }
+
+    .field-invitaion {
+        margin: 90px 0 0 0
     }
 }
 
@@ -306,6 +310,10 @@ section {
 
     #caption3 {
         width: 400px;
+    }
+
+    .field-invitaion {
+        height: 711px;
     }
 }
 
@@ -378,6 +386,10 @@ section {
 
     #text3 {
         width: 370px;
+    }
+
+    .field-invitaion {
+        height: 690px;
     }
 }
 
@@ -500,6 +512,26 @@ section {
 
     #caption3 {
         width: 300px;
+    }
+
+    .field-invitaion {
+        height: 460px;
+    }
+
+    #img-symbols {
+        margin: 0px 0 147px 0px;
+    }
+
+    .text-invitation {
+        font-size: 15px;
+    }
+
+    #img-cybro-gray {
+        width: 44vw;
+    }
+
+    .information-invitation {
+        margin: 0 89px 0 0;
     }
 }
 
@@ -630,14 +662,13 @@ section {
     }
 
     .information-modules {
-        display: flex;
         flex-direction: column;
         align-items: center;
         margin: 0 0 0 75px;
         width: 80%;
     }
 
-    #caption3{
+    #caption3 {
         width: 100%;
     }
 
@@ -666,8 +697,33 @@ section {
     }
 
     #text3 {
-        margin: 20px 0 0 -175px;
+        margin: 20px 0 0 -175px !important;
         width: 70%;
+    }
+
+    .field-invitaion {
+        flex-direction: column-reverse;
+        height: 528px;
+    }
+
+    .information-invitation {
+        margin: 50px 0 0 60px;
+        width: 86%;
+    }
+
+    .text-invitation {
+        width: 400px;
+    }
+
+    #img-symbols {
+        margin: 0px 0 25vh 40vw;
+        transform: scaleX(-1);
+    }
+
+    #img-cybro-gray {
+        margin: 0px 0 0 44vw;
+        width: 56vw;
+        transform: scaleX(-1);
     }
 }
 
@@ -736,6 +792,14 @@ section {
     .hexagon5 {
         left: 50px;
     }
+
+    .information-invitation {
+        margin: 20vh 0 0 10vw;
+    }
+
+    #caption4 {
+        width: 350px;
+    }
 }
 
 @media (max-width: 430px) {
@@ -756,9 +820,13 @@ section {
         margin: -40px 0 0 170px;
     }
 
-    #caption3{
+    #caption3 {
         margin: 0 0 0 -110px;
         width: 340px;
+    }
+
+    .text-invitation {
+        width: 300px;
     }
 }
 
@@ -779,7 +847,7 @@ section {
         height: 450px;
     }
 
-    #caption3{
+    #caption3 {
         margin: 0 0 0 -80px;
     }
 }
