@@ -209,6 +209,7 @@ h1 {
 }
 
 .avatar {
+        
     width: 310px;
 }
 
@@ -315,7 +316,7 @@ h1 {
         height: 377px;
     }
 
-    .user-header{
+    .user-header {
         width: 1250px;
     }
 
@@ -368,9 +369,6 @@ h1 {
         font-size: 54px;
     }
 
-    .space h1 {
-        margin: 0 0 0 150px;
-    }
 }
 
 
@@ -709,10 +707,36 @@ h1 {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 870px) {
     h1 {
         font-size: 29px;
     }
+
+    .hexagon6 {
+        left: 562px;
+    }
+
+    .hexagon8 {
+        left: 495px;
+        top: 348px;
+    }
+
+    .hexagon7 {
+        height: 39px;
+        width: 33px;
+        left: 586px;
+        top: 309px;
+    }
+}
+
+@media (max-width: 870px) {
+    .hexagon6 {
+        display: none
+    }
+}
+
+@media (max-width: 768px) {
+
 
     .information {
         left: 185px;
@@ -746,9 +770,7 @@ h1 {
         top: 383px;
     }
 
-    .hexagon6 {
-        display: none
-    }
+    
 
     .hexagon7 {
         top: 326px;
@@ -807,6 +829,44 @@ h1 {
 
     .move-hex-home.hexagon7 {
         top: 35vh;
+    }
+}
+
+@media (max-width: 723px) {
+
+    h1 {
+        width: 464px;
+    }
+
+    #imgCircle {
+        display: none;
+    }
+}
+
+
+@media (max-width: 550px) {
+    h1 {
+        width: 399px;
+        font-size: 26px;
+    }
+
+    .information {
+        left: 156px;
+    }
+
+    .hexagon8 {
+        left: 407px;
+    }
+
+    .hexagon7 {
+        top: 316px;
+        left: 475px;
+    }
+}
+
+@media (max-width: 515px) {
+    .hexagon7 {
+        display: none;
     }
 }
 
@@ -957,6 +1017,28 @@ h1 {
 
 @media (max-width: 310px) {
 
+    h1 {
+        width: 268px;
+        font-size: 17px;
+        margin: 0 0 0 20px;
+    }
+
+    .information {
+        height: 104px;
+        top: 713px;
+        left: 121px;
+    }
+
+    .hexagon2 {
+        top: 165px;
+    }
+
+    .line {
+        height: 7px;
+        width: 97px;
+    }
+
+
     .avatar {
         width: 85px;
         height: 85px;
@@ -1005,581 +1087,3 @@ h1 {
         left: -62px;
     }
 }
-
-/*@media (max-width: 1497px) {
-    header {
-        height: 1050px;
-    }
-
-    .user-header {
-        position: relative;
-        top: -20px;
-    }
-
-    #imgCirclee {
-        width: 530px;
-    }
-
-    #background {
-        top: -546px;
-    }
-
-    #imgCircle {
-        top: 88vh;
-    }
-
-}
-
-@media (max-width: 1366px) {
-
-    header {
-        top: -650px;
-    }
-
-    #background {
-        top: -680px;
-    }
-
-    h1 {
-        font-size: 43px;
-    }
-
-    .information {
-        height: 38vh;
-    }
-
-    .line {
-        height: 15px;
-        width: 230px;
-    }
-
-    
-
-    .hexagon1 {
-        top: 25vh;
-        left: 10vw;
-    }
-
-    .hexagon3 {
-        top: 85vh;
-        left: 6vw;
-    }
-
-    .hexagon4 {
-        top: 91vh;
-    }
-
-    .hexagon5 {
-        top: 82vh;
-    }
-
-    .hexagon6 {
-        top: 30vh;
-        left: 67vw;
-    }
-
-    .hexagon7 {
-        top: 55vh;
-    }
-
-    .avatar {
-        width: 255px;
-    }
-
-    #imgCirclee {
-        margin-top: -17vh;
-        margin-left: -39.20vw;
-        width: 470px;
-    }
-
-    .button-edit {
-        margin: 100px 0 0 120px;
-    }
-
-    .move-hex-home.hexagon6 {
-        top: 20vh;
-    }
-}
-
-@media (max-width: 1279px) {
-
-
-    .hexagon3 {
-        top: 82vh;
-    }
-
-    .hexagon4 {
-        top: 88vh;
-        left: 150px;
-    }
-
-    .hexagon5 {
-        top: 78vh;
-    }
-
-    .nickname {
-        font-size: 50px;
-    }
-
-    #line {
-        margin: 0 0 0 120px
-    }
-
-    #imgCirclee {
-        margin-left: -36vw;
-    }
-
-    .user-header {
-        width: 845px;
-    }
-
-    .field {
-        justify-content: space-evenly;
-    }
-
-    .button-edit {
-        margin: 100px 0 0 140px;
-    }
-
-}
-
-@media (max-width: 1233px) {
-      #imgCirclee {
-        margin-left: -37.40vw;
-    }
-}
-
-@media (max-width: 1196px) {
-      #imgCirclee {
-        margin-left: -38.40vw;
-    }
-}
-
-@media (max-width: 1153px) {
-
-      #imgCirclee {
-        margin-left: -40vw;
-    }
-
-    .user-header {
-        top: -1vh;
-        left: -7vw;
-    }
-}
-
-@media (max-width: 1100px) {
-
-      #imgCirclee {
-        margin-left: -41.60vw;
-    }
-}
-
-@media (max-width: 1026px) {
-
-      #imgCirclee {
-        width: 440px;
-        margin-left: -45vw;
-        top: 1vh;
-    }
-
-    .avatar{
-        position: relative;
-        width: 240px;
-    }
-
-    .user-header {
-        top: 1vh;
-    }
-
-    .button-edit{
-        margin: 90px 0 0 140px;
-    }
-}
-
-@media (max-width: 986px) {
-    #imgCirclee {
-        margin-left: -47vw;
-    }
-}
-
-@media (max-width: 941px) {
-
-      #imgCirclee {
-        width: 410px;
-        margin-left: -49vw;
-        top: 4vh;
-    }
-
-    .avatar{
-        position: relative;
-        width: 240px;
-    }
-
-    .user-header {
-        top: 1vh;
-        left: -10vw;
-    }
-
-    .button-edit{
-        margin: 90px 0 0 140px;
-    }
-}
-
-@media (max-width: 920px) {
-
-    header {
-        height: 900px;
-    }
-
-    h1 {
-        font-size: 35px;
-    }
-
-    #background {
-        top: -545px;
-    }
-
-    .information {
-        height: 210px;
-    }
-
-    .line {
-        height: 12px;
-    }
-
-    .hexagon1 {
-        width: 30px;
-        height: 40px;
-        top: 135px;
-    }
-
-    .hexagon2 {
-        height: 25px;
-    }
-
-    .hexagon3 {
-        height: 35px;
-        top: 455px;
-        left: 80px;
-    }
-
-    .hexagon4 {
-        height: 29px;
-        top: 470px;
-    }
-
-    .hexagon5 {
-        height: 35px;
-        top: 420px;
-        left: 120px;
-    }
-
-    .hexagon6 {
-        top: 150px;
-        width: 35px;
-        height: 40px;
-    }
-
-    .hexagon7 {
-        height: 35px;
-    }
-
-    .hexagon8 {
-        height: 35px;
-    }
-
-    #imgCircle {
-        top: 510px;
-        left: 75vw;
-        width: 300px;
-    }
-
-    .nickname {
-        font-size: 45px;
-    }
-
-    #line {
-        margin: 0 0 0 80px;
-        width: 180px;
-    }
-
-    .name {
-        font-size: 20px;
-    }
-
-    .email {
-        font-size: 20px;
-    }
-
-    .date {
-        font-size: 20px;
-    }
-
-    #imgCirclee {
-        width: 380px;
-        margin-top: -13vh;
-        margin-left: -47.10vw;
-    }
-
-    .user-header {
-        width: 750px;
-        left: -50px;
-        top: -3vh;
-    }
-
-    .field {
-        justify-content: space-around;
-    }
-
-    .button-edit {
-        margin: 90px 0 0 110px;
-        width: 130px;
-    }
-
-    .avatar {
-        position: relative;
-        top: 25px;
-        width: 215px
-    }
-
-    .move-hex-home.hexagon6 {
-        left: 92vw;
-    }
-
-    .move-hex-home.hexagon7 {
-        top: 50vh;
-    }
-}
-
-@media (max-width: 842px) {
-    #imgCirclee {
-        margin-left: -51vw;
-    }
-
-    .move-hex-home.hexagon7 {
-        left: 93vw;
-    }
-
-}
-
-@media (max-width: 795px) {
-    #imgCirclee {
-        width: 340px;
-        margin-left: -47vw;
-        top: 6vh;
-    }
-
-    .avatar{
-        width: 200px;
-    }
-
-    .nickname{
-        font-size: 40px;
-    }
-
-    .name,.email, .date{
-        font-size: 18px;
-    }
-
-    .img{
-        width: 27px;
-        margin: 0 20px 0 0;
-    }
-
-    #line{
-        width: 160px;
-        margin: 0 0 0 60px;
-    }
-
-    .field{
-        justify-content: space-evenly;
-    }
-
-    .user-header{
-        left: -10vw;
-    }
-
-    .button-edit{
-        margin: 90px 0 0 130px;
-    }
-}
-
-@media (max-width: 768px) {
-
-    header {
-        height: 850px;
-    }
-
-    #background {
-        top: -594px;
-        left: -9vw;
-    }
-
-    h1 {
-        font-size: 30px
-    }
-
-    .information {
-        height: 170px;
-    }
-
-    .line {
-        height: 10px;
-    }
-
-    #imgCircle {
-        top: 510px;
-        left: 75vw;
-        width: 260px;
-    }
-
-    .hexagon3 {
-        height: 30px;
-        top: 390px;
-        left: 80px;
-    }
-
-    .hexagon4 {
-        height: 20px;
-        top: 420px;
-    }
-
-    .hexagon5 {
-        height: 30px;
-        top: 370px;
-    }
-
-    .hexagon6 {
-        width: 25px;
-        height: 35px;
-    }
-
-    .hexagon8 {
-        height: 30px;
-        top: 340px;
-    }
-
-    .nickname{
-        font-size: 37px;
-    }
-
-    #line{
-        height: 7px;
-        width: 140px;
-    }
-
-    .name, .email, .date{
-        font-size: 16px;
-    }
-
-    .img{
-        width: 24px;
-    }
-
-    .avatar{
-        width: 180px;
-    }
-
-    #imgCirclee{
-        width: 310px;
-        top: 7vh;
-    }
-
-    .user-header{
-        left: -12vw;
-         width: 700px;
-    }
-
-    .move-hex-home.hexagon7 {
-        top: 44vh;
-    }
-}   
-
-@media (max-width: 480px) {
-
-    header {
-        left: -15vw;
-        top: -95vh;
-        transform: skewY(-10deg);
-    }
-
-    h1 {
-        width: 320px;
-        font-size: 21px;
-    }
-
-    .line {
-        height: 9px;
-        width: 180px;
-    }
-
-    #imgCircle {
-        display: none;
-    }
-
-    .information {
-        width: 400px;
-        height: 130px;
-        top: 105vh;
-        left: 25vw;
-        transform: skewY(10deg);
-    }
-
-    #background {
-        left: -18vw;
-        top: -98vh;
-        width: 750px;
-        transform: skewY(-12deg);
-        z-index: 4;
-    }
-
-    .hexagon1 {
-        width: 30px;
-        height: 32px;
-    }
-
-    .hexagon2 {
-        height: 20px;
-        width: 20px;
-    }
-
-    .hexagon3 {
-        height: 30px;
-        width: 25px;
-        top: 340px;
-        left: 50px;
-    }
-
-    .hexagon4 {
-        height: 20px;
-        width: 20px;
-        top: 350px;
-        left: 120px;
-    }
-
-    .hexagon5 {
-        width: 20px;
-        height: 25px;
-        top: 320px;
-        left: 90px;
-    }
-
-    .hexagon6 {
-        width: 30px;
-        height: 35px;
-        left: 400px;
-    }
-
-    .hexagon7 {
-        height: 20px;
-        width: 20px;
-        top: 300px;
-        left: 370px;
-    }
-
-    .hexagon8 {
-        height: 25px;
-        width: 25px;
-        top: 320px;
-    }
-}*/
