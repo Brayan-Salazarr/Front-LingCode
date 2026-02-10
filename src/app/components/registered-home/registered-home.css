@@ -61,8 +61,6 @@
 
 #img-Cybro {
     width: 400px;
-    top: 145vh;
-    left: 55vw;
     z-index: 10;
 }
 
@@ -424,7 +422,7 @@
     padding: 5px;
 }
 
-.achievement-icon.icon{
+.achievement-icon.icon {
     height: 65px;
 }
 
@@ -433,3 +431,40 @@
     height: 80px;
 }
 
+@media (max-width: 1279px) {
+
+    .content-box {
+        justify-content: start;
+        gap: 56px;
+    }
+
+    .target-box {
+        width: 493px;
+        height: 542px;
+    }
+
+    .border-streak {
+        width: 530px;
+        height: 674px;
+    }
+
+    #img-Cybro {
+        width: 350px;
+    }
+
+}
+
+@media (max-width: 1086px) {
+    .target-box {
+        width: 455px;
+        height: 506px;
+    }
+
+    #img-gitHub {
+        width: 270px;
+    }
+
+    #img-trophy {
+        width: 91px;
+    }
+}
