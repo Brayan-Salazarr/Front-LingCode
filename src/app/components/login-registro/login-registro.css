@@ -324,14 +324,15 @@ a {
 
 .termsUse {
     display: flex;
+    justify-content: center;
     align-items: center;
     margin: 0 0 0 0;
+    width: 195px;
 }
 
 #termsLogin {
     margin: 0 0 0 0;
     height: 63px;
-    width: 100%;
 }
 
 #divisionLogin {
@@ -353,8 +354,8 @@ a {
     background-color: rgba(0, 0, 0, 0.9);
     position: fixed;
     z-index: 6000;
-    height: 633px;
-    width: 1366px;
+    height: 100%;
+    width: 100%;
     transition: opacity 0.3s ease;
 }
 
@@ -414,6 +415,7 @@ h3 {
 }
 
 #termsModal {
+    height: 80px;
     width: 40%;
 }
 
@@ -546,7 +548,8 @@ h3 {
     }
 
     .terms {
-        width: 20%;
+        margin: 20px 0 0 0;
+        width: 167px;
     }
 
     .line2 {
@@ -611,6 +614,14 @@ h3 {
 @media(max-width: 1250px) {
     .infoBox {
         width: 750px;
+    }
+
+    #termsModal {
+        width: 157px;
+    }
+
+    #termsModal {
+        height: 30px;
     }
 }
 
@@ -826,11 +837,21 @@ h3 {
     .terms {
         width: 30%;
     }
+
+    #termsModal {
+        margin: 0;
+        height: 50px;
+    }
 }
 
 @media(max-width: 930px) {
     #infoLogin {
         width: 530px;
+    }
+
+    .modalContent {
+        height: 50%;
+        width: 49%;
     }
 }
 
@@ -1058,6 +1079,11 @@ h3 {
     #Whitetittle {
         width: 260px;
     }
+
+    .modalContent {
+        height: 45%;
+        width: 65%;
+    }
 }
 
 @media(max-width: 570px) {
@@ -1174,5 +1200,10 @@ h3 {
 
     .terms {
         width: 40%;
+    }
+
+    .modalContent {
+        height: 35%;
+        width: 75%;
     }
 }
