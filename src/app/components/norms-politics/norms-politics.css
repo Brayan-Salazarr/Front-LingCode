@@ -5,11 +5,10 @@
 .component {
     display: flex;
     justify-content: center;
-    height: 460vh;
+    align-items: flex-start;
 }
 
 section {
-    height: 440vh;
     margin: 70px;
 }
 
@@ -21,7 +20,7 @@ section {
 .information {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    gap: 15px;
     width: 50vw;
     height: 100%;
 }
@@ -31,13 +30,6 @@ section {
 }
 
 @media (max-width: 1366px) {
-    .component {
-        height: 580vh;
-    }
-
-    section {
-        height: 550vh;
-    }
 
     #titleNor {
         margin: 0 0 0 0;
@@ -63,5 +55,12 @@ section {
 
     .subtitle{
         font-size: 17px;
+    }
+}
+
+@media (max-width: 480px) {
+   
+    .title{
+        font-size: 27px;
     }
 }
