@@ -567,8 +567,8 @@ h3 {
     }
 
     #modalContentLogin {
-        height: 40%;
-        width: 30%;
+        height: 33%;
+        width: 37%;
     }
 
     h3 {
@@ -898,6 +898,11 @@ h3 {
     #infoLogin {
         width: 500px;
     }
+
+    #modalContentLogin {
+        height: 34%;
+        width: 51%;
+    }
 }
 
 @media(max-width: 850px) {
@@ -1070,6 +1075,11 @@ h3 {
     #line3Login {
         top: 23.5%;
     }
+
+    #modalContentLogin {
+        height: 31%;
+        width: 59%;
+    }
 }
 
 @media(max-width: 640px) {
@@ -1166,6 +1176,21 @@ h3 {
             linear-gradient(180deg, #f5f5f500 24%, #000 19%),
             url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -5vw -10vh / 60vw;
     }
+
+    .modalContent {
+        height: 31%;
+        width: 66%;
+    }
+
+    .inputs {
+        height: 28px;
+        width: 28px;
+    }
+
+    #modalContentLogin {
+        height: 27%;
+        width: 80%;
+    }
 }
 
 @media(max-width: 400px) {
@@ -1206,5 +1231,10 @@ h3 {
     .modalContent {
         height: 35%;
         width: 75%;
+    }
+
+    .modalContent {
+        height: 34%;
+        width: 70%;
     }
 }
