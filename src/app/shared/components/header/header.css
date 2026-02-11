@@ -1042,13 +1042,13 @@ h1 {
     .avatar {
         width: 85px;
         height: 85px;
-        left: -54px;
+        left: 9px;
         top: -3px;
     }
 
     #imgCirclee {
         width: 156px;
-        left: 48px;
+        left: 111px;
         top: -48px;
     }
 
@@ -1084,6 +1084,6 @@ h1 {
     .user-data {
         height: 121px;
         top: 22px;
-        left: -62px;
+        left: -7px;
     }
 }

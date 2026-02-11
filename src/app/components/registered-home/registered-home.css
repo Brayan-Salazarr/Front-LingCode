@@ -456,15 +456,286 @@
 
 @media (max-width: 1086px) {
     .target-box {
-        width: 455px;
-        height: 506px;
+        width: 413px;
+        height: 491px;
+
     }
 
     #img-gitHub {
-        width: 270px;
+        width: 252px;
     }
 
     #img-trophy {
         width: 91px;
+    }
+
+    .button-target {
+        height: 46px;
+        width: 124px
+    }
+
+    .box-up {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .box-title {
+        margin: 0;
+    }
+
+    .border-streak {
+        width: 461px;
+        height: 630px;
+    }
+
+    #streak {
+        font-size: 144px;
+    }
+
+    #img-Cybro {
+        width: 293px;
+    }
+
+    .content-target-streak {
+        justify-content: space-evenly;
+    }
+
+    #cybro-energy {
+        width: 390px;
+    }
+
+    .box-progress {
+        width: 396px;
+    }
+
+    #state {
+        font-size: 25px;
+    }
+
+    .title-progress {
+        font-size: 35px;
+    }
+
+    .box-energy {
+        justify-content: space-evenly;
+    }
+}
+
+@media (max-width: 920px) {
+    .target-box {
+        width: 363px;
+        height: 391px;
+    }
+
+    .title-target {
+        font-size: 34px;
+    }
+
+    #img-line {
+        width: 161px;
+    }
+
+    #img-trophy {
+        width: 82px;
+    }
+
+    #img-gitHub {
+        width: 200px;
+    }
+
+    .button-target {
+        height: 39px;
+        width: 115px;
+    }
+
+    .border-streak {
+        width: 388px;
+        height: 518px;
+    }
+
+    #img-Cybro {
+        width: 240px;
+    }
+
+    #streak {
+        font-size: 133px;
+    }
+
+    #title-streak {
+        font-size: 32px;
+    }
+
+    .subTitle {
+        font-size: 42px;
+    }
+
+    .content-box {
+        height: 522px;
+    }
+}
+
+@media (max-width: 800px) {
+    .content-target-streak {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .target-box {
+        width: 550px;
+        height: 600px;
+    }
+
+    .content-box {
+        height: 750px;
+    }
+
+    .title-target {
+        font-size: 36px;
+    }
+
+    #img-trophy {
+        width: 100px;
+    }
+
+    #img-line {
+        width: 200px;
+    }
+
+    #img-gitHub {
+        width: 300px;
+    }
+
+    .button-target {
+        height: 50px;
+        width: 130px;
+    }
+
+    .subTitle {
+        font-size: 48px;
+    }
+
+    .border-streak {
+        width: 556px;
+        height: 674px;
+    }
+
+    .content-target-streak {
+        gap: 80PX;
+    }
+
+    #img-Cybro {
+        width: 400px;
+    }
+
+    #streak {
+        font-size: 176px;
+    }
+
+    #title-streak {
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 600px) {
+    .target-box {
+        width: 400px;
+        height: 445px;
+    }
+
+    #img-gitHub {
+        width: 250px;
+    }
+
+    #img-trophy {
+        width: 90px;
+    }
+
+    .title-target {
+        font-size: 33px;
+    }
+
+    #img-line {
+        width: 161px;
+    }
+
+    .button-target {
+        height: 39px;
+        width: 115px;
+    }
+
+    .content-box {
+        height: 585px;
+    }
+
+    .border-streak {
+        width: 406px;
+        height: 574px;
+    }
+
+    #img-Cybro {
+        width: 255px;
+    }
+
+    #streak {
+        font-size: 145px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .target-box {
+        width: 300px;
+        height: 350px;
+    }
+
+    .subTitle {
+        font-size: 38px;
+    }
+
+    .content-box {
+        height: 475px;
+        gap: 33px;
+        margin: 50px 0 0 0;
+    }
+
+    .title-target,
+    #title-streak {
+        font-size: 30px;
+    }
+
+    #img-trophy {
+        width: 73px;
+    }
+
+    #img-gitHub {
+        width: 160px;
+    }
+
+    .button-target {
+        height: 35px;
+        width: 96px;
+        font-size: 12px;
+    }
+
+    #text-target {
+        font-size: 16px;
+    }
+
+    .border-streak {
+        width: 306px;
+        height: 465px;
+    }
+
+    #img-Cybro {
+        width: 195px;
+    }
+
+    #streak {
+        font-size: 115px;
+    }
+
+    .content-target-streak {
+        gap: 0PX;
     }
 }

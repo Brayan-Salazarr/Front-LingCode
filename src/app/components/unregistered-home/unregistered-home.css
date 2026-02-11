@@ -213,6 +213,20 @@ section {
     height: 15px;
 }
 
+@media (min-width: 1700px) {
+    .field-invitaion {
+        height: 807px;
+    }
+
+    #img-symbols {
+        margin: 0 0 386px 0;
+    }
+
+    #img-cybro-gray {
+        width: 850px;
+    }
+}
+
 @media (max-width: 1537px) {
     .caption {
         font-size: 38px;
@@ -852,7 +866,7 @@ section {
         width: 71%;
     }
 
-    .content-avatar{
+    .content-avatar {
         height: 725px;
 
     }
