@@ -540,6 +540,10 @@ h1 {
         margin: 100px 0 0 102px
     }
 
+    .move-hex-home.hexagon7 {
+        left: 1031px;
+    }
+
 }
 
 @media (max-width: 920px) {
@@ -691,7 +695,7 @@ h1 {
     .move-hex-home.hexagon2 {
         width: 20px;
         height: 23px;
-        top: 215px;
+        top: 141px;
     }
 
     .move-hex-home.hexagon6 {
@@ -954,22 +958,18 @@ h1 {
         left: 331px;
     }
 
-    .field {
-        flex-direction: column;
-        align-items: center;
-    }
 
     #imgCirclee {
         width: 168px;
-        left: 74px;
-        top: -41px;
+        left: 64px;
+        top: -1px;
     }
 
     .avatar {
         width: 91px;
         height: 91px;
-        left: -22px;
-        top: 7px;
+        left: 98px;
+        top: 48px;
     }
 
     .user-header {
@@ -995,8 +995,8 @@ h1 {
     .user-data {
         position: relative;
         height: 121px;
-        top: 32px;
-        left: -39px;
+        top: 20px;
+        left: 68px;
     }
 
     .img {
@@ -1024,6 +1024,73 @@ h1 {
 
     .user-header {
         width: 100%;
+    }
+
+    .information {
+        left: 139px;
+    }
+}
+
+@media (max-width: 410px) {
+
+    .information {
+        top: 720px;
+        left: 170px;
+    }
+
+    .avatar {
+        width: 85px;
+        height: 85px;
+        left: 9px;
+        top: -3px;
+    }
+
+    #imgCirclee {
+        width: 156px;
+        left: 111px;
+        top: -48px;
+    }
+
+    .user-header {
+        width: 100%;
+    }
+
+    #line {
+        display: none;
+    }
+
+    .field {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nickname {
+        text-align: center;
+        font-size: 19px;
+    }
+
+    .name,
+    .email,
+    .date {
+        font-size: 11px;
+    }
+
+    .img {
+        margin: 0px 9px 0 0;
+        width: 19px;
+    }
+
+    .user-data {
+        height: 121px;
+        top: 22px;
+        left: -7px;
+    }
+}
+
+@media (max-width: 400px) {
+    .information {
+        top: 713px;
+        left: 40vw;
     }
 }
 
