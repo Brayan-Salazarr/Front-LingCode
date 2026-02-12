@@ -9,16 +9,16 @@ import { AuthService, User } from '../../../auth/services/authService';
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })
-export class Nav{
+export class Nav {
   @Input() colorBackground = '';
-  
+
   user: User | null = null;
 
-  constructor (
-    private router : Router,
+  constructor(
+    private router: Router,
     private authService: AuthService
-  ){
-     this.authService.currentUser$.subscribe(user => {
+  ) {
+    this.authService.currentUser$.subscribe(user => {
       this.user = user;
     });
   }
@@ -40,5 +40,15 @@ export class Nav{
     } else {
       this.router.navigate(['/']);
     }
+  }
+
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu() {
+    this.menuOpen = false;
   }
 }
