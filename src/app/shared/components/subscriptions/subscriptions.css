@@ -203,6 +203,48 @@ li {
     }
 }
 
+@media (max-width: 480px) {
+    .card-sus {
+        width: 290px;
+        height: 430px;
+    }
+
+    .suntitle-subsc {
+        font-size: 32px;
+    }
+
+    .line-susbsc {
+        width: 167px;
+    }
+
+    .size-number {
+       font-size: 32px
+    }
+
+    .cost,
+    .type {
+        font-size: 22px;
+    }
+
+    li {
+        font-size: 12px;
+    }
+
+    .icons {
+        width: 21px;
+    }
+
+    .iconss {
+        width: 17px;
+    }
+
+    .button-subscription{
+    width: 73%;
+    height: 52px;
+    margin: 0 0 12px 0;
+    }
+}
+
 @media (max-width: 310px) {
     .card-sus {
         width: 250px;

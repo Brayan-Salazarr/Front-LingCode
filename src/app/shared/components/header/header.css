@@ -954,17 +954,22 @@ h1 {
         left: 331px;
     }
 
+    .field {
+        flex-direction: column;
+        align-items: center;
+    }
+
     #imgCirclee {
-        width: 229px;
-        top: -29px;
-        left: 1px;
+        width: 168px;
+        left: 74px;
+        top: -41px;
     }
 
     .avatar {
-        width: 125px;
-        height: 125px;
-        left: 24px;
-        top: 34px;
+        width: 91px;
+        height: 91px;
+        left: -22px;
+        top: 7px;
     }
 
     .user-header {
@@ -972,7 +977,8 @@ h1 {
     }
 
     .nickname {
-        font-size: 30px;
+        text-align: center;
+        font-size: 25px;
     }
 
     .name,
@@ -987,13 +993,15 @@ h1 {
     }
 
     .user-data {
-        height: 162px;
         position: relative;
-        left: -44px;
+        height: 121px;
+        top: 32px;
+        left: -39px;
     }
 
     .img {
-        margin: 0 14px 0 0;
+        margin: 0px 9px 0 0;
+        width: 19px;
     }
 
     .button-edit {
@@ -1012,6 +1020,10 @@ h1 {
         left: 437px;
         width: 23px;
         height: 26px;
+    }
+
+    .user-header {
+        width: 100%;
     }
 }
 
@@ -1050,11 +1062,6 @@ h1 {
         width: 156px;
         left: 111px;
         top: -48px;
-    }
-
-    .field {
-        flex-direction: column;
-        align-items: center;
     }
 
     .user-header {
