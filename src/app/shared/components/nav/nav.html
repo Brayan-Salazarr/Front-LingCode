@@ -4,15 +4,14 @@
     <div class="hamburguer" (click)="toggleMenu()">
         <img id="iconMenu" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1770926768/barra-de-menus_jya4ei.png"
             alt="imgH">
+    </div>
 
         <nav class="nav" [class.active]="menuOpen">
-            <a class="place" (click)="goHome(); toggleMenu()">Inicio</a>
+            <a class="place" (click)="goHome(); closeMenu()">Inicio</a>
             <a class="place" routerLink="/module-view" (click)="toggleMenu()">Módulos</a>
             <a class="place" routerLink="/about-us" (click)="toggleMenu()">Sobre nosotros</a>
         </nav>
-    </div>
-
-
+    
 
     <div class="overlay" *ngIf="menuOpen" (click)="closeMenu()"></div>
 

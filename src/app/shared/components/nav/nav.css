@@ -119,6 +119,7 @@ span {
 
 .hamburguer {
     display: none;
+    position: relative;
 }
 
 #iconMenu {
@@ -213,12 +214,13 @@ span {
 
     .nav {
         position: absolute;
-        top: 65px;
-        right: 440px;
+        top: 50%;
+        left: 40%;
+        transform: translateX(-50%);
         background: rgb(0 0 0 / 66%);
         flex-direction: column;
         width: 200px;
-        padding: 15px 0 15px 15px;
+        padding: 15px;
         border-radius: 5px;
         display: none;
     }
