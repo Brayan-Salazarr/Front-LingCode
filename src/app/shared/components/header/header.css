@@ -885,9 +885,9 @@ h1 {
     }
 
     h1 {
-        width: 320px;
-        font-size: 21px;
-        margin: 0 0 0 35px;
+        width: 389px;
+        font-size: 25px;
+        margin: 0 0 0 7px;
     }
 
     .line {
@@ -920,7 +920,7 @@ h1 {
     .hexagon2 {
         height: 20px;
         width: 17px;
-        top: 200px;
+        top: 159px;
     }
 
     .hexagon3 {
@@ -955,7 +955,7 @@ h1 {
         height: 25px;
         width: 23px;
         top: 335px;
-        left: 331px;
+        left: 313px;
     }
 
 
@@ -1024,10 +1024,7 @@ h1 {
 
     .user-header {
         width: 100%;
-    }
-
-    .information {
-        left: 139px;
+        left: -80px;
     }
 }
 
@@ -1052,7 +1049,7 @@ h1 {
     }
 
     .user-header {
-        width: 100%;
+        left: -40px;
     }
 
     #line {
@@ -1066,13 +1063,13 @@ h1 {
 
     .nickname {
         text-align: center;
-        font-size: 19px;
+        font-size: 25px;
     }
 
     .name,
     .email,
     .date {
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .img {
@@ -1089,8 +1086,14 @@ h1 {
 
 @media (max-width: 400px) {
     .information {
-        top: 713px;
-        left: 40vw;
+        top: 703px;
+        left: 37vw;
+    }
+
+     h1 {
+        width: 316px;
+        font-size: 22px;
+        margin: 0 0 0 7px;
     }
 }
 
