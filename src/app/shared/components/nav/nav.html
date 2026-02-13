@@ -6,12 +6,12 @@
             alt="imgH">
     </div>
 
-        <nav class="nav" [class.active]="menuOpen">
-            <a class="place" (click)="goHome(); closeMenu()">Inicio</a>
-            <a class="place" routerLink="/module-view" (click)="toggleMenu()">Módulos</a>
-            <a class="place" routerLink="/about-us" (click)="toggleMenu()">Sobre nosotros</a>
-        </nav>
-    
+    <nav class="nav" [class.active]="menuOpen">
+        <a class="place" (click)="goHome(); toggleMenu()">Inicio</a>
+        <a class="place" routerLink="/module-view" (click)="toggleMenu()">Módulos</a>
+        <a class="place" routerLink="/about-us" (click)="toggleMenu()">Sobre nosotros</a>
+    </nav>
+
 
     <div class="overlay" *ngIf="menuOpen" (click)="closeMenu()"></div>
 
@@ -23,6 +23,10 @@
         <button class="button2" routerLink="/login-registro">
             Registrarme
         </button>
+    </div>
+
+    <div class="icon" *ngIf="!user && isMobile" (click)="goLogin()">
+        <img id="userIcon" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1771021109/user_ojgle2.png" alt="user">
     </div>
 
     <!-- LOGUEADO -->
