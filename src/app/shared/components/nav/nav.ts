@@ -51,12 +51,4 @@ export class Nav {
   closeMenu() {
     this.menuOpen = false;
   }
-
-  isMobile = window.innerWidth <= 480;
-
-  ngOnInit(){
-    window.addEventListener('resize', ()=>{
-      this.isMobile = window.innerWidth <=480;
-    })
-  }
 }
