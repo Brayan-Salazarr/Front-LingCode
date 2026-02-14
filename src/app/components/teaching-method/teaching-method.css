@@ -2,7 +2,8 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 220vh;
+    padding: 100px 0 100px 0;
+    gap: 130px;
 }
 
 .teaching-information {
@@ -20,7 +21,7 @@ section {
 }
 
 .teaching-img {
-    width: 25vw;
+    width: 400px;
 }
 
 .caption {
@@ -45,10 +46,10 @@ section {
     left: 10vw;
 }
 
-#line-two{
+#line-two {
     top: 3vh;
     left: -30vw;
-     background: linear-gradient(to left, rgba(101, 75, 214, 1), rgba(0, 217, 255, 1));
+    background: linear-gradient(to left, rgba(101, 75, 214, 1), rgba(0, 217, 255, 1));
 }
 
 @media (max-width: 1537px) {
@@ -58,5 +59,92 @@ section {
 
     .text {
         font-size: 24px;
+    }
+}
+
+@media (max-width: 920px) {
+
+    section {
+        padding: 0 0 50px 0;
+    }
+
+    .teaching-img {
+        width: 265px;
+        height: 265px;
+    }
+
+    .text {
+        font-size: 15px;
+    }
+
+    .caption {
+        font-size: 20px;
+    }
+
+    .teaching-text {
+        justify-content: center;
+        gap: 25px;
+
+    }
+
+    .teaching-information {
+        align-items: center;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    section {
+        gap: 38px;
+    }
+
+    .teaching-text {
+        height: 350px;
+    }
+
+    .line {
+        height: 8px;
+    }
+
+    #line-two {
+        top: 0vh;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
+    .caption {
+        font-size: 23px;
+    }
+
+    .teaching-information {
+        flex-direction: column;
+        gap: 20px;
+
+    }
+
+    #teaching-information-id {
+        flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 480px) {
+    .teaching-text {
+        height: 468px;
+        width: 369px;
+    }
+
+    section {
+        padding: 81px 0 50px 0;
+    }
+
+    #line-two{
+        left: -290px;
+    }
+
+    .line{
+        left: 72px;
     }
 }

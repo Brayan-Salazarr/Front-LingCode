@@ -5,6 +5,8 @@
 .component {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+
 }
 
 section {
@@ -19,10 +21,22 @@ section {
 .information {
     display: flex;
     flex-direction: column;
+
     justify-content: space-around;
     gap: 10px;
     width: 770px;
     height: 100%;
+}
+
+#titleNor {
+    margin: 70px 0 0 0;
+}
+
+@media (max-width: 1366px) {
+
+    #titleNor {
+        margin: 0 0 0 0;
+    }
 }
 
 @media (max-width: 920px) {
@@ -56,8 +70,8 @@ section {
     .component{
         height: 5700px;
     }
-
+   
     .title{
-        font-size: 25px;
+        font-size: 27px;
     }
 }

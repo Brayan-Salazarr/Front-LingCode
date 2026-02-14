@@ -220,6 +220,4 @@ register() {
     this.closeConfirmModal();
     this.router.navigate(['/new-password'])
   }
-
-
 }
