@@ -5,11 +5,9 @@
 .component {
     display: flex;
     justify-content: center;
-    height: 460vh;
 }
 
 section {
-    height: 440vh;
     margin: 70px;
 }
 
@@ -22,26 +20,9 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 50vw;
+    gap: 10px;
+    width: 770px;
     height: 100%;
-}
-
-#titleNor {
-    margin: 70px 0 0 0;
-}
-
-@media (max-width: 1366px) {
-    .component {
-        height: 580vh;
-    }
-
-    section {
-        height: 550vh;
-    }
-
-    #titleNor {
-        margin: 0 0 0 0;
-    }
 }
 
 @media (max-width: 920px) {
@@ -63,5 +44,20 @@ section {
 
     .subtitle{
         font-size: 17px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .information{
+        height: 5500px
+    }
+
+    .component{
+        height: 5700px;
+    }
+
+    .title{
+        font-size: 25px;
     }
 }
