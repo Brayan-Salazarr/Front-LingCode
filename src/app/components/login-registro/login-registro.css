@@ -1035,7 +1035,7 @@ h3 {
     }
 
     .line2 {
-        top: 79%;
+        top: 653px;
         right: 0 !important;
         left: 0 !important;
         height: 5px;
@@ -1043,7 +1043,7 @@ h3 {
     }
 
     .line3 {
-        top: 79.5%;
+        top: 649px;
         right: 0 !important;
         left: 0 !important;
         height: 5px;
@@ -1079,6 +1079,10 @@ h3 {
     #modalContentLogin {
         height: 210px;
         width: 59%;
+    }
+
+    .panel{
+        height: auto;
     }
 }
 

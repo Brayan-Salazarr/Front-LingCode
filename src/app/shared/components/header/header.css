@@ -746,7 +746,6 @@ h1 {
 
 @media (max-width: 768px) {
 
-
     .information {
         left: 185px;
         height: 165px;
@@ -778,8 +777,6 @@ h1 {
     .hexagon5 {
         top: 383px;
     }
-
-
 
     .hexagon7 {
         top: 326px;
@@ -922,7 +919,6 @@ h1 {
         display: none;
     }
 
-
 }
 
 @media (max-width: 480px) {
@@ -1008,7 +1004,6 @@ h1 {
         top: 335px;
         left: 313px;
     }
-
 
     #imgCirclee {
         width: 168px;
