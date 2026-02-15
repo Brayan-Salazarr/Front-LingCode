@@ -423,7 +423,9 @@ h1 {
     }
 
     .avatar {
+        position: relative;
         width: 255px;
+        left: -27px;
     }
 
     #imgCirclee {
@@ -465,6 +467,7 @@ h1 {
 
     h1 {
         font-size: 40px;
+        width: 664px;
     }
 
     .information {
@@ -532,8 +535,8 @@ h1 {
 
     .avatar {
         width: 227px;
-        margin-left: -30px;
-        margin-top: -10px;
+        left: -23px;
+        top: -9px;
     }
 
     .button-edit {
@@ -558,13 +561,14 @@ h1 {
     }
 
     h1 {
-        font-size: 35px;
+        font-size: 33px;
+        width: 476px;
     }
 
     .information {
         top: 735px;
         left: 220px;
-        height: 198px;
+        height: 183px;
     }
 
     .line {
@@ -714,6 +718,7 @@ h1 {
 @media (max-width: 870px) {
     h1 {
         font-size: 29px;
+        width: 400px;
     }
 
     .hexagon6 {
@@ -847,6 +852,44 @@ h1 {
     }
 }
 
+@media (max-width: 660px) {
+
+    .user-header {
+        width: 100%;
+        left: -85px;
+        top: -25px;
+    }
+
+    #imgCirclee {
+        width: 240px;
+    }
+
+    .avatar {
+        width: 131px;
+        height: 131px;
+        left: 81px;
+        top: 35px;
+    }
+
+    .user-data {
+        position: relative;
+        height: 133px;
+        top: 20px;
+        left: 68px;
+    }
+
+    .nickname {
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .name,
+    .email,
+    .date {
+        font-size: 13px;
+    }
+}
+
 
 @media (max-width: 550px) {
     h1 {
@@ -866,12 +909,20 @@ h1 {
         top: 316px;
         left: 475px;
     }
+
+    .avatar {
+        width: 131px;
+        height: 131px;
+        left: 97px;
+    }
 }
 
 @media (max-width: 515px) {
     .hexagon7 {
         display: none;
     }
+
+
 }
 
 @media (max-width: 480px) {
@@ -1024,7 +1075,7 @@ h1 {
 
     .user-header {
         width: 100%;
-        left: -80px;
+        left: -100px;
     }
 }
 
@@ -1090,7 +1141,7 @@ h1 {
         left: 37vw;
     }
 
-     h1 {
+    h1 {
         width: 316px;
         font-size: 22px;
         margin: 0 0 0 7px;
