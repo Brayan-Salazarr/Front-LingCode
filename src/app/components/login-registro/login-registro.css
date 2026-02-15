@@ -978,7 +978,7 @@ h3 {
 @media(max-width: 768px) {
     .authClass {
         flex-direction: column;
-        background: linear-gradient(180deg, #000 79%, #f5f5f500 40%), url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat  100% 100% / 108px;;
+        background: linear-gradient(180deg, #000 79%, #f5f5f500 40%), url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat  100% 616px / 223px;
         height: 100%;
     }
 
@@ -1083,6 +1083,10 @@ h3 {
 
     .panel{
         height: auto;
+    }
+
+    #buttonRegis{
+        margin: 0 0 17px 0;
     }
 }
 
