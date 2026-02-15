@@ -978,7 +978,7 @@ h3 {
 @media(max-width: 768px) {
     .authClass {
         flex-direction: column;
-        background: linear-gradient(180deg, #000 79%, #f5f5f500 40%), url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat  100% 616px / 223px;
+        background: linear-gradient(180deg, #000 79%, #f5f5f500 40%), url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 100% 616px / 223px;
         height: 100%;
     }
 
@@ -1057,7 +1057,7 @@ h3 {
         background:
             linear-gradient(180deg, #f5f5f500 24%, #000 19%),
             url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -1vw -20vh / 50vw;
-        height: 650px;
+        height: 100%;
     }
 
     #BlackBackgLogin {
@@ -1081,11 +1081,11 @@ h3 {
         width: 59%;
     }
 
-    .panel{
+    #panelRegister {
         height: auto;
     }
 
-    #buttonRegis{
+    #buttonRegis {
         margin: 0 0 17px 0;
     }
 }
@@ -1150,7 +1150,7 @@ h3 {
         width: 350px;
     }
 
-   
+
 
     #loginSection {
         background:
