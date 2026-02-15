@@ -1150,10 +1150,7 @@ h3 {
         width: 350px;
     }
 
-    .authClass {
-        background: url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw 80vh / 40vw;
-
-    }
+   
 
     #loginSection {
         background:
@@ -1166,11 +1163,11 @@ h3 {
     }
 
     .line3 {
-        top: 84.5%;
+        top: 635px;
     }
 
     .line2 {
-        top: 85%;
+        top: 631px;
     }
 }
 
