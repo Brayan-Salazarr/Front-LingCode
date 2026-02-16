@@ -25,6 +25,9 @@ interface Module {
   styleUrl: './module-view.css',
 })
 export class ModuleView {
+
+  currentStep = 1;
+  
 modules: Module[] = [
     {
       image: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696348/Group_25_fnpomn.png',

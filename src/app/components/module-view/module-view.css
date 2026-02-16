@@ -13,17 +13,19 @@
 
 .moduleRow.left {
   flex-direction: row;
-  gap: 10px;
   justify-content: center;
 }
 
 .moduleRow.right {
   flex-direction: row-reverse;
+  justify-content: center;
+  gap: 504px;
 }
 
 .moduleRow.right .path-horizontal {
   padding: 0 0 0 23px;
-  margin-right: -600px; /* ajusta este valor */
+  margin-right: -600px;
+  /* ajusta este valor */
 }
 
 .steps {
@@ -46,6 +48,19 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  transition: 0.3s ease;
+  color: black;
+}
+
+.step.active {
+  background: white;
+  border: 4px solid #0066FF;
+  color: #0066FF;
+}
+
+.step.completed {
+  background: #0066FF;
+  color: white;
 }
 
 .moduleCard {
@@ -162,13 +177,28 @@ button:hover {
   gap: 10px;
 }
 
-.line-step.h {
-  width: 40px;
+/*.line-step.h {
+  width: 25px;
   height: 18px;
+  background-color: #0066FF;
+}*/
+
+.line-step.h {
+  width: 25px;
+  height: 18px;
+  background-color: #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.line-step.h.completed {
+  background-color: #0066FF; /* azul */
+}
+
+.line-step.completed {
   background-color: #0066FF;
 }
 
-.path-vertical {
+/*.path-vertical {
   position: absolute;
   left: calc(69% + 70px);
   top: 130px;
@@ -176,21 +206,22 @@ button:hover {
   flex-direction: column;
   gap: 10px;
   
-}
+}*/
 
-.line-step.v {
+/*.line-step.v {
   width: 18px;
   height: 40px;
   background-color: #0066FF;
 
-}
+}*/
 
 .steps.normal .path-horizontal {
   flex-direction: row;
 }
 
 .steps.normal .path-vertical {
-  left: 380px; /* debajo del segundo círculo */
+  left: 380px;
+  /* debajo del segundo círculo */
 }
 
 /* ---------- MODO INVERTIDO (der → izq) ---------- */
@@ -199,7 +230,8 @@ button:hover {
 }
 
 .steps.reverse .path-vertical {
-  right: 170px; /* debajo del segundo círculo */
+  right: 170px;
+  /* debajo del segundo círculo */
 }
 
 .last-module .path-vertical {
