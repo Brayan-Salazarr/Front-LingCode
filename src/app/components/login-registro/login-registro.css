@@ -1242,3 +1242,17 @@ h3 {
         width: 70%;
     }
 }
+
+@media(max-width: 345px) {
+    input {
+        width: 225px;
+    }
+
+    .text {
+        width: 233px;
+    }
+
+    .terms {
+        width: 46%;
+    }
+}
