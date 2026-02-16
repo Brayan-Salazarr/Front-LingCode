@@ -1,11 +1,19 @@
 <div class="component" [ngClass]="colorBackground">
     <img id="img" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763490191/Group_27_xduqke.png" alt="Logo">
 
-    <nav class="nav">
-        <a class="place" (click)="goHome()">Inicio</a>
-        <a class="place" routerLink="/module-view">Módulos</a>
-        <a class="place" routerLink="/about-us">Sobre nosotros</a>
+    <div class="hamburguer" (click)="toggleMenu()">
+        <img id="iconMenu" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1770926768/barra-de-menus_jya4ei.png"
+            alt="imgH">
+    </div>
+
+    <nav class="nav" [class.active]="menuOpen">
+        <a class="place" (click)="goHome(); toggleMenu()">Inicio</a>
+        <a class="place" routerLink="/module-view" (click)="toggleMenu()">Módulos</a>
+        <a class="place" routerLink="/about-us" (click)="toggleMenu()">Sobre nosotros</a>
     </nav>
+
+
+    <div class="overlay" *ngIf="menuOpen" (click)="closeMenu()"></div>
 
     <div class="buttons" *ngIf="!user">
         <button class="button1" (click)="goLogin()">
@@ -17,13 +25,20 @@
         </button>
     </div>
 
+    <div class="icon" (click)="goLogin()">
+        <img id="userIcon" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1771021109/user_ojgle2.png" alt="user">
+    </div>
+
     <!-- LOGUEADO -->
     <div class="user-info" *ngIf="user as u">
-        <img class="avatar" [src]="user.avatar || 'https://images-ext-1.discordapp.net/external/6YkuxX8P1o52p98xUBb42PdwR5XT0l-ZURiu6mbU-Qg/https/res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png?format=webp&quality=lossless&width=930&height=930' " />
+        <img class="avatar"
+            [src]="user.avatar || 'https://images-ext-1.discordapp.net/external/6YkuxX8P1o52p98xUBb42PdwR5XT0l-ZURiu6mbU-Qg/https/res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png?format=webp&quality=lossless&width=930&height=930' " />
 
         <div class="separator">
             <span>{{ u.nickName }}</span>
+            <button class="button-edit" routerLink="/edit-profile">Ver perfil</button>
             <button class="close-button" (click)="logout()">Cerrar sesión</button>
+
         </div>
 
     </div>

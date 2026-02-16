@@ -1,14 +1,15 @@
 <app-nav></app-nav>
 <app-header [title]="'Tu <span class=&quot;color-word1&quot;>código</span> suena mejor en inglés 
         Prepárate con <span class=&quot;color-word2&quot;>Cybro</span> para el mundo real'" 
-        [showTitle]="true" [showLine]="true" [showDecorativeCircle]="true" [showHexagon]="true"></app-header>
+        [showTitle]="true" [showLine]="true" [showDecorativeCircle]="true" [showHexagon]="true" [showHexagon1]="true" [showHexagon2]="true"
+        [showHexagon3]="true" [showHexagon4]="true" [showHexagon5]="true" [showHexagon6]="true" [showHexagon7]="true"></app-header>
 
 <div class="component">
     <section>
         <div class="field">
             <div class="information">
                 <h2 class="caption">Aprende inglés desde el código</h2>
-                <p class="text">Domina el vocabulario técnico de GitHub y MySQL con módulos interactivos y simulaciones
+                <p class="text" id="text1">Domina el vocabulario técnico de GitHub y MySQL con módulos interactivos y simulaciones
                     con IA. Mejora tu comprensión del inglés profesional, prepárate para entrevistas laborales y
                     potencia tu carrera en el mundo del desarrollo de software.</p>
             </div>
@@ -23,11 +24,9 @@
                     alt="">
             </div>
 
-
-
             <div class="information-avatar">
-                <h2 class="caption">Cada héroe tiene su imagen</h2>
-                <p class="text">Podrás escoger tu avatar y empezar tu historia con tu propia identidad.<br>¡Haz que tu
+                <h2 class="caption" id="caption2">Cada héroe tiene su imagen</h2>
+                <p class="text" id="text2">Podrás escoger tu avatar y empezar tu historia con tu propia identidad.<br>¡Haz que tu
                     presencia se note desde el primer clic!</p>
                 <app-button></app-button>
             </div>
@@ -40,8 +39,8 @@
 
         <div class="field-modules">
             <div class="information-modules">
-                <h2 class="caption">Interactúa con nuestros módulos </h2>
-                <p class="text">Nuestros módulos están diseñados para ayudarte a crecer paso a paso, prueba uno y
+                <h2 class="caption" id="caption3">Interactúa con nuestros módulos </h2>
+                <p class="text" id="text3">Nuestros módulos están diseñados para ayudarte a crecer paso a paso, prueba uno y
                     descubre lo fácil y divertido que puede ser aprender con nosotros.<br>¡Regístrate y desbloquea todo
                     tu potencial!</p>
             </div>
@@ -58,7 +57,7 @@
             </div>
 
             <div class="information-invitation">
-                <h2 class="caption">Prepárate para hablar el idioma del código </h2>
+                <h2 class="caption" id="caption4">Prepárate para hablar el idioma del código </h2>
                 <p class="text-invitation">Aprende inglés técnico practicando como en el mundo real.</p>
                 <app-button></app-button>
             </div>
@@ -70,6 +69,8 @@
             <div class="line-avatar"></div>
         </div>
         <app-carousel-avatar></app-carousel-avatar>
+
+        <app-subscriptions></app-subscriptions>
 
     </section>
 </div>

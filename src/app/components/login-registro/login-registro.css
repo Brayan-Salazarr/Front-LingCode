@@ -1,17 +1,4 @@
-#authContainer {
-    height: 100vh;
-    width: 100%;
-}
-
 #panelWrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-#panelWrapper {
-    position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -83,11 +70,12 @@
 .authClass {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     background:
         linear-gradient(90deg, #000 60%, #f5f5f500 50%),
         url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 40vw;
     position: relative;
-    height: 100vh;
+    height: 100%;
 }
 
 .containers {
@@ -99,7 +87,7 @@
 
 .tittle {
     font-family: "Anton SC", sans-serif;
-    font-size: clamp(38px, 2vw, 50px);
+    font-size: clamp(38px, 27px, 50px);
     background: linear-gradient(90deg, white 0%, #AFA9A9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -114,53 +102,48 @@
 .line {
     background: linear-gradient(90deg, #FF00FB 0%, #FFA109 100%);
     border-radius: 5px;
-    margin: 0 0 0 10vw;
-    height: 1vh;
-    width: 12vw;
+    margin: 0 0 0 136px;
+    height: 6px;
+    width: 163px;
 }
 
 .infoBox {
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: space-evenly;
     font-family: "Poppins", sans-serif;
     font-weight: bold;
-    height: 40vh;
-    width: 59vw;
+    width: 805px;
+    height: 300px;
 }
 
 .regisInfo {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 720px;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.74) 0%, #AFA9A9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .text {
-    font-size: clamp(10px, 1.1vw, 30px);
-    margin: 2.2vh 0 2.2vh 0;
-}
-
-.recordFields {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 18vw;
-    width: 50%;
+    font-size: clamp(10px, 15px, 30px);
 }
 
 input {
     color: black;
+    -webkit-text-fill-color: black;
     font-family: "Poppins", sans-serif;
-    font-size: clamp(10px, 1.1vw, 30px);
+    font-size: clamp(10px, 15px, 30px);
     border: 2px solid transparent;
     border-radius: 7.5px;
     background: linear-gradient(#fff, #fff) padding-box,
         linear-gradient(90deg, #AF02FF, #0051FF) border-box;
     padding: 0 0 0 5px;
-    height: 4.5vh;
+    height: 28px;
+    width: 443px;
 }
 
 .spaceButton {
@@ -170,14 +153,14 @@ input {
     width: 100%;
 }
 
-#spaceButton2{
+#spaceButton2 {
     margin: 0;
 }
 
 .buttonRegist {
     cursor: pointer;
     font-family: "Poppins", sans-serif;
-    font-size: clamp(10px, 1vw, 30px);
+    font-size: clamp(10px, 13px, 30px);
     color: rgb(255, 255, 255);
     font-weight: bold;
     border: 2px solid transparent;
@@ -200,14 +183,14 @@ input {
 
 .line1 {
     background: #6e6d6d8c;
-    width: 5vw;
+    width: 68px;
     height: 1px;
 }
 
 .letter {
     font-size: 13px;
     color: #6e6d6d57;
-    font-weight: 300;
+    font-weight: 300px;
     margin: 13px 0 13px 0;
 }
 
@@ -231,24 +214,26 @@ input {
     justify-content: space-evenly;
     align-items: center;
     font-family: "Poppins", sans-serif;
-    width: 20%;
+    margin: 20px 0 0 0;
+    width: 220px;
 }
 
 #checkbox {
+    width: 15px;
     margin: 0 0 0 0;
 }
 
 span {
-    font-size: clamp(13px, 0.5vw, 30px);
+    font-size: 12px;
     margin-right: 4px;
     color: white;
 }
 
 a {
+    font-size: 12px;
     cursor: pointer;
     text-decoration-line: none;
     color: #00BBFF;
-    font-size: clamp(13px, 0.5vw, 30px);
 }
 
 .line2 {
@@ -258,7 +243,7 @@ a {
     left: 59.9%;
     transform-origin: left center;
     z-index: 2;
-    height: 100vh;
+    height: 100%;
     width: 5px;
 }
 
@@ -269,19 +254,18 @@ a {
     left: 59.7%;
     transform-origin: left center;
     z-index: 2;
-    height: 100vh;
+    height: 100%;
     width: 5px;
 }
 
 #WhiteBackg {
     display: flex;
     justify-content: center;
-    width: 100%;
 }
 
 .questionTittle {
     font-family: "Anton SC", sans-serif;
-    font-size: clamp(38px, 2vw, 50px);
+    font-size: clamp(38px, 27px, 50px);
     margin: 25px 0 25px 0;
     background: linear-gradient(90deg, rgb(48, 48, 48) 0%, #AFA9A9 100%);
     -webkit-background-clip: text;
@@ -302,7 +286,7 @@ a {
 }
 
 #Whitetittle {
-    font-size: clamp(38px, 2vw, 50px);
+    font-size: clamp(38px, 27px, 50px);
     background: linear-gradient(90deg, rgb(48, 48, 48) 0%, #AFA9A9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -311,10 +295,11 @@ a {
 #BlackBackgLogin {
     display: flex;
     justify-content: center;
+    width: 1220px;
 }
 
 #infoLogin {
-    height: 30vh;
+    height: 189px;
 }
 
 #tittleLogin {
@@ -326,12 +311,12 @@ a {
 }
 
 #lineLogin {
-    margin: 0 0 0 8vw;
-    width: 15vw;
+    margin: 0 0 0 109px;
+    width: 204px;
 }
 
-#loginFields {
-    height: 7vw;
+#loginP {
+    width: 740px;
 }
 
 #spaceButtonLogin {
@@ -339,17 +324,20 @@ a {
 }
 
 .termsUse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 0 0 0;
+    width: 195px;
 }
 
 #termsLogin {
     margin: 0 0 0 0;
-    height: 10vh;
-    width: 100%;
+    height: 63px;
 }
 
 #divisionLogin {
-    height: 8vh;
+    height: 50px;
 }
 
 #line2Login {
@@ -367,8 +355,8 @@ a {
     background-color: rgba(0, 0, 0, 0.9);
     position: fixed;
     z-index: 6000;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     transition: opacity 0.3s ease;
 }
 
@@ -383,7 +371,7 @@ a {
     justify-content: center;
     align-items: center;
     font-family: "Poppins", sans-serif;
-    font-size: clamp(10px, 1.1vw, 13px);
+    font-size: clamp(10px, 15px, 13px);
     background-color: white;
     border-radius: 5px;
     overflow-y: auto;
@@ -404,7 +392,7 @@ a {
     background-color: transparent;
     border: transparent;
     font-weight: bold;
-    font-size: clamp(10px, 1.1vw, 18px);
+    font-size: clamp(10px, 15px, 18px);
 }
 
 h3 {
@@ -428,6 +416,7 @@ h3 {
 }
 
 #termsModal {
+    height: 80px;
     width: 40%;
 }
 
@@ -446,7 +435,7 @@ h3 {
 }
 
 #textModal {
-    font-size: clamp(10px, 1.1vw, 18px);
+    font-size: clamp(10px, 15px, 18px);
 }
 
 #inputSize {
@@ -460,10 +449,10 @@ h3 {
 
 .buttons {
     cursor: pointer;
-    height: 5vh;
-    width: 8vw;
+    height: 31px;
+    width: 109px;
     font-family: "Poppins", sans-serif;
-    font-size: clamp(10px, 1vw, 30px);
+    font-size: clamp(10px, 13px, 30px);
     border-radius: 8px;
 }
 
@@ -485,9 +474,55 @@ h3 {
 
 .inputs {
     text-align: center;
-    height: 5vh;
-    width: 2.5vw;
+    height: 31px;
+    width: 34px;
     padding: 0 0 0 0;
+}
+
+@media(min-width: 1720px) {
+    .authClass {
+        display: flex;
+        flex-direction: row;
+        background:
+            linear-gradient(90deg, #000 60%, #f5f5f500 50%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 50vw;
+        position: relative;
+        height: 100%;
+    }
+}
+
+@media(max-width: 1594px) {
+    #loginSection {
+        background:
+            linear-gradient(90deg, #f5f5f500 40%, #000 40%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -1vw 1vh / 50vw;
+    }
+
+    #BlackBackgLogin {
+        width: 980px;
+    }
+}
+
+@media(max-width: 1470px) {
+    .infoBox {
+        width: 620px;
+    }
+
+    .authClass {
+        background:
+            linear-gradient(90deg, #000 60%, #f5f5f500 50%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 60vw;
+    }
+
+    #loginSection {
+        background:
+            linear-gradient(90deg, #f5f5f500 40%, #000 40%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -1vw -1vh / 60vw;
+    }
+
+    #BlackBackgLogin {
+        width: 830px;
+    }
 }
 
 @media(max-width: 1366px) {
@@ -495,18 +530,27 @@ h3 {
         margin: 0 0 0 0;
     }
 
+    .regisInfo {
+        width: 680px;
+    }
+
+    input {
+        width: 420px;
+    }
+
     a {
         text-decoration-line: none;
         color: #00BBFF;
-        font-size: clamp(10px, 0.5vw, 30px);
+        font-size: clamp(10px, 6px, 30px);
     }
 
     span {
-        font-size: clamp(10px, 0.5vw, 30px);
+        font-size: clamp(10px, 6px, 30px);
     }
 
     .terms {
-        width: 20%;
+        margin: 20px 0 0 0;
+        width: 167px;
     }
 
     .line2 {
@@ -523,8 +567,8 @@ h3 {
     }
 
     #modalContentLogin {
-        height: 40%;
-        width: 30%;
+        height: 33%;
+        width: 37%;
     }
 
     h3 {
@@ -532,12 +576,688 @@ h3 {
     }
 
     #termsModal {
-        font-size: clamp(10px, 1.1vw, 18px);
+        font-size: clamp(10px, 8px, 18px);
         width: 30%;
     }
 
     #modalFooterLogin {
         justify-content: end;
         margin: 30px 0 0 0;
+    }
+
+    #checkbox {
+        width: 12px;
+    }
+
+    #loginP {
+        width: 690px;
+    }
+
+    #BlackBackgLogin {
+        width: 814px;
+    }
+}
+
+@media(max-width: 1290px) {
+    .regisInfo {
+        width: 620px;
+    }
+
+    input {
+        width: 380px;
+    }
+
+    #loginP {
+        width: 630px;
+    }
+}
+
+@media(max-width: 1250px) {
+    .infoBox {
+        width: 750px;
+    }
+
+    #termsModal {
+        width: 157px;
+    }
+
+    #termsModal {
+        height: 30px;
+    }
+}
+
+@media(max-width: 1200px) {
+    .infoBox {
+        width: 615px;
+    }
+
+    .terms {
+        width: 25%;
+    }
+
+    input {
+        width: 380px;
+    }
+
+    #infoLogin {
+        width: 665px;
+        align-items: end;
+    }
+}
+
+@media(max-width: 1150px) {
+    .infoBox {
+        width: 690px;
+    }
+
+    .regisInfo {
+        width: 570px;
+    }
+
+    input {
+        width: 340px;
+    }
+
+    #loginP {
+        width: 610px;
+    }
+
+    #infoLogin {
+        width: 680px;
+        align-items: center;
+    }
+
+    .authClass {
+        background:
+            linear-gradient(90deg, #000 60%, #f5f5f500 50%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 70vw;
+    }
+
+    #BlackBackgLogin {
+        width: 673px;
+    }
+
+    #loginSection {
+        background:
+            linear-gradient(90deg, #f5f5f500 40%, #000 40%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -1vw 5vh / 60vw;
+    }
+
+}
+
+@media(max-width: 1115px) {
+    .infoBox {
+        width: 660px;
+    }
+
+    .regisInfo {
+        width: 520px;
+    }
+
+    input {
+        width: 320px;
+    }
+
+    .authClass {
+        background:
+            linear-gradient(90deg, #000 60%, #f5f5f500 50%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 70vw;
+    }
+
+    #loginSection {
+        background:
+            linear-gradient(90deg, #f5f5f500 40%, #000 40%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -1vw 5vh / 60vw;
+    }
+
+    #loginP {
+        width: 600px;
+    }
+
+    #infoLogin {
+        align-items: end;
+        width: 645px;
+    }
+}
+
+@media(max-width: 1100px) {
+    #loginP {
+        width: 590px;
+    }
+
+    #infoLogin {
+        width: 630px;
+    }
+}
+
+@media(max-width: 1070px) {
+    #infoLogin {
+        align-items: center;
+        width: 645px;
+    }
+}
+
+@media(max-width: 1050px) {
+    .infoBox {
+        width: 620px;
+    }
+
+    #loginP {
+        width: 560px;
+    }
+
+    #infoLogin {
+        width: 630px;
+    }
+}
+
+@media(max-width: 1020px) {
+    .infoBox {
+        width: 600px;
+    }
+
+    #infoLogin {
+        width: 600px;
+    }
+
+    #BlackBackgLogin {
+        width: 578px;
+    }
+
+    #loginSection {
+        background:
+            linear-gradient(90deg, #f5f5f500 40%, #000 40%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -1vw 100% / 70vw;
+    }
+}
+
+@media(max-width: 980px) {
+    .infoBox {
+        width: 580px;
+    }
+
+    .tittle {
+        font-size: clamp(33px, 8px, 50px);
+    }
+
+    .questionTittle {
+        font-size: clamp(33px, 8px, 50px);
+    }
+
+    .regisInfo {
+        width: 480px;
+    }
+
+    .text {
+        font-size: clamp(12px, 8px, 30px);
+    }
+
+    .letter {
+        font-size: 12px;
+    }
+
+    .buttonRegist {
+        font-size: clamp(12px, 8px, 30px);
+    }
+
+    input {
+        width: 300px;
+    }
+
+    #loginSection {
+        background:
+            linear-gradient(90deg, #f5f5f500 40%, #000 40%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -1vw -5vh / 50vw;
+    }
+
+    #Whitetittle {
+        font-size: clamp(33px, 27px, 50px);
+    }
+
+    #loginP {
+        width: 510px;
+    }
+
+    #infoLogin {
+        align-items: end;
+        width: 550px;
+    }
+
+    .authClass {
+        background:
+            linear-gradient(90deg, #000 60%, #f5f5f500 50%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 80vw;
+    }
+}
+
+@media(max-width: 950px) {
+    .infoBox {
+        width: 550px;
+    }
+
+    .terms {
+        width: 30%;
+    }
+
+    #termsModal {
+        margin: 0;
+        height: 50px;
+    }
+}
+
+@media(max-width: 930px) {
+    #infoLogin {
+        width: 530px;
+    }
+
+    .modalContent {
+        height: 50%;
+        width: 49%;
+    }
+}
+
+@media(max-width: 900px) {
+    .infoBox {
+        width: 530px;
+    }
+
+    .regisInfo {
+        width: 450px;
+    }
+
+    input {
+        width: 270px;
+    }
+
+    .authClass {
+        background:
+            linear-gradient(90deg, #000 60%, #f5f5f500 50%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 85vw;
+    }
+
+    #loginSection {
+        background:
+            linear-gradient(90deg, #f5f5f500 40%, #000 40%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -20vw -7vh / 63vw;
+    }
+
+    #loginP {
+        width: 490px;
+    }
+
+    #infoLogin {
+        width: 520px;
+    }
+}
+
+@media(max-width: 880px) {
+    #loginP {
+        width: 470px;
+    }
+
+    #infoLogin {
+        width: 500px;
+    }
+
+    #modalContentLogin {
+        height: 34%;
+        width: 51%;
+    }
+}
+
+@media(max-width: 850px) {
+    .infoBox {
+        width: 500px;
+    }
+
+    .tittle {
+        font-size: clamp(27px, 8px, 50px);
+    }
+
+    .questionTittle {
+        font-size: clamp(27px, 8px, 50px);
+    }
+
+    .regisInfo {
+        width: 410px;
+    }
+
+    input {
+        width: 230px;
+    }
+
+    .terms {
+        width: 35%;
+    }
+
+    #loginP {
+        width: 450px;
+    }
+
+    #infoLogin {
+        width: 480px;
+    }
+
+    #Whitetittle {
+        font-size: clamp(27px, 27px, 50px);
+    }
+}
+
+@media(max-width: 820px) {
+    #loginP {
+        width: 430px;
+    }
+
+    #infoLogin {
+        width: 460px;
+    }
+
+    .authClass {
+        background:
+            linear-gradient(90deg, #000 60%, #f5f5f500 50%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 90vw;
+    }
+}
+
+@media(max-width: 810px) {
+    .infoBox {
+        width: 470px;
+    }
+}
+
+@media(max-width: 785px) {
+    #loginP {
+        width: 420px;
+    }
+
+    #infoLogin {
+        width: 440px;
+    }
+}
+
+@media(max-width: 768px) {
+    .authClass {
+        flex-direction: column;
+        background: linear-gradient(180deg, #000 79%, #f5f5f500 40%), url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 100% 616px / 223px;
+        height: auto;
+    }
+
+    .tittle {
+        font-size: clamp(38px, 8px 50px);
+        margin: 15px 0 0 0;
+    }
+
+    .questionTittle {
+        font-size: clamp(38px, 8px 50px);
+        margin: 30px 0 25px 0;
+    }
+
+    #BlackBackgReg {
+        background-color: #000;
+        height: 650px;
+    }
+
+    .spaceButton {
+        margin: 20px 0 0 0;
+    }
+
+    #WhiteBackg {
+        margin: 0 0 0 0;
+    }
+
+    #panelWrapper {
+        overflow-y: scroll;
+    }
+
+    .infoBox {
+        height: 350px;
+    }
+
+    .regisInfo {
+        flex-direction: column;
+        align-items: start;
+        margin: 0 0 20px 0;
+        width: 410px;
+    }
+
+    .text {
+        font-size: clamp(13px, 8px 30px);
+    }
+
+    input {
+        height: 30px;
+        width: 400px;
+    }
+
+    .terms {
+        margin: 5px 0 0 0;
+        width: 23%;
+    }
+
+    .line2 {
+        top: 653px;
+        right: 0 !important;
+        left: 0 !important;
+        height: 5px;
+        width: 100%;
+    }
+
+    .line3 {
+        top: 649px;
+        right: 0 !important;
+        left: 0 !important;
+        height: 5px;
+        width: 100%;
+    }
+
+    #loginSection {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background:
+            linear-gradient(180deg, #f5f5f500 24%, #000 19%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -15px -100px / 372px;
+    }
+
+    #BlackBackgLogin {
+        margin: 83px 0 10px 0;
+    }
+
+    #lineLogin {
+        margin: 0 0 35px 109px;
+    }
+
+    #line2Login {
+        top: 23%;
+    }
+
+    #line3Login {
+        top: 23.5%;
+    }
+
+    #modalContentLogin {
+        height: 210px;
+        width: 59%;
+    }
+
+    #panelRegister {
+        height: auto;
+    }
+
+    #buttonRegis {
+        margin: 0 0 17px 0;
+    }
+}
+
+@media(max-width: 640px) {
+    .terms {
+        width: 25%;
+    }
+
+    #Whitetittle {
+        width: 260px;
+    }
+
+    .modalContent {
+        height: 45%;
+        width: 65%;
+    }
+}
+
+@media(max-width: 570px) {
+    #BlackBackgReg {
+        height: 100%;
+    }
+
+    .tittle {
+        font-size: clamp(30px, 8px, 50px);
+        margin: 20px 0 0 0;
+    }
+
+    .regisInfo {
+        align-items: center;
+    }
+
+    .infoBox {
+        width: 100%;
+    }
+
+    .text {
+        display: flex;
+        align-items: start;
+        width: 355px;
+    }
+
+    .questionTittle {
+        margin: 30px 0 15px 0;
+    }
+
+    #Whitetittle {
+        font-size: clamp(30px, 8px, 50px);
+        width: 290px;
+    }
+
+    #tittle2 {
+        font-size: clamp(30px, 8px, 50px);
+    }
+
+    #WhiteBackg {
+        margin: 0 0 0 0;
+    }
+
+    input {
+        width: 350px;
+    }
+
+
+
+    #loginSection {
+        background:
+            linear-gradient(180deg, #f5f5f500 24%, #000 19%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -8vw -15vh / 60vw;
+    }
+
+    .terms {
+        width: 30%;
+    }
+
+    .line3 {
+        top: 635px;
+    }
+
+    .line2 {
+        top: 631px;
+    }
+}
+
+@media(max-width: 450px) {
+    .terms {
+        width: 35%;
+    }
+
+    #loginSection {
+        background:
+            linear-gradient(180deg, #f5f5f500 24%, #000 19%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -5vw -10vh / 60vw;
+    }
+
+    .modalContent {
+        height: 31%;
+        width: 66%;
+    }
+
+    .inputs {
+        height: 28px;
+        width: 28px;
+    }
+
+    #modalContentLogin {
+        height: 195px;
+        width: 80%;
+    }
+}
+
+@media(max-width: 400px) {
+    .tittle {
+        font-size: clamp(30px, 8px, 50px);
+        margin: 20px 0 0 0;
+    }
+
+    .text {
+        width: 300px;
+    }
+
+    .line {
+        margin: 0 0 0 80px;
+        width: 92px;
+    }
+
+    .questionTittle {
+        font-size: clamp(30px, 2vw, 50px);
+    }
+
+    #WhiteBackg {
+        margin: 0 0 0 0;
+    }
+
+    .regisInfo {
+        width: 300px;
+    }
+
+    input {
+        width: 300px;
+    }
+
+    .terms {
+        width: 40%;
+    }
+
+    .modalContent {
+        height: 35%;
+        width: 75%;
+    }
+
+    .modalContent {
+        height: 34%;
+        width: 70%;
+    }
+
+    #lineLogin {
+        margin: 0 0 0 120px;
+        width: 130px;
+    }
+}
+
+@media(max-width: 345px) {
+    input {
+        width: 225px;
+    }
+
+    .text {
+        width: 233px;
+    }
+
+    .terms {
+        width: 46%;
     }
 }

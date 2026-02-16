@@ -19,8 +19,8 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 35vw;
-    height: 50vh;
+    width: 547px;
+    height: 429px;
 }
 
 .caption {
@@ -37,8 +37,8 @@ section {
 }
 
 .container-with-triangle {
-    width: 55vw;
-    height: 110vh;
+    width: 860px;
+    height: 943px;
     background-color: black;
     clip-path: polygon(0 0, 0 0, 100% 50%, 0 100%);
     margin-top: 100px;
@@ -46,19 +46,19 @@ section {
 
 #img2 {
     position: relative;
-    top: -80vh;
-    left: 13vw;
+    top: -686px;
+    left: 203px;
     width: 40vw;
 }
 
 .content-avatar {
-    height: 150vh;
+    height: 1287px;
 }
 
 .information-avatar {
-    width: 35vw;
-    height: 50vh;
-    margin: 0 7vw 0 0;
+    width: 547px;
+    height: 429px;
+    margin: 0 109px 0 0
 }
 
 .field-avatar {
@@ -74,7 +74,7 @@ section {
 }
 
 .information-modules {
-    width: 40vw;
+    width: 626px;
 }
 
 .field-invitaion {
@@ -82,7 +82,7 @@ section {
     justify-content: space-between;
     background-color: black;
     margin: 200px 0 0 0;
-    height: 90vh;
+    height: 772px;
 }
 
 .information-invitation {
@@ -90,7 +90,7 @@ section {
     flex-direction: column;
     justify-content: center;
     margin: 0 100px 0 0;
-    width: 32vw;
+    width: 500px;
 }
 
 .text-invitation {
@@ -113,7 +113,7 @@ section {
 }
 
 #img-symbols {
-    width: 58vw;
+    width: 907px;
     margin: 0 0 39vh 0;
 }
 
@@ -124,8 +124,8 @@ section {
 }
 
 .hexagon3 {
-    width: 3vw;
-    height: 7vh;
+    width: 46px;
+    height: 60px;
     background: rgba(121, 0, 201, 1);
     clip-path: polygon(50% 0%,
             100% 25%,
@@ -134,15 +134,15 @@ section {
             0% 75%,
             0% 25%);
     position: absolute;
-    top: 100vh;
-    left: 2vw;
+    top: 858px;
+    left: 31px;
     z-index: 15;
     transform: rotate(90deg);
 }
 
 .hexagon4 {
-    width: 2vw;
-    height: 5vh;
+    width: 31px;
+    height: 42px;
     background: rgba(121, 0, 201, 1);
     clip-path: polygon(50% 0%,
             100% 25%,
@@ -151,15 +151,15 @@ section {
             0% 75%,
             0% 25%);
     position: absolute;
-    top: 95vh;
-    left: 10vw;
+    top: 815px;
+    left: 156px;
     z-index: 15;
     transform: rotate(90deg);
 }
 
 .hexagon5 {
-    width: 2.5vw;
-    height: 6.5vh;
+    width: 39px;
+    height: 55px;
     background: #09E6FF;
     clip-path: polygon(50% 0%,
             100% 25%,
@@ -168,15 +168,15 @@ section {
             0% 75%,
             0% 25%);
     position: absolute;
-    top: 105vh;
-    left: 7vw;
+    top: 900px;
+    left: 109px;
     z-index: 15;
     transform: rotate(90deg);
 }
 
 .hexagon6 {
-    width: 3vw;
-    height: 7vh;
+    width: 46px;
+    height: 60px;
     background: linear-gradient(to top,
             #FF9500,
             #C900BC);
@@ -187,8 +187,8 @@ section {
             0% 75%,
             0% 25%);
     position: absolute;
-    top: 60vh;
-    left: 13vw;
+    top: 514px;
+    left: 203px;
     z-index: 15;
     transform: rotate(90deg);
 }
@@ -213,6 +213,20 @@ section {
     height: 15px;
 }
 
+@media (min-width: 1700px) {
+    .field-invitaion {
+        height: 807px;
+    }
+
+    #img-symbols {
+        margin: 0 0 386px 0;
+    }
+
+    #img-cybro-gray {
+        width: 850px;
+    }
+}
+
 @media (max-width: 1537px) {
     .caption {
         font-size: 38px;
@@ -227,17 +241,633 @@ section {
     }
 
     #img-symbols {
-        top: 294vh;
+        top: 2522px;
     }
 }
 
 @media (max-width: 1366px) {
-    .field-avatar {
-        height: 140vh;
+    .field-modules {
+        width: 100%;
+    }
+
+    .container-with-triangle {
+        width: 830px;
+        clip-path: polygon(0 0, 0 0, 95% 50%, 0 100%);
+    }
+
+    .hexagon6 {
+        width: 40px;
+        height: 50px;
+        top: 450px;
+    }
+
+    .hexagon3 {
+        width: 40px;
+        height: 50px;
+        top: 820px;
+    }
+
+    .hexagon4 {
+        width: 31px;
+        height: 40px;
+        top: 800px;
+    }
+
+    .hexagon5 {
+        width: 39px;
+        height: 49px;
+        top: 850px;
+    }
+
+    .content-avatar {
+        height: 1201px;
     }
 
     #img-symbols {
         width: 58vw;
-        margin: 0 0 34vh 0;
+        margin: 0px 0 289px 0
+    }
+
+    #text3 {
+        width: 450px;
+    }
+
+    .information-modules {
+        width: 24%;
+    }
+
+    .field-invitaion {
+        margin: 90px 0 0 0
+    }
+}
+
+@media (max-width: 1266px) {
+    .hexagon3 {
+        top: 780px;
+    }
+
+    .hexagon4 {
+        top: 750px;
+    }
+
+    .hexagon5 {
+        top: 830px;
+    }
+
+    .hexagon6 {
+        top: 410px;
+    }
+
+    .content-avatar {
+        height: 1200px;
+    }
+
+    #caption3 {
+        width: 400px;
+    }
+
+    .field-invitaion {
+        height: 711px;
+    }
+}
+
+@media (max-width: 1189px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 78% 50%, 0 100%);
+    }
+
+    .information-avatar {
+        margin: 0;
+        width: 100%;
+    }
+
+    #text2 {
+        width: 430px;
+    }
+
+    .content-avatar {
+        width: 695px;
+    }
+
+    #text3 {
+        width: 430px;
+    }
+}
+
+@media (max-width: 1120px) {
+    .content-avatar {
+        height: 1065px;
+    }
+
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 85% 50%, 0 100%);
+    }
+
+    .hexagon6 {
+        top: 350px;
+    }
+
+
+    #text2 {
+        width: 350px;
+    }
+}
+
+@media (max-width: 1098px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 80% 50%, 0 90%);
+    }
+
+    .caption {
+        font-size: 35px;
+    }
+
+    .hexagon3 {
+        top: 700px;
+    }
+
+    .text {
+        font-size: 22px;
+    }
+
+    .hexagon4 {
+        top: 650px;
+    }
+
+    .hexagon5 {
+        top: 750px;
+    }
+
+    #text3 {
+        width: 370px;
+    }
+
+    .field-invitaion {
+        height: 690px;
+    }
+}
+
+@media(max-width: 1050px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 75% 50%, 0 90%);
+    }
+
+    .content-avatar {
+        width: 700px;
+    }
+
+    #img2 {
+        width: 45vw;
+    }
+
+    .hexagon3 {
+        height: 45px;
+        top: 730px;
+    }
+
+    .hexagon4 {
+        height: 35px;
+        top: 690px;
+    }
+
+    .hexagon5 {
+        height: 45px;
+        top: 800px;
+    }
+
+    #text2 {
+        width: 300px;
+    }
+
+    #text3 {
+        width: 350px;
+    }
+}
+
+@media (max-width: 1005px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 70% 50%, 0 90%);
+    }
+
+    .content-avatar {
+        width: 660px;
+    }
+
+    #text2 {
+        width: 260px;
+    }
+
+    .information {
+        width: 383px;
+    }
+
+    #text1 {
+        width: 450px;
+    }
+
+    .information-modules {
+        width: 400px;
+    }
+}
+
+@media (max-width: 920px) {
+    .caption {
+        font-size: 20px;
+    }
+
+    .text {
+        font-size: 15px;
+    }
+
+    #img1 {
+        width: 30vw;
+    }
+
+    .content-avatar {
+        height: 1065px;
+        width: 630px;
+    }
+
+    #caption2 {
+        width: 190px;
+    }
+
+    #text2 {
+        width: 190px;
+    }
+
+    .hexagon3 {
+        height: 43px;
+        top: 600px;
+    }
+
+    .hexagon4 {
+        height: 32px;
+        top: 650px;
+    }
+
+    .hexagon5 {
+        height: 43px;
+        top: 700px;
+    }
+
+    .hexagon6 {
+        height: 48px;
+        top: 400px;
+    }
+
+    .information-modules {
+        width: 260px;
+    }
+
+    #text3 {
+        width: 270px;
+    }
+
+    #caption3 {
+        width: 300px;
+    }
+
+    .field-invitaion {
+        height: 460px;
+    }
+
+    #img-symbols {
+        margin: 0px 0 147px 0px;
+    }
+
+    .text-invitation {
+        font-size: 15px;
+    }
+
+    #img-cybro-gray {
+        width: 44vw;
+    }
+
+    .information-invitation {
+        margin: 0 89px 0 0;
+    }
+}
+
+@media (max-width: 850px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 60% 50%, 0 85%);
+        margin: 0;
+    }
+
+    #text1 {
+        width: 410px;
+    }
+
+    #caption2 {
+        width: 200px;
+    }
+
+    #text2 {
+        width: 200px;
+    }
+
+    #img2 {
+        left: 140px;
+        width: 50vw;
+    }
+
+    .hexagon6 {
+        left: 100px;
+    }
+
+    .content-avatar {
+        width: 570px;
+        height: 900px;
+    }
+
+    .information {
+        width: 377px;
+        height: 200px;
+    }
+
+    #text3 {
+        width: 270px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 90% 50%, 0 85%);
+        margin: 0;
+    }
+
+    #text1 {
+        width: 100%;
+    }
+
+    #img2 {
+        left: 150px;
+    }
+
+    .caption {
+        font-size: 23px;
+    }
+
+    #caption2 {
+        width: 300px;
+    }
+
+    #text2 {
+        width: 100%;
+    }
+
+    .information {
+        margin: 0 0 0 0;
+        width: 80%;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
+    .field {
+        flex-direction: column;
+    }
+
+    #img1 {
+        width: 60vw;
+    }
+
+    .field-avatar {
+        flex-direction: column-reverse;
+    }
+
+    .information-avatar {
+        margin: 60px 0 0 0;
+        width: 80%;
+        height: 100%;
+    }
+
+    .content-avatar {
+        margin: 0 350px 0 0;
+        height: 800px;
+
+    }
+
+    #img2 {
+        margin: -100px 0 0 120px;
+        width: 70vw;
+    }
+
+    .hexagon3 {
+        top: 858px;
+    }
+
+    .hexagon4 {
+        top: 858px;
+    }
+
+    .hexagon5 {
+        top: 772px;
+    }
+
+    .hexagon6 {
+        top: 450px;
+        left: 50px;
+    }
+
+    .field-modules {
+        flex-direction: column;
+    }
+
+    .information-modules {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        display: flex;
+    }
+
+    #caption3 {
+        width: 78%;
+    }
+
+    #text3 {
+        width: 78%;
+    }
+}
+
+@media (max-width: 610px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 80% 50%, 0 85%);
+        width: 915px;
+    }
+
+    #img2 {
+        margin: -40px 0 0 100px;
+    }
+
+    .information-modules {
+        width: 100%;
+    }
+
+    #text3 {
+        width: 70%;
+    }
+
+    .field-invitaion {
+        flex-direction: column-reverse;
+        height: 528px;
+    }
+
+    .information-invitation {
+        margin: 50px 0 0 60px;
+        width: 86%;
+        position: relative;
+        top: 53px;
+    }
+
+    .text-invitation {
+        width: 400px;
+    }
+
+    #img-symbols {
+        margin: 0px 0 25vh 40vw;
+        transform: scaleX(-1);
+    }
+
+    #img-cybro-gray {
+        margin: 0px 0 0 44vw;
+        width: 56vw;
+        transform: scaleX(-1);
+    }
+
+    #caption3 {
+        width: 70%;
+    }
+}
+
+@media (max-width: 565px) {
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 75% 50%, 0 85%);
+    }
+
+    .hexagon3 {
+        top: 950px;
+    }
+
+    .hexagon6 {
+        top: 600px;
+    }
+
+    .hexagon4 {
+        top: 900px;
+    }
+
+    .hexagon5 {
+        top: 850px;
+    }
+
+    .information-modules {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+    }
+
+    #text3 {
+        margin: 0 !important;
+    }
+
+}
+
+@media (max-width: 490px) {
+    .information {
+        margin: 0 0 0 0;
+        height: 300px;
+    }
+
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 70% 50%, 0 85%);
+    }
+
+    .hexagon3 {
+        top: 950px;
+    }
+
+    .hexagon6 {
+        top: 500px;
+    }
+
+    .hexagon4 {
+        top: 900px;
+    }
+
+    .hexagon5 {
+        top: 850px;
+    }
+
+    #img2 {
+        width: 80vw;
+    }
+
+    .hexagon5 {
+        left: 50px;
+    }
+
+    .information-invitation {
+        margin: 20vh 0 0 10vw;
+    }
+
+    #caption4 {
+        width: 350px;
+    }
+
+
+}
+
+@media (max-width: 430px) {
+    .information {
+        width: 80%;
+        height: 380px;
+    }
+
+    .text {
+        font-size: 18px;
+    }
+
+    .field {
+        flex-direction: column;
+    }
+
+    #img2 {
+        margin: -40px 0 0 170px;
+    }
+
+    .text-invitation {
+        width: 300px;
+    }
+}
+
+@media (max-width: 390px) {
+    #caption2 {
+        width: 80%;
+    }
+
+    .container-with-triangle {
+        clip-path: polygon(0 0, 0 0, 65% 50%, 0 85%);
+    }
+
+    #img2 {
+        margin: -40px 0 0 160px;
+    }
+
+    .information {
+        height: 450px;
+    }
+
+    #caption3 {
+        margin: 0 0 0 -80px;
+        text-align: start;
+        width: 71%;
+    }
+
+    .content-avatar {
+        height: 725px;
+
     }
 }

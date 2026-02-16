@@ -35,7 +35,7 @@
 .buttons {
     display: flex;
     justify-content: space-around;
-    width: 25vw;
+    width: 384px;
 }
 
 .button1 {
@@ -93,6 +93,7 @@ span {
     font-family: "Poppins", sans-serif;
     padding: 0;
     border: 0;
+    font-size: 11px;
     cursor: pointer;
 }
 
@@ -105,8 +106,41 @@ span {
     background: black;
 }
 
-@media (max-width: 1366px) {
+.button-edit {
+    background: none;
+    color: white;
+    border: none;
+    padding: 0;
+    text-align: left;
+    margin: 0 0 7px 0;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+}
 
+.hamburguer {
+    display: none;
+    position: relative;
+}
+
+#iconMenu {
+    position: relative;
+    z-index: 1000;
+    cursor: pointer;
+    width: 30px;
+}
+
+.icon {
+    display: none;
+}
+
+@media (min-width: 1700px) {
+
+    .buttons {
+        width: 400px;
+    }
+}
+
+@media (max-width: 1366px) {
     .button1 {
         font-size: 16px;
         width: 140px;
@@ -119,7 +153,221 @@ span {
         height: 45px;
     }
 
+    .buttons {
+        width: 355px;
+    }
+
     .place {
         font-size: 16px;
+    }
+}
+
+@media (max-width: 1238px) {
+    .buttons {
+        width: 25%;
+    }
+
+    .button1 {
+        font-size: 15px;
+        width: 120px;
+        height: 45px;
+    }
+
+    .button2 {
+        font-size: 15px;
+        width: 120px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 1010px) {
+    .buttons {
+        width: 30%;
+    }
+
+    .button1 {
+        width: 118px;
+    }
+
+    .button2 {
+        width: 118px;
+    }
+}
+
+@media (max-width: 920px) {
+    #img {
+        width: 100px;
+    }
+
+    a.place {
+        font-size: 14px;
+    }
+
+    .button1 {
+        font-size: 14px;
+        width: 115px;
+        height: 42px;
+    }
+
+    .button2 {
+        font-size: 14px;
+        width: 115px;
+        height: 42px;
+    }
+
+    .nav {
+        position: absolute;
+        top: 60%;
+        left: 40%;
+        transform: translateX(-50%);
+        background: rgb(0 0 0 / 66%);
+        flex-direction: column;
+        width: 200px;
+        padding: 10px;
+        border-radius: 5px;
+        display: none;
+        height: 80px;
+    }
+
+    .nav.active {
+        display: flex;
+        position: absolute;
+    }
+
+    .hamburguer {
+        display: block;
+        display: flex;
+        align-items: center;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        /*height: 100%;*/
+        background: transparent;
+        z-index: 998;
+    }
+
+    a.place {
+        padding: 3px;
+    }
+}
+
+@media (max-width: 792px) {
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        height: 70%;
+        width: 20%;
+    }
+
+    .button1 {
+        border-radius: 12px;
+        font-size: 12px;
+        width: 100px;
+        height: 30px;
+    }
+
+    .button2 {
+        border-radius: 12px;
+        font-size: 12px;
+        width: 100px;
+        height: 30px;
+    }
+
+    .nav {
+        left: 46%;
+    }
+}
+
+@media (max-width: 780px) {
+    .nav {
+        flex-direction: column;
+        left: 47%;
+    }
+}
+
+@media(max-width: 610px) {
+    .nav {
+        width: 159px;
+        left: 50%;
+    }
+}
+
+@media(max-width: 550px) {
+    .nav {
+        width: 110px;
+    }
+
+    a.place {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    #img {
+        width: 90px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        height: 70%;
+        width: 20%;
+    }
+
+    .button1 {
+        font-size: 12px;
+    }
+
+    .button2 {
+        font-size: 12px;
+    }
+
+    .nav {
+        width: 110px;
+    }
+
+    .icon {
+        display: flex;
+    }
+
+    #userIcon{
+        height: 25px;
+    }
+
+    .buttons{
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .nav {
+        width: 97px;
+        left: 51%;
+    }
+}
+
+@media (max-width: 352px) {
+    a.place {
+        font-size: 11px;
+    }
+
+    .button1 {
+        font-size: 9px;
+        width: 80px;
+        height: 27px;
+    }
+
+    .button2 {
+        font-size: 9px;
+        width: 80px;
+        height: 27px;
+    }
+
+    .nav {
+        left: 53%;
     }
 }

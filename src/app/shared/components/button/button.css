@@ -7,8 +7,8 @@
     font-size: 24px;
     border-radius: 15px;
     margin: 70px 0 0 0;
-    height: 7vh;
-    width: 12vw;
+    height: 60px;
+    width: 230px;
 }
 
 @media (max-width: 1537px) {
@@ -19,7 +19,20 @@
 
 @media (max-width: 1366px) {
     .shared-button {
-        height: 8vh;
-        width: 14vw;
+        height: 68px;
+    }
+}
+
+@media (max-width: 920px) {
+    .shared-button {
+        font-size: 14px;
+        height: 50px;
+        width: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .shared-button {
+        margin: 30px 0 0 0;
     }
 }

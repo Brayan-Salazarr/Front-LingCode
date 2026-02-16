@@ -1,13 +1,12 @@
 <app-nav></app-nav>
-<app-header title="Módulos" [showLine]="true" [classSpace]="'space'" [showUserInfo]="true" ></app-header>
-
-<h1 class="mainTitle">Módulos</h1>
+<app-header title="Módulos" [showTitle]="true" [showLine]="true" [classSpace]="'space'" [showUserInfo]="true"
+  [showDecorativeCircle]="true" [hideTitleWhenLogged]="true" [showHexagon1]="true" [showHexagon2]="true"
+  [showHexagon3]="true" [showHexagon4]="true" [showHexagon5]="true" [showHexagon6]="true"
+  [showHexagon7]="true"></app-header>
 
 <section class="modulesContainer">
-  <div class="moduleRow" *ngFor="let module of modules; let i = index; let isLast = last; let isFirst = first" [class.left]="i % 2 === 0"
-  [class.right]="i % 2 !== 0"
-  [class.last-module]="isLast"
-   [class.first-module]="isFirst">
+  <div class="moduleRow" *ngFor="let module of modules; let i = index; let isLast = last; let isFirst = first"
+    [class.left]="i % 2 === 0" [class.right]="i % 2 !== 0" [class.last-module]="isLast" [class.first-module]="isFirst">
 
     <!-- Tarjeta -->
     <div class="moduleCard">
@@ -33,22 +32,25 @@
 
       <!-- Camino horizontal -->
       <div class="path-horizontal">
-        <div class="line-step h"></div>
-        <div class="line-step h"></div>
+        <div class="line-step h" [class.completed]="currentStep >= 2"></div>
+        <div class="line-step h" [class.completed]="currentStep >= 2"></div>
+        <div class="line-step h" [class.completed]="currentStep >= 2"></div>
 
-        <span class="step">1</span>
-        
-        <div class="line-step h"></div>
-        <div class="line-step h"></div>
+        <span class="step" [class.completed]="currentStep > 1" [class.active]="currentStep === 1">
+          1</span>
 
-        <span class="step">2</span>
+        <div class="line-step h"[class.completed]="currentStep >= 2"></div>
+        <div class="line-step h"[class.completed]="currentStep >= 2"></div>
+        <div class="line-step h"[class.completed]="currentStep >= 2"></div>
+
+        <span class="step" [class.completed]="currentStep > 2" [class.active]="currentStep === 2">2</span>
       </div>
 
-      <!-- Camino vertical -->
+      <!-- Camino vertical 
       <div class="path-vertical">
         <div class="line-step v"></div>
         <div class="line-step v"></div>
-      </div>
+      </div> -->
 
     </div>
 

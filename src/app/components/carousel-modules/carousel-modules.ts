@@ -29,9 +29,9 @@ export class CarouselModules {
     const rotate = angle * (index - this.currentIndex);
 
     return `
-      translate(-50%, -50%)
+      translate(var(--x-offset, -50%), var(--y-offset, -50%))
       rotateY(${rotate}deg)
-      translateZ(250px)
+      translateZ(var(--tz, 250px))
     `;
   }
 }

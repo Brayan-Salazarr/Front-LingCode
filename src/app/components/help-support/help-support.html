@@ -17,7 +17,7 @@
             </div>
 
             <div class="answer" *ngIf="activeItem === item">
-                <p>{{item.answer}}</p>
+                <p [innerHTML]="item.answer"></p>
             </div>
 
         </div>

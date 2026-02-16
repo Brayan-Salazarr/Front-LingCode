@@ -1,5 +1,5 @@
 import { CommonModule, NgClass } from '@angular/common';
-import { Component, Input, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, ChangeDetectorRef, input } from '@angular/core';
 import { AuthService, User } from '../../../auth/services/authService';
 import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -15,9 +15,19 @@ export class Header implements OnInit, OnDestroy {
   @Input() classSpace = '';
   @Input() showTitle= false;
   @Input() showHexagon = false;
+  @Input() showHexagon1 = false;
+  @Input() showHexagon2 = false;
+  @Input() showHexagon3 = false;
+  @Input() showHexagon4 = false;
+  @Input() showHexagon5 = false;
+  @Input() showHexagon6 = false;
+  @Input() showHexagon7 = false;
   @Input() showUserInfo = false;
-   @Input() showDecorativeCircle = false;
+  @Input() showDecorativeCircle = false;
   @Input() showLine = false;
+  @Input() variantClass = '';
+
+  @Input() hideTitleWhenLogged = false;
 
     user: User | null = null;
     private userSubscription?: Subscription;

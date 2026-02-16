@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, Input, input, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 interface ImagenItem {
@@ -14,6 +14,11 @@ interface ImagenItem {
   styleUrl: './carousel-avatar.css',
 })
 export class CarouselAvatar {
+  
+  @Input() carouselWidth: string = '70vw';
+  @Input() carouselHeight: string = '70vh';
+
+  @Input() imageSize: string = '20vw';
 
   constructor(private router: Router) { }
 

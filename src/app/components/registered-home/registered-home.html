@@ -1,5 +1,5 @@
 <app-nav></app-nav>
-<app-header [showUserInfo]="true" [showTitle]="true"></app-header>
+<app-header [showUserInfo]="true" [showTitle]="true" [showHexagon2]="true" [showHexagon6]="true" [showHexagon7]="true" variantClass="move-hex-home"></app-header>
 
 <section>
     <div class="content-target-streak">
@@ -102,73 +102,8 @@
        
     </div>
 
-    <div class="line"></div>
-    <div class="content-subscriptions">
-        <h2 class="title-record" id="title-achievement">Suscripciones</h2>
-
-        <div class="box-card">
-            <div class="card-sus">
-                <div class="price-field">
-                    <h2 class="suntitle-subsc">Basic</h2>
-                    <div class="line-susbsc"></div>
-                    <strong class="cost">$ <span class="size-number">9.900</span> COP  </strong>
-                    <p class="type">Mensual</p>
-                </div>
-
-                <ul class="information-field">
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Energía ilimitada</li>
-                    </div>
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Una interacción sin anuncios</li>
-                    </div>
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Interactúar con cualquier módulo</li>
-                    </div>
-                    <div class="space">
-                        <img class="iconss" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861264/image-Photoroom_2_3_3_vnea0z.png" alt="">
-                        <li>Interacción con Chat voz con IA</li>
-                    </div>
-                </ul>
-
-                <button class="button-subscription" routerLink="/payment-methods">Suscribirse</button>
-            </div>
-            <img id="img-avatar" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765858158/image-Photoroom_1_1_xctvke.png" alt="">
-            <div class="card-sus">
-                  <div class="price-field">
-                    <h2 class="suntitle-subsc">Premium</h2>
-                    <div class="line-susbsc"></div>
-                    <strong class="cost">$ <span class="size-number">19.900</span> COP  </strong>
-                    <p class="type">Mensual</p>
-                </div>
-
-                <ul class="information-field">
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Energía ilimitadas</li>
-                    </div>
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Una interacción sin anuncios</li>
-                    </div>
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Interactúar con cualquier módulo</li>
-                    </div>
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Interacción con Chat voz con IA</li>
-                    </div>
-                </ul>
-
-                <button class="button-subscription" routerLink="/payment-methods">Suscribirse</button>
-            </div>
-
-        </div>
-    </div>
+    
+    <app-subscriptions></app-subscriptions>
 
 </section>
 
