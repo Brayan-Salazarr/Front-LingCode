@@ -39,18 +39,18 @@
         <span class="step" [class.completed]="currentStep > 1" [class.active]="currentStep === 1">
           1</span>
 
-        <div class="line-step h"></div>
-        <div class="line-step h"></div>
-        <div class="line-step h"></div>
+        <div class="line-step h"[class.completed]="currentStep >= 2"></div>
+        <div class="line-step h"[class.completed]="currentStep >= 2"></div>
+        <div class="line-step h"[class.completed]="currentStep >= 2"></div>
 
         <span class="step" [class.completed]="currentStep > 2" [class.active]="currentStep === 2">2</span>
       </div>
 
-      <!-- Camino vertical -->
+      <!-- Camino vertical 
       <div class="path-vertical">
         <div class="line-step v"></div>
         <div class="line-step v"></div>
-      </div>
+      </div> -->
 
     </div>
 

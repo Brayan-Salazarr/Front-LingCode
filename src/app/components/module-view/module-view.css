@@ -52,11 +52,10 @@
   color: black;
 }
 
-.step.active {
-  background: white;
+/*.step.active {
+  background-color: #ccc;
   border: 4px solid #0066FF;
-  color: #0066FF;
-}
+}*/
 
 .step.completed {
   background: #0066FF;
@@ -239,6 +238,5 @@ button:hover {
 }
 
 .first-module .path-horizontal .step:first-of-type {
-  background-color: #008CFF;
   color: #000;
 }
