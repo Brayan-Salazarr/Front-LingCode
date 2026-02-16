@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login-registro.css',
 })
 export class LoginRegistro {
+  accepTerms: boolean = false;
+  disError: boolean = false;
+  isModalOpen: boolean = false;
   showLogin: boolean = false;
 
   loginData = {
@@ -48,19 +51,19 @@ export class LoginRegistro {
     });
   }*/
 
-    login() {
-  this.authService.login(
-    this.loginData.identifier,
-    this.loginData.password
-  ).subscribe({
-    next: () => {
-      this.router.navigate(['/registered-home']);
-    },
-    error: err => {
-      alert(err.message || 'Error en el login');
-    }
-  });
-}
+  login() {
+    this.authService.login(
+      this.loginData.identifier,
+      this.loginData.password
+    ).subscribe({
+      next: () => {
+        this.router.navigate(['/registered-home']);
+      },
+      error: err => {
+        alert(err.message || 'Error en el login');
+      }
+    });
+  }
 
 
   /*
@@ -94,39 +97,57 @@ export class LoginRegistro {
       console.error('Error registro:', err);
       alert('Error en el registro: ' + (err.error?.message || 'Error desconocido'));
     }
+
+    if (!this.accepTerms) {
+      this.disError = true;
+      return;
+    }
+
+    this.disError = false;
+    console.log('Continuar registro...')
   });
 };*/
-/*
-    if (success) {
-      alert('Registro exitoso');
-      this.showLogin = true;
+  /*
+      if (success) {
+        alert('Registro exitoso');
+        this.showLogin = true;
+      } else {
+        alert('El usuario ya existe');
+      }
+    }
+  */
+
+  register() {
+    /*Permite validar si el usuario acepto los términos, de lo contrario no deja registrar*/
+    if (!this.accepTerms) {
+      this.disError = true;
+      return;
     } else {
-      alert('El usuario ya existe');
+      this.disError = false;
     }
-  }
-*/
 
-register() {
-  if (this.registerData.password !== this.registerData.confirmPassword) {
-    alert('Las contraseñas no coinciden');
-    return;
-  }
-
-  this.authService.register({
-    fullName: this.registerData.fullName.trim(),
-    nickName: this.registerData.nickName.trim(),
-    email: this.registerData.email.trim(),
-    password: this.registerData.password
-  } as any).subscribe({
-    next: () => {
-      alert('Registro exitoso');
-      this.showLogin = true;
-    },
-    error: err => {
-      alert(err.message || 'Error en el registro');
+    /*Valida que las contraseñas ingresadas coincidan*/
+    if (this.registerData.password !== this.registerData.confirmPassword) {
+      alert('Las contraseñas no coinciden');
+      return;
     }
-  });
-}
+
+    /*LLama al servicio de registro*/
+    this.authService.register({
+      fullName: this.registerData.fullName.trim(),
+      nickName: this.registerData.nickName.trim(),
+      email: this.registerData.email.trim(),
+      password: this.registerData.password
+    } as any).subscribe({
+      next: () => {
+        alert('Registro exitoso');
+        this.showLogin = true;
+      },
+      error: err => {
+        alert(err.message || 'Error en el registro');
+      }
+    });
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -187,8 +208,6 @@ register() {
       overlay!.addEventListener('transitionend', listener);
     }, 600);
   }
-
-  isModalOpen: boolean = false;
 
   openModal() {
     this.isModalOpen = true;

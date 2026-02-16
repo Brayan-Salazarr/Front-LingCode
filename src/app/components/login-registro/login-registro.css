@@ -218,9 +218,16 @@ input {
     width: 220px;
 }
 
-#checkbox {
+.checkbox {
     width: 15px;
     margin: 0 0 0 0;
+}
+
+#textTerms {
+    color: #fa7171;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    margin: 10px 0 0 0;
 }
 
 span {
@@ -258,6 +265,7 @@ a {
     width: 5px;
 }
 
+/*INICIO DE CSS DE LOGIN*/
 #WhiteBackg {
     display: flex;
     justify-content: center;
@@ -585,7 +593,7 @@ h3 {
         margin: 30px 0 0 0;
     }
 
-    #checkbox {
+    .checkbox {
         width: 12px;
     }
 
@@ -1245,6 +1253,23 @@ h3 {
     #lineLogin {
         margin: 0 0 0 120px;
         width: 130px;
+    }
+
+    .line3 {
+        top: 708px;
+    }
+
+    .line2 {
+        top: 712px;
+    }
+
+    #textTerms {
+        font-size: 10px;
+        margin: 0;
+    }
+
+    #BlackBackgReg {
+        height: 710px;
     }
 }
 
