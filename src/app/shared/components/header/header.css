@@ -5,18 +5,17 @@
     overflow: hidden;
 }
 
-
 header {
     display: flex;
     background: black;
-    width: 2304px;
+    width: 2463px;
     height: 1165px;
-    position: relative;
+    position: absolute;
     border-radius: 50% / 100%;
     left: -110px;
     top: -735px;
     transform: skewY(-15deg);
-    z-index: 5;
+    z-index: 2;
     
 }
 
@@ -25,19 +24,20 @@ header {
     top: 710px;
     left: 1280px;
     width: 353px;
-    transform: skewY(15deg)
+    transform: skewY(15deg);
+    z-index: 3;
 }
 
 #background {
-    width: 100%;
+    width: 2265px;
     height: 1214px;
     background: #0CB9D8;
     position: absolute;
     border-radius: 50% / 100%;
     left: -110px;
-    top: -650px;
+    top: -728px;
     transform: skewY(-17deg);
-    z-index: 4;
+    z-index: 1;
 }
 
 .information {
@@ -49,7 +49,7 @@ header {
     left: 261px;
     transform: skewY(15deg);
     font-family: "Anton SC", sans-serif;
-    z-index: 10;
+    z-index: 4;
     height: 310px;
 }
 
@@ -213,7 +213,6 @@ h1 {
 }
 
 .avatar {
-
     width: 310px;
 }
 
