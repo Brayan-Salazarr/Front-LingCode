@@ -1,4 +1,5 @@
 #panelWrapper {
+    position: absolute;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -283,7 +284,8 @@ a {
 #loginSection {
     background:
         linear-gradient(90deg, #f5f5f500 40%, #000 40%),
-        url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -1vw -11vh / 44vw;
+        url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -19px -17px / 740px;
+    height: 100%;
 }
 
 #WhiteBackgLogin {
@@ -303,8 +305,10 @@ a {
 #BlackBackgLogin {
     display: flex;
     justify-content: center;
+    position: relative;
     width: 1220px;
 }
+
 
 #infoLogin {
     height: 189px;
@@ -724,7 +728,7 @@ h3 {
 
     #infoLogin {
         align-items: end;
-        width: 645px;
+        width: 610px;
     }
 }
 
@@ -734,14 +738,19 @@ h3 {
     }
 
     #infoLogin {
-        width: 630px;
+        width: 610px;
     }
 }
 
 @media(max-width: 1070px) {
     #infoLogin {
-        align-items: center;
-        width: 645px;
+        width: 612px;
+    }
+
+    #loginSection {
+        background:
+            linear-gradient(90deg, #f5f5f500 40%, #000 40%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -8vw -1vh / 70vw;
     }
 }
 
@@ -755,7 +764,7 @@ h3 {
     }
 
     #infoLogin {
-        width: 630px;
+        width: 588px;
     }
 }
 
@@ -765,17 +774,11 @@ h3 {
     }
 
     #infoLogin {
-        width: 600px;
+        width: 560px;
     }
 
     #BlackBackgLogin {
         width: 578px;
-    }
-
-    #loginSection {
-        background:
-            linear-gradient(90deg, #f5f5f500 40%, #000 40%),
-            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -1vw 100% / 70vw;
     }
 }
 
@@ -815,7 +818,7 @@ h3 {
     #loginSection {
         background:
             linear-gradient(90deg, #f5f5f500 40%, #000 40%),
-            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -1vw -5vh / 50vw;
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -10vw 10vh / 75vw;
     }
 
     #Whitetittle {
@@ -828,7 +831,7 @@ h3 {
 
     #infoLogin {
         align-items: end;
-        width: 550px;
+        width: 520px;
     }
 
     .authClass {
@@ -886,7 +889,7 @@ h3 {
     #loginSection {
         background:
             linear-gradient(90deg, #f5f5f500 40%, #000 40%),
-            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -20vw -7vh / 63vw;
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -20vw -1vh / 80vw;
     }
 
     #loginP {
@@ -949,6 +952,12 @@ h3 {
     #Whitetittle {
         font-size: clamp(27px, 27px, 50px);
     }
+
+    #loginSection {
+        background:
+            linear-gradient(90deg, #f5f5f500 40%, #000 40%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -20vw 1vh / 83vw;
+    }
 }
 
 @media(max-width: 820px) {
@@ -957,13 +966,23 @@ h3 {
     }
 
     #infoLogin {
-        width: 460px;
+        width: 438px;
     }
 
     .authClass {
         background:
             linear-gradient(90deg, #000 60%, #f5f5f500 50%),
             url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 90vw;
+    }
+
+    #loginSection {
+        background:
+            linear-gradient(90deg, #f5f5f500 40%, #000 40%),
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -20vw 5vh / 85vw;
+    }
+
+    #BlackBackgLogin {
+        width: 485px;
     }
 }
 
@@ -1069,6 +1088,7 @@ h3 {
 
     #BlackBackgLogin {
         margin: 83px 0 10px 0;
+        top: -108px;
     }
 
     #lineLogin {
@@ -1094,6 +1114,15 @@ h3 {
 
     #buttonRegis {
         margin: 0 0 17px 0;
+    }
+
+    #termsLogin {
+        width: 140px;
+    }
+
+    #WhiteBackgLogin {
+        text-align: center;
+        width: 100%;
     }
 }
 
@@ -1157,14 +1186,6 @@ h3 {
         width: 350px;
     }
 
-
-
-    #loginSection {
-        background:
-            linear-gradient(180deg, #f5f5f500 24%, #000 19%),
-            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -8vw -15vh / 60vw;
-    }
-
     .terms {
         width: 30%;
     }
@@ -1183,12 +1204,6 @@ h3 {
         width: 35%;
     }
 
-    #loginSection {
-        background:
-            linear-gradient(180deg, #f5f5f500 24%, #000 19%),
-            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -5vw -10vh / 60vw;
-    }
-
     .modalContent {
         height: 31%;
         width: 66%;
@@ -1202,6 +1217,10 @@ h3 {
     #modalContentLogin {
         height: 195px;
         width: 80%;
+    }
+
+    #infoLogin {
+        width: 420px;
     }
 }
 
@@ -1271,6 +1290,7 @@ h3 {
     #BlackBackgReg {
         height: 710px;
     }
+
 }
 
 @media(max-width: 345px) {
