@@ -445,18 +445,16 @@ h1 {
 @media (max-width: 1279px) {
 
     header {
-        height: 1080px;
+        height: 1226px;
     }
 
     #background {
-        width: 2145px;
-        height: 1146px;
+        height: 1254px;
     }
 
     #imgCircle {
-        width: 330px;
-        left: 1060px;
-        top: 645px;
+        left: 73%;
+        top: 3%;
     }
 
     h1 {
@@ -543,14 +541,29 @@ h1 {
 
 }
 
-@media (max-width: 920px) {
 
+@media (max-width: 1180px) {
+    #imgCircle {
+        display: none;
+    }
+
+    .hexagon7 {
+        left: 848px;
+    }
+
+    .hexagon8 {
+        top: 493px;
+        left: 734px;
+    }
+}
+
+@media (max-width: 920px) {
     .header-wrapper {
         height: 500px;
     }
 
     header {
-        height: 1000px;
+        height: 1097px;
         width: 1500px;
     }
 
@@ -560,7 +573,7 @@ h1 {
     }
 
     .information {
-        top: 735px;
+        top: 838px;
         left: 220px;
         height: 183px;
     }
@@ -576,7 +589,7 @@ h1 {
     }
 
     #background {
-        height: 1030px;
+        height: 1088px;
         width: 1600px;
     }
 
@@ -594,21 +607,21 @@ h1 {
     .hexagon3 {
         height: 32px;
         width: 33px;
-        top: 423px;
-        left: 80px;
+        top: 398px;
+        left: 71px;
+        ;
     }
 
     .hexagon4 {
         height: 31px;
         width: 26px;
-        top: 439px;
+        top: 412px;
     }
 
     .hexagon5 {
         height: 31px;
         width: 29px;
-        top: 398px;
-
+        top: 375px;
         left: 120px;
     }
 
@@ -622,15 +635,15 @@ h1 {
     .hexagon7 {
         height: 39px;
         width: 35px;
-        left: 702px;
-        top: 278px;
+        left: 750px;
+        top: 220px;
     }
 
     .hexagon8 {
         height: 37px;
         width: 33px;
         left: 616px;
-        top: 326px;
+        top: 296px;
     }
 
     .nickname {
@@ -758,28 +771,14 @@ h1 {
         left: 39px;
     }
 
-    .hexagon3 {
-        width: 28px;
-        top: 412px;
-    }
-
-    .hexagon4 {
-        left: 140px;
-        top: 426px;
-    }
-
-    .hexagon5 {
-        top: 383px;
-    }
-
     .hexagon7 {
-        top: 326px;
+        top: 150px;
         left: 551px;
     }
 
     .hexagon8 {
-        left: 475px;
-        top: 365px;
+        left: 525px;
+        top: 315px;
     }
 
     .nickname {
@@ -881,6 +880,16 @@ h1 {
     }
 }
 
+@media (max-width: 600px) {
+    .hexagon7 {
+        left: 500px;
+    }
+
+    .hexagon8 {
+        left: 444px;
+        top: 315px;
+    }
+}
 
 @media (max-width: 550px) {
     h1 {
@@ -889,7 +898,7 @@ h1 {
     }
 
     .information {
-        left: 156px;
+        left: 136px;
     }
 
     .hexagon8 {
@@ -897,8 +906,8 @@ h1 {
     }
 
     .hexagon7 {
-        top: 316px;
-        left: 475px;
+        top: 155px;
+        left: 455px;
     }
 
     .avatar {
@@ -916,13 +925,12 @@ h1 {
 }
 
 @media (max-width: 480px) {
-
     .header-wrapper {
-        height: 330px;
+        height: 450px;
     }
 
     header {
-        height: 931px;
+        height: 1045px;
     }
 
     h1 {
@@ -943,14 +951,14 @@ h1 {
     .information {
         width: 400px;
         height: 130px;
-        top: 705px;
-        left: 170px;
+        top: 815px;
+        left: 145px;
     }
 
     #background {
         left: -103px;
         width: 1437px;
-        height: 964px;
+        height: 1042px;
     }
 
     .hexagon1 {
@@ -975,14 +983,14 @@ h1 {
         height: 22px;
         width: 20px;
         top: 359px;
-        left: 94px;
+        left: 120px;
     }
 
     .hexagon5 {
         width: 20px;
         height: 25px;
-        top: 328px;
-        left: 81px;
+        top: 322px;
+        left: 93px;
     }
 
     .hexagon7 {
@@ -995,8 +1003,8 @@ h1 {
     .hexagon8 {
         height: 25px;
         width: 23px;
-        top: 335px;
-        left: 313px;
+        top: 300px;
+        left: 380px;
     }
 
     #imgCirclee {
@@ -1069,7 +1077,6 @@ h1 {
 }
 
 @media (max-width: 410px) {
-
     .information {
         top: 720px;
         left: 170px;
