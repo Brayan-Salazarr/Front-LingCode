@@ -104,6 +104,7 @@ span {
 .backgroundNav1.component,
 .backgroundNav2.component {
     background: black;
+    position: relative;
 }
 
 .button-edit {
