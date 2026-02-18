@@ -4,7 +4,7 @@ import { Header } from '../../shared/components/header/header';
 import { Footer } from '../../shared/components/footer/footer';
 import { AuthService, User } from '../../auth/services/authService';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Subscriptions } from '../../shared/components/subscriptions/subscriptions';
 
 interface Practica {
@@ -30,7 +30,7 @@ interface Logro {
 export class RegisteredHome {
    user: User | null = null;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.authService.currentUser$.subscribe(user => {
       this.user = user;
     });
@@ -75,4 +75,11 @@ export class RegisteredHome {
       bordeColor: '#00ffff'
     }
   ];
+
+
+   ngOnInit(): void {
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/login-registro'], { queryParams: { view: 'login' } });
+    }
+  }
 }
