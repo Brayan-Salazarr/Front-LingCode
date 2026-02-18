@@ -54,13 +54,20 @@
 
 /* Panel activo se posiciona en el centro */
 .panel.active {
+    opacity: 1;
     transform: translateX(0);
     pointer-events: auto;
 }
 
 /* El panel de Login se mueve a la izquierda cuando está inactivo */
 #panelLogin.inactive {
+    opacity: 0;
     transform: translateX(-100%);
+}
+
+#loginSection,
+#registerSection {
+    min-height: 100dvh;
 }
 
 /* El panel de Registro se mueve a la derecha cuando está inactivo */
@@ -74,9 +81,8 @@
     justify-content: space-around;
     background:
         linear-gradient(90deg, #000 60%, #f5f5f500 50%),
-        url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 60vw -10vh / 40vw;
+        url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 100% 0px / 626px;
     position: relative;
-    height: 100%;
 }
 
 .containers {
@@ -284,8 +290,7 @@ a {
 #loginSection {
     background:
         linear-gradient(90deg, #f5f5f500 40%, #000 40%),
-        url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -19px -17px / 740px;
-    height: 100%;
+        url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -19px -10px / 750px;
 }
 
 #WhiteBackgLogin {
@@ -747,7 +752,7 @@ h3 {
     #loginSection {
         background:
             linear-gradient(90deg, #f5f5f500 40%, #000 40%),
-            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -8vw -1vh / 70vw;
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -31vw -9vh / 77vw;
     }
 }
 
@@ -815,7 +820,7 @@ h3 {
     #loginSection {
         background:
             linear-gradient(90deg, #f5f5f500 40%, #000 40%),
-            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -10vw 10vh / 75vw;
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -34vw -7vh / 80vw;
     }
 
     #Whitetittle {
@@ -886,7 +891,7 @@ h3 {
     #loginSection {
         background:
             linear-gradient(90deg, #f5f5f500 40%, #000 40%),
-            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -20vw -1vh / 80vw;
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -44vw -7vh / 91vw;
     }
 
     #loginP {
@@ -954,11 +959,6 @@ h3 {
         font-size: clamp(27px, 27px, 50px);
     }
 
-    #loginSection {
-        background:
-            linear-gradient(90deg, #f5f5f500 40%, #000 40%),
-            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -20vw 1vh / 83vw;
-    }
 }
 
 @media(max-width: 820px) {
@@ -979,7 +979,7 @@ h3 {
     #loginSection {
         background:
             linear-gradient(90deg, #f5f5f500 40%, #000 40%),
-            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -20vw 5vh / 85vw;
+            url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -46vw -4vh / 94vw;
     }
 
     #BlackBackgLogin {
@@ -1010,6 +1010,10 @@ h3 {
         height: auto;
     }
 
+    #loginSection {
+        height: 900px;
+    }
+
     .tittle {
         font-size: clamp(38px, 8px 50px);
         margin: 15px 0 0 0;
@@ -1022,7 +1026,8 @@ h3 {
 
     #BlackBackgReg {
         background-color: #000;
-        height: 650px;
+        height: 622px;
+        margin: 0px 0 45px 0;
     }
 
     .spaceButton {
@@ -1063,7 +1068,7 @@ h3 {
     }
 
     .line2 {
-        top: 653px;
+        top: 79%;
         right: 0 !important;
         left: 0 !important;
         height: 5px;
@@ -1071,7 +1076,7 @@ h3 {
     }
 
     .line3 {
-        top: 649px;
+        top: 79.5%;
         right: 0 !important;
         left: 0 !important;
         height: 5px;
@@ -1088,7 +1093,7 @@ h3 {
     }
 
     #BlackBackgLogin {
-        margin: 83px 0 10px 0;
+        margin: 0px 0 125px 0;
     }
 
     #lineLogin {
@@ -1108,9 +1113,6 @@ h3 {
         width: 59%;
     }
 
-    #panelRegister {
-        height: auto;
-    }
 
     #buttonRegis {
         margin: 0 0 17px 0;
@@ -1188,14 +1190,6 @@ h3 {
 
     .terms {
         width: 30%;
-    }
-
-    .line3 {
-        top: 635px;
-    }
-
-    .line2 {
-        top: 631px;
     }
 }
 
