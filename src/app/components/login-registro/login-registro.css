@@ -606,7 +606,7 @@ h3 {
     }
 
     #BlackBackgLogin {
-        width: 814px;
+        width: 790px;
     }
 }
 
@@ -631,9 +631,6 @@ h3 {
 
     #termsModal {
         width: 157px;
-    }
-
-    #termsModal {
         height: 30px;
     }
 }
@@ -686,7 +683,7 @@ h3 {
     }
 
     #BlackBackgLogin {
-        width: 673px;
+        width: 626px;
     }
 
     #loginSection {
@@ -744,7 +741,7 @@ h3 {
 
 @media(max-width: 1070px) {
     #infoLogin {
-        width: 612px;
+        width: 585px;
     }
 
     #loginSection {
@@ -913,6 +910,10 @@ h3 {
     #modalContentLogin {
         height: 34%;
         width: 51%;
+    }
+
+    #BlackBackgLogin {
+        width: 539px;
     }
 }
 
@@ -1088,7 +1089,6 @@ h3 {
 
     #BlackBackgLogin {
         margin: 83px 0 10px 0;
-        top: -108px;
     }
 
     #lineLogin {

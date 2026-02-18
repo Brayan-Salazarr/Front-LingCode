@@ -1,22 +1,30 @@
+<!--Componente de navegación principal-->
 <app-nav></app-nav>
+<!--Header principal con título dinámico y elementos decorativos-->
 <app-header [title]="'Tu <span class=&quot;color-word1&quot;>código</span> suena mejor en inglés 
-        Prepárate con <span class=&quot;color-word2&quot;>Cybro</span> para el mundo real'" 
-        [showTitle]="true" [showLine]="true" [showDecorativeCircle]="true" [showHexagon]="true" [showHexagon1]="true" [showHexagon2]="true"
-        [showHexagon3]="true" [showHexagon4]="true" [showHexagon5]="true" [showHexagon6]="true" [showHexagon7]="true"></app-header>
+        Prepárate con <span class=&quot;color-word2&quot;>Cybro</span> para el mundo real'" [showTitle]="true"
+    [showLine]="true" [showDecorativeCircle]="true" [showHexagon]="true" [showHexagon1]="true" [showHexagon2]="true"
+    [showHexagon3]="true" [showHexagon4]="true" [showHexagon5]="true" [showHexagon6]="true"
+    [showHexagon7]="true"></app-header>
 
 <div class="component">
+    <!--Sección que contiene información general para el usuario-->
     <section>
+        <!--Primera parte de sección informativa para el usuario-->
         <div class="field">
             <div class="information">
                 <h2 class="caption">Aprende inglés desde el código</h2>
-                <p class="text" id="text1">Domina el vocabulario técnico de GitHub y MySQL con módulos interactivos y simulaciones
+                <p class="text" id="text1">Domina el vocabulario técnico de GitHub y MySQL con módulos interactivos y
+                    simulaciones
                     con IA. Mejora tu comprensión del inglés profesional, prepárate para entrevistas laborales y
                     potencia tu carrera en el mundo del desarrollo de software.</p>
             </div>
+            <!--Imagen representativa-->
             <img id="img1" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763669846/image_2_1_rte01d.png"
                 alt="">
         </div>
 
+        <!--Segunda parte de sección informativa para el usuario-->
         <div class="field-avatar">
             <div class="content-avatar">
                 <div class="container-with-triangle"></div>
@@ -24,30 +32,39 @@
                     alt="">
             </div>
 
+            <!--Texto informativo para el usuario-->
             <div class="information-avatar">
                 <h2 class="caption" id="caption2">Cada héroe tiene su imagen</h2>
-                <p class="text" id="text2">Podrás escoger tu avatar y empezar tu historia con tu propia identidad.<br>¡Haz que tu
+                <p class="text" id="text2">Podrás escoger tu avatar y empezar tu historia con tu propia
+                    identidad.<br>¡Haz que tu
                     presencia se note desde el primer clic!</p>
+                <!--Botón reutilizable-->
                 <app-button></app-button>
             </div>
 
+            <!--Elementos decorativos-->
             <div class="hexagon3"></div>
             <div class="hexagon4"></div>
             <div class="hexagon5"></div>
             <div class="hexagon6"></div>
         </div>
 
+        <!--Tercera parte de sección informativa para el usuario-->
         <div class="field-modules">
             <div class="information-modules">
                 <h2 class="caption" id="caption3">Interactúa con nuestros módulos </h2>
-                <p class="text" id="text3">Nuestros módulos están diseñados para ayudarte a crecer paso a paso, prueba uno y
+                <p class="text" id="text3">Nuestros módulos están diseñados para ayudarte a crecer paso a paso, prueba
+                    uno y
                     descubre lo fácil y divertido que puede ser aprender con nosotros.<br>¡Regístrate y desbloquea todo
                     tu potencial!</p>
             </div>
+            <!--Carrusel de módulos (interacción principal del usuario)-->
             <app-carousel-modules></app-carousel-modules>
         </div>
 
+        <!--Tercera parte de sección informativa para el usuario-->
         <div class="field-invitaion">
+            <!--Imagenes decorativas-->
             <div class="img-cybro">
                 <img id="img-symbols"
                     src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763935684/Group_32_1_dzzfpm.png" alt="">
@@ -56,23 +73,28 @@
                     alt="Cybro">
             </div>
 
+            <!--Invitación hacia el usuario para realizar registro-->
             <div class="information-invitation">
                 <h2 class="caption" id="caption4">Prepárate para hablar el idioma del código </h2>
                 <p class="text-invitation">Aprende inglés técnico practicando como en el mundo real.</p>
+                <!--Botón reutilizable-->
                 <app-button></app-button>
             </div>
 
         </div>
+        <!--Línea divisora-->
         <div id="line"></div>
+        <!--Subtítulo sección avatar-->
         <div class="subtitle-field">
             <h2 class="avatar-caption">elige un avatar</h2>
             <div class="line-avatar"></div>
         </div>
+        <!--Carrusel de avatares-->
         <app-carousel-avatar></app-carousel-avatar>
-
+        <!--Sección de suscripciones-->
         <app-subscriptions></app-subscriptions>
 
     </section>
 </div>
-
+<!--Footer del aplicativo-->
 <app-footer></app-footer>
