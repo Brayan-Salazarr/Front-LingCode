@@ -1,39 +1,41 @@
 .header-wrapper {
-    height: 700px;
+    position: relative;
+    height: 1000px;
+    width: 100%;
+    overflow: hidden;
 }
-
 
 header {
     display: flex;
     background: black;
-    width: 2304px;
-    height: 1165px;
-    position: relative;
+    width: 2463px;
+    height: 1299px;
+    position: absolute;
     border-radius: 50% / 100%;
     left: -110px;
     top: -735px;
     transform: skewY(-15deg);
-    z-index: 5;
+    z-index: 2;
+
 }
 
 #imgCircle {
     position: absolute;
-    top: 710px;
-    left: 1280px;
+    left: 79%;
     width: 353px;
-    transform: skewY(15deg)
+    z-index: 3;
 }
 
 #background {
-    width: 2304px;
-    height: 1214px;
+    width: 2363px;
+    height: 1342px;
     background: #0CB9D8;
     position: absolute;
     border-radius: 50% / 100%;
     left: -110px;
-    top: -650px;
+    top: -728px;
     transform: skewY(-17deg);
-    z-index: 4;
+    z-index: 1;
 }
 
 .information {
@@ -41,17 +43,17 @@ header {
     flex-direction: column;
     justify-content: space-between;
     position: absolute;
-    top: 737px;
+    top: 843px;
     left: 261px;
     transform: skewY(15deg);
     font-family: "Anton SC", sans-serif;
-    z-index: 10;
+    z-index: 4;
     height: 310px;
 }
 
 h1 {
     width: 52vw;
-    font-size: 68px;
+    font-size: 57px;
     color: white;
     letter-spacing: 3px;
     margin: 0 0 0 50px;
@@ -209,7 +211,6 @@ h1 {
 }
 
 .avatar {
-
     width: 310px;
 }
 
@@ -292,24 +293,24 @@ h1 {
 
 @media (min-width: 1700px) {
 
-    .header-wrapper {
-        height: 900px;
-    }
-
     header {
         width: 2630px;
-        height: 1349px;
+        height: 1446px;
+    }
+
+    h1 {
+        font-size: 68px;
     }
 
     #background {
-        width: 2606px;
-        height: 1416px;
+        width: 2636px;
+        height: 1479px;
     }
 
     #imgCircle {
-        top: 745px;
-        left: 1555px;
-        width: 461px;
+        top: 0%;
+        left: 76%;
+        width: 454px;
     }
 
     .information {
@@ -365,8 +366,17 @@ h1 {
 }
 
 @media (max-width: 1537px) {
+    .header-wrapper {
+        height: 850px;
+    }
+
     h1 {
         font-size: 54px;
+    }
+
+    #imgCircle {
+        top: 3%;
+        left: 78%;
     }
 
 }
@@ -374,30 +384,14 @@ h1 {
 
 @media (max-width: 1366px) {
 
-    header {
-        height: 1120px;
-    }
 
     #background {
-        width: 2304px;
-        height: 1162px;
+        height: 1331px;
     }
 
     #imgCircle {
-        left: 1125px;
-        top: 660px;
-    }
-
-    .hexagon3 {
-        top: 555px;
-    }
-
-    .hexagon4 {
-        top: 600px;
-    }
-
-    .hexagon5 {
-        top: 540px;
+        left: 75%;
+        top: 8%;
     }
 
     .hexagon7 {

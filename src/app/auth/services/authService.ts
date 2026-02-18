@@ -31,7 +31,7 @@ interface AuthResponse {
 })
 export class AuthService {
   
-  loginData = {
+  /*loginData = {
   identifier: '',
   password: ''
 };
@@ -154,9 +154,9 @@ login(identifier: string, password: string) {
 
   isAuthenticated(): boolean {
     return !!this.currentUserSubject.value;
-  }
+  }*/
 
-   /*  private USERS_KEY = 'users';
+  private USERS_KEY = 'users';
   private USER_KEY = 'currentUser';
   private TOKEN_KEY = 'token';
 
@@ -223,5 +223,5 @@ login(identifier: string, password: string) {
 
   getCurrentUser(): User | null {
     return this.currentUserSubject.value;
-  }*/
+  }
 }

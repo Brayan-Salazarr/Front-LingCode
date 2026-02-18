@@ -63,9 +63,13 @@
                     </div>
 
                     <div class="terms">
-                        <input id="checkbox" type="checkbox">
+                        <input class="checkbox" type="checkbox" name="acceptTermsPrin" [(ngModel)]="accepTerms" (change)="disError = false">
                         <p class="termsUse"> <span>Acepto</span> <a (click)="openModal()">términos de uso</a></p>
                     </div>
+
+                    <p id="textTerms" *ngIf="disError">
+                        Debes aceptar los términos de uso para continuar.
+                    </p>
                 </div>
 
                 <div class="modal" (click)="onBackdropClick($event)" [class.hidden]="!isModalOpen">
@@ -107,7 +111,7 @@
 
                             <div class="modalFooter">
                                 <div class="terms" id="termsModal">
-                                    <input id="checkbox" type="checkbox">
+                                    <input class="checkbox" type="checkbox" name="acceptTermsModal" [(ngModel)]="accepTerms">
                                     <p class="termsUse" id="termsUseModal"> <span id="textSpan">Acepto</span>
                                         <a>términos de uso</a>
                                     </p>
