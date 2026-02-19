@@ -553,6 +553,7 @@ section {
     .container-with-triangle {
         clip-path: polygon(0 0, 0 0, 60% 50%, 0 85%);
         margin: 0;
+        width: 760px;
     }
 
     #text1 {
@@ -577,7 +578,7 @@ section {
     }
 
     .content-avatar {
-        width: 570px;
+        width: 550px;
         height: 900px;
     }
 
@@ -595,14 +596,11 @@ section {
     .container-with-triangle {
         clip-path: polygon(0 0, 0 0, 90% 50%, 0 85%);
         margin: 0;
+        width: 690px;
     }
 
     #text1 {
         width: 100%;
-    }
-
-    #img2 {
-        left: 150px;
     }
 
     .caption {
@@ -647,12 +645,11 @@ section {
     .content-avatar {
         margin: 0 350px 0 0;
         height: 800px;
-
     }
 
     #img2 {
-        margin: -100px 0 0 120px;
         width: 70vw;
+        left: 284px;
     }
 
     .hexagon3 {
@@ -695,11 +692,6 @@ section {
 @media (max-width: 610px) {
     .container-with-triangle {
         clip-path: polygon(0 0, 0 0, 80% 50%, 0 85%);
-        width: 915px;
-    }
-
-    #img2 {
-        margin: -40px 0 0 100px;
     }
 
     .information-modules {
@@ -744,24 +736,9 @@ section {
 
 @media (max-width: 565px) {
     .container-with-triangle {
-        clip-path: polygon(0 0, 0 0, 75% 50%, 0 85%);
+        clip-path: polygon(0 0, 0 0, 87% 50%, 0 85%);
     }
 
-    .hexagon3 {
-        top: 950px;
-    }
-
-    .hexagon6 {
-        top: 600px;
-    }
-
-    .hexagon4 {
-        top: 900px;
-    }
-
-    .hexagon5 {
-        top: 850px;
-    }
 
     .information-modules {
         width: 100%;
@@ -773,6 +750,11 @@ section {
         margin: 0 !important;
     }
 
+    #img2 {
+        left: 331px;
+        top: -648px;
+    }
+
 }
 
 @media (max-width: 490px) {
@@ -782,31 +764,40 @@ section {
     }
 
     .container-with-triangle {
-        clip-path: polygon(0 0, 0 0, 70% 50%, 0 85%);
+        clip-path: polygon(0 0, 0 0, 86% 40%, 0 72%);
+        height: 671px;
+        width: 100%;
+        margin: 63px 0 0 0;
+    }
+
+    .content-avatar {
+        margin: 0;
+        width: 100%;
+        height: 604px;
     }
 
     .hexagon3 {
-        top: 950px;
+        top: 785px;
     }
 
     .hexagon6 {
-        top: 500px;
+        top: 386px;
     }
 
     .hexagon4 {
-        top: 900px;
+        top: 776px;
+        left: 116px;
     }
 
     .hexagon5 {
-        top: 850px;
+        top: 700px;
+        left: 50px;
     }
 
     #img2 {
-        width: 80vw;
-    }
-
-    .hexagon5 {
-        left: 50px;
+        width: 73vw;
+        left: 87px;
+        top: -550px;
     }
 
     .information-invitation {
@@ -816,8 +807,6 @@ section {
     #caption4 {
         width: 350px;
     }
-
-
 }
 
 @media (max-width: 430px) {
@@ -834,10 +823,6 @@ section {
         flex-direction: column;
     }
 
-    #img2 {
-        margin: -40px 0 0 170px;
-    }
-
     .text-invitation {
         width: 300px;
     }
@@ -849,11 +834,13 @@ section {
     }
 
     .container-with-triangle {
-        clip-path: polygon(0 0, 0 0, 65% 50%, 0 85%);
+        clip-path: polygon(0 0, 0 0, 72% 50%, 0 85%);
+        height: 612px;
     }
 
     #img2 {
-        margin: -40px 0 0 160px;
+        left: 104px;
+        top: -453px;
     }
 
     .information {
@@ -868,6 +855,5 @@ section {
 
     .content-avatar {
         height: 725px;
-
     }
 }
