@@ -1193,6 +1193,18 @@ h3 {
     .terms {
         width: 30%;
     }
+
+    #panelRegister {
+        height: 900px;
+    }
+
+    #registerSection {
+        height: 100%;
+    }
+
+    .socialAuth {
+        width: 40%;
+    }
 }
 
 @media(max-width: 450px) {
