@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class LoginRegistro {
   accepTerms: boolean = false;
   disError: boolean = false;
+  errorPassw: boolean = false;
   isModalOpen: boolean = false;
   showLogin: boolean = false;
 
@@ -76,6 +77,14 @@ export class LoginRegistro {
 
 */
   /*register() {
+    /*Permite validar si el usuario acepto los términos, de lo contrario no deja registrar
+    if (!this.accepTerms) {
+      this.disError = true;
+      return;
+    } else {
+      this.disError = false;
+    }
+
     if (this.registerData.password !== this.registerData.confirmPassword) {
       alert('Las contraseñas no coinciden');
       return;
@@ -107,6 +116,7 @@ export class LoginRegistro {
     console.log('Continuar registro...')
   });
 };*/
+
   /*
       if (success) {
         alert('Registro exitoso');
@@ -119,16 +129,11 @@ export class LoginRegistro {
 
   register() {
     /*Permite validar si el usuario acepto los términos, de lo contrario no deja registrar*/
-    if (!this.accepTerms) {
-      this.disError = true;
-      return;
-    } else {
-      this.disError = false;
-    }
-
     /*Valida que las contraseñas ingresadas coincidan*/
-    if (this.registerData.password !== this.registerData.confirmPassword) {
-      alert('Las contraseñas no coinciden');
+    this.disError = !this.accepTerms;
+    this.errorPassw = this.registerData.password !== this.registerData.confirmPassword;
+    
+    if (this.disError || this.errorPassw) {
       return;
     }
 

@@ -41,6 +41,10 @@
                                 [(ngModel)]="registerData.confirmPassword">
                         </div>
 
+                        <p class="textTerms" id="textPass" *ngIf="errorPassw">
+                            Las contraseñas ingresadas no coinciden.
+                        </p>
+
                     </div>
 
                     <div class="spaceButton">
@@ -63,11 +67,12 @@
                     </div>
 
                     <div class="terms">
-                        <input class="checkbox" type="checkbox" name="acceptTermsPrin" [(ngModel)]="accepTerms" (change)="disError = false">
+                        <input class="checkbox" type="checkbox" name="acceptTermsPrin" [(ngModel)]="accepTerms"
+                            (change)="disError = false">
                         <p class="termsUse"> <span>Acepto</span> <a (click)="openModal()">términos de uso</a></p>
                     </div>
 
-                    <p id="textTerms" *ngIf="disError">
+                    <p class="textTerms" *ngIf="disError">
                         Debes aceptar los términos de uso para continuar.
                     </p>
                 </div>
@@ -111,7 +116,8 @@
 
                             <div class="modalFooter">
                                 <div class="terms" id="termsModal">
-                                    <input class="checkbox" type="checkbox" name="acceptTermsModal" [(ngModel)]="accepTerms">
+                                    <input class="checkbox" type="checkbox" name="acceptTermsModal"
+                                        [(ngModel)]="accepTerms">
                                     <p class="termsUse" id="termsUseModal"> <span id="textSpan">Acepto</span>
                                         <a>términos de uso</a>
                                     </p>
