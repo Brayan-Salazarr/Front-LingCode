@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login-registro.css',
 })
 export class LoginRegistro {
+  emptyF: boolean = false;
   accepTerms: boolean = false;
   disError: boolean = false;
   errorPassw: boolean = false;
@@ -128,6 +129,17 @@ export class LoginRegistro {
   */
 
   register() {
+    /*Valida que los campos de registro contengan información.*/
+    if(
+      !this.registerData.fullName?.trim() ||
+      !this.registerData.nickName?.trim() ||
+      !this.registerData.email?.trim() ||
+      !this.registerData.password ||
+      !this.registerData.confirmPassword
+    ){
+      this.emptyF =true;
+    }
+
     /*Permite validar si el usuario acepto los términos, de lo contrario no deja registrar*/
     /*Valida que las contraseñas ingresadas coincidan*/
     this.disError = !this.accepTerms;
