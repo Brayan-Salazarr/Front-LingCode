@@ -225,6 +225,12 @@ section {
     #img-cybro-gray {
         width: 850px;
     }
+
+    .information-modules {
+        width: 521px;
+        position: relative;
+        left: 40px;
+    }
 }
 
 @media (max-width: 1537px) {
@@ -242,6 +248,10 @@ section {
 
     #img-symbols {
         top: 2522px;
+    }
+
+    .information-modules {
+        width: 400px;
     }
 }
 
@@ -671,6 +681,7 @@ section {
 
     .field-modules {
         flex-direction: column;
+        align-items: center;
     }
 
     .information-modules {
@@ -805,7 +816,7 @@ section {
     }
 
     #caption4 {
-        width: 350px;
+        width: 100%;
     }
 }
 
@@ -838,8 +849,22 @@ section {
         height: 612px;
     }
 
+    #img-cybro-gray {
+        margin: 0;
+        left: 44%;
+        width: 56vw;
+        transform: scaleX(-1);
+    }
+
+        #img-symbols {
+        margin: 0px 0 25vh 0;
+        position: relative;
+        top: 11%;
+        left: 42%;
+        }
+
     #img2 {
-        left: 104px;
+        left: 89px;
         top: -453px;
     }
 

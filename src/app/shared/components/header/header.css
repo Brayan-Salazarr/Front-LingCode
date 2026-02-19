@@ -1140,10 +1140,15 @@ h1 {
         margin: 0 0 0 7px;
     }
 
-        #img-cybro-gray[_ngcontent-ng-c3636755457] {
-        /* margin: 0px 0 0 47vw; */
-        width: 56vw;
-        transform: scaleX(-1);
+    .hexagon8 {
+        left: 300px;
+    }
+
+    .information {
+        width: 304px;
+        height: 130px;
+        top: 798px;
+        left: 145px;
     }
 }
 
