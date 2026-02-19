@@ -625,6 +625,11 @@ h3 {
     #BlackBackgLogin {
         width: 790px;
     }
+
+    #textPass,
+    #requieFields {
+        margin: 0 0 0 61px;
+    }
 }
 
 @media(max-width: 1290px) {
@@ -638,6 +643,11 @@ h3 {
 
     #loginP {
         width: 630px;
+    }
+
+    #textPass,
+    #requieFields {
+        margin: 0 0 0 81px;
     }
 }
 
@@ -709,6 +719,10 @@ h3 {
             url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -1vw 5vh / 60vw;
     }
 
+    #textPass,
+    #requieFields {
+        margin: 0 0 0 116px;
+    }
 }
 
 @media(max-width: 1115px) {
@@ -909,6 +923,11 @@ h3 {
     #infoLogin {
         width: 520px;
     }
+
+    #textPass,
+    #requieFields {
+        margin: 0 0 0 135px;
+    }
 }
 
 @media(max-width: 880px) {
@@ -967,6 +986,10 @@ h3 {
         font-size: clamp(27px, 27px, 50px);
     }
 
+    #textPass,
+    #requieFields {
+        margin: 0 0 0 175px
+    }
 }
 
 @media(max-width: 820px) {
@@ -1121,7 +1144,6 @@ h3 {
         width: 59%;
     }
 
-
     #buttonRegis {
         margin: 0 0 17px 0;
     }
@@ -1134,6 +1156,12 @@ h3 {
         text-align: center;
         margin: 18px 0 0 0;
         width: 100%;
+    }
+
+    #textPass,
+    #requieFields {
+        margin: 0;
+        width: 405px;
     }
 }
 

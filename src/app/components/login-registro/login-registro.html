@@ -40,17 +40,16 @@
                             <input class="field" id="confirmPass" type="password"
                                 [(ngModel)]="registerData.confirmPassword">
                         </div>
-
-                        <p class="textTerms" id="textPass" *ngIf="errorPassw">
+                    </div>
+                   
+                        <p class="textTerms" id="textPass" *ngIf="errorPassw && fieldsEmpty()">
                             Las contraseñas ingresadas no coinciden.
                         </p>
 
-                        <p class="textTerms" id="requieFields" *ngIf="emptyF">
+                        <p class="textTerms" id="requieFields" *ngIf="emptyF && fieldsEmpty()">
                             Todos los campos son obligatorios.
                         </p>
-
-                    </div>
-
+                    
                     <div class="spaceButton">
                         <button class="buttonRegist" id="buttonRegist" (click)="register()">Registrarme</button>
                     </div>
