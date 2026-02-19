@@ -12,8 +12,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login-registro.css',
 })
 export class LoginRegistro {
+  emptyF: boolean = false;
   accepTerms: boolean = false;
   disError: boolean = false;
+  errorPassw: boolean = false;
   isModalOpen: boolean = false;
   showLogin: boolean = false;
 
@@ -76,8 +78,23 @@ export class LoginRegistro {
 
 */
   /*register() {
-    if (this.registerData.password !== this.registerData.confirmPassword) {
-      alert('Las contraseñas no coinciden');
+     /*Valida que los campos de registro contengan información.
+    if (
+      !this.registerData.fullName?.trim() ||
+      !this.registerData.nickName?.trim() ||
+      !this.registerData.email?.trim() ||
+      !this.registerData.password ||
+      !this.registerData.confirmPassword
+    ) {
+      this.emptyF = true;
+    }
+
+    /*Permite validar si el usuario acepto los términos, de lo contrario no deja registrar*/
+    /*Valida que las contraseñas ingresadas coincidan
+    this.disError = !this.accepTerms;
+    this.errorPassw = this.registerData.password !== this.registerData.confirmPassword;
+
+    if (this.disError || this.errorPassw) {
       return;
     }
 
@@ -107,6 +124,7 @@ export class LoginRegistro {
     console.log('Continuar registro...')
   });
 };*/
+
   /*
       if (success) {
         alert('Registro exitoso');
@@ -118,17 +136,29 @@ export class LoginRegistro {
   */
 
   register() {
-    /*Permite validar si el usuario acepto los términos, de lo contrario no deja registrar*/
-    if (!this.accepTerms) {
-      this.disError = true;
-      return;
-    } else {
-      this.disError = false;
+    /*Valida que los campos de registro contengan información.*/
+    if (
+      !this.registerData.fullName?.trim() ||
+      !this.registerData.nickName?.trim() ||
+      !this.registerData.email?.trim() ||
+      !this.registerData.password ||
+      !this.registerData.confirmPassword
+    ) {
+      this.emptyF = true;
     }
 
+    /*Permite validar si el usuario acepto los términos, de lo contrario no deja registrar*/
     /*Valida que las contraseñas ingresadas coincidan*/
-    if (this.registerData.password !== this.registerData.confirmPassword) {
-      alert('Las contraseñas no coinciden');
+    this.disError = !this.accepTerms;
+    this.errorPassw = this.registerData.password !== this.registerData.confirmPassword;
+
+    if (this.disError || this.errorPassw) {
+      return;
+    }
+
+    //
+    if(this.fieldsEmpty()){
+      this.emptyF =true;
       return;
     }
 
@@ -149,94 +179,104 @@ export class LoginRegistro {
     });
   }
 
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      const view = params['view'];
-
-      if (view === 'login') {
-        this.showLogin = true;
-      }
-
-      if (view === 'register') {
-        this.showLogin = false;
-      }
-    })
+  fieldsEmpty() {
+    return(
+      !this.registerData.fullName?.trim() ||
+      !this.registerData.nickName?.trim() ||
+      !this.registerData.email?.trim() ||
+      !this.registerData.password ||
+      !this.registerData.confirmPassword
+    );
   }
 
-  toggleAuth(): void {
-    const overlay = document.getElementById("blackOverlay");
-    if (!overlay) return;
-    const goingToLogin = !this.showLogin;
+ngOnInit() {
+  this.route.queryParams.subscribe(params => {
+    const view = params['view'];
 
-    this.showLogin = !this.showLogin;
-
-    if (goingToLogin) {
-
-      overlay?.classList.add("slide-right");
-      overlay?.classList.remove("slide-left", "exit-left", "exit-right");
-    } else {
-
-      overlay?.classList.add("slide-left");
-      overlay?.classList.remove("slide-right", "exit-left", "exit-right");
+    if (view === 'login') {
+      this.showLogin = true;
     }
 
-    setTimeout(() => {
-      let exitClass: string;
-      let slideClass: string;
+    if (view === 'register') {
+      this.showLogin = false;
+    }
+  })
+}
 
-      if (goingToLogin) {
-        slideClass = "slide-right";
-        exitClass = "exit-right";
-      } else {
-        slideClass = "slide-left";
-        exitClass = "exit-left";
-      }
+toggleAuth(): void {
+  const overlay = document.getElementById("blackOverlay");
+  if(!overlay) return;
+  const goingToLogin = !this.showLogin;
+
+  this.showLogin = !this.showLogin;
+
+  if(goingToLogin) {
+
+    overlay?.classList.add("slide-right");
+    overlay?.classList.remove("slide-left", "exit-left", "exit-right");
+  } else {
+
+    overlay?.classList.add("slide-left");
+    overlay?.classList.remove("slide-right", "exit-left", "exit-right");
+  }
+
+    setTimeout(() => {
+  let exitClass: string;
+  let slideClass: string;
+
+  if (goingToLogin) {
+    slideClass = "slide-right";
+    exitClass = "exit-right";
+  } else {
+    slideClass = "slide-left";
+    exitClass = "exit-left";
+  }
+
+  overlay!.classList.remove(slideClass);
+
+  const listener = (event: Event) => {
+    if ((event as TransitionEvent).propertyName === 'transform') {
+
+      overlay!.classList.remove(exitClass);
 
       overlay!.classList.remove(slideClass);
 
-      const listener = (event: Event) => {
-        if ((event as TransitionEvent).propertyName === 'transform') {
-
-          overlay!.classList.remove(exitClass);
-
-          overlay!.classList.remove(slideClass);
-
-          overlay!.removeEventListener('transitionend', listener);
-        }
-      };
-
-      overlay!.addEventListener('transitionend', listener);
-    }, 600);
-  }
-
-  openModal() {
-    this.isModalOpen = true;
-  }
-
-  closeModal() {
-    this.isModalOpen = false;
-    this.isConfirmModal = false;
-  }
-
-  onBackdropClick(event: MouseEvent) {
-    if (event.target === event.currentTarget) {
-      this.closeModal();
+      overlay!.removeEventListener('transitionend', listener);
     }
+  };
+
+  overlay!.addEventListener('transitionend', listener);
+}, 600);
   }
 
-  closeConfirmModal() {
-    this.isConfirmModal = false;
-  }
+openModal() {
+  this.isModalOpen = true;
+}
 
-  isConfirmModal: boolean = false;
+closeModal() {
+  this.isModalOpen = false;
+  this.isConfirmModal = false;
+}
 
-  openConfirmModal() {
-    this.isModalOpen = false;
-    this.isConfirmModal = true;
+onBackdropClick(event: MouseEvent) {
+  if (event.target === event.currentTarget) {
+    this.closeModal();
   }
+}
 
-  goNewPassword() {
-    this.closeConfirmModal();
-    this.router.navigate(['/new-password'])
-  }
+closeConfirmModal() {
+  this.isConfirmModal = false;
+}
+
+isConfirmModal: boolean = false;
+
+openConfirmModal() {
+  this.isModalOpen = false;
+  this.isConfirmModal = true;
+}
+
+goNewPassword() {
+  this.closeConfirmModal();
+  this.router.navigate(['/new-password'])
+}
 }
