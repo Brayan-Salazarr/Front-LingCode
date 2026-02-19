@@ -52,6 +52,10 @@
     /* Los paneles inician fuera de la vista */
 }
 
+#panelRegister {
+    overflow-y: scroll;
+}
+
 /* Panel activo se posiciona en el centro */
 .panel.active {
     opacity: 1;
@@ -370,7 +374,7 @@ a {
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.9);
-    position: fixed;
+    position: absolute;
     z-index: 6000;
     height: 100%;
     width: 100%;
@@ -566,7 +570,7 @@ h3 {
     }
 
     .terms {
-        margin: 20px 0 0 0;
+        margin: 5px 0 0 0;
         width: 167px;
     }
 
@@ -595,6 +599,7 @@ h3 {
     #termsModal {
         font-size: clamp(10px, 8px, 18px);
         width: 30%;
+        height: 40px;
     }
 
     #modalFooterLogin {
@@ -631,7 +636,7 @@ h3 {
 
 @media(max-width: 1250px) {
     .infoBox {
-        width: 750px;
+        width: 610px;
     }
 
     #termsModal {
@@ -661,7 +666,7 @@ h3 {
 
 @media(max-width: 1150px) {
     .infoBox {
-        width: 690px;
+        width: 590px;
     }
 
     .regisInfo {
@@ -700,10 +705,6 @@ h3 {
 }
 
 @media(max-width: 1115px) {
-    .infoBox {
-        width: 660px;
-    }
-
     .regisInfo {
         width: 520px;
     }
@@ -758,7 +759,7 @@ h3 {
 
 @media(max-width: 1050px) {
     .infoBox {
-        width: 620px;
+        width: 560px;
     }
 
     #loginP {
@@ -772,7 +773,7 @@ h3 {
 
 @media(max-width: 1020px) {
     .infoBox {
-        width: 600px;
+        width: 560px;
     }
 
     #infoLogin {
@@ -786,7 +787,7 @@ h3 {
 
 @media(max-width: 980px) {
     .infoBox {
-        width: 580px;
+        width: 510px;
     }
 
     .tittle {
@@ -845,7 +846,7 @@ h3 {
 
 @media(max-width: 950px) {
     .infoBox {
-        width: 550px;
+        width: 500px;
     }
 
     .terms {
@@ -871,7 +872,7 @@ h3 {
 
 @media(max-width: 900px) {
     .infoBox {
-        width: 530px;
+        width: 490px;
     }
 
     .regisInfo {
@@ -924,7 +925,7 @@ h3 {
 
 @media(max-width: 850px) {
     .infoBox {
-        width: 500px;
+        width: 420px;
     }
 
     .tittle {
@@ -989,7 +990,7 @@ h3 {
 
 @media(max-width: 810px) {
     .infoBox {
-        width: 470px;
+        width: 420px;
     }
 }
 
@@ -1093,7 +1094,7 @@ h3 {
     }
 
     #BlackBackgLogin {
-        margin: 0px 0 125px 0;
+        margin: 0px 0 115px 0;
     }
 
     #lineLogin {
@@ -1124,6 +1125,7 @@ h3 {
 
     #WhiteBackgLogin {
         text-align: center;
+        margin: 18px 0 0 0;
         width: 100%;
     }
 }
