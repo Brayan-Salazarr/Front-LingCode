@@ -17,37 +17,41 @@
                     <div class="infoBox">
                         <div class="regisInfo">
                             <p class="text">Nombre completo</p>
-                            <input class="field" id="name" [(ngModel)]="registerData.fullName">
+                            <input class="field" id="name" [(ngModel)]="registerData.fullName" (input)="inputField('fullName')">
                         </div>
 
                         <div class="regisInfo">
                             <p class="text">Apodo</p>
-                            <input class="field" id="nickname" [(ngModel)]="registerData.nickName">
+                            <input class="field" id="nickname" [(ngModel)]="registerData.nickName" (input)="inputField('nickName')">
                         </div>
 
                         <div class="regisInfo">
                             <p class="text">Correo eléctronico</p>
-                            <input class="field" id="email" type="email" [(ngModel)]="registerData.email">
+                            <input class="field" id="email" type="email" [(ngModel)]="registerData.email" (input)="inputField('email')">
                         </div>
 
                         <div class="regisInfo">
                             <p class="text">Contraseña</p>
-                            <input class="field" id="password" type="password" [(ngModel)]="registerData.password">
+                            <input class="field" id="password" type="password" [(ngModel)]="registerData.password" (input)="inputField('password')">
                         </div>
 
                         <div class="regisInfo">
                             <p class="text">Confirmar contraseña</p>
                             <input class="field" id="confirmPass" type="password"
-                                [(ngModel)]="registerData.confirmPassword">
+                                [(ngModel)]="registerData.confirmPassword" (input)="inputField('confirmPassword')">
                         </div>
                     </div>
                    
-                        <p class="textTerms" id="textPass" *ngIf="errorPassw && fieldsEmpty()">
+                        <p class="textTerms textFields" id="textPass" *ngIf="errorPassw && fieldsEmpty()">
                             Las contraseñas ingresadas no coinciden.
                         </p>
 
-                        <p class="textTerms" id="requieFields" *ngIf="emptyF && fieldsEmpty()">
+                        <p class="textTerms textFields" id="requieFields" *ngIf="emptyF && fieldsEmpty()">
                             Todos los campos son obligatorios.
+                        </p>
+
+                        <p class="textTerms textFields" id="requieFields" *ngIf="caractPassw && fieldsEmpty()">
+                            La contraseña debe contener al menos 8 caracteres, incluyendo una letra mayúscula y un número.
                         </p>
                     
                     <div class="spaceButton">

@@ -16,6 +16,7 @@ export class LoginRegistro {
   accepTerms: boolean = false;
   disError: boolean = false;
   errorPassw: boolean = false;
+  caractPassw: boolean = false;
   isModalOpen: boolean = false;
   showLogin: boolean = false;
 
@@ -90,39 +91,39 @@ export class LoginRegistro {
     }
 
     /*Permite validar si el usuario acepto los términos, de lo contrario no deja registrar*/
-    /*Valida que las contraseñas ingresadas coincidan
-    this.disError = !this.accepTerms;
-    this.errorPassw = this.registerData.password !== this.registerData.confirmPassword;
+  /*Valida que las contraseñas ingresadas coincidan
+  this.disError = !this.accepTerms;
+  this.errorPassw = this.registerData.password !== this.registerData.confirmPassword;
 
-    if (this.disError || this.errorPassw) {
-      return;
-    }
+  if (this.disError || this.errorPassw) {
+    return;
+  }
 
-    const payload = {
-      full_name: this.registerData.fullName.trim(),
-      nickname: this.registerData.nickName.trim(),
-      email: this.registerData.email.trim(),
-      password: this.registerData.password
-    };
+  const payload = {
+    full_name: this.registerData.fullName.trim(),
+    nickname: this.registerData.nickName.trim(),
+    email: this.registerData.email.trim(),
+    password: this.registerData.password
+  };
 
-    const success = this.authService.register(payload as any).subscribe({
-    next: () => {
-      alert('Registro exitoso. Por favor inicia sesión.');
-      this.router.navigate(['/login-registro'], { queryParams: { view: 'login' } });
-    },
-    error: err => {
-      console.error('Error registro:', err);
-      alert('Error en el registro: ' + (err.error?.message || 'Error desconocido'));
-    }
+  const success = this.authService.register(payload as any).subscribe({
+  next: () => {
+    alert('Registro exitoso. Por favor inicia sesión.');
+    this.router.navigate(['/login-registro'], { queryParams: { view: 'login' } });
+  },
+  error: err => {
+    console.error('Error registro:', err);
+    alert('Error en el registro: ' + (err.error?.message || 'Error desconocido'));
+  }
 
-    if (!this.accepTerms) {
-      this.disError = true;
-      return;
-    }
+  if (!this.accepTerms) {
+    this.disError = true;
+    return;
+  }
 
-    this.disError = false;
-    console.log('Continuar registro...')
-  });
+  this.disError = false;
+  console.log('Continuar registro...')
+});
 };*/
 
   /*
@@ -136,29 +137,22 @@ export class LoginRegistro {
   */
 
   register() {
-    /*Valida que los campos de registro contengan información.*/
-    if (
-      !this.registerData.fullName?.trim() ||
-      !this.registerData.nickName?.trim() ||
-      !this.registerData.email?.trim() ||
-      !this.registerData.password ||
-      !this.registerData.confirmPassword
-    ) {
-      this.emptyF = true;
-    }
+    const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
 
-    /*Permite validar si el usuario acepto los términos, de lo contrario no deja registrar*/
-    /*Valida que las contraseñas ingresadas coincidan*/
+    //Valida que la contraseña contenga los caracteres adecuados.
+    this.caractPassw = !passRegex.test(this.registerData.password);
+
+    //Valida si hay campos vacíos
+    this.emptyF = this.fieldsEmpty();
+
+    //Valida si el usuario acepto los términos, de lo contrario no deja registrar
     this.disError = !this.accepTerms;
+
+    //Valida que las contraseñas ingresadas coincidan
     this.errorPassw = this.registerData.password !== this.registerData.confirmPassword;
 
-    if (this.disError || this.errorPassw) {
-      return;
-    }
-
-    //
-    if(this.fieldsEmpty()){
-      this.emptyF =true;
+    //Si hay algún error detiene el registro y muestra mensaje al usuario
+    if (this.emptyF || this.disError || this.errorPassw || this.caractPassw) {
       return;
     }
 
@@ -180,7 +174,7 @@ export class LoginRegistro {
   }
 
   fieldsEmpty() {
-    return(
+    return (
       !this.registerData.fullName?.trim() ||
       !this.registerData.nickName?.trim() ||
       !this.registerData.email?.trim() ||
@@ -189,94 +183,121 @@ export class LoginRegistro {
     );
   }
 
-ngOnInit() {
-  this.route.queryParams.subscribe(params => {
-    const view = params['view'];
-
-    if (view === 'login') {
-      this.showLogin = true;
+  inputField(field: string) {
+    if (field === 'fullName' && this.registerData.fullName?.trim()) {
+      this.emptyF = false;
     }
 
-    if (view === 'register') {
-      this.showLogin = false;
+    if (field === 'nickName' && this.registerData.nickName?.trim()) {
+      this.emptyF = false;
     }
-  })
-}
 
-toggleAuth(): void {
-  const overlay = document.getElementById("blackOverlay");
-  if(!overlay) return;
-  const goingToLogin = !this.showLogin;
+    if (field === 'email' && this.registerData.email?.trim()) {
+      this.emptyF = false;
+    }
 
-  this.showLogin = !this.showLogin;
+    if (field === 'password' && this.registerData.email?.trim()) {
+      const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/
+      this.caractPassw = !passRegex.test(this.registerData.password)
+    }
 
-  if(goingToLogin) {
+    if (this.registerData.confirmPassword) {
+      this.errorPassw = this.registerData.password !== this.registerData.confirmPassword;
+    }
 
-    overlay?.classList.add("slide-right");
-    overlay?.classList.remove("slide-left", "exit-left", "exit-right");
-  } else {
-
-    overlay?.classList.add("slide-left");
-    overlay?.classList.remove("slide-right", "exit-left", "exit-right");
+    if (field === 'confirmPassword') {
+      this.registerData.password != this.registerData.confirmPassword;
+    }
   }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const view = params['view'];
+
+      if (view === 'login') {
+        this.showLogin = true;
+      }
+
+      if (view === 'register') {
+        this.showLogin = false;
+      }
+    })
+  }
+
+  toggleAuth(): void {
+    const overlay = document.getElementById("blackOverlay");
+    if (!overlay) return;
+    const goingToLogin = !this.showLogin;
+
+    this.showLogin = !this.showLogin;
+
+    if (goingToLogin) {
+
+      overlay?.classList.add("slide-right");
+      overlay?.classList.remove("slide-left", "exit-left", "exit-right");
+    } else {
+
+      overlay?.classList.add("slide-left");
+      overlay?.classList.remove("slide-right", "exit-left", "exit-right");
+    }
 
     setTimeout(() => {
-  let exitClass: string;
-  let slideClass: string;
+      let exitClass: string;
+      let slideClass: string;
 
-  if (goingToLogin) {
-    slideClass = "slide-right";
-    exitClass = "exit-right";
-  } else {
-    slideClass = "slide-left";
-    exitClass = "exit-left";
-  }
-
-  overlay!.classList.remove(slideClass);
-
-  const listener = (event: Event) => {
-    if ((event as TransitionEvent).propertyName === 'transform') {
-
-      overlay!.classList.remove(exitClass);
+      if (goingToLogin) {
+        slideClass = "slide-right";
+        exitClass = "exit-right";
+      } else {
+        slideClass = "slide-left";
+        exitClass = "exit-left";
+      }
 
       overlay!.classList.remove(slideClass);
 
-      overlay!.removeEventListener('transitionend', listener);
+      const listener = (event: Event) => {
+        if ((event as TransitionEvent).propertyName === 'transform') {
+
+          overlay!.classList.remove(exitClass);
+
+          overlay!.classList.remove(slideClass);
+
+          overlay!.removeEventListener('transitionend', listener);
+        }
+      };
+
+      overlay!.addEventListener('transitionend', listener);
+    }, 600);
+  }
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+    this.isConfirmModal = false;
+  }
+
+  onBackdropClick(event: MouseEvent) {
+    if (event.target === event.currentTarget) {
+      this.closeModal();
     }
-  };
-
-  overlay!.addEventListener('transitionend', listener);
-}, 600);
   }
 
-openModal() {
-  this.isModalOpen = true;
-}
-
-closeModal() {
-  this.isModalOpen = false;
-  this.isConfirmModal = false;
-}
-
-onBackdropClick(event: MouseEvent) {
-  if (event.target === event.currentTarget) {
-    this.closeModal();
+  closeConfirmModal() {
+    this.isConfirmModal = false;
   }
-}
 
-closeConfirmModal() {
-  this.isConfirmModal = false;
-}
+  isConfirmModal: boolean = false;
 
-isConfirmModal: boolean = false;
+  openConfirmModal() {
+    this.isModalOpen = false;
+    this.isConfirmModal = true;
+  }
 
-openConfirmModal() {
-  this.isModalOpen = false;
-  this.isConfirmModal = true;
-}
-
-goNewPassword() {
-  this.closeConfirmModal();
-  this.router.navigate(['/new-password'])
-}
+  goNewPassword() {
+    this.closeConfirmModal();
+    this.router.navigate(['/new-password'])
+  }
 }

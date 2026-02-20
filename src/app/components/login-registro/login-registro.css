@@ -237,15 +237,18 @@ input {
 .textTerms {
     color: #fa7171;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 13px;
+    font-size: 11.5px;
     margin: 10px 0 0 0;
 }
 
-#textPass,
-#requieFields {
+.textFields {
     font-weight: normal;
     margin: 0 0 0 54px;
     width: 237px;
+}
+
+#requieFields{
+    margin: 10px 0 0 54px;
 }
 
 span {
@@ -659,6 +662,10 @@ h3 {
     #termsModal {
         width: 157px;
         height: 30px;
+    }
+
+    .textTerms {
+        font-size: 10.5px;
     }
 }
 
@@ -1240,6 +1247,11 @@ h3 {
     .socialAuth {
         width: 40%;
     }
+
+    #textPass,
+    #requieFields {
+        width: 355px;
+    }
 }
 
 @media(max-width: 450px) {
@@ -1333,6 +1345,11 @@ h3 {
     #BlackBackgReg {
         height: 710px;
     }
+
+    #textPass,
+    #requieFields {
+        width: 305px;
+    }
 }
 
 @media(max-width: 345px) {
@@ -1346,5 +1363,10 @@ h3 {
 
     .terms {
         width: 46%;
+    }
+
+    #textPass,
+    #requieFields {
+        width: 230px;
     }
 }
