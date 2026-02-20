@@ -753,6 +753,10 @@ h1 {
 
 @media (max-width: 768px) {
 
+    .header-wrapper {
+        height: 545px;
+    }
+
     .information {
         left: 185px;
         height: 165px;
@@ -1157,7 +1161,7 @@ h1 {
     h1 {
         width: 100%;
         font-size: 17px;
-        margin: 0 ;
+        margin: 0;
     }
 
     .information {
