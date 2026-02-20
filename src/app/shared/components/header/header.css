@@ -1152,18 +1152,17 @@ h1 {
     }
 }
 
-@media (max-width: 310px) {
+@media (max-width: 350px) {
 
     h1 {
-        width: 268px;
+        width: 100%;
         font-size: 17px;
-        margin: 0 0 0 20px;
+        margin: 0 ;
     }
 
     .information {
         height: 104px;
-        top: 713px;
-        left: 121px;
+        width: 17%;
     }
 
     .hexagon2 {
@@ -1217,5 +1216,10 @@ h1 {
         height: 121px;
         top: 22px;
         left: -7px;
+    }
+
+    .hexagon8 {
+        left: 266px;
+        top: 289px;
     }
 }
