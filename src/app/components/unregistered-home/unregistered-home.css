@@ -202,7 +202,7 @@ section {
 
 .avatar-caption {
     font-family: "Anton SC", sans-serif;
-    font-size: 36px;
+    font-size: 38px;
     letter-spacing: 2px;
 }
 
@@ -557,6 +557,15 @@ section {
     .information-invitation {
         margin: 0 89px 0 0;
     }
+
+    .avatar-caption {
+        font-size: 28px;
+    }
+
+    .line-avatar {
+        width: 269px;
+        height: 11px;
+    }
 }
 
 @media (max-width: 850px) {
@@ -818,6 +827,32 @@ section {
     #caption4 {
         width: 100%;
     }
+
+    #img-symbols {
+        margin: 0;
+    }
+
+    #img-cybro-gray {
+        position: relative;
+        margin: 0;
+    }
+
+    .img-cybro {
+        align-items: end;
+    }
+
+    .text-invitation {
+        width: 100%;
+    }
+
+    .avatar-caption {
+        font-size: 25px;
+    }
+
+    .line-avatar {
+        width: 240px;
+        height: 11px;
+    }
 }
 
 @media (max-width: 430px) {
@@ -833,10 +868,6 @@ section {
     .field {
         flex-direction: column;
     }
-
-    .text-invitation {
-        width: 300px;
-    }
 }
 
 @media (max-width: 390px) {
@@ -849,36 +880,56 @@ section {
         height: 612px;
     }
 
-    #img-cybro-gray {
-        margin: 0;
-        left: 44%;
-        width: 56vw;
-        transform: scaleX(-1);
-    }
-
-        #img-symbols {
-        margin: 0px 0 25vh 0;
-        position: relative;
-        top: 11%;
-        left: 42%;
-        }
-
     #img2 {
         left: 89px;
         top: -453px;
     }
 
-    .information {
-        height: 450px;
+    .content-avatar {
+        height: 725px;
+    }
+}
+
+@media (max-width: 355px) {
+
+    .hexagon3,
+    .hexagon4,
+    .hexagon5,
+    .hexagon6 {
+        height: 27px;
+        width: 23px;
     }
 
-    #caption3 {
-        margin: 0 0 0 -80px;
-        text-align: start;
-        width: 71%;
+    .hexagon4 {
+        top: 801px;
+        left: 90px;
+    }
+
+    .hexagon3 {
+        top: 820px;
+        left: 23px;
+    }
+
+    .hexagon5 {
+        top: 739px;
+        left: 49px;
+    }
+
+    .hexagon6 {
+        top: 541px;
+    }
+
+    #img2 {
+        left: 70px;
+        top: -425px;
+        width: 70vw;
     }
 
     .content-avatar {
-        height: 725px;
+        height: 639px;
+    }
+
+    .field-invitaion {
+        height: 457px;
     }
 }
