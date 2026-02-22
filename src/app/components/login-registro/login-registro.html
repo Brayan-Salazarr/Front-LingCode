@@ -17,32 +17,32 @@
                     <div class="infoBox">
                         <div class="regisInfo">
                             <p class="text">Nombre completo</p>
-                            <input class="field" id="name" [(ngModel)]="registerData.fullName" (input)="inputField('fullName')">
+                            <input class="field" id="name" [(ngModel)]="registerData.fullName">
                         </div>
 
                         <div class="regisInfo">
                             <p class="text">Apodo</p>
-                            <input class="field" id="nickname" [(ngModel)]="registerData.nickName" (input)="inputField('nickName')">
+                            <input class="field" id="nickname" [(ngModel)]="registerData.nickName">
                         </div>
 
                         <div class="regisInfo">
                             <p class="text">Correo eléctronico</p>
-                            <input class="field" id="email" type="email" [(ngModel)]="registerData.email" (input)="inputField('email')">
+                            <input class="field" id="email" type="email" [(ngModel)]="registerData.email">
                         </div>
 
                         <div class="regisInfo">
                             <p class="text">Contraseña</p>
-                            <input class="field" id="password" type="password" [(ngModel)]="registerData.password" (input)="inputField('password')">
+                            <input class="field" id="password" type="password" [(ngModel)]="registerData.password" (ngModelChange)="passwordValidation(registerData.password, registerData.confirmPassword)">
                         </div>
 
                         <div class="regisInfo">
                             <p class="text">Confirmar contraseña</p>
                             <input class="field" id="confirmPass" type="password"
-                                [(ngModel)]="registerData.confirmPassword" (input)="inputField('confirmPassword')">
+                                [(ngModel)]="registerData.confirmPassword" (ngModelChange)="passwordValidation(registerData.password, registerData.confirmPassword)">
                         </div>
                     </div>
                    
-                        <p class="textTerms textFields" id="textPass" *ngIf="errorPassw && fieldsEmpty()">
+                        <p class="textTerms textFields" id="textPass" *ngIf="errorPassw">
                             Las contraseñas ingresadas no coinciden.
                         </p>
 
@@ -50,7 +50,7 @@
                             Todos los campos son obligatorios.
                         </p>
 
-                        <p class="textTerms textFields" id="requieFields" *ngIf="caractPassw && fieldsEmpty()">
+                        <p class="textTerms textFields" id="requieFields" *ngIf="caractPassw">
                             La contraseña debe contener al menos 8 caracteres, incluyendo una letra mayúscula y un número.
                         </p>
                     

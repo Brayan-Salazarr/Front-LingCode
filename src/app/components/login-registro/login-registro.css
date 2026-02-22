@@ -247,7 +247,7 @@ input {
     width: 237px;
 }
 
-#requieFields{
+#requieFields {
     margin: 10px 0 0 54px;
 }
 
@@ -631,7 +631,7 @@ h3 {
 
     #textPass,
     #requieFields {
-        margin: 0 0 0 61px;
+        margin: 10px 0 0 61px;
     }
 }
 

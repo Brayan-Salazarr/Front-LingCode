@@ -148,9 +148,6 @@ export class LoginRegistro {
     //Valida si el usuario acepto los términos, de lo contrario no deja registrar
     this.disError = !this.accepTerms;
 
-    //Valida que las contraseñas ingresadas coincidan
-    this.errorPassw = this.registerData.password !== this.registerData.confirmPassword;
-
     //Si hay algún error detiene el registro y muestra mensaje al usuario
     if (this.emptyF || this.disError || this.errorPassw || this.caractPassw) {
       return;
@@ -183,31 +180,15 @@ export class LoginRegistro {
     );
   }
 
-  inputField(field: string) {
-    if (field === 'fullName' && this.registerData.fullName?.trim()) {
-      this.emptyF = false;
+  passwordValidation(password: string, confirmPassword:string){
+    //Si hay algún error detiene el registro y muestra mensaje al usuario
+    if (!password && !confirmPassword) {
+      this.errorPassw = false;
+      return;
     }
 
-    if (field === 'nickName' && this.registerData.nickName?.trim()) {
-      this.emptyF = false;
-    }
-
-    if (field === 'email' && this.registerData.email?.trim()) {
-      this.emptyF = false;
-    }
-
-    if (field === 'password' && this.registerData.email?.trim()) {
-      const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/
-      this.caractPassw = !passRegex.test(this.registerData.password)
-    }
-
-    if (this.registerData.confirmPassword) {
-      this.errorPassw = this.registerData.password !== this.registerData.confirmPassword;
-    }
-
-    if (field === 'confirmPassword') {
-      this.registerData.password != this.registerData.confirmPassword;
-    }
+    //Valida que las contraseñas ingresadas coincidan
+    this.errorPassw = password !== confirmPassword;
   }
 
   ngOnInit() {
