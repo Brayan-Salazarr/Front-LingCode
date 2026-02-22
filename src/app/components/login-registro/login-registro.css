@@ -654,7 +654,7 @@ h3 {
 
     #textPass,
     #requieFields {
-        margin: 0 0 0 81px;
+        margin: 10px 0 0 81px;
     }
 }
 
@@ -732,7 +732,7 @@ h3 {
 
     #textPass,
     #requieFields {
-        margin: 0 0 0 116px;
+        margin: 10px 0 0 116px;
     }
 }
 
@@ -937,7 +937,7 @@ h3 {
 
     #textPass,
     #requieFields {
-        margin: 0 0 0 135px;
+        margin: 10px 0 0 135px;
     }
 }
 
@@ -999,7 +999,7 @@ h3 {
 
     #textPass,
     #requieFields {
-        margin: 0 0 0 175px
+        margin: 10px 0 0 175px
     }
 }
 
@@ -1048,7 +1048,7 @@ h3 {
 @media(max-width: 768px) {
     .authClass {
         flex-direction: column;
-        background: linear-gradient(180deg, #000 79%, #f5f5f500 40%), url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 100% 616px / 223px;
+        background: linear-gradient(180deg, #000 79%, #f5f5f500 40%), url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 100% 750px / 223px;
         height: auto;
     }
 
@@ -1068,8 +1068,8 @@ h3 {
 
     #BlackBackgReg {
         background-color: #000;
-        height: 622px;
-        margin: 0px 0 45px 0;
+        height: 785px;
+        margin: 0;
     }
 
     .spaceButton {
@@ -1110,7 +1110,7 @@ h3 {
     }
 
     .line2 {
-        top: 79%;
+        top: 82.5%;
         right: 0 !important;
         left: 0 !important;
         height: 5px;
@@ -1118,7 +1118,7 @@ h3 {
     }
 
     .line3 {
-        top: 79.5%;
+        top: 83%;
         right: 0 !important;
         left: 0 !important;
         height: 5px;
@@ -1171,7 +1171,7 @@ h3 {
 
     #textPass,
     #requieFields {
-        margin: 0;
+        margin: 10px 0 0 0;
         width: 405px;
     }
 }
@@ -1192,10 +1192,6 @@ h3 {
 }
 
 @media(max-width: 570px) {
-    #BlackBackgReg {
-        height: 100%;
-    }
-
     .tittle {
         font-size: clamp(30px, 8px, 50px);
         margin: 20px 0 0 0;
@@ -1252,9 +1248,21 @@ h3 {
         width: 40%;
     }
 
+    .textTerms {
+        margin: 10px 0 20px 0;
+    }
+
     #textPass,
     #requieFields {
         width: 355px;
+    }
+
+    .line2 {
+        top: 84.5%;
+    }
+
+    .line3 {
+        top: 84%;
     }
 }
 
@@ -1334,11 +1342,11 @@ h3 {
     }
 
     .line3 {
-        top: 708px;
+        top: 761px;
     }
 
     .line2 {
-        top: 712px;
+        top: 757px;
     }
 
     #textTerms {
@@ -1347,7 +1355,7 @@ h3 {
     }
 
     #BlackBackgReg {
-        height: 710px;
+        height: 770px;
     }
 
     #textPass,
@@ -1372,5 +1380,13 @@ h3 {
     #textPass,
     #requieFields {
         width: 230px;
+    }
+
+    .line3 {
+        top: 775px;
+    }
+
+    .line2 {
+        top: 770px;
     }
 }
