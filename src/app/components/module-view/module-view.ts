@@ -3,6 +3,7 @@ import { Nav } from '../../shared/components/nav/nav';
 import { Header } from '../../shared/components/header/header';
 import { Footer } from '../../shared/components/footer/footer';
 import { CommonModule } from '@angular/common';
+import { AuthService, User } from '../../auth/services/authService';
 
 interface Step {
   label: number;
@@ -25,6 +26,14 @@ interface Module {
   styleUrl: './module-view.css',
 })
 export class ModuleView {
+
+   user: User | null = null;
+
+  constructor(private authService: AuthService) {
+    this.authService.currentUser$.subscribe(user => {
+      this.user = user;
+    });
+  }
 
   currentStep = 1;
 

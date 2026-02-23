@@ -30,7 +30,7 @@ interface AuthResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  
+
   /*loginData = {
   identifier: '',
   password: ''
@@ -193,20 +193,22 @@ login(identifier: string, password: string) {
   register(user: User & { password: string }): Observable<boolean> {
     const users: any[] = JSON.parse(localStorage.getItem(this.USERS_KEY) || '[]');
 
-    const exists = users.some(
-      u => u.email === user.email || u.nickName === user.nickName
-    );
+    const exists = users.some(u => u.email === user.email || u.nickName === user.nickName);
+    if (exists) return throwError(() => new Error('El usuario ya existe'));
 
-    if (exists) {
-      return throwError(() => new Error('El usuario ya existe'));
-    }
-
-    users.push({
+    const newUser = {
       ...user,
       createdAt: new Date().toISOString()
-    });
+    };
 
+    users.push(newUser);
     localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
+
+    // 🔑 Actualizamos el usuario logueado
+    const { password: _, ...safeUser } = newUser;
+    localStorage.setItem(this.USER_KEY, JSON.stringify(safeUser));
+    localStorage.setItem(this.TOKEN_KEY, 'fake-jwt-token');
+    this.currentUserSubject.next(safeUser);
 
     return of(true);
   }

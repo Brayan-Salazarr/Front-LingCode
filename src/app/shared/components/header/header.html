@@ -6,12 +6,13 @@
      
 
     <div class="information">
+       
 
-      <h1 [innerHTML]="title"  *ngIf="showTitle && !(hideTitleWhenLogged && user)"></h1>
-      <div class="line" *ngIf="showLine"></div>
+      <h1 [innerHTML]="title"  *ngIf="showTitle && !(hideTitleWhenLogged && (user$ | async))"></h1>
+      <div class="line" *ngIf="showLine && !(hideTitleWhenLogged && (user$ | async))"></div>
 
       <!-- INFO DEL USUARIO -->
-      <div class="user-header" *ngIf="showUserInfo && user">
+      <div class="user-header" *ngIf="showUserInfo && (user$ | async) as user">
 
         <div class="field">
 

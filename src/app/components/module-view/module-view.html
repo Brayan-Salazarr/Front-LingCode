@@ -3,7 +3,7 @@
 
 <!-- Header configurable -->
 <!-- Se muestran elementos decorativos y se oculta el título si el usuario está logueado -->
-<app-header title="Módulos" [showTitle]="true" [showLine]="true" [classSpace]="'space'" [showUserInfo]="true"
+<app-header *ngIf="(authService.currentUser$ | async) === null" title="Módulos" [showTitle]="true" [showLine]="true" [classSpace]="'space'" [showUserInfo]="true"
   [showDecorativeCircle]="true" [hideTitleWhenLogged]="true" [showHexagon1]="true" [showHexagon2]="true"
   [showHexagon3]="true" [showHexagon4]="true" [showHexagon5]="true" [showHexagon6]="true"
   [showHexagon7]="true"></app-header>
