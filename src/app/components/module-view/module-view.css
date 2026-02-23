@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 180vh;
+  padding: 60px;
 }
 
 .moduleRow {
@@ -65,7 +65,7 @@
 .moduleCard {
   position: relative;
   width: 30vw;
-  height: 50vh;
+  height: 354px;
   border: 3px solid transparent;
   border-radius: 12px;
   background:
@@ -121,8 +121,8 @@ button {
   cursor: pointer;
   font-family: 'Poppins', sans-serif;
   color: white;
-  height: 6vh;
-  width: 7vw;
+  height: 41px;
+  width: 95px;
   border-radius: 8px;
   border: 2px solid transparent;
   background:
@@ -172,6 +172,7 @@ button:hover {
 
 .path-horizontal {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 10px;
 }
@@ -190,7 +191,8 @@ button:hover {
 }
 
 .line-step.h.completed {
-  background-color: #0066FF; /* azul */
+  background-color: #0066FF;
+  /* azul */
 }
 
 .line-step.completed {
@@ -239,4 +241,66 @@ button:hover {
 
 .first-module .path-horizontal .step:first-of-type {
   color: #000;
+}
+
+@media (max-width: 1279px) {
+  .textProgres {
+    margin: 0;
+  }
+}
+
+@media (max-width: 920px) {
+  .step {
+    width: 100px;
+    height: 97px;
+  }
+
+  .line-step.h {
+    width: 20px;
+    height: 16px;
+  }
+
+  .moduleCard {
+    height: 270px;
+  }
+
+  .size-img {
+    width: 110px;
+  }
+
+  .moduleRow.right {
+    gap: 401px;
+  }
+
+  .path-horizontal {
+    gap: 7px;
+  }
+
+  .moduleRow.right .path-horizontal {
+    padding: 0 0 0 8px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .moduleRow.left,
+  .steps.normal .path-horizontal,
+  .steps.reverse .path-horizontal {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .moduleRow.right {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .moduleCard {
+    position: relative;
+    width: 60vw;
+  }
+
+  img {
+    width: 145px;
+  }
 }
