@@ -1,10 +1,16 @@
+<!-- Barra de navegación -->
 <app-nav></app-nav>
+
+<!-- Header configurable -->
+<!-- Controla elementos visuales mediante @Input -->
 <app-header title="Sobre Nosotros" [classSpace]="'space'" [showLine]="true" [showHexagon]="true"
   [showDecorativeCircle]="true" [showTitle]="true" [hideTitleWhenLogged]="false"
   [showHexagon1]="true" [showHexagon2]="true"
         [showHexagon3]="true" [showHexagon4]="true" [showHexagon5]="true" [showHexagon6]="true" [showHexagon7]="true"
 ></app-header>
 
+<!-- Sección descriptiva general -->
+<!-- Presentación del equipo ADSO -->
 <section>
   <p id="AboutInfo">Somos un grupo de aprendices del programa Análisis y Desarrollo de Software (ADSO), nosotros como
     aprendices,
@@ -15,6 +21,9 @@
     avanzar hacia un perfil profesional sólido dentro del sector tecnológico.</p>
 </section>
 
+<!-- Contenedor dinámico del equipo -->
+<!-- Se renderiza cada integrante usando *ngFor -->
+<!-- Alterna estilos (black / white) según índice -->
 <section class="aboutContainer" *ngFor="let item of team; let i = index" [ngClass]="i % 2 === 0 ? 'black' : 'white'">
 
   <div class="blueLine top"
@@ -39,4 +48,6 @@
   </div>
 
 </section>
+
+<!-- Footer general del sitio -->
 <app-footer></app-footer>
