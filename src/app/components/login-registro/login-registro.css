@@ -52,10 +52,6 @@
     /* Los paneles inician fuera de la vista */
 }
 
-#panelRegister {
-    overflow-y: scroll;
-}
-
 /* Panel activo se posiciona en el centro */
 .panel.active {
     opacity: 1;
