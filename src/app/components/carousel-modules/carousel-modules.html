@@ -1,11 +1,17 @@
+<!-- Contenedor principal del carrusel -->
 <div class="carousel-container">
+
+  <!-- Wrapper interno que contiene todas las tarjetas -->
   <div class="carousel">
-    <div class="card"
-         *ngFor="let item of items; let i = index"
-         [class.active]="i === currentIndex"
-         (click)="setActive(i)"
-         [style.transform]="getPosition(i)">
-         <div class="bg-black"></div>
+
+    <!-- 
+      *ngFor recorre el arreglo "items"
+      i: índice actual
+    -->
+    <div class="card" *ngFor="let item of items; let i = index" [class.active]="i === currentIndex"
+      (click)="setActive(i)" [style.transform]="getPosition(i)">
+
+      <div class="bg-black"></div>
       <img class="images" [ngClass]="item.class" [src]="item.img">
     </div>
   </div>
