@@ -222,6 +222,16 @@ export class LoginRegistro {
     this.errorPassw = password !== confirmPassword;
   }
 
+  //Valida si la contraseña cumple con la cantidad de caracteres solicitados
+  caracterPassword(password: string) {
+    //Expresión para validar contraseña
+    //mínimo 9 caracteres, 1 mayúscula y 1 número
+    const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    //Valida que la contraseña contenga los caracteres adecuados.
+    this.caractPassw = !passRegex.test(password);
+  }
+
   //Inicializa componente
   ngOnInit() {
     //Lee parámetros de la URL para decidir qué vista mostrar
