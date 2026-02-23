@@ -21,7 +21,6 @@ section {
 .information {
     display: flex;
     flex-direction: column;
-
     justify-content: space-around;
     gap: 10px;
     width: 770px;
@@ -62,15 +61,7 @@ section {
 }
 
 @media (max-width: 480px) {
-
-    .information{
-        height: 5500px
-    }
-
-    .component{
-        height: 5700px;
-    }
-   
+ 
     .title{
         font-size: 27px;
     }

@@ -9,6 +9,7 @@ section {
 .teaching-information {
     display: flex;
     justify-content: space-evenly;
+    overflow: hidden;
 }
 
 .teaching-text {
@@ -62,6 +63,30 @@ section {
     }
 }
 
+@media (max-width: 1279px) {
+
+    .text {
+        font-size: 22px;
+    }
+
+    .caption {
+        font-size: 35px;
+    }
+
+    .teaching-text {
+        height: 427px;
+    }
+
+    .teaching-img {
+        width: 380px;
+        height: 380px;
+    }
+
+    .teaching-information {
+        align-items: center;
+    }
+}
+
 @media (max-width: 920px) {
 
     section {
@@ -101,6 +126,7 @@ section {
 
     .teaching-text {
         height: 350px;
+        width: 84%;
     }
 
     .line {
@@ -109,6 +135,7 @@ section {
 
     #line-two {
         top: 0vh;
+        left: -80%;
     }
 
     .text {
@@ -132,19 +159,18 @@ section {
 
 @media (max-width: 480px) {
     .teaching-text {
-        height: 468px;
-        width: 369px;
+        height: 425px;
     }
 
     section {
         padding: 81px 0 50px 0;
     }
 
-    #line-two{
-        left: -290px;
+    #line-two {
+        left: -84%;
     }
 
-    .line{
+    .line {
         left: 72px;
     }
 }

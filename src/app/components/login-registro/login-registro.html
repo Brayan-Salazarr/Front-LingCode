@@ -38,16 +38,20 @@
                         <div class="regisInfo">
                             <p class="text">Confirmar contraseña</p>
                             <input class="field" id="confirmPass" type="password"
-                                [(ngModel)]="registerData.confirmPassword">
+                                [(ngModel)]="registerData.confirmPassword" (ngModelChange)="passwordValidation(registerData.password, registerData.confirmPassword)">
                         </div>
                     </div>
                    
-                        <p class="textTerms" id="textPass" *ngIf="errorPassw && fieldsEmpty()">
+                        <p class="textTerms textFields" id="textPass" *ngIf="errorPassw">
                             Las contraseñas ingresadas no coinciden.
                         </p>
 
-                        <p class="textTerms" id="requieFields" *ngIf="emptyF && fieldsEmpty()">
+                        <p class="textTerms textFields" id="requieFields" *ngIf="emptyF && fieldsEmpty()">
                             Todos los campos son obligatorios.
+                        </p>
+
+                        <p class="textTerms textFields" id="requieFields" *ngIf="caractPassw">
+                            La contraseña debe contener al menos 8 caracteres, incluyendo una letra mayúscula y un número.
                         </p>
                     
                     <div class="spaceButton">

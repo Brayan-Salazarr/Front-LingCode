@@ -237,15 +237,18 @@ input {
 .textTerms {
     color: #fa7171;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 13px;
+    font-size: 11.5px;
     margin: 10px 0 0 0;
 }
 
-#textPass,
-#requieFields {
+.textFields {
     font-weight: normal;
     margin: 0 0 0 54px;
     width: 237px;
+}
+
+#requieFields {
+    margin: 10px 0 0 54px;
 }
 
 span {
@@ -554,6 +557,10 @@ h3 {
 }
 
 @media(max-width: 1366px) {
+    #BlackBackgReg {
+        margin: 30px 0 35px 0;
+    }
+
     .tittle {
         margin: 0 0 0 0;
     }
@@ -628,7 +635,7 @@ h3 {
 
     #textPass,
     #requieFields {
-        margin: 0 0 0 61px;
+        margin: 10px 0 0 61px;
     }
 }
 
@@ -647,7 +654,7 @@ h3 {
 
     #textPass,
     #requieFields {
-        margin: 0 0 0 81px;
+        margin: 10px 0 0 81px;
     }
 }
 
@@ -659,6 +666,10 @@ h3 {
     #termsModal {
         width: 157px;
         height: 30px;
+    }
+
+    .textTerms {
+        font-size: 10.5px;
     }
 }
 
@@ -721,7 +732,7 @@ h3 {
 
     #textPass,
     #requieFields {
-        margin: 0 0 0 116px;
+        margin: 10px 0 0 116px;
     }
 }
 
@@ -926,7 +937,7 @@ h3 {
 
     #textPass,
     #requieFields {
-        margin: 0 0 0 135px;
+        margin: 10px 0 0 135px;
     }
 }
 
@@ -988,7 +999,7 @@ h3 {
 
     #textPass,
     #requieFields {
-        margin: 0 0 0 175px
+        margin: 10px 0 0 175px
     }
 }
 
@@ -1037,7 +1048,7 @@ h3 {
 @media(max-width: 768px) {
     .authClass {
         flex-direction: column;
-        background: linear-gradient(180deg, #000 79%, #f5f5f500 40%), url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 100% 616px / 223px;
+        background: linear-gradient(180deg, #000 79%, #f5f5f500 40%), url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764470513/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_1_rwgpz5.png") no-repeat 100% 750px / 223px;
         height: auto;
     }
 
@@ -1057,8 +1068,8 @@ h3 {
 
     #BlackBackgReg {
         background-color: #000;
-        height: 622px;
-        margin: 0px 0 45px 0;
+        height: 785px;
+        margin: 0;
     }
 
     .spaceButton {
@@ -1099,7 +1110,7 @@ h3 {
     }
 
     .line2 {
-        top: 79%;
+        top: 82.5%;
         right: 0 !important;
         left: 0 !important;
         height: 5px;
@@ -1107,7 +1118,7 @@ h3 {
     }
 
     .line3 {
-        top: 79.5%;
+        top: 83%;
         right: 0 !important;
         left: 0 !important;
         height: 5px;
@@ -1160,7 +1171,7 @@ h3 {
 
     #textPass,
     #requieFields {
-        margin: 0;
+        margin: 10px 0 0 0;
         width: 405px;
     }
 }
@@ -1182,7 +1193,7 @@ h3 {
 
 @media(max-width: 570px) {
     #BlackBackgReg {
-        height: 100%;
+        height: 840px;
     }
 
     .tittle {
@@ -1234,11 +1245,28 @@ h3 {
     }
 
     #registerSection {
-        height: 100%;
+        height: 103%;
     }
 
     .socialAuth {
         width: 40%;
+    }
+
+    .textTerms {
+        margin: 10px 0 20px 0;
+    }
+
+    #textPass,
+    #requieFields {
+        width: 355px;
+    }
+
+    .line2 {
+        top: 83.5%;
+    }
+
+    .line3 {
+        top: 83%;
     }
 }
 
@@ -1317,21 +1345,18 @@ h3 {
         width: 130px;
     }
 
-    .line3 {
-        top: 708px;
-    }
-
-    .line2 {
-        top: 712px;
-    }
-
     #textTerms {
         font-size: 10px;
         margin: 0;
     }
 
     #BlackBackgReg {
-        height: 710px;
+        height: 770px;
+    }
+
+    #textPass,
+    #requieFields {
+        width: 305px;
     }
 }
 
@@ -1346,5 +1371,18 @@ h3 {
 
     .terms {
         width: 46%;
+    }
+
+    #textPass,
+    #requieFields {
+        width: 230px;
+    }
+
+    .line3 {
+        top: 775px;
+    }
+
+    .line2 {
+        top: 770px;
     }
 }
