@@ -110,10 +110,10 @@ h2 {
 }
 
 @media (min-width: 1700px) {
-   #AboutInfo{
-    display: flex;
-    align-items: center;
-   }
+    #AboutInfo {
+        display: flex;
+        align-items: center;
+    }
 }
 
 @media (max-width: 1336px) {
@@ -125,7 +125,7 @@ h2 {
 
 @media (max-width: 920px) {
 
-    p{
+    p {
         font-size: 27px;
     }
 
@@ -137,53 +137,77 @@ h2 {
         height: 361px;
     }
 
-    .aboutContainer{
+    .aboutContainer {
         height: 600px;
     }
 }
 
 @media (max-width: 768px) {
 
-    .aboutContainer{
+    section {
+        height: 100%;
+        padding: 35px;
+    }
+
+    .aboutContainer {
         height: 100%;
         padding: 30px;
     }
 
-    .card.imageFirst{
+    .card.imageFirst {
         flex-direction: column;
     }
 
-    .locationInfo{
-        width: 600px;
+    .locationInfo {
+        width: 100%;
         height: 500px;
     }
 
-    .card.infoFirst{
+    .card.infoFirst {
         flex-direction: column;
     }
 
-    #fontSize{
+    #fontSize {
         font-size: 18px;
     }
 }
 
 @media (max-width: 480px) {
 
-    p{
+    p {
+        width: 100%;
         font-size: 21px;
-        margin: 40px 0 0 0;
+        margin: 0;
     }
 
-    h2{
-            font-size: 30px;
+    h2 {
+        font-size: 30px;
     }
 
-    .locationInfo[_ngcontent-ng-c3547543113] {
-        width: 417px;
+    .locationInfo {
         height: 668px;
     }
 
-    .avatar{
+    .avatar {
         width: 100px;
+    }
+
+    .imgTop {
+        height: 293px;
+    }
+
+
+    .aboutContainer {
+        height: 1251px;
+    }
+
+    .card.imageFirst,
+    .card.infoFirst {
+        justify-content: center;
+        gap: 35px;
+    }
+
+    #fontSize {
+        width: 100%;
     }
 }

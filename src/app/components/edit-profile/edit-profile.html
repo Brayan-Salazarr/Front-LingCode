@@ -1,5 +1,7 @@
+<!-- Barra de navegación con fondo personalizado -->
 <app-nav [colorBackground]="'backgroundNav1'"></app-nav>
 
+<!-- SECCIÓN SUPERIOR: AVATAR -->
 <div id="Back">
     <div id="location">
         <img src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png" alt="">
@@ -18,13 +20,17 @@
 </div>
 <div id="line"></div>
 
+<!-- SECCIÓN: EDICIÓN DE PERFIL -->
 <section>
     <h2 class="tittle" id="textColor">Editar información personal</h2>
+
+    <!-- Dropdown de configuraciones -->
     <div class="dropdownContainer">
         <button id="gear" (click)="toggleDropdown()"><img id="styleGear"
                 src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765828524/image-removebg-preview_pacdbd.png"
                 alt=""></button>
 
+        <!-- Menú desplegable -->
         <div class="dropdownM" *ngIf="isDropdownOpen">
             <div class="setting-row" id="settingSound">
                 <label class="switch">
@@ -34,6 +40,7 @@
                 <label for="sound">Sonido</label>
             </div>
 
+            <!-- Configuración notificaciones -->
             <div class="setting-row">
                 <label class="switch">
                     <input type="checkbox" id="notification-alerts">
@@ -44,6 +51,7 @@
         </div>
     </div>
 
+    <!-- Información editable -->
     <div class="infoBox">
         <div class="regisInfo">
             <p class="textEdit">Nombre completo</p>
@@ -66,6 +74,7 @@
         <button id="Save">Guardar cambios</button>
         <button id="Cancel" (click)="openModal()">Eliminar mi cuenta</button>
 
+        <!-- MODAL DE ELIMINACIÓN -->
         <div *ngIf="isModalOpen" class="modal" (click)="onBackdropClick($event)">
             <div class="modalContent" (click)="$event.stopPropagation()">
 
@@ -77,6 +86,7 @@
                     </div>
                 </div>
 
+                <!-- Mensaje de éxito -->
                 <div *ngIf="isAccountDeleted" class="succes-message">
                     <h3>Cuenta eliminada exitosamente</h3>
                     <p id="textMod">Lamentamos verte ir. Estaremos aquí si decides volver.</p>

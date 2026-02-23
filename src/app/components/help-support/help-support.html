@@ -1,21 +1,31 @@
+<!--Componente de navegación. Se modifica el color pasandolo como input la propiedad colorBackground con el valor 'backgroundNav1'-->
 <app-nav [colorBackground]="'backgroundNav1'"></app-nav>
+<!--Contenedor principal de la sección de soporte-->
 <div class="supportContainer">
 
+    <!--Título principal de la vista-->
     <h1 class="title">Ayuda y Soporte</h1>
+    <!--Subtítulo de la sección-->
     <h2 class="subtitle">Buscar ayuda</h2>
+    <!--Se recorre el arreglo groupBox . *ngFor crea un bloque por cada grupo-->
     <div class="groupBox" *ngFor="let group of GroupBox">
 
+        <!--Título principal de cada grupo-->
         <div class="mainTitle">
             <h2>{{group.mainTitle}}</h2>
         </div>
 
+        <!--Se recorre las preguntas de cada grupo. Cada ítem representa una pregunta con su respuesta. (click)="toggleItem(item)" ejecuta una función al hacer clic-->
         <div class="questionBox" *ngFor="let item of group.support" (click)="toggleItem(item)">
 
+            <!--Encabezado de la pregunta-->
             <div class="questionHeader">
                 <p>{{item.title}}</p>
+                <!--Flecha que gira cuando la pregunta esta abierta -->
                 <span class="arrow" [class.rotate]="activeItem === item">⌵</span>
             </div>
 
+            <!--Respuesta que se muestra solo si la pregunta esta activa-->
             <div class="answer" *ngIf="activeItem === item">
                 <p [innerHTML]="item.answer"></p>
             </div>
@@ -24,4 +34,5 @@
 
     </div>
 </div>
+<!--Footer del aplicativo-->
 <app-footer></app-footer>
