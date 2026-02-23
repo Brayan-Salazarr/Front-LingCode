@@ -713,12 +713,12 @@
     }
 
     .target-box {
-        width: 490px;
-        height: 560px;
+        width: 370px;
+        height: 445px;
     }
 
     .content-box {
-        height: 750px;
+        height: 625px;
     }
 
     .title-target {
@@ -726,7 +726,7 @@
     }
 
     #img-trophy {
-        width: 100px;
+        width: 90px;
     }
 
     #img-line {
@@ -734,37 +734,34 @@
     }
 
     #img-gitHub {
-        width: 300px;
+        width: 205px;
     }
 
     .button-target {
-        height: 50px;
+        height: 46px;
         width: 130px;
     }
 
     .subTitle {
-        font-size: 48px;
+        font-size: 38px;
     }
 
     .border-streak {
-        width: 490px;
-        height: 615px;
-    }
-
-    .content-target-streak {
-        gap: 80PX;
+        width: 370px;
+        height: 559px;
     }
 
     #img-Cybro {
-        width: 310px;
+        width: 248px;
     }
 
     #streak {
-        font-size: 162px;
+        font-size: 150px;
     }
 
     #title-streak {
         font-size: 34px;
+        top: 60px;
     }
 }
 
@@ -789,16 +786,12 @@
 
 @media (max-width: 600px) {
     .target-box {
-        width: 400px;
-        height: 445px;
-    }
-
-    #img-gitHub {
-        width: 250px;
+        width: 340px;
+        height: 414px;
     }
 
     #img-trophy {
-        width: 90px;
+        width: 81px;
     }
 
     .title-target {
@@ -819,12 +812,12 @@
     }
 
     .border-streak {
-        width: 406px;
-        height: 574px;
+        width: 340px;
+        height: 530px;
     }
 
     #img-Cybro {
-        width: 255px;
+        width: 230px;
     }
 
     #streak {
