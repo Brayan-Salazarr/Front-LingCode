@@ -1,20 +1,29 @@
+<!-- Contenedor principal de autenticación (login + registro) -->
 <div id="authContainer">
     <div id="panelWrapper">
 
+        <!-- Capa oscura decorativa / overlay visual-->
         <div id="blackOverlay"></div>
 
         <!-- PANEL DE REGISTRO -->
+        <!-- Se activa cuando showLogin es false -->
         <div class="panel" id="panelRegister" [class.active]="!showLogin" [class.inactive]="showLogin">
 
             <div class="authClass" id="registerSection">
 
+                <!-- Contenedor principal del formulario de registro -->
                 <div class="containers" id="BlackBackgReg">
                     <h1 class="tittle">Registro</h1>
+
+                    <!-- Línea decorativa -->
                     <div class="spaceLine">
                         <div class="line"></div>
                     </div>
 
+                    <!-- Campos del formulario -->
                     <div class="infoBox">
+
+                        <!-- Cada bloque contiene etiqueta + input -->
                         <div class="regisInfo">
                             <p class="text">Nombre completo</p>
                             <input class="field" id="name" [(ngModel)]="registerData.fullName">
@@ -30,40 +39,48 @@
                             <input class="field" id="email" type="email" [(ngModel)]="registerData.email">
                         </div>
 
+                        <!-- Validación de contraseña en tiempo real -->
                         <div class="regisInfo">
                             <p class="text">Contraseña</p>
-                            <input class="field" id="password" type="password" [(ngModel)]="registerData.password" (ngModelChange)="caracterPassword(registerData.password)">
+                            <input class="field" id="password" type="password" [(ngModel)]="registerData.password"
+                                (ngModelChange)="caracterPassword(registerData.password)">
                         </div>
 
+                        <!-- Validación de coincidencia  -->
                         <div class="regisInfo">
                             <p class="text">Confirmar contraseña</p>
                             <input class="field" id="confirmPass" type="password"
-                                [(ngModel)]="registerData.confirmPassword" (ngModelChange)="passwordValidation(registerData.password, registerData.confirmPassword)">
+                                [(ngModel)]="registerData.confirmPassword"
+                                (ngModelChange)="passwordValidation(registerData.password, registerData.confirmPassword)">
                         </div>
                     </div>
-                   
-                        <p class="textTerms textFields" id="textPass" *ngIf="errorPassw">
-                            Las contraseñas ingresadas no coinciden.
-                        </p>
 
-                        <p class="textTerms textFields" id="requieFields" *ngIf="emptyF && fieldsEmpty()">
-                            Todos los campos son obligatorios.
-                        </p>
+                    <!-- MENSAJES DE ERROR DINÁMICOS -->
+                    <p class="textTerms textFields" id="textPass" *ngIf="errorPassw">
+                        Las contraseñas ingresadas no coinciden.
+                    </p>
 
-                        <p class="textTerms textFields" id="requieFields" *ngIf="caractPassw">
-                            La contraseña debe contener al menos 8 caracteres, incluyendo una letra mayúscula y un número.
-                        </p>
-                    
+                    <p class="textTerms textFields" id="requieFields" *ngIf="emptyF && fieldsEmpty()">
+                        Todos los campos son obligatorios.
+                    </p>
+
+                    <p class="textTerms textFields" id="requieFields" *ngIf="caractPassw">
+                        La contraseña debe contener al menos 8 caracteres, incluyendo una letra mayúscula y un número.
+                    </p>
+
+                    <!-- Botón principal -->
                     <div class="spaceButton">
                         <button class="buttonRegist" id="buttonRegist" (click)="register()">Registrarme</button>
                     </div>
 
+                    <!-- División visual -->
                     <div class="division">
                         <div class="line1"></div>
                         <p class="letter">O</p>
                         <div class="line1"></div>
                     </div>
 
+                    <!-- Autenticación social -->
                     <div class="socialAuth">
                         <a href="gitHub"><img class="social"
                                 src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764126164/image_56_dcx5oi.png"
@@ -73,27 +90,34 @@
                                 alt=""></a>
                     </div>
 
+                    <!-- Aceptación de términos -->
                     <div class="terms">
                         <input class="checkbox" type="checkbox" name="acceptTermsPrin" [(ngModel)]="accepTerms"
                             (change)="disError = false">
                         <p class="termsUse"> <span>Acepto</span> <a (click)="openModal()">términos de uso</a></p>
                     </div>
 
+                    <!-- Error si no acepta términos -->
                     <p class="textTerms" *ngIf="disError">
                         Debes aceptar los términos de uso para continuar.
                     </p>
                 </div>
 
+                <!-- MODAL DE TÉRMINOS Y CONDICIONES -->
+                <!-- Se muestra cuando isModalOpen es true -->
                 <div class="modal" (click)="onBackdropClick($event)" [class.hidden]="!isModalOpen">
                     <div class="modalContent" (click)="$event.stopPropagation()">
 
+                        <!-- Botón cerrar -->
                         <div class="modalExit">
                             <button class="closeButton" (click)="closeModal()">x</button>
                         </div>
 
+                        <!-- Contenido informativo -->
                         <h3>Términos y Condiciones de Uso</h3>
 
                         <div class="modalBody">
+                            <!-- Texto informativo educativo -->
                             <p>Bienvenido al aplicativo educativo de inglés técnico aplicado al desarrollo de software.
                                 Antes de continuar con tu registro, ten en cuenta lo siguiente:</p>
                             <h4>1. Finalidad</h4>
@@ -121,6 +145,7 @@
                             <p>El aplicativo puede modificar sus funciones o políticas sin previo aviso. Al registrarte,
                                 confirmas que has leído y aceptas estos términos y normas de uso.</p>
 
+                            <!-- Checkbox dentro del modal -->
                             <div class="modalFooter">
                                 <div class="terms" id="termsModal">
                                     <input class="checkbox" type="checkbox" name="acceptTermsModal"
@@ -134,9 +159,11 @@
                     </div>
                 </div>
 
+                <!-- Líneas decorativas y divisoras -->
                 <div class="line2"></div>
                 <div class="line3"></div>
 
+                <!-- Panel lateral que invita a iniciar sesión -->
                 <div class="containers" id="WhiteBackg">
                     <h1 class="questionTittle" id="tittle2">¿Ya tienes una cuenta?</h1>
                     <div id="spaceButton2">
@@ -148,10 +175,12 @@
         </div>
 
         <!-- PANEL DE LOGIN -->
+         <!-- Se activa cuando showLogin es true -->
         <div class="panel" id="panelLogin" [class.active]="showLogin" [class.inactive]="!showLogin">
 
             <div class="authClass" id="loginSection">
 
+                <!-- Panel lateral para cambiar a registro -->
                 <div class="containers" id="WhiteBackgLogin">
                     <h1 class="questionTittle" id="Whitetittle">¿No tienes una cuenta?</h1>
                     <div id="spaceButton2" class="spaceButton">
@@ -159,6 +188,7 @@
                     </div>
                 </div>
 
+                <!-- Formulario de inicio de sesión-->
                 <div class="containers" id="BlackBackgLogin">
                     <h1 class="tittle" id="tittleLogin">Inicio sesión</h1>
                     <div class="spaceLine" id="spaceLineLogin">
@@ -179,11 +209,13 @@
                     </div>
 
                     <div class="spaceButton" id="spaceButtonLogin">
+                        <!-- Botón login -->
                         <button class="buttonRegist" id="buttonRegist" (click)="login()">Inicia
                             Sesión</button>
                     </div>
 
                     <div class="terms" id="termsLogin">
+                        <!-- Recuperar contraseña -->
                         <p class="termsUse"><a (click)="openModal()">¿Olvidaste tu contraseña?</a></p>
                     </div>
 
@@ -193,6 +225,7 @@
                         <div class="line1"></div>
                     </div>
 
+                    <!-- Login social -->
                     <div class="socialAuth" id="socialAuthLogin">
                         <a href="gitHub"><img class="social"
                                 src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764126164/image_56_dcx5oi.png"
@@ -203,6 +236,7 @@
                     </div>
                 </div>
 
+                <!-- MODAL RECUPERAR CONTRASEÑA (correo) -->
                 <div class="modal" (click)="onBackdropClick($event)" [class.hidden]="!isModalOpen">
                     <div class="modalContent" id="modalContentLogin" (click)="$event.stopPropagation()">
 
@@ -217,14 +251,18 @@
                     </div>
                 </div>
 
+                <!-- Líneas decorativas y divisoras -->
                 <div class="line2" id="line2Login"></div>
                 <div class="line3" id="line3Login"></div>
 
+                <!-- MODAL CONFIRMAR CÓDIGO -->
                 <div class="modal" (click)="onBackdropClick($event)" [class.hidden]="!isConfirmModal">
                     <div class="modalContent" id="modalContentLogin" (click)="$event.stopPropagation()">
 
                         <div class="modalBody" id="modalBodyLogin">
                             <p id="textModal">Ingresa el código que ha sido enviado a tu correo eléctronico.</p>
+                            
+                            <!-- Inputs individuales para código -->
                             <div id="spaceInputs">
                                 <input type="text" class="inputs" id="code1">
                                 <input type="text" class="inputs" id="code2">

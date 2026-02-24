@@ -11,11 +11,14 @@ import { Footer } from '../../shared/components/footer/footer';
 })
 export class NewPassword {
 
+  //Se inyecta el servicio Router para poder navegar entre rutas
   constructor(private router:Router){}
 
+  //método que redirige al usuario a la pantalla de Login
   goLogin() {
     this.router.navigate(
-      ['/login-registro'],{queryParams:{view: 'login'}}
+      ['/login-registro'], //Ruta a la que se quiere navegar
+      {queryParams:{view: 'login'}} //Parámetros de consulta, se indica que vista se debe mostrar
     );
   }
 }

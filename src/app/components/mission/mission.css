@@ -1,3 +1,5 @@
+/*SECCIÓN GENERAL DE CONTENIDO*/
+/*Cada sección ocupa un bloque vertical con espacios distribuidos equitativamente*/
 section {
     display: flex;
     flex-direction: column;
@@ -5,11 +7,13 @@ section {
     margin: 0 0 100px 0;
 }
 
+/*Contenedor específico para información de la misión*/
 .mission-information {
     display: flex;
     justify-content: end;
 }
 
+/*Estilo de texto principal dentro de la sección*/
 .text {
     font-family: "Poppins", sans-serif;
     width: 52vw;
@@ -17,6 +21,7 @@ section {
     margin: 0 80PX 0 0;
 }
 
+/*Línea decorativa horizontal con degradado*/
 .line {
     background: linear-gradient(to left, rgba(255, 161, 9, 0.5), rgba(255, 0, 251, 0.5));
     height: 10px;
@@ -24,6 +29,7 @@ section {
     border-radius: 30px;
 }
 
+/*Contenedor de separación para agrupar elementos de forma centrada y vertical*/
 .separation {
     display: flex;
     flex-direction: column;
@@ -33,6 +39,8 @@ section {
     width: 60vw;
 }
 
+/*CONTENEDORES TRIANGULARES DECORATIVOS*/
+/*Contenedor principal con forma de triángulo usando clip-path*/
 .container-with-triangle {
     position: relative;
     width: 90vw;
@@ -44,6 +52,7 @@ section {
     margin-top: 50px;
 }
 
+/*Segundo contenedor triangular decorativo*/
 .container-with-triangle1 {
     position: absolute;
     top: 1340px;
@@ -51,6 +60,7 @@ section {
     height: 943px;
 }
 
+/*Capa antes (::before) para borde en el contenedor*/
 .container-with-triangle1::before {
     content: '';
     position: absolute;
@@ -63,6 +73,7 @@ section {
     z-index: 1;
 }
 
+/*Capa después (::after) para rellenar con negro*/
 .container-with-triangle1::after {
     content: '';
     position: absolute;
@@ -76,6 +87,8 @@ section {
     z-index: 2;
 }
 
+/*TEXTO PRINCIPAL SOBRE TRIÁNGULOS*/
+/*Texto absoluto dentro de contenedor triangular*/
 #text {
     position: absolute;
     color: white;
@@ -85,6 +98,7 @@ section {
     z-index: 10;
 }
 
+/*HEXÁGONOS DECORATIVOS*/
 .hexagon3 {
     width: 46px;
     height: 51px;
@@ -139,6 +153,7 @@ section {
     transform: rotate(90deg);
 }
 
+/*INICIO DE MEDIA QUERIES*/
 @media (min-width: 1538px) {
 
     .container-with-triangle {
