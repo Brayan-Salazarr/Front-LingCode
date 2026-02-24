@@ -1,12 +1,15 @@
+/*Fuente global para toda la página*/
 * {
     font-family: 'Poppins', sans-serif;
 }
 
+/*Contenedor principal de la sección de ayuda y soporte*/
 .supportContainer {
     display: flex;
     flex-direction: column;
 }
 
+/*Título principal centrado*/
 .title {
     display: flex;
     justify-content: center;
@@ -15,12 +18,14 @@
     width: 100%;
 }
 
+/*Subtítulo alineado con margen lateral*/
 .subtitle {
     font-weight: normal;
     margin: 20px 0 30px 10vw;
 }
 
 /* ===== BLOQUE PRINCIPAL ===== */
+/*Caja contenedora de todo el grupo de preguntas*/
 .groupBox {
     border-radius: 14px;
     padding: 30px 30px 10px 30px;
@@ -29,6 +34,7 @@
     width: 80%;
 }
 
+/*Estilo del título dentro del bloque principal*/
 .mainTitle h2 {
     font-family: "Poppins", sans-serif;
     font-size: 20px;
@@ -38,13 +44,14 @@
 }
 
 /* ===== PREGUNTAS ===== */
+/*Contenedor individual de cada pregunta*/
 .questionBox {
     border-top: 1px solid #00000027;
     padding: 18px 0;
-    
 }
 
 /* ===== CABECERA DE PREGUNTA ===== */
+/*Parte visible de la pregunta (la que se puede hacer clic)*/
 .questionHeader {
     display: flex;
     justify-content: space-between;
@@ -52,6 +59,7 @@
     cursor: pointer;
 }
 
+/*Texto de la pregunta*/
 .questionHeader p {
     font-family: "Poppins", sans-serif;
     font-size: 18px;
@@ -61,21 +69,25 @@
 }
 
 /* ===== FLECHA ===== */
+/*Ícono que indica si está expandido o no*/
 .arrow {
     font-size: 18px;
     transition: transform 0.3s ease;
 }
 
+/*Rotación cuando la pregunta está abierta*/
 .arrow.rotate {
     transform: rotate(180deg);
 }
 
 /* ===== RESPUESTA ===== */
+/*Contenedor de la respuesta desplegable*/
 .answer {
     margin-top: 15px;
     animation: fadeIn 0.25s ease;
 }
 
+/*Texto de la respuesta*/
 .answer p {
     font-family: "Poppins", sans-serif;
     font-size: 16px;
@@ -83,6 +95,7 @@
 }
 
 /* ===== ANIMACIÓN ===== */
+/*Animación para que la respuesta aparezca gradualmente*/
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -95,6 +108,7 @@
     }
 }
 
+/* ===== INICIO DE MEDIA QUERIES ===== */
 @media (max-width: 768px) {
     .groupBox{
         margin: 0 0 53px 6vw;

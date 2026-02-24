@@ -1,3 +1,4 @@
+//Importaciones para que el componente funcione
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from "@angular/router";
@@ -10,28 +11,39 @@ import { routes } from '../../app.routes';
   styleUrl: './carousel-modules.css',
 })
 export class CarouselModules {
+  //Índice de la tarjeta actualmente activa
   currentIndex = 0;
 
+  //Arreglo que contiene las imagenes del carrusel
+  //Cada objeto tiene tiene la URL de la imagen y una clase personalizada
   items = [
     { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763695172/mysql-removebg-preview-removebg-preview_2_hc65ln.png', class: 'img1' },
-    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696348/Group_25_fnpomn.png', class: 'img2'},
+    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696348/Group_25_fnpomn.png', class: 'img2' },
     { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696367/Group_31_mmwojn.png', class: 'img3' }
   ];
 
+  //Método que cambia la tarjeta activa cuando se hace clic
   setActive(index: number) {
     this.currentIndex = index;
   }
-  
 
+  //Calcula la posición de cada tarjeta
+  //Genera un efecto de rotación en círculo, tipo carrusel
   getPosition(index: number) {
-    const total = this.items.length;
-    const angle = 360 / total;
+    const total = this.items.length;//Cantidad total de tarjetas
+    const angle = 360 / total;//Divide el círculo completo entre las tarjetas
     const rotate = angle * (index - this.currentIndex);
+    //Calcula cuanto debe rotar cada tarjeta respecto a la activa
 
     return `
       translate(var(--x-offset, -50%), var(--y-offset, -50%))
       rotateY(${rotate}deg)
       translateZ(var(--tz, 250px))
     `;
+    /*
+    translate → centra la tarjeta
+      rotateY → rota en el eje Y (efecto 3D horizontal)
+      translateZ → la acerca o aleja para crear profundidad
+    */
   }
 }

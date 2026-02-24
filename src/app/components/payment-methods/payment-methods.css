@@ -1,3 +1,4 @@
+/*CONTENEDOR PRINCIPAL DE LA SECCIÓN DE PAGO*/
 section {
     display: flex;
     flex-direction: column;
@@ -7,15 +8,18 @@ section {
     font-family: 'Poppins', sans-serif;
 }
 
+/*Título principal de la sección*/
 #title {
     font-size: 36px;
     font-weight: normal;
 }
 
+/*Subtítulo de las secciones de pago*/
 #subTitle {
     font-weight: normal;
 }
 
+/*Contenedor de las tarjetas de métodos de pago*/
 .payment-field {
     display: flex;
     flex-direction: column;
@@ -24,6 +28,7 @@ section {
     width: 100%;
 }
 
+/*Tarjeta individual de pago*/
 .payment-card {
     border: 1.5px solid #333;
     /* Borde gris oscuro por defecto */
@@ -32,10 +37,12 @@ section {
     transition: all 0.3s ease;
 }
 
+/*Tarjeta seleccionada: resalta el borde*/
 .payment-card.selected {
     border-color: #000000;
 }
 
+/*Cabecera de la tarjeta: nombre del método de pago y flecha*/
 .card-header {
     display: flex;
     justify-content: space-between;
@@ -45,6 +52,7 @@ section {
     color: #333;
 }
 
+/*Contenedor de selección de bancos dentro de PSE*/
 .bank-selection {
     max-height: 0;
     overflow: hidden;
@@ -53,6 +61,7 @@ section {
     margin-top: 0;
 }
 
+/*Estado visible de la selección de bancos*/
 .bank-selection.show {
     display: flex;
     flex-direction: column;
@@ -75,6 +84,7 @@ section {
     cursor: pointer;
 }
 
+/*Flecha apuntando hacia arriba cuando la tarjeta está expandida*/
 .arrow.up {
     transform: rotate(-135deg);
     /* Gira la flecha hacia arriba */
@@ -86,6 +96,7 @@ section {
     /* Evita que el texto se sombree al dar clics rápidos */
 }
 
+/*Botón para confirmar el pago*/
 .button-payment {
     font-size: 17px;
     font-weight: bold;
@@ -96,6 +107,7 @@ section {
     border-radius: 30px;
 }
 
+/*INICIO DE MEDIA QUERIES*/
 @media (max-width: 480px) {
 
     section {
