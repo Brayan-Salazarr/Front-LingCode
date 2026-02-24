@@ -53,6 +53,21 @@ section {
     background: linear-gradient(to left, rgba(101, 75, 214, 1), rgba(0, 217, 255, 1));
 }
 
+@media (min-width: 1538px) {
+    .teaching-text {
+        height: 590px;
+    }
+
+    .teaching-img {
+        width: 400px;
+        height: 400px;
+    }
+
+    .teaching-information {
+        align-items: center;
+    }
+}
+
 @media (max-width: 1537px) {
     .caption {
         font-size: 38px;

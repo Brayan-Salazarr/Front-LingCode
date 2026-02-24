@@ -7,9 +7,9 @@
     </div>
 
     <nav class="nav" [class.active]="menuOpen">
-        <a class="place" (click)="goHome(); toggleMenu()">Inicio</a>
-        <a class="place" routerLink="/module-view" (click)="toggleMenu()">Módulos</a>
-        <a class="place" routerLink="/about-us" (click)="toggleMenu()">Sobre nosotros</a>
+        <a class="place" (click)="goHome(); closeMenu()">Inicio</a>
+        <a class="place" routerLink="/module-view" (click)="closeMenu()">Módulos</a>
+        <a class="place" routerLink="/about-us" (click)="closeMenu()">Sobre nosotros</a>
     </nav>
 
 
@@ -25,7 +25,7 @@
         </button>
     </div>
 
-    <div class="icon" (click)="goLogin()">
+    <div class="icon" (click)="goLogin()" *ngIf="(authService.currentUser$ | async) === null">
         <img id="userIcon" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1771021109/user_ojgle2.png" alt="user">
     </div>
 

@@ -1,5 +1,5 @@
 <!-- Barra de navegación -->
-<app-nav></app-nav>
+<app-nav [colorBackground]="(authService.currentUser$ | async) ? 'backgroundNav1' : ''"></app-nav>
 
 <!-- Header configurable -->
 <!-- Se muestran elementos decorativos y se oculta el título si el usuario está logueado -->
@@ -10,7 +10,9 @@
 
 <!-- Contenedor principal de módulos -->
 <!-- Se renderiza dinámicamente desde el array "modules" -->
-<section class="modulesContainer">
+<section class="modulesContainer" [class.registered]="(authService.currentUser$ | async) !== null">
+
+  <h1 class="titleModule" *ngIf="(authService.currentUser$ | async) !== null" >Módulos</h1>
 
   <!-- 
     *ngFor recorre los módulos disponibles.

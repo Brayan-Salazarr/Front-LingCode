@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 60px;
   padding: 60px;
 }
-  
+
 .moduleRow {
   display: flex;
   justify-content: space-around;
@@ -34,7 +36,6 @@
   font-size: 18px;
   gap: 20px;
   align-items: center;
-  margin: 50px 0 0 0;
   position: relative;
   margin-left: 20px;
 }
@@ -243,6 +244,29 @@ button:hover {
   color: #000;
 }
 
+.titleModule {
+  font-family: "Anton SC", sans-serif;
+  font-size: 48px;
+}
+
+@media (min-width: 1537px) {
+  .moduleCard {
+    width: 422px;
+  }
+
+  .textProgres {
+    margin: 0 193px 0 0;
+  }
+
+  img {
+    width: 268px;
+  }
+
+  .cardContent {
+    height: 95%;
+  }
+}
+
 @media (max-width: 1279px) {
   .textProgres {
     margin: 0;
@@ -279,6 +303,10 @@ button:hover {
   .moduleRow.right .path-horizontal {
     padding: 0 0 0 8px;
   }
+
+  .titleModule {
+    font-size: 42px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -288,19 +316,33 @@ button:hover {
   .steps.reverse .path-horizontal {
     flex-direction: column;
     margin: 0;
+    padding: 0;
+  }
+
+  .moduleRow.left {
+    gap: 20px;
+  }
+
+  .cardContent {
+    height: 100%;
   }
 
   .moduleRow.right {
     flex-direction: column;
-    gap: 0;
+    gap: 20px;
   }
 
   .moduleCard {
     position: relative;
-    width: 60vw;
+    height: 310px;
+    width: 284px;
   }
 
   img {
     width: 145px;
+  }
+
+  .steps {
+    margin: 0;
   }
 }

@@ -327,13 +327,19 @@ section {
     .container-with-triangle1 {
         top: 868px;
         width: 100%;
+        height: 560px;
     }
 
-    /*.container-with-triangle1::before,
+
     .container-with-triangle1::after {
         clip-path: none;
+        left: 0;
+        height: 560px;
+    }
 
-    }*/
+    .container-with-triangle1::before {
+        content: none;
+    }
 
     .mission-information {
         justify-content: center;
@@ -348,7 +354,8 @@ section {
     #text {
         font-size: 18px;
         margin: 0 0 0 25px;
-        width: 286px;
+        width: 90%;
+        top: 0%;
     }
 
     .separation {
@@ -362,6 +369,54 @@ section {
     }
 
     .hexagon3 {
-        top: 337px;
+        top: 265px;
+    }
+
+    .hexagon5 {
+        top: -128px;
+    }
+
+    .hexagon6 {
+        top: -80px;
+    }
+
+    section {
+        height: 1051px;
+        margin: 0 0 20px 0;
+    }
+
+}
+
+@media (max-width: 350px) {
+    section {
+        height: 1163px;
+    }
+
+    .container-with-triangle1::after {
+        top: -110px;
+    }
+
+    .hexagon3 {
+        top: 370px;
+    }
+
+    #text {
+        top: 8%;
+    }
+
+    .hexagon5 {
+        top: -85px;
+    }
+
+    .hexagon6 {
+        top: -41px;
+    }
+
+    #text {
+        margin: 0 0 0 19px;
+    }
+
+    .separation {
+        height: 100%;
     }
 }

@@ -16,7 +16,7 @@ export class Nav {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    public authService: AuthService
   ) {
     this.authService.currentUser$.subscribe(user => {
       this.user = user;

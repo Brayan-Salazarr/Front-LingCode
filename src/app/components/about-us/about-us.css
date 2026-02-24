@@ -14,6 +14,11 @@ p {
     margin: 0 0 0 0;
 }
 
+#AboutInfo {
+    display: flex;
+    align-items: center;
+}
+
 .aboutContainer {
     position: relative;
     height: 776px;
@@ -109,17 +114,14 @@ h2 {
     right: 0;
 }
 
-@media (min-width: 1700px) {
-    #AboutInfo {
-        display: flex;
-        align-items: center;
-    }
-}
-
-@media (max-width: 1336px) {
+@media (max-width: 1337px) {
     p {
         font-size: 33px;
     }
+     section{
+        height: 100%;
+        padding: 50px;
+     }
 
 }
 

@@ -804,7 +804,7 @@ h1 {
     .avatar {
         width: 131px;
         height: 131px;
-        left: 0;
+        left: 25px;
         top: 0;
     }
 
@@ -817,7 +817,7 @@ h1 {
     .user-data {
         margin: 0;
         position: relative;
-        left: 4px;
+        left: 74px;
     }
 
     .button-edit {
@@ -851,16 +851,6 @@ h1 {
 
     #imgCircle {
         display: none;
-    }
-
-    .field {
-        justify-content: space-evenly;
-        top: 2vh;
-        left: 2vw;
-    }
-
-    #imgCirclee {
-        left: -6px;
     }
 }
 
