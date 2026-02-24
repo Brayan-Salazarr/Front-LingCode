@@ -29,7 +29,7 @@ export class ModuleView {
 
    user: User | null = null;
 
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService) {
     this.authService.currentUser$.subscribe(user => {
       this.user = user;
     });

@@ -26,22 +26,32 @@
 <!-- Alterna estilos (black / white) según índice -->
 <section class="aboutContainer" *ngFor="let item of team; let i = index" [ngClass]="i % 2 === 0 ? 'black' : 'white'">
 
+  <!-- Línea decorativa superior -->
+   <!-- Cambia de posición (derecha o izquierda) dependiendo del orden -->
+    <!-- Esto ayuda a crear el efecto visual alternado entre tarjetas -->
   <div class="blueLine top"
        [ngClass]="i % 2 === 0 ? 'right' : 'left'">
   </div>
 
+  <!-- Contenedor principal de la tarjeta -->
+   <!-- Cambia el orden de los elementos (imagen / información) -->
   <div class="card" [ngClass]="i % 2 === 0 ? 'imageFirst' : 'infoFirst'">
 
     <!-- Imagen siempre primero en bloque negro, después en blanco -->
     <img class="imgTop" [src]="item.img">
 
+    <!-- Contenedor de la información del integrante -->
     <div class="locationInfo">
+      <!-- Nombre del integrante -->
       <h2>{{ item.title }}</h2>
+      <!-- Imagen de perfil o avatar -->
       <img class="avatar" [src]="item.imgAvatar">
+      <!-- Descripción del rol o información personal -->
       <p id="fontSize">{{ item.text }}</p>
     </div>
   </div>
 
+  <!-- Línea decorativa inferior -->
   <div *ngIf="!last"
        class="blueLine bottom"
        [ngClass]="i % 2 === 0 ? 'left' : 'right'">
