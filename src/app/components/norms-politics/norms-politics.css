@@ -1,7 +1,10 @@
+/*ESTILO GLOBAL*/
+/*Aplica la fuente "poppins" a todos los elementos del documentos*/
 * {
     font-family: 'Poppins', sans-serif;
 }
 
+/*CONTENEDOR PRINCIPAL DEL COMPONENTE*/
 .component {
     display: flex;
     justify-content: center;
@@ -9,15 +12,18 @@
 
 }
 
+/*SECCIÓN INTERNA*/
 section {
     margin: 70px;
 }
 
+/*TÍTULOS PRINCIPALES*/
 .title {
     display: flex;
     justify-content: center;
 }
 
+/*INFORMACIÓN DEL COMPONENTE*/
 .information {
     display: flex;
     flex-direction: column;
@@ -27,10 +33,12 @@ section {
     height: 100%;
 }
 
+/*TÍTULO DE NORMAS*/
 #titleNor {
     margin: 70px 0 0 0;
 }
 
+/*INICIO DE MEDIA QUERIES*/
 @media (max-width: 1366px) {
 
     #titleNor {

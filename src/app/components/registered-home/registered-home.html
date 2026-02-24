@@ -1,9 +1,17 @@
+<!-- BARRA DE NAVEGACIÓN -->
 <app-nav></app-nav>
+
+<!-- Header personalizado -->
+ <!-- Muestra información del usuario, título, línea decorativa y figuras hexagonales -->
 <app-header [showUserInfo]="true" [showTitle]="true" [hideTitleWhenLogged]="true" [showLine]="true" [showHexagon2]="true" [showHexagon6]="true" [showHexagon7]="true" variantClass="move-hex-home"></app-header>
 
 <section>
+    <!-- SECCIÓN: OBJETIVO Y RACHA -->
     <div class="content-target-streak">
+        <!-- Caja de saludo y objetivo -->
         <div class="content-box">
+
+            
             <h2 class="subTitle">¡Hola {{ user?.nickName }}!</h2>
             <div class="target-box">
                 <div class="box-up">
