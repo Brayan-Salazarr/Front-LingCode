@@ -1,50 +1,61 @@
+/*Sección principal centrada horizontalmente*/
 section {
     display: flex;
     justify-content: center;
     height: 504px;
 }
 
+/*Estilos generales para los parráfos*/
 p {
     font-family: "Poppins", sans-serif;
     font-size: 24px;
     width: 80%;
 }
 
+/*Elimina márgenes del elemento*/
 #lineLocation {
     margin: 0 0 0 0;
 }
 
+/*Contenedor principal de la sección "about"*/
 .aboutContainer {
     position: relative;
     height: 776px;
 }
 
+/*Ajuste especifíco de tamaño de texto*/
 #fontSize {
     font-size: 22px;
     width: 90%;
 }
 
+/*Fondo negro*/
 .black {
     background: black;
 }
 
+/*Texto blanco con el fondo negro*/
 .black p {
     color: white;
 }
 
+/*Fondo blanco*/
 .white {
     background: white;
 }
 
+/*Texto negro con el fondo blanco*/
 .white p {
     color: black;
 }
 
+/*Contenedor tipo tarjeta con elementos distribuidos*/
 .card {
     display: flex;
     justify-content: space-evenly;
 }
 
+/*Diseño cuando la imagen va primero*/
 .card.imageFirst {
     flex-direction: row;
     justify-content: space-evenly;
@@ -52,6 +63,7 @@ p {
     width: 100%;
 }
 
+/*Diseño cuando la información va primero*/
 .card.infoFirst {
     flex-direction: row-reverse;
     justify-content: space-evenly;
@@ -59,6 +71,7 @@ p {
     width: 100%;
 }
 
+/*Contenedor de la información dentro de la tarjeta*/
 .locationInfo {
     display: flex;
     flex-direction: column;
@@ -68,6 +81,7 @@ p {
     width: 50%;
 }
 
+/*Estilos de los títulos*/
 h2 {
     font-size: 33px;
     font-family: "Anton SC", sans-serif;
@@ -75,14 +89,17 @@ h2 {
     color: #20BAE4;
 }
 
+/*Imagen de avatar adaptable al tamaño de la pantalla*/
 .avatar {
     width: 10vw;
 }
 
+/*Imagen superior con altura fija*/
 .imgTop {
     height: 500px;
 }
 
+/*Línea decorativa azul con degradado*/
 .blueLine {
     position: absolute;
     height: 6px;
@@ -93,6 +110,7 @@ h2 {
             rgba(0, 217, 255, 1));
 }
 
+/*Posiciones para las líneas decorativas*/
 .blueLine.top {
     top: -6px;
 }
@@ -109,6 +127,7 @@ h2 {
     right: 0;
 }
 
+/*INICIO MEDIA QUERIES*/
 @media (min-width: 1700px) {
     #AboutInfo {
         display: flex;

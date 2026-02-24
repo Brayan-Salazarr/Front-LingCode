@@ -1,23 +1,30 @@
 <!-- Barra de navegación con fondo personalizado -->
+<!-- Se reutiliza componente de navegación y se envía un color como input-->
 <app-nav [colorBackground]="'backgroundNav1'"></app-nav>
 
 <!-- SECCIÓN SUPERIOR: AVATAR -->
+ <!-- Contenedor principal con fondo decorativo -->
 <div id="Back">
     <div id="location">
+        <!-- Imagen decorativa lateral -->
         <img src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png" alt="">
+        <!-- Bloque de información y selección -->
         <div id="info">
             <h2 class="colorTittle">Elige un avatar</h2>
             <div class="line"></div>
 
+            <!-- Componente reutilizable de carrusel para seleccionar avatar -->
             <app-carousel-avatar carouselWidth="45vw" carouselHeight="35vh" imageSize="14vw"></app-carousel-avatar>
 
             <h2 class="colorTittle">O elige tu propia foto</h2>
             <div class="line" id="lineId"></div>
+            <!-- Botón para subir imagen personalizada -->
             <button id="UpdatePhoto">Subir imagen</button>
             <p id="textSize">Tamaño máximo= 1MB</p>
         </div>
     </div>
 </div>
+<!-- Línea decorativa que separa secciones -->
 <div id="line"></div>
 
 <!-- SECCIÓN: EDICIÓN DE PERFIL -->
@@ -26,12 +33,16 @@
 
     <!-- Dropdown de configuraciones -->
     <div class="dropdownContainer">
+        <!-- Botón que abre/cierra el menú de configuraciones -->
         <button id="gear" (click)="toggleDropdown()"><img id="styleGear"
                 src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765828524/image-removebg-preview_pacdbd.png"
                 alt=""></button>
 
         <!-- Menú desplegable -->
+         <!-- Se muestra solo si isDropdownOpen es true -->
         <div class="dropdownM" *ngIf="isDropdownOpen">
+
+            <!-- Configuración de sonido -->
             <div class="setting-row" id="settingSound">
                 <label class="switch">
                     <input type="checkbox" id="email-alerts">
@@ -52,7 +63,9 @@
     </div>
 
     <!-- Información editable -->
+     <!-- Sección dividida en etiquetas (izquierda) y campos (derecha) -->
     <div class="infoBox">
+        <!-- Textos descriptivos -->
         <div class="regisInfo">
             <p class="textEdit">Nombre completo</p>
             <p class="textEdit">Apodo</p>
@@ -61,6 +74,7 @@
             <p class="textEdit">Confirmar contraseña</p>
         </div>
 
+        <!-- Campos de entrada -->
         <div class="recordFields">
             <input class="field" id="name">
             <input class="field" id="nickname">
@@ -70,14 +84,21 @@
         </div>
     </div>
 
+    <!-- Botones principales de acción -->
     <div class="buttons">
         <button id="Save">Guardar cambios</button>
+        <!-- Botón que abre el modal de confirmación -->
         <button id="Cancel" (click)="openModal()">Eliminar mi cuenta</button>
 
         <!-- MODAL DE ELIMINACIÓN -->
+         <!-- Se muestra solo sí isModalOpen es true -->
         <div *ngIf="isModalOpen" class="modal" (click)="onBackdropClick($event)">
+            
+            <!-- Contenido interno del moda -->
+             <!-- stopPropagation evita que se cierre al hacer click dentro -->
             <div class="modalContent" (click)="$event.stopPropagation()">
 
+                <!-- Vista de configuración -->
                 <div *ngIf="!isAccountDeleted">
                     <h3 id="question">¿Estas seguro de eliminar tu cuenta?</h3>
                     <div class="modalExit">
@@ -87,6 +108,7 @@
                 </div>
 
                 <!-- Mensaje de éxito -->
+                 <!-- se muestra después de eliminar la cuenta -->
                 <div *ngIf="isAccountDeleted" class="succes-message">
                     <h3>Cuenta eliminada exitosamente</h3>
                     <p id="textMod">Lamentamos verte ir. Estaremos aquí si decides volver.</p>
