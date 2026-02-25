@@ -1,49 +1,77 @@
+<!-- Barra de navegación principal del sitio -->
 <app-nav></app-nav>
+
+<!-- Header reutilizable con el título de la sección y elementos decorativos activados -->
 <app-header title="Metodo de enseñanza" [showTitle]="true" [classSpace]="'space'" [showLine]="true" [showHexagon]="true"
     [showDecorativeCircle]="true" [showHexagon1]="true" [showHexagon2]="true" [showHexagon3]="true"
     [showHexagon4]="true" [showHexagon5]="true" [showHexagon6]="true" [showHexagon7]="true"></app-header>
+
+<!-- Sección principal que contiene la información del método de enseñanza -->
 <section>
 
+    <!-- Bloque informativo: Simulación de entrevista técnica -->
     <div class="teaching-information">
+        <!-- Imagen representativa de la simulación -->
         <img class="teaching-img"
             src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764727827/image_13_qfpnt1.png" alt="">
+
+        <!-- Contenedor del texto explicativo -->
         <div class="teaching-text">
+            <!-- Título del bloque -->
             <h2 class="caption">Simulación de entrevista tecnica</h2>
+            <!-- Descripcion del beneficio de esta funcionalidad -->
             <p class="text">Estas simulaciones te ayudan a tener un contacto más cercano con las entrevistas
                 laborales reales. <br>A través de la inteligencia artificial, podrás practicar tus respuestas,
                 mejorar tu expresión y ganar confianza en un entorno seguro.</p>
+
+            <!-- Línea decorativa -->
             <div class="line"></div>
         </div>
-
-
-
     </div>
 
+    <!-- Bloque informativo: Interacción por voz con IA -->
     <div class="teaching-information" id="teaching-information-id">
 
+        <!-- Contenedor del texto -->
         <div class="teaching-text">
+            <!--Título del bloque -->
             <h2 class="caption">Interación por voz mediante IA</h2>
+            <!-- Descripción de la funcionalidad -->
             <p class="text">Aprender también puede ser una conversación. <br> Con la interacción por voz impulsada
                 por IA, podrás hablar, preguntar y practicar en tiempo real, como si tuvieras un mentor disponible
                 siempre.<br>Mejora tu pronunciación, tu fluidez y tu confianza al expresarte.</p>
+
+            <!-- Línea decorativa personalizada -->
             <div class="line" id="line-two"></div>
         </div>
+
+        <!-- Imagen representativa de la interacción por voz -->
         <img class="teaching-img"
             src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764727769/image_23_1_qmj8mj.png" alt="">
     </div>
 
+    <!-- Bloque informativo: Aprendizaje visual -->
     <div class="teaching-information">
+
+        <!-- Imagen representativa del aprendizaje visual -->
         <img class="teaching-img"
             src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764727765/image_23_2_gle3hw.png" alt="">
+
+        <!-- Contenedor del texto -->
         <div class="teaching-text">
+            <!-- Título del bloque -->
             <h2 class="caption">Aprende con color y claridad visual </h2>
+            <!-- Descripción del enfoque visual -->
             <p class="text">Cada módulo ha sido diseñado para ofrecerte una experiencia dinámica, atractiva y fácil de
                 comprender.<br> Los elementos visuales te guiarán paso a paso, ayudándote a recordar mejor los conceptos
                 y disfrutar el proceso de aprendizaje.</p>
+
+            <!-- Línea decorativa -->
             <div class="line"></div>
         </div>
 
     </div>
 </section>
 
+<!-- Footer reutilizable con información final del sitio -->
 <app-footer></app-footer>
