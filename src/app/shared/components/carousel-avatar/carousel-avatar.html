@@ -4,7 +4,7 @@
   <!-- Botón para ir a la imagen anterior -->
   <button class="nav left" (click)="cambiarImagenAtras()">❮</button>
   <!-- Contenedor que muestra las tarjetas -->
-  <div class="carousel" [style.width]="carouselWidth" [style.height]="carouselHeight">
+  <div class="carousel" [style.carousel-width]="carouselWidth" [style.height]="carouselHeight">
 
     <!-- Recorre 3 posiciones visibles del carrusel -->
     @for (i of [0, 1, 2]; track i) {
@@ -24,8 +24,7 @@
       <!-- alt: descripción accesible -->
       <!-- click: redirige al login/registro -->
       <!-- width: tamaño dinámico -->
-      <img [ngClass]="item.clase" [src]="item.ruta" [alt]="item.nombre" (click)="toggleAuth()"
-        [style.width]="imageSize" />
+      <img class="carousel-img" [ngClass]="item.clase" [src]="item.ruta" [alt]="item.nombre" (click)="toggleAuth()" />
 
     </div>
     }

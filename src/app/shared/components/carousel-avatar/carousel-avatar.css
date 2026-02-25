@@ -23,6 +23,11 @@
   cursor: pointer;
 }
 
+/*Tamaño de imagenes del carrusel*/
+.carousel-img {
+  width: 255px;
+}
+
 /*Botones de navegación (izquierda y derecha)*/
 .nav {
   background: #1e90ff;
@@ -45,7 +50,7 @@
 /*Botón izquierdo*/
 .nav.left {
   margin-right: 20px;
-  padding:0 2px 0 0 ;
+  padding: 0 2px 0 0;
 }
 
 /*Botón derecho*/
@@ -55,48 +60,78 @@
 }
 
 /*INICIO DE MEDIA QUERIES*/
-@media (max-width: 1366px) {
-  .carousel {
-    width: 65vw;
+@media (min-width: 1699px) {
+  .carousel-wrapper {
+    height: 155px;
+  }
+}
+
+@media (max-width: 1414px) {
+  .carousel-img {
+    width: 215px;
+  }
+}
+
+@media (max-width: 1279px) {
+  .carousel-wrapper {
+    height: 155px;
+  }
+
+  .carousel-img {
+    width: 190px;
+  }
+}
+
+@media (max-width: 1115px) {
+  .carousel-img {
+    width: 160px;
+  }
+}
+
+@media (max-width: 998px) {
+  .carousel-img {
+    width: 140px;
   }
 }
 
 @media (max-width: 920px) {
-
-  .carousel-wrapper {
-    height: 350px;
+  .carousel {
+    height: 100%;
   }
 
-  .nav{
-    width: 35px;
-    height: 35px;
+  .carousel-wrapper {
+    height: 170px;
   }
 
   .nav.left {
-  padding:0 2px 3px 0 ;
-}
+    margin-right: 5px;
+    padding: 0 2px 3px 0;
+  }
 
-.nav.right {
-  padding: 0 0 3px 2px;
-}
-}
+  .nav.right {
+    margin-left: 5px;
+    padding: 0 0 3px 2px;
+  }
 
-@media (max-width: 920px) {
-
-  .nav{
+  .nav {
     width: 30px;
     height: 30px;
     font-size: 20px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 820px) {
+  .carousel-img {
+    width: 130px;
+  }
+}
 
+@media (max-width: 480px) {
   .carousel-wrapper {
     height: 220px;
   }
 
-  .nav{
+  .nav {
     width: 25px;
     height: 25px;
     font-size: 17px;
@@ -105,10 +140,10 @@
 
 @media (max-width: 310px) {
 
-  .nav.left, .nav.right{
+  .nav.left,
+  .nav.right {
     width: 20px;
     height: 20px;
     font-size: 14px;
   }
-
 }
