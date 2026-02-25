@@ -1,3 +1,4 @@
+/*Contenedor principal del header, permite posicionar todos los elementos decorativos*/
 .header-wrapper {
     position: relative;
     height: 1000px;
@@ -5,6 +6,7 @@
     overflow: hidden;
 }
 
+/*Forma principal del header con diseño curvo e inclinado*/
 header {
     display: flex;
     background: black;
@@ -16,9 +18,9 @@ header {
     top: -735px;
     transform: skewY(-15deg);
     z-index: 2;
-
 }
 
+/*Imagen decorativa circular ubicada en el lado derecho*/
 #imgCircle {
     position: absolute;
     left: 79%;
@@ -26,6 +28,7 @@ header {
     z-index: 3;
 }
 
+/*Fondo azul decorativo*/
 #background {
     width: 2363px;
     height: 1342px;
@@ -38,6 +41,7 @@ header {
     z-index: 1;
 }
 
+/*Contenedor de la información principal del header*/
 .information {
     display: flex;
     flex-direction: column;
@@ -51,6 +55,7 @@ header {
     height: 310px;
 }
 
+/*Título principal visible en el header*/
 h1 {
     width: 52vw;
     font-size: 57px;
@@ -59,10 +64,12 @@ h1 {
     margin: 0 0 0 50px;
 }
 
+/*Variante de layout que ajusta el espaciado interno*/
 .space .information {
     justify-content: space-evenly;
 }
 
+/*Línea decorativa debajo del título*/
 .line {
     background: linear-gradient(to right,
             #FF00FB,
@@ -72,6 +79,7 @@ h1 {
     height: 20px;
 }
 
+/*HEXÁGONOS DECORATIVOS QUE APORTAN ESTILO VISUAL*/
 .hexagon1 {
     width: 46px;
     height: 54px;
@@ -210,10 +218,12 @@ h1 {
     transform: rotate(90deg);
 }
 
+/*Imagen del avatar del usuario*/
 .avatar {
     width: 310px;
 }
 
+/*Contenedor principal de la información del usuario*/
 .user-header {
     position: relative;
     display: flex;
@@ -223,6 +233,7 @@ h1 {
     left: -3vw;
 }
 
+/*Información general del usuario como nombre y datos*/
 .user-data {
     display: flex;
     flex-direction: column;
@@ -232,16 +243,19 @@ h1 {
     color: white;
 }
 
+/*Nombre o nickname destacado del usuario*/
 .nickname {
     font-size: 55px;
     font-family: "Anton SC", sans-serif;
 }
 
+/*Línea decorativa personalizada dentro del header*/
 #line {
     height: 10px;
     margin: 0 0 0 150px;
 }
 
+/*Imagen circular de fondo decorativa*/
 #imgCirclee {
     position: absolute;
     width: 550px;
@@ -251,11 +265,13 @@ h1 {
     opacity: 0.9;
 }
 
+/*Contenedor que organiza elementos horizontalmente*/
 .field {
     display: flex;
     justify-content: space-around;
 }
 
+/*Botón que permite editar información del usuario*/
 .button-edit {
     width: 150px;
     height: 40px;
@@ -268,16 +284,19 @@ h1 {
     border: none;
 }
 
+/*Contenedor que centra elementos verticalmente*/
 .space {
     display: flex;
     align-items: center;
 }
 
+/*Iconos pequeños usados junto a textos*/
 .img {
     width: 30px;
     margin: 0 30px 0 0;
 }
 
+/*Ajustes de posición específicos para hexágonos en la vista home*/
 .move-hex-home.hexagon2 {
     left: 89vw;
     top: 27vh;
@@ -291,8 +310,8 @@ h1 {
     left: 87vw;
 }
 
+/*INICIO DE MEDIA QUERIES*/
 @media (min-width: 1700px) {
-
     header {
         width: 2630px;
         height: 1446px;
@@ -378,13 +397,9 @@ h1 {
         top: 3%;
         left: 78%;
     }
-
 }
 
-
 @media (max-width: 1366px) {
-
-
     #background {
         height: 1331px;
     }

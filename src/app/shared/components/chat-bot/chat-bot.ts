@@ -9,29 +9,35 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './chat-bot.css',
 })
 export class ChatBot {
+//Controla si el char está abierto o cerrado
 isOpen = false;
 
-
+//Almacena el mensaje que el usuario está escribiendo
 newMessage = '';
   // Historial de mensajes
   messages = [
     { text: '¡Hola! Soy tu asistente Cybro. ¿En qué puedo ayudarte?', type: 'bot' }
   ];
 
+  //Abre o cierra el char al hacer clic
   toggleChat() {
     this.isOpen = !this.isOpen;
   }
 
+  //Envía el mensaje escrito por el usuario
   sendMessage() {
+    //Verifica que el mensaje no esté vacío
     if (this.newMessage.trim()) {
-      // 1. Añadir mensaje del usuario
+      //Añadir mensaje del usuario
       this.messages.push({ text: this.newMessage, type: 'user' });
       
+      //Guarda el mensaje en una variable temporal
       const userQuestion = this.newMessage;
       this.newMessage = ''; // Limpiar input
 
-      // 2. Simular respuesta del Bot
+      //Simular respuesta del Bot
       setTimeout(() => {
+        //Agrega la respuesta del bot al historial
         this.messages.push({ 
           text: `Recibí tu mensaje: "${userQuestion}". Pronto te daré una respuesta real.`, 
           type: 'bot' 

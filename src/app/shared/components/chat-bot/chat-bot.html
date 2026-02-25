@@ -1,28 +1,42 @@
+<!-- Contenedor general del chatbot -->
 <div class="chat-container">
+  <!-- Ventana del chat (solo se muestra si isOpen es true) -->
   <div class="chat-window" *ngIf="isOpen">
+    <!-- Encabezado del chat -->
     <div class="chat-header">
       <span>Asistente Cybro</span>
+      <!-- Botón para cerrar el chat -->
       <button id="button-cancel" (click)="toggleChat()">×</button>
     </div>
+    <!-- Cuerpo del chat donde se muestran los mensajes -->
    <div class="chat-body">
+    <!-- Recorre el historial de mensajes -->
       <div *ngFor="let msg of messages" [ngClass]="['msg-bubble', msg.type]">
+        <!-- Texto del mensaje -->
         {{ msg.text }}
       </div>
     </div>
 
+    <!-- Pie del chat (input + botón enviar) -->
     <div class="chat-footer">
+
+      <!-- Campo de texto enlazado a newMessage -->
+       <!-- Enter también envía el mensaje -->
       <input 
         type="text" 
         placeholder="Escribe un mensaje..." 
         [(ngModel)]="newMessage" 
         (keyup.enter)="sendMessage()">
+      <!-- Botón para enviar mensaje -->
       <button (click)="sendMessage()">
         <i class="send-icon">➤</i>
       </button>
     </div>
   </div>
 
+  <!-- Botón flotante que abre/cierra el chat -->
   <button class="floating-btn" (click)="toggleChat()" [class.active]="isOpen">
+    <!-- Imagen del bot -->
     <img src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765915938/Gemini_Generated_Image_oq1gh0oq1gh0oq1g-removebg-preview_2_h5rmq9.png" alt="Bot">
   </button>
 </div>
