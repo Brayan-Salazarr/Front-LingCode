@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export interface Lesson {
+export interface LessonService {
   id: string;
   module: string;
   title: string;
@@ -26,21 +26,14 @@ export interface Lesson {
 @Injectable({
   providedIn: 'root',
 })
-export class Lesson {
-   @Input() lesson!: Lesson;
+export class LessonService {
 
+  private baseUrl = '/api/modules';
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getLessonsByModule(moduleId: string): Observable<Lesson[]> {
-    return this.http.get<Lesson[]>(`/api/modules/${moduleId}/lessons`);
+  getLessonsByModule(moduleId: string): Observable<LessonService[]> {
+    return this.http.get<LessonService[]>(`${this.baseUrl}/${moduleId}/lessons`);
   }
-
-  // Ejemplo para mostrar título según idioma (puedes extender para multiidioma)
-  getTitle(lang: 'en' | 'es'): string {
-    if (lang === 'es' && this.lesson.title_es) return this.lesson.title_es;
-    return this.lesson.title;
-  }
-
 
 }

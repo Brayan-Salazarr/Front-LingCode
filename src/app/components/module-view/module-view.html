@@ -3,16 +3,16 @@
 
 <!-- Header configurable -->
 <!-- Se muestran elementos decorativos y se oculta el título si el usuario está logueado -->
-<app-header *ngIf="(authService.currentUser$ | async) === null" title="Módulos" [showTitle]="true" [showLine]="true" [classSpace]="'space'" [showUserInfo]="true"
-  [showDecorativeCircle]="true" [hideTitleWhenLogged]="true" [showHexagon1]="true" [showHexagon2]="true"
-  [showHexagon3]="true" [showHexagon4]="true" [showHexagon5]="true" [showHexagon6]="true"
-  [showHexagon7]="true"></app-header>
+<app-header *ngIf="(authService.currentUser$ | async) === null" title="Módulos" [showTitle]="true" [showLine]="true"
+  [classSpace]="'space'" [showUserInfo]="true" [showDecorativeCircle]="true" [hideTitleWhenLogged]="true"
+  [showHexagon1]="true" [showHexagon2]="true" [showHexagon3]="true" [showHexagon4]="true" [showHexagon5]="true"
+  [showHexagon6]="true" [showHexagon7]="true"></app-header>
 
 <!-- Contenedor principal de módulos -->
 <!-- Se renderiza dinámicamente desde el array "modules" -->
 <section class="modulesContainer" [class.registered]="(authService.currentUser$ | async) !== null">
 
-  <h1 class="titleModule" *ngIf="(authService.currentUser$ | async) !== null" >Módulos</h1>
+  <h1 class="titleModule" *ngIf="(authService.currentUser$ | async) !== null">Módulos</h1>
 
   <!-- 
     *ngFor recorre los módulos disponibles.
@@ -26,18 +26,30 @@
     <!-- Tarjeta -->
     <div class="moduleCard">
 
-      <div class="cardBg" [style.background-image]="'url(' + module.bgImage + ')'"></div>
+      <!-- Fondo visual -->
+      <div class="cardBg" [style.background-image]="'url(' + module.bgImage + ')'">
+      </div>
 
       <div class="cardContent">
+        <!-- Imagen del módulo (visual front) -->
         <img [src]="module.image" [class]="module.size">
+
+        <!-- Título viene de BD -->
         <h3>{{ module.title }}</h3>
 
-        <p class="textProgres">{{module.text}}</p>
+        <!-- Texto visual -->
+        <p class="textProgres">{{ module.text }}</p>
+
+        <!-- Barra de progreso (backend si ya existe) -->
         <div class="progressBar">
-          <div class="progress" [style.width.%]="module.progress"></div>
+          <div class="progress" [style.width.%]="module.progress">
+          </div>
         </div>
 
-        <button>Practicar</button>
+        <!-- Botón -->
+        <button (click)="goToLessons(module.id)">
+          Practicar
+        </button>
       </div>
 
     </div>

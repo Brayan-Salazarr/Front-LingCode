@@ -447,6 +447,7 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
     gap: 15px;
     padding: 15px 30px;
     border-radius: 12px;
+    color: white;
     max-width: 400px;
     min-height: 70px;
     background-color: #000;

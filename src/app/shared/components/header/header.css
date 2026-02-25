@@ -311,19 +311,30 @@ h1 {
 }
 
 /*INICIO DE MEDIA QUERIES*/
-@media (min-width: 1700px) {
+@media (min-width: 1538px) {
     header {
         width: 2630px;
-        height: 1446px;
+        height: 1352px;
+    }
+
+    .user-data {
+        position: relative;
+        top: -45px;
     }
 
     h1 {
         font-size: 68px;
     }
 
+    .field {
+        position: relative;
+        top: 38px;
+        left: 57px;
+    }
+
     #background {
-        width: 2636px;
-        height: 1479px;
+        width: 2701px;
+        height: 1369px;
     }
 
     #imgCircle {
