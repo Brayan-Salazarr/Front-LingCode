@@ -1,9 +1,11 @@
+/*Contenedor principal que organiza las secciones en columna*/
 section {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
+/*Contenedor que alínea imagen y texto horizontalmente*/
 .field {
     display: flex;
     align-items: center;
@@ -11,10 +13,12 @@ section {
     width: 100%;
 }
 
+/*Tamaño de la primera imagen*/
 #img1 {
     width: 40vw;
 }
 
+/*Contenedor del texto informativo*/
 .information {
     display: flex;
     flex-direction: column;
@@ -23,6 +27,7 @@ section {
     height: 429px;
 }
 
+/*Estilo del título principal*/
 .caption {
     color: #20BAE4;
     font-family: "Anton SC", sans-serif;
@@ -30,12 +35,14 @@ section {
     letter-spacing: 1px;
 }
 
+/*Estilo del texto descriptivo*/
 .text {
     font-family: "Poppins", sans-serif;
     font-size: 33px;
     margin: 20px 0 0 0;
 }
 
+/*Contenedor negro con forma triangular decorativa*/
 .container-with-triangle {
     width: 860px;
     height: 943px;
@@ -44,6 +51,7 @@ section {
     margin-top: 100px;
 }
 
+/*Segunda imagen posicionada encima del triángulo*/
 #img2 {
     position: relative;
     top: -686px;
@@ -51,16 +59,19 @@ section {
     width: 40vw;
 }
 
+/*Sección completa donde se encuentra el avatar*/
 .content-avatar {
     height: 1287px;
 }
 
+/*Información asociada al avatar*/
 .information-avatar {
     width: 547px;
     height: 429px;
     margin: 0 109px 0 0
 }
 
+/*Contenedor que organiza el avatar y su información*/
 .field-avatar {
     display: flex;
     justify-content: space-between;
@@ -68,15 +79,18 @@ section {
     position: relative;
 }
 
+/*Contenedor de los módulos*/
 .field-modules {
     display: flex;
     justify-content: space-around;
 }
 
+/*Texto informativo de los módulos*/
 .information-modules {
     width: 626px;
 }
 
+/*Sección de invitación con fondo negro*/
 .field-invitaion {
     display: flex;
     justify-content: space-between;
@@ -85,6 +99,7 @@ section {
     height: 772px;
 }
 
+/*Contenedor del texto dentro de la invitación*/
 .information-invitation {
     display: flex;
     flex-direction: column;
@@ -93,6 +108,7 @@ section {
     width: 500px;
 }
 
+/*Texto de invitación en color blanco*/
 .text-invitation {
     color: white;
     font-family: "Poppins", sans-serif;
@@ -100,6 +116,7 @@ section {
     margin: 20px 0 0 0;
 }
 
+/*Contenedor de la imagen del personaje*/
 .img-cybro {
     display: flex;
     flex-direction: column;
@@ -107,22 +124,27 @@ section {
     position: relative;
 }
 
+/*Imagen gris posicionada como fondo*/
 #img-cybro-gray {
     position: absolute;
     width: 50vw;
 }
 
+/*Imagen de símbolo decorativos*/
 #img-symbols {
     width: 907px;
     margin: 0 0 39vh 0;
 }
 
+/*Línea decorativa con degradado*/
 #line {
     position: relative;
     background: linear-gradient(to left, rgba(190, 177, 248, 1), rgba(0, 217, 255, 1));
     height: 5px;
 }
 
+/*HEXAGÓNOS DECORATIVOS*/
+/*Hexágono morado*/
 .hexagon3 {
     width: 46px;
     height: 60px;
@@ -140,6 +162,7 @@ section {
     transform: rotate(90deg);
 }
 
+/*Hexágono morado mas pequeño*/
 .hexagon4 {
     width: 31px;
     height: 42px;
@@ -157,6 +180,7 @@ section {
     transform: rotate(90deg);
 }
 
+/*Hexágono azul*/
 .hexagon5 {
     width: 39px;
     height: 55px;
@@ -174,6 +198,7 @@ section {
     transform: rotate(90deg);
 }
 
+/*Hexágono con degradado decorativo*/
 .hexagon6 {
     width: 46px;
     height: 60px;
@@ -193,6 +218,7 @@ section {
     transform: rotate(90deg);
 }
 
+/*Contenedor del subtítulo y línea*/
 .subtitle-field {
     display: flex;
     flex-direction: column;
@@ -200,12 +226,14 @@ section {
     margin: 15px 0 0 0;
 }
 
+/*Estilo del título del avatar*/
 .avatar-caption {
     font-family: "Anton SC", sans-serif;
     font-size: 38px;
     letter-spacing: 2px;
 }
 
+/*Línea decorativa debajo del título*/
 .line-avatar {
     background: linear-gradient(to left, rgba(176, 172, 205, 1), rgba(0, 111, 255, 1));
     border-radius: 30px;
@@ -213,6 +241,7 @@ section {
     height: 15px;
 }
 
+/*INICIO DE MEDIA QUERIES*/
 @media (min-width: 1700px) {
     .field-invitaion {
         height: 807px;
@@ -759,7 +788,6 @@ section {
         clip-path: polygon(0 0, 0 0, 87% 50%, 0 85%);
     }
 
-
     .information-modules {
         width: 100%;
         display: flex;
@@ -774,7 +802,6 @@ section {
         left: 331px;
         top: -648px;
     }
-
 }
 
 @media (max-width: 490px) {

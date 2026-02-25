@@ -1,25 +1,29 @@
+/*Contenedor principal del carrusel*/
 .carousel-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
+/*Contenedor que agrupa las tarjetas*/
 .carousel {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
+/*Estilo de cada tarjeta individual*/
 .card {
   display: flex;
   flex-direction: column;
 }
 
+/*Estilo de la imagen dentro de la tarjeta*/
 .img {
   cursor: pointer;
 }
 
+/*Botones de navegación (izquierda y derecha)*/
 .nav {
   background: #1e90ff;
   color: white;
@@ -33,20 +37,24 @@
   transition: background-color 0.2s;
 }
 
+/*Efecto cuando el usuario pasa el mouse*/
 .nav:hover {
   background: #007bff;
 }
 
+/*Botón izquierdo*/
 .nav.left {
   margin-right: 20px;
   padding:0 2px 0 0 ;
 }
 
+/*Botón derecho*/
 .nav.right {
   margin-left: 20px;
   padding: 0 0 0 2px;
 }
 
+/*INICIO DE MEDIA QUERIES*/
 @media (max-width: 1366px) {
   .carousel {
     width: 65vw;
