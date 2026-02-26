@@ -144,10 +144,11 @@ h2 {
 section {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 35px;
     align-items: center;
     background-color: white;
-    min-height: 90vh;
+    min-height: 100vh;
 }
 
 #textColor {
@@ -316,7 +317,13 @@ input {
 .dropdownContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.gearWrapper {
+    display: flex;
+    justify-content: center;
     width: 100%;
 }
 
@@ -330,6 +337,7 @@ input {
     border-radius: 10px;
     height: 10vh;
     width: 30%;
+    align-self: center;
 }
 
 .switch input {
@@ -426,7 +434,7 @@ input:checked+.slider:before {
     }
 
     #textColor {
-        margin: 0 0 -35px 0;
+        margin: 35px 0 -35px 0;
     }
 }
 
@@ -440,6 +448,11 @@ input:checked+.slider:before {
     #UpdatePhoto {
         font-size: 14px;
         width: 145px;
+    }
+
+    #Save {
+        width: 145px;
+        font-size: 14px;
     }
 }
 

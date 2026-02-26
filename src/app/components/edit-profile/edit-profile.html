@@ -3,7 +3,7 @@
 <app-nav [colorBackground]="'backgroundNav1'"></app-nav>
 
 <!-- SECCIÓN SUPERIOR: AVATAR -->
- <!-- Contenedor principal con fondo decorativo -->
+<!-- Contenedor principal con fondo decorativo -->
 <div id="Back">
     <div id="location">
         <!-- Imagen decorativa lateral -->
@@ -34,12 +34,14 @@
     <!-- Dropdown de configuraciones -->
     <div class="dropdownContainer">
         <!-- Botón que abre/cierra el menú de configuraciones -->
-        <button id="gear" (click)="toggleDropdown()"><img id="styleGear"
-                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765828524/image-removebg-preview_pacdbd.png"
-                alt=""></button>
+        <div class="gearWrapper">
+            <button id="gear" (click)="toggleDropdown()"><img id="styleGear"
+                    src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765828524/image-removebg-preview_pacdbd.png"
+                    alt=""></button>
+        </div>
 
         <!-- Menú desplegable -->
-         <!-- Se muestra solo si isDropdownOpen es true -->
+        <!-- Se muestra solo si isDropdownOpen es true -->
         <div class="dropdownM" *ngIf="isDropdownOpen">
 
             <!-- Configuración de sonido -->
@@ -63,7 +65,7 @@
     </div>
 
     <!-- Información editable -->
-     <!-- Sección dividida en etiquetas (izquierda) y campos (derecha) -->
+    <!-- Sección dividida en etiquetas (izquierda) y campos (derecha) -->
     <div class="infoBox">
         <!-- Textos descriptivos -->
         <div class="regisInfo">
@@ -91,11 +93,11 @@
         <button id="Cancel" (click)="openModal()">Eliminar mi cuenta</button>
 
         <!-- MODAL DE ELIMINACIÓN -->
-         <!-- Se muestra solo sí isModalOpen es true -->
+        <!-- Se muestra solo sí isModalOpen es true -->
         <div *ngIf="isModalOpen" class="modal" (click)="onBackdropClick($event)">
-            
+
             <!-- Contenido interno del moda -->
-             <!-- stopPropagation evita que se cierre al hacer click dentro -->
+            <!-- stopPropagation evita que se cierre al hacer click dentro -->
             <div class="modalContent" (click)="$event.stopPropagation()">
 
                 <!-- Vista de configuración -->
@@ -108,7 +110,7 @@
                 </div>
 
                 <!-- Mensaje de éxito -->
-                 <!-- se muestra después de eliminar la cuenta -->
+                <!-- se muestra después de eliminar la cuenta -->
                 <div *ngIf="isAccountDeleted" class="succes-message">
                     <h3>Cuenta eliminada exitosamente</h3>
                     <p id="textMod">Lamentamos verte ir. Estaremos aquí si decides volver.</p>
