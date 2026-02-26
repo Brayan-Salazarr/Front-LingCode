@@ -482,20 +482,42 @@ input:checked+.slider:before {
     #lineId {
         width: 55vw;
     }
+
+    img {
+        width: 52vw;
+    }
 }
 
 @media(max-width: 480px) {
     .line {
         margin-top: -55px;
     }
+
+    img {
+        margin: 50px 0 0 0;
+    }
 }
 
 @media(max-width: 355px) {
     .line {
-        margin-top: -78px;
+        margin-top: -34px;
     }
 
     h2 {
-        font-size: 25px;
+        font-size: 23px;
+    }
+
+    #info {
+        justify-content: center;
+        gap: 33px;
+    }
+
+    #Back {
+        height: 550px;
+    }
+
+    img {
+        margin: 20px 0 0 0;
+        width: 48vw;
     }
 }
