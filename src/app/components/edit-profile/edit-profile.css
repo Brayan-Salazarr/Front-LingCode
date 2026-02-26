@@ -536,7 +536,7 @@ input:checked+.slider:before {
 
 @media(max-width: 480px) {
     .line {
-        margin-top: -55px;
+        margin-top: -40px;
     }
 
     img {
