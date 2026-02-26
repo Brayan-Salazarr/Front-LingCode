@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Lesson, LessonC } from '../components/lesson/lesson';
 
 export interface LessonService {
   id: string;
@@ -27,13 +28,27 @@ export interface LessonService {
   providedIn: 'root',
 })
 export class LessonService {
+  private baseUrl = 'http://localhost:8080/api/modules';
 
-  private baseUrl = '/api/modules';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  getLessonsByModule(moduleId: string): Observable<LessonC[]> {
+    return this.http.get<LessonC[]>(
+      `${this.baseUrl}/${moduleId}/lessons`
+    );
+  }
 
-  getLessonsByModule(moduleId: string): Observable<LessonService[]> {
-    return this.http.get<LessonService[]>(`${this.baseUrl}/${moduleId}/lessons`);
+  submitAnswer(userId: string, lessonId: string, answer: string) {
+    return this.http.post<boolean>(
+      `${this.baseUrl}/lessons/${lessonId}/answer?userId=${userId}`,
+      answer
+    );
+  }
+
+  getProgress(userId: string) {
+    return this.http.get<any>(
+      `${this.baseUrl}/progress?userId=${userId}`
+    );
   }
 
 }

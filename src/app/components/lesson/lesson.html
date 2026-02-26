@@ -1,1 +1,30 @@
-<p>lesson works!</p>
+<div class="component" *ngIf="lesson">
+
+  <h2>{{ lesson.title }}</h2>
+
+  <!-- Barra progreso -->
+  <div class="progress-bar">
+    <div class="progress"
+         [style.width.%]="progressPercent">
+    </div>
+  </div>
+
+  <!-- Pregunta -->
+  <div *ngIf="lesson && currentExercise">
+  <h2>{{ currentExercise.question }}</h2>
+</div>
+
+  <!-- Opciones -->
+  <div *ngFor="let option of currentExercise?.options">
+    <button (click)="selectOption(option.text)">
+      {{ option.text }}
+    </button>
+  </div>
+
+  <button (click)="submitAnswer()">
+    Responder
+  </button>
+
+  <p>{{ feedback }}</p>
+
+</div>

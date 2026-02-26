@@ -29,28 +29,6 @@ export interface Module {
 })
 export class ModuleService {
 
- /*  // 🔥 Datos de prueba (mientras no tengas backend)
-  private modules: Module[] = [
-    {
-      id: '1',
-      title: 'Fundamentos',
-      description: 'Conceptos básicos',
-      order_index: 1,
-      is_published: true
-    },
-    {
-      id: '2',
-      title: 'Intermedio',
-      description: 'Conceptos más avanzados',
-      order_index: 2,
-      is_published: true
-    }
-  ];
-
-  getModules(): Observable<Module[]> {
-    return of(this.modules);
-  }*/
-
   private baseUrl = 'http://localhost:8080/api/modules';
 
   constructor(private http: HttpClient) {}
