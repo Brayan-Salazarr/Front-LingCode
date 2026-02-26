@@ -195,7 +195,7 @@ input {
     background: linear-gradient(#F4F4F4) padding-box,
         linear-gradient(90deg, #AF02FF, #0051FF) border-box;
     padding: 0 0 0 5px;
-    height: 5vh;
+    height: 42px;
     width: 505px;
 }
 
@@ -262,7 +262,7 @@ input {
     color: black;
     padding: 18px;
     height: 15%;
-    width: 20%;
+    width: 23%;
 }
 
 .modalExit {
@@ -280,8 +280,8 @@ input {
     cursor: pointer;
     font-family: "Poppins", sans-serif;
     border-radius: 10px;
-    height: 3vh;
-    width: 5vw;
+    height: 26px;
+    width: 98px;
 }
 
 .buttonStyle:hover {
@@ -436,15 +436,26 @@ input:checked+.slider:before {
     }
 
     .buttonStyle {
-        height: 4vh;
-        width: 6.5vw;
+        height: 30px;
+        width: 100px;
+    }
+
+    .modalExit {
+        justify-content: space-between;
     }
 
     #textColor {
         margin: 35px 0 -35px 0;
     }
-}
 
+    #settingSound {
+        width: 35%;
+    }
+
+    .setting-row {
+        width: 50%;
+    }
+}
 
 @media(max-width: 1245px) {
     #UpdatePhoto {
@@ -459,16 +470,68 @@ input:checked+.slider:before {
     #Cancel {
         font-size: 14px;
     }
+
+    #settingSound {
+        width: 40%;
+    }
+
+    .setting-row {
+        width: 60%;
+    }
+
+    #question {
+        font-size: 14px;
+    }
+
+    .buttonStyle {
+        font-size: 13px;
+    }
+
+    .modalContent {
+        width: 32%;
+    }
+
+    h3{
+        font-size: 14px;
+    }
+
+    #textMod {
+        font-size: 13px;
+    }
 }
 
 @media(max-width: 920px) {
     input {
-        height: 4vh;
+        height: 34px;
         width: 400px;
     }
 
     .regisInfo {
         width: 630px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    .switch {
+        width: 30px;
+        height: 19px;
+    }
+
+    .slider:before {
+        height: 15px;
+        width: 15px;
+        bottom: 2px;
+    }
+
+    .dropdownM {
+        height: 60px;
+        width: 368px
+    }
+
+    .modalContent {
+        width: 34%;
     }
 }
 
@@ -513,6 +576,10 @@ input:checked+.slider:before {
     .buttons {
         width: 70%;
     }
+
+    .modalContent {
+        width: 48%;
+    }
 }
 
 @media(max-width: 545px) {
@@ -532,6 +599,10 @@ input:checked+.slider:before {
     .buttons {
         width: 100%;
     }
+
+    .modalContent {
+        width: 55%;
+    }
 }
 
 @media(max-width: 480px) {
@@ -549,6 +620,23 @@ input:checked+.slider:before {
 
     .textEdit {
         width: 315px;
+    }
+
+    #settingSound {
+        width: 38%;
+    }
+
+    .setting-row {
+        width: 55%;
+    }
+
+    .dropdownM {
+        height: 55px;
+        width: 305px;
+    }
+
+    .modalContent {
+        width: 75%;
     }
 }
 
@@ -589,5 +677,28 @@ input:checked+.slider:before {
         align-items: center;
         height: 105px;
         margin: 10px;
+    }
+
+    .dropdownM {
+        display: flex;
+        flex-direction: column;
+        height: 75px;
+        width: 240px;
+    }
+
+    #settingSound {
+        width: 100%;
+    }
+
+    label {
+        width: 100px;
+    }
+
+    .setting-row {
+        width: 100%;
+    }
+
+    .modalContent {
+        width: 80%;
     }
 }
