@@ -51,7 +51,7 @@ export class ModuleService {
     return of(this.modules);
   }*/
 
-  private baseUrl = '/api/modules';
+  private baseUrl = 'http://localhost:8080/api/modules';
 
   constructor(private http: HttpClient) {}
 
