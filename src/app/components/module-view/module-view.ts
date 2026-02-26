@@ -64,7 +64,7 @@ currentStep = 1;
 
   ngOnInit(): void {
     this.moduleService.getModules().subscribe(data => {
-
+      console.log("DATA BACK:", data);
       const published = data.filter(m => m.is_published);
 
       this.modules = published.map((module, index) => ({
