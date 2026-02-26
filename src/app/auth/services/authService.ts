@@ -74,7 +74,8 @@ login(identifier: string, password: string) {
     }
   ).pipe(
     tap(res => {
-      localStorage.setItem(this.TOKEN_KEY, res.token);
+  localStorage.setItem(this.TOKEN_KEY, res.token);
+  localStorage.setItem(this.REFRESH_TOKEN_KEY, res.refreshToken);
 
       // Decodificar el JWT para obtener la información del usuario
       const decodedToken = this.decodeToken(res.token);
@@ -120,7 +121,8 @@ login(identifier: string, password: string) {
       user
     ).pipe(
       tap(res => {
-        localStorage.setItem(this.TOKEN_KEY, res.token);
+  localStorage.setItem(this.TOKEN_KEY, res.token);
+  localStorage.setItem(this.REFRESH_TOKEN_KEY, res.refreshToken);
 
         // El backend puede devolver la data del usuario de diferentes formas
         const userData: User =  {
@@ -135,6 +137,23 @@ login(identifier: string, password: string) {
       })
     );
   }
+
+  refreshToken() {
+  const refreshToken = localStorage.getItem(this.REFRESH_TOKEN_KEY);
+
+  return this.http.post<AuthResponse>(
+    `${this.api}/refresh`,
+    { refreshToken }
+  ).pipe(
+    tap(res => {
+      localStorage.setItem(this.TOKEN_KEY, res.token);
+
+      if (res.refreshToken) {
+        localStorage.setItem(this.REFRESH_TOKEN_KEY, res.refreshToken);
+      }
+    })
+  );
+}
 
 
 

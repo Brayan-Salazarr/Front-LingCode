@@ -3,7 +3,7 @@ import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { authInterceptorInterceptor } from './core/interceptors/auth-interceptor';
+/*import { authInterceptorInterceptor } from './core/interceptors/auth-interceptor';*/
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
       })
     ),
     provideHttpClient(
-      withInterceptors([authInterceptorInterceptor])
+     /* withInterceptors([authInterceptorInterceptor])*/
     )
   ]
 };

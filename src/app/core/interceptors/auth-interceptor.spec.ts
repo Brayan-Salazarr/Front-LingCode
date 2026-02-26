@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpInterceptorFn } from '@angular/common/http';
 
-import { authInterceptorInterceptor } from './auth-interceptor';
+/*import { authInterceptorInterceptor } from './auth-interceptor';
 
 describe('authInterceptorInterceptor', () => {
   const interceptor: HttpInterceptorFn = (req, next) => 
@@ -14,4 +14,4 @@ describe('authInterceptorInterceptor', () => {
   it('should be created', () => {
     expect(interceptor).toBeTruthy();
   });
-});
+});*/

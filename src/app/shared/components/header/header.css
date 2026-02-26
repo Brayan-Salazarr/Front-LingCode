@@ -317,6 +317,10 @@ h1 {
         height: 1352px;
     }
 
+    .information {
+        top: 790px;
+    }
+
     .user-data {
         position: relative;
         top: -45px;
@@ -328,7 +332,7 @@ h1 {
 
     .field {
         position: relative;
-        top: 38px;
+        top: 120px;
         left: 57px;
     }
 
@@ -339,8 +343,8 @@ h1 {
 
     #imgCircle {
         top: 0%;
-        left: 76%;
-        width: 454px;
+        left: 81%;
+        width: 365px;
     }
 
     .information {
@@ -352,29 +356,29 @@ h1 {
     }
 
     .hexagon3 {
-        top: 733px;
+        top: 650px;
     }
 
     .hexagon4 {
-        top: 751px;
+        top: 695px;
         left: 184px;
     }
 
     .hexagon5 {
-        top: 671px;
+        top: 620px;
     }
 
     .hexagon6 {
-        left: 1193px;
+        left: 74vw;
     }
 
     .hexagon7 {
-        top: 534px;
+        top: 495px;
         left: 1304px;
     }
 
     .hexagon8 {
-        top: 634px;
+        top: 555px;
         left: 1016px;
     }
 
@@ -383,7 +387,7 @@ h1 {
     }
 
     .move-hex-home.hexagon7 {
-        top: 50vh;
+        top: 44vh;
     }
 
     #imgCirclee {
