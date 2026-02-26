@@ -159,33 +159,26 @@ section {
 /*Contenedor de datos*/
 .infoBox {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
     font-family: "Poppins", sans-serif;
     font-weight: bold;
     margin: 0;
-    width: 59vw;
+    width: 100%;
 }
 
 .regisInfo {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     color: black;
-    height: 20vw;
+    height: 79px;
+    width: 710px;
 }
 
 .textEdit {
     font-size: clamp(10px, 1.1vw, 30px);
     margin: 0 0 0 0;
-}
-
-.recordFields {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 21vw;
-    width: 60%;
 }
 
 /*Inputs con bordes degradados*/
@@ -198,12 +191,14 @@ input {
     background: linear-gradient(#F4F4F4) padding-box,
         linear-gradient(90deg, #AF02FF, #0051FF) border-box;
     padding: 0 0 0 5px;
-    height: 5vh;
+    height: 6vh;
+        width: 450px;
 }
 
 .buttons {
     display: flex;
     justify-content: space-around;
+    margin: 0 0 30px 0;
     width: 50%;
 }
 

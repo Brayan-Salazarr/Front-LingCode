@@ -67,21 +67,29 @@
     <!-- Información editable -->
     <!-- Sección dividida en etiquetas (izquierda) y campos (derecha) -->
     <div class="infoBox">
-        <!-- Textos descriptivos -->
+        <!-- Textos descriptivos y campos de entrada -->
         <div class="regisInfo">
             <p class="textEdit">Nombre completo</p>
-            <p class="textEdit">Apodo</p>
-            <p class="textEdit">Correo eléctronico</p>
-            <p class="textEdit">Contraseña</p>
-            <p class="textEdit">Confirmar contraseña</p>
+            <input class="field" id="name">
         </div>
 
-        <!-- Campos de entrada -->
-        <div class="recordFields">
-            <input class="field" id="name">
+        <div class="regisInfo">
+            <p class="textEdit">Apodo</p>
             <input class="field" id="nickname">
+        </div>
+
+        <div class="regisInfo">
+            <p class="textEdit">Correo eléctronico</p>
             <input class="field" id="email" type="email">
+        </div>
+
+        <div class="regisInfo">
+            <p class="textEdit">Contraseña</p>
             <input class="field" id="password" type="password">
+        </div>
+
+        <div class="regisInfo">
+            <p class="textEdit">Confirmar contraseña</p>
             <input class="field" id="confirmPass" type="password">
         </div>
     </div>
