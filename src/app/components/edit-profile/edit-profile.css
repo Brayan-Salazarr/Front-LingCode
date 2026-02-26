@@ -174,7 +174,6 @@ section {
     height: 20vw;
 }
 
-
 .textEdit {
     font-size: clamp(10px, 1.1vw, 30px);
     margin: 0 0 0 0;
@@ -407,7 +406,7 @@ input:checked+.slider:before {
 /*INICIO MEDIA QUERIES*/
 @media(max-width: 1698px) {
     .line {
-        margin-top: -45px;
+        margin-top: -25px;
     }
 }
 
@@ -452,7 +451,51 @@ input:checked+.slider:before {
 }
 
 @media(max-width: 768px) {
+    #Back {
+        height: 800px;
+    }
+
     #location {
         flex-direction: column;
+    }
+
+    img {
+        margin: 35px 0 0 0;
+    }
+
+    .line {
+        margin-top: -35px;
+        width: 30vw;
+    }
+
+    #lineId {
+        width: 35vw;
+    }
+}
+
+@media(max-width: 545px) {
+    .line {
+        margin-top: -65px;
+        width: 40vw;
+    }
+
+    #lineId {
+        width: 55vw;
+    }
+}
+
+@media(max-width: 480px) {
+    .line {
+        margin-top: -55px;
+    }
+}
+
+@media(max-width: 355px) {
+    .line {
+        margin-top: -78px;
+    }
+
+    h2 {
+        font-size: 25px;
     }
 }
