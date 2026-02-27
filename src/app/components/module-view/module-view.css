@@ -112,12 +112,13 @@ h3 {
   font-family: 'Poppins', sans-serif;
   margin: 0 0 0 0;
   font-size: 15px;
- color: white;
+  color: white;
 }
 
 img {
-  width: 15vw;
+  width: 235px;
 }
+
 
 button {
   cursor: pointer;

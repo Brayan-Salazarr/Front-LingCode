@@ -1,30 +1,24 @@
-<div class="component" *ngIf="lesson">
+<div class="component" *ngIf="lesson$ | async as lesson">
 
   <h2>{{ lesson.title }}</h2>
 
-  <!-- Barra progreso -->
   <div class="progress-bar">
-    <div class="progress"
-         [style.width.%]="progressPercent">
+    <div class="progress" [style.width.%]="progressPercent"></div>
+  </div>
+
+  <ng-container *ngIf="getCurrentExercise(lesson) as currentExercise">
+
+    <h2>{{ currentExercise.question }}</h2>
+
+    <div class="" *ngFor="let option of currentExercise.options">
+      <button (click)="selectOption(option.text)">
+        {{ option.text }}
+      </button>
     </div>
-  </div>
 
-  <!-- Pregunta -->
-  <div *ngIf="lesson && currentExercise">
-  <h2>{{ currentExercise.question }}</h2>
-</div>
+    <button (click)="submitAnswer(lesson)">Responder</button>
+    <p>{{ feedback }}</p>
 
-  <!-- Opciones -->
-  <div *ngFor="let option of currentExercise?.options">
-    <button (click)="selectOption(option.text)">
-      {{ option.text }}
-    </button>
-  </div>
-
-  <button (click)="submitAnswer()">
-    Responder
-  </button>
-
-  <p>{{ feedback }}</p>
+  </ng-container>
 
 </div>

@@ -20,14 +20,14 @@
     isLast: indica si es el último módulo
     isFirst: indica si es el primero
   -->
-  <div class="moduleRow" *ngFor="let module of modules; let i = index; let isLast = last; let isFirst = first"
+  <div class="moduleRow" *ngFor="let module of modules$ | async; let i = index; let isLast = last; let isFirst = first"
     [class.left]="i % 2 === 0" [class.right]="i % 2 !== 0" [class.last-module]="isLast" [class.first-module]="isFirst">
 
     <!-- Tarjeta -->
     <div class="moduleCard">
 
       <!-- Fondo visual -->
-      <div class="cardBg" [style.background-image]="'url(' + module.bgImage + ')'">
+      <div class="cardBg" [style.backgroundImage]="'url(' + module.bgImage + ')'">
       </div>
 
       <div class="cardContent">
