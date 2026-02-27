@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LessonService } from '../../service/lessonService';
 import { CommonModule } from '@angular/common';
+import { map, Observable } from 'rxjs';
 
 
 export interface Option {
@@ -30,7 +31,7 @@ export interface LessonC {
 })
 export class Lesson {
 
-  lesson!: LessonC;
+  lesson$!: Observable<LessonC>;
   currentExerciseIndex = 0;
   selectedOption: string | null = null;
   feedback: string = '';
@@ -44,61 +45,45 @@ export class Lesson {
   ) { }
 
   ngOnInit() {
-  this.route.paramMap.subscribe(params => {
-    const moduleId = params.get('moduleId');
-
-    if (moduleId) {
-      this.loadLesson(moduleId);
-    }
-  });
-}
-
-loadLesson(moduleId: string) {
-  this.lessonService.getLessonsByModule(moduleId)
-    .subscribe(data => {
-      console.log("Lecciones cargadas:", data);
-      this.lesson = data[0];
+    this.route.paramMap.subscribe(params => {
+      const moduleId = params.get('moduleId');
+      if (moduleId) {
+        this.lesson$ = this.lessonService.getLessonsByModule(moduleId)
+          .pipe(map(data => data[0]));
+      }
     });
-}
+  }
 
   selectOption(option: string) {
     this.selectedOption = option;
   }
 
-  submitAnswer() {
+  submitAnswer(lesson: LessonC) {
     if (!this.selectedOption) return;
 
-    this.lessonService
-      .submitAnswer(this.userId, this.lesson.id, this.selectedOption)
+    this.lessonService.submitAnswer(this.userId, lesson.id, this.selectedOption)
       .subscribe(res => {
-
         if (res) {
           this.feedback = "✅ Correcto";
-          this.nextExercise();
+          this.nextExercise(lesson);
         } else {
           this.feedback = "❌ Incorrecto";
         }
       });
   }
 
-  nextExercise() {
-
-    const total = this.lesson.exercises.length;
-
+  nextExercise(lesson: LessonC) {
+    const total = lesson.exercises.length;
     if (this.currentExerciseIndex < total - 1) {
       this.currentExerciseIndex++;
-      this.progressPercent =
-        ((this.currentExerciseIndex + 1) / total) * 100;
+      this.progressPercent = ((this.currentExerciseIndex + 1) / total) * 100;
     } else {
       this.progressPercent = 100;
       this.feedback = "🎉 Lección completada";
     }
   }
 
-  get currentExercise() {
-    if (!this.lesson || !this.lesson.exercises) {
-      return null;
-    }
-    return this.lesson.exercises[this.currentExerciseIndex];
-  }
+  getCurrentExercise(lesson: LessonC): Exercise | null {
+  return lesson.exercises?.[this.currentExerciseIndex] ?? null;
+}
 }
