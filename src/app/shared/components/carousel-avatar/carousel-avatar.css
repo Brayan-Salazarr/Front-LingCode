@@ -74,7 +74,7 @@
 
 @media (max-width: 1279px) {
   .carousel-wrapper {
-    height: 155px;
+    height: 275px;
   }
 
   .carousel-img {
@@ -130,6 +130,10 @@
   .carousel-img {
     width: 180px;
   }
+
+  .carousel-wrapper {
+    height: 230px;
+  }
 }
 
 @media (max-width: 645px) {
@@ -144,7 +148,7 @@
   }
 
   .carousel-wrapper {
-    height: 45px;
+    height: 180px;
   }
 }
 
@@ -176,11 +180,12 @@
   }
 
   .carousel-wrapper {
-    height: 60px;
+    height: 116px;
   }
 }
 
 @media (max-width: 310px) {
+
   .nav.left,
   .nav.right {
     width: 20px;
