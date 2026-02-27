@@ -62,7 +62,7 @@
 /*INICIO DE MEDIA QUERIES*/
 @media (min-width: 1699px) {
   .carousel-wrapper {
-    height: 155px;
+    height: 290px;
   }
 }
 

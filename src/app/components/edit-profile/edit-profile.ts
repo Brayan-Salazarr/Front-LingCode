@@ -5,6 +5,7 @@ import { Footer } from '../../shared/components/footer/footer';
 import { RouterModule } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { CarouselAvatar } from '../../shared/components/carousel-avatar/carousel-avatar';
+import { max } from 'rxjs';
 
 /*Interfaz que define la estructura de cada imagen*/
 interface ImagenItem {
@@ -20,6 +21,7 @@ interface ImagenItem {
   styleUrl: './edit-profile.css',
 })
 export class EditProfile {
+  selectedAvatarUrl: string | null = null;
   previewUrl: string | ArrayBuffer | null = null;
   errorMessage: string = "";
 
@@ -34,11 +36,32 @@ export class EditProfile {
 
     this.errorMessage = "";
 
-    //Válida si es imagen
+    //Valida si es imagen
     if (!file.type.startsWith('image/')) {
       this.errorMessage = "Solo se permiten archivos de imagen";
       return;
     }
+
+    //Valida el tamaño de la imagen
+    const maxSize = 1*1024*1024;
+
+    if(file.size>maxSize){
+      this.errorMessage = "La imagen no puede superar 1 MB";
+      return;
+    }
+
+    //Mostrar preview
+    const reader = new FileReader();
+    reader.onload=()=>{
+      this.previewUrl=reader.result;
+      this.selectedAvatarUrl = null;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  selectAvatar(url: string){
+    this.selectedAvatarUrl = url;
+    this.previewUrl = null;
   }
 
   //Array que contiene todas las imagenes disponibles para el avatar

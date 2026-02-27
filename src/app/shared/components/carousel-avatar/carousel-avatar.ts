@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, input, signal } from '@angular/core';
+import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 interface ImagenItem {
@@ -21,6 +21,8 @@ export class CarouselAvatar {
   //Tamaño dinámico de las imágenes
   @Input() imageSize: string = '20vw';
 
+  @Output() avatarSelected: EventEmitter<string> = new EventEmitter<string>();
+
   //Inyectamos el Router para poder navegar entre rutas
   constructor(private router: Router) { }
 
@@ -34,6 +36,10 @@ export class CarouselAvatar {
     { nombre: 'imagen6', ruta: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png', clase: 'img' },
     { nombre: 'imagen7', ruta: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013622/Group_39_1_nqqepa.png', clase: 'img' }
   ];
+
+  selectAvatar(item: ImagenItem){
+    this.avatarSelected.emit(item.ruta);
+  }
 
   //Signal que almacena el ÍNDICE de la imagen activa
   protected readonly currentIndex = signal<number>(0); // Empieza en 0 (imagen1)
