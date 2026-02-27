@@ -1,5 +1,5 @@
 //Importaciones necesarias para que el componente funcione
-import { Component, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { Nav } from '../../shared/components/nav/nav';
 import { Footer } from '../../shared/components/footer/footer';
 import { RouterModule } from '@angular/router';
@@ -20,6 +20,27 @@ interface ImagenItem {
   styleUrl: './edit-profile.css',
 })
 export class EditProfile {
+  previewUrl: string | ArrayBuffer | null = null;
+  errorMessage: string = "";
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+
+    if (!input.files || input.files.length === 0) {
+      return;
+    }
+
+    const file: File = input.files[0];
+
+    this.errorMessage = "";
+
+    //Válida si es imagen
+    if (!file.type.startsWith('image/')) {
+      this.errorMessage = "Solo se permiten archivos de imagen";
+      return;
+    }
+  }
+
   //Array que contiene todas las imagenes disponibles para el avatar
   readonly items: ImagenItem[] = [
     { nombre: 'imagen1', ruta: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013632/Group_40_dkpsvv.png', clase: 'img' },
