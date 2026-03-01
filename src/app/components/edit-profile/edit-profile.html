@@ -7,15 +7,17 @@
 <div id="Back">
     <div id="location">
         <!-- Imagen decorativa lateral -->
-        <img *ngIf="!previewUrl && !selectedAvatarUrl"
+        <img *ngIf="!selectedAvatarUrl"
             src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png" alt="">
-        <!-- Muestra una vista de la img seleccionada por el usuario -->
+        <!-- Contenedor que muestra la imagen seleccionada -->
+        <!-- Puede mostrar:        
+        La imagen subida desde el dispositivo (previewUrl)
+        El avatar seleccionado del carrusel (selectedAvatarUrl)
+        Si ninguno existe, no se mostrará imagen -->
         <div class="preview-container">
             <img [src]="previewUrl || selectedAvatarUrl" class="preview-img">
         </div>
-        <!-- Input que contiene la img o avatar seleccionado -->
-
-        
+        <!-- Input oculto para subir imagen desde el dispositivo -->
         <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" hidden />
         <!-- Bloque de información y selección -->
         <div id="info">

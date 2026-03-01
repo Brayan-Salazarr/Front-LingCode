@@ -21,19 +21,27 @@ interface ImagenItem {
   styleUrl: './edit-profile.css',
 })
 export class EditProfile {
+  //URL del avatar seleccionado desde las opciones disponibles
   selectedAvatarUrl: string | null = null;
+  //Se guarda la imagen seleccionada por el usuario desde su dispositivo
   previewUrl: string | ArrayBuffer | null = null;
+  //Mensaje para mostrar errores
   errorMessage: string = "";
 
+  //Método que se ejecuta cuando el usuario selecciona un archivo
   onFileSelected(event: Event) {
+    //Se obtiene el input que disparo el evento
     const input = event.target as HTMLInputElement;
 
+    //Si no hay archivos seleccionados, se detiene la ejecución
     if (!input.files || input.files.length === 0) {
       return;
     }
 
+    //Se toma el primer archivo seleccionado
     const file: File = input.files[0];
 
+    //Se limpia cualquier mensaje de error anterior
     this.errorMessage = "";
 
     //Valida si es imagen
@@ -45,22 +53,29 @@ export class EditProfile {
     //Valida el tamaño de la imagen
     const maxSize = 1*1024*1024;
 
+    //Si la imagen supera el peso entonces se muestra un error
     if(file.size>maxSize){
       this.errorMessage = "La imagen no puede superar 1 MB";
       return;
     }
 
-    //Mostrar preview
+    //Si pasa las validaciones, se utiliza FileReader para generar la vista previa
     const reader = new FileReader();
+    //Cuando el archivo termina de leerse, se guarda el resultado
     reader.onload=()=>{
       this.previewUrl=reader.result;
+      //Se deselecciona el avatar elegido anteriormente 
       this.selectedAvatarUrl = null;
     };
+    //Convierte la imagen en formato base64 para poder mostrarla en pantalla 
     reader.readAsDataURL(file);
   }
 
+  //Se ejecuta cuando un usuario selecciona un avatar
   selectAvatar(url: string){
+    //Guarda la URL del avatar seleccionado
     this.selectedAvatarUrl = url;
+    //Limpia la imagen subida previamente, si existe
     this.previewUrl = null;
   }
 
