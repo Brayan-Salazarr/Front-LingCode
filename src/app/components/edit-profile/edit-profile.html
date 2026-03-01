@@ -10,13 +10,14 @@
         <img *ngIf="!selectedAvatarUrl"
             src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png" alt="">
         <!-- Contenedor que muestra la imagen seleccionada -->
-        <!-- Puede mostrar:        
+        <!-- Muestra:        
         La imagen subida desde el dispositivo (previewUrl)
-        El avatar seleccionado del carrusel (selectedAvatarUrl)
         Si ninguno existe, no se mostrará imagen -->
         <div class="preview-container">
-            <img [src]="previewUrl || selectedAvatarUrl" class="preview-img">
+            <img *ngIf="previewUrl" [src]="previewUrl" class="preview-img">
         </div>
+        <!-- Muestra el avatar seleccionado por el usuario -->
+        <img *ngIf="!previewUrl" [src]="selectedAvatarUrl" class="avatar-img">
         <!-- Input oculto para subir imagen desde el dispositivo -->
         <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" hidden />
         <!-- Bloque de información y selección -->
