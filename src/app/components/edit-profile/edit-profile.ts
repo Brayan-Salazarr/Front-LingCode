@@ -24,12 +24,12 @@ interface ImagenItem {
 })
 export class EditProfile {
   constructor(private cdr: ChangeDetectorRef, //Permite forzar la actualización de la vista cuando Angular no detecta cambios automáticamente
-    private avatarService: AvatarService) {}; //Servicio compartido para enviar la imagen seleccionada al componente Nav
+    private avatarService: AvatarService) { }; //Servicio compartido para enviar la imagen seleccionada al componente Nav
 
   //URL del avatar seleccionado desde las opciones disponibles
   selectedAvatarUrl: string | null = 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png';
   //Se guarda la imagen seleccionada por el usuario desde su dispositivo
-  previewUrl: string | ArrayBuffer | null = null;
+  previewUrl: string | null = null;
   //Mensaje para mostrar errores
   errorMessage: string = "";
 
@@ -69,12 +69,15 @@ export class EditProfile {
     //Cuando el archivo termina de leerse, se guarda el resultado
     reader.onload = () => {
       //Se verifica que el resultado sea un string 
-      if(typeof reader.result === 'string'){
+      if (typeof reader.result === 'string') {
         //Se guarda la imagen para mostrarla en pantalla
         this.previewUrl = reader.result;
-      //Se deselecciona el avatar elegido anteriormente 
-      this.selectedAvatarUrl = null;
-      } 
+        //Se deselecciona el avatar elegido anteriormente 
+        this.selectedAvatarUrl = null;
+
+        //Detecta los cambios cuando se selecciona una imagen personalizada
+        this.cdr.detectChanges();
+      }
     };
     //Convierte la imagen en formato base64 para poder mostrarla en pantalla 
     reader.readAsDataURL(file);
@@ -176,9 +179,12 @@ export class EditProfile {
   }
 
   //Guarda los cambios de información realizados por el usuario 
-  saveChanges(){
-    if(this.selectedAvatarUrl){
-      this.avatarService.setAvatar(this.selectedAvatarUrl)
+  saveChanges() {
+    const finalImage = this.previewUrl || this.selectedAvatarUrl;
+    if (finalImage) {
+      this.avatarService.setAvatar(finalImage);
+
+      //Mensaje para el usuario indicando que se actualizaron los datos
       alert('Actualizado exitosamente');
     }
   }
