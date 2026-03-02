@@ -89,8 +89,6 @@ h2 {
     cursor: pointer;
 }
 
-.img-shared {}
-
 /*Botones de navegación (flechas)*/
 .nav {
     background: #1e90ff;
@@ -452,6 +450,36 @@ input:checked+.slider:before {
 
     #styleGear {
         width: 30px;
+    }
+}
+
+@media(min-width: 1620px) {
+    #location{
+        width: 1450px;
+    }
+}
+
+@media(min-width: 1415px) {
+
+    .preview-container {
+        left: 0;
+        top: 272px;
+        transform: translate(49%, -1%);
+    }
+
+    .container-img {
+        width: 100%;
+        position: relative;
+        left: -55px;
+    }
+
+    #Back {
+        display: flex;
+        justify-content: center;
+    }
+
+    #location {
+        justify-content: space-around;
     }
 }
 

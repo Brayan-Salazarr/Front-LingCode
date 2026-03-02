@@ -34,42 +34,40 @@ export class Nav {
     });
   }
 
-
-
-/*Navega a la página de login. Se envía el parámetro "view=login" para indicar que debe mostrarse la vista de iniciar sesión*/
-goLogin() {
-  this.router.navigate(
-    ['/login-registro'], { queryParams: { view: 'login' } }
-  );
-}
-
-/*Cierra la sesión del usuario y lo redirige al incio público*/
-logout() {
-  this.authService.logout(); //Elimina la sesión del usuario
-  this.router.navigate(['/']); //Redirige al home público
-}
-
-/*Navega al home dependiendo si el usuario está autenticado o no*/
-goHome() {
-  if (this.authService.isAuthenticated()) {
-    /*Si el usuario está autenticado, lo lleva al home de usuarios registrados*/
-    this.router.navigate(['/registered-home']);
-  } else {
-    /*Si no está autenticado, lo lleva al home público*/
-    this.router.navigate(['/']);
+  /*Navega a la página de login. Se envía el parámetro "view=login" para indicar que debe mostrarse la vista de iniciar sesión*/
+  goLogin() {
+    this.router.navigate(
+      ['/login-registro'], { queryParams: { view: 'login' } }
+    );
   }
-}
 
-/*Controla si el menú tipo hamburguesa está abierto o cerrado*/
-menuOpen = false;
+  /*Cierra la sesión del usuario y lo redirige al incio público*/
+  logout() {
+    this.authService.logout(); //Elimina la sesión del usuario
+    this.router.navigate(['/']); //Redirige al home público
+  }
 
-/*Alterna el estado del menú tipo hamburguesa*/
-toggleMenu() {
-  this.menuOpen = !this.menuOpen;
-}
+  /*Navega al home dependiendo si el usuario está autenticado o no*/
+  goHome() {
+    if (this.authService.isAuthenticated()) {
+      /*Si el usuario está autenticado, lo lleva al home de usuarios registrados*/
+      this.router.navigate(['/registered-home']);
+    } else {
+      /*Si no está autenticado, lo lleva al home público*/
+      this.router.navigate(['/']);
+    }
+  }
 
-/*Cierra el menú tipo hamburguesa*/
-closeMenu() {
-  this.menuOpen = false;
-}
+  /*Controla si el menú tipo hamburguesa está abierto o cerrado*/
+  menuOpen = false;
+
+  /*Alterna el estado del menú tipo hamburguesa*/
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  /*Cierra el menú tipo hamburguesa*/
+  closeMenu() {
+    this.menuOpen = false;
+  }
 }

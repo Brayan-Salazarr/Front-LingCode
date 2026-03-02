@@ -67,7 +67,7 @@
 
         <!-- Imagen del icono de usuario -->
         <img id="userIcon"
-            [src]="profileImage$ || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'"
+            [src]="(profileImage$ | async) || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'"
             alt="user">
     </div>
 
