@@ -1,15 +1,16 @@
 <app-nav [colorBackground]="'backgroundNav1'"></app-nav>
 <div class="component" *ngIf="currentLesson$ | async as lesson">
 
-  <h2>{{ lesson.title }}</h2>
+  <h2 class="title-module">{{ lesson.title }}</h2>
 
   <div class="progress-bar">
-    <div class="progress" [style.width.%]="moduleProgress$ | async"></div>
+    <p class="text-progress">Progreso</p>
+    <div class="progress" [style]="moduleProgress$ | async"></div>
   </div>
 
   <ng-container *ngIf="getCurrentExercise(lesson) as currentExercise">
 
-    <h2>{{ currentExercise.question }}</h2>
+    <h2 class="introduction">{{ currentExercise.question }}</h2>
 
     <div class="optionsLess">
       <div  *ngFor="let option of currentExercise.options">
@@ -18,7 +19,12 @@
         </button>
       </div>
     </div>
-    <button (click)="submitAnswer(lesson)">Responder</button>
+
+    <div class="button-field">
+      <div id="line"></div>
+      <button class="confirmation-button" (click)="submitAnswer(lesson)">Confirmar</button>
+    </div>
+    
     <p>{{ feedback }}</p>
 
   </ng-container>

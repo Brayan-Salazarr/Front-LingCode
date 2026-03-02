@@ -452,6 +452,7 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
     min-height: 70px;
     background-color: #000;
     border: 1px solid;
+    font-family: 'Poppins', sans-serif;
     transition: box-shadow 0.3s ease;
 }
 
