@@ -27,11 +27,17 @@ export class EditProfile {
     private avatarService: AvatarService) { }; //Servicio compartido para enviar la imagen seleccionada al componente Nav
 
   //URL del avatar seleccionado desde las opciones disponibles
-  selectedAvatarUrl: string | null = 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png';
+  selectedAvatarUrl: string | null = null;
   //Se guarda la imagen seleccionada por el usuario desde su dispositivo
   previewUrl: string | null = null;
   //Mensaje para mostrar errores
   errorMessage: string = "";
+
+  ngOnInit() {
+    this.avatarService.avatar$.subscribe(currentAvatar=>{
+      this.selectedAvatarUrl = currentAvatar;
+    });
+  }
 
   //Método que se ejecuta cuando el usuario selecciona un archivo
   onFileSelected(event: Event) {
@@ -81,6 +87,9 @@ export class EditProfile {
     };
     //Convierte la imagen en formato base64 para poder mostrarla en pantalla 
     reader.readAsDataURL(file);
+
+    //Permite seleccionar la misma imagen
+    input.value="";
   }
 
   //Se ejecuta cuando un usuario selecciona un avatar
