@@ -74,6 +74,9 @@
 /*Imagen del avatar del usuario*/
 .avatar {
     width: 70px;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
     border-radius: 50%;
 }
 
@@ -355,11 +358,11 @@ span {
         display: flex;
     }
 
-    #userIcon{
+    #userIcon {
         height: 25px;
     }
 
-    .buttons{
+    .buttons {
         display: none;
     }
 }

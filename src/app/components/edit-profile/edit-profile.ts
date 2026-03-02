@@ -74,11 +74,6 @@ export class EditProfile {
         this.previewUrl = reader.result;
       //Se deselecciona el avatar elegido anteriormente 
       this.selectedAvatarUrl = null;
-
-      //Se fuerza para que los cambios sean detectados y se actualice la vista
-      this.cdr.detectChanges();
-      //Se envía la imagen al servicio para actualizar la foto de perfil en el Nav
-      this.avatarService.setAvatar(this.previewUrl);
       } 
     };
     //Convierte la imagen en formato base64 para poder mostrarla en pantalla 
@@ -91,8 +86,6 @@ export class EditProfile {
     this.selectedAvatarUrl = url;
     //Limpia la imagen subida previamente, si existe
     this.previewUrl = null;
-
-    this.avatarService.setAvatar(url);
   }
 
   //Array que contiene todas las imagenes disponibles para el avatar
@@ -180,5 +173,13 @@ export class EditProfile {
   //Cierra manualmente el dropdown
   closeDropdown() {
     this.isDropdownOpen = false;
+  }
+
+  //Guarda los cambios de información realizados por el usuario 
+  saveChanges(){
+    if(this.selectedAvatarUrl){
+      this.avatarService.setAvatar(this.selectedAvatarUrl)
+      alert('Actualizado exitosamente');
+    }
   }
 }
