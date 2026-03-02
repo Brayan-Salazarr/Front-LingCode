@@ -455,6 +455,36 @@ input:checked+.slider:before {
     }
 }
 
+@media(min-width: 1620px) {
+    #location{
+        width: 1450px;
+    }
+}
+
+@media(min-width: 1415px) {
+
+    .preview-container {
+        left: 0;
+        top: 272px;
+        transform: translate(49%, -1%);
+    }
+
+    .container-img {
+        width: 100%;
+        position: relative;
+        left: -55px;
+    }
+
+    #Back {
+        display: flex;
+        justify-content: center;
+    }
+
+    #location {
+        justify-content: space-around;
+    }
+}
+
 @media(max-width: 1366px) {
     #textMod {
         text-align: center;
