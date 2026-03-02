@@ -747,7 +747,7 @@ input:checked+.slider:before {
 
     img {
         margin: 20px 0 0 0;
-        width: 48vw;
+        width: 159px;
     }
 
     input {
@@ -787,5 +787,11 @@ input:checked+.slider:before {
 
     .modalContent {
         width: 80%;
+    }
+
+    .preview-container {
+        height: 81px;
+        width: 83px;
+        transform: translate(5px, -24px);
     }
 }
