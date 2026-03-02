@@ -1,31 +1,102 @@
 <app-nav [colorBackground]="'backgroundNav1'"></app-nav>
+
 <div class="component" *ngIf="currentLesson$ | async as lesson">
 
+  <!-- 🏷️ TÍTULO -->
   <h2 class="title-module">{{ lesson.title }}</h2>
 
+  <!-- 🔵 PROGRESO -->
   <div class="progress-bar">
     <p class="text-progress">Progreso</p>
-    <div class="progress" [style]="moduleProgress$ | async"></div>
-  </div>
-
-  <ng-container *ngIf="getCurrentExercise(lesson) as currentExercise">
-
-    <h2 class="introduction">{{ currentExercise.question }}</h2>
-
-    <div class="optionsLess">
-      <div  *ngFor="let option of currentExercise.options">
-        <button class="buttonOptions" (click)="selectOption(option.text)">
-          {{ option.text }}
-        </button>
+    <div class="progress-container">
+      <div 
+        class="progress-fill"
+        [style.width.%]="moduleProgress$ | async">
       </div>
     </div>
+  </div>
 
+  <!-- 🧠 EJERCICIO ACTUAL -->
+  <ng-container *ngIf="getCurrentExercise(lesson) as currentExercise">
+
+    <h2 class="introduction">
+      {{ currentExercise.question }}
+    </h2>
+
+    <!-- =============================== -->
+    <!-- 🟦 TIPO MULTIPLE -->
+    <!-- =============================== -->
+    <ng-container *ngIf="currentExercise.type === 'multiple'">
+
+      <div class="optionsLess">
+        <div *ngFor="let option of currentExercise.options">
+          <button
+            class="buttonOptions"
+            (click)="selectOption(option.text)"
+            [ngClass]="{
+              'selected': selectedOption === option.text,
+              'correct': isAnswered && option.correct,
+              'incorrect': isAnswered && selectedOption === option.text && !option.correct
+            }">
+
+            {{ option.text }}
+
+          </button>
+        </div>
+      </div>
+
+    </ng-container>
+
+    <!-- =============================== -->
+    <!-- 🟩 TIPO ORDER -->
+    <!-- =============================== -->
+    <ng-container *ngIf="currentExercise.type === 'order'">
+
+      <!-- Banco de palabras -->
+      <div class="word-bank">
+        <button
+          *ngFor="let option of currentExercise.options"
+          (click)="addWord(option.text)"
+          [disabled]="selectedWords.includes(option.text)"
+          class="buttonOptions">
+
+          {{ option.text }}
+
+        </button>
+      </div>
+
+      <!-- Frase armada -->
+      <div 
+        class="selected-words"
+        [ngClass]="{
+          'correct-order': isAnswered && isCorrectAnswer,
+          'incorrect-order': isAnswered && !isCorrectAnswer
+        }">
+
+        <span
+          *ngFor="let word of selectedWords"
+          (click)="removeWord(word)"
+          class="selected-word">
+
+          {{ word }}
+
+        </span>
+
+      </div>
+
+    </ng-container>
+
+    <!-- =============================== -->
+    <!-- 🔘 BOTÓN CONFIRMAR -->
+    <!-- =============================== -->
     <div class="button-field">
       <div id="line"></div>
-      <button class="confirmation-button" (click)="submitAnswer(lesson)">Confirmar</button>
+      <button
+        class="confirmation-button"
+        (click)="submitAnswer(lesson)">
+        Confirmar
+      </button>
     </div>
-    
-    <p>{{ feedback }}</p>
 
   </ng-container>
 

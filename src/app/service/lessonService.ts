@@ -44,15 +44,17 @@ export class LessonService {
     URL base del controlador de módulos en el backend.
     Desde aquí se construyen todas las rutas dinámicas.
    */
+
+
   private baseUrl = 'http://localhost:8080/api/modules';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-   /*
-    Obtiene todas las lecciones pertenecientes a un módulo específico. 
-    @param moduleId ID del módulo
-    @returns Observable con un arreglo de lecciones
-   */
+  /*
+   Obtiene todas las lecciones pertenecientes a un módulo específico. 
+   @param moduleId ID del módulo
+   @returns Observable con un arreglo de lecciones
+  */
   getLessonsByModule(moduleId: string): Observable<LessonC[]> {
     return this.http.get<LessonC[]>(
       `${this.baseUrl}/${moduleId}/lessons`
@@ -66,10 +68,20 @@ export class LessonService {
     @param answer Respuesta enviada por el usuario
     @returns Observable boolean indicando si la respuesta fue correcta
    */
-  submitAnswer(userId: string, lessonId: string, answer: string) {
+  submitAnswer(
+    userId: string,
+    lessonId: string,
+    exerciseIndex: number,
+    answer: string
+  ): Observable<boolean> {
+
     return this.http.post<boolean>(
-      `${this.baseUrl}/lessons/${lessonId}/answer?userId=${userId}`,
-      answer
+      `${this.baseUrl}/lessons/${lessonId}/answer`,
+      {
+        userId,
+        exerciseIndex,
+        answer
+      }
     );
   }
 

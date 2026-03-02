@@ -18,7 +18,8 @@ export interface Option {
  */
 export interface Exercise {
   question: string; // Pregunta del ejercicio
-  options: Option[]; // Lista de opciones disponibles
+  options: Option[];
+  type: 'multiple' | 'order'; // Lista de opciones disponibles
 }
 
 /*
@@ -51,9 +52,13 @@ export class Lesson {
   // Porcentaje de progreso de la lección
   progressPercent = 0;
 
+  private exerciseIndex$ = new BehaviorSubject<number>(0);
+
   currentLesson$!: Observable<LessonC>;
 
-  moduleProgress$!: Observable<number>;
+
+  isAnswered = false;
+  isCorrectAnswer = false;
 
   private lessonIndex$ = new BehaviorSubject<number>(0);
 
@@ -64,38 +69,76 @@ export class Lesson {
     private lessonService: LessonService // Servicio para comunicarse con el backend
   ) { }
 
+  private moduleProgressSubject = new BehaviorSubject<number>(0);
+  moduleProgress$ = this.moduleProgressSubject.asObservable();
+
+  updateProgress(lesson: LessonC) {
+    const total = lesson.exercises.length;
+    const progress = ((this.currentExerciseIndex) / total) * 100;
+
+    this.moduleProgressSubject.next(progress);
+  }
+
+  confirmAnswer(lesson: LessonC) {
+
+  if (this.currentExerciseIndex < lesson.exercises.length - 1) {
+    this.currentExerciseIndex++;
+    this.updateProgress(lesson);
+  }
+}
+
   /*
    Se ejecuta al inicializar el componente.
    Obtiene el moduleId desde la URL
    y carga la primera lección del módulo.
   */
-ngOnInit() {
+  ngOnInit() {
 
-  this.lesson$ = this.route.paramMap.pipe(
-    map(params => params.get('moduleId')!),
-    switchMap(moduleId =>
-      this.lessonService.getLessonsByModule(moduleId)
-    )
-  );
+    this.lesson$ = this.route.paramMap.pipe(
+      map(params => params.get('moduleId')!),
+      switchMap(moduleId =>
+        this.lessonService.getLessonsByModule(moduleId)
+      )
+    );
 
-  this.currentLesson$ = combineLatest([
-    this.lesson$,
-    this.lessonIndex$
-  ]).pipe(
-    map(([lessons, index]) => lessons[index])
-  );
+    this.currentLesson$ = combineLatest([
+      this.lesson$,
+      this.lessonIndex$
+    ]).pipe(
+      map(([lessons, index]) => lessons[index])
+    );
 
-  this.moduleProgress$ = combineLatest([
-  this.lesson$,
-  this.lessonIndex$
-]).pipe(
-  map(([lessons, index]) =>
-    lessons.length === 0
-      ? 0
-      : ((index + 1) / lessons.length) * 100
-  )
-);
-}
+    this.moduleProgress$ = combineLatest([
+      this.lesson$,
+      this.lessonIndex$,
+      this.exerciseIndex$
+    ]).pipe(
+      map(([lessons, lessonIndex, exerciseIndex]) => {
+
+        if (!lessons.length) return 0;
+
+        // Total de ejercicios del módulo
+        const totalExercises = lessons.reduce(
+          (acc, lesson) => acc + lesson.exercises.length,
+          0
+        );
+
+        // Ejercicios completados hasta la lección actual
+        let completedExercises = 0;
+
+        for (let i = 0; i < lessonIndex; i++) {
+          completedExercises += lessons[i].exercises.length;
+        }
+
+        // Sumamos el ejercicio actual dentro de la lección
+        completedExercises += exerciseIndex;
+
+        return (completedExercises / totalExercises) * 100;
+      })
+    );
+
+    
+  }
   /*
    Guarda la opción seleccionada por el usuario.
   */
@@ -111,48 +154,84 @@ ngOnInit() {
     if (!this.selectedOption) return;
 
     this.lessonService
-      .submitAnswer(this.userId, lesson.id, this.selectedOption)
+      .submitAnswer(
+        this.userId,
+        lesson.id,
+        this.currentExerciseIndex,
+        this.selectedOption
+      )
       .subscribe(res => {
+
+        this.isAnswered = true;
+        this.isCorrectAnswer = res;
+
         if (res) {
-          this.feedback = "✅ Correcto";
-          this.nextExercise(lesson);
-        } else {
-          this.feedback = "❌ Incorrecto";
+
+          // Espera 800ms antes de pasar al siguiente
+          setTimeout(() => {
+            this.nextExercise(lesson);
+            this.isAnswered = false;
+            this.selectedOption = null;
+          }, 800);
+
         }
       });
   }
+
   /*Controla los estados de los ejercicios*/
   nextExercise(lesson: LessonC) {
     const total = lesson.exercises.length;
 
     if (this.currentExerciseIndex < total - 1) {
+
+      // 🔥 Pasa al siguiente ejercicio
       this.currentExerciseIndex++;
+      this.exerciseIndex$.next(this.currentExerciseIndex);
       this.selectedOption = null;
+      this.feedback = '';
+
+    } else {
+
+      // 🎉 Terminó la lección → pasa a la siguiente
+      this.nextLesson();
     }
   }
 
   /*
     Avanza al siguiente ejercicio y actualiza el progreso.
    */
-nextLesson() {
-
-  this.lesson$.pipe().subscribe(lessons => {
+  nextLesson() {
 
     const currentIndex = this.lessonIndex$.value;
 
-    if (currentIndex < lessons.length - 1) {
+    this.lesson$.subscribe(lessons => {
 
-      this.lessonIndex$.next(currentIndex + 1);
+      if (currentIndex < lessons.length - 1) {
 
-      this.currentExerciseIndex = 0;
-      this.selectedOption = null;
-      this.feedback = '';
+        this.lessonIndex$.next(currentIndex + 1);
 
-    } else {
-      this.feedback = "🎉 Módulo completado";
-    }
+        this.currentExerciseIndex = 0;
+        this.exerciseIndex$.next(0);
+        this.selectedOption = null;
+        this.feedback = '';
 
-  });
+      } else {
+        this.feedback = "🎉 Módulo completado";
+      }
+
+    }).unsubscribe();
+  }
+
+  selectedWords: string[] = [];
+
+addWord(word: string) {
+  if (!this.selectedWords.includes(word)) {
+    this.selectedWords.push(word);
+  }
+}
+
+removeWord(word: string) {
+  this.selectedWords = this.selectedWords.filter(w => w !== word);
 }
 
   /*
