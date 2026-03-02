@@ -1,6 +1,7 @@
 import { CommonModule, NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { AuthService, User } from '../../../auth/services/authService';
+import { AvatarService } from '../../../service/avatarService';
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -41,8 +42,31 @@ export class Header {
   //Observable que contiene la información del usuario actual
   user$!: Observable<User | null>;
 
-  constructor(private authService: AuthService) {
+  profileImage$!: Observable<string | null>;
+  selectedAvatarUrl: string | null = null;
+
+  constructor(
+    private authService: AuthService,
+    private avatarService: AvatarService
+  ) {
+    this.profileImage$ = this.avatarService.avatar$;
     //Obtiene el usuario actual desde el servicio de autenticación
     this.user$ = this.authService.currentUser$;
   }
+
+  //Se guarda la imagen seleccionada por el usuario desde su dispositivo
+  previewUrl: string | null = null;
+  profileImageValue: string | null = null;
+
+  ngOnInit() {
+  this.profileImage$.subscribe(url => {
+    this.profileImageValue = url;
+  });
+}
+
+// Getter que sí funciona
+get showCircle(): boolean {
+  return !this.previewUrl && !this.profileImageValue;
+}
+
 }

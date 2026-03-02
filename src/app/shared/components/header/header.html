@@ -16,7 +16,7 @@
       <div class="line" *ngIf="showLine && !(hideTitleWhenLogged && (user$ | async))"></div>
 
       <!-- INFO DEL USUARIO -->
-       <!-- Contenedor de información del usuario autenticado -->
+      <!-- Contenedor de información del usuario autenticado -->
       <div class="user-header" *ngIf="showUserInfo && (user$ | async) as user">
 
         <!-- Agrupador general de avatar y datos -->
@@ -24,10 +24,10 @@
 
           <!-- Imagen de avatar del usuario -->
           <img class="avatar"
-            [src]="user?.avatar || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png'"/>
-          
+            [src]="previewUrl || profileImageValue || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'" />
+
           <!-- Imagen decorativa circular del avatar -->
-          <img id="imgCirclee" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png"
+          <img  [class.hidden]="!showCircle" id="imgCirclee" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png"
             alt="">
 
           <!-- Contenedor de datos del usuario -->

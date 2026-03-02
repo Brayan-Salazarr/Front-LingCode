@@ -220,7 +220,10 @@ h1 {
 
 /*Imagen del avatar del usuario*/
 .avatar {
+    border-radius: 50%;
+    object-fit: cover;
     width: 310px;
+    height: 310px;
 }
 
 /*Contenedor principal de la información del usuario*/
