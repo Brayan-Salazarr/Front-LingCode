@@ -5,6 +5,7 @@ import { Footer } from '../../shared/components/footer/footer';
 import { RouterModule } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { CarouselAvatar } from '../../shared/components/carousel-avatar/carousel-avatar';
+import { ChangeDetectorRef } from '@angular/core';
 import { max } from 'rxjs';
 
 /*Interfaz que define la estructura de cada imagen*/
@@ -21,8 +22,10 @@ interface ImagenItem {
   styleUrl: './edit-profile.css',
 })
 export class EditProfile {
+  constructor(private cdr: ChangeDetectorRef){};
+
   //URL del avatar seleccionado desde las opciones disponibles
-  selectedAvatarUrl: string | null = null;
+  selectedAvatarUrl: string | null = 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png';
   //Se guarda la imagen seleccionada por el usuario desde su dispositivo
   previewUrl: string | ArrayBuffer | null = null;
   //Mensaje para mostrar errores
@@ -66,7 +69,9 @@ export class EditProfile {
       this.previewUrl=reader.result;
       //Se deselecciona el avatar elegido anteriormente 
       this.selectedAvatarUrl = null;
-    };
+
+      this.cdr.detectChanges();
+        };
     //Convierte la imagen en formato base64 para poder mostrarla en pantalla 
     reader.readAsDataURL(file);
   }
