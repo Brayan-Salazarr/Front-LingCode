@@ -63,10 +63,11 @@
     <!-- class="icon" define el contenedor -->
     <!-- (click)="goLogin()" permite abrir el login -->
     <!-- Se muestra solo si el observable es null -->
-    <div class="icon" (click)="goLogin()" *ngIf="(authService.currentUser$ | async) === null">
+    <div class="icon" (click)="goLogin()" *ngIf="user">
 
         <!-- Imagen del icono de usuario -->
-        <img id="userIcon" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1771021109/user_ojgle2.png"
+        <img id="userIcon"
+            [src]="profileImage$ || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'"
             alt="user">
     </div>
 
@@ -77,23 +78,22 @@
         <!-- Avatar del usuario -->
         <!-- class="avatar" aplica forma circular y tamaño -->
         <!-- Si no tiene avatar, usa una imagen por defecto -->
-        <img class="avatar"
-            [src]="user.avatar || 'https://images-ext-1.discordapp.net/external/6YkuxX8P1o52p98xUBb42PdwR5XT0l-ZURiu6mbU-Qg/https/res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png?format=webp&quality=lossless&width=930&height=930' " />
+        <img class="avatar" [src]="(profileImage$ | async) || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'" />
 
-            <!-- Contenedor de datos del usuario -->
-             <!-- class="separator" organiza los elementos verticalmente -->
-            <div class="separator">
+        <!-- Contenedor de datos del usuario -->
+        <!-- class="separator" organiza los elementos verticalmente -->
+        <div class="separator">
 
             <!-- Muestra el nickname del usuario -->
             <span>{{ u.nickName }}</span>
 
             <!-- Botón para ir al perfil -->
-             <!-- class="button-edit" define estilo tipo enlace -->
+            <!-- class="button-edit" define estilo tipo enlace -->
             <button class="button-edit" routerLink="/edit-profile">Ver perfil</button>
 
             <!-- Botón para cerrar sesión -->
-             <!-- class="close-button" define estilo -->
-              <!-- Ejecuta logout() -->
+            <!-- class="close-button" define estilo -->
+            <!-- Ejecuta logout() -->
             <button class="close-button" (click)="logout()">Cerrar sesión</button>
         </div>
     </div>

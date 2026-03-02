@@ -1,5 +1,5 @@
 //Importaciones necesarias para que el componente funcione
-import { Component, input, signal } from '@angular/core';
+import { Component, input, NgModule, signal } from '@angular/core';
 import { Nav } from '../../shared/components/nav/nav';
 import { Footer } from '../../shared/components/footer/footer';
 import { RouterModule } from '@angular/router';
@@ -7,6 +7,7 @@ import { NgClass, NgIf } from '@angular/common';
 import { CarouselAvatar } from '../../shared/components/carousel-avatar/carousel-avatar';
 import { ChangeDetectorRef } from '@angular/core';
 import { max } from 'rxjs';
+import { AvatarService } from '../../service/avatarService';
 
 /*Interfaz que define la estructura de cada imagen*/
 interface ImagenItem {
@@ -22,7 +23,8 @@ interface ImagenItem {
   styleUrl: './edit-profile.css',
 })
 export class EditProfile {
-  constructor(private cdr: ChangeDetectorRef){};
+  constructor(private cdr: ChangeDetectorRef, //Permite forzar la actualización de la vista cuando Angular no detecta cambios automáticamente
+    private avatarService: AvatarService) {}; //Servicio compartido para enviar la imagen seleccionada al componente Nav
 
   //URL del avatar seleccionado desde las opciones disponibles
   selectedAvatarUrl: string | null = 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png';
@@ -54,10 +56,10 @@ export class EditProfile {
     }
 
     //Valida el tamaño de la imagen
-    const maxSize = 1*1024*1024;
+    const maxSize = 1 * 1024 * 1024;
 
     //Si la imagen supera el peso entonces se muestra un error
-    if(file.size>maxSize){
+    if (file.size > maxSize) {
       this.errorMessage = "La imagen no puede superar 1 MB";
       return;
     }
@@ -65,23 +67,32 @@ export class EditProfile {
     //Si pasa las validaciones, se utiliza FileReader para generar la vista previa
     const reader = new FileReader();
     //Cuando el archivo termina de leerse, se guarda el resultado
-    reader.onload=()=>{
-      this.previewUrl=reader.result;
+    reader.onload = () => {
+      //Se verifica que el resultado sea un string 
+      if(typeof reader.result === 'string'){
+        //Se guarda la imagen para mostrarla en pantalla
+        this.previewUrl = reader.result;
       //Se deselecciona el avatar elegido anteriormente 
       this.selectedAvatarUrl = null;
 
+      //Se fuerza para que los cambios sean detectados y se actualice la vista
       this.cdr.detectChanges();
-        };
+      //Se envía la imagen al servicio para actualizar la foto de perfil en el Nav
+      this.avatarService.setAvatar(this.previewUrl);
+      } 
+    };
     //Convierte la imagen en formato base64 para poder mostrarla en pantalla 
     reader.readAsDataURL(file);
   }
 
   //Se ejecuta cuando un usuario selecciona un avatar
-  selectAvatar(url: string){
+  selectAvatar(url: string) {
     //Guarda la URL del avatar seleccionado
     this.selectedAvatarUrl = url;
     //Limpia la imagen subida previamente, si existe
     this.previewUrl = null;
+
+    this.avatarService.setAvatar(url);
   }
 
   //Array que contiene todas las imagenes disponibles para el avatar
