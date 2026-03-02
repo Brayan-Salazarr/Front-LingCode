@@ -1,7 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
+/*
+  Interfaz que representa la estructura de un módulo
+  tal como lo devuelve el backend (Spring Boot). 
+  Define todos los campos que componen un módulo educativo
+  dentro del sistema.
+ */
 export interface Module {
   id: string;
   title: string;
@@ -21,18 +27,34 @@ export interface Module {
   is_published: boolean;
   is_featured: boolean;
   tags: string[];
+  progressPercentaje: number;
   prerequisiteModuleIds: string[];
 }
 
+/*
+  Servicio encargado de gestionar las operaciones
+  relacionadas con los módulos. 
+  Se comunica con el backend para obtener la información
+  de los módulos disponibles en el sistema.
+ */
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root', // Disponible globalmente en toda la aplicación
 })
 export class ModuleService {
 
+  /*
+    URL base del endpoint del backend.
+    Todas las peticiones relacionadas con módulos
+    se construyen a partir de esta ruta.
+   */
   private baseUrl = 'http://localhost:8080/api/modules';
 
   constructor(private http: HttpClient) {}
 
+  /*
+    Obtiene todos los módulos disponibles. 
+    @returns Observable con un arreglo de módulos
+   */
   getModules(): Observable<Module[]> {
     return this.http.get<Module[]>(this.baseUrl);
   }

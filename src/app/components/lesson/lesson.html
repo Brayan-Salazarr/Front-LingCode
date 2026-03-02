@@ -1,21 +1,23 @@
-<div class="component" *ngIf="lesson$ | async as lesson">
+<app-nav [colorBackground]="'backgroundNav1'"></app-nav>
+<div class="component" *ngIf="currentLesson$ | async as lesson">
 
   <h2>{{ lesson.title }}</h2>
 
   <div class="progress-bar">
-    <div class="progress" [style.width.%]="progressPercent"></div>
+    <div class="progress" [style.width.%]="moduleProgress$ | async"></div>
   </div>
 
   <ng-container *ngIf="getCurrentExercise(lesson) as currentExercise">
 
     <h2>{{ currentExercise.question }}</h2>
 
-    <div class="" *ngFor="let option of currentExercise.options">
-      <button (click)="selectOption(option.text)">
-        {{ option.text }}
-      </button>
+    <div class="optionsLess">
+      <div  *ngFor="let option of currentExercise.options">
+        <button class="buttonOptions" (click)="selectOption(option.text)">
+          {{ option.text }}
+        </button>
+      </div>
     </div>
-
     <button (click)="submitAnswer(lesson)">Responder</button>
     <p>{{ feedback }}</p>
 
