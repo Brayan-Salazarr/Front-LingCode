@@ -4,6 +4,7 @@ import { LessonInte, LessonService } from '../../service/lessonService';
 import { CommonModule } from '@angular/common';
 import { BehaviorSubject, combineLatest, map, Observable, switchMap } from 'rxjs';
 import { Nav } from '../../shared/components/nav/nav';
+import { FormsModule } from '@angular/forms';
 
 /*
   Representa una opción de respuesta dentro de un ejercicio.
@@ -18,8 +19,14 @@ export interface Option {
  */
 export interface Exercise {
   question: string; // Pregunta del ejercicio
-  options: Option[];
-  type: 'multiple' | 'order'; // Lista de opciones disponibles
+  options?: Option[];
+  type: 'multiple' | 'order' | 'translate' | 'fill' | 'match'; // Lista de opciones disponibles
+  pairs?: MatchPair[];
+}
+
+export interface MatchPair {
+  left: string;
+  right: string;
 }
 
 /*
@@ -35,7 +42,7 @@ export interface LessonC {
 }
 @Component({
   selector: 'app-lesson',
-  imports: [CommonModule, Nav],
+  imports: [CommonModule, Nav, FormsModule],
   templateUrl: './lesson.html',
   styleUrl: './lesson.css',
 })
@@ -60,6 +67,12 @@ export class Lesson {
   isAnswered = false;
   isCorrectAnswer = false;
 
+  selectedLeft: string | null = null;
+  shuffledRight: string[] = [];
+
+  matchedPairs: MatchPair[] = [];
+  wrongPair: MatchPair | null = null;
+
   private lessonIndex$ = new BehaviorSubject<number>(0);
 
   userId = '123'; // luego lo sacas del auth
@@ -81,11 +94,11 @@ export class Lesson {
 
   confirmAnswer(lesson: LessonC) {
 
-  if (this.currentExerciseIndex < lesson.exercises.length - 1) {
-    this.currentExerciseIndex++;
-    this.updateProgress(lesson);
+    if (this.currentExerciseIndex < lesson.exercises.length - 1) {
+      this.currentExerciseIndex++;
+      this.updateProgress(lesson);
+    }
   }
-}
 
   /*
    Se ejecuta al inicializar el componente.
@@ -137,7 +150,18 @@ export class Lesson {
       })
     );
 
-    
+    this.currentLesson$.subscribe(lesson => {
+
+      const currentExercise = this.getCurrentExercise(lesson);
+
+      if (currentExercise?.type === 'match' && currentExercise.pairs) {
+        this.shuffledRight = this.shuffleArray(
+          currentExercise.pairs.map(p => p.right)
+        );
+      }
+
+    });
+
   }
   /*
    Guarda la opción seleccionada por el usuario.
@@ -151,14 +175,38 @@ export class Lesson {
     Muestra retroalimentación según el resultado.
    */
   submitAnswer(lesson: LessonC) {
-    if (!this.selectedOption) return;
+
+    const currentExercise = this.getCurrentExercise(lesson);
+    if (!currentExercise) return;
+
+    let answer = '';
+
+    if (currentExercise.type === 'multiple') {
+      if (!this.selectedOption) return;
+      answer = this.selectedOption;
+    }
+
+    if (currentExercise.type === 'order') {
+      answer = this.selectedWords.join(' ');
+    }
+
+    if (currentExercise.type === 'translate' || currentExercise.type === 'fill') {
+      if (!this.selectedOption) return;
+      answer = this.selectedOption;
+    }
+
+    if (currentExercise.type === 'match' && currentExercise.pairs) {
+      this.shuffledRight = this.shuffleArray(
+        currentExercise.pairs.map(p => p.right)
+      );
+    }
 
     this.lessonService
       .submitAnswer(
         this.userId,
         lesson.id,
         this.currentExerciseIndex,
-        this.selectedOption
+        answer
       )
       .subscribe(res => {
 
@@ -166,16 +214,64 @@ export class Lesson {
         this.isCorrectAnswer = res;
 
         if (res) {
-
-          // Espera 800ms antes de pasar al siguiente
           setTimeout(() => {
             this.nextExercise(lesson);
             this.isAnswered = false;
             this.selectedOption = null;
+            this.selectedWords = [];
           }, 800);
-
         }
       });
+  }
+
+  shuffleArray(array: string[]): string[] {
+    return [...array].sort(() => Math.random() - 0.5);
+  }
+
+  selectLeft(word: string) {
+    this.selectedLeft = word;
+  }
+  selectRight(word: string, lesson: LessonC) {
+
+    if (!this.selectedLeft) return;
+
+    const currentExercise = this.getCurrentExercise(lesson);
+    if (!currentExercise || !currentExercise.pairs) return;
+
+    const correctPair = currentExercise.pairs.find(
+      p => p.left === this.selectedLeft
+    );
+
+    if (correctPair?.right === word) {
+
+      // ✅ CORRECTO
+      this.matchedPairs.push({
+        left: this.selectedLeft,
+        right: word
+      });
+
+    } else {
+
+      // ❌ INCORRECTO
+      this.wrongPair = {
+        left: this.selectedLeft,
+        right: word
+      };
+
+      setTimeout(() => {
+        this.wrongPair = null;
+      }, 800);
+    }
+
+    this.selectedLeft = null;
+  }
+
+  isWrongLeft(word: string): boolean {
+    return !!this.wrongPair && this.wrongPair.left === word;
+  }
+
+  isWrongRight(word: string): boolean {
+    return !!this.wrongPair && this.wrongPair.right === word;
   }
 
   /*Controla los estados de los ejercicios*/
@@ -190,8 +286,15 @@ export class Lesson {
       this.selectedOption = null;
       this.feedback = '';
 
-    } else {
+      const currentExercise = this.getCurrentExercise(lesson);
 
+      if (currentExercise?.type === 'match' && currentExercise.pairs) {
+        this.shuffledRight = this.shuffleArray(
+          currentExercise.pairs.map(p => p.right)
+        );
+      }
+
+    } else {
       // 🎉 Terminó la lección → pasa a la siguiente
       this.nextLesson();
     }
@@ -224,15 +327,15 @@ export class Lesson {
 
   selectedWords: string[] = [];
 
-addWord(word: string) {
-  if (!this.selectedWords.includes(word)) {
-    this.selectedWords.push(word);
+  addWord(word: string) {
+    if (!this.selectedWords.includes(word)) {
+      this.selectedWords.push(word);
+    }
   }
-}
 
-removeWord(word: string) {
-  this.selectedWords = this.selectedWords.filter(w => w !== word);
-}
+  removeWord(word: string) {
+    this.selectedWords = this.selectedWords.filter(w => w !== word);
+  }
 
   /*
     Retorna el ejercicio actual según el índice.

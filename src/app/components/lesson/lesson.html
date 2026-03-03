@@ -9,9 +9,7 @@
   <div class="progress-bar">
     <p class="text-progress">Progreso</p>
     <div class="progress-container">
-      <div 
-        class="progress-fill"
-        [style.width.%]="moduleProgress$ | async">
+      <div class="progress" [style.width.%]="moduleProgress$ | async">
       </div>
     </div>
   </div>
@@ -30,10 +28,7 @@
 
       <div class="optionsLess">
         <div *ngFor="let option of currentExercise.options">
-          <button
-            class="buttonOptions"
-            (click)="selectOption(option.text)"
-            [ngClass]="{
+          <button class="buttonOptions" (click)="selectOption(option.text)" [ngClass]="{
               'selected': selectedOption === option.text,
               'correct': isAnswered && option.correct,
               'incorrect': isAnswered && selectedOption === option.text && !option.correct
@@ -52,35 +47,85 @@
     <!-- =============================== -->
     <ng-container *ngIf="currentExercise.type === 'order'">
 
+      <!-- Frase armada -->
+      <div class="selected-words" [ngClass]="{
+          'correct-order': isAnswered && isCorrectAnswer,
+          'incorrect-order': isAnswered && !isCorrectAnswer
+        }">
+
+        <span *ngFor="let word of selectedWords" (click)="removeWord(word)" class="selected-word">
+
+          {{ word }}
+
+        </span>
+
+      </div>
+
       <!-- Banco de palabras -->
       <div class="word-bank">
-        <button
-          *ngFor="let option of currentExercise.options"
-          (click)="addWord(option.text)"
-          [disabled]="selectedWords.includes(option.text)"
-          class="buttonOptions">
+        <button *ngFor="let option of currentExercise.options" (click)="addWord(option.text)"
+          [disabled]="selectedWords.includes(option.text)" class="buttonOptions">
 
           {{ option.text }}
 
         </button>
       </div>
 
-      <!-- Frase armada -->
-      <div 
-        class="selected-words"
-        [ngClass]="{
-          'correct-order': isAnswered && isCorrectAnswer,
-          'incorrect-order': isAnswered && !isCorrectAnswer
-        }">
+    </ng-container>
 
-        <span
-          *ngFor="let word of selectedWords"
-          (click)="removeWord(word)"
-          class="selected-word">
+    <!-- =============================== -->
+    <!-- 🟨 TIPO TRANSLATE -->
+    <!-- =============================== -->
+    <ng-container *ngIf="currentExercise.type === 'translate'">
 
-          {{ word }}
+      <div class="translate-container">
 
-        </span>
+        <input type="text" class="translate-input" [(ngModel)]="selectedOption"
+          placeholder="Escribe la traducción..." />
+
+      </div>
+
+    </ng-container>
+
+    <!-- =============================== -->
+    <!-- 🟪 TIPO FILL -->
+    <!-- =============================== -->
+    <ng-container *ngIf="currentExercise.type === 'fill'">
+
+      <div class="fill-container">
+
+        <input type="text" class="fill-input" [(ngModel)]="selectedOption" placeholder="Completa la palabra..." />
+
+      </div>
+
+    </ng-container>
+
+    <!-- =============================== -->
+    <!-- 🟪 TIPO MATCH -->
+    <!-- =============================== -->
+    <ng-container *ngIf="currentExercise.type === 'match'">
+
+      <div class="match-container">
+
+        <!-- IZQUIERDA -->
+        <div class="match-column">
+          <button *ngFor="let pair of currentExercise.pairs" (click)="selectLeft(pair.left)" [class.wrong]="wrongPair?.left === pair.left"
+            [class.selected]="selectedLeft === pair.left" class="match-btn">
+
+            {{ pair.left }}
+
+          </button>
+        </div>
+
+        <!-- DERECHA (mezclado) -->
+        <div class="match-column">
+          <button *ngFor="let item of shuffledRight" (click)="selectRight(item, lesson)" [class.wrong]="isWrongRight(item)"
+            class="match-btn">
+
+            {{ item }}
+
+          </button>
+        </div>
 
       </div>
 
@@ -91,9 +136,7 @@
     <!-- =============================== -->
     <div class="button-field">
       <div id="line"></div>
-      <button
-        class="confirmation-button"
-        (click)="submitAnswer(lesson)">
+      <button class="confirmation-button" (click)="submitAnswer(lesson)">
         Confirmar
       </button>
     </div>
