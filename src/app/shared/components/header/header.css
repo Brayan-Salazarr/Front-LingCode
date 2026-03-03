@@ -71,12 +71,14 @@ h1 {
 
 /*Línea decorativa debajo del título*/
 .line {
+    position: relative;
     background: linear-gradient(to right,
             #FF00FB,
             #FFA109);
     border-radius: 30px;
     width: 272px;
     height: 20px;
+    top: -25px;
 }
 
 /*HEXÁGONOS DECORATIVOS QUE APORTAN ESTILO VISUAL*/
@@ -222,8 +224,8 @@ h1 {
 .avatar {
     border-radius: 50%;
     object-fit: cover;
-    width: 310px;
-    height: 310px;
+    width: 478px;
+    height: 478px;
 }
 
 /*Contenedor principal de la información del usuario*/
@@ -326,7 +328,8 @@ h1 {
 
     .user-data {
         position: relative;
-        top: -45px;
+        top: 25px;
+        height: 340px;
     }
 
     h1 {
@@ -335,8 +338,8 @@ h1 {
 
     .field {
         position: relative;
-        top: 120px;
-        left: 57px;
+        top: 15px;
+        left: 5px;
     }
 
     #background {
@@ -415,6 +418,18 @@ h1 {
         top: 3%;
         left: 78%;
     }
+
+    .field {
+        position: relative;
+        top: -61px;
+        left: -14px;
+    }
+
+    .user-data {
+        position: relative;
+        top: 25px;
+        height: 340px;
+    }
 }
 
 @media (max-width: 1366px) {
@@ -446,10 +461,10 @@ h1 {
 
     .avatar {
         position: relative;
-        width: 255px;
-        height: 256px;
+        width: 410px;
+        height: 410px;
         left: -27px;
-        top: 55px;
+        top: 50px;
     }
 
     #imgCirclee {
@@ -555,10 +570,9 @@ h1 {
     }
 
     .avatar {
-        width: 226px;
-        left: -22px;
-        height: 226px;
-        top: 46px;
+        width: 400px;
+        height: 400px;
+        top: 10px;
     }
 
     .button-edit {
@@ -568,11 +582,12 @@ h1 {
     .move-hex-home.hexagon7 {
         left: 91vw;
         top: 47vh;
-
     }
 
+    .name {
+        width: 395px;
+    }
 }
-
 
 @media (max-width: 1180px) {
     #imgCircle {
@@ -586,6 +601,17 @@ h1 {
     .hexagon8 {
         top: 493px;
         left: 734px;
+    }
+
+    .avatar {
+        width: 350px;
+        left: -125px;
+        height: 350px;
+        top: 35px;
+    }
+
+    .user-data {
+        left: -105px;
     }
 }
 
@@ -612,6 +638,7 @@ h1 {
 
     .line {
         height: 12px;
+        top: -10px;
     }
 
     #imgCircle {
@@ -641,7 +668,6 @@ h1 {
         width: 33px;
         top: 398px;
         left: 71px;
-        ;
     }
 
     .hexagon4 {
@@ -683,20 +709,20 @@ h1 {
     }
 
     #line {
-        margin: 0 0 0 80px;
+        margin: 0 0 0 140px;
         width: 180px;
     }
 
     .name {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .email {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .date {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     #imgCirclee {
@@ -713,6 +739,7 @@ h1 {
 
     .field {
         justify-content: center;
+        left: 45px;
     }
 
     .button-edit {
@@ -724,15 +751,16 @@ h1 {
 
     .avatar {
         position: relative;
-        top: 72px;
-        width: 165px;
-        height: 165px;
-        left: -102px;
+        top: 75px;
+        width: 230px;
+        height: 230px;
+        left: -100px;
     }
 
     .user-data {
-        margin-top: 24px;
-        height: 193px;
+        top: 80px;
+        left: -45px;
+        height: 190px;
     }
 
     .move-hex-home.hexagon2 {
@@ -778,7 +806,6 @@ h1 {
 }
 
 @media (max-width: 768px) {
-
     .header-wrapper {
         height: 545px;
     }
@@ -818,13 +845,8 @@ h1 {
 
     .nickname {
         text-align: center;
-        font-size: 25px;
-    }
-
-    .name,
-    .email,
-    .date {
-        font-size: 13px;
+        font-size: 35px;
+        width: 273px;
     }
 
     .img {
@@ -832,8 +854,8 @@ h1 {
     }
 
     .avatar {
-        width: 131px;
-        height: 131px;
+        width: 250px;
+        height: 250px;
         left: 25px;
         top: 0;
     }
@@ -847,7 +869,8 @@ h1 {
     .user-data {
         margin: 0;
         position: relative;
-        left: 74px;
+        left: 45px;
+        top: -20px;
     }
 
     .button-edit {
@@ -868,19 +891,42 @@ h1 {
         position: relative;
         align-items: center;
         top: -1vh;
-        left: 12vw;
+        left: 1vw;
     }
-
 }
 
 @media (max-width: 723px) {
-
     h1 {
         width: 464px;
     }
 
     #imgCircle {
         display: none;
+    }
+
+    .avatar {
+        width: 210px;
+        height: 210px;
+        left: 20px;
+    }
+
+    .user-data {
+        left: 40px;
+        top: -16px;
+    }
+
+    .nickname {
+        text-align: start;
+    }
+
+    .name,
+    .date,
+    .email {
+        font-size: 15px;
+    }
+
+    .field {
+        top: 3vh;
     }
 }
 
@@ -892,6 +938,10 @@ h1 {
     .hexagon8 {
         left: 444px;
         top: 315px;
+    }
+
+    .field {
+        left: -5vw;
     }
 }
 
@@ -917,7 +967,7 @@ h1 {
     .field {
         justify-content: space-around;
         top: -1vh;
-        left: 13vw;
+        left: 8vw;
     }
 
     #imgCirclee {
@@ -927,6 +977,11 @@ h1 {
     .img {
         margin: 0 16px 0 0;
     }
+
+    .avatar {
+        width: 150px;
+        height: 150px;
+    }
 }
 
 @media (max-width: 515px) {
@@ -934,6 +989,13 @@ h1 {
         display: none;
     }
 
+    .move-hex-home.hexagon2 {
+        display: none;
+    }
+
+    .field {
+        left: 4vw;
+    }
 }
 
 @media (max-width: 480px) {
@@ -954,6 +1016,7 @@ h1 {
     .line {
         height: 8px;
         width: 144px;
+        top: -5px;
     }
 
     #imgCircle {
@@ -1026,10 +1089,10 @@ h1 {
     }
 
     .avatar {
-        width: 92px;
-        height: 92px;
-        left: 76px;
-        top: 23px;
+        width: 100px;
+        height: 100px;
+        left: 20px;
+        top: -25px;
     }
 
     .user-header {
@@ -1037,7 +1100,7 @@ h1 {
     }
 
     .nickname {
-        text-align: center;
+        text-align: start;
         font-size: 25px;
     }
 
@@ -1049,14 +1112,16 @@ h1 {
 
     #line {
         width: 102px;
-        margin: 0px 0 0 44px;
+        height: 5px;
+        margin: 0 0 0 75px
     }
 
     .user-data {
         position: relative;
         height: 121px;
-        top: 20px;
-        left: 68px;
+        top: -13px;
+        left: 76px;
+        width: 300px;
     }
 
     .img {
@@ -1088,17 +1153,17 @@ h1 {
     }
 
     .field {
-        left: 2vw;
+        flex-direction: column;
+        left: 9vw;
     }
 }
 
 @media (max-width: 410px) {
-
     .avatar {
-        width: 84px;
-        height: 84px;
-        left: -7px;
-        top: -12px;
+        width: 120px;
+        height: 120px;
+        left: -38px;
+        top: -20px;
     }
 
     #imgCirclee {
@@ -1121,8 +1186,8 @@ h1 {
     }
 
     .nickname {
-        text-align: center;
-        font-size: 25px;
+        text-align: start;
+        font-size: 22px;
     }
 
     .name,
@@ -1138,8 +1203,8 @@ h1 {
 
     .user-data {
         height: 121px;
-        top: 22px;
-        left: -7px;
+        top: -20px;
+        left: 3px;
     }
 
     .hexagon8 {
@@ -1149,7 +1214,6 @@ h1 {
 }
 
 @media (max-width: 400px) {
-
     h1 {
         width: 316px;
         font-size: 22px;
@@ -1169,17 +1233,16 @@ h1 {
 
     .user-data {
         height: 121px;
-        top: 22px;
-        left: 40px;
+        top: -25px;
+        left: 38px;
     }
 
     .avatar {
-        left: 41px;
+        left: -7px;
     }
 }
 
 @media (max-width: 350px) {
-
     h1 {
         width: 100%;
         font-size: 17px;
@@ -1214,7 +1277,7 @@ h1 {
     }
 
     .nickname {
-        text-align: center;
+        text-align: start;
         font-size: 19px;
     }
 
@@ -1232,5 +1295,18 @@ h1 {
     .hexagon8 {
         left: 266px;
         top: 289px;
+    }
+
+    .avatar {
+        width: 100px;
+        height: 100px;
+        top: -20px;
+    }
+
+    .user-data {
+        height: 121px;
+        top: -13px;
+        left: -1vw;
+        width: 202px;
     }
 }

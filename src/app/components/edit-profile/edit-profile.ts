@@ -75,7 +75,7 @@ export class EditProfile {
 
     //Si la imagen supera el peso entonces se muestra un error
     if (file.size > maxSize) {
-      this.errorMessage = "La imagen no puede superar 1 MB";
+      this.errorMessage = "La imagen supera 1 MB";
       return;
     }
 
