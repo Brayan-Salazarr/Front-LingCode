@@ -280,7 +280,8 @@ input {
 }
 
 /*Margen adicional para mensajes de requerimiento*/
-#requieFields {
+#requieFields,
+#requieFields2 {
     margin: 10px 0 0 54px;
 }
 
