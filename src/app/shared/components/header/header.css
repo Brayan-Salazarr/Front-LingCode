@@ -555,9 +555,10 @@ h1 {
     }
 
     .avatar {
-        width: 227px;
-        left: -20px;
-        top: -9px;
+        width: 226px;
+        left: -22px;
+        height: 226px;
+        top: 46px;
     }
 
     .button-edit {

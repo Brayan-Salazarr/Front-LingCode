@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { CarouselAvatar } from '../../shared/components/carousel-avatar/carousel-avatar';
 import { ChangeDetectorRef } from '@angular/core';
-import { max } from 'rxjs';
+import { max, window } from 'rxjs';
 import { AvatarService } from '../../service/avatarService';
 
 /*Interfaz que define la estructura de cada imagen*/
@@ -205,6 +205,13 @@ export class EditProfile {
 
       //Mensaje para el usuario indicando que se actualizaron los datos
       alert('Actualizado exitosamente');
+
+      //Después de guardar la información el scroll sube
+      globalThis.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
     }
   }
 }
