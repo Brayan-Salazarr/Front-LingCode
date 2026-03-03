@@ -1020,3 +1020,45 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
         padding: 20px 26px 50px 26px
     }
 }
+
+@media(max-width: 350px) {
+    .subTitle {
+        font-size: 32px;
+    }
+
+    .target-box {
+        width: 270px;
+    }
+
+    .border-streak {
+        width: 270px;
+    }
+
+    #streak {
+        font-size: 95px;
+    }
+
+    #img-Cybro {
+        width: 180px;
+    }
+
+    .title-progress {
+        font-size: 23px;
+    }
+
+    .card {
+        width: 215px;
+    }
+
+    .text-record {
+        font-size: 15px;
+    }
+
+    .results {
+        font-size: 15px;
+    }
+
+    .achievement-card {
+        font-size: 15px;
+    }
+}
