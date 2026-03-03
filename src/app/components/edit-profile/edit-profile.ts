@@ -35,7 +35,16 @@ export class EditProfile {
 
   ngOnInit() {
     this.avatarService.avatar$.subscribe(currentAvatar=>{
-      this.selectedAvatarUrl = currentAvatar;
+      if(!currentAvatar) return;
+      
+      if(currentAvatar.startsWith('data:image')){
+        this.previewUrl = currentAvatar;
+        this.selectedAvatarUrl = null;
+      }else{
+        this.selectedAvatarUrl = currentAvatar;
+        this.previewUrl = null;
+      }
+      
     });
   }
 
@@ -85,6 +94,7 @@ export class EditProfile {
         this.cdr.detectChanges();
       }
     };
+
     //Convierte la imagen en formato base64 para poder mostrarla en pantalla 
     reader.readAsDataURL(file);
 

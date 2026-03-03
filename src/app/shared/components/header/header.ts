@@ -59,14 +59,14 @@ export class Header {
   profileImageValue: string | null = null;
 
   ngOnInit() {
-  this.profileImage$.subscribe(url => {
+    this.avatarService.avatar$.subscribe(url => {
     this.profileImageValue = url;
-  });
-}
+      });
+  }
 
-// Getter que sí funciona
-get showCircle(): boolean {
-  return !this.previewUrl && !this.profileImageValue;
-}
-
+  // Getter que sí funciona
+  get showCircle(): boolean {
+    // Si la URL viene de Cloudinary (avatar), ocultar círculo
+    return this.profileImageValue?.startsWith('data:image') ?? false;
+  }
 }

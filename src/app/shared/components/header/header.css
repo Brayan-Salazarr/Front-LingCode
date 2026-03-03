@@ -422,11 +422,6 @@ h1 {
         height: 1331px;
     }
 
-    #imgCircle {
-        left: 75%;
-        top: 8%;
-    }
-
     .hexagon7 {
         left: 1000px;
     }
@@ -452,14 +447,15 @@ h1 {
     .avatar {
         position: relative;
         width: 255px;
+        height: 256px;
         left: -27px;
+        top: 55px;
     }
 
     #imgCirclee {
         width: 462px;
-        top: -104px;
+        top: -50px;
         left: -54px;
-
     }
 
     .user-header {

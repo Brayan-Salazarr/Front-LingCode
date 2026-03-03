@@ -44,6 +44,11 @@ export class Nav {
   /*Cierra la sesión del usuario y lo redirige al incio público*/
   logout() {
     this.authService.logout(); //Elimina la sesión del usuario
+
+    //Limpia el avatar guardado
+    localStorage.removeItem('avatar');
+    this.avatarService.setAvatar(null);
+
     this.router.navigate(['/']); //Redirige al home público
   }
 
