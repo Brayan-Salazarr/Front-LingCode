@@ -63,7 +63,7 @@
     <!-- class="icon" define el contenedor -->
     <!-- (click)="goLogin()" permite abrir el login -->
     <!-- Se muestra solo si el observable es null -->
-    <div class="icon" (click)="goLogin()" *ngIf="user">
+    <div class="icon" (click)="goLogin()" *ngIf="(authService.currentUser$ | async) === null">
 
         <!-- Imagen del icono de usuario -->
         <img id="userIcon"

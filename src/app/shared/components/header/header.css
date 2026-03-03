@@ -71,12 +71,14 @@ h1 {
 
 /*Línea decorativa debajo del título*/
 .line {
+    position: relative;
     background: linear-gradient(to right,
             #FF00FB,
             #FFA109);
     border-radius: 30px;
     width: 272px;
     height: 20px;
+    top: -25px;
 }
 
 /*HEXÁGONOS DECORATIVOS QUE APORTAN ESTILO VISUAL*/
@@ -636,6 +638,7 @@ h1 {
 
     .line {
         height: 12px;
+        top: -10px;
     }
 
     #imgCircle {
@@ -665,7 +668,6 @@ h1 {
         width: 33px;
         top: 398px;
         left: 71px;
-        ;
     }
 
     .hexagon4 {
@@ -707,7 +709,7 @@ h1 {
     }
 
     #line {
-        margin: 0 0 0 80px;
+        margin: 0 0 0 140px;
         width: 180px;
     }
 
@@ -737,6 +739,7 @@ h1 {
 
     .field {
         justify-content: center;
+        left: 45px;
     }
 
     .button-edit {
@@ -843,6 +846,7 @@ h1 {
     .nickname {
         text-align: center;
         font-size: 35px;
+        width: 273px;
     }
 
     .img {
@@ -1012,6 +1016,7 @@ h1 {
     .line {
         height: 8px;
         width: 144px;
+        top: -5px;
     }
 
     #imgCircle {
@@ -1107,7 +1112,8 @@ h1 {
 
     #line {
         width: 102px;
-        margin: 0px 0 0 44px;
+        height: 5px;
+        margin: 0 0 0 75px
     }
 
     .user-data {
@@ -1271,7 +1277,7 @@ h1 {
     }
 
     .nickname {
-        text-align: center;
+        text-align: start;
         font-size: 19px;
     }
 
