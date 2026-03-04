@@ -6,6 +6,9 @@ import { AuthService, User } from '../../auth/services/authService';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { Subscriptions } from '../../shared/components/subscriptions/subscriptions';
+import { UserProgress } from '../../models/progress';
+import { ProgressService } from '../../service/progress-service';
+import { Observable } from 'rxjs';
 
 //INTERFACES PARA TIPADO
 //Representa cada práctica o módulo que el usuario puede realizar
@@ -36,9 +39,14 @@ export class RegisteredHome {
   //Información del usuario actual (puede ser null si no hay usuario logueado)
   user: User | null = null;
 
+  progress!: UserProgress;
+
   constructor(private authService: AuthService, //Servicio de autenticación para obtener el usuario.
     //Router para navegación programática
-    private router: Router) {
+    private router: Router,
+
+    private progressService: ProgressService
+  ) {
     //Nos suscribimos al observable del usuario actual
     this.authService.currentUser$.subscribe(user => {
       this.user = user; //Guardamos los datos del usuario en la variable 'user'
@@ -87,11 +95,21 @@ export class RegisteredHome {
     }
   ];
 
-//MÉTODOS DEL COMPONENTE
+  userId = '123';
+
+  //MÉTODOS DEL COMPONENTE
   ngOnInit(): void {
     //Si el usuario no está autenticado. redirigimos al login
     if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/login-registro'], { queryParams: { view: 'login' } });
     }
+
+    this.progressService
+      .getProgress(this.userId)
+      .subscribe(res => {
+        console.log("PROGRESS >>>", res);
+        this.progress = res;
+      });
   }
+
 }

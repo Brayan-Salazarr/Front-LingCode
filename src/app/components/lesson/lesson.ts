@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { BehaviorSubject, combineLatest, map, Observable, switchMap } from 'rxjs';
 import { Nav } from '../../shared/components/nav/nav';
 import { FormsModule } from '@angular/forms';
+import { UserProgress } from '../../models/progress';
+import { ProgressService } from '../../service/progress-service';
 
 /*
   Representa una opción de respuesta dentro de un ejercicio.
@@ -73,13 +75,17 @@ export class Lesson {
   matchedPairs: MatchPair[] = [];
   wrongPair: MatchPair | null = null;
 
+  currentStreak = 0;
+  previousStreak = 0;
+
   private lessonIndex$ = new BehaviorSubject<number>(0);
 
   userId = '123'; // luego lo sacas del auth
 
   constructor(
     private route: ActivatedRoute, // Permite acceder a parámetros de la URL
-    private lessonService: LessonService // Servicio para comunicarse con el backend
+    private lessonService: LessonService, // Servicio para comunicarse con el backend
+    private progressService: ProgressService
   ) { }
 
   private moduleProgressSubject = new BehaviorSubject<number>(0);
@@ -280,24 +286,54 @@ export class Lesson {
 
     if (this.currentExerciseIndex < total - 1) {
 
-      // 🔥 Pasa al siguiente ejercicio
       this.currentExerciseIndex++;
       this.exerciseIndex$.next(this.currentExerciseIndex);
       this.selectedOption = null;
       this.feedback = '';
 
-      const currentExercise = this.getCurrentExercise(lesson);
-
-      if (currentExercise?.type === 'match' && currentExercise.pairs) {
-        this.shuffledRight = this.shuffleArray(
-          currentExercise.pairs.map(p => p.right)
-        );
-      }
-
     } else {
-      // 🎉 Terminó la lección → pasa a la siguiente
-      this.nextLesson();
+
+      this.finishLesson(lesson); // 👈 limpio y claro
+
     }
+  }
+
+  finishLesson(lesson: LessonC) {
+
+    this.previousStreak = this.currentStreak;
+
+    this.progressService
+      .completeLesson(this.userId, lesson.id, lesson.xpReward)
+      .subscribe(progress => {
+
+        this.handleStreak(progress);
+
+        this.goToNextLesson(); // 👈 aquí sí
+
+      });
+  }
+
+  handleStreak(progress: UserProgress) {
+
+    this.currentStreak = progress.currentStreak;
+
+    if (this.currentStreak > this.previousStreak) {
+      this.showStreakAnimation();
+    }
+  }
+
+  goToNextLesson() {
+
+    this.currentExerciseIndex = 0;
+    this.exerciseIndex$.next(0);
+    this.selectedOption = null;
+    this.feedback = '';
+
+    this.nextLesson(); // 👈 solo si nextLesson SOLO cambia la lección
+  }
+
+  showStreakAnimation() {
+    alert(`🔥 ¡Racha de ${this.currentStreak} días!`);
   }
 
   /*
