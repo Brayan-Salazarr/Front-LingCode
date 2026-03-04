@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, tap, throwError } from 'rxjs';
 
 export interface User {
+  userId: string;
   fullName: string;
   nickName: string;
   email: string;
@@ -216,6 +217,7 @@ login(identifier: string, password: string) {
     if (exists) return throwError(() => new Error('El usuario ya existe'));
 
     const newUser = {
+      id: crypto.randomUUID(),
       ...user,
       createdAt: new Date().toISOString()
     };

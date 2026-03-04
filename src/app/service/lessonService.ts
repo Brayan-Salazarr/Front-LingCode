@@ -69,7 +69,6 @@ export class LessonService {
     @returns Observable boolean indicando si la respuesta fue correcta
    */
   submitAnswer(
-    userId: string,
     lessonId: string,
     exerciseIndex: number,
     answer: string
@@ -78,7 +77,6 @@ export class LessonService {
     return this.http.post<boolean>(
       `${this.baseUrl}/lessons/${lessonId}/answer`,
       {
-        userId,
         exerciseIndex,
         answer
       }
