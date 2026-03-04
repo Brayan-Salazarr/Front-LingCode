@@ -18,7 +18,9 @@
                 <img *ngIf="previewUrl" [src]="previewUrl" class="preview-img">
             </div>
             <!-- Muestra el avatar seleccionado por el usuario -->
-            <img *ngIf="!previewUrl" [src]="previewUrl || selectedAvatarUrl || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'"  class="avatar-img">
+            <img *ngIf="!previewUrl"
+                [src]="previewUrl || selectedAvatarUrl || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'"
+                class="avatar-img">
         </div>
 
         <!-- Input oculto para subir imagen desde el dispositivo -->
@@ -88,29 +90,40 @@
         <!-- Textos descriptivos y campos de entrada -->
         <div class="regisInfo">
             <p class="textEdit">Nombre completo</p>
-            <input class="field" id="name">
+            <input class="field" id="name" [(ngModel)]="fullName">
         </div>
 
         <div class="regisInfo">
             <p class="textEdit">Apodo</p>
-            <input class="field" id="nickname">
+            <input class="field" id="nickname" [(ngModel)]="nickName">
         </div>
 
         <div class="regisInfo">
             <p class="textEdit">Correo eléctronico</p>
-            <input class="field" id="email" type="email">
+            <input class="field" id="email" type="email" [(ngModel)]="email">
         </div>
 
         <div class="regisInfo">
             <p class="textEdit">Contraseña</p>
-            <input class="field" id="password" type="password">
+            <input class="field" id="password" type="password" [(ngModel)]="password"
+                (ngModelChange)="caracterPassword($event)">
         </div>
 
         <div class="regisInfo">
             <p class="textEdit">Confirmar contraseña</p>
-            <input class="field" id="confirmPass" type="password">
+            <input class="field" id="confirmPass" type="password" [(ngModel)]="confirmPass"
+                (ngModelChange)="passwordValidation(password, confirmPass)">
         </div>
     </div>
+
+    <!-- MENSAJES DE ERROR DINÁMICOS -->
+    <p class="textTerms" id="textPass" *ngIf="errorPassw">
+        Las contraseñas ingresadas no coinciden.
+    </p>
+
+    <p class="textTerms" id="requieFields" *ngIf="caractPassw">
+        La contraseña debe contener al menos 8 caracteres, incluyendo una letra mayúscula y un número.
+    </p>
 
     <!-- Botones principales de acción -->
     <div class="buttons">

@@ -8,6 +8,9 @@ import { CarouselAvatar } from '../../shared/components/carousel-avatar/carousel
 import { ChangeDetectorRef } from '@angular/core';
 import { max, window } from 'rxjs';
 import { AvatarService } from '../../service/avatarService';
+import { AuthService } from '../../auth/services/authService';
+import { FormsModule } from '@angular/forms';
+import { UserService } from '../../service/user-service';
 
 /*Interfaz que define la estructura de cada imagen*/
 interface ImagenItem {
@@ -18,13 +21,22 @@ interface ImagenItem {
 
 @Component({
   selector: 'app-edit-profile',
-  imports: [RouterModule, Nav, Footer, NgClass, NgIf, CarouselAvatar],
+  imports: [RouterModule, Nav, Footer, NgClass, NgIf, CarouselAvatar, FormsModule],
   templateUrl: './edit-profile.html',
   styleUrl: './edit-profile.css',
 })
 export class EditProfile {
+  caractPassw: boolean = false; //Error cuando la contraseña no cumple requisitos
+  errorPassw: boolean = false; //Error cuando las contraseñas no coinciden
+  fullName: string = '';
+  nickName: string = '';
+  email: string = '';
+  password: string = '';
+  confirmPass: string = '';
+
   constructor(private cdr: ChangeDetectorRef, //Permite forzar la actualización de la vista cuando Angular no detecta cambios automáticamente
-    private avatarService: AvatarService) { }; //Servicio compartido para enviar la imagen seleccionada al componente Nav
+    private avatarService: AvatarService,
+    private userService: UserService) { }; //Servicio compartido para enviar la imagen seleccionada al componente Nav
 
   //URL del avatar seleccionado desde las opciones disponibles
   selectedAvatarUrl: string | null = null;
@@ -34,17 +46,27 @@ export class EditProfile {
   errorMessage: string = "";
 
   ngOnInit() {
-    this.avatarService.avatar$.subscribe(currentAvatar=>{
-      if(!currentAvatar) return;
-      
-      if(currentAvatar.startsWith('data:image')){
+    //Carga los datos del usuario
+    const user = this.userService.getCurrentUser();
+    this.fullName = user.fullName;
+    this.nickName = user.nickName;
+    this.email = user.email;
+    this.password = user.password;
+    this.previewUrl = user.avatar;
+    this.selectedAvatarUrl = user.avatar;
+
+
+    this.avatarService.avatar$.subscribe(currentAvatar => {
+      if (!currentAvatar) return;
+
+      if (currentAvatar.startsWith('data:image')) {
         this.previewUrl = currentAvatar;
         this.selectedAvatarUrl = null;
-      }else{
+      } else {
         this.selectedAvatarUrl = currentAvatar;
         this.previewUrl = null;
       }
-      
+
     });
   }
 
@@ -99,7 +121,7 @@ export class EditProfile {
     reader.readAsDataURL(file);
 
     //Permite seleccionar la misma imagen
-    input.value="";
+    input.value = "";
   }
 
   //Se ejecuta cuando un usuario selecciona un avatar
@@ -203,6 +225,29 @@ export class EditProfile {
     if (finalImage) {
       this.avatarService.setAvatar(finalImage);
 
+      //Expresión para validar contraseña
+      //mínimo 8 caracteres, 1 mayúscula y 1 número
+      const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+      //Valida que la contraseña contenga los caracteres adecuados.
+      this.caractPassw = !passRegex.test(this.password);
+
+      if(this.caractPassw){
+        return;
+      }
+
+      const updatedUser = {
+        fullName:this.fullName,
+        nickName: this.nickName,
+        email: this.email,
+        password: this.password,
+        avatar: finalImage
+      };
+
+      this.userService.updateUser(updatedUser);
+
+      this.avatarService.setAvatar(finalImage);
+
       //Mensaje para el usuario indicando que se actualizaron los datos
       alert('Actualizado exitosamente');
 
@@ -213,5 +258,27 @@ export class EditProfile {
         behavior: 'smooth'
       })
     }
+  }
+
+  //Valida si las contraseñas coinciden
+  passwordValidation(password: string, confirmPassword: string) {
+    //Si hay algún error detiene el registro y muestra mensaje al usuario
+    if (!password && !confirmPassword) {
+      this.errorPassw = false;
+      return;
+    }
+
+    //Valida que las contraseñas ingresadas coincidan
+    this.errorPassw = password !== confirmPassword;
+  }
+
+  //Valida si la contraseña cumple con la cantidad de caracteres solicitados
+  caracterPassword(password: string) {
+    //Expresión para validar contraseña
+    //mínimo 9 caracteres, 1 mayúscula y 1 número
+    const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    //Valida que la contraseña contenga los caracteres adecuados.
+    this.caractPassw = !passRegex.test(password);
   }
 }

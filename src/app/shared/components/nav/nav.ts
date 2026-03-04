@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService, User } from '../../../auth/services/authService';
 import { AvatarService } from '../../../service/avatarService';
 import { Observable } from 'rxjs';
+import { UserService } from '../../../service/user-service';
 
 @Component({
   selector: 'app-nav',
@@ -24,7 +25,8 @@ export class Nav {
   constructor(
     private router: Router, //Servicio para navegar entre rutas
     public authService: AuthService, //Servicio de autenticación
-    private avatarService: AvatarService
+    private avatarService: AvatarService,
+    private userService: UserService
   ) {
 
     this.profileImage$ = this.avatarService.avatar$;
@@ -32,6 +34,16 @@ export class Nav {
     this.authService.currentUser$.subscribe(user => {
       this.user = user;
     });
+
+    /*Suscribirse al usuario*/
+    this.userService.user$.subscribe(user => {
+      this.user = {
+        fullName: user.fullName,
+        nickName: user.nickName,
+        email: user.email,
+        avatar: user.avatar ?? undefined
+      }
+    })
   }
 
   /*Navega a la página de login. Se envía el parámetro "view=login" para indicar que debe mostrarse la vista de iniciar sesión*/
