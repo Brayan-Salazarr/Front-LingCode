@@ -109,7 +109,9 @@
 
         <!-- IZQUIERDA -->
         <div class="match-column">
-          <button *ngFor="let pair of currentExercise.pairs" (click)="selectLeft(pair.left)" [class.wrong]="wrongPair?.left === pair.left"
+          <button *ngFor="let pair of currentExercise.pairs" (click)="selectLeft(pair.left)"
+            [class.wrong]="wrongPair?.left === pair.left" [class.selected]="selectedLeft === pair.left"
+            [disabled]="isLeftDisabled(pair.left)" [class.wrong]="wrongPair?.left === pair.left"
             [class.selected]="selectedLeft === pair.left" class="match-btn">
 
             {{ pair.left }}
@@ -119,7 +121,7 @@
 
         <!-- DERECHA (mezclado) -->
         <div class="match-column">
-          <button *ngFor="let item of shuffledRight" (click)="selectRight(item, lesson)" [class.wrong]="isWrongRight(item)"
+          <button *ngFor="let item of shuffledRight" (click)="selectRight(item, lesson)" [disabled]="isRightDisabled(item)" [class.wrong]="isWrongRight(item)"
             class="match-btn">
 
             {{ item }}
@@ -136,7 +138,7 @@
     <!-- =============================== -->
     <div class="button-field">
       <div id="line"></div>
-      <button class="confirmation-button" (click)="submitAnswer(lesson)">
+      <button class="confirmation-button" [disabled]="matchedPairs.length !== (currentExercise.pairs?.length || 0)" (click)="submitAnswer(lesson)">
         Confirmar
       </button>
     </div>

@@ -79,6 +79,7 @@
     border: none;
     background-color: rgba(0, 140, 255, 1);
     font-size: 20px;
+    cursor: pointer;
 }
 
 .button-field {
@@ -151,78 +152,81 @@
 }
 
 .translate-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .translate-input {
-  width: 60%;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 10px;
-  border: 2px solid #ccc;
+    width: 60%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
 }
 
 .fill-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .fill-input {
-  width: 50%;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 10px;
-  border: 2px solid #ccc;
+    width: 50%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
 }
 
 .match-container {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 30px;
 }
 
 .match-column {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .match-btn {
-  padding: 12px 20px;
-  border-radius: 12px;
-  border: 2px solid #ddd;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s ease;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background-color: rgba(217, 217, 217, 1);
+    border: 2px solid rgba(0, 140, 255, 1);
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    transition: 0.3s ease;
 }
 
 /* Hover */
 .match-btn:hover {
-  background: #f2f2f2;
+    background: black;
+    color: white;
 }
 
 /* Seleccionado */
 .match-btn.selected {
-  background: #d0ebff;
-  border-color: #339af0;
+    background: #d0ebff;
+    border-color: #339af0;
 }
 
 /* Correcto */
 .match-btn.correct {
-  background: #d4edda;
-  border-color: #28a745;
-  color: #155724;
-  opacity: 0.6;
-  cursor: default;
+    background: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+    opacity: 0.6;
+    cursor: default;
 }
 
 /* Incorrecto */
 .match-btn.wrong {
-  background: #f8d7da;
-  border-color: #dc3545;
-  color: #721c24;
+    background: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
 }

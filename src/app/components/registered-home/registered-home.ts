@@ -39,7 +39,7 @@ export class RegisteredHome {
   //Información del usuario actual (puede ser null si no hay usuario logueado)
   user: User | null = null;
 
-  progress!: UserProgress;
+  progress$!: Observable<UserProgress | null>;
 
   constructor(private authService: AuthService, //Servicio de autenticación para obtener el usuario.
     //Router para navegación programática
@@ -104,12 +104,11 @@ export class RegisteredHome {
       this.router.navigate(['/login-registro'], { queryParams: { view: 'login' } });
     }
 
-    this.progressService
-      .getProgress(this.userId)
-      .subscribe(res => {
-        console.log("PROGRESS >>>", res);
-        this.progress = res;
-      });
+
+    this.progress$ = this.progressService.progress$;
+
+    // 🔥 Cargar progreso inicial
+    this.progressService.getProgress('123').subscribe();
   }
 
 }
