@@ -263,8 +263,8 @@ h1 {
 /*Imagen circular de fondo decorativa*/
 #imgCirclee {
     position: absolute;
-    width: 550px;
-    top: -122px;
+    width: 501px;
+    top: -45px;
     left: -69px;
     z-index: -1;
     opacity: 0.9;
