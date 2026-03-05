@@ -34,16 +34,6 @@ export class Nav {
     this.authService.currentUser$.subscribe(user => {
       this.user = user;
     });
-
-    /*Suscribirse al usuario*/
-    this.userService.user$.subscribe(user => {
-      this.user = {
-        fullName: user.fullName,
-        nickName: user.nickName,
-        email: user.email,
-        avatar: user.avatar ?? undefined
-      }
-    })
   }
 
   /*Navega a la página de login. Se envía el parámetro "view=login" para indicar que debe mostrarse la vista de iniciar sesión*/
