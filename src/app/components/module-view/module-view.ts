@@ -61,7 +61,11 @@ export class ModuleView {
    - Transforma los datos en un ViewModel para la vista
   */
   ngOnInit() {
-    const userId = '123';
+    const user = this.authService.getCurrentUser();
+    console.log("Usuario actual:", user);
+    if (!user) return;
+
+    const userId = user.userId;
 
     this.modules$ = this.moduleService.getModules().pipe(
       map(data => data.filter(m => m.is_published)),
@@ -93,4 +97,5 @@ export class ModuleView {
   goToLessons(moduleId: string) {
     this.router.navigate(['/modules', moduleId, 'lessons']);
   }
+
 }

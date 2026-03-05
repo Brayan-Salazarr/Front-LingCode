@@ -40,7 +40,7 @@ export class ProgressService {
   completeLesson(lessonId: string, xp: number): Observable<UserProgress> {
 
     const currentUser = this.authService.getCurrentUser();
-    if(!currentUser) throw new Error('No hay usuario logueado')
+    if (!currentUser) throw new Error('No hay usuario logueado')
 
     return this.http.post<UserProgress>(
       `${this.baseUrl}/${currentUser.userId}/complete/${lessonId}?xp=${xp}`,
