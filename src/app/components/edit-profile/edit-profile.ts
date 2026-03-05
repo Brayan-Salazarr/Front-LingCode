@@ -52,8 +52,8 @@ export class EditProfile {
     this.nickName = user.nickName;
     this.email = user.email;
     this.password = user.password;
-    this.previewUrl = user.avatar;
-    this.selectedAvatarUrl = user.avatar;
+    this.previewUrl = user.avatar ?? null;
+    this.selectedAvatarUrl = user.avatar ?? null;
 
 
     this.avatarService.avatar$.subscribe(currentAvatar => {
@@ -221,26 +221,30 @@ export class EditProfile {
 
   //Guarda los cambios de información realizados por el usuario 
   saveChanges() {
-    const finalImage = this.previewUrl || this.selectedAvatarUrl;
+    const currentUser = this.userService.getCurrentUser();
+
+    const finalImage = this.previewUrl || this.selectedAvatarUrl || currentUser.avatar;
     if (finalImage) {
       this.avatarService.setAvatar(finalImage);
 
       //Expresión para validar contraseña
       //mínimo 8 caracteres, 1 mayúscula y 1 número
-      const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+      if (this.password) {
+        const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+        //Valida que la contraseña contenga los caracteres adecuados.
+        this.caractPassw = !passRegex.test(this.password);
 
-      //Valida que la contraseña contenga los caracteres adecuados.
-      this.caractPassw = !passRegex.test(this.password);
-
-      if(this.caractPassw){
-        return;
+        if (this.caractPassw) {
+          return;
+        }
       }
 
       const updatedUser = {
-        fullName:this.fullName,
-        nickName: this.nickName,
-        email: this.email,
-        password: this.password,
+        //Si el usuario deja campos vacíos, se usan los datos o valores anteriores
+        fullName: this.fullName || currentUser.fullName,
+        nickName: this.nickName || currentUser.nickName,
+        email: this.email || currentUser.email,
+        password: this.password || currentUser.password,
         avatar: finalImage
       };
 

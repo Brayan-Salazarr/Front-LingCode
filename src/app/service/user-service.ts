@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 export interface User {
+  userId: string;
   fullName: string;
   nickName: string;
   email: string;
   password: string;
-  avatar: string | null;
+  avatar?: string;
 }
 
 @Injectable({
@@ -14,11 +15,12 @@ export interface User {
 })
 export class UserService {
   private initialUser: User = {
-   fullName: '',
+    userId: '',
+    fullName: '',
     nickName: '',
     email: '',
     password: '',
-    avatar: null
+    avatar: undefined
   };
 
   private userSubject = new BehaviorSubject<User>(this.getUserFromStorage());
@@ -27,20 +29,24 @@ export class UserService {
 
   constructor() { };
 
-  updateUser(user: User) {
-    const {fullName, nickName, email, password, avatar} = user;
-    const userToStore: User = {fullName, nickName, email, password, avatar}
+  updateUser(user: Partial<User>) {
+    const currentUser = this.getCurrentUser();
 
-    localStorage.setItem('user', JSON.stringify(userToStore));
-    this.userSubject.next(userToStore);
+    const updatedUser : User = {
+      ...currentUser, //Mantiene userId y datos actuales
+      ...user //Reemplaza solo lo que el usuario cambio
+    }
+
+    localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+    this.userSubject.next(updatedUser);
   }
 
   private getUserFromStorage(): User {
-    const storedUser = localStorage.getItem('user');
+    const storedUser = localStorage.getItem('currentUser');
     return storedUser ? JSON.parse(storedUser) : this.initialUser;
   }
 
-  getCurrentUser(): User{
+  getCurrentUser(): User {
     return this.userSubject.value;
   }
 }

@@ -461,15 +461,15 @@ h1 {
 
     .avatar {
         position: relative;
-        width: 410px;
-        height: 410px;
-        left: -27px;
-        top: 50px;
+        width: 250px;
+        height: 250px;
+        left: -25px;
+        top: 107px;
     }
 
     #imgCirclee {
         width: 462px;
-        top: -50px;
+        top: 0px;
         left: -54px;
     }
 
@@ -578,9 +578,10 @@ h1 {
     }
 
     .avatar {
-        width: 400px;
-        height: 400px;
-        top: 10px;
+        width: 220px;
+        height: 220px;
+        top: 100px;
+        left: -20px;
     }
 
     .button-edit {
@@ -628,6 +629,22 @@ h1 {
 
     .move-hex-home.hexagon2 {
         left: 820px;
+    }
+
+    #imgCirclee {
+        left: -80px;
+        width: 360px;
+    }
+
+    .avatar {
+        width: 190px;
+        left: -84px;
+        height: 190px;
+        top: 86px;
+    }
+
+    .user-data {
+        left: -35px;
     }
 }
 
@@ -742,9 +759,9 @@ h1 {
     }
 
     #imgCirclee {
-        width: 296px;
-        top: 6px;
-        left: -33px;
+        width: 290px;
+        top: 60px;
+        left: -70px;
     }
 
     .user-header {
@@ -767,10 +784,10 @@ h1 {
 
     .avatar {
         position: relative;
-        top: 75px;
-        width: 230px;
-        height: 230px;
-        left: -100px;
+        top: 130px;
+        width: 150px;
+        height: 150px;
+        left: -131px;
     }
 
     .user-data {
@@ -880,22 +897,22 @@ h1 {
     }
 
     .avatar {
-        width: 250px;
-        height: 250px;
-        left: 25px;
-        top: 0;
+        width: 122px;
+        height: 122px;
+        left: 92px;
+        top: 2px;
     }
 
     #imgCirclee {
         width: 240px;
         top: -23px;
-        left: -37px;
+        left: 25px;
     }
 
     .user-data {
         margin: 0;
         position: relative;
-        left: 45px;
+        left: 195px;
         top: -20px;
     }
 
@@ -936,14 +953,15 @@ h1 {
     }
 
     .avatar {
-        width: 210px;
-        height: 210px;
-        left: 20px;
+        width: 115px;
+        height: 115px;
+        left: 75px;
+        top: -21px;
     }
 
     .user-data {
-        left: 40px;
-        top: -16px;
+        left: 170px;
+        top: -40px;
     }
 
     .nickname {
@@ -968,6 +986,12 @@ h1 {
     .move-hex-home.hexagon2 {
         left: 445px;
     }
+
+    #imgCirclee {
+        width: 220px;
+        top: -36px;
+        left: 15px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -987,6 +1011,11 @@ h1 {
     .move-hex-home.hexagon7 {
         top: 350px;
         left: 495px;
+    }
+
+    #line {
+        height: 7px;
+        width: 110px;
     }
 }
 
@@ -1016,7 +1045,8 @@ h1 {
     }
 
     #imgCirclee {
-        left: -37px;
+        width: 190px;
+        left: 4px;
     }
 
     .img {
@@ -1024,13 +1054,20 @@ h1 {
     }
 
     .avatar {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
+        left: 55px;
+        top: -36px;
     }
 
     .move-hex-home.hexagon7 {
         top: 363px;
         left: 425px;
+    }
+
+    .user-data {
+        left: 120px;
+        top: -35px;
     }
 }
 
@@ -1091,16 +1128,16 @@ h1 {
     }
 
     #imgCirclee {
-        width: 168px;
-        left: 64px;
-        top: -1px;
+        width: 130px;
+        left: 170px;
+        top: -40px;
     }
 
     .avatar {
-        width: 100px;
-        height: 100px;
-        left: 50px;
-        top: -25px;
+        width: 68px;
+        height: 68px;
+        left: 40px;
+        top: -9px;
     }
 
     .user-header {
@@ -1127,8 +1164,8 @@ h1 {
     .user-data {
         position: relative;
         height: 121px;
-        top: -13px;
-        left: 76px;
+        top: 18px;
+        left: 55px;
         width: 210px;
     }
 
@@ -1168,16 +1205,16 @@ h1 {
 
 @media (max-width: 410px) {
     .avatar {
-        width: 120px;
-        height: 120px;
+        width: 80px;
+        height: 80px;
         left: -38px;
         top: -20px;
     }
 
     #imgCirclee {
-        width: 156px;
-        left: 111px;
-        top: -48px;
+        width: 145px;
+        left: 85px;
+        top: -51px;
     }
 
     .user-header {
@@ -1211,8 +1248,8 @@ h1 {
 
     .user-data {
         height: 121px;
-        top: -20px;
-        left: 3px;
+        top: 8px;
+        left: -8px;
     }
 
     .hexagon8 {
@@ -1241,12 +1278,20 @@ h1 {
 
     .user-data {
         height: 121px;
-        top: -25px;
+        top: 20px;
         left: 15px;
     }
 
     .avatar {
-        left: -7px;
+        width: 60px;
+        height: 60px;
+        left: -3px;
+        top: -10px;
+    }
+
+    #imgCirclee {
+        width: 120px;
+        top: -40px;
     }
 }
 
@@ -1271,9 +1316,8 @@ h1 {
         width: 97px;
     }
 
-
     #imgCirclee {
-        left: 86px;
+        left: 59px;
     }
 
     .user-header {
@@ -1306,14 +1350,15 @@ h1 {
     }
 
     .avatar {
-        width: 100px;
-        height: 100px;
-        top: -20px;
+        width: 60px;
+        height: 60px;
+        top: -10px;
+        left: -5px;
     }
 
     .user-data {
         height: 121px;
-        top: -13px;
+        top: 20px;
         left: 10vw;
         width: 202px;
     }
