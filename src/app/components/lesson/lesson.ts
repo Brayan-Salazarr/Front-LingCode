@@ -81,7 +81,7 @@ export class Lesson {
   previousStreak = 0;
 
   private lessonIndex$ = new BehaviorSubject<number>(0);
- // luego lo sacas del auth
+  // luego lo sacas del auth
 
   constructor(
     private route: ActivatedRoute,
@@ -114,7 +114,7 @@ export class Lesson {
    y carga la primera lección del módulo.
   */
   ngOnInit() {
-
+    this.resetLessonState();
     this.lesson$ = this.route.paramMap.pipe(
       map(params => params.get('moduleId')!),
       switchMap(moduleId =>
@@ -200,39 +200,55 @@ export class Lesson {
 
     if (currentExercise.type === 'order') {
 
-      const correctOrder = currentExercise.options?.map(o => o.text) || [];
-      const userOrder = this.selectedWords;
+      
+  const answer = this.selectedWords.join(" ");
 
-      const isCorrect =
-        JSON.stringify(userOrder) === JSON.stringify(correctOrder);
+  this.lessonService
+    .submitAnswer(
+      lesson.id,
+      this.currentExerciseIndex,
+      answer
+    )
+    .subscribe({
+      next: (res) => {
+        this.isAnswered = true;
+        this.isCorrectAnswer = res;
 
-      this.isAnswered = true;
-      this.isCorrectAnswer = isCorrect;
+        if (res) {
+          setTimeout(() => {
+            this.nextExercise(lesson);
+            this.selectedWords = [];
+            this.isAnswered = false;
+            this.isProcessing = false;
+          }, 800);
+        } else {
+          this.isProcessing = false;
+        }
+      }
+    });
 
-      setTimeout(() => {
-        this.nextExercise(lesson);
-        this.selectedWords = [];
-        this.isAnswered = false;
-        this.isProcessing = false;
-      }, 800);
-
-      return; // 🔥 IMPORTANTE: salir aquí
+  return;// 🔥 IMPORTANTE: salir aquí
     }
 
     if (currentExercise.type === 'translate' || currentExercise.type === 'fill') {
-      if (!this.selectedOption) return;
-      answer = this.selectedOption;
+
+      if (!this.selectedOption) {
+        this.isProcessing = false;
+        return;
+      }
+
+      answer = this.selectedOption.trim();
     }
 
     if (currentExercise.type === 'match' && currentExercise.pairs) {
       if (this.currentExerciseIndex === lesson.exercises.length - 1) {
 
         this.exerciseIndex$.next(this.currentExerciseIndex + 1);
-        
-        setTimeout(() =>{
+
+        setTimeout(() => {
           this.router.navigate(['/module-view']);
         }, 800)
-        
+
         return;
       }
 
@@ -374,7 +390,7 @@ export class Lesson {
       .subscribe(progress => {
 
         this.handleStreak(progress);
-
+        this.resetLessonState();
         this.goToNextLesson(); // 👈 aquí sí
 
       });
@@ -422,6 +438,8 @@ export class Lesson {
         this.feedback = '';
         this.isProcessing = false;
 
+        this.resetLessonState();
+
       } else {
         this.feedback = "🎉 Módulo completado";
       }
@@ -439,6 +457,23 @@ export class Lesson {
 
   removeWord(word: string) {
     this.selectedWords = this.selectedWords.filter(w => w !== word);
+  }
+
+  resetLessonState() {
+    this.currentExerciseIndex = 0;
+    this.exerciseIndex$.next(0);
+
+    this.selectedOption = null;
+    this.selectedWords = [];
+    this.matchedPairs = [];
+    this.wrongPair = null;
+    this.selectedLeft = null;
+
+    this.isAnswered = false;
+    this.isCorrectAnswer = false;
+    this.isProcessing = false;
+
+    this.feedback = '';
   }
 
   /*

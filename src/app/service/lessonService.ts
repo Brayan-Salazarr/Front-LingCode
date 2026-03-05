@@ -74,13 +74,16 @@ export class LessonService {
     answer: string
   ): Observable<boolean> {
 
-    return this.http.post<boolean>(
-      `${this.baseUrl}/lessons/${lessonId}/answer`,
-      {
-        exerciseIndex,
-        answer
-      }
-    );
+    const body = {
+      userId: "1", // luego lo puedes sacar del login
+      exerciseIndex: exerciseIndex,
+      answer: answer
+    };
+
+   return this.http.post<boolean>(
+  `http://localhost:8080/api/modules/lessons/${lessonId}/answer`,
+  body
+);
   }
 
 
