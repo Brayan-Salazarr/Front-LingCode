@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-chat-bot',
@@ -11,6 +13,22 @@ import { FormsModule } from '@angular/forms';
 export class ChatBot {
 //Controla si el char está abierto o cerrado
 isOpen = false;
+
+showChat = true;
+
+ constructor(private router: Router) {
+
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+
+        const url = this.router.url;
+
+        this.showChat = !(url.includes('login-registro'));
+
+      });
+
+  }
 
 //Almacena el mensaje que el usuario está escribiendo
 newMessage = '';

@@ -1,5 +1,5 @@
 <!-- Contenedor general del chatbot -->
-<div class="chat-container">
+<div *ngIf="showChat" class="chat-container">
   <!-- Ventana del chat (solo se muestra si isOpen es true) -->
   <div class="chat-window" *ngIf="isOpen">
     <!-- Encabezado del chat -->
