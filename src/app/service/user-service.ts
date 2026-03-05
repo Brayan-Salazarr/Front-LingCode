@@ -23,14 +23,22 @@ export class UserService {
     avatar: undefined
   };
 
-  private userSubject = new BehaviorSubject<User>(this.getUserFromStorage());
+  private userSubject = new BehaviorSubject<User | null>(
+  JSON.parse(localStorage.getItem('currentUser') || 'null')
+);
 
   user$ = this.userSubject.asObservable();
 
-  constructor() { };
+    constructor() {
+    const storedUser = localStorage.getItem('currentUser');
+
+    if (storedUser) {
+      this.userSubject.next(JSON.parse(storedUser));
+    }
+  }
 
   updateUser(user: Partial<User>) {
-    const currentUser = this.getCurrentUser();
+    const currentUser = this.getCurrentUser() ?? this .initialUser;
 
     const updatedUser : User = {
       ...currentUser, //Mantiene userId y datos actuales
@@ -41,12 +49,12 @@ export class UserService {
     this.userSubject.next(updatedUser);
   }
 
-  private getUserFromStorage(): User {
+  /*private getUserFromStorage(): User {
     const storedUser = localStorage.getItem('currentUser');
     return storedUser ? JSON.parse(storedUser) : this.initialUser;
-  }
+  }*/
 
-  getCurrentUser(): User {
+  getCurrentUser(): User | null {
     return this.userSubject.value;
   }
 }

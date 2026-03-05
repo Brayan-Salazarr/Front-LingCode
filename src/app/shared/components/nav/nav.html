@@ -41,8 +41,8 @@
     <div class="overlay" *ngIf="menuOpen" (click)="closeMenu()"></div>
 
     <!-- Contenedor de botones cuando el usuario NO ha iniciado sesión -->
-    <!-- *ngIf="!user" solo aparece si no hay usuario autenticado -->
-    <div class="buttons" *ngIf="!user">
+    <!-- *ngIf="!(user$ | async)" solo aparece si no hay usuario autenticado -->
+    <div class="buttons" *ngIf="!(user$ | async)">
 
         <!-- Botón para iniciar sesión -->
         <!-- class="button1" define su estilo -->
@@ -73,8 +73,8 @@
 
     <!-- LOGUEADO -->
     <!-- class="user-info" define el diseño del perfil -->
-    <!-- *ngIf="user as u" guarda el usuario en la variable local "u" -->
-    <div class="user-info" *ngIf="user as u">
+    <!-- *ngIf="user$ | async as u" guarda el usuario en la variable local "u" -->
+    <div class="user-info" *ngIf="user$ | async as u">
         <!-- Avatar del usuario -->
         <!-- class="avatar" aplica forma circular y tamaño -->
         <!-- Si no tiene avatar, usa una imagen por defecto -->

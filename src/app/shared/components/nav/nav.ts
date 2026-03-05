@@ -18,7 +18,7 @@ export class Nav {
 
   /*Variable que almacena el usuario actual.
   Será null si el usuario no ha iniciado sesión*/
-  user: User | null = null;
+  user$!: Observable<User | null>;
 
   profileImage$!: Observable<string | null>;
 
@@ -32,8 +32,7 @@ export class Nav {
     this.profileImage$ = this.avatarService.avatar$;
     /*Se suscribe al observable del usuario actual. Cada vez que el usuario cambia (login/logout), esta variable se actualiza automáticamente*/
 
-    this.userService.user$.subscribe(user=> {
-      this.user = user});
+    this.user$ = this.authService.currentUser$;
   }
 
   /*Navega a la página de login. Se envía el parámetro "view=login" para indicar que debe mostrarse la vista de iniciar sesión*/

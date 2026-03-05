@@ -48,6 +48,7 @@ export class EditProfile {
   ngOnInit() {
     //Carga los datos del usuario
     const user = this.userService.getCurrentUser();
+    if (!user) return;
     this.fullName = user.fullName;
     this.nickName = user.nickName;
     this.email = user.email;
@@ -223,7 +224,7 @@ export class EditProfile {
   saveChanges() {
     const currentUser = this.userService.getCurrentUser();
 
-    const finalImage = this.previewUrl || this.selectedAvatarUrl || currentUser.avatar;
+    const finalImage = this.previewUrl || this.selectedAvatarUrl || currentUser?.avatar;
     if (finalImage) {
       this.avatarService.setAvatar(finalImage);
 
@@ -238,7 +239,7 @@ export class EditProfile {
           return;
         }
       }
-
+      if (!currentUser) return;
       const updatedUser = {
         //Si el usuario deja campos vacíos, se usan los datos o valores anteriores
         fullName: this.fullName || currentUser.fullName,
