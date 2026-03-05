@@ -36,7 +36,8 @@ export class EditProfile {
 
   constructor(private cdr: ChangeDetectorRef, //Permite forzar la actualización de la vista cuando Angular no detecta cambios automáticamente
     private avatarService: AvatarService,
-    private userService: UserService) { }; //Servicio compartido para enviar la imagen seleccionada al componente Nav
+    private userService: UserService,
+    private authService: AuthService) { }; //Servicio compartido para enviar la imagen seleccionada al componente Nav
 
   //URL del avatar seleccionado desde las opciones disponibles
   selectedAvatarUrl: string | null = null;
@@ -250,6 +251,7 @@ export class EditProfile {
       };
 
       this.userService.updateUser(updatedUser);
+      this.authService.updateCurrentUser(updatedUser);
 
       this.avatarService.setAvatar(finalImage);
 

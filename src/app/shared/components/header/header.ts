@@ -2,6 +2,7 @@ import { CommonModule, NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { AuthService, User } from '../../../auth/services/authService';
 import { AvatarService } from '../../../service/avatarService';
+import { UserService } from '../../../service/user-service';
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -47,6 +48,7 @@ export class Header {
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     private avatarService: AvatarService
   ) {
     this.profileImage$ = this.avatarService.avatar$;
@@ -59,17 +61,11 @@ export class Header {
   profileImageValue: string | null = null;
 
   ngOnInit() {
-    this.avatarService.avatar$.subscribe(url => {
-      if (url) {
-        this.profileImageValue = url;
+    this.user$.subscribe(user => {
+      if (user) {
+        this.profileImageValue = user.avatar ?? null;
       }
     });
-
-    this.user$.subscribe(user => {
-      if (user?.avatar) {
-        this.profileImageValue = user.avatar;
-      }
-    })
   }
 
   // Getter que sí funciona
