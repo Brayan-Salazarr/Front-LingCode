@@ -29,7 +29,7 @@ export class AboutUs {
     //Integrante 1
     {
       //Imagen decorativa o de fondo asociada al integrante.
-      img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765855409/Group_65_fxvots.png', 
+      img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1772731390/Alejo_miunci.jpg', 
       //Nombre completo del integrante.
       title: 'Alejandro Higuita Díaz', 
       //Imagen de perfil (avatar)
@@ -51,7 +51,7 @@ export class AboutUs {
     },
     {
       //Integrante 5
-      img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765855878/Group_68_adjwfr.png', title: 'Santiago Hurtado Marulanda', imgAvatar: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765855894/image_9_2_myqaws.png', text: 'Es desarrollador de backend y se destaca por su capacidad de análisis crítico. A través de sus observaciones y aportes, ha contribuido a identificar y mejorar aspectos del proyecto que inicialmente no se habían tenido en cuenta. Además, su enfoque analítico ha permitido detectar oportunidades de optimización y reforzar la toma de decisiones técnicas, contribuyendo así a fortalecer la calidad, estabilidad y solidez del desarrollo del sistema.'
+      img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1772731407/santiago_p4sjrh.jpg', title: 'Santiago Hurtado Marulanda', imgAvatar: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765855894/image_9_2_myqaws.png', text: 'Es desarrollador de backend y se destaca por su capacidad de análisis crítico. A través de sus observaciones y aportes, ha contribuido a identificar y mejorar aspectos del proyecto que inicialmente no se habían tenido en cuenta. Además, su enfoque analítico ha permitido detectar oportunidades de optimización y reforzar la toma de decisiones técnicas, contribuyendo así a fortalecer la calidad, estabilidad y solidez del desarrollo del sistema.'
     }
   ]
 }

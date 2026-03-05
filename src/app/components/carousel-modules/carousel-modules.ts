@@ -1,7 +1,7 @@
 //Importaciones para que el componente funcione
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from "@angular/router";
+import { Route, Router, RouterModule } from "@angular/router";
 import { routes } from '../../app.routes';
 
 @Component({
@@ -11,19 +11,27 @@ import { routes } from '../../app.routes';
   styleUrl: './carousel-modules.css',
 })
 export class CarouselModules {
+  //Se inyecta el servicio Router para poder navegar entre páginas
+  constructor (private router : Router) {}
+
   //Índice de la tarjeta actualmente activa
   currentIndex = 0;
 
   //Arreglo que contiene las imagenes del carrusel
   //Cada objeto tiene tiene la URL de la imagen y una clase personalizada
   items = [
-    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763695172/mysql-removebg-preview-removebg-preview_2_hc65ln.png', class: 'img1' },
-    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696348/Group_25_fnpomn.png', class: 'img2' },
-    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696367/Group_31_mmwojn.png', class: 'img3' }
+    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763695172/mysql-removebg-preview-removebg-preview_2_hc65ln.png', class: 'img1', router: '/login-registro'},
+    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696348/Group_25_fnpomn.png', class: 'img2', router: '/login-registro' },
+    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696367/Group_31_mmwojn.png', class: 'img3', router: '/login-registro' }
   ];
 
   //Método que cambia la tarjeta activa cuando se hace clic
   setActive(index: number) {
+    if(this.currentIndex === index){
+      this.router.navigate([this.items[index].router]);
+      return;
+    }
+
     this.currentIndex = index;
   }
 
