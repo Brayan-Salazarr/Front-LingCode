@@ -222,10 +222,13 @@ h1 {
 
 /*Imagen del avatar del usuario*/
 .avatar {
+    position: relative;
     border-radius: 50%;
     object-fit: cover;
-    width: 478px;
-    height: 478px;
+    width: 270px;
+    height: 270px;
+    top: 72px;
+    left: -14px;
 }
 
 /*Contenedor principal de la información del usuario*/
@@ -460,7 +463,6 @@ h1 {
     }
 
     .avatar {
-        position: relative;
         width: 250px;
         height: 250px;
         left: -25px;
