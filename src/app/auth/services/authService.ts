@@ -247,4 +247,20 @@ login(identifier: string, password: string) {
   getCurrentUser(): User | null {
     return this.currentUserSubject.value;
   }
+
+  updateCurrentUser(data: Partial<User>) {
+
+    const currentUser = this.currentUserSubject.value;
+
+    if (!currentUser) return;
+
+    const updatedUser: User = {
+      ...currentUser,
+      ...data
+    };
+
+    localStorage.setItem(this.USER_KEY, JSON.stringify(updatedUser));
+
+    this.currentUserSubject.next(updatedUser);
+  }
 }
