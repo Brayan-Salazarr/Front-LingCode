@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, tap, throwError } from 'rxjs';
-import { UserService } from '../../service/user-service';
 
 export interface User {
   userId: string;
@@ -176,7 +175,7 @@ login(identifier: string, password: string) {
   isAuthenticated(): boolean {
     return !!this.currentUserSubject.value;
   }*/
-constructor(private userService: UserService) {}
+
   private USERS_KEY = 'users';
   private USER_KEY = 'currentUser';
   private TOKEN_KEY = 'token';
@@ -226,12 +225,11 @@ constructor(private userService: UserService) {}
     users.push(newUser);
     localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
 
-    // 🔑 Actualizamos el usuario logueado
+    //Actualizamos el usuario logueado
     const { password: _, ...safeUser } = newUser;
     localStorage.setItem(this.USER_KEY, JSON.stringify(safeUser));
     localStorage.setItem(this.TOKEN_KEY, 'fake-jwt-token');
     this.currentUserSubject.next(safeUser);
-    this.userService.updateUser(safeUser);
 
     return of(true);
   }

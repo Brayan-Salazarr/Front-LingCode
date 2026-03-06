@@ -7,10 +7,8 @@ import { NgClass, NgIf } from '@angular/common';
 import { CarouselAvatar } from '../../shared/components/carousel-avatar/carousel-avatar';
 import { ChangeDetectorRef } from '@angular/core';
 import { max, window } from 'rxjs';
-import { AvatarService } from '../../service/avatarService';
 import { AuthService } from '../../auth/services/authService';
 import { FormsModule } from '@angular/forms';
-import { UserService } from '../../service/user-service';
 
 /*Interfaz que define la estructura de cada imagen*/
 interface ImagenItem {
@@ -35,8 +33,6 @@ export class EditProfile {
   confirmPass: string = '';
 
   constructor(private cdr: ChangeDetectorRef, //Permite forzar la actualización de la vista cuando Angular no detecta cambios automáticamente
-    private avatarService: AvatarService,
-    private userService: UserService,
     private authService: AuthService) { }; //Servicio compartido para enviar la imagen seleccionada al componente Nav
 
   //URL del avatar seleccionado desde las opciones disponibles
@@ -48,28 +44,14 @@ export class EditProfile {
 
   ngOnInit() {
     //Carga los datos del usuario
-    const user = this.userService.getCurrentUser();
+    const user = this.authService.getCurrentUser();
+
     if (!user) return;
     this.fullName = user.fullName;
     this.nickName = user.nickName;
     this.email = user.email;
-    this.password = user.password;
     this.previewUrl = user.avatar ?? null;
     this.selectedAvatarUrl = user.avatar ?? null;
-
-
-    this.avatarService.avatar$.subscribe(currentAvatar => {
-      if (!currentAvatar) return;
-
-      if (currentAvatar.startsWith('data:image')) {
-        this.previewUrl = currentAvatar;
-        this.selectedAvatarUrl = null;
-      } else {
-        this.selectedAvatarUrl = currentAvatar;
-        this.previewUrl = null;
-      }
-
-    });
   }
 
   //Método que se ejecuta cuando el usuario selecciona un archivo
@@ -223,11 +205,23 @@ export class EditProfile {
 
   //Guarda los cambios de información realizados por el usuario 
   saveChanges() {
-    const currentUser = this.userService.getCurrentUser();
+
+    const currentUser = this.authService.getCurrentUser();
+
+    if (!currentUser) return;
 
     const finalImage = this.previewUrl || this.selectedAvatarUrl || currentUser?.avatar;
+
+    const updatedUser = {
+      fullName: this.fullName || currentUser.fullName,
+      nickName: this.nickName || currentUser.nickName,
+      email: this.email || currentUser.email,
+      avatar: finalImage
+    }
+
+    this.authService.updateCurrentUser(updatedUser);
+
     if (finalImage) {
-      this.avatarService.setAvatar(finalImage);
 
       //Expresión para validar contraseña
       //mínimo 8 caracteres, 1 mayúscula y 1 número
@@ -241,19 +235,8 @@ export class EditProfile {
         }
       }
       if (!currentUser) return;
-      const updatedUser = {
-        //Si el usuario deja campos vacíos, se usan los datos o valores anteriores
-        fullName: this.fullName || currentUser.fullName,
-        nickName: this.nickName || currentUser.nickName,
-        email: this.email || currentUser.email,
-        password: this.password || currentUser.password,
-        avatar: finalImage
-      };
 
-      this.userService.updateUser(updatedUser);
       this.authService.updateCurrentUser(updatedUser);
-
-      this.avatarService.setAvatar(finalImage);
 
       //Mensaje para el usuario indicando que se actualizaron los datos
       alert('Actualizado exitosamente');
