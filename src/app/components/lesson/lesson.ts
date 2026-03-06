@@ -244,7 +244,7 @@ export class Lesson {
       if (this.currentExerciseIndex === lesson.exercises.length - 1) {
 
         this.exerciseIndex$.next(this.currentExerciseIndex + 1);
-
+this.finishLesson(lesson);
         setTimeout(() => {
           this.router.navigate(['/module-view']);
         }, 800)
@@ -390,6 +390,7 @@ export class Lesson {
       .subscribe(progress => {
 
         this.handleStreak(progress);
+        console.log("🔥 progreso recibido", progress);
         this.resetLessonState();
         this.goToNextLesson(); // 👈 aquí sí
 

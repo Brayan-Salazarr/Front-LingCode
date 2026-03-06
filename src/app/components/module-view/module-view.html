@@ -42,8 +42,11 @@
 
         <!-- Barra de progreso (backend si ya existe) -->
         <div class="progressBar">
-          <div class="progress" [style.width.%]="module.progress">
+          <div class="progress-container">
+            <div class="progress" [style.width.%]="module.progress">
+            </div>
           </div>
+
         </div>
 
         <!-- Botón -->
