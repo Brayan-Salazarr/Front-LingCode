@@ -1,8 +1,6 @@
 import { CommonModule, NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { AuthService, User } from '../../../auth/services/authService';
-import { AvatarService } from '../../../service/avatarService';
-import { UserService } from '../../../service/user-service';
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -48,10 +46,7 @@ export class Header {
 
   constructor(
     private authService: AuthService,
-    private userService: UserService,
-    private avatarService: AvatarService
   ) {
-    this.profileImage$ = this.avatarService.avatar$;
     //Obtiene el usuario actual desde el servicio de autenticación
     this.user$ = this.authService.currentUser$;
   }

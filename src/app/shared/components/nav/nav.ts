@@ -2,9 +2,7 @@ import { CommonModule, NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService, User } from '../../../auth/services/authService';
-import { AvatarService } from '../../../service/avatarService';
 import { Observable } from 'rxjs';
-import { UserService } from '../../../service/user-service';
 
 @Component({
   selector: 'app-nav',
@@ -12,6 +10,7 @@ import { UserService } from '../../../service/user-service';
   templateUrl: './nav.html',
   styleUrl: './nav.css',
 })
+
 export class Nav {
   /*Permite recibir una clase o color desde el componente padre para cambiar el fondo del navegador*/
   @Input() colorBackground = '';
@@ -20,18 +19,12 @@ export class Nav {
   Será null si el usuario no ha iniciado sesión*/
   user$!: Observable<User | null>;
 
-  profileImage$!: Observable<string | null>;
-
   constructor(
     private router: Router, //Servicio para navegar entre rutas
     public authService: AuthService, //Servicio de autenticación
-    private avatarService: AvatarService,
-    private userService: UserService
   ) {
 
-    this.profileImage$ = this.avatarService.avatar$;
     /*Se suscribe al observable del usuario actual. Cada vez que el usuario cambia (login/logout), esta variable se actualiza automáticamente*/
-
     this.user$ = this.authService.currentUser$;
   }
 
@@ -48,7 +41,6 @@ export class Nav {
 
     //Limpia el avatar guardado
     localStorage.removeItem('avatar');
-    this.avatarService.setAvatar(null);
 
     this.router.navigate(['/']); //Redirige al home público
   }
