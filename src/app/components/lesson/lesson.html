@@ -1,32 +1,44 @@
+<!-- Barra de navegación del módulo -->
+<!-- Se pasa un color de fondo como input -->
 <app-nav [colorBackground]="'backgroundNav1'"></app-nav>
 
+<!-- Contenedor principal del componente -->
+<!-- Solo se muestra si existe una lección actual -->
 <div class="component" *ngIf="currentLesson$ | async as lesson">
 
-  <!-- 🏷️ TÍTULO -->
+  <!-- TÍTULO -->
   <h2 class="title-module">{{ lesson.title }}</h2>
 
-  <!-- 🔵 PROGRESO -->
+  <!-- Progreso de la leccion -->
   <div class="progress-bar">
+
+    <!-- Texto indicador -->
     <p class="text-progress">Progreso</p>
+
+    <!-- Contenedor de la barra -->
     <div class="progress-container">
+
+      <!-- Barra que aumenta según el progreso -->
       <div class="progress" [style.width.%]="moduleProgress$ | async">
       </div>
     </div>
   </div>
 
-  <!-- 🧠 EJERCICIO ACTUAL -->
+  <!-- EJERCICIO ACTUAL -->
+  <!-- Obtiene el ejercicio actual de la lección -->
   <ng-container *ngIf="getCurrentExercise(lesson) as currentExercise">
 
     <h2 class="introduction">
       {{ currentExercise.question }}
     </h2>
 
-    <!-- =============================== -->
-    <!-- 🟦 TIPO MULTIPLE -->
-    <!-- =============================== -->
+
+    <!-- TIPO MULTIPLE -->
+    <!-- Selección de respuesta correcta -->
     <ng-container *ngIf="currentExercise.type === 'multiple'">
 
       <div class="optionsLess">
+        <!-- Se recorren todas las opciones -->
         <div *ngFor="let option of currentExercise.options">
           <button class="buttonOptions" (click)="selectOption(option.text)" [ngClass]="{
               'selected': selectedOption === option.text,
@@ -42,17 +54,17 @@
 
     </ng-container>
 
-    <!-- =============================== -->
-    <!-- 🟩 TIPO ORDER -->
-    <!-- =============================== -->
+    <!-- EJERCICIO TIPO ORDER -->
+    <!-- Construir una frase en orden -->
     <ng-container *ngIf="currentExercise.type === 'order'">
 
-      <!-- Frase armada -->
+      <!-- Palabras seleccionadas por el usuario -->
       <div class="selected-words" [ngClass]="{
           'correct-order': isAnswered && isCorrectAnswer,
           'incorrect-order': isAnswered && !isCorrectAnswer
         }">
 
+        <!-- Permite quitar palabras seleccionadas -->
         <span *ngFor="let word of selectedWords" (click)="removeWord(word)" class="selected-word">
 
           {{ word }}
@@ -73,9 +85,8 @@
 
     </ng-container>
 
-    <!-- =============================== -->
-    <!-- 🟨 TIPO TRANSLATE -->
-    <!-- =============================== -->
+    <!-- EJERCICIO TIPO TRANSLATE -->
+    <!-- Escribir traducción -->
     <ng-container *ngIf="currentExercise.type === 'translate'">
 
       <div class="translate-container">
@@ -87,9 +98,8 @@
 
     </ng-container>
 
-    <!-- =============================== -->
-    <!-- 🟪 TIPO FILL -->
-    <!-- =============================== -->
+    <!-- EJERCICIO TIPO FILL -->
+    <!-- Completar palabra faltante -->
     <ng-container *ngIf="currentExercise.type === 'fill'">
 
       <div class="fill-container">
@@ -100,14 +110,13 @@
 
     </ng-container>
 
-    <!-- =============================== -->
-    <!-- 🟪 TIPO MATCH -->
-    <!-- =============================== -->
+    <!-- EJERCICIO TIPO MATCH -->
+    <!-- Relacionar pares correctos -->
     <ng-container *ngIf="currentExercise.type === 'match'">
 
       <div class="match-container">
 
-        <!-- IZQUIERDA -->
+        <!-- Columna izquierda -->
         <div class="match-column">
           <button *ngFor="let pair of currentExercise.pairs" (click)="selectLeft(pair.left)"
             [class.wrong]="wrongPair?.left === pair.left" [class.selected]="selectedLeft === pair.left"
@@ -119,10 +128,10 @@
           </button>
         </div>
 
-        <!-- DERECHA (mezclado) -->
+        <!-- Columna derecha (mezclada aleatoriamente) -->
         <div class="match-column">
-          <button *ngFor="let item of shuffledRight" (click)="selectRight(item, lesson)" [disabled]="isRightDisabled(item)" [class.wrong]="isWrongRight(item)"
-            class="match-btn">
+          <button *ngFor="let item of shuffledRight" (click)="selectRight(item, lesson)"
+            [disabled]="isRightDisabled(item)" [class.wrong]="isWrongRight(item)" class="match-btn">
 
             {{ item }}
 
@@ -133,12 +142,13 @@
 
     </ng-container>
 
-    <!-- =============================== -->
-    <!-- 🔘 BOTÓN CONFIRMAR -->
-    <!-- =============================== -->
+    <!-- BOTÓN CONFIRMAR RESPUESTA -->
     <div class="button-field">
       <div id="line"></div>
-      <button class="confirmation-button" [disabled]="matchedPairs.length !== (currentExercise.pairs?.length || 0)" (click)="submitAnswer(lesson)">
+
+      <!-- Solo se habilita cuando todos los pares están completados -->
+      <button class="confirmation-button" [disabled]="matchedPairs.length !== (currentExercise.pairs?.length || 0)"
+        (click)="submitAnswer(lesson)">
         Confirmar
       </button>
     </div>

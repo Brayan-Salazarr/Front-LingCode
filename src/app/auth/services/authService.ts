@@ -216,9 +216,11 @@ login(identifier: string, password: string) {
     const exists = users.some(u => u.email === user.email || u.nickName === user.nickName);
     if (exists) return throwError(() => new Error('El usuario ya existe'));
 
+    const { userId: ignoredUserId, ...userWithoutId } = user;
+
     const newUser = {
-      id: crypto.randomUUID(),
-      ...user,
+      ...userWithoutId,
+      userId: crypto.randomUUID(),
       createdAt: new Date().toISOString()
     };
 
@@ -232,6 +234,11 @@ login(identifier: string, password: string) {
     this.currentUserSubject.next(safeUser);
 
     return of(true);
+  }
+
+  setUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.currentUserSubject.next(user);
   }
 
   logout(): void {

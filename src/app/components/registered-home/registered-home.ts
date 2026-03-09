@@ -95,20 +95,33 @@ export class RegisteredHome {
     }
   ];
 
-  userId = '123';
 
   //MÉTODOS DEL COMPONENTE
   ngOnInit(): void {
     //Si el usuario no está autenticado. redirigimos al login
     if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/login-registro'], { queryParams: { view: 'login' } });
+      return;
     }
 
 
     this.progress$ = this.progressService.progress$;
 
-    // 🔥 Cargar progreso inicial
-    this.progressService.getProgress('123').subscribe();
+    //Cada vez que cambie el usuario cargamos su progreso
+    this.authService.currentUser$.subscribe(user => {
+
+      //  Cargar progreso inicial
+      if (user && user.userId) {
+
+        console.log("USER ID:", user.userId);
+
+        this.progressService.getProgress(user.userId).subscribe();
+
+      }
+
+    })
+
+
   }
 
 }

@@ -75,6 +75,7 @@ export class LoginRegistro {
     ).subscribe({
       //Si el login es exitoso
       next: () => {
+
         this.router.navigate(['/registered-home']);
       },
       //Si ocurre un error

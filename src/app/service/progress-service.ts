@@ -5,38 +5,55 @@ import { UserProgress } from '../models/progress';
 import { AuthService } from '../auth/services/authService';
 
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class ProgressService {
 
+  // URL base del backend para el progreso del usuario
   private baseUrl = 'http://localhost:8080/api/progress';
 
 
-  // 🔥 ESTADO GLOBAL DEL PROGRESO
+  // Estado global del progreso del usuario en la aplicación
+  // BehaviorSubject permite almacenar el progreso actual y emitir cambios
   private progressSubject = new BehaviorSubject<UserProgress | null>(null);
+
+  // Observable público para que los componentes puedan suscribirse
   progress$ = this.progressSubject.asObservable();
 
   constructor(private http: HttpClient,
     private authService: AuthService
   ) { }
 
-  // Obtener progreso general
+  /*
+   Obtiene el progreso general del usuario desde el backend
+   y actualiza el estado global de la aplicación.
+  */
   getProgress(userId: string): Observable<UserProgress> {
     return this.http.get<UserProgress>(`${this.baseUrl}/${userId}`)
       .pipe(
-        tap(progress => this.progressSubject.next(progress)) // 🔥 guarda globalmente
+        tap(progress => this.progressSubject.next(progress ?? {
+          currentStreak: 0,
+          xp: 0,
+          completeLesson: []
+        })) // guarda globalmente
       );
   }
 
-  // Obtener progreso por módulo
+  /*
+   Obtiene el progreso de un módulo específico
+   Devuelve el porcentaje de progreso del módulo.
+  */
   getModuleProgress(userId: string, moduleId: string): Observable<number> {
     return this.http.get<number>(
       `${this.baseUrl}/${userId}/modules/${moduleId}`
     );
   }
 
+  /*
+    Marca una lección como completada.
+    También suma XP y actualiza el progreso global.
+   */
   completeLesson(lessonId: string, xp: number): Observable<UserProgress> {
 
     const currentUser = this.authService.getCurrentUser();
@@ -47,8 +64,16 @@ export class ProgressService {
       {}
     ).pipe(
       tap(progress => {
-        this.progressSubject.next(progress); // 🔥 ACTUALIZA LA RACHA EN TODA LA APP
+        this.progressSubject.next(progress); // Actualiza el progreso global en toda la app
       })
     );
+  }
+
+  /*
+    Reinicia el progreso almacenado en el estado global.
+    Se usa normalmente cuando el usuario cierra sesión.
+   */
+  resetProgress() {
+    this.progressSubject.next(null);
   }
 }

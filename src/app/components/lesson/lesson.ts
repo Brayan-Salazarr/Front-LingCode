@@ -61,22 +61,24 @@ export class Lesson {
   // Porcentaje de progreso de la lección
   progressPercent = 0;
 
+  // Control reactivo del índice de ejercicio
   private exerciseIndex$ = new BehaviorSubject<number>(0);
 
+  // Control reactivo del índice de lección
   currentLesson$!: Observable<LessonC>;
 
+  /*ESTADOS DEL EJERCICIO */
+  isAnswered = false; // Indica si el ejercicio ya fue respondido
+  isCorrectAnswer = false; // Indica si la respuesta fue correcta
+  isProcessing = false; // Evita múltiples envíos simultáneos
 
-  isAnswered = false;
-  isCorrectAnswer = false;
+  selectedLeft: string | null = null; // Palabra seleccionada del lado izquierdo
+  shuffledRight: string[] = []; // Lista mezclada del lado derecho
 
-  isProcessing = false;
+  matchedPairs: MatchPair[] = []; // Pares correctos encontrados
+  wrongPair: MatchPair | null = null; // Par incorrecto temporal
 
-  selectedLeft: string | null = null;
-  shuffledRight: string[] = [];
-
-  matchedPairs: MatchPair[] = [];
-  wrongPair: MatchPair | null = null;
-
+  /*SISTEMA DE RACHA */
   currentStreak = 0;
   previousStreak = 0;
 
@@ -87,12 +89,14 @@ export class Lesson {
     private route: ActivatedRoute,
     private router: Router, // Permite acceder a parámetros de la URL
     private lessonService: LessonService, // Servicio para comunicarse con el backend
-    private progressService: ProgressService
+    private progressService: ProgressService // Servicio que guarda progreso
   ) { }
 
+  /* PROGRESO DEL MÓDULO*/
   private moduleProgressSubject = new BehaviorSubject<number>(0);
   moduleProgress$ = this.moduleProgressSubject.asObservable();
 
+  /*ACTUALIZA EL PROGRESO DEL MÓDULO*/
   updateProgress(lesson: LessonC) {
     const total = lesson.exercises.length;
     const progress = ((this.currentExerciseIndex + 1) / total) * 100;
@@ -100,6 +104,7 @@ export class Lesson {
     this.moduleProgressSubject.next(progress);
   }
 
+  /*CONFIRMA RESPUESTA Y AVANZA*/
   confirmAnswer(lesson: LessonC) {
 
     if (this.currentExerciseIndex < lesson.exercises.length - 1) {
@@ -122,6 +127,8 @@ export class Lesson {
       )
     );
 
+    /* Obtiene la lección actual combinando
+       las lecciones y el índice actual */
     this.currentLesson$ = combineLatest([
       this.lesson$,
       this.lessonIndex$
@@ -129,6 +136,8 @@ export class Lesson {
       map(([lessons, index]) => lessons[index])
     );
 
+    /* Calcula el progreso total del módulo
+       teniendo en cuenta todos los ejercicios */
     this.moduleProgress$ = combineLatest([
       this.lesson$,
       this.lessonIndex$,
@@ -158,6 +167,7 @@ export class Lesson {
       })
     );
 
+     /* Inicializa ejercicios tipo match */
     this.currentLesson$.subscribe(lesson => {
 
       const currentExercise = this.getCurrentExercise(lesson);
@@ -182,6 +192,7 @@ export class Lesson {
    */
   submitAnswer(lesson: LessonC) {
 
+     // Evita múltiples envíos
     if (this.isProcessing) return;
     this.isProcessing = true;
 
@@ -193,43 +204,46 @@ export class Lesson {
 
     let answer = '';
 
+    /* Manejo de ejercicio tipo multiple */
     if (currentExercise.type === 'multiple') {
       if (!this.selectedOption) return;
       answer = this.selectedOption;
     }
 
+    /* Manejo de ejercicio tipo order */
     if (currentExercise.type === 'order') {
 
-      
-  const answer = this.selectedWords.join(" ");
 
-  this.lessonService
-    .submitAnswer(
-      lesson.id,
-      this.currentExerciseIndex,
-      answer
-    )
-    .subscribe({
-      next: (res) => {
-        this.isAnswered = true;
-        this.isCorrectAnswer = res;
+      const answer = this.selectedWords.join(" ");
 
-        if (res) {
-          setTimeout(() => {
-            this.nextExercise(lesson);
-            this.selectedWords = [];
-            this.isAnswered = false;
-            this.isProcessing = false;
-          }, 800);
-        } else {
-          this.isProcessing = false;
-        }
-      }
-    });
+      this.lessonService
+        .submitAnswer(
+          lesson.id,
+          this.currentExerciseIndex,
+          answer
+        )
+        .subscribe({
+          next: (res) => {
+            this.isAnswered = true;
+            this.isCorrectAnswer = res;
 
-  return;// 🔥 IMPORTANTE: salir aquí
+            if (res) {
+              setTimeout(() => {
+                this.nextExercise(lesson);
+                this.selectedWords = [];
+                this.isAnswered = false;
+                this.isProcessing = false;
+              }, 800);
+            } else {
+              this.isProcessing = false;
+            }
+          }
+        });
+
+      return;// 🔥 IMPORTANTE: salir aquí
     }
 
+    /* Manejo translate / fill */
     if (currentExercise.type === 'translate' || currentExercise.type === 'fill') {
 
       if (!this.selectedOption) {
@@ -240,11 +254,12 @@ export class Lesson {
       answer = this.selectedOption.trim();
     }
 
+     /* Manejo ejercicio tipo match */
     if (currentExercise.type === 'match' && currentExercise.pairs) {
       if (this.currentExerciseIndex === lesson.exercises.length - 1) {
 
         this.exerciseIndex$.next(this.currentExerciseIndex + 1);
-this.finishLesson(lesson);
+        this.finishLesson(lesson);
         setTimeout(() => {
           this.router.navigate(['/module-view']);
         }, 800)
@@ -256,6 +271,7 @@ this.finishLesson(lesson);
       return;
     }
 
+    /* Envío general de respuesta */
     this.lessonService
       .submitAnswer(
         lesson.id,
@@ -286,6 +302,7 @@ this.finishLesson(lesson);
       });
   }
 
+  /* Mezcla un arreglo aleatoriamente */
   shuffleArray(array: string[]): string[] {
     return [...array].sort(() => Math.random() - 0.5);
   }
@@ -294,6 +311,10 @@ this.finishLesson(lesson);
     this.selectedLeft = word;
   }
 
+    /*
+   Controla la selección del lado derecho
+   y valida si el par es correcto.
+  */
   selectRight(word: string, lesson: LessonC) {
 
     if (!this.selectedLeft) return;
@@ -334,7 +355,7 @@ this.finishLesson(lesson);
     this.selectedLeft = null;
   }
 
-
+  /*CONTROL DE ESTADOS MATCH*/
   isLeftDisabled(left: string): boolean {
     return this.matchedPairs.some(m => m.left === left);
   }
@@ -381,6 +402,7 @@ this.finishLesson(lesson);
     }
   }
 
+  /*Finaliza las lecciones*/
   finishLesson(lesson: LessonC) {
 
     this.previousStreak = this.currentStreak;
@@ -391,12 +413,10 @@ this.finishLesson(lesson);
 
         this.handleStreak(progress);
         console.log("🔥 progreso recibido", progress);
-        this.resetLessonState();
-        this.goToNextLesson(); // 👈 aquí sí
-
       });
   }
 
+  /* Maneja actualización de racha */
   handleStreak(progress: UserProgress) {
 
     this.currentStreak = progress.currentStreak;
@@ -416,6 +436,7 @@ this.finishLesson(lesson);
     this.nextLesson(); // 👈 solo si nextLesson SOLO cambia la lección
   }
 
+   /* Animación de racha */
   showStreakAnimation() {
     console.log(`🔥 ¡Racha de ${this.currentStreak} día!`);
   }
@@ -460,6 +481,7 @@ this.finishLesson(lesson);
     this.selectedWords = this.selectedWords.filter(w => w !== word);
   }
 
+   /* Reinicia el estado del ejercicio */
   resetLessonState() {
     this.currentExerciseIndex = 0;
     this.exerciseIndex$.next(0);
