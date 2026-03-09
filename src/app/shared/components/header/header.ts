@@ -4,7 +4,6 @@ import { AuthService, User } from '../../../auth/services/authService';
 import { RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 
-
 @Component({
   selector: 'app-header',
   imports: [NgClass, CommonModule, RouterModule],
@@ -73,5 +72,9 @@ export class Header {
       return true;
     }
     return false;
+  }
+
+  get isCostumImage(): boolean {
+    return this.profileImageValue?.startsWith('data:image') ?? false;
   }
 }

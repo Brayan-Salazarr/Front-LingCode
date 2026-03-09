@@ -23,9 +23,12 @@
         <div class="field">
 
           <!-- Imagen de avatar del usuario -->
-          <img class="avatar"
+           <div class="space2">
+            
+          <img [ngClass]="isCostumImage ? 'img-custom': 'avatar-default'"
             [src]="profileImageValue || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'" />
 
+           </div>
           <!-- Imagen decorativa circular del avatar -->
           <img *ngIf="showCircle" id="imgCirclee"
             src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png" alt="">
