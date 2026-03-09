@@ -653,6 +653,10 @@ h1 {
         top: 188px;
     }
 
+    .move-hex-home.hexagon7 {
+        display: none;
+    }
+
     #imgCirclee {
         left: -80px;
         width: 360px;
@@ -667,6 +671,10 @@ h1 {
 
     .user-data {
         left: -35px;
+    }
+
+    .field {
+        left: -125px;
     }
 }
 
@@ -739,7 +747,7 @@ h1 {
     }
 
     .hexagon6 {
-        top: 150px;
+        top: 117px;
         width: 35px;
         left: 626px;
         height: 40px;
