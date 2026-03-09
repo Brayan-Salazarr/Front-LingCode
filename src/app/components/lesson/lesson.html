@@ -42,8 +42,10 @@
         <div *ngFor="let option of currentExercise.options">
           <button class="buttonOptions" (click)="selectOption(option.text)" [ngClass]="{
               'selected': selectedOption === option.text,
-              'correct': isAnswered && option.correct,
-              'incorrect': isAnswered && selectedOption === option.text && !option.correct
+  'correct': isAnswered && option.correct,
+  'incorrect': isAnswered && selectedOption === option.text && !option.correct,
+  'correct-animation': isAnswered && option.correct,
+  'incorrect-animation': isAnswered && selectedOption === option.text && !option.correct
             }">
 
             {{ option.text }}
@@ -61,7 +63,9 @@
       <!-- Palabras seleccionadas por el usuario -->
       <div class="selected-words" [ngClass]="{
           'correct-order': isAnswered && isCorrectAnswer,
-          'incorrect-order': isAnswered && !isCorrectAnswer
+          'incorrect-order': isAnswered && !isCorrectAnswer,
+          'correct-animation': isAnswered && isCorrectAnswer,
+          'incorrect-animation': isAnswered && !isCorrectAnswer
         }">
 
         <!-- Permite quitar palabras seleccionadas -->
@@ -91,8 +95,12 @@
 
       <div class="translate-container">
 
-        <input type="text" class="translate-input" [(ngModel)]="selectedOption"
-          placeholder="Escribe la traducción..." />
+        <input type="text" class="translate-input" [(ngModel)]="selectedOption" [ngClass]="{
+    'correct': isAnswered && isCorrectAnswer,
+    'incorrect': isAnswered && !isCorrectAnswer,
+    'correct-animation': isAnswered && isCorrectAnswer,
+    'incorrect-animation': isAnswered && !isCorrectAnswer
+  }" placeholder="Escribe la traducción..." />
 
       </div>
 
@@ -104,7 +112,13 @@
 
       <div class="fill-container">
 
-        <input type="text" class="fill-input" [(ngModel)]="selectedOption" placeholder="Completa la palabra..." />
+        <input type="text" class="fill-input" [(ngModel)]="selectedOption" [ngClass]="{
+    'correct': isAnswered && isCorrectAnswer,
+    'incorrect': isAnswered && !isCorrectAnswer,
+    'correct-animation': isAnswered && isCorrectAnswer,
+    'incorrect-animation': isAnswered && !isCorrectAnswer
+  }" 
+         placeholder="Completa la palabra..." />
 
       </div>
 

@@ -7,6 +7,7 @@ import { Nav } from '../../shared/components/nav/nav';
 import { FormsModule } from '@angular/forms';
 import { UserProgress } from '../../models/progress';
 import { ProgressService } from '../../service/progress-service';
+import { ModuleService } from '../../service/moduleService';
 
 /*
   Representa una opción de respuesta dentro de un ejercicio.
@@ -89,7 +90,8 @@ export class Lesson {
     private route: ActivatedRoute,
     private router: Router, // Permite acceder a parámetros de la URL
     private lessonService: LessonService, // Servicio para comunicarse con el backend
-    private progressService: ProgressService // Servicio que guarda progreso
+    private progressService: ProgressService,// Servicio que guarda progreso
+    private moduleService: ModuleService
   ) { }
 
   /* PROGRESO DEL MÓDULO*/
@@ -202,11 +204,16 @@ export class Lesson {
       return;
     }
 
+    this.isAnswered = true;
+
     let answer = '';
 
     /* Manejo de ejercicio tipo multiple */
     if (currentExercise.type === 'multiple') {
-      if (!this.selectedOption) return;
+      if (!this.selectedOption){
+        this.isProcessing = false
+        return;
+      } 
       answer = this.selectedOption;
     }
 
@@ -214,7 +221,7 @@ export class Lesson {
     if (currentExercise.type === 'order') {
 
 
-      const answer = this.selectedWords.join(" ");
+      answer = this.selectedWords.join(" ");
 
       this.lessonService
         .submitAnswer(
@@ -414,6 +421,8 @@ export class Lesson {
         this.handleStreak(progress);
         console.log("🔥 progreso recibido", progress);
       });
+
+      this.moduleService.completeLesson();
   }
 
   /* Maneja actualización de racha */

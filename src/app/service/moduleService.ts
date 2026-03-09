@@ -42,6 +42,7 @@ export interface Module {
 })
 export class ModuleService {
 
+  currentStep = Number(localStorage.getItem('currentStep')) || 1;
   /*
     URL base del endpoint del backend.
     Todas las peticiones relacionadas con módulos
@@ -49,7 +50,7 @@ export class ModuleService {
    */
   private baseUrl = 'http://localhost:8080/api/modules';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /*
     Obtiene todos los módulos disponibles. 
@@ -58,5 +59,13 @@ export class ModuleService {
   getModules(): Observable<Module[]> {
     return this.http.get<Module[]>(this.baseUrl);
   }
-  
+
+  getCurrentStep() {
+    return this.currentStep;
+  }
+
+  completeLesson() {
+    this.currentStep++;
+  localStorage.setItem('currentStep', this.currentStep.toString());
+  }
 }

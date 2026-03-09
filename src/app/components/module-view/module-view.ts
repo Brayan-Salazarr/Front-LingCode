@@ -65,6 +65,8 @@ export class ModuleView {
     console.log("Usuario actual:", user);
     if (!user) return;
 
+    this.currentStep = this.moduleService.getCurrentStep();
+
     const userId = user.userId;
 
     this.modules$ = this.moduleService.getModules().pipe(
@@ -88,6 +90,10 @@ export class ModuleView {
         )
       )
     );
+  }
+
+  finishLesson() {
+    this.currentStep = 2; // cuando termine la lección 1
   }
 
   /*
