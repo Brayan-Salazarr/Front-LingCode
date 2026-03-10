@@ -31,6 +31,7 @@ export class EditProfile {
   email: string = '';
   password: string = '';
   confirmPass: string = '';
+  isConfirmDisabled: boolean = true;
 
   constructor(private cdr: ChangeDetectorRef, //Permite forzar la actualización de la vista cuando Angular no detecta cambios automáticamente
     private authService: AuthService) { }; //Servicio compartido para enviar la imagen seleccionada al componente Nav
@@ -209,56 +210,12 @@ export class EditProfile {
     this.isDropdownOpen = false;
   }
 
-  //Guarda los cambios de información realizados por el usuario 
-  saveChanges() {
-
-    const currentUser = this.authService.getCurrentUser();
-
-    if (!currentUser) return;
-
-    const finalImage = this.previewUrl || this.selectedAvatarUrl || currentUser?.avatar;
-
-    const updatedUser = {
-      fullName: this.fullName || currentUser.fullName,
-      nickName: this.nickName || currentUser.nickName,
-      email: this.email || currentUser.email,
-      avatar: finalImage
-    }
-
-    if (finalImage) {
-
-      //Expresión para validar contraseña
-      //mínimo 8 caracteres, 1 mayúscula y 1 número
-      if (this.password) {
-        const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-        //Valida que la contraseña contenga los caracteres adecuados.
-        this.caractPassw = !passRegex.test(this.password);
-
-        if (this.caractPassw) {
-          return;
-        }
-      }
-      if (!currentUser) return;
-
-      this.authService.updateCurrentUser(updatedUser);
-
-      //Mensaje para el usuario indicando que se actualizaron los datos
-      alert('Actualizado exitosamente');
-
-      //Después de guardar la información el scroll sube
-      globalThis.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      })
-    }
-  }
-
   //Valida si las contraseñas coinciden
   passwordValidation(password: string, confirmPassword: string) {
     //Si hay algún error detiene el registro y muestra mensaje al usuario
     if (!password && !confirmPassword) {
       this.errorPassw = false;
+      this.caractPassw = false;
       return;
     }
 
@@ -266,14 +223,83 @@ export class EditProfile {
     this.errorPassw = password !== confirmPassword;
   }
 
+  //Verifica si hay texto en el input de contraseña para desbloquear el input de confirmar contraseña
+  confirmDisabled(password: string) {
+    this.isConfirmDisabled = password.length === 0;
+  }
+
   //Valida si la contraseña cumple con la cantidad de caracteres solicitados
   caracterPassword(password: string) {
+    if (!password) {
+      this.errorPassw = false;
+      this.caractPassw = false;
+      return;
+    }
+
     //Expresión para validar contraseña
     //mínimo 9 caracteres, 1 mayúscula y 1 número
     const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
 
     //Valida que la contraseña contenga los caracteres adecuados.
     this.caractPassw = !passRegex.test(password);
+  }
+
+  //Contiene las dos validaciones para poderlas usar en el HTML
+  onPasswordChange(value: string) {
+    this.caracterPassword(value);
+    this.confirmDisabled(value);
+  }
+
+  //Guarda los cambios de información realizados por el usuario 
+  saveChanges() {
+    const currentUser = this.authService.getCurrentUser();
+
+    if (!currentUser) return;
+
+    const finalImage = this.previewUrl || this.selectedAvatarUrl || currentUser?.avatar;
+
+    if (this.password) {
+      //Expresión para validar contraseña
+      //mínimo 8 caracteres, 1 mayúscula y 1 número
+      const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+      //Valida que la contraseña contenga los caracteres adecuados.
+      this.caractPassw = !passRegex.test(this.password);
+
+      if (this.caractPassw) return;
+
+      //Valida que las contraseñas ingresadas coincidan
+      this.errorPassw = this.password !== this.confirmPass;
+
+      if (this.errorPassw) return;
+    }
+
+    const updatedUser = {
+      fullName: this.fullName || currentUser.fullName,
+      nickName: this.nickName || currentUser.nickName,
+      email: this.email || currentUser.email,
+      avatar: finalImage,
+    }
+
+    this.authService.updateCurrentUser(updatedUser);
+
+    //Limpiar los mensajes de error
+    this.caractPassw = false;
+    this.errorPassw = false;
+    this.errorMessage = '';
+
+    //Limpiar los campos de contraseña
+    this.password = '';
+    this.confirmPass = '';
+
+    //Mensaje para el usuario indicando que se actualizaron los datos
+    alert('Actualizado exitosamente');
+
+    //Después de guardar la información el scroll sube
+    globalThis.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
   }
 
   get isCostumImage(): boolean {

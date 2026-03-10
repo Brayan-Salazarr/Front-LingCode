@@ -208,6 +208,7 @@ section {
     width: 800px;
 }
 
+/*Tamaño de fuente del texto que acompaña inputs*/
 .textEdit {
     font-size: 20px;
     margin: 0 0 0 0;
@@ -217,7 +218,7 @@ section {
 input {
     color: black;
     font-family: "Poppins", sans-serif;
-    font-size: clamp(10px, 1.1vw, 30px);
+    font-size: 18px;
     border: 2px solid transparent;
     border-radius: 7.5px;
     background: linear-gradient(#F4F4F4) padding-box,
@@ -225,6 +226,16 @@ input {
     padding: 0 0 0 5px;
     height: 42px;
     width: 505px;
+}
+
+/*Se asigna tamaño y estilo de fuente al placeholder*/
+input::placeholder {
+    font-size: 14px;
+    font-style: italic;
+}
+
+input:disabled {
+    border: solid 2px gray
 }
 
 /*Ubicación y tamaño de los botones*/
@@ -467,6 +478,14 @@ input:checked+.slider:before {
         font-size: 16px;
     }
 
+    input {
+        font-size: 14px;
+    }
+
+    input::placeholder {
+        font-size: 13px;
+    }
+
     #styleGear {
         width: 30px;
     }
@@ -671,6 +690,14 @@ input:checked+.slider:before {
     .textEdit {
         font-size: 15px;
         width: 405px;
+    }
+
+    input {
+        font-size: 13px;
+    }
+
+    input::placeholder {
+        font-size: 12px;
     }
 
     #styleGear {
