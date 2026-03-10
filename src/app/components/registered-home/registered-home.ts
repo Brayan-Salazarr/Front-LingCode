@@ -6,9 +6,9 @@ import { AuthService, User } from '../../auth/services/authService';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { Subscriptions } from '../../shared/components/subscriptions/subscriptions';
-import { UserProgress } from '../../models/progress';
 import { ProgressService } from '../../service/progress-service';
 import { Observable } from 'rxjs';
+import { ProgressResponse } from '../../models/progressResponse';
 
 //INTERFACES PARA TIPADO
 //Representa cada práctica o módulo que el usuario puede realizar
@@ -39,7 +39,7 @@ export class RegisteredHome {
   //Información del usuario actual (puede ser null si no hay usuario logueado)
   user: User | null = null;
 
-  progress$!: Observable<UserProgress | null>;
+  progress$!: Observable<ProgressResponse | null>;
 
   constructor(private authService: AuthService, //Servicio de autenticación para obtener el usuario.
     //Router para navegación programática
@@ -105,23 +105,20 @@ export class RegisteredHome {
     }
 
 
-    this.progress$ = this.progressService.progress$;
+    const userId = this.authService.getCurrentUser()?.userId;
+    if (!userId) return;
 
-    //Cada vez que cambie el usuario cargamos su progreso
-    this.authService.currentUser$.subscribe(user => {
+    this.progress$ = this.progressService.getProgress(userId);
 
-      //  Cargar progreso inicial
-      if (user && user.userId) {
+  }
 
-        console.log("USER ID:", user.userId);
+  onLessonCompleted(lessonId: string, xp: number) {
+    this.progressService.completeLesson(lessonId, xp).subscribe();
+  }
 
-        this.progressService.getProgress(user.userId).subscribe();
-
-      }
-
-    })
-
-
+  getSafeProgress(progressPercent: number | undefined): number {
+    if (!progressPercent) return 0;
+    return Math.min(progressPercent, 95); 
   }
 
 }

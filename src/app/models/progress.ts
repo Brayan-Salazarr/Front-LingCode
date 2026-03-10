@@ -3,4 +3,6 @@ export interface UserProgress {
   totalXp: number;
   currentStreak: number;
   longestStreak: number;
+  completedLessons: string[];
+  progressPercent: number;    
 }

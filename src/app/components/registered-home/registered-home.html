@@ -68,14 +68,16 @@
 
             <!-- Barra de progreso visual -->
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 10%;">
-                    <img id="percentage"
-                        src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765902113/Cybro_1_1_u15dlm.png" alt="">
-                </div>
+                <div class="progress-fill" [style.width.%]="(progress$ | async)?.progressPercent ?? 0"></div>
+
+                <img id="percentage"
+                    src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765902113/Cybro_1_1_u15dlm.png" alt=""
+                    [style.left.%]="getSafeProgress((progress$ | async)?.progressPercent)">
+
             </div>
 
             <!-- Porcentaje -->
-            <p id="progress">0% Completado</p>
+            <p id="progress">{{ (progress$ | async)?.progressPercent ?? 0 }}% Completado</p>
 
             <!-- Estado actual del sistema -->
             <p id="state">Sistema Operativo en modo <span class="different-color">Aprendizaje...</span></p>
