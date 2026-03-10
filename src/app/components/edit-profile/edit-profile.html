@@ -17,6 +17,7 @@
             <div class="preview-container">
                 <img *ngIf="previewUrl" [src]="previewUrl" class="preview-img">
             </div>
+
             <!-- Muestra el avatar seleccionado por el usuario -->
             <img *ngIf="!previewUrl"
                 [src]="previewUrl || selectedAvatarUrl || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'"
@@ -104,15 +105,15 @@
         </div>
 
         <div class="regisInfo">
-            <p class="textEdit">Contraseña</p>
+            <p class="textEdit">Nueva contraseña</p>
             <input class="field" id="password" type="password" [(ngModel)]="password"
-                (ngModelChange)="caracterPassword($event)">
+                (ngModelChange)="onPasswordChange($event)" placeholder="Opcional">
         </div>
 
         <div class="regisInfo">
             <p class="textEdit">Confirmar contraseña</p>
             <input class="field" id="confirmPass" type="password" [(ngModel)]="confirmPass"
-                (ngModelChange)="passwordValidation(password, confirmPass)">
+                (ngModelChange)="passwordValidation(password, confirmPass)" [disabled]="isConfirmDisabled">
         </div>
     </div>
 
