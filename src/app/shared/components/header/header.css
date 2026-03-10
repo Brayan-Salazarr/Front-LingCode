@@ -412,6 +412,10 @@ h1 {
     .button-edit {
         margin: 161px 0 0 189px;
     }
+
+    .img-custom {
+        left: 226px;
+    }
 }
 
 @media (max-width: 1537px) {
