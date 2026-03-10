@@ -50,8 +50,14 @@ export class EditProfile {
     this.fullName = user.fullName;
     this.nickName = user.nickName;
     this.email = user.email;
-    this.previewUrl = user.avatar ?? null;
-    this.selectedAvatarUrl = user.avatar ?? null;
+
+    if (user.avatar?.startsWith('data:image')) {
+      this.previewUrl = user.avatar;
+      this.selectedAvatarUrl = null;
+    } else {
+      this.selectedAvatarUrl = user.avatar ?? null;
+      this.previewUrl = null;
+    }
   }
 
   //Método que se ejecuta cuando el usuario selecciona un archivo
@@ -218,8 +224,6 @@ export class EditProfile {
       email: this.email || currentUser.email,
       avatar: finalImage
     }
-
-    this.authService.updateCurrentUser(updatedUser);
 
     if (finalImage) {
 
