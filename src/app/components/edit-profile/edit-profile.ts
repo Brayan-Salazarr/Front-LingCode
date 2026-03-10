@@ -271,4 +271,8 @@ export class EditProfile {
     //Valida que la contraseña contenga los caracteres adecuados.
     this.caractPassw = !passRegex.test(password);
   }
+
+  get isCostumImage(): boolean {
+    return this.previewUrl?.startsWith('data:image') ?? false;
+  }
 }
