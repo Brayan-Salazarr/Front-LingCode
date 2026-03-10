@@ -178,12 +178,13 @@
 
 /*Barra base del progreso*/
 .progress-bar {
+    position: relative;
     width: 100%;
     height: 70px;
     background-color: #e0e0e0;
     border-radius: 15px;
-    overflow: hidden;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    
 }
 
 /*Barra que representa el progreso actual con animación*/
@@ -192,18 +193,18 @@
     align-items: center;
     color: black;
     height: 70px;
-    margin: 0 0 0 10px;
+    border-radius: 15px;
     background-image: linear-gradient(45deg,
-            rgba(255, 255, 255, 0.15) 25%,
+            rgb(89, 177, 18) 25%,
             transparent 25%,
             transparent 50%,
-            rgba(255, 255, 255, 0.15) 50%,
-            rgba(255, 255, 255, 0.15) 75%,
+            rgb(89, 177, 18) 50%,
+            rgba(89, 177, 18) 75%,
             transparent 75%,
             transparent);
     background-size: 40px 40px;
     animation: move-stripes 2s linear infinite;
-    position: absolute;
+    transition: width 0.6s ease;
 }
 
 /*Contenedor que agrupa la información de energía*/
@@ -260,6 +261,11 @@
 /*Elemento que muestra el porcentaje visual*/
 #percentage {
     width: 85px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.6s ease;
+    z-index: 10; 
 }
 
 /*Texto que muestra el porcentaje de progreso con estilo degradado*/

@@ -3,8 +3,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: calc(100vh - 240px); /* Altura mínima para ocupar casi toda la pantalla */
-    padding: 80px 80px 50px 80px; /* Espaciado interno */
+    min-height: calc(100vh - 240px);
+    /* Altura mínima para ocupar casi toda la pantalla */
+    padding: 80px 80px 50px 80px;
+    /* Espaciado interno */
 }
 
 /*OPCIONES DE EJERCICIO (MULTIPLE CHOICE)*/
@@ -77,7 +79,8 @@
     height: 100%;
     width: 0%;
     background-color: #2196f3;
-    transition: width 0.4s ease; /*Animación al cambiar el progreso */
+    transition: width 0.4s ease;
+    /*Animación al cambiar el progreso */
 }
 
 /*BOTÓN DE CONFIRMAR RESPUESTA*/
@@ -109,11 +112,13 @@
 }
 
 /*TÍTULOS Y TEXTOS*/
-.title-module {
+.title-module,
+.textEnergi {
     font-family: 'Anton SC', sans-serif;
     font-size: 48px;
     letter-spacing: 2px;
-    background: linear-gradient(to right, #333333 -100%, #cecdcd 100%); /* Gradiente en el texto */
+    background: linear-gradient(to right, #333333 -100%, #cecdcd 100%);
+    /* Gradiente en el texto */
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -273,15 +278,54 @@
 }
 
 @keyframes correctFlash {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 @keyframes incorrectFlash {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.energies {
+    display: flex;
+    height: 100%;
+    gap: 5px;
+}
+
+.textEnergi {
+    font-size: 20px;
+    letter-spacing: 0px;
+    background: linear-gradient(to bottom, #2c2c2c -100%, #a1a1a1 100%);
+    -webkit-background-clip: text;
+}
+
+.img-energi {
+    width: 20px;
 }

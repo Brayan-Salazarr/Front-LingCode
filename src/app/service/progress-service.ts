@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { UserProgress } from '../models/progress';
 import { AuthService } from '../auth/services/authService';
+import { ProgressResponse } from '../models/progressResponse';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ export class ProgressService {
 
   // Estado global del progreso del usuario en la aplicación
   // BehaviorSubject permite almacenar el progreso actual y emitir cambios
-  private progressSubject = new BehaviorSubject<UserProgress | null>(null);
+  private progressSubject = new BehaviorSubject<ProgressResponse | null>(null);
 
   // Observable público para que los componentes puedan suscribirse
   progress$ = this.progressSubject.asObservable();
@@ -29,15 +30,11 @@ export class ProgressService {
    Obtiene el progreso general del usuario desde el backend
    y actualiza el estado global de la aplicación.
   */
-  getProgress(userId: string): Observable<UserProgress> {
-    return this.http.get<UserProgress>(`${this.baseUrl}/${userId}`)
+  getProgress(userId: string): Observable<ProgressResponse> {
+    return this.http.get<ProgressResponse>(`${this.baseUrl}/${userId}/total`)
       .pipe(
-        tap(progress => this.progressSubject.next(progress ?? {
-          currentStreak: 0,
-          xp: 0,
-          completeLesson: []
-        })) // guarda globalmente
-      );
+      tap(progress => this.progressSubject.next(progress))
+    );
   }
 
   /*
@@ -54,12 +51,12 @@ export class ProgressService {
     Marca una lección como completada.
     También suma XP y actualiza el progreso global.
    */
-  completeLesson(lessonId: string, xp: number): Observable<UserProgress> {
+  completeLesson(lessonId: string, xp: number): Observable<ProgressResponse> {
 
     const currentUser = this.authService.getCurrentUser();
     if (!currentUser) throw new Error('No hay usuario logueado')
 
-    return this.http.post<UserProgress>(
+    return this.http.post<ProgressResponse>(
       `${this.baseUrl}/${currentUser.userId}/complete/${lessonId}?xp=${xp}`,
       {}
     ).pipe(
