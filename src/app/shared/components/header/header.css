@@ -985,7 +985,7 @@ h1 {
         justify-content: space-around;
         position: relative;
         align-items: center;
-        top: -1vh;
+        top: 5vh;
         left: 1vw;
     }
 
@@ -1027,7 +1027,7 @@ h1 {
     }
 
     .field {
-        top: 3vh;
+        top: 8vh;
     }
 
     .move-hex-home.hexagon7 {
@@ -1103,8 +1103,8 @@ h1 {
 
     .field {
         justify-content: space-around;
-        top: -1vh;
         left: 8vw;
+        top: -15px;
     }
 
     #imgCirclee {
