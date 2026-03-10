@@ -183,9 +183,27 @@ export class EditProfile {
 
   //Simula la eliminación de la cuenta
   deleteAccount() {
+    const currentUser = this.authService.getCurrentUser();
+
+    //Obtiene lista de usuarios
+    if (!currentUser) return;
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+    //Se filtra para eliminar el usuario actual
+    const updatedUsers = users.filter(
+      (u:any) => u.email !== currentUser.email
+    );
+
+    //Guardar nueva lista
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
+
+    //Se cierra sesión
+    this.authService.logout();
+
     this.isAccountDeleted = true;
-    setTimeout(() => {
-      //Cierra automáticamente después de 3 segundos
+
+    setTimeout(() =>{
       this.closeModal();
     }, 3000)
   }

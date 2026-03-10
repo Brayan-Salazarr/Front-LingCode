@@ -270,4 +270,19 @@ login(identifier: string, password: string) {
 
     this.currentUserSubject.next(updatedUser);
   }
+
+  deleteAccount(){
+    const currentUser = this.currentUserSubject.value;
+    if(!currentUser) return;
+
+    const users = JSON.parse(localStorage.getItem(this.USERS_KEY) || '[]')
+
+    const updatedUsers = users.filter(
+      (u: any) => u.email !== currentUser.email
+    );
+
+    localStorage.setItem(this.USERS_KEY, JSON.stringify(updatedUsers));
+
+    this.logout();
+  }
 }
