@@ -40,7 +40,9 @@ export class Header {
   //Observable que contiene la información del usuario actual
   user$!: Observable<User | null>;
 
+  //Observable que expone la imagen de perfil del usuario
   profileImage$!: Observable<string | null>;
+  //URl del avatar disponible seleccionado por el usuario  
   selectedAvatarUrl: string | null = null;
 
   constructor(
@@ -52,9 +54,11 @@ export class Header {
 
   //Se guarda la imagen seleccionada por el usuario desde su dispositivo
   previewUrl: string | null = null;
+  //Valor actual de la imagen de perfil del usuario
   profileImageValue: string | null = null;
 
   ngOnInit() {
+    //Se suscribe a los cambios del usuario para actualizar la imagen de perfil
     this.user$.subscribe(user => {
       if (user) {
         this.profileImageValue = user.avatar ?? null;
@@ -62,8 +66,9 @@ export class Header {
     });
   }
 
-  // Getter que sí funciona
+  //Determina si se debe mostrar el circulo de estilo para la imagen personalizada
   get showCircle(): boolean {
+    //Si no hay imagen no se muestra
     if (!this.profileImageValue) {
       return false;
     }
@@ -74,6 +79,7 @@ export class Header {
     return false;
   }
 
+  //Indica si la imagen actual es una imagen personalizada
   get isCostumImage(): boolean {
     return this.profileImageValue?.startsWith('data:image') ?? false;
   }
