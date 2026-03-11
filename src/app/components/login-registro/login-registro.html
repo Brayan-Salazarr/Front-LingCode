@@ -10,6 +10,13 @@
         <div class="panel" id="panelRegister" [class.active]="!showLogin" [class.inactive]="showLogin">
 
             <div class="authClass" id="registerSection">
+                <!-- Contenedor del icono para regresa a vista principal -->
+                <div class="spaceArrow">
+                    <!-- Ruta de regreso a vista principal -->
+                    <a routerLink="/"><img class="arrow"
+                            src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1773261631/arrow-right-white_mtdbvp.png"
+                            alt=""></a>
+                </div>
 
                 <!-- Contenedor principal del formulario de registro -->
                 <div class="containers" id="BlackBackgReg">
@@ -175,10 +182,17 @@
         </div>
 
         <!-- PANEL DE LOGIN -->
-         <!-- Se activa cuando showLogin es true -->
+        <!-- Se activa cuando showLogin es true -->
         <div class="panel" id="panelLogin" [class.active]="showLogin" [class.inactive]="!showLogin">
 
             <div class="authClass" id="loginSection">
+                <!-- Contenedor del icono para regresa a vista principal -->
+                <div class="spaceArrow">
+                    <!-- Ruta de regreso a vista principal -->
+                    <a routerLink="/"><img class="arrow"
+                            src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1773261623/arrow-right-black_x099cf.png"
+                            alt=""></a>
+                </div>
 
                 <!-- Panel lateral para cambiar a registro -->
                 <div class="containers" id="WhiteBackgLogin">
@@ -261,7 +275,7 @@
 
                         <div class="modalBody" id="modalBodyLogin">
                             <p id="textModal">Ingresa el código que ha sido enviado a tu correo eléctronico.</p>
-                            
+
                             <!-- Inputs individuales para código -->
                             <div id="spaceInputs">
                                 <input type="text" class="inputs" id="code1">

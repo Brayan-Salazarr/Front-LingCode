@@ -74,6 +74,18 @@
     transform: translateX(-100%);
 }
 
+/*Contenedor de icono de regreso a vista principal*/
+.spaceArrow {
+    position: absolute;
+    top: 40px;
+    left: 45px;
+}
+
+/*Tamaño de icono (flecha)*/
+.arrow {
+    width: 30px;
+}
+
 #loginSection,
 #registerSection {
     min-height: 100dvh;
