@@ -19,7 +19,7 @@ interface ImagenItem {
 
 @Component({
   selector: 'app-edit-profile',
-  imports: [RouterModule, Nav, Footer, NgClass, NgIf, CarouselAvatar, FormsModule],
+  imports: [RouterModule, Nav, Footer, NgIf, CarouselAvatar, FormsModule],
   templateUrl: './edit-profile.html',
   styleUrl: './edit-profile.css',
 })

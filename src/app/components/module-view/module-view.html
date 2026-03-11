@@ -67,14 +67,14 @@
         <div class="line-step h" [class.completed]="currentStep >= 2"></div>
         <div class="line-step h" [class.completed]="currentStep >= 2"></div>
 
-        <span class="step" [class.completed]="module.progress > 0 && currentStep > 1" [class.active]="module.progress > 0 && currentStep === 1">
+        <span class="step" (click)="goToLessons(module.id)" [class.completed]="module.progress > 0 && currentStep > 1" [class.active]="module.progress > 0 && currentStep === 1">
           1</span>
 
         <div class="line-step h" [class.completed]="module.progress > 0 && currentStep >= 2"></div>
         <div class="line-step h" [class.completed]="module.progress > 0 && currentStep >= 2"></div>
         <div class="line-step h" [class.completed]="module.progress > 0 && currentStep >= 2"></div>
 
-        <span class="step" [class.completed]="module.progress > 0 && currentStep > 2" [class.active]="module.progress > 0 && currentStep === 2">2</span>
+        <span class="step" (click)="goToLessons(module.id)" [class.completed]="module.progress > 0 && currentStep > 2" [class.active]="module.progress > 0 && currentStep === 2">2</span>
       </div>
 
       <!-- Camino vertical 

@@ -9,6 +9,7 @@ import { Subscriptions } from '../../shared/components/subscriptions/subscriptio
 import { ProgressService } from '../../service/progress-service';
 import { Observable } from 'rxjs';
 import { ProgressResponse } from '../../models/progressResponse';
+import { EnergyService } from '../../service/energy-service';
 
 //INTERFACES PARA TIPADO
 //Representa cada práctica o módulo que el usuario puede realizar
@@ -41,18 +42,22 @@ export class RegisteredHome {
 
   progress$!: Observable<ProgressResponse | null>;
 
+  energy$!: Observable<number>;
+
   constructor(private authService: AuthService, //Servicio de autenticación para obtener el usuario.
     //Router para navegación programática
     private router: Router,
 
-    private progressService: ProgressService
+    private progressService: ProgressService,
+
+    private energyService: EnergyService
   ) {
     //Nos suscribimos al observable del usuario actual
     this.authService.currentUser$.subscribe(user => {
       this.user = user; //Guardamos los datos del usuario en la variable 'user'
     });
   }
-
+  
   //DATOS DE PRÁCTICAS
   practicas: Practica[] = [
     {
@@ -104,6 +109,7 @@ export class RegisteredHome {
       return;
     }
 
+     this.energy$ = this.energyService.energy$;
 
     const userId = this.authService.getCurrentUser()?.userId;
     if (!userId) return;

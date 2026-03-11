@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LessonService } from '../../service/lessonService';
 import { CommonModule } from '@angular/common';
@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { UserProgress } from '../../models/progress';
 import { ProgressService } from '../../service/progress-service';
 import { ModuleService } from '../../service/moduleService';
+import { EnergyService } from '../../service/energy-service';
 
 /*
   Representa una opción de respuesta dentro de un ejercicio.
@@ -86,6 +87,9 @@ export class Lesson {
   private lessonIndex$ = new BehaviorSubject<number>(0);
   // luego lo sacas del auth
 
+  private energyService = inject(EnergyService);
+
+  energy$ = this.energyService.energy$;
   constructor(
     private route: ActivatedRoute,
     private router: Router, // Permite acceder a parámetros de la URL
@@ -169,7 +173,7 @@ export class Lesson {
       })
     );
 
-     /* Inicializa ejercicios tipo match */
+    /* Inicializa ejercicios tipo match */
     this.currentLesson$.subscribe(lesson => {
 
       const currentExercise = this.getCurrentExercise(lesson);
@@ -194,7 +198,7 @@ export class Lesson {
    */
   submitAnswer(lesson: LessonC) {
 
-     // Evita múltiples envíos
+    // Evita múltiples envíos
     if (this.isProcessing) return;
     this.isProcessing = true;
 
@@ -210,10 +214,10 @@ export class Lesson {
 
     /* Manejo de ejercicio tipo multiple */
     if (currentExercise.type === 'multiple') {
-      if (!this.selectedOption){
+      if (!this.selectedOption) {
         this.isProcessing = false
         return;
-      } 
+      }
       answer = this.selectedOption;
     }
 
@@ -261,7 +265,7 @@ export class Lesson {
       answer = this.selectedOption.trim();
     }
 
-     /* Manejo ejercicio tipo match */
+    /* Manejo ejercicio tipo match */
     if (currentExercise.type === 'match' && currentExercise.pairs) {
       if (this.currentExerciseIndex === lesson.exercises.length - 1) {
 
@@ -318,10 +322,10 @@ export class Lesson {
     this.selectedLeft = word;
   }
 
-    /*
-   Controla la selección del lado derecho
-   y valida si el par es correcto.
-  */
+  /*
+ Controla la selección del lado derecho
+ y valida si el par es correcto.
+*/
   selectRight(word: string, lesson: LessonC) {
 
     if (!this.selectedLeft) return;
@@ -388,6 +392,7 @@ export class Lesson {
 
     if (this.currentExerciseIndex < total - 1) {
 
+      this.energyService.useEnergy(); 
       this.currentExerciseIndex++;
       this.exerciseIndex$.next(this.currentExerciseIndex);
       this.selectedOption = null;
@@ -422,7 +427,7 @@ export class Lesson {
         console.log("🔥 progreso recibido", progress);
       });
 
-      this.moduleService.completeLesson();
+    this.moduleService.completeLesson();
   }
 
   /* Maneja actualización de racha */
@@ -445,7 +450,7 @@ export class Lesson {
     this.nextLesson(); // 👈 solo si nextLesson SOLO cambia la lección
   }
 
-   /* Animación de racha */
+  /* Animación de racha */
   showStreakAnimation() {
     console.log(`🔥 ¡Racha de ${this.currentStreak} día!`);
   }
@@ -490,7 +495,7 @@ export class Lesson {
     this.selectedWords = this.selectedWords.filter(w => w !== word);
   }
 
-   /* Reinicia el estado del ejercicio */
+  /* Reinicia el estado del ejercicio */
   resetLessonState() {
     this.currentExerciseIndex = 0;
     this.exerciseIndex$.next(0);

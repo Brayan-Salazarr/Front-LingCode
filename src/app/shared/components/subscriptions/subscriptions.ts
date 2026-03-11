@@ -5,7 +5,7 @@ import { AuthService } from '../../../auth/services/authService';
 
 @Component({
   selector: 'app-subscriptions',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './subscriptions.html',
   styleUrl: './subscriptions.css',
 })
