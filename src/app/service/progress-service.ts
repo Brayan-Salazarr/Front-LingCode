@@ -33,8 +33,8 @@ export class ProgressService {
   getProgress(userId: string): Observable<ProgressResponse> {
     return this.http.get<ProgressResponse>(`${this.baseUrl}/${userId}/total`)
       .pipe(
-      tap(progress => this.progressSubject.next(progress))
-    );
+        tap(progress => this.progressSubject.next(progress))
+      );
   }
 
   /*
@@ -72,5 +72,9 @@ export class ProgressService {
    */
   resetProgress() {
     this.progressSubject.next(null);
+  }
+
+  getHistory(userId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/history/${userId}`);
   }
 }

@@ -10,6 +10,7 @@ import { ProgressService } from '../../service/progress-service';
 import { Observable } from 'rxjs';
 import { ProgressResponse } from '../../models/progressResponse';
 import { EnergyService } from '../../service/energy-service';
+import { PracticeHistory } from '../../models/practiceHistory';
 
 //INTERFACES PARA TIPADO
 //Representa cada práctica o módulo que el usuario puede realizar
@@ -43,6 +44,8 @@ export class RegisteredHome {
   progress$!: Observable<ProgressResponse | null>;
 
   energy$!: Observable<number>;
+
+  practice: PracticeHistory[] = [];
 
   constructor(private authService: AuthService, //Servicio de autenticación para obtener el usuario.
     //Router para navegación programática
@@ -115,6 +118,17 @@ export class RegisteredHome {
     if (!userId) return;
 
     this.progress$ = this.progressService.getProgress(userId);
+
+    this.progressService.getHistory(userId).subscribe(history => {
+
+  this.practice = history.map(item => ({
+      modulo: item.moduleName,
+      resultado: item.progress + "%",
+      fecha: new Date(item.updatedAt).toLocaleDateString()
+    }));
+
+});
+    
 
   }
 
