@@ -129,6 +129,7 @@ h2 {
     border: #04C9FF 1px solid;
 }
 
+/*Características del mensaje de error*/
 .error {
     position: relative;
     color: #fa7171;
@@ -164,6 +165,7 @@ h2 {
     margin-top: -60px;
 }
 
+/*Características de linea decorativa*/
 #line {
     background: linear-gradient(to right, rgba(190, 177, 248, 1), rgba(0, 217, 255, 1));
     height: 5px;
@@ -234,6 +236,7 @@ input::placeholder {
     font-style: italic;
 }
 
+/*Color del input "bloqueado"*/
 input:disabled {
     border: solid 2px gray
 }
@@ -259,12 +262,14 @@ input:disabled {
     border: 2px solid transparent;
 }
 
+/*Hover del botón guardar*/
 #Save:hover {
     color: white;
     background: linear-gradient(#000000) padding-box,
         linear-gradient(90deg, #EA02FF, #00D9FF) border-box;
 }
 
+/*Características de botón de eliminar cuenta*/
 #Cancel {
     cursor: pointer;
     background: none;
@@ -320,6 +325,7 @@ input:disabled {
     width: 23%;
 }
 
+/*Ubicación de botones del modal*/
 .modalExit {
     display: flex;
     justify-content: space-evenly;
@@ -327,10 +333,12 @@ input:disabled {
     margin: 30px 0 0 0;
 }
 
+/*Características de texto de pregunta*/
 #question {
     font-weight: normal;
 }
 
+/*Características de botones del modal*/
 .buttonStyle {
     cursor: pointer;
     font-family: "Poppins", sans-serif;

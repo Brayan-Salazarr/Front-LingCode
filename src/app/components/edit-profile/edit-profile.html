@@ -110,6 +110,7 @@
                 (ngModelChange)="onPasswordChange($event)" placeholder="Opcional">
         </div>
 
+        <!-- El disabled bloquea el campo de confirmar contraseña hasta que se escriba en el input de contraseña -->
         <div class="regisInfo">
             <p class="textEdit">Confirmar contraseña</p>
             <input class="field" id="confirmPass" type="password" [(ngModel)]="confirmPass"
@@ -128,6 +129,7 @@
 
     <!-- Botones principales de acción -->
     <div class="buttons">
+        <!-- Botón que guarda la información actualizada por el usuario -->
         <button id="Save" (click)="saveChanges()">Guardar cambios</button>
         <!-- Botón que abre el modal de confirmación -->
         <button id="Cancel" (click)="openModal()">Eliminar mi cuenta</button>
@@ -136,7 +138,7 @@
         <!-- Se muestra solo sí isModalOpen es true -->
         <div *ngIf="isModalOpen" class="modal" (click)="onBackdropClick($event)">
 
-            <!-- Contenido interno del moda -->
+            <!-- Contenido interno del modal -->
             <!-- stopPropagation evita que se cierre al hacer click dentro -->
             <div class="modalContent" (click)="$event.stopPropagation()">
 
