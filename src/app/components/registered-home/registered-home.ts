@@ -123,8 +123,8 @@ export class RegisteredHome {
   }
 
   getSafeProgress(progressPercent: number | undefined): number {
-    if (!progressPercent) return 0;
-    return Math.min(progressPercent, 95); 
+    if (!progressPercent) return 5;
+    return Math.min(progressPercent, 90); 
   }
 
 }
