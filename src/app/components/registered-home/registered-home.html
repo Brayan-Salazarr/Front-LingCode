@@ -107,8 +107,7 @@
 
         <div class="box-record">
             <!-- Recorre dinámicamente el array "practicas" -->
-            <div *ngFor="let item of practicas" class="card"
-                [ngClass]="{'completada': item.estado === 'completado', 'pendiente': item.estado === 'pendiente'}">
+            <div *ngFor="let item of practice" class="card">
                 <h2 class="practical-degree">PRÁCTICA DE VOCABULARIO</h2>
 
                 <div class="content">
