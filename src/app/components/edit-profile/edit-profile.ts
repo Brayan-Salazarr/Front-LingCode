@@ -2,7 +2,7 @@
 import { Component, input, NgModule, signal } from '@angular/core';
 import { Nav } from '../../shared/components/nav/nav';
 import { Footer } from '../../shared/components/footer/footer';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { CarouselAvatar } from '../../shared/components/carousel-avatar/carousel-avatar';
 import { ChangeDetectorRef } from '@angular/core';
@@ -34,7 +34,8 @@ export class EditProfile {
   isConfirmDisabled: boolean = true;
 
   constructor(private cdr: ChangeDetectorRef, //Permite forzar la actualización de la vista cuando Angular no detecta cambios automáticamente
-    private authService: AuthService) { }; //Servicio compartido para enviar la imagen seleccionada al componente Nav
+    private authService: AuthService,  //Servicio compartido para enviar la imagen seleccionada al componente Nav
+    private router: Router) { };
 
   //URL del avatar seleccionado desde las opciones disponibles
   selectedAvatarUrl: string | null = null;
@@ -183,29 +184,14 @@ export class EditProfile {
 
   //Simula la eliminación de la cuenta
   deleteAccount() {
-    const currentUser = this.authService.getCurrentUser();
-
-    //Obtiene lista de usuarios
-    if (!currentUser) return;
-
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-
-    //Se filtra para eliminar el usuario actual
-    const updatedUsers = users.filter(
-      (u:any) => u.email !== currentUser.email
-    );
-
-    //Guardar nueva lista
-    localStorage.setItem('users', JSON.stringify(updatedUsers));
-
-    //Se cierra sesión
-    this.authService.logout();
+    this.authService.deleteAccountAuth();
 
     this.isAccountDeleted = true;
 
-    setTimeout(() =>{
+    setTimeout(() => {
       this.closeModal();
-    }, 3000)
+      this.router.navigate(['/login-registro']);
+    }, 2000)
   }
 
   //Cierra el modal si se hace click fuera del contenido

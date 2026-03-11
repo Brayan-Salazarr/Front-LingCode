@@ -271,7 +271,7 @@ login(identifier: string, password: string) {
     this.currentUserSubject.next(updatedUser);
   }
 
-  deleteAccount(){
+  deleteAccountAuth(){
     const currentUser = this.currentUserSubject.value;
     if(!currentUser) return;
 
@@ -284,5 +284,6 @@ login(identifier: string, password: string) {
     localStorage.setItem(this.USERS_KEY, JSON.stringify(updatedUsers));
 
     this.logout();
+    
   }
 }
