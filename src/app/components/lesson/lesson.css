@@ -57,7 +57,8 @@
 
 /* Respuesta correcta */
 .buttonOptions.correct {
-    background-color: #4caf50;
+
+    border-color: #28a745;
     color: white;
     border-color: #4caf50;
 }

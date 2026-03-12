@@ -12,7 +12,7 @@ import { routes } from '../../app.routes';
 })
 export class CarouselModules {
   //Se inyecta el servicio Router para poder navegar entre páginas
-  constructor (private router : Router) {}
+  constructor(private router: Router) { }
 
   //Índice de la tarjeta actualmente activa
   currentIndex = 0;
@@ -20,14 +20,14 @@ export class CarouselModules {
   //Arreglo que contiene las imagenes del carrusel
   //Cada objeto tiene tiene la URL de la imagen y una clase personalizada
   items = [
-    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763695172/mysql-removebg-preview-removebg-preview_2_hc65ln.png', class: 'img1', router: '/login-registro'},
+    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763695172/mysql-removebg-preview-removebg-preview_2_hc65ln.png', class: 'img1', router: '/login-registro' },
     { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696348/Group_25_fnpomn.png', class: 'img2', router: '/login-registro' },
     { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696367/Group_31_mmwojn.png', class: 'img3', router: '/login-registro' }
   ];
 
   //Método que cambia la tarjeta activa cuando se hace clic
   setActive(index: number) {
-    if(this.currentIndex === index){
+    if (this.currentIndex === index) {
       this.router.navigate([this.items[index].router]);
       return;
     }
@@ -40,9 +40,18 @@ export class CarouselModules {
   getPosition(index: number) {
     const total = this.items.length;//Cantidad total de tarjetas
     const angle = 360 / total;//Divide el círculo completo entre las tarjetas
-    const rotate = angle * (index - this.currentIndex);
-    //Calcula cuanto debe rotar cada tarjeta respecto a la activa
 
+    let diff = index - this.currentIndex;
+
+    // Hace que el carrusel sea circular
+    if (diff > total / 2) {
+      diff -= total;
+    } else if (diff < -total / 2) {
+      diff += total;
+    }
+
+    const rotate = angle * diff;
+    
     return `
       translate(var(--x-offset, -50%), var(--y-offset, -50%))
       rotateY(${rotate}deg)
