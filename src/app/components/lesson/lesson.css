@@ -37,8 +37,10 @@
 
 /* Respuesta correcta */
 .buttonOptions.correct {
-    background-color: #4caf50;
-    color: white;
+    background: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+    opacity: 0.6;
     border-color: #4caf50;
 }
 
@@ -53,14 +55,6 @@
 .buttonOptions:hover {
     background-color: black;
     color: white;
-}
-
-/* Respuesta correcta */
-.buttonOptions.correct {
-
-    border-color: #28a745;
-    color: white;
-    border-color: #4caf50;
 }
 
 /* Respuesta incorrecta */
@@ -271,8 +265,9 @@
 
 /* Esta seleccionado */
 .match-btn.selected {
-    background: #d0ebff;
+    background: #000000;
     border-color: #339af0;
+    color: white;
 }
 
 /* Estado correcto */

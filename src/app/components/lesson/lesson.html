@@ -49,10 +49,10 @@
         <div *ngFor="let option of currentExercise.options">
           <button class="buttonOptions" (click)="selectOption(option.text)" [ngClass]="{
               'selected': selectedOption === option.text,
-  'correct': isAnswered && option.correct,
-  'incorrect': isAnswered && selectedOption === option.text && !option.correct,
-  'correct-animation': isAnswered && option.correct,
-  'incorrect-animation': isAnswered && selectedOption === option.text && !option.correct
+              'correct': isAnswered && option.correct,
+              'incorrect': isAnswered && selectedOption === option.text && !option.correct,
+              'correct-animation': isAnswered && option.correct,
+              'incorrect-animation': isAnswered && selectedOption === option.text && !option.correct
             }">
 
             {{ option.text }}
