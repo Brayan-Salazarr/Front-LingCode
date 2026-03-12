@@ -141,7 +141,7 @@
           <button *ngFor="let pair of currentExercise.pairs" (click)="selectLeft(pair.left)"
             [class.wrong]="wrongPair?.left === pair.left" [class.selected]="selectedLeft === pair.left"
             [disabled]="isLeftDisabled(pair.left)" [class.wrong]="wrongPair?.left === pair.left"
-            [class.selected]="selectedLeft === pair.left" class="match-btn">
+            [class.selected]="selectedLeft === pair.left" [class.correct]="correctPair?.left === pair.left" class="match-btn">
 
             {{ pair.left }}
 
@@ -151,7 +151,7 @@
         <!-- Columna derecha (mezclada aleatoriamente) -->
         <div class="match-column">
           <button *ngFor="let item of shuffledRight" (click)="selectRight(item, lesson)"
-            [disabled]="isRightDisabled(item)" [class.wrong]="isWrongRight(item)" class="match-btn">
+            [disabled]="isRightDisabled(item)" [class.wrong]="isWrongRight(item)" [class.correct]="correctPair?.right === item" class="match-btn">
 
             {{ item }}
 

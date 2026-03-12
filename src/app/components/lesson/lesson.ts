@@ -79,6 +79,7 @@ export class Lesson {
 
   matchedPairs: MatchPair[] = []; // Pares correctos encontrados
   wrongPair: MatchPair | null = null; // Par incorrecto temporal
+  correctPair: MatchPair | null = null; // Par correcto temporal
 
   /*SISTEMA DE RACHA */
   currentStreak = 0;
@@ -338,10 +339,19 @@ export class Lesson {
     if (correctPair?.right === word) {
 
       // ✅ CORRECTO
-      this.matchedPairs.push({
+      const pair = {
         left: this.selectedLeft,
         right: word
-      });
+      };
+
+      this.correctPair = pair; // 👈 activar verde
+
+      this.matchedPairs.push(pair);
+
+      setTimeout(() => {
+        this.correctPair = null;
+      }, 500);
+
 
       // 🔥 EL CAMBIO IMPORTANTE
 
@@ -519,21 +529,21 @@ export class Lesson {
   }
 
   @HostListener('document:keydown.enter')
-handleEnter() {
+  handleEnter() {
 
-  if (this.isProcessing) return;
+    if (this.isProcessing) return;
 
-  this.currentLesson$.pipe(take(1)).subscribe(lesson => {
+    this.currentLesson$.pipe(take(1)).subscribe(lesson => {
 
-    if (!lesson) return;
+      if (!lesson) return;
 
-    if (this.isAnswered) {
-      this.nextExercise(lesson);
-    } else {
-      this.submitAnswer(lesson);
-    }
+      if (this.isAnswered) {
+        this.nextExercise(lesson);
+      } else {
+        this.submitAnswer(lesson);
+      }
 
-  });
-}
+    });
+  }
 
 }
