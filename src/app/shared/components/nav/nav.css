@@ -19,6 +19,7 @@
 /*Logo de LingCode*/
 #img {
     width: 108px;
+    cursor: pointer;
 }
 
 /*Contenedor que agrupa los enlaces de navegación*/
