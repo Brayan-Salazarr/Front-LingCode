@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LessonService } from '../../service/lessonService';
 import { CommonModule } from '@angular/common';
@@ -208,8 +208,6 @@ export class Lesson {
       return;
     }
 
-    this.isAnswered = true;
-
     let answer = '';
 
     /* Manejo de ejercicio tipo multiple */
@@ -223,7 +221,6 @@ export class Lesson {
 
     /* Manejo de ejercicio tipo order */
     if (currentExercise.type === 'order') {
-
 
       answer = this.selectedWords.join(" ");
 
@@ -283,6 +280,7 @@ export class Lesson {
     }
 
     /* Envío general de respuesta */
+
     this.lessonService
       .submitAnswer(
         lesson.id,
@@ -392,7 +390,7 @@ export class Lesson {
 
     if (this.currentExerciseIndex < total - 1) {
 
-      this.energyService.useEnergy(); 
+      this.energyService.useEnergy();
       this.currentExerciseIndex++;
       this.exerciseIndex$.next(this.currentExerciseIndex);
       this.selectedOption = null;
@@ -519,5 +517,23 @@ export class Lesson {
   getCurrentExercise(lesson: LessonC): Exercise | null {
     return lesson.exercises?.[this.currentExerciseIndex] ?? null;
   }
+
+  @HostListener('document:keydown.enter')
+handleEnter() {
+
+  if (this.isProcessing) return;
+
+  this.currentLesson$.pipe(take(1)).subscribe(lesson => {
+
+    if (!lesson) return;
+
+    if (this.isAnswered) {
+      this.nextExercise(lesson);
+    } else {
+      this.submitAnswer(lesson);
+    }
+
+  });
+}
 
 }
