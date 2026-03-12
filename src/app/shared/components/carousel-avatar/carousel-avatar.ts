@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../../auth/services/authService';
 
 interface ImagenItem {
   nombre: string;
@@ -24,7 +25,9 @@ export class CarouselAvatar {
   @Output() avatarSelected: EventEmitter<string> = new EventEmitter<string>();
 
   //Inyectamos el Router para poder navegar entre rutas
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private authService: AuthService
+  ) { }
 
   //Array de objetos que contiene la información de la imagen
   readonly items: ImagenItem[] = [
@@ -38,7 +41,14 @@ export class CarouselAvatar {
   ];
 
   selectAvatar(item: ImagenItem){
-    this.avatarSelected.emit(item.ruta);
+    /*Condición que determina que sucede al seleccionar un avatar*/
+    if(this.authService.isAuthenticated()){
+      /*Si el usuario está autenticado, lo lleva al home de usuarios registrados*/
+      this.avatarSelected.emit(item.ruta);
+    } else {
+      /*Si no está autenticado, lo lleva al home público*/
+      this.router.navigate(['/login-registro'])
+    }
   }
 
   //Signal que almacena el ÍNDICE de la imagen activa
@@ -70,10 +80,5 @@ export class CarouselAvatar {
 
     // Combinamos las transformaciones
     return `translate(-50%, -50%) translateX(${translateX}px) scale(${scale})`;
-  }
-
-  //Redirige al usuario a la vista de login/registro
-  toggleAuth(): void {
-    this.router.navigate(['/login-registro'])
   }
 }
