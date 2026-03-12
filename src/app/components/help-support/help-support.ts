@@ -65,6 +65,14 @@ export class HelpSupport {
         { title: '¿Cómo suscribirme?', answer: 'Para suscribirte en LingCode, abre la página principal en tu navegador y desplázate hacia la parte inferior. Allí encontrarás dos opciones con un botón de "Suscribirse".\nHaz clic en el plan que prefieras y serás dirigido a los métodos de pago para completar tu suscripción.\n\nRevisa tu plan antes de confirmar y asegúrate de elegir el que mejor se adapte a tus metas de aprendizaje', open: false },
         { title: '¿Cómo cancelar o cambiar mi plan?', answer: 'Para cancelar o cambiar tu plan en LingCode, ve a tu pagina de inicio y selecciona editar perfil, allí encontraras una opción que dice cancelar mi plan.\n\nAntes de cancelar, revisa los beneficios de tu plan actual y considera si quieres mantener tu progreso y ventajas de la suscripción premium.', open: false }
       ]
+    },
+    {
+      mainTitle: 'Contacto',
+      activeIndex: null,
+      support: [
+        //Contacto para que el usuario se comunique con el equipo de LingCode.
+        { title: '¿Cómo puedo contactar al equipo de soporte?', answer: '¡Estamos aquí para ayudarte! Si tienes una duda general, revisa nuestras preguntas frecuentes. Pero si tu caso es urgente (problemas con pagos o acceso a tu cuenta), escríbenos directamente a nuestro <b>lingcode2026@gmail.com</b>. ¡Te responderemos lo antes posible!', open: false }
+      ]
     }
   ];
 

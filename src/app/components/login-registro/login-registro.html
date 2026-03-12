@@ -76,8 +76,10 @@
                     </p>
 
                     <!-- Botón principal -->
-                    <div class="spaceButton">
-                        <button class="buttonRegist" id="buttonRegist" (click)="register()">Registrarme</button>
+                    <div (document:keyup.enter)="register()">
+                        <div class="spaceButton">
+                            <button class="buttonRegist" id="buttonRegist" (click)="register()">Registrarme</button>
+                        </div>
                     </div>
 
                     <!-- División visual -->
@@ -223,9 +225,11 @@
                     </div>
 
                     <div class="spaceButton" id="spaceButtonLogin">
-                        <!-- Botón login -->
-                        <button class="buttonRegist" id="buttonRegist" (click)="login()">Inicia
-                            Sesión</button>
+                        <div (document:keyup.enter)="login()">
+                            <!-- Botón login -->
+                            <button class="buttonRegist" id="buttonRegist" (click)="login()">Inicia
+                                Sesión</button>
+                        </div>
                     </div>
 
                     <div class="terms" id="termsLogin">
