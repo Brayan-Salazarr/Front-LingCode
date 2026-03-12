@@ -35,7 +35,7 @@ section {
 
 /*TÍTULO DE NORMAS*/
 #titleNor {
-    margin: 70px 0 0 0;
+    margin: 50px 0 0 0;
 }
 
 /*INICIO DE MEDIA QUERIES*/
@@ -47,30 +47,30 @@ section {
 }
 
 @media (max-width: 920px) {
-   
-    .information{
+
+    .information {
         width: 69vw;
     }
 }
 
 @media (max-width: 590px) {
-   
-    .text{
+
+    .text {
         font-size: 14px;
     }
 
-    .title{
+    .title {
         font-size: 29px;
     }
 
-    .subtitle{
+    .subtitle {
         font-size: 17px;
     }
 }
 
 @media (max-width: 480px) {
- 
-    .title{
+
+    .title {
         font-size: 27px;
     }
 }
