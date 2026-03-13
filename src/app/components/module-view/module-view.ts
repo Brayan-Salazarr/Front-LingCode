@@ -104,4 +104,8 @@ export class ModuleView {
     this.router.navigate(['/modules', moduleId, 'lessons']);
   }
 
+  getSteps(totalLessons: number): number[] {
+    return Array.from({ length: totalLessons }, (_, i) => i + 1);
+  }
+
 }
