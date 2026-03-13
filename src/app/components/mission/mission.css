@@ -13,6 +13,14 @@ section {
     justify-content: end;
 }
 
+.subtitle {
+    color: #20BAE4;
+    font-family: "Anton SC", sans-serif;
+    font-size: 38px;
+    letter-spacing: 1px;
+    width: 94%;
+}
+
 /*Estilo de texto principal dentro de la sección*/
 .text {
     font-family: "Poppins", sans-serif;
@@ -23,7 +31,7 @@ section {
 
 /*Línea decorativa horizontal con degradado*/
 .line {
-    background: linear-gradient(to left, rgba(255, 161, 9, 0.5), rgba(255, 0, 251, 0.5));
+    background: linear-gradient(to left, rgba(0, 217, 255, 1), rgba(202, 75, 214, 1));
     height: 10px;
     width: 60vw;
     border-radius: 30px;
@@ -220,7 +228,7 @@ section {
     }
 
     #text {
-        top: 21%;
+        top: 23%;
     }
 }
 
