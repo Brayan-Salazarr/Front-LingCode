@@ -275,11 +275,11 @@ login(identifier: string, password: string) {
   }
 
   //Actualiza los datos del usuario actual
-  updateCurrentUser(data: Partial<User>) {
+  updateCurrentUser(data: Partial<User>): boolean {
 
     const currentUser = this.currentUserSubject.value;
 
-    if (!currentUser) return;
+    if (!currentUser) return false;
 
     //Combina los datos actuales con los nuevos
     const updatedUser: User = {
@@ -291,6 +291,8 @@ login(identifier: string, password: string) {
     localStorage.setItem(this.USER_KEY, JSON.stringify(updatedUser));
 
     this.currentUserSubject.next(updatedUser);
+
+    return true;
   }
 
   //Elimina la cuenta del usuario actual

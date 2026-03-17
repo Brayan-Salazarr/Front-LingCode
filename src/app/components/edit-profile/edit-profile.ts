@@ -7,8 +7,9 @@ import { NgClass, NgIf } from '@angular/common';
 import { CarouselAvatar } from '../../shared/components/carousel-avatar/carousel-avatar';
 import { ChangeDetectorRef } from '@angular/core';
 import { max, window } from 'rxjs';
-import { AuthService } from '../../auth/services/authService';
+import { AuthService, User } from '../../auth/services/authService';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 /*Interfaz que define la estructura de cada imagen*/
 interface ImagenItem {
@@ -261,7 +262,11 @@ export class EditProfile {
   saveChanges() {
     const currentUser = this.authService.getCurrentUser();
 
-    if (!currentUser) return;
+    //Si no hay sesión activa, no permite hacer los cambios
+    if (!currentUser) {
+      this.errorMessage = 'No hay sesión activa';
+      return;
+    }
 
     //Determina la imagen final al guardar.
     const finalImage = this.previewUrl || this.selectedAvatarUrl || currentUser?.avatar;
@@ -281,8 +286,9 @@ export class EditProfile {
       if (this.errorPassw) return;
     }
 
-    //Son datos del usuario que se actualizan o se dejan con información inicial.
-    const updatedUser = {
+    //Datos del usuario que se actualizan
+    //Si el usuario no cambio información, se conserva el valor anterior.
+    const updatedUser: Partial<User> = {
       fullName: this.fullName || currentUser.fullName,
       nickName: this.nickName || currentUser.nickName,
       email: this.email || currentUser.email,
@@ -290,25 +296,40 @@ export class EditProfile {
     }
 
     //Se actualizan los datos.
-    this.authService.updateCurrentUser(updatedUser);
+    const wasUpdate: boolean = this.authService.updateCurrentUser(updatedUser);
 
-    //Limpiar los mensajes de error.
+    if (!wasUpdate) {
+      Swal.fire({
+        icon: 'error',
+        title: 'No se pudo actualizar',
+        text: 'Ocurrión un problema al actualizar la información',
+        confirmButtonText: 'Entendido'
+      });
+      return;
+    }
+
+    //Limpiar los mensajes de error y campos de contraseña.
     this.caractPassw = false;
     this.errorPassw = false;
     this.errorMessage = '';
-
-    //Limpiar los campos de contraseña.
     this.password = '';
     this.confirmPass = '';
-
+    
     //Mensaje para el usuario indicando que se actualizaron los datos.
-    alert('Actualizado exitosamente');
-
-    //Después de guardar la información el scroll sube.
-    globalThis.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
+    Swal.fire({
+      icon: 'success',
+      title: 'Actualizado exitosamente',
+      text: 'Tu información ha sido actualizada con éxito',
+      confirmButtonText: 'Aceptar',
+      scrollbarPadding: false,
+      heightAuto: false,
+      didClose: () => {
+        //Subre el scroll despues de actualizar
+        globalThis.scroll({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
     })
   }
 
