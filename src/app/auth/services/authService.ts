@@ -159,8 +159,6 @@ login(identifier: string, password: string) {
   );
 }
 
-
-
   logout(): void {
     localStorage.removeItem(this.USER_KEY);
     localStorage.removeItem(this.TOKEN_KEY);

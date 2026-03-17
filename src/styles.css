@@ -29,3 +29,23 @@ html {
     background-clip: text;
     color: transparent;
 }
+
+.swal2-popup{
+    font-family: "Poppins", sans-serif;
+    border-radius: 20px;
+}
+
+.swal2-confirm {
+    background: #04C9FF !important;
+    color: black;
+    font-size: 13px;
+    font-family: "Poppins", sans-serif;
+}
+
+div:where(.swal2-container) h2:where(.swal2-title) {
+    font-size: 25px !important;
+}
+
+div:where(.swal2-container) div:where(.swal2-html-container) {
+    font-size: 15px !important;
+}

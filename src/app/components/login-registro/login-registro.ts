@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../auth/services/authService';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-login-registro',
@@ -41,7 +43,8 @@ export class LoginRegistro {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private cd: ChangeDetectorRef
   ) { }
 
   //Login de Usuario
@@ -80,11 +83,21 @@ export class LoginRegistro {
       },
       //Si ocurre un error
       error: err => {
-        alert(err.message || 'Error en el login');
+        let message = 'Ocurrió un error inesperado';
+
+        if (err.message === 'Credenciales incorrectas') {
+          message = 'Usuario o contraseña incorrectos';
+        }
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: message,
+          confirmButtonText: 'Aceptar',
+        })
       }
     });
   }
-
 
   /*
   //Verifica si el login fue exitoso
@@ -189,13 +202,37 @@ export class LoginRegistro {
       password: this.registerData.password
     } as any).subscribe({
       //Registro exitoso
-      next: () => {
-        alert('Registro exitoso');
+      next: async () => {
+        await Swal.fire({
+          icon: 'success',
+          title: '¡Registro exitoso!',
+          text: 'Tu cuenta fue creada correctamente.',
+          confirmButtonText: 'Continuar',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: '' // 👈 sin animación al cerrar
+          }
+        });
         this.showLogin = true;
+
+        this.cd.detectChanges();
       },
       //Error en el registro
       error: err => {
-        alert(err.message || 'Error en el registro');
+        let message: string = 'Ocurrió un error inesperado';
+
+        if(err.message === 'El usuario ya existe'){
+          message = 'El correo o apodo que intentas registrar ya existe'
+        }
+        Swal.fire({
+          icon: 'error',
+          title: 'Registro fallido',
+          text: message,
+          confirmButtonText: 'Entendido'
+          }
+      );
       }
     });
   }
