@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { UserProgress } from '../models/progress';
-import { AuthService } from '../auth/services/authService';
+import { AuthService, environment } from '../auth/services/authService';
 import { ProgressResponse } from '../models/progressResponse';
 
 
@@ -12,7 +12,7 @@ import { ProgressResponse } from '../models/progressResponse';
 export class ProgressService {
 
   // URL base del backend para el progreso del usuario
-  private baseUrl = 'http://localhost:8080/api/progress';
+  private baseUrl = `${environment.apiUrl}/progress`;
 
 
   // Estado global del progreso del usuario en la aplicación

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../auth/services/authService';
 
 /*
   Interfaz que representa la estructura de un módulo
@@ -48,7 +49,7 @@ export class ModuleService {
     Todas las peticiones relacionadas con módulos
     se construyen a partir de esta ruta.
    */
-  private baseUrl = 'http://localhost:8080/api/modules';
+  private baseUrl = `${environment.apiUrl}/modules`;
 
   constructor(private http: HttpClient) { }
 

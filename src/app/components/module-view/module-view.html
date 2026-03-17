@@ -23,6 +23,7 @@
   <div class="moduleRow" *ngFor="let module of modules$ | async; let i = index; let isLast = last; let isFirst = first"
     [class.left]="i % 2 === 0" [class.right]="i % 2 !== 0" [class.last-module]="isLast" [class.first-module]="isFirst">
 
+    
     <!-- Tarjeta -->
     <div class="moduleCard">
 

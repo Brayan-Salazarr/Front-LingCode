@@ -14,7 +14,7 @@ export interface User {
 
 export const environment = {
   production: false,
-  apiUrl: 'https://li-ms-security.onrender.com',
+  apiUrl: 'http://localhost:8080/api',
   useLocalAuth: true
 };
 

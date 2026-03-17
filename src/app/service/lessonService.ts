@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Lesson, LessonC } from '../components/lesson/lesson';
+import { environment } from '../auth/services/authService';
 
 /*
   Interfaz que representa la estructura de una lección
@@ -46,7 +47,7 @@ export class LessonService {
    */
 
 
-  private baseUrl = 'http://localhost:8080/api/modules';
+  private baseUrl = `${environment.apiUrl}/modules`;
 
   constructor(private http: HttpClient) { }
 

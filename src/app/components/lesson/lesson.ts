@@ -16,6 +16,7 @@ import { EnergyService } from '../../service/energy-service';
 export interface Option {
   text: string; // Texto que se muestra al usuario
   correct: boolean; // Indica si la opción es correcta
+  translation: string;
 }
 
 /*
@@ -23,6 +24,7 @@ export interface Option {
  */
 export interface Exercise {
   question: string; // Pregunta del ejercicio
+  description: string;
   options?: Option[];
   type: 'multiple' | 'order' | 'translate' | 'fill' | 'match'; // Lista de opciones disponibles
   pairs?: MatchPair[];
