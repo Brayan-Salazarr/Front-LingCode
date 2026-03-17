@@ -203,29 +203,28 @@ export class LoginRegistro {
     } as any).subscribe({
       //Registro exitoso
       next: async () => {
+        //Modal que indica al usuario si se registro con éxito
         await Swal.fire({
           icon: 'success',
           title: '¡Registro exitoso!',
           text: 'Tu cuenta fue creada correctamente.',
-          confirmButtonText: 'Continuar',
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: '' // 👈 sin animación al cerrar
-          }
+          confirmButtonText: 'Continuar'
         });
-        this.showLogin = true;
+        //Ruta que envía al usuario a la vista principal
+        this.router.navigate(['/registered-home']);
 
+        //Detecta los cambios
         this.cd.detectChanges();
       },
       //Error en el registro
       error: err => {
         let message: string = 'Ocurrió un error inesperado';
 
+        //Condición que indica si ya existe el usuario
         if(err.message === 'El usuario ya existe'){
           message = 'El correo o apodo que intentas registrar ya existe'
         }
+        //Modal que muestra cuando el usuario no se pudo registrar
         Swal.fire({
           icon: 'error',
           title: 'Registro fallido',
