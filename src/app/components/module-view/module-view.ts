@@ -6,8 +6,8 @@ import { CommonModule } from '@angular/common';
 import { AuthService, User } from '../../auth/services/authService';
 import { Module, ModuleService } from '../../service/moduleService';
 import { Router } from '@angular/router';
-import { map, switchMap } from 'rxjs/operators';
-import { forkJoin, Observable } from 'rxjs';
+import { map, switchMap, tap, catchError, timeout } from 'rxjs/operators';
+import { forkJoin, Observable, of } from 'rxjs';
 import { ProgressService } from '../../service/progress-service';
 
 /*
@@ -47,12 +47,14 @@ export class ModuleView {
   // Paso actual (si luego implementas roadmap progresivo)
   currentStep = 1;
 
+  loading = true;
+
   constructor(
     public authService: AuthService,
     private moduleService: ModuleService,
     private progressService: ProgressService,
     private router: Router
-  ) { }
+  ) {console.log("Constructor ModuleView"); }
 
   /*
    Se ejecuta al inicializar el componente. 
@@ -60,37 +62,68 @@ export class ModuleView {
    - Filtra solo los publicados
    - Transforma los datos en un ViewModel para la vista
   */
-  ngOnInit() {
-    const user = this.authService.getCurrentUser();
-    console.log("Usuario actual:", user);
-    if (!user) return;
+ ngOnInit() {
 
-    this.currentStep = this.moduleService.getCurrentStep();
+  console.log("ngOnInit ejecutado");
+  const user = this.authService.getCurrentUser();
+  console.log("Usuario:", user);
 
-    const userId = user.userId;
-
-    this.modules$ = this.moduleService.getModules().pipe(
-      map(data => data.filter(m => m.is_published)),
-      switchMap(modules =>
-        forkJoin(
-          modules.map(module =>
-            this.progressService
-              .getModuleProgress(userId, module.id)
-              .pipe(
-                map(progress => ({
-                  ...module,
-                  image: module.thumbnail_url || '',
-                  bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
-                  size: '',
-                  text: 'Progreso',
-                  progress: progress
-                }))
-              )
-          )
-        )
-      )
-    );
+  if (!user) {
+    console.log("⚠️ NO HAY USUARIO");
+    return;
   }
+
+  this.currentStep = this.moduleService.getCurrentStep();
+  const userId = user.userId;
+
+  this.modules$ = this.moduleService.getModules().pipe(
+
+    map(data => {
+      console.log("Modules backend:", data);
+      return data.filter(m => m.is_published);
+    }),
+
+    switchMap(modules => {
+
+      if (!modules.length) {
+        this.loading = false;
+        return of([]);
+      }
+
+     return forkJoin(
+  modules.map(module =>
+    this.progressService.getModuleProgress(userId, module.id).pipe(
+
+      catchError(err => {
+        console.error("Error progress:", err);
+        return of(0); // 🔥 evita bloqueo
+      }),
+
+      map(progress => ({
+        ...module,
+        image: module.thumbnail_url || '',
+        bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
+        size: '',
+        text: 'Progreso',
+        progress
+      }))
+    )
+  )
+);
+    }),
+
+   tap(result => {
+      console.log("FINAL RESULT:", result);
+      this.loading = false;
+    }),
+
+    catchError(err => {
+      console.error("ERROR GLOBAL:", err);
+      this.loading = false;
+      return of([]);
+    })
+  );
+}
 
   finishLesson() {
     this.currentStep = 2; // cuando termine la lección 1

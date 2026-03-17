@@ -18,6 +18,16 @@
     height: 550px;
 }
 
+.title-record{
+    font-size: 36px;
+    letter-spacing: 1px;
+    font-family: "Anton SC", sans-serif;
+    background-image: linear-gradient(to bottom, #A9A9A9 10%, #282828 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 /*TARJETAS DE SUSCRIPCIÓN*/
 .card-sus {
     display: flex;
