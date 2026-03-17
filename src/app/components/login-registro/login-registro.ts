@@ -5,6 +5,7 @@ import { AuthService } from '../../auth/services/authService';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { ChangeDetectorRef } from '@angular/core';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-login-registro',
@@ -23,6 +24,15 @@ export class LoginRegistro {
   isModalOpen: boolean = false; //Controla la apertura del modal principal
   showLogin: boolean = false; //Controla si se muestra el login o el registro 
   isConfirmModal: boolean = false; //Controla el modal de confirmación
+
+  @ViewChild('name') name!: ElementRef;
+  @ViewChild('emailNickname') emailNickname!: ElementRef;
+
+  ngAfterViewInit(): void {
+    setTimeout(() =>{
+      this.name.nativeElement.focus();
+    }, 400);
+  }
 
   /*Datos del formulario Login*/
   loginData = {
