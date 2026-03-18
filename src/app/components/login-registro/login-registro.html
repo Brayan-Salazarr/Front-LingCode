@@ -33,7 +33,7 @@
                         <!-- Cada bloque contiene etiqueta + input -->
                         <div class="regisInfo">
                             <p class="text">Nombre completo</p>
-                            <input #name class="field" id="name" [(ngModel)]="registerData.fullName">
+                            <input #name name="registerName" class="field" id="name" [(ngModel)]="registerData.fullName">
                         </div>
 
                         <div class="regisInfo">
@@ -214,7 +214,7 @@
                     <div class="infoBox" id="infoLogin">
                         <div class="regisInfo" id="loginP">
                             <p class="text">Correo eléctronico o Apodo</p>
-                            <input #emailNickname id="email" type="text" [(ngModel)]="loginData.identifier">
+                            <input #emailNickname name="loginEmail" id="email" type="text" [(ngModel)]="loginData.identifier">
                         </div>
 
                         <div class="regisInfo" id="loginP">

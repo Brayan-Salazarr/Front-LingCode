@@ -25,13 +25,31 @@ export class LoginRegistro {
   showLogin: boolean = false; //Controla si se muestra el login o el registro 
   isConfirmModal: boolean = false; //Controla el modal de confirmación
 
-  @ViewChild('name') name!: ElementRef;
-  @ViewChild('emailNickname') emailNickname!: ElementRef;
+  /*Contructor - Inyección de dependencias*/
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private cd: ChangeDetectorRef
+  ) { }
 
-  ngAfterViewInit(): void {
-    setTimeout(() =>{
-      this.name.nativeElement.focus();
-    }, 400);
+  @ViewChild('name') nameInput?: ElementRef<HTMLInputElement>;
+  @ViewChild('emailNickname') loginInput?: ElementRef<HTMLInputElement>;
+
+  setFocus(view: 'login' | 'register') {
+    setTimeout(() => {
+      const inputToFocus = view === 'register'
+        ? this.nameInput?.nativeElement
+        : this.loginInput?.nativeElement;
+
+      if (inputToFocus) {
+        // Limpiamos cualquier foco previo
+        (document.activeElement as HTMLElement)?.blur();
+
+        // Enfocamos el elemento específico
+        inputToFocus.focus({ preventScroll: true });
+      }
+    }, 50); // Un delay de 50ms suele ser más seguro para cambios de ruta/vistas
   }
 
   /*Datos del formulario Login*/
@@ -48,14 +66,6 @@ export class LoginRegistro {
     password: '',
     confirmPassword: ''
   };
-
-  /*Contructor - Inyección de dependencias*/
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private authService: AuthService,
-    private cd: ChangeDetectorRef
-  ) { }
 
   //Login de Usuario
   /*login() {
@@ -231,7 +241,7 @@ export class LoginRegistro {
         let message: string = 'Ocurrió un error inesperado';
 
         //Condición que indica si ya existe el usuario
-        if(err.message === 'El usuario ya existe'){
+        if (err.message === 'El usuario ya existe') {
           message = 'El correo o apodo que intentas registrar ya existe'
         }
         //Modal que muestra cuando el usuario no se pudo registrar
@@ -240,8 +250,8 @@ export class LoginRegistro {
           title: 'Registro fallido',
           text: message,
           confirmButtonText: 'Entendido'
-          }
-      );
+        }
+        );
       }
     });
   }
@@ -284,15 +294,13 @@ export class LoginRegistro {
     //Lee parámetros de la URL para decidir qué vista mostrar
     this.route.queryParams.subscribe(params => {
       const view = params['view'];
+      this.showLogin = (view === 'login');
 
-      if (view === 'login') {
-        this.showLogin = true;
-      }
-
-      if (view === 'register') {
-        this.showLogin = false;
-      }
-    })
+      // Esperamos a que el DOM se estabilice tras el cambio de showLogin
+      setTimeout(() => {
+        this.setFocus(this.showLogin ? 'login' : 'register');
+      }, 100);
+    });
   }
 
   //Cambia entre Login y Registro
@@ -332,10 +340,13 @@ export class LoginRegistro {
 
       const listener = (event: Event) => {
         if ((event as TransitionEvent).propertyName === 'transform') {
-
           overlay!.classList.remove(exitClass);
-
           overlay!.classList.remove(slideClass);
+
+          // --- MODIFICACIÓN AQUÍ ---
+          // Llamamos al foco cuando el overlay ya terminó de moverse 
+          // y no está bloqueando visualmente los inputs.
+          this.setFocus(goingToLogin ? 'login' : 'register');
 
           overlay!.removeEventListener('transitionend', listener);
         }
