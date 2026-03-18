@@ -9,6 +9,7 @@ import { UserProgress } from '../../models/progress';
 import { ProgressService } from '../../service/progress-service';
 import { ModuleService } from '../../service/moduleService';
 import { EnergyService } from '../../service/energy-service';
+import { SoundService } from '../../service/soundService';
 
 /*
   Representa una opción de respuesta dentro de un ejercicio.
@@ -98,7 +99,8 @@ export class Lesson {
     private router: Router, // Permite acceder a parámetros de la URL
     private lessonService: LessonService, // Servicio para comunicarse con el backend
     private progressService: ProgressService,// Servicio que guarda progreso
-    private moduleService: ModuleService
+    private moduleService: ModuleService,
+    private soundService: SoundService
   ) { }
 
   /* PROGRESO DEL MÓDULO*/
@@ -246,6 +248,7 @@ export class Lesson {
                 this.isProcessing = false;
               }, 800);
             } else {
+              this.soundService.playError();
               this.isProcessing = false;
             }
           }
@@ -268,6 +271,8 @@ export class Lesson {
     /* Manejo ejercicio tipo match */
     if (currentExercise.type === 'match' && currentExercise.pairs) {
       if (this.currentExerciseIndex === lesson.exercises.length - 1) {
+
+        this.soundService.playSuccess();
 
         this.exerciseIndex$.next(this.currentExerciseIndex + 1);
         this.finishLesson(lesson);
