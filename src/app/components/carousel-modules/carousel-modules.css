@@ -107,6 +107,7 @@
 @media (min-width: 1538px) {
     .carousel {
         width: 843px;
+        top: 40px;
     }
 
     .card {

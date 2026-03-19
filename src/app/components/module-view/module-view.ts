@@ -54,7 +54,7 @@ export class ModuleView {
     private moduleService: ModuleService,
     private progressService: ProgressService,
     private router: Router
-  ) {console.log("Constructor ModuleView"); }
+  ) { console.log("Constructor ModuleView"); }
 
   /*
    Se ejecuta al inicializar el componente. 
@@ -62,68 +62,70 @@ export class ModuleView {
    - Filtra solo los publicados
    - Transforma los datos en un ViewModel para la vista
   */
- ngOnInit() {
+  ngOnInit() {
 
-  console.log("ngOnInit ejecutado");
-  const user = this.authService.getCurrentUser();
-  console.log("Usuario:", user);
+    console.log("ngOnInit ejecutado");
+    const user = this.authService.getCurrentUser();
+    console.log("Usuario:", user);
 
-  if (!user) {
-    console.log("⚠️ NO HAY USUARIO");
-    return;
-  }
+    this.currentStep = this.moduleService.getCurrentStep();
 
-  this.currentStep = this.moduleService.getCurrentStep();
-  const userId = user.userId;
+    this.modules$ = this.moduleService.getModules().pipe(
 
-  this.modules$ = this.moduleService.getModules().pipe(
+      map(data => data.filter(m => m.is_published)),
 
-    map(data => {
-      console.log("Modules backend:", data);
-      return data.filter(m => m.is_published);
-    }),
+      switchMap(modules => {
 
-    switchMap(modules => {
+        if (!modules.length) {
+          this.loading = false;
+          return of([]);
+        }
 
-      if (!modules.length) {
-        this.loading = false;
-        return of([]);
+         // 👇 SI NO hay usuario → devolver módulos sin progreso
+      if (!user) {
+        return of(modules.map(module => ({
+          ...module,
+          image: module.thumbnail_url || '',
+          bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
+          size: '',
+          text: 'Progreso',
+          progress: 0 // 👈 invitados sin progreso
+        })));
       }
+        return forkJoin(
+          modules.map(module =>
+            this.progressService.getModuleProgress(user.userId, module.id).pipe(
 
-     return forkJoin(
-  modules.map(module =>
-    this.progressService.getModuleProgress(userId, module.id).pipe(
+              catchError(err => {
+                console.error("Error progress:", err);
+                return of(0); // evita bloqueo
+              }),
 
-      catchError(err => {
-        console.error("Error progress:", err);
-        return of(0); // 🔥 evita bloqueo
+              map(progress => ({
+                ...module,
+                image: module.thumbnail_url || '',
+                bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
+                size: '',
+                text: 'Progreso',
+                progress
+              }))
+            )
+          )
+        );
       }),
 
-      map(progress => ({
-        ...module,
-        image: module.thumbnail_url || '',
-        bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
-        size: '',
-        text: 'Progreso',
-        progress
-      }))
-    )
-  )
-);
-    }),
+      tap(result => {
+        console.log("FINAL RESULT:", result);
+        this.loading = false;
+      }),
 
-   tap(result => {
-      console.log("FINAL RESULT:", result);
-      this.loading = false;
-    }),
-
-    catchError(err => {
-      console.error("ERROR GLOBAL:", err);
-      this.loading = false;
-      return of([]);
-    })
-  );
-}
+      catchError(err => {
+        console.error("ERROR GLOBAL:", err);
+        this.loading = false;
+        return of([]);
+      })
+    );
+  }
 
   finishLesson() {
     this.currentStep = 2; // cuando termine la lección 1

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 import { UserProgress } from '../models/progress';
 import { AuthService, environment } from '../auth/services/authService';
 import { ProgressResponse } from '../models/progressResponse';
@@ -51,10 +51,14 @@ export class ProgressService {
     Marca una lección como completada.
     También suma XP y actualiza el progreso global.
    */
-  completeLesson(lessonId: string, xp: number): Observable<ProgressResponse> {
+  completeLesson(lessonId: string, xp: number): Observable<ProgressResponse | null> {
 
     const currentUser = this.authService.getCurrentUser();
-    if (!currentUser) throw new Error('No hay usuario logueado')
+    // 👇 INVITADO → no rompe, solo no guarda
+  if (!currentUser) {
+    console.log("Invitado - no se guarda progreso");
+    return of(null); 
+  }
 
     return this.http.post<ProgressResponse>(
       `${this.baseUrl}/${currentUser.userId}/complete/${lessonId}?xp=${xp}`,
