@@ -33,38 +33,38 @@
             src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png" alt="">
 
           <!-- Contenedor de datos del usuario -->
-          <div class="user-data">
-            <!-- Nickname del usuario -->
-            <p class="nickname">{{ user?.nickName }}</p>
-            <!-- Línea decorativa interna -->
-            <div class="line" id="line"></div>
+            <div class="user-data">
+              <!-- Nickname del usuario -->
+              <p class="nickname">{{ (user$ | async)?.nickname }}</p>
+              <!-- Línea decorativa interna -->
+              <div class="line" id="line"></div>
 
-            <!-- Contenedor de dato individual (ícono + texto) -->
-            <div class="space">
-              <img class="img"
-                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760082/image-Photoroom_4_1_veuvti.png"
-                alt="">
-              <p class="name">{{ user?.fullName }}</p>
-            </div>
+              <!-- Contenedor de dato individual (ícono + texto) -->
+              <div class="space">
+                <img class="img"
+                  src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760082/image-Photoroom_4_1_veuvti.png"
+                  alt="">
+                <p class="name">{{ (user$ | async)?.fullName }}</p>
+              </div>
 
-            <!-- Contenedor de email -->
-            <div class="space">
-              <img class="img"
-                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760081/image-Photoroom_3_2_ervkjd.png"
-                alt="">
-              <p class="email">{{ user?.email }}</p>
-            </div>
+              <!-- Contenedor de email -->
+              <div class="space">
+                <img class="img"
+                  src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760081/image-Photoroom_3_2_ervkjd.png"
+                  alt="">
+                <p class="email">{{ (user$ | async)?.email }}</p>
+              </div>
 
-            <!-- Contenedor de fecha de registro -->
-            <div class="space" *ngIf="user?.createdAt">
-              <img class="img"
-                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760447/image-Photoroom_2_2_nzwcic.png"
-                alt="">
-              <p class="date">
-                Registrado: {{ user?.createdAt | date: 'dd/MM/yyyy' }}
-              </p>
+              <!-- Contenedor de fecha de registro -->
+              <div class="space" *ngIf="user?.createdAt">
+                <img class="img"
+                  src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760447/image-Photoroom_2_2_nzwcic.png"
+                  alt="">
+                <p class="date">
+                  Registrado: {{ (user$ | async)?.createdAt | date: 'dd/MM/yyyy' }}
+                </p>
+              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>

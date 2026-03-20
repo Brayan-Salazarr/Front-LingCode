@@ -29,7 +29,7 @@ export class EditProfile {
   errorPassw: boolean = false; //Error cuando las contraseñas no coinciden
   //Datos del formulario del perfil
   fullName: string = ''; //Nombre completo del usuario
-  nickName: string = ''; //Alias o apodo del usuario
+  nickname: string = ''; //Alias o apodo del usuario
   email: string = ''; //Correo eléctronico del usuario
   password: string = ''; //Nueva contraseña del usuario
   confirmPass: string = ''; //Confirmación de la contraseña
@@ -53,7 +53,7 @@ export class EditProfile {
     if (!user) return;
     //Se asignan los datos del usuario al formulario
     this.fullName = user.fullName;
-    this.nickName = user.nickName;
+    this.nickname = user.nickname;
     this.email = user.email;
 
     //Determina si la imagen del usuario es un avatar(URL) o una imagen personalizada
@@ -290,7 +290,7 @@ export class EditProfile {
     //Si el usuario no cambio información, se conserva el valor anterior.
     const updatedUser: Partial<User> = {
       fullName: this.fullName || currentUser.fullName,
-      nickName: this.nickName || currentUser.nickName,
+      nickname: this.nickname || currentUser.nickname,
       email: this.email || currentUser.email,
       avatar: finalImage
     }
