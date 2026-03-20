@@ -152,8 +152,8 @@ export class Lesson {
     );
 
     this.progressService.progress$.subscribe(p => {
-    this.progress = p;
-  });
+      this.progress = p;
+    });
 
     /* Obtiene la lección actual combinando
        las lecciones y el índice actual */
@@ -250,18 +250,25 @@ export class Lesson {
       });
   }
 
+  // Construye la respuesta del usuario según el tipo de ejercicio
+  // Devuelve un string con la respuesta o null si no hay respuesta válida
   buildAnswer(exercise: Exercise): string | null {
 
     switch (exercise.type) {
 
+      // Ejercicio de opción múltiple
       case 'multiple':
         return this.selectedOption || null;
 
+      // Ejercicio de ordenar palabras
+      // Une las palabras seleccionadas en un solo string separado por espacios
       case 'order':
         return this.selectedWords.length
           ? this.selectedWords.join(' ')
           : null;
 
+      // Ejercicio de traducir o completar
+      // Elimina espacios al inicio y final
       case 'translate':
       case 'fill':
         return this.selectedOption?.trim() || null;
@@ -271,36 +278,43 @@ export class Lesson {
     }
   }
 
+  // Maneja la respuesta después de validar si es correcta o incorrecta
   handleResponse(res: boolean, lesson: LessonC, exercise: Exercise) {
 
-    this.isAnswered = true;
-    this.isCorrectAnswer = res;
+    this.isAnswered = true; // Marca que ya fue respondido
+    this.isCorrectAnswer = res; // Guarda si fue correcta o no
 
-    this.cdr.detectChanges();
+    this.cdr.detectChanges(); // Fuerza actualización de la vista
 
     if (res) {
+      // Si es correcta, avanza después de 800ms
       setTimeout(() => {
         this.nextExercise(lesson);
         this.resetStates();
       }, 800);
 
     } else {
-      this.soundService.playError(); // ❌ sonido centralizado
-      this.isProcessing = false;
+      // Si es incorrecta, reproduce sonido de error
+      this.soundService.playError(); //  sonido centralizado
+      this.isProcessing = false; // Permite volver a intentar
     }
   }
 
+  // Maneja la lógica cuando un ejercicio tipo "match" es correcto
   handleMatch(lesson: LessonC) {
 
+    // Verifica si es el último ejercicio de la lección
     const isLast = this.currentExerciseIndex === lesson.exercises.length - 1;
 
     if (isLast) {
       //this.soundService.playNotification(); // 🎉 final correcto
 
+      // Marca progreso y finaliza la lección
       this.exerciseIndex$.next(this.currentExerciseIndex + 1);
       this.finishLesson(lesson);
 
     } else {
+      // Si no es el último, pasa al siguiente
       this.nextExercise(lesson);
     }
   }
@@ -456,7 +470,7 @@ export class Lesson {
     this.selectedOption = null;
     this.feedback = '';
 
-    this.nextLesson(); // 👈 solo si nextLesson SOLO cambia la lección
+    this.nextLesson(); //  solo si nextLesson SOLO cambia la lección
   }
 
   /* Animación de racha */
@@ -492,14 +506,17 @@ export class Lesson {
     }).unsubscribe();
   }
 
+  // Palabras seleccionadas en ejercicio tipo "order"
   selectedWords: string[] = [];
 
+  // Agrega una palabra si aún no está seleccionada
   addWord(word: string) {
     if (!this.selectedWords.includes(word)) {
       this.selectedWords.push(word);
     }
   }
 
+  // Elimina una palabra seleccionada
   removeWord(word: string) {
     this.selectedWords = this.selectedWords.filter(w => w !== word);
   }
@@ -529,66 +546,74 @@ export class Lesson {
     return lesson.exercises?.[this.currentExerciseIndex] ?? null;
   }
 
+  // Escucha la tecla ENTER en todo el documento
   @HostListener('document:keydown.enter')
   handleEnter() {
 
+    // Evita múltiples envíos simultáneos
     if (this.isProcessing) return;
 
     this.currentLesson$.pipe(take(1)).subscribe(lesson => {
 
+      // Si ya respondió, avanza
       if (!lesson) return;
 
       if (this.isAnswered) {
         this.nextExercise(lesson);
       } else {
+        // Si no ha respondido, envía la respuesta
         this.submitAnswer(lesson);
       }
 
     });
   }
 
+  // Navega a una lección verificando permisos y progreso
   goToLesson(lessonId: string, lessons: any) {
     const user = this.authService.getCurrentUser();
 
-  // 🔒 CASO 1: INVITADO
-  if (!user) {
-    if (lessonId !== lessons[0].id) {
-      this.router.navigate(['/register']);
+    // CASO 1: INVITADO
+    if (!user) {
+      if (lessonId !== lessons[0].id) {
+        this.router.navigate(['/register']);
+        return;
+      }
+
+      // puede entrar a la primera lección
+      this.router.navigate(['/lesson', lessonId]);
       return;
     }
 
-    // 👇 puede entrar a la primera
+    // CASO 2: USUARIO REGISTRADO
+
+    const index = lessons.findIndex((l: LessonC) => l.id === lessonId);
+
+    if (index === 0) {
+      this.router.navigate(['/lesson', lessonId]);
+      return;
+    }
+
+    const previousLesson = lessons[index - 1];
+
+    // Si no ha completado la lección anterior, está bloqueada
+    if (!this.progress?.completedLessons?.includes(previousLesson.id)) {
+      return; // bloqueado
+    }
+
     this.router.navigate(['/lesson', lessonId]);
-    return;
   }
 
-  // ✅ CASO 2: USUARIO REGISTRADO
-
-  const index = lessons.findIndex((l: LessonC) => l.id === lessonId);
-
-  if (index === 0) {
-    this.router.navigate(['/lesson', lessonId]);
-    return;
-  }
-
-  const previousLesson = lessons[index - 1];
-
-  if (!this.progress?.completedLessons?.includes(previousLesson.id)) {
-    return; // 🔒 bloqueado
-  }
-
-  this.router.navigate(['/lesson', lessonId]);
-  }
-
-  //------------------------------------------
+  // Determina si una lección está desbloqueada según el progreso
   isLessonUnlocked(lessonId: string, lessons: any[]): boolean {
 
-  const index = lessons.findIndex(l => l.id === lessonId);
+    const index = lessons.findIndex(l => l.id === lessonId);
 
-  if (index === 0) return true;
+    // La primera siempre está desbloqueada
+    if (index === 0) return true;
 
-  const previousLesson = lessons[index - 1];
+    const previousLesson = lessons[index - 1];
 
-  return this.progress?.completedLessons?.includes(previousLesson.id);
-}
+    // Está desbloqueada si la lección anterior fue completada
+    return this.progress?.completedLessons?.includes(previousLesson.id);
+  }
 }

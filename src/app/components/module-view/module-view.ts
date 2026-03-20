@@ -139,6 +139,10 @@ export class ModuleView {
     this.router.navigate(['/modules', moduleId, 'lessons']);
   }
 
+  /*
+    Genera un arreglo de numeros consecutivos desde el 1 hasta 
+    el total de lecciones
+  */
   getSteps(totalLessons: number): number[] {
     return Array.from({ length: totalLessons }, (_, i) => i + 1);
   }
