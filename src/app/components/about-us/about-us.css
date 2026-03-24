@@ -8,7 +8,7 @@ section {
 /*Estilos generales para los parráfos*/
 p {
     font-family: "Poppins", sans-serif;
-    font-size: 24px;
+    font-size: 33px;
     width: 80%;
 }
 
@@ -17,13 +17,11 @@ p {
     margin: 0 0 0 0;
 }
 
-
 #AboutInfo {
     display: flex;
     align-items: center;
     height: 360px;
 }
-
 
 /*Contenedor principal de la sección "about"*/
 .aboutContainer {
@@ -33,7 +31,7 @@ p {
 
 /*Ajuste especifíco de tamaño de texto*/
 #fontSize {
-    font-size: 22px;
+    font-size: 25px;
     width: 90%;
 }
 
@@ -91,7 +89,7 @@ p {
 
 /*Estilos de los títulos*/
 h2 {
-    font-size: 33px;
+    font-size: 48px;
     font-family: "Anton SC", sans-serif;
     letter-spacing: 2px;
     color: #20BAE4;
@@ -136,8 +134,24 @@ h2 {
 }
 
 /*INICIO MEDIA QUERIES*/
-@media (max-width: 1336px) {
+@media (max-width: 1537px) {
+    h2 {
+        font-size: 38px;
+    }
 
+    p {
+        font-size: 24px;
+    }
+
+    #fontSize {
+        font-size: 23px;
+    }
+}
+
+@media (max-width: 1336px) {
+    h2 {
+        font-size: 35px;
+    }
 
     p {
         font-size: 22px;
@@ -148,19 +162,22 @@ h2 {
         padding: 50px;
     }
 
+    #fontSize {
+        font-size: 21px;
+    }
 }
 
 @media (max-width: 920px) {
+    h2 {
+        font-size: 20px;
+    }
 
     p {
         font-size: 15px;
-
-
-        font-size: 16px;
     }
 
     #fontSize {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .imgTop {
@@ -173,7 +190,6 @@ h2 {
 }
 
 @media (max-width: 768px) {
-
     section {
         height: 100%;
         padding: 35px;
@@ -181,7 +197,10 @@ h2 {
 
     p {
         font-size: 16px;
+    }
 
+    #fontSize {
+        font-size: 15px;
     }
 
     .aboutContainer {
@@ -202,13 +221,8 @@ h2 {
         flex-direction: column;
     }
 
-
-    #fontSize {
-        font-size: 16px;
-    }
-
     h2 {
-        font-size: 30px;
+        font-size: 23px;
     }
 }
 
@@ -216,10 +230,6 @@ h2 {
     p {
         width: 100%;
         margin: 0;
-    }
-
-    h2 {
-        font-size: 27px;
     }
 
     .locationInfo {
@@ -233,7 +243,6 @@ h2 {
     .imgTop {
         height: 293px;
     }
-
 
     .aboutContainer {
         height: 1251px;
@@ -256,6 +265,6 @@ h2 {
     }
 
     #fontSize {
-        font-size: 16px;
+        font-size: 17px;
     }
 }
