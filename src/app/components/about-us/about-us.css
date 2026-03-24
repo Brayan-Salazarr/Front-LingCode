@@ -137,6 +137,8 @@ h2 {
 
 /*INICIO MEDIA QUERIES*/
 @media (max-width: 1336px) {
+
+
     p {
         font-size: 22px;
     }
@@ -145,11 +147,15 @@ h2 {
         height: 100%;
         padding: 50px;
     }
+
 }
 
 @media (max-width: 920px) {
 
     p {
+        font-size: 15px;
+
+
         font-size: 16px;
     }
 
@@ -173,6 +179,11 @@ h2 {
         padding: 35px;
     }
 
+    p {
+        font-size: 16px;
+
+    }
+
     .aboutContainer {
         height: 100%;
         padding: 30px;
@@ -190,6 +201,15 @@ h2 {
     .card.infoFirst {
         flex-direction: column;
     }
+
+
+    #fontSize {
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -199,7 +219,7 @@ h2 {
     }
 
     h2 {
-        font-size: 30px;
+        font-size: 27px;
     }
 
     .locationInfo {
