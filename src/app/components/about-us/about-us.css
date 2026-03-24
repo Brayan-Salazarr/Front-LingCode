@@ -136,21 +136,18 @@ h2 {
 
 /*INICIO MEDIA QUERIES*/
 @media (max-width: 1336px) {
-
-    p {
-        font-size: 33px;
-    }
-     section{
+    section {
         height: 100%;
         padding: 50px;
-     }
+    }
 
 }
 
 @media (max-width: 920px) {
 
     p {
-        font-size: 27px;
+        font-size: 15px;
+
     }
 
     #fontSize {
@@ -173,6 +170,11 @@ h2 {
         padding: 35px;
     }
 
+    p {
+        font-size: 16px;
+
+    }
+
     .aboutContainer {
         height: 100%;
         padding: 30px;
@@ -192,7 +194,11 @@ h2 {
     }
 
     #fontSize {
-        font-size: 18px;
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 30px;
     }
 }
 
@@ -200,12 +206,11 @@ h2 {
 
     p {
         width: 100%;
-        font-size: 21px;
         margin: 0;
     }
 
     h2 {
-        font-size: 30px;
+        font-size: 27px;
     }
 
     .locationInfo {
