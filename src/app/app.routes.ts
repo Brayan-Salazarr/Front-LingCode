@@ -12,6 +12,8 @@ import { HelpSupport } from './components/help-support/help-support';
 import { PaymentMethods } from './components/payment-methods/payment-methods';
 import { ModuleView } from './components/module-view/module-view';
 import { Lesson } from './components/lesson/lesson';
+import { OAuth2Callback } from './components/oauth2-callback/oauth2-callback';
+import { VerifyEmail } from './components/verify-email/verify-email';
 
 export const routes: Routes = [
     { path: '', component: UnregisteredHome },
@@ -27,5 +29,7 @@ export const routes: Routes = [
     { path: 'help-support', component: HelpSupport },
     { path: 'payment-methods', component: PaymentMethods },
     { path: 'module-view', component: ModuleView },
-    {path: 'modules/:moduleId/lessons',component: Lesson}
+    { path: 'modules/:moduleId/lessons', component: Lesson },
+    { path: 'oauth2/callback', component: OAuth2Callback },
+    { path: 'verify-email', component: VerifyEmail },
 ];

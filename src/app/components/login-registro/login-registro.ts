@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../auth/services/authService';
+import { AuthService, environment } from '../../auth/services/authService';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { ChangeDetectorRef } from '@angular/core';
 import { ViewChild, ElementRef } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-registro',
@@ -16,21 +17,24 @@ import { ViewChild, ElementRef } from '@angular/core';
 })
 export class LoginRegistro {
   /*Variables de control de errores*/
-  emptyF: boolean = false; //Indica si hay campos vacíos en le registro
-  accepTerms: boolean = false; //Indica si el usuario acepto los términos
-  disError: boolean = false; //Error cuando no acepta los términos
-  errorPassw: boolean = false; //Error cuando las contraseñas no coinciden
-  caractPassw: boolean = false; //Error cuando la contraseña no cumple requisitos
-  isModalOpen: boolean = false; //Controla la apertura del modal principal
-  showLogin: boolean = false; //Controla si se muestra el login o el registro 
-  isConfirmModal: boolean = false; //Controla el modal de confirmación
+  emptyF: boolean = false;
+  accepTerms: boolean = false;
+  disError: boolean = false;
+  errorPassw: boolean = false;
+  caractPassw: boolean = false;
+  isModalOpen: boolean = false;
+  showLogin: boolean = false;
+  isConfirmModal: boolean = false;
+  forgotPasswordEmail: string = '';
+
 
   /*Contructor - Inyección de dependencias*/
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private authService: AuthService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private http: HttpClient
   ) { }
 
   @ViewChild('name') nameInput?: ElementRef<HTMLInputElement>;
@@ -91,30 +95,23 @@ export class LoginRegistro {
   }*/
 
   login() {
-    /*LLama al servicio de autenticación enviando credenciales*/
-    this.authService.login(
-      this.loginData.identifier,
-      this.loginData.password
-    ).subscribe({
-      //Si el login es exitoso
+    this.authService.login(this.loginData.identifier, this.loginData.password).subscribe({
       next: () => {
-
         this.router.navigate(['/registered-home']);
       },
-      //Si ocurre un error
       error: err => {
-        let message = 'Ocurrió un error inesperado';
+        const code = err.error?.code;
+        let message = err.error?.message || 'Ocurrió un error inesperado';
 
-        if (err.message === 'Credenciales incorrectas') {
-          message = 'Usuario o contraseña incorrectos';
+        if (code === 'EMAIL_NOT_VERIFIED') {
+          message = 'Debes verificar tu correo electrónico antes de iniciar sesión.';
+        } else if (code === 'INVALID_CREDENTIALS' || err.status === 401) {
+          message = 'Usuario o contraseña incorrectos.';
+        } else if (code === 'ACCOUNT_LOCKED') {
+          message = 'Tu cuenta está bloqueada. Intenta más tarde.';
         }
 
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: message,
-          confirmButtonText: 'Aceptar',
-        })
+        Swal.fire({ icon: 'error', title: 'Error al iniciar sesión', text: message, confirmButtonText: 'Aceptar' });
       }
     });
   }
@@ -214,44 +211,37 @@ export class LoginRegistro {
       return;
     }
 
-    /*LLama al servicio de registro*/
     this.authService.register({
       fullName: this.registerData.fullName.trim(),
-      nickName: this.registerData.nickName.trim(),
+      nickname: this.registerData.nickName.trim(),
       email: this.registerData.email.trim(),
-      password: this.registerData.password
-    } as any).subscribe({
-      //Registro exitoso
+      password: this.registerData.password,
+      confirmPassword: this.registerData.confirmPassword
+    }).subscribe({
       next: async () => {
-        //Modal que indica al usuario si se registro con éxito
         await Swal.fire({
           icon: 'success',
           title: '¡Registro exitoso!',
-          text: 'Tu cuenta fue creada correctamente.',
-          confirmButtonText: 'Continuar'
+          text: 'Revisa tu correo electrónico para verificar tu cuenta antes de iniciar sesión.',
+          confirmButtonText: 'Ir al login'
         });
-        //Ruta que envía al usuario a la vista principal
-        this.router.navigate(['/registered-home']);
-
-        //Detecta los cambios
+        this.registerData = { fullName: '', nickName: '', email: '', password: '', confirmPassword: '' };
+        this.accepTerms = false;
+        this.emptyF = false;
+        this.errorPassw = false;
+        this.caractPassw = false;
+        this.showLogin = true;
         this.cd.detectChanges();
       },
-      //Error en el registro
       error: err => {
-        let message: string = 'Ocurrió un error inesperado';
+        const code = err.error?.code;
+        let message = err.error?.message || 'Ocurrió un error inesperado';
 
-        //Condición que indica si ya existe el usuario
-        if (err.message === 'El usuario ya existe') {
-          message = 'El correo o apodo que intentas registrar ya existe'
+        if (code === 'EMAIL_ALREADY_EXISTS' || err.status === 409) {
+          message = 'El correo o apodo que intentas registrar ya existe.';
         }
-        //Modal que muestra cuando el usuario no se pudo registrar
-        Swal.fire({
-          icon: 'error',
-          title: 'Registro fallido',
-          text: message,
-          confirmButtonText: 'Entendido'
-        }
-        );
+
+        Swal.fire({ icon: 'error', title: 'Registro fallido', text: message, confirmButtonText: 'Entendido' });
       }
     });
   }
@@ -390,5 +380,46 @@ export class LoginRegistro {
   goNewPassword() {
     this.closeConfirmModal();
     this.router.navigate(['/new-password'])
+  }
+
+  // OAuth2
+  loginWithGithub() {
+    this.http.get<{ data: string }>(`${environment.apiUrl}/auth/oauth2/github`).subscribe({
+      next: res => window.location.href = res.data,
+      error: () => Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo conectar con GitHub.' })
+    });
+  }
+
+  loginWithGoogle() {
+    this.http.get<{ data: string }>(`${environment.apiUrl}/auth/oauth2/google`).subscribe({
+      next: res => window.location.href = res.data,
+      error: () => Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo conectar con Google.' })
+    });
+  }
+
+  // Forgot password — envía email con link de reset
+  sendForgotPassword() {
+    if (!this.forgotPasswordEmail.trim()) return;
+
+    this.http.post(`${environment.apiUrl}/auth/forgot-password`, { email: this.forgotPasswordEmail }).subscribe({
+      next: () => {
+        this.closeModal();
+        Swal.fire({
+          icon: 'success',
+          title: 'Correo enviado',
+          text: 'Si el correo existe, recibirás un enlace para restablecer tu contraseña.',
+          confirmButtonText: 'Aceptar'
+        });
+      },
+      error: () => {
+        this.closeModal();
+        Swal.fire({
+          icon: 'success',
+          title: 'Correo enviado',
+          text: 'Si el correo existe, recibirás un enlace para restablecer tu contraseña.',
+          confirmButtonText: 'Aceptar'
+        });
+      }
+    });
   }
 }

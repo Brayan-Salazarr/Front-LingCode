@@ -1,54 +1,34 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { catchError, switchMap, throwError } from 'rxjs';
 import { AuthService } from '../../auth/services/authService';
-import { catchError, Observable } from 'rxjs';
 
-/*export class AuthInterceptor implements HttpInterceptor {
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  const authService = inject(AuthService);
+  const token = authService.getToken();
 
-  constructor(private authService: AuthService) {}
+  const authReq = token
+    ? req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })
+    : req;
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    const token = this.authService.getToken();
-
-    let authReq = req;
-
-    if (token) {
-      authReq = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-    }
-
-    return next.handle(authReq).pipe(
-      catchError(error => {
-
-        if (error.status === 401) {
-
-          return this.authService.refreshToken().pipe(
-            switchMap(() => {
-
-              const newToken = this.authService.getToken();
-
-              const newRequest = req.clone({
-                setHeaders: {
-                  Authorization: `Bearer ${newToken}`
-                }
-              });
-
-              return next.handle(newRequest);
-            }),
-            catchError(() => {
-              this.authService.logout();
-              return throwError(() => error);
-            })
-          );
-        }
-
-        return throwError(() => error);
-      })
-    );
-  }
-}
-*/
+  return next(authReq).pipe(
+    catchError(error => {
+      if (error.status === 401) {
+        return authService.refreshToken().pipe(
+          switchMap(() => {
+            const newToken = authService.getToken();
+            const retryReq = req.clone({
+              setHeaders: { Authorization: `Bearer ${newToken}` }
+            });
+            return next(retryReq);
+          }),
+          catchError(() => {
+            authService.logout();
+            return throwError(() => error);
+          })
+        );
+      }
+      return throwError(() => error);
+    })
+  );
+};

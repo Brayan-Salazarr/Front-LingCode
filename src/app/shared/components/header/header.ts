@@ -79,8 +79,8 @@ export class Header {
     return false;
   }
 
-  //Indica si la imagen actual es una imagen personalizada
+  //Indica si la imagen actual es una imagen personalizada (base64 o URL externa)
   get isCostumImage(): boolean {
-    return this.profileImageValue?.startsWith('data:image') ?? false;
+    return this.profileImageValue != null && this.profileImageValue.length > 0;
   }
 }

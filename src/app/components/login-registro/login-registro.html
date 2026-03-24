@@ -63,17 +63,15 @@
                     </div>
 
                     <!-- MENSAJES DE ERROR DINÁMICOS -->
-                    <p class="textTerms textFields" id="textPass" *ngIf="errorPassw">
-                        Las contraseñas ingresadas no coinciden.
-                    </p>
-
-                    <p class="textTerms textFields" id="requieFields" *ngIf="emptyF && fieldsEmpty()">
-                        Todos los campos son obligatorios.
-                    </p>
-
-                    <p class="textTerms textFields" id="requieFields2" *ngIf="caractPassw">
-                        La contraseña debe contener al menos 8 caracteres, incluyendo una letra mayúscula y un número.
-                    </p>
+                    @if (errorPassw) {
+                        <p class="textTerms textFields" id="textPass">Las contraseñas ingresadas no coinciden.</p>
+                    }
+                    @if (emptyF && fieldsEmpty()) {
+                        <p class="textTerms textFields" id="requieFields">Todos los campos son obligatorios.</p>
+                    }
+                    @if (caractPassw) {
+                        <p class="textTerms textFields" id="requieFields2">La contraseña debe contener al menos 8 caracteres, incluyendo una letra mayúscula y un número.</p>
+                    }
 
                     <!-- Botón principal de registro -->
                     <div (document:keyup.enter)="register()">
@@ -91,12 +89,12 @@
 
                     <!-- Autenticación social -->
                     <div class="socialAuth">
-                        <a href="gitHub"><img class="social"
+                        <a (click)="loginWithGithub()" style="cursor:pointer"><img class="social"
                                 src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764126164/image_56_dcx5oi.png"
-                                alt=""></a>
-                        <a href="gmail"><img class="social"
+                                alt="GitHub"></a>
+                        <a (click)="loginWithGoogle()" style="cursor:pointer"><img class="social"
                                 src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586357/go-removebg-preview_1_ci2skk.png"
-                                alt=""></a>
+                                alt="Google"></a>
                     </div>
 
                     <!-- Aceptación de términos -->
@@ -107,9 +105,9 @@
                     </div>
 
                     <!-- Error si no acepta términos -->
-                    <p class="textTerms" *ngIf="disError">
-                        Debes aceptar los términos de uso para continuar.
-                    </p>
+                    @if (disError) {
+                        <p class="textTerms">Debes aceptar los términos de uso para continuar.</p>
+                    }
                 </div>
 
                 <!-- MODAL DE TÉRMINOS Y CONDICIONES -->
@@ -245,12 +243,12 @@
 
                     <!-- Login social -->
                     <div class="socialAuth" id="socialAuthLogin">
-                        <a href="gitHub"><img class="social"
+                        <a (click)="loginWithGithub()" style="cursor:pointer"><img class="social"
                                 src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764126164/image_56_dcx5oi.png"
-                                alt=""></a>
-                        <a href="gmail"><img class="social"
+                                alt="GitHub"></a>
+                        <a (click)="loginWithGoogle()" style="cursor:pointer"><img class="social"
                                 src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763586357/go-removebg-preview_1_ci2skk.png"
-                                alt=""></a>
+                                alt="Google"></a>
                     </div>
                 </div>
 
@@ -259,11 +257,11 @@
                     <div class="modalContent" id="modalContentLogin" (click)="$event.stopPropagation()">
 
                         <div class="modalBody" id="modalBodyLogin">
-                            <p id="textModal">Ingresa tu correo electrónico para enviarte un código de verificación.</p>
-                            <input type="text" id="inputSize">
+                            <p id="textModal">Ingresa tu correo electrónico para enviarte un enlace de recuperación.</p>
+                            <input type="email" id="inputSize" [(ngModel)]="forgotPasswordEmail" placeholder="tu@correo.com">
                             <div class="modalFooter" id="modalFooterLogin">
                                 <button class="buttons" id="buttonCancel" (click)="closeModal()">Cancelar</button>
-                                <button class="buttons" id="buttonAccept" (click)="openConfirmModal()">Aceptar</button>
+                                <button class="buttons" id="buttonAccept" (click)="sendForgotPassword()">Aceptar</button>
                             </div>
                         </div>
                     </div>
