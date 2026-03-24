@@ -22,6 +22,7 @@
 /*Subtítulo alineado con margen lateral*/
 .subtitle {
     font-weight: normal;
+    font-size: 40px;
     margin: 20px 0 30px 10vw;
 }
 
@@ -110,20 +111,30 @@
 }
 
 /* ===== INICIO DE MEDIA QUERIES ===== */
+@media (max-width: 1537px) {
+    .title {
+        font-size: 38px;
+    }
+
+    .subtitle {
+        font-size: 30px;
+    }
+}
+
 @media (max-width: 768px) {
-    .groupBox{
+    .groupBox {
         margin: 0 0 53px 6vw;
     }
 }
 
 @media (max-width: 480px) {
-    .groupBox{
+    .groupBox {
         width: 74%;
     }
 }
 
 @media (max-width: 380px) {
-    .groupBox{
+    .groupBox {
         width: 70%;
     }
 }
