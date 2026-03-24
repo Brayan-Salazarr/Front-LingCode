@@ -21,6 +21,7 @@ p {
 #AboutInfo {
     display: flex;
     align-items: center;
+    height: 360px;
 }
 
 
@@ -136,21 +137,20 @@ h2 {
 
 /*INICIO MEDIA QUERIES*/
 @media (max-width: 1336px) {
-
     p {
-        font-size: 33px;
+        font-size: 24px;
     }
-     section{
+
+    section {
         height: 100%;
         padding: 50px;
-     }
-
+    }
 }
 
 @media (max-width: 920px) {
 
     p {
-        font-size: 27px;
+        font-size: 16px;
     }
 
     #fontSize {
@@ -190,17 +190,11 @@ h2 {
     .card.infoFirst {
         flex-direction: column;
     }
-
-    #fontSize {
-        font-size: 18px;
-    }
 }
 
 @media (max-width: 480px) {
-
     p {
         width: 100%;
-        font-size: 21px;
         margin: 0;
     }
 
@@ -233,5 +227,15 @@ h2 {
 
     #fontSize {
         width: 100%;
+    }
+}
+
+@media (max-width: 430px) {
+    p {
+        font-size: 18px;
+    }
+
+    #fontSize {
+        font-size: 16px;
     }
 }
