@@ -20,10 +20,9 @@ export class Nav {
   user$!: Observable<User | null>;
 
   constructor(
-    private router: Router, //Servicio para navegar entre rutas
+    public router: Router, //Servicio para navegar entre rutas
     public authService: AuthService, //Servicio de autenticación
   ) {
-
     /*Se suscribe al observable del usuario actual. Cada vez que el usuario cambia (login/logout), esta variable se actualiza automáticamente*/
     this.user$ = this.authService.currentUser$;
   }

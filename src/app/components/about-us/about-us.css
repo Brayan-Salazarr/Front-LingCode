@@ -21,6 +21,7 @@ p {
 #AboutInfo {
     display: flex;
     align-items: center;
+    height: 360px;
 }
 
 
@@ -136,6 +137,12 @@ h2 {
 
 /*INICIO MEDIA QUERIES*/
 @media (max-width: 1336px) {
+
+
+    p {
+        font-size: 24px;
+    }
+
     section {
         height: 100%;
         padding: 50px;
@@ -148,6 +155,8 @@ h2 {
     p {
         font-size: 15px;
 
+
+        font-size: 16px;
     }
 
     #fontSize {
@@ -193,6 +202,7 @@ h2 {
         flex-direction: column;
     }
 
+
     #fontSize {
         font-size: 16px;
     }
@@ -203,7 +213,6 @@ h2 {
 }
 
 @media (max-width: 480px) {
-
     p {
         width: 100%;
         margin: 0;
@@ -238,5 +247,15 @@ h2 {
 
     #fontSize {
         width: 100%;
+    }
+}
+
+@media (max-width: 430px) {
+    p {
+        font-size: 18px;
+    }
+
+    #fontSize {
+        font-size: 16px;
     }
 }

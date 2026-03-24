@@ -36,6 +36,14 @@
     text-decoration: none;
     cursor: pointer;
     font-family: "Poppins", sans-serif;
+    border-bottom: 2px solid transparent;
+}
+
+/*Estilo de línea debajo de opciones de navegación*/
+.active-link {
+    border-bottom: 2px solid;
+    color: #04F7FF;
+    border-radius: 5px;
 }
 
 /*Contenedor que agrupa los botones*/

@@ -2,10 +2,11 @@
 <!-- La clase "component" define el estilo base -->
 <!-- [ngClass] "colorBackground" permite cambiar el fondo -->
 <div class="component" [ngClass]="colorBackground">
-    
+
     <!-- Logo de LingCode -->
     <!-- id="img" permite aplicar estilos específicos al logo -->
-    <a (click)="goHome()"><img id="img" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763490191/Group_27_xduqke.png" alt="Logo"></a>
+    <a (click)="goHome()"><img id="img"
+            src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763490191/Group_27_xduqke.png" alt="Logo"></a>
 
     <!-- Botón menú tipo hamburguesa (visible en responsive) -->
     <!-- class= "hamburguer" define el contenedor del ícono -->
@@ -24,15 +25,17 @@
         <!-- Enlace al inicio -->
         <!-- Ejecuta goHome() para redirigir según el estado del usuario -->
         <!-- closeMenu() cierra el menú tipo hamburguesa -->
-        <a class="place" (click)="goHome(); closeMenu()">Inicio</a>
+        <!-- Se agrega routerLink y demás para poder mostrar la opción seleccionada (línea) -->
+        <a class="place" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"
+            [class.active-link]="router.url.includes('/registered-home')" (click)="goHome(); closeMenu()">Inicio</a>
 
         <!-- Enlace a la vista de módulos -->
         <!-- routerLink permite navegación sin recargar la página -->
         <!-- closeMenu() cierra el menú después de navegar -->
-        <a class="place" routerLink="/module-view" (click)="closeMenu()">Módulos</a>
+        <a class="place" routerLink="/module-view" routerLinkActive="active-link" (click)="closeMenu()">Módulos</a>
 
         <!-- Enlace a la sección sobre nosotros -->
-        <a class="place" routerLink="/about-us" (click)="closeMenu()">Sobre nosotros</a>
+        <a class="place" routerLink="/about-us" routerLinkActive="active-link" (click)="closeMenu()">Sobre nosotros</a>
     </nav>
 
     <!-- Fondo oscuro que aparece cuando el menú tipo hamburguesa está abierto -->
@@ -67,8 +70,7 @@
     <div class="icon" (click)="goLogin()" *ngIf="(authService.currentUser$ | async) === null">
 
         <!-- Imagen del icono de usuario -->
-        <img id="userIcon"
-            [src]="'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'"
+        <img id="userIcon" [src]="'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'"
             alt="user">
     </div>
 
@@ -79,7 +81,8 @@
         <!-- Avatar del usuario -->
         <!-- class="avatar" aplica forma circular y tamaño -->
         <!-- Si no tiene avatar, usa una imagen por defecto -->
-        <img class="avatar" [src]="u.avatar || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'" />
+        <img class="avatar"
+            [src]="u.avatar || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'" />
 
         <!-- Contenedor de datos del usuario -->
         <!-- class="separator" organiza los elementos verticalmente -->
