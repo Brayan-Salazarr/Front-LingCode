@@ -164,11 +164,12 @@ section {
 /*INICIO DE MEDIA QUERIES*/
 @media (min-width: 1538px) {
     .container-with-triangle {
-        height: 905px;
+        height: 1065px;
+        top: -77px;
     }
 
     .container-with-triangle1 {
-        top: 1545px;
+        top: 1548px;
     }
 
     .container-with-triangle1::before {
@@ -180,7 +181,7 @@ section {
     }
 
     #text {
-        top: 22%;
+        top: 23%;
     }
 
     .hexagon3 {
@@ -189,10 +190,6 @@ section {
 
     .separation {
         height: 370px;
-    }
-
-    #text {
-        top: 18%;
     }
 
     .hexagon5 {
@@ -204,17 +201,26 @@ section {
     .text {
         font-size: 24px;
     }
+
+    .separation {
+        height: 260px;
+    }
+
+    .container-with-triangle1 {
+        top: 1376px;
+    }
 }
 
 @media (max-width: 1366px) {
     .separation {
         align-items: end;
-        height: 213px;
+        gap: 26px;
+        justify-content: normal;
         width: 70vw;
     }
 
     .container-with-triangle1 {
-        top: 1333px;
+        top: 1380px;
     }
 
     .text {
@@ -223,7 +229,7 @@ section {
     }
 
     .line {
-        width: 928px;
+        width: 100%;
     }
 
     #text {
@@ -246,17 +252,37 @@ section {
     }
 
     .container-with-triangle {
-        height: 860px;
+        height: 915px;
+        margin-top: 22px;
+    }
+
+    .container-with-triangle1 {
+        height: 824px;
+        top: 1394px;
+    }
+
+    .container-with-triangle1::after {
+        height: 834px;
+    }
+
+    .hexagon3 {
+        top: 465px;
+    }
+
+    .subtitle {
+        width: 60vw;
+        margin: 0 80px 0 0;
     }
 }
 
 @media (max-width: 920px) {
     .container-with-triangle {
-        height: 540px;
+        height: 600px;
     }
 
     .separation {
         height: 230px;
+        gap: 18px;
     }
 
     .line {
@@ -264,14 +290,13 @@ section {
     }
 
     .container-with-triangle1 {
-        top: 905px;
-        height: 641px;
+        top: 947px;
+        height: 560px;
     }
 
     .container-with-triangle1::after {
-        height: 654px;
+        height: 573px;
     }
-
 
     .text {
         margin: 0 64px 0 0;
@@ -280,19 +305,23 @@ section {
 
     #text {
         font-size: 15px;
-        top: 14%;
+        top: 9%;
+    }
+
+    .subtitle {
+        margin: 0 64px 0 0;
     }
 
     .hexagon6 {
         width: 35px;
         height: 41px;
-        top: 6px;
+        top: -39px;
     }
 
     .hexagon5 {
         width: 38px;
         height: 45px;
-        top: 30px;
+        top: -15px;
     }
 
     .hexagon3 {
@@ -310,7 +339,11 @@ section {
 
     #text {
         width: 330px;
-        top: 12%;
+        top: 7%;
+    }
+
+    .subtitle {
+        width: 82%;
     }
 
     .hexagon5 {
@@ -328,24 +361,34 @@ section {
     .hexagon3 {
         width: 30px;
         height: 37px;
-        top: 294px;
+        top: 240px;
     }
 
     .separation {
-        width: 90%;
+        width: 93%;
         height: 298px;
     }
 
     .container-with-triangle1 {
-        top: 998px;
-        height: 641px;
+        top: 1026px;
+        height: 552px;
         width: 92vw;
     }
 
     .container-with-triangle {
-        height: 555px;
+        height: 604px;
         width: 95vw;
+        top: -40px;
     }
+
+    .container-with-triangle1::after {
+        top: -179px;
+        height: 560px;
+    }
+
+    section {
+    margin: 0;
+}
 }
 
 @media (max-width: 480px) {
