@@ -163,9 +163,8 @@ section {
 
 /*INICIO DE MEDIA QUERIES*/
 @media (min-width: 1538px) {
-
     .container-with-triangle {
-        height: 1095px;
+        height: 905px;
     }
 
     .container-with-triangle1 {
@@ -189,7 +188,7 @@ section {
     }
 
     .separation {
-        height: 266px;
+        height: 370px;
     }
 
     #text {
@@ -241,15 +240,23 @@ section {
     .text {
         font-size: 22px;
     }
+
+    .separation {
+        height: 300px;
+    }
+
+    .container-with-triangle {
+        height: 860px;
+    }
 }
 
 @media (max-width: 920px) {
     .container-with-triangle {
-        height: 749px;
+        height: 540px;
     }
 
     .separation {
-        height: 125px;
+        height: 230px;
     }
 
     .line {
@@ -296,7 +303,6 @@ section {
 }
 
 @media (max-width: 768px) {
-
     .text {
         width: 82%;
         font-size: 16px;
@@ -327,7 +333,7 @@ section {
 
     .separation {
         width: 90%;
-        height: 173px;
+        height: 298px;
     }
 
     .container-with-triangle1 {
@@ -337,6 +343,7 @@ section {
     }
 
     .container-with-triangle {
+        height: 555px;
         width: 95vw;
     }
 }
