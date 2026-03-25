@@ -6,9 +6,10 @@ import { CommonModule } from '@angular/common';
 import { AuthService, User } from '../../auth/services/authService';
 import { Module, ModuleService } from '../../service/moduleService';
 import { Router } from '@angular/router';
-import { map, switchMap, tap, catchError, timeout } from 'rxjs/operators';
+import { map, switchMap, tap, catchError, timeout, take } from 'rxjs/operators';
 import { forkJoin, Observable, of } from 'rxjs';
 import { ProgressService } from '../../service/progress-service';
+import { LessonService } from '../../service/lessonService';
 
 /*
   Representa un paso visual en la UI
@@ -47,13 +48,16 @@ export class ModuleView {
   // Paso actual (si luego implementas roadmap progresivo)
   currentStep = 1;
 
+  progress: any;
+
   loading = true;
 
   constructor(
     public authService: AuthService,
     private moduleService: ModuleService,
     private progressService: ProgressService,
-    private router: Router
+    private router: Router,
+    private lessonService: LessonService
   ) { console.log("Constructor ModuleView"); }
 
   /*
@@ -69,6 +73,14 @@ export class ModuleView {
     console.log("Usuario:", user);
 
     this.currentStep = this.moduleService.getCurrentStep();
+
+    if (user) {
+    this.progressService.getProgress(user.userId).subscribe();
+  }
+
+  this.progressService.progress$.subscribe(p => {
+    this.progress = p;
+  });
 
     this.modules$ = this.moduleService.getModules().pipe(
 
@@ -136,8 +148,8 @@ export class ModuleView {
     del módulo seleccionado.
    */
   goToLessons(moduleId: string) {
-    this.router.navigate(['/modules', moduleId, 'lessons']);
-  }
+  this.router.navigate(['/modules', moduleId, 'lessons']);
+}
 
   /*
     Genera un arreglo de numeros consecutivos desde el 1 hasta 

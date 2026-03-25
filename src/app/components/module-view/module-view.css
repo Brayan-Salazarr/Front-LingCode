@@ -217,7 +217,7 @@ button:hover {
   width: 25px;
   height: 18px;
   background-color: #ccc;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .line-step.h.completed {

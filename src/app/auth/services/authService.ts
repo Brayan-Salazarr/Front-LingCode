@@ -16,7 +16,7 @@ export interface User {
 
 export const environment = {
   production: false,
-  apiUrl: 'https://lingcode-api-gateway-1.onrender.com/api/v1',
+  apiUrl: 'http://localhost:8080/api',
 };
 
 // Respuesta del backend en POST /auth/login y /auth/refresh

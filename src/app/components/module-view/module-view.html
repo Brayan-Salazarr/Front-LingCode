@@ -73,33 +73,59 @@
       </div>
 
       <!-- 🔵 STEPS -->
-      <div class="steps"
-        [ngClass]="i % 2 === 0 ? 'normal' : 'reverse'">
+     <div class="steps"
+  [ngClass]="i % 2 === 0 ? 'normal' : 'reverse'">
 
-        <div class="path-horizontal">
-          <ng-container *ngFor="let step of getSteps(module.total_lessons); let i = index">
+  <div class="path-horizontal">
 
-            <div class="line-step h"
-              [class.completed]="currentStep >= 2"></div>
-            <div class="line-step h"
-              [class.completed]="currentStep >= 2"></div>
-            <div class="line-step h"
-              [class.completed]="currentStep >= 2"></div>
+     <ng-container *ngFor="let step of getSteps(module.total_lessons); let idx = index; let last = last">
 
-            <span class="step"
-              (click)="goToLessons(module.id)"
-              [class.completed]="module.progress >= ((i + 1) / module.total_lessons) * 100"
-              [class.active]="module.progress >= (i / module.total_lessons) * 100 
-              && module.progress < ((i + 1) / module.total_lessons) * 100">
+      <!-- 🔥 3 LÍNEAS SOLO ANTES DEL PRIMER CÍRCULO -->
+      <ng-container *ngIf="idx === 0">
 
-              {{ step }}
+        <div class="line-step h"
+          [class.completed]="module.progress > 0"></div>
 
-            </span>
+        <div class="line-step h"
+          [class.completed]="module.progress > 0"></div>
 
-          </ng-container>
+        <div class="line-step h"
+          [class.completed]="module.progress > 0"></div>
+
+      </ng-container>
+
+      <!-- 🔵 CÍRCULO -->
+      <span class="step"
+        (click)="goToLessons(module.id)"
+        [class.completed]="module.progress >= ((idx + 1) / module.total_lessons) * 100"
+        [class.active]="module.progress >= (idx / module.total_lessons) * 100 
+        && module.progress < ((idx + 1) / module.total_lessons) * 100">
+
+        {{ idx + 1 }}
+
+      </span>
+
+      <!-- 🔥 3 LÍNEAS DESPUÉS DE CADA CÍRCULO (menos el último) -->
+      <ng-container *ngIf="!last">
+
+        <div class="line-step h"
+          [class.completed]="module.progress >= ((idx + 0.33) / module.total_lessons) * 100">
         </div>
 
-      </div>
+        <div class="line-step h"
+          [class.completed]="module.progress >= ((idx + 0.66) / module.total_lessons) * 100">
+        </div>
+
+        <div class="line-step h"
+          [class.completed]="module.progress >= ((idx + 1) / module.total_lessons) * 100">
+        </div>
+
+      </ng-container>
+
+    </ng-container>
+
+  </div>
+</div>
 
     </div>
 

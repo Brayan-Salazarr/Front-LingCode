@@ -119,6 +119,7 @@ export class Lesson {
   /* PROGRESO DEL MÓDULO*/
   private moduleProgressSubject = new BehaviorSubject<number>(0);
   moduleProgress$ = this.moduleProgressSubject.asObservable();
+  lessonProgress$!: Observable<number>;
 
   /*ACTUALIZA EL PROGRESO DEL MÓDULO*/
   updateProgress(lesson: LessonC) {
@@ -144,6 +145,8 @@ export class Lesson {
   */
   ngOnInit() {
     this.resetLessonState();
+
+     // Cargar lecciones del módulo
     this.lesson$ = this.route.paramMap.pipe(
       map(params => params.get('moduleId')!),
       switchMap(moduleId =>
@@ -151,9 +154,36 @@ export class Lesson {
       )
     );
 
+    const user = this.authService.getCurrentUser();
+
+    // Cargar progreso si hay usuario
+    if (user) {
+      this.progressService.getProgress(user.userId).subscribe();
+    }
+
     this.progressService.progress$.subscribe(p => {
       this.progress = p;
     });
+
+  this.lesson$.pipe(take(1)).subscribe(lessons => {
+
+    const user = this.authService.getCurrentUser();
+
+    // Invitado o sin progreso → empieza desde la primera
+    if (!user || !this.progress?.completedLessons) {
+      this.lessonIndex$.next(0);
+      return;
+    }
+
+    // Buscar siguiente lección no completada
+    const nextIndex = lessons.findIndex(lesson =>
+      !this.progress.completedLessons.includes(lesson.id)
+    );
+
+    // Si encontró → va a esa, si no → vuelve a la primera
+    this.lessonIndex$.next(nextIndex !== -1 ? nextIndex : 0);
+
+  });
 
     /* Obtiene la lección actual combinando
        las lecciones y el índice actual */
@@ -162,6 +192,20 @@ export class Lesson {
       this.lessonIndex$
     ]).pipe(
       map(([lessons, index]) => lessons[index])
+    );
+
+    this.lessonProgress$ = combineLatest([
+      this.currentLesson$,
+      this.exerciseIndex$
+    ]).pipe(
+      map(([lesson, exerciseIndex]) => {
+
+        if (!lesson) return 0;
+
+        const total = lesson.exercises.length;
+
+        return (exerciseIndex / total) * 100;
+      })
     );
 
     /* Calcula el progreso total del módulo
@@ -443,12 +487,12 @@ export class Lesson {
         }
 
         console.log("progreso recibido", progress);
-      });
 
-    // SIEMPRE navegar (NO dentro del subscribe)
-    setTimeout(() => {
-      this.router.navigate(['/module-view']);
-    }, 800);
+        setTimeout(() => {
+          this.router.navigate(['/module-view']);
+        }, 800);
+
+      });
 
     this.moduleService.completeLesson();
   }
