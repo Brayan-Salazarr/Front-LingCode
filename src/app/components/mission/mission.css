@@ -16,7 +16,7 @@ section {
 .subtitle {
     color: #20BAE4;
     font-family: "Anton SC", sans-serif;
-    font-size: 38px;
+    font-size: 48px;
     letter-spacing: 1px;
     width: 94%;
 }
@@ -101,6 +101,7 @@ section {
     position: absolute;
     color: white;
     top: 24%;
+    font-size: 33px;
     width: 45vw;
     margin: 0 0 0 7vw;
     z-index: 10;
@@ -198,7 +199,16 @@ section {
 }
 
 @media (max-width: 1537px) {
+    .subtitle {
+        font-size: 38px;
+    }
+
     .text {
+        font-size: 24px;
+    }
+
+    #text {
+        top: 23%;
         font-size: 24px;
     }
 
@@ -223,7 +233,12 @@ section {
         top: 1380px;
     }
 
+    .subtitle {
+        font-size: 35px;
+    }
+
     .text {
+        font-size: 22px;
         margin: 0 80px 0 0;
         width: 60vw;
     }
@@ -233,6 +248,7 @@ section {
     }
 
     #text {
+        font-size: 22px;
         top: 23%;
     }
 }
@@ -310,6 +326,7 @@ section {
 
     .subtitle {
         margin: 0 64px 0 0;
+        font-size: 20px;
     }
 
     .hexagon6 {
@@ -338,12 +355,14 @@ section {
     }
 
     #text {
+        font-size: 16px;
         width: 330px;
         top: 7%;
     }
 
     .subtitle {
         width: 82%;
+        font-size: 23px;
     }
 
     .hexagon5 {
@@ -387,12 +406,11 @@ section {
     }
 
     section {
-    margin: 0;
-}
+        margin: 0;
+    }
 }
 
 @media (max-width: 480px) {
-
     .container-with-triangle {
         background: transparent;
     }
@@ -452,11 +470,16 @@ section {
     .hexagon6 {
         top: -80px;
     }
+}
 
+@media (max-width: 430px) {
+    .text,
+    #text {
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 350px) {
-
     .container-with-triangle1::after {
         top: -110px;
     }
