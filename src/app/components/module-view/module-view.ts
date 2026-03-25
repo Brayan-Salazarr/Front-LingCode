@@ -31,6 +31,7 @@ interface ModuleViewModel extends Module {
   size: string;
   text: string;
   progress: number; // viene del backend si lo tienes
+  lessons: any[];
 }
 
 @Component({
@@ -49,6 +50,8 @@ export class ModuleView {
   currentStep = 1;
 
   progress: any;
+
+  selectedLessonId: string | null = null;
 
   loading = true;
 
@@ -75,12 +78,12 @@ export class ModuleView {
     this.currentStep = this.moduleService.getCurrentStep();
 
     if (user) {
-    this.progressService.getProgress(user.userId).subscribe();
-  }
+      this.progressService.getProgress(user.userId).subscribe();
+    }
 
-  this.progressService.progress$.subscribe(p => {
-    this.progress = p;
-  });
+    this.progressService.progress$.subscribe(p => {
+      this.progress = p;
+    });
 
     this.modules$ = this.moduleService.getModules().pipe(
 
@@ -93,28 +96,38 @@ export class ModuleView {
           return of([]);
         }
 
-         // 👇 SI NO hay usuario → devolver módulos sin progreso
-      if (!user) {
-        return of(modules.map(module => ({
-          ...module,
-          image: module.thumbnail_url || '',
-          bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
-          size: '',
-          text: 'Progreso',
-          progress: 0 // 👈 invitados sin progreso
-        })));
-      }
+        // 👇 SI NO hay usuario → devolver módulos sin progreso
+        if (!user) {
+          return forkJoin(
+            modules.map(module =>
+              this.lessonService.getLessonsByModule(module.id).pipe(
+                catchError(() => of([])),
+                map(lessons => ({
+                  ...module,
+                  lessons, // 🔥 AHORA SÍ
+                  image: module.thumbnail_url || '',
+                  bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
+                  size: '',
+                  text: 'Progreso',
+                  progress: 0
+                }))
+              )
+            )
+          );
+        }
         return forkJoin(
           modules.map(module =>
-            this.progressService.getModuleProgress(user.userId, module.id).pipe(
-
-              catchError(err => {
-                console.error("Error progress:", err);
-                return of(0); // evita bloqueo
-              }),
-
-              map(progress => ({
+            forkJoin({
+              progress: this.progressService.getModuleProgress(user.userId, module.id).pipe(
+                catchError(() => of(0))
+              ),
+              lessons: this.lessonService.getLessonsByModule(module.id).pipe(
+                catchError(() => of([]))
+              )
+            }).pipe(
+              map(({ progress, lessons }) => ({
                 ...module,
+                lessons, // 🔥 AQUÍ LAS AGREGAS
                 image: module.thumbnail_url || '',
                 bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
                 size: '',
@@ -143,13 +156,40 @@ export class ModuleView {
     this.currentStep = 2; // cuando termine la lección 1
   }
 
+  isLessonCompleted(lessonId: string, module: any): boolean {
+    return this.progress?.completedLessons?.includes(String(lessonId));
+  }
+
+  isLessonActive(index: number, lesson: any): boolean {
+    return lesson.id === this.selectedLessonId;
+  }
+
   /*
     Navega a la vista de lecciones
     del módulo seleccionado.
    */
+  goToLesson(moduleId: string, lessonId: string) {
+
+    this.selectedLessonId = lessonId;
+
+    this.router.navigate(
+      ['/modules', moduleId, 'lessons'],
+      { queryParams: { lessonId } }
+    );
+  }
+
   goToLessons(moduleId: string) {
-  this.router.navigate(['/modules', moduleId, 'lessons']);
-}
+    this.lessonService.getLessonsByModule(moduleId)
+      .pipe(take(1))
+      .subscribe(lessons => {
+        if (lessons.length > 0) {
+          this.router.navigate(
+            ['/modules', moduleId, 'lessons'],
+            { queryParams: { lessonId: lessons[0].id } }
+          );
+        }
+      });
+  }
 
   /*
     Genera un arreglo de numeros consecutivos desde el 1 hasta 

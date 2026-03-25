@@ -68,6 +68,8 @@ export class Lesson {
   // Porcentaje de progreso de la lección
   progressPercent = 0;
 
+  isAnimating = false;
+
   // Control reactivo del índice de ejercicio
   private exerciseIndex$ = new BehaviorSubject<number>(0);
 
@@ -146,13 +148,36 @@ export class Lesson {
   ngOnInit() {
     this.resetLessonState();
 
-     // Cargar lecciones del módulo
+    // Cargar lecciones del módulo
     this.lesson$ = this.route.paramMap.pipe(
       map(params => params.get('moduleId')!),
       switchMap(moduleId =>
         this.lessonService.getLessonsByModule(moduleId)
       )
     );
+
+    combineLatest([
+      this.lesson$,
+      this.route.queryParams
+    ]).subscribe(([lessons, params]) => {
+
+      const lessonId = params['lessonId'];
+
+      let index = 0;
+
+      if (lessonId) {
+        const foundIndex = lessons.findIndex(l => l.id === lessonId);
+        if (foundIndex !== -1) {
+          index = foundIndex;
+        }
+      } else {
+        index = this.progress?.completedLessons?.length || 0;
+      }
+
+      console.log("LECCIÓN SELECCIONADA:", index);
+
+      this.lessonIndex$.next(index);
+    });
 
     const user = this.authService.getCurrentUser();
 
@@ -165,25 +190,31 @@ export class Lesson {
       this.progress = p;
     });
 
-  this.lesson$.pipe(take(1)).subscribe(lessons => {
+    this.lesson$.pipe(take(1)).subscribe(lessons => {
 
-    const user = this.authService.getCurrentUser();
+      const params = this.route.snapshot.queryParams;
+      const lessonId = params['lessonId'];
 
-    // Invitado o sin progreso → empieza desde la primera
-    if (!user || !this.progress?.completedLessons) {
-      this.lessonIndex$.next(0);
-      return;
-    }
+      // SI YA VIENE UNA LECCIÓN → NO TOCAR
+      if (lessonId) return;
 
-    // Buscar siguiente lección no completada
-    const nextIndex = lessons.findIndex(lesson =>
-      !this.progress.completedLessons.includes(lesson.id)
-    );
+      const user = this.authService.getCurrentUser();
 
-    // Si encontró → va a esa, si no → vuelve a la primera
-    this.lessonIndex$.next(nextIndex !== -1 ? nextIndex : 0);
+      // Invitado o sin progreso → empieza desde la primera
+      if (!user || !this.progress?.completedLessons) {
+        this.lessonIndex$.next(0);
+        return;
+      }
 
-  });
+      // Buscar siguiente lección no completada
+      const nextIndex = lessons.findIndex(lesson =>
+        !this.progress.completedLessons.includes(lesson.id)
+      );
+
+      // Si encontró → va a esa, si no → vuelve a la primera
+      this.lessonIndex$.next(nextIndex !== -1 ? nextIndex : 0);
+
+    });
 
     /* Obtiene la lección actual combinando
        las lecciones y el índice actual */
@@ -331,16 +362,19 @@ export class Lesson {
     this.cdr.detectChanges(); // Fuerza actualización de la vista
 
     if (res) {
+
+
       // Si es correcta, avanza después de 800ms
       setTimeout(() => {
         this.nextExercise(lesson);
         this.resetStates();
-      }, 800);
+      }, 300);
 
     } else {
       // Si es incorrecta, reproduce sonido de error
       this.soundService.playError(); //  sonido centralizado
       this.isProcessing = false; // Permite volver a intentar
+      this.isAnswered = false;
     }
   }
 
@@ -446,6 +480,8 @@ export class Lesson {
     const total = lesson.exercises.length;
 
     // Reset general de flags de control
+    this.isAnswered = false;
+    this.isCorrectAnswer = false;
     this.isProcessing = false;
 
     if (this.currentExerciseIndex < total - 1) {
@@ -602,12 +638,14 @@ export class Lesson {
       // Si ya respondió, avanza
       if (!lesson) return;
 
-      if (this.isAnswered) {
+      // ✅ SOLO AVANZA SI YA ES CORRECTA
+      if (this.isAnswered && this.isCorrectAnswer) {
         this.nextExercise(lesson);
-      } else {
-        // Si no ha respondido, envía la respuesta
-        this.submitAnswer(lesson);
+        return;
       }
+
+      // 👉 SI NO HA RESPONDIDO O FALLÓ → INTENTA
+      this.submitAnswer(lesson)
 
     });
   }

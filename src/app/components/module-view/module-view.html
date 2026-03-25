@@ -27,6 +27,8 @@
     Módulos
   </h1>
 
+  
+
   <!-- 🔥 CONTROL TOTAL CON ASYNC -->
   <div *ngIf="(modules$ | async) as modules; else loadingTpl">
 
@@ -78,7 +80,7 @@
 
   <div class="path-horizontal">
 
-     <ng-container *ngFor="let step of getSteps(module.total_lessons); let idx = index; let last = last">
+     <ng-container *ngFor="let lesson of module.lessons; let idx = index; let last = last">
 
       <!-- 🔥 3 LÍNEAS SOLO ANTES DEL PRIMER CÍRCULO -->
       <ng-container *ngIf="idx === 0">
@@ -96,10 +98,9 @@
 
       <!-- 🔵 CÍRCULO -->
       <span class="step"
-        (click)="goToLessons(module.id)"
-        [class.completed]="module.progress >= ((idx + 1) / module.total_lessons) * 100"
-        [class.active]="module.progress >= (idx / module.total_lessons) * 100 
-        && module.progress < ((idx + 1) / module.total_lessons) * 100">
+        (click)="goToLesson(module.id, lesson.id)"0
+        [class.completed]="isLessonCompleted(lesson.id, module)"
+        [class.active]="isLessonActive(idx, module)">
 
         {{ idx + 1 }}
 
