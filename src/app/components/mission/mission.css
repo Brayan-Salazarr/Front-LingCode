@@ -398,7 +398,7 @@ section {
     }
 
     .container-with-triangle1 {
-        top: 868px;
+        top: 977px;
         width: 100%;
         height: 560px;
     }
@@ -453,17 +453,9 @@ section {
         top: -80px;
     }
 
-    section {
-        height: 1051px;
-        margin: 0 0 20px 0;
-    }
-
 }
 
 @media (max-width: 350px) {
-    section {
-        height: 1163px;
-    }
 
     .container-with-triangle1::after {
         top: -110px;
