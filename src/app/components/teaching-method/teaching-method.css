@@ -89,15 +89,17 @@ section {
     }
 }
 
-@media (max-width: 1279px) {
-    .text {
-        font-size: 22px;
-    }
-
+@media (max-width: 1336px) {
     .caption {
         font-size: 35px;
     }
 
+    .text {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 1279px) {
     .teaching-text {
         height: 427px;
     }
@@ -144,7 +146,6 @@ section {
 }
 
 @media (max-width: 768px) {
-
     section {
         gap: 38px;
     }
@@ -197,5 +198,11 @@ section {
 
     .line {
         left: 72px;
+    }
+}
+
+@media (max-width: 480px) {
+    .text {
+        font-size: 18px;
     }
 }
