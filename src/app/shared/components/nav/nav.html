@@ -26,8 +26,7 @@
         <!-- Ejecuta goHome() para redirigir según el estado del usuario -->
         <!-- closeMenu() cierra el menú tipo hamburguesa -->
         <!-- Se agrega routerLink y demás para poder mostrar la opción seleccionada (línea) -->
-        <a class="place" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"
-            [class.active-link]="router.url.includes('/registered-home')" (click)="goHome(); closeMenu()">Inicio</a>
+        <a class="place" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" [class.active-link]="router.url.includes('/registered-home')" (click)="goHome(); closeMenu()">Inicio</a>
 
         <!-- Enlace a la vista de módulos -->
         <!-- routerLink permite navegación sin recargar la página -->
@@ -70,7 +69,7 @@
     <div class="icon" (click)="goLogin()" *ngIf="(authService.currentUser$ | async) === null">
 
         <!-- Imagen del icono de usuario -->
-        <img id="userIcon" [src]="'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'"
+        <img id="userIcon" [src]="'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1771021109/user_ojgle2.png'"
             alt="user">
     </div>
 
