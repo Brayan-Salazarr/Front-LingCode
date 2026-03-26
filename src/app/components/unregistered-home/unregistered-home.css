@@ -399,7 +399,7 @@ section {
     }
 
     .container-with-triangle {
-        clip-path: polygon(0 0, 0 0, 85% 50%, 0 100%);
+        clip-path: polygon(0 0, 0 0, 80% 50%, 0 100%);
     }
 
     .hexagon6 {
