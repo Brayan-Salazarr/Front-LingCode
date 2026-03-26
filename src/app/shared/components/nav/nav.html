@@ -26,7 +26,7 @@
         <!-- Ejecuta goHome() para redirigir según el estado del usuario -->
         <!-- closeMenu() cierra el menú tipo hamburguesa -->
         <!-- Se agrega routerLink y demás para poder mostrar la opción seleccionada (línea) -->
-        <a class="place" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" [class.active-link]="router.url.includes('/registered-home')" (click)="goHome(); closeMenu()">Inicio</a>
+        <a class="place" [class.active-link]="isHomeActive()" (click)="goHome(); closeMenu()">Inicio</a>
 
         <!-- Enlace a la vista de módulos -->
         <!-- routerLink permite navegación sin recargar la página -->
