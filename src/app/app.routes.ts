@@ -22,6 +22,7 @@ export const routes: Routes = [
     { path: 'norms-politics', component: NormsPolitics },
     { path: 'login-registro', component: LoginRegistro },
     { path: 'new-password', component: NewPassword },
+    { path: 'reset-password', component: NewPassword },
     { path: 'login-registro', redirectTo: 'login-registro', pathMatch: 'full'},
     { path: 'registered-home', component: RegisteredHome },
     { path: 'edit-profile', component: EditProfile },
