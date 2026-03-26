@@ -269,10 +269,6 @@ button:hover {
   display: none;
 }
 
-.first-module .path-horizontal .step:first-of-type {
-  color: #000;
-}
-
 .titleModule {
   font-family: "Anton SC", sans-serif;
   font-size: 48px;

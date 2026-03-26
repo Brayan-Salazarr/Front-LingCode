@@ -157,7 +157,11 @@ export class ModuleView {
   }
 
   isLessonCompleted(lessonId: string, module: any): boolean {
-    return this.progress?.completedLessons?.includes(String(lessonId));
+
+    console.log("LESSON ID:", lessonId);
+    console.log("COMPLETED:", this.progress?.completedLessons);
+    
+    return this.progress?.completedLessons?.map(String).includes(String(lessonId));
   }
 
   isLessonActive(index: number, lesson: any): boolean {
