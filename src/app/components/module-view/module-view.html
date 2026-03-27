@@ -86,13 +86,13 @@
       <ng-container *ngIf="idx === 0">
 
         <div class="line-step h"
-          [class.completed]="module.progress > 0"></div>
+          [class.completed]="isLineCompleted(idx, module)"></div>
 
         <div class="line-step h"
-          [class.completed]="module.progress > 0"></div>
+          [class.completed]="isLineCompleted(idx, module)"></div>
 
         <div class="line-step h"
-          [class.completed]="module.progress > 0"></div>
+          [class.completed]="isLineCompleted(idx, module)"></div>
 
       </ng-container>
 
@@ -110,15 +110,15 @@
       <ng-container *ngIf="!last">
 
         <div class="line-step h"
-          [class.completed]="module.progress >= ((idx + 0.33) / module.total_lessons) * 100">
+          [class.completed]="isLineCompleted(idx, module)">
         </div>
 
         <div class="line-step h"
-          [class.completed]="module.progress >= ((idx + 0.66) / module.total_lessons) * 100">
+          [class.completed]="isLineCompleted(idx, module)">
         </div>
 
         <div class="line-step h"
-          [class.completed]="module.progress >= ((idx + 1) / module.total_lessons) * 100">
+          [class.completed]="isLineCompleted(idx, module)">
         </div>
 
       </ng-container>

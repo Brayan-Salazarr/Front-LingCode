@@ -10,6 +10,7 @@ import { map, switchMap, tap, catchError, timeout, take } from 'rxjs/operators';
 import { forkJoin, Observable, of } from 'rxjs';
 import { ProgressService } from '../../service/progress-service';
 import { LessonService } from '../../service/lessonService';
+import { Lesson } from '../lesson/lesson';
 
 /*
   Representa un paso visual en la UI
@@ -160,7 +161,7 @@ export class ModuleView {
 
     console.log("LESSON ID:", lessonId);
     console.log("COMPLETED:", this.progress?.completedLessons);
-    
+
     return this.progress?.completedLessons?.map(String).includes(String(lessonId));
   }
 
@@ -186,13 +187,45 @@ export class ModuleView {
     this.lessonService.getLessonsByModule(moduleId)
       .pipe(take(1))
       .subscribe(lessons => {
-        if (lessons.length > 0) {
-          this.router.navigate(
-            ['/modules', moduleId, 'lessons'],
-            { queryParams: { lessonId: lessons[0].id } }
-          );
-        }
+
+        if (!lessons.length) return;
+
+        const completed = (this.progress?.completedLessons || []).map(String);
+
+        // buscar la PRIMERA lección NO completada
+        const nextLesson = lessons.find(
+          lesson => !completed.includes(String(lesson.id))
+        );
+
+        const lessonToGo = nextLesson || lessons[lessons.length - 1];
+        // si ya completó todo → lo manda a la última
+
+        this.router.navigate(
+          ['/modules', moduleId, 'lessons'],
+          { queryParams: { lessonId: lessonToGo.id } }
+        );
       });
+  }
+
+  isLineCompleted(index: number, module: any): boolean {
+    const lessons = module.lessons;
+    const completed = (this.progress?.completedLessons || []).map(String);
+
+    let lastCompletedIndex = -1;
+
+    lessons.forEach((lesson: any, i: number) => {
+      if (completed.includes(String(lesson.id))) {
+        lastCompletedIndex = i;
+      }
+    });
+
+    // 👉 si no ha hecho nada → solo primeras líneas
+    if (lastCompletedIndex === -1) {
+      return index === 0;
+    }
+
+    // 👉 pintar hasta la siguiente lección (no todas)
+    return index <= lastCompletedIndex;
   }
 
   /*
