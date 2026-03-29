@@ -94,6 +94,10 @@
                     alt="">
             </div>
 
+            <div class="energy-timer" *ngIf="(energy$ | async)! < 20" >
+                ⏳ Nueva energía en {{ formatTime(remainingTime$ | async) }}
+            </div>
+
         </div>
 
     </div>

@@ -207,7 +207,7 @@ export class ModuleView {
       });
   }
 
-  isLineCompleted(index: number, module: any): boolean {
+  isLineCompleted(index: number, module: any, type: 'before' | 'after'): boolean {
     const lessons = module.lessons;
     const completed = (this.progress?.completedLessons || []).map(String);
 
@@ -219,12 +219,17 @@ export class ModuleView {
       }
     });
 
-    // 👉 si no ha hecho nada → solo primeras líneas
+    // 🔵 Usuario nuevo
     if (lastCompletedIndex === -1) {
+      return type === 'before' && index === 0;
+    }
+
+    // 🔵 Líneas ANTES del círculo (inicio)
+    if (type === 'before') {
       return index === 0;
     }
 
-    // 👉 pintar hasta la siguiente lección (no todas)
+    // 🔵 Líneas DESPUÉS del círculo
     return index <= lastCompletedIndex;
   }
 

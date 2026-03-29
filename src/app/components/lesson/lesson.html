@@ -177,11 +177,14 @@
 
       <!-- Solo se habilita cuando todos los pares están completados -->
       <button class="confirmation-button" [disabled]="matchedPairs.length !== (currentExercise.pairs?.length || 0)"
-        (click)="submitAnswer(lesson)">
+        (click)="submitAnswer(lesson)" [disabled]="!(energy$ | async)">
         Confirmar
       </button>
     </div>
 
+    <div *ngIf="(energy$ | async) === 0" class="no-energy">
+      ⚡ Sin energía. Espera para continuar.
+    </div>
   </ng-container>
 
 </div>

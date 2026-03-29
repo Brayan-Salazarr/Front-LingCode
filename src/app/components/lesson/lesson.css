@@ -96,6 +96,14 @@
     width: 100%;
 }
 
+.no-energy {
+  margin-top: 10px;
+  left: 50%;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
 /* Contenedor gris de la barra */
 .progress-container {
     width: 80%;

@@ -187,6 +187,12 @@
 
 }
 
+.energy-timer {
+  font-size: 14px;
+  color: white;
+  margin-top: 5px;
+}
+
 /*Barra que representa el progreso actual con animación*/
 .progress-fill {
     display: flex;

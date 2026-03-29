@@ -477,35 +477,40 @@ export class Lesson {
 
   /*Controla los estados de los ejercicios*/
   nextExercise(lesson: LessonC) {
-    const total = lesson.exercises.length;
+  // 🔒 BLOQUEO DE ENERGÍA
+  if (!this.energyService.canPlay()) {
+    alert('Sin energía 😢');
+    return;
+  }
 
-    // Reset general de flags de control
-    this.isAnswered = false;
-    this.isCorrectAnswer = false;
-    this.isProcessing = false;
+  // CONSUMIR ENERGÍA
+  const used = this.energyService.useEnergy();
+  if (!used) return;
 
-    if (this.currentExerciseIndex < total - 1) {
+  const total = lesson.exercises.length;
 
-      this.energyService.useEnergy();
-      this.currentExerciseIndex++;
-      this.exerciseIndex$.next(this.currentExerciseIndex);
-      this.selectedOption = null;
-      this.feedback = '';
+  this.isAnswered = false;
+  this.isCorrectAnswer = false;
+  this.isProcessing = false;
 
-      // Inicializar shuffledRight si es match
-      const currentExercise = this.getCurrentExercise(lesson);
-      if (currentExercise?.type === 'match' && currentExercise.pairs) {
-        this.shuffledRight = this.shuffleArray(
-          currentExercise.pairs.map(p => p.right)
-        );
-        this.matchedPairs = []; // resetear parejas
-      }
+  if (this.currentExerciseIndex < total - 1) {
 
-    } else {
+    this.currentExerciseIndex++;
+    this.exerciseIndex$.next(this.currentExerciseIndex);
+    this.selectedOption = null;
+    this.feedback = '';
 
-      this.finishLesson(lesson); // 👈 limpio y claro
-
+    const currentExercise = this.getCurrentExercise(lesson);
+    if (currentExercise?.type === 'match' && currentExercise.pairs) {
+      this.shuffledRight = this.shuffleArray(
+        currentExercise.pairs.map(p => p.right)
+      );
+      this.matchedPairs = [];
     }
+
+  } else {
+    this.finishLesson(lesson);
+  }
   }
 
   /*Finaliza las lecciones*/
@@ -633,18 +638,24 @@ export class Lesson {
     // Evita múltiples envíos simultáneos
     if (this.isProcessing) return;
 
+     // bloqueo por energía
+  if (!this.energyService.canPlay()) {
+    this.feedback = "⚡ Te quedaste sin energía";
+    return;
+  }
+
     this.currentLesson$.pipe(take(1)).subscribe(lesson => {
 
       // Si ya respondió, avanza
       if (!lesson) return;
 
-      // ✅ SOLO AVANZA SI YA ES CORRECTA
+      // SOLO AVANZA SI YA ES CORRECTA
       if (this.isAnswered && this.isCorrectAnswer) {
         this.nextExercise(lesson);
         return;
       }
 
-      // 👉 SI NO HA RESPONDIDO O FALLÓ → INTENTA
+      // SI NO HA RESPONDIDO O FALLÓ → INTENTA
       this.submitAnswer(lesson)
 
     });

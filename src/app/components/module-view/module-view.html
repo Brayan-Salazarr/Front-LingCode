@@ -86,13 +86,13 @@
       <ng-container *ngIf="idx === 0">
 
         <div class="line-step h"
-          [class.completed]="isLineCompleted(idx, module)"></div>
+          [class.completed]="isLineCompleted(idx, module, 'before')"></div>
 
         <div class="line-step h"
-          [class.completed]="isLineCompleted(idx, module)"></div>
+          [class.completed]="isLineCompleted(idx, module, 'before')"></div>
 
         <div class="line-step h"
-          [class.completed]="isLineCompleted(idx, module)"></div>
+          [class.completed]="isLineCompleted(idx, module, 'before')"></div>
 
       </ng-container>
 
@@ -110,15 +110,15 @@
       <ng-container *ngIf="!last">
 
         <div class="line-step h"
-          [class.completed]="isLineCompleted(idx, module)">
+          [class.completed]="isLineCompleted(idx, module, 'after')">
         </div>
 
         <div class="line-step h"
-          [class.completed]="isLineCompleted(idx, module)">
+          [class.completed]="isLineCompleted(idx, module, 'after')">
         </div>
 
         <div class="line-step h"
-          [class.completed]="isLineCompleted(idx, module)">
+          [class.completed]="isLineCompleted(idx, module, 'after')">
         </div>
 
       </ng-container>
