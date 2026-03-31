@@ -21,7 +21,7 @@
 .moduleRow.right {
   flex-direction: row-reverse;
   justify-content: center;
-  gap: 504px;
+  gap: 618px;
 }
 
 .moduleRow.right .path-horizontal {

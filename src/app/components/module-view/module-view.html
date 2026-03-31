@@ -82,7 +82,7 @@
 
      <ng-container *ngFor="let lesson of module.lessons; let idx = index; let last = last">
 
-      <!-- 🔥 3 LÍNEAS SOLO ANTES DEL PRIMER CÍRCULO -->
+      <!-- 3 LÍNEAS SOLO ANTES DEL PRIMER CÍRCULO -->
       <ng-container *ngIf="idx === 0">
 
         <div class="line-step h"
@@ -106,7 +106,7 @@
 
       </span>
 
-      <!-- 🔥 3 LÍNEAS DESPUÉS DE CADA CÍRCULO (menos el último) -->
+      <!-- 3 LÍNEAS DESPUÉS DE CADA CÍRCULO (menos el último) -->
       <ng-container *ngIf="!last">
 
         <div class="line-step h"

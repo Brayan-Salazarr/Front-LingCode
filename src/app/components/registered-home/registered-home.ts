@@ -113,7 +113,7 @@ export class RegisteredHome {
       this.router.navigate(['/login-registro'], { queryParams: { view: 'login' } });
       return;
     }
-    
+
 
     this.energy$ = this.energyService.energy$;
     this.remainingTime$ = this.energyService.remainingTime$;
@@ -125,15 +125,27 @@ export class RegisteredHome {
 
     this.progressService.getHistory(userId).subscribe(history => {
 
-      this.practice = history.map(item => ({
-        modulo: item.moduleName,
-        resultado: item.progress + "%",
-        fecha: new Date(item.updatedAt).toLocaleDateString()
-      }));
+      const moduleCount: { [key: string]: number } = {};
+
+      this.practice = history
+        .sort((a, b) => new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime())
+        .map(item => {
+
+          if (!moduleCount[item.moduleName]) {
+            moduleCount[item.moduleName] = 1;
+          } else {
+            moduleCount[item.moduleName]++;
+          }
+
+          return {
+            modulo: item.moduleName,
+            lessonName: 'Lección ' + moduleCount[item.moduleName],
+            resultado: item.progress + '%',
+            fecha: new Date(item.updatedAt).toLocaleDateString()
+          };
+        });
 
     });
-
-
   }
 
   onLessonCompleted(lessonId: string, xp: number) {
@@ -147,7 +159,7 @@ export class RegisteredHome {
 
   formatTime(ms: number | null): string {
 
-     if (!ms) return '0:00';
+    if (!ms) return '0:00';
 
     const totalSeconds = Math.floor(ms / 1000);
     const minutes = Math.floor(totalSeconds / 60);
