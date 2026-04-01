@@ -21,7 +21,7 @@
 .moduleRow.right {
   flex-direction: row-reverse;
   justify-content: center;
-  gap: 504px;
+  gap: 618px;
 }
 
 .moduleRow.right .path-horizontal {
@@ -226,7 +226,7 @@ button:hover {
   width: 25px;
   height: 18px;
   background-color: #ccc;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .line-step.h.completed {
@@ -276,10 +276,6 @@ button:hover {
 
 .last-module .path-vertical {
   display: none;
-}
-
-.first-module .path-horizontal .step:first-of-type {
-  color: #000;
 }
 
 .titleModule {

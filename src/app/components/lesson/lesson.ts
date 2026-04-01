@@ -31,6 +31,7 @@ export interface Exercise {
   options?: Option[];
   type: 'multiple' | 'order' | 'translate' | 'fill' | 'match'; // Lista de opciones disponibles
   pairs?: MatchPair[];
+  correctAnswer?: string;
 }
 
 export interface MatchPair {
@@ -68,6 +69,12 @@ export class Lesson {
   // Porcentaje de progreso de la lección
   progressPercent = 0;
 
+  isAnimating = false;
+
+  lastAnswer: string = '';
+
+  feedbackWords: { word: string, status: 'correct' | 'wrong' | 'missing' }[] = [];
+
   // Control reactivo del índice de ejercicio
   private exerciseIndex$ = new BehaviorSubject<number>(0);
 
@@ -78,6 +85,7 @@ export class Lesson {
     this.isAnswered = false;
     this.selectedOption = null;
     this.selectedWords = [];
+    this.wordStates = [];
     this.isProcessing = false;
   }
 
@@ -99,6 +107,8 @@ export class Lesson {
 
   progress: any;
 
+  wordStates: ('correct' | 'wrong' | 'normal')[] = [];
+
   private lessonIndex$ = new BehaviorSubject<number>(0);
   // luego lo sacas del auth
 
@@ -119,6 +129,7 @@ export class Lesson {
   /* PROGRESO DEL MÓDULO*/
   private moduleProgressSubject = new BehaviorSubject<number>(0);
   moduleProgress$ = this.moduleProgressSubject.asObservable();
+  lessonProgress$!: Observable<number>;
 
   /*ACTUALIZA EL PROGRESO DEL MÓDULO*/
   updateProgress(lesson: LessonC) {
@@ -144,6 +155,8 @@ export class Lesson {
   */
   ngOnInit() {
     this.resetLessonState();
+
+    // Cargar lecciones del módulo
     this.lesson$ = this.route.paramMap.pipe(
       map(params => params.get('moduleId')!),
       switchMap(moduleId =>
@@ -151,8 +164,64 @@ export class Lesson {
       )
     );
 
+    combineLatest([
+      this.lesson$,
+      this.route.queryParams
+    ]).subscribe(([lessons, params]) => {
+
+      const lessonId = params['lessonId'];
+
+      let index = 0;
+
+      if (lessonId) {
+        const foundIndex = lessons.findIndex(l => l.id === lessonId);
+        if (foundIndex !== -1) {
+          index = foundIndex;
+        }
+      } else {
+        index = this.progress?.completedLessons?.length || 0;
+      }
+
+      console.log("LECCIÓN SELECCIONADA:", index);
+
+      this.lessonIndex$.next(index);
+    });
+
+    const user = this.authService.getCurrentUser();
+
+    // Cargar progreso si hay usuario
+    if (user) {
+      this.progressService.getProgress(user.userId).subscribe();
+    }
+
     this.progressService.progress$.subscribe(p => {
       this.progress = p;
+    });
+
+    this.lesson$.pipe(take(1)).subscribe(lessons => {
+
+      const params = this.route.snapshot.queryParams;
+      const lessonId = params['lessonId'];
+
+      // SI YA VIENE UNA LECCIÓN → NO TOCAR
+      if (lessonId) return;
+
+      const user = this.authService.getCurrentUser();
+
+      // Invitado o sin progreso → empieza desde la primera
+      if (!user || !this.progress?.completedLessons) {
+        this.lessonIndex$.next(0);
+        return;
+      }
+
+      // Buscar siguiente lección no completada
+      const nextIndex = lessons.findIndex(lesson =>
+        !this.progress.completedLessons.includes(lesson.id)
+      );
+
+      // Si encontró → va a esa, si no → vuelve a la primera
+      this.lessonIndex$.next(nextIndex !== -1 ? nextIndex : 0);
+
     });
 
     /* Obtiene la lección actual combinando
@@ -162,6 +231,20 @@ export class Lesson {
       this.lessonIndex$
     ]).pipe(
       map(([lessons, index]) => lessons[index])
+    );
+
+    this.lessonProgress$ = combineLatest([
+      this.currentLesson$,
+      this.exerciseIndex$
+    ]).pipe(
+      map(([lesson, exerciseIndex]) => {
+
+        if (!lesson) return 0;
+
+        const total = lesson.exercises.length;
+
+        return (exerciseIndex / total) * 100;
+      })
     );
 
     /* Calcula el progreso total del módulo
@@ -263,7 +346,7 @@ export class Lesson {
       // Ejercicio de ordenar palabras
       // Une las palabras seleccionadas en un solo string separado por espacios
       case 'order':
-        return this.selectedWords.length
+        return this.selectedWords?.length
           ? this.selectedWords.join(' ')
           : null;
 
@@ -284,9 +367,19 @@ export class Lesson {
     this.isAnswered = true; // Marca que ya fue respondido
     this.isCorrectAnswer = res; // Guarda si fue correcta o no
 
+    if (exercise.type === 'order') {
+      this.evaluateOrder(exercise);
+    }
+
+    //  SOLO PARA TRANSLATE
+    if (exercise.type === 'translate') {
+      this.checkTranslationFromText(exercise);
+    }
+
     this.cdr.detectChanges(); // Fuerza actualización de la vista
 
     if (res) {
+
       // Si es correcta, avanza después de 800ms
       setTimeout(() => {
         this.nextExercise(lesson);
@@ -297,6 +390,76 @@ export class Lesson {
       // Si es incorrecta, reproduce sonido de error
       this.soundService.playError(); //  sonido centralizado
       this.isProcessing = false; // Permite volver a intentar
+    }
+
+  }
+
+  getFillParts(text: string): string[] {
+    return text.split('____');
+  }
+
+  onUserTyping() {
+
+    if (this.selectedOption === this.lastAnswer) return;
+
+    this.isAnswered = false;
+    this.feedbackWords = [];
+  }
+
+  evaluateOrder(exercise: Exercise) {
+
+    if (!exercise || exercise.type !== 'order') return;
+
+    const correct = (exercise as any).correctOrder;
+    // ⚠️ MEJOR: usa correctOrder si lo tienes separado
+
+    this.wordStates = (this.selectedWords ?? []).map((word, i) => {
+
+      if (!word) return 'normal';
+
+      return word.trim().toLowerCase() === correct[i].trim().toLowerCase()
+        ? 'correct'
+        : 'wrong';
+    });
+  }
+
+  checkTranslationFromText(exercise: any) {
+
+    const correctText = exercise.correctAnswer || '';
+
+    const userWords = (this.selectedOption || '')
+      .trim()
+      .split(/\s+/);
+
+    const correctWords = correctText
+      .trim()
+      .split(/\s+/);
+
+    this.feedbackWords = [];
+
+    const maxLength = Math.max(userWords.length, correctWords.length);
+
+    for (let i = 0; i < maxLength; i++) {
+
+      const user = userWords[i];
+      const correct = correctWords[i];
+
+      if (!user && correct) {
+        this.feedbackWords.push({
+          word: correct,
+          status: 'missing'
+        });
+      } else if (user && correct && user.toLowerCase() === correct.toLowerCase()) {
+        this.feedbackWords.push({
+          word: user,
+          status: 'correct'
+        });
+      } else if (user) {
+        this.feedbackWords.push({
+          word: user,
+          status: 'wrong'
+        });
+      }
     }
   }
 
@@ -399,32 +562,39 @@ export class Lesson {
 
   /*Controla los estados de los ejercicios*/
   nextExercise(lesson: LessonC) {
+    // 🔒 BLOQUEO DE ENERGÍA
+    if (!this.energyService.canPlay()) {
+      alert('Sin energía 😢');
+      return;
+    }
+
+    // CONSUMIR ENERGÍA
+    const used = this.energyService.useEnergy();
+    if (!used) return;
+
     const total = lesson.exercises.length;
 
-    // Reset general de flags de control
+    this.isAnswered = false;
+    this.isCorrectAnswer = false;
     this.isProcessing = false;
 
     if (this.currentExerciseIndex < total - 1) {
 
-      this.energyService.useEnergy();
       this.currentExerciseIndex++;
       this.exerciseIndex$.next(this.currentExerciseIndex);
       this.selectedOption = null;
       this.feedback = '';
 
-      // Inicializar shuffledRight si es match
       const currentExercise = this.getCurrentExercise(lesson);
       if (currentExercise?.type === 'match' && currentExercise.pairs) {
         this.shuffledRight = this.shuffleArray(
           currentExercise.pairs.map(p => p.right)
         );
-        this.matchedPairs = []; // resetear parejas
+        this.matchedPairs = [];
       }
 
     } else {
-
-      this.finishLesson(lesson); // 👈 limpio y claro
-
+      this.finishLesson(lesson);
     }
   }
 
@@ -443,12 +613,12 @@ export class Lesson {
         }
 
         console.log("progreso recibido", progress);
-      });
 
-    // SIEMPRE navegar (NO dentro del subscribe)
-    setTimeout(() => {
-      this.router.navigate(['/module-view']);
-    }, 800);
+        setTimeout(() => {
+          this.router.navigate(['/module-view']);
+        }, 800);
+
+      });
 
     this.moduleService.completeLesson();
   }
@@ -507,18 +677,28 @@ export class Lesson {
   }
 
   // Palabras seleccionadas en ejercicio tipo "order"
-  selectedWords: string[] = [];
+  selectedWords: (string | null)[] = [];
 
   // Agrega una palabra si aún no está seleccionada
   addWord(word: string) {
-    if (!this.selectedWords.includes(word)) {
+    if ((this.selectedWords ?? []).includes(word)) return;
+
+    const emptyIndex = (this.selectedWords ?? []).findIndex(w => w === null);
+
+    if (emptyIndex !== -1) {
+      this.selectedWords[emptyIndex] = word;
+    } else {
       this.selectedWords.push(word);
     }
   }
 
   // Elimina una palabra seleccionada
-  removeWord(word: string) {
-    this.selectedWords = this.selectedWords.filter(w => w !== word);
+  removeWord(index: number) {
+    // 🔒 SI ES CORRECTA → NO SE PUEDE QUITAR
+    if (this.wordStates[index] === 'correct') return;
+
+    this.selectedWords[index] = null;
+    this.wordStates[index] = 'normal';
   }
 
   /* Reinicia el estado del ejercicio */
@@ -553,17 +733,27 @@ export class Lesson {
     // Evita múltiples envíos simultáneos
     if (this.isProcessing) return;
 
+     (document.activeElement as HTMLElement)?.blur();
+
+    // bloqueo por energía
+    if (!this.energyService.canPlay()) {
+      this.feedback = "⚡ Te quedaste sin energía";
+      return;
+    }
+
     this.currentLesson$.pipe(take(1)).subscribe(lesson => {
 
       // Si ya respondió, avanza
       if (!lesson) return;
 
-      if (this.isAnswered) {
+      // SOLO AVANZA SI YA ES CORRECTA
+      if (this.isAnswered && this.isCorrectAnswer) {
         this.nextExercise(lesson);
-      } else {
-        // Si no ha respondido, envía la respuesta
-        this.submitAnswer(lesson);
+        return;
       }
+
+      // SI NO HA RESPONDIDO O FALLÓ → INTENTA
+      this.submitAnswer(lesson)
 
     });
   }

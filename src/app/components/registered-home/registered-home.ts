@@ -45,6 +45,8 @@ export class RegisteredHome {
 
   energy$!: Observable<number>;
 
+  remainingTime$!: Observable<number>;
+
   practice: PracticeHistory[] = [];
 
   constructor(private authService: AuthService, //Servicio de autenticación para obtener el usuario.
@@ -60,7 +62,7 @@ export class RegisteredHome {
       this.user = user; //Guardamos los datos del usuario en la variable 'user'
     });
   }
-  
+
   //DATOS DE PRÁCTICAS
   practicas: Practica[] = [
     {
@@ -112,7 +114,9 @@ export class RegisteredHome {
       return;
     }
 
-     this.energy$ = this.energyService.energy$;
+
+    this.energy$ = this.energyService.energy$;
+    this.remainingTime$ = this.energyService.remainingTime$;
 
     const userId = this.authService.getCurrentUser()?.userId;
     if (!userId) return;
@@ -121,15 +125,27 @@ export class RegisteredHome {
 
     this.progressService.getHistory(userId).subscribe(history => {
 
-  this.practice = history.map(item => ({
-      modulo: item.moduleName,
-      resultado: item.progress + "%",
-      fecha: new Date(item.updatedAt).toLocaleDateString()
-    }));
+      const moduleCount: { [key: string]: number } = {};
 
-});
-    
+      this.practice = history
+        .sort((a, b) => new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime())
+        .map(item => {
 
+          if (!moduleCount[item.moduleName]) {
+            moduleCount[item.moduleName] = 1;
+          } else {
+            moduleCount[item.moduleName]++;
+          }
+
+          return {
+            modulo: item.moduleName,
+            lessonName: 'Lección ' + moduleCount[item.moduleName],
+            resultado: item.progress + '%',
+            fecha: new Date(item.updatedAt).toLocaleDateString()
+          };
+        });
+
+    });
   }
 
   onLessonCompleted(lessonId: string, xp: number) {
@@ -138,7 +154,18 @@ export class RegisteredHome {
 
   getSafeProgress(progressPercent: number | undefined): number {
     if (!progressPercent) return 5;
-    return Math.min(progressPercent, 95); 
+    return Math.min(progressPercent, 95);
+  }
+
+  formatTime(ms: number | null): string {
+
+    if (!ms) return '0:00';
+
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   }
 
 }

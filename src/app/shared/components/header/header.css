@@ -1072,7 +1072,8 @@ h1 {
     }
 
     .field {
-        left: -5vw;
+        left: -4vw;
+        top: 25px;
     }
 
     .move-hex-home.hexagon7 {
@@ -1083,6 +1084,10 @@ h1 {
     #line {
         height: 7px;
         width: 110px;
+    }
+
+    .user-data {
+        width: 100%;
     }
 }
 
@@ -1107,8 +1112,8 @@ h1 {
 
     .field {
         justify-content: space-around;
-        left: 8vw;
-        top: -15px;
+        left: 10vw;
+        top: 8px;
     }
 
     #imgCirclee {
@@ -1159,7 +1164,8 @@ h1 {
     }
 
     .field {
-        left: 8vw;
+        left: 5vw;
+        top: 16px;
     }
 
     #line {
@@ -1316,6 +1322,7 @@ h1 {
 
     .field {
         flex-direction: column;
+        top: -6px;
         left: 9vw;
     }
 

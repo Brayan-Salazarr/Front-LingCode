@@ -19,7 +19,7 @@
     <div class="progress-container">
 
       <!-- Barra que aumenta según el progreso -->
-      <div class="progress" [style.width.%]="moduleProgress$ | async">
+      <div class="progress" [style.width.%]="lessonProgress$ | async">
       </div>
     </div>
 
@@ -31,6 +31,7 @@
     </div>
   </div>
 
+
   <!-- EJERCICIO ACTUAL -->
   <!-- Obtiene el ejercicio actual de la lección -->
   <ng-container *ngIf="getCurrentExercise(lesson) as currentExercise">
@@ -39,7 +40,34 @@
       {{ currentExercise.description }}
     </p>
     <h2 class="introduction">
-      {{ currentExercise.question }}
+      <ng-container *ngIf="currentExercise.type !== 'fill'">
+         {{ currentExercise.question }}
+      </ng-container>
+      <ng-container *ngIf="currentExercise.type === 'fill'">
+
+      <div class="fill-container">
+        <ng-container *ngFor="let part of getFillParts(currentExercise.question); let i = index">
+
+           {{ part }}
+
+          <input *ngIf="i < getFillParts(currentExercise.question).length - 1" type="text" class="fill-input"
+            [(ngModel)]="selectedOption" (ngModelChange)="onUserTyping()" [ngClass]="{
+           'correct': isAnswered && isCorrectAnswer,
+           'incorrect': isAnswered && !isCorrectAnswer,
+           'correct-animation': isAnswered && isCorrectAnswer,
+           'incorrect-animation': isAnswered && !isCorrectAnswer
+            }" />
+
+        </ng-container>
+
+      </div>
+
+      <!-- FEEDBACK -->
+      <div *ngIf="isAnswered && !isCorrectAnswer" class="feedback-text">
+        Correcto: {{ currentExercise.correctAnswer }}
+      </div>
+
+    </ng-container>
     </h2>
 
 
@@ -79,7 +107,12 @@
         }">
 
         <!-- Permite quitar palabras seleccionadas -->
-        <span *ngFor="let word of selectedWords" (click)="removeWord(word)" class="selected-word">
+        <span *ngFor="let word of selectedWords; let i = index" (click)="removeWord(i)" class="selected-word"
+          [class.locked]="wordStates[i] === 'correct'" [ngClass]="{
+    'correct-word': wordStates[i] === 'correct',
+    'wrong-word': wordStates[i] === 'wrong',
+      'empty-slot': !word
+  }">
 
           {{ word }}
 
@@ -109,12 +142,35 @@
 
       <div class="translate-container">
 
-        <input type="text" class="translate-input" [(ngModel)]="selectedOption" [ngClass]="{
+        <input type="text" class="translate-input" [(ngModel)]="selectedOption" (ngModelChange)="onUserTyping()"
+          [ngClass]="{
     'correct': isAnswered && isCorrectAnswer,
     'incorrect': isAnswered && !isCorrectAnswer,
     'correct-animation': isAnswered && isCorrectAnswer,
     'incorrect-animation': isAnswered && !isCorrectAnswer
   }" placeholder="Escribe la traducción..." />
+
+
+
+      </div>
+
+      <div class="feedback-container" *ngIf="isAnswered && currentExercise.type === 'translate'">
+
+        <span *ngFor="let f of feedbackWords" [ngClass]="{
+          'word-correct': f.status === 'correct',
+          'word-wrong': f.status === 'wrong',
+          'word-missing': f.status === 'missing'
+        }">
+
+          {{ f.word }}
+
+        </span>
+
+
+        <!-- 🔥 MENSAJE -->
+        <div class="hint" *ngIf="!isCorrectAnswer">
+          Revisa las palabras en rojo.
+        </div>
 
       </div>
 
@@ -122,20 +178,7 @@
 
     <!-- EJERCICIO TIPO FILL -->
     <!-- Completar palabra faltante -->
-    <ng-container *ngIf="currentExercise.type === 'fill'">
-
-      <div class="fill-container">
-
-        <input type="text" class="fill-input" [(ngModel)]="selectedOption" [ngClass]="{
-    'correct': isAnswered && isCorrectAnswer,
-    'incorrect': isAnswered && !isCorrectAnswer,
-    'correct-animation': isAnswered && isCorrectAnswer,
-    'incorrect-animation': isAnswered && !isCorrectAnswer
-  }" placeholder="Completa la palabra..." />
-
-      </div>
-
-    </ng-container>
+   
 
     <!-- EJERCICIO TIPO MATCH -->
     <!-- Relacionar pares correctos -->
@@ -177,11 +220,14 @@
 
       <!-- Solo se habilita cuando todos los pares están completados -->
       <button class="confirmation-button" [disabled]="matchedPairs.length !== (currentExercise.pairs?.length || 0)"
-        (click)="submitAnswer(lesson)">
+        (click)="submitAnswer(lesson)" [disabled]="!(energy$ | async)">
         Confirmar
       </button>
     </div>
 
+    <div *ngIf="(energy$ | async) === 0" class="no-energy">
+      ⚡ Sin energía. Espera para continuar.
+    </div>
   </ng-container>
 
 </div>

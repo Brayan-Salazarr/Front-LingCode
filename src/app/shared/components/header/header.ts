@@ -73,7 +73,7 @@ export class Header {
       return false;
     }
 
-    if (this.profileImageValue.startsWith('data:image')) {
+    if (this.profileImageValue?.startsWith('data:image') ?? false) {
       return true;
     }
     return false;
@@ -81,6 +81,7 @@ export class Header {
 
   //Indica si la imagen actual es una imagen personalizada (base64 o URL externa)
   get isCostumImage(): boolean {
-    return this.profileImageValue != null && this.profileImageValue.length > 0;
+    return this.showCircle;
   }
+  
 }

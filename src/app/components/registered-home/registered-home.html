@@ -94,6 +94,10 @@
                     alt="">
             </div>
 
+            <div class="energy-timer" *ngIf="(energy$ | async)! < 20" >
+                ⏳ Nueva energía en {{ formatTime(remainingTime$ | async) }}
+            </div>
+
         </div>
 
     </div>
@@ -112,6 +116,7 @@
 
                 <div class="content">
                     <p class="text-record">Módulo: <strong class="results">{{ item.modulo }}</strong></p>
+                    <p class="text-record">Lección: <strong class="results">{{ item.lessonName }}</strong></p>
                     <p class="text-record">Progreso: <strong class="results">{{ item.resultado }}</strong></p>
                     <p class="text-record">Fecha: <strong class="results">{{ item.fecha }}</strong></p>
                 </div>
