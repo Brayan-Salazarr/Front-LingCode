@@ -243,28 +243,41 @@ export class ModuleView {
     return Array.from({ length: totalLessons }, (_, i) => i + 1);
   }
 
-  downloadGuie(module: ModuleViewModel){
-    const user= this.authService.getCurrentUser();
-    let path = '';
+  downloadGuie(module: ModuleViewModel) {
 
-    if(!user){
-      //Documento para no registrados
-      if(module.id === 'git'){
-        path = 'git/git-guide-preview.pdf';
-      }
-    } else {
-      //Documento para registrados
-      if(module.id === 'git'){
-        path = 'git/git-guide-full-github.pdf';
-      } else if(module.id === 'mysql'){
-        path = 'git/git-guide-full-github.pdf';
-      }
-    }
+  console.log("MODULE RECIBIDO:", module);
 
-    this.material
-    .getDownloadLink(path)
-    .subscribe(res => {
-      window.open(res.downloadUrl,'_blank');
-    });
+  const user = this.authService.getCurrentUser();
+
+  let path = '';
+
+  // 🔎 SOLO PARA PROBAR
+  if (module.title?.toLowerCase().includes('git')) {
+    path = user
+      ? 'git/git-guide-full-github.pdf'
+      : 'git/git-guide-preview.pdf';
   }
+
+  if (module.title?.toLowerCase().includes('mysql')) {
+    path = 'mysql/git-guide-full-mysql.pdf';
+  }
+
+  console.log("PATH FINAL:", path);
+
+  if (!path) {
+    console.error("PATH VACÍO ❌");
+    return;
+  }
+
+  this.material
+    .getDownloadLink(path)
+    .subscribe({
+      next: (res) => {
+        window.open(res.downloadUrl, '_blank');
+      },
+      error: (err) => {
+        console.error("ERROR BACKEND:", err);
+      }
+    });
+}
 }
