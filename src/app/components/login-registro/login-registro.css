@@ -77,8 +77,8 @@
 /*Contenedor de icono de regreso a vista principal*/
 .spaceArrow {
     position: absolute;
-    top: 40px;
-    left: 45px;
+    top: 15px;
+    left: 20px;
 }
 
 /*Tamaño de icono (flecha)*/

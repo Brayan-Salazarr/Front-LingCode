@@ -11,6 +11,7 @@ import { forkJoin, Observable, of } from 'rxjs';
 import { ProgressService } from '../../service/progress-service';
 import { LessonService } from '../../service/lessonService';
 import { Lesson } from '../lesson/lesson';
+import { Material } from '../../service/material';
 
 /*
   Representa un paso visual en la UI
@@ -59,6 +60,7 @@ export class ModuleView {
   constructor(
     public authService: AuthService,
     private moduleService: ModuleService,
+    private material: Material,
     private progressService: ProgressService,
     private router: Router,
     private lessonService: LessonService
@@ -241,4 +243,28 @@ export class ModuleView {
     return Array.from({ length: totalLessons }, (_, i) => i + 1);
   }
 
+  downloadGuie(module: ModuleViewModel){
+    const user= this.authService.getCurrentUser();
+    let path = '';
+
+    if(!user){
+      //Documento para no registrados
+      if(module.id === 'git'){
+        path = 'git/git-guide-preview.pdf';
+      }
+    } else {
+      //Documento para registrados
+      if(module.id === 'git'){
+        path = 'git/git-guide-full-github.pdf';
+      } else if(module.id === 'mysql'){
+        path = 'git/git-guide-full-github.pdf';
+      }
+    }
+
+    this.material
+    .getDownloadLink(path)
+    .subscribe(res => {
+      window.open(res.downloadUrl,'_blank');
+    });
+  }
 }

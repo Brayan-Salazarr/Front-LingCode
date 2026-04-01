@@ -10,6 +10,7 @@ import { max, window } from 'rxjs';
 import { AuthService, User } from '../../auth/services/authService';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { SoundService } from '../../service/soundService';
 
 /*Interfaz que define la estructura de cada imagen*/
 interface ImagenItem {
@@ -34,8 +35,9 @@ export class EditProfile {
   password: string = ''; //Nueva contraseña del usuario
   confirmPass: string = ''; //Confirmación de la contraseña
   isConfirmDisabled: boolean = true; //Controla si el campo de confirmar contraseña esta deshabilitado.
-
+  soundEnabled = true;
   constructor(private cdr: ChangeDetectorRef, //Permite forzar la actualización de la vista cuando Angular no detecta cambios automáticamente.
+    private soundService: SoundService,
     private authService: AuthService,  //Servicio compartido para enviar la imagen seleccionada al componente Nav.
     private router: Router) { }; //Permite redirigir a otras rutas.
 
@@ -47,6 +49,9 @@ export class EditProfile {
   errorMessage: string = "";
 
   ngOnInit() {
+
+    this.soundEnabled = this.soundService.isEnabled();
+
     //Carga los datos del usuario
     const user = this.authService.getCurrentUser();
 
@@ -153,6 +158,11 @@ export class EditProfile {
   cambiarImagenAtras() {
     const prevIndex = (this.currentIndex() - 1 + this.items.length) % this.items.length;
     this.currentIndex.set(prevIndex);
+  }
+
+  onToggleSound(event: any){
+    const value = event.target.checked;
+    this.soundService.setEnabled(value);
   }
 
   /*Calcula la transformación de cada grupo de tarjetas.

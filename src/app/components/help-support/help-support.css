@@ -39,7 +39,7 @@
 /*Estilo del título dentro del bloque principal*/
 .mainTitle h2 {
     font-family: "Poppins", sans-serif;
-    font-size: 20px;
+    font-size: 33px;
     font-weight: normal;
     margin-bottom: 25px;
     color: #111;
@@ -64,7 +64,7 @@
 /*Texto de la pregunta*/
 .questionHeader p {
     font-family: "Poppins", sans-serif;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: 500;
     margin: 0;
     color: #222;
@@ -92,7 +92,7 @@
 /*Texto de la respuesta*/
 .answer p {
     font-family: "Poppins", sans-serif;
-    font-size: 16px;
+    font-size: 24px;
     white-space: pre-line;
 }
 
@@ -119,17 +119,89 @@
     .subtitle {
         font-size: 30px;
     }
+
+    .mainTitle h2 {
+        font-size: 24px;
+    }
+
+    .questionHeader p {
+        font-size: 18px;
+    }
+
+    .answer p {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .title {
+        font-size: 35px;
+    }
+
+    .subtitle {
+        font-size: 28px;
+    }
+
+    .mainTitle h2 {
+        font-size: 22px;
+    }
+
+    .questionHeader p {
+        font-size: 17px;
+    }
+
+    .answer p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 920px) {
+    .title {
+        font-size: 20px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    .mainTitle h2 {
+        font-size: 15px;
+    }
+
+    .questionHeader p {
+        font-size: 13px;
+    }
+
+    .answer p {
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 768px) {
     .groupBox {
         margin: 0 0 53px 6vw;
     }
+
+    .title {
+        font-size: 23px;
+    }
+
+    .subtitle {
+        font-size: 21px;
+    }
+
+    .mainTitle h2 {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 480px) {
     .groupBox {
         width: 74%;
+    }
+
+    .mainTitle h2 {
+        font-size: 18px;
     }
 }
 

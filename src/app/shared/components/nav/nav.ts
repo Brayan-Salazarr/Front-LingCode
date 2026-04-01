@@ -55,6 +55,11 @@ export class Nav {
     }
   }
 
+  /**/
+  isHomeActive(): boolean {
+    return this.router.url === '/' || this.router.url.startsWith('/registered-home');
+  }
+
   /*Controla si el menú tipo hamburguesa está abierto o cerrado*/
   menuOpen = false;
 

@@ -418,6 +418,7 @@
 
     .carousel-container {
         --tz: 100px;
+        height: 303px;
     }
 }
 
