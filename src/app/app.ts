@@ -1,14 +1,13 @@
 import { Component, signal } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';import { ChatBot } from './shared/components/chat-bot/chat-bot';
+import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { ChatBot } from './shared/components/chat-bot/chat-bot';
 import { filter } from 'rxjs';
 import { AuthService } from './auth/services/authService';
-;
-
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,ChatBot],
+  imports: [RouterOutlet, ChatBot],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

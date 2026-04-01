@@ -1,50 +1,66 @@
+/*Sección principal centrada horizontalmente*/
 section {
     display: flex;
     justify-content: center;
     height: 504px;
 }
 
+/*Estilos generales para los parráfos*/
 p {
     font-family: "Poppins", sans-serif;
-    font-size: 24px;
+    font-size: 33px;
     width: 80%;
 }
 
+/*Elimina márgenes del elemento*/
 #lineLocation {
     margin: 0 0 0 0;
 }
 
+#AboutInfo {
+    display: flex;
+    align-items: center;
+}
+
+/*Contenedor principal de la sección "about"*/
 .aboutContainer {
     position: relative;
     height: 776px;
 }
 
+/*Ajuste especifíco de tamaño de texto*/
 #fontSize {
-    font-size: 22px;
+    font-size: 25px;
     width: 90%;
 }
 
+/*Fondo negro*/
 .black {
     background: black;
 }
 
+/*Texto blanco con el fondo negro*/
 .black p {
     color: white;
 }
 
+/*Fondo blanco*/
 .white {
     background: white;
 }
 
+/*Texto negro con el fondo blanco*/
 .white p {
     color: black;
 }
 
+/*Contenedor tipo tarjeta con elementos distribuidos*/
 .card {
     display: flex;
     justify-content: space-evenly;
 }
 
+/*Diseño cuando la imagen va primero*/
 .card.imageFirst {
     flex-direction: row;
     justify-content: space-evenly;
@@ -52,6 +68,7 @@ p {
     width: 100%;
 }
 
+/*Diseño cuando la información va primero*/
 .card.infoFirst {
     flex-direction: row-reverse;
     justify-content: space-evenly;
@@ -59,6 +76,7 @@ p {
     width: 100%;
 }
 
+/*Contenedor de la información dentro de la tarjeta*/
 .locationInfo {
     display: flex;
     flex-direction: column;
@@ -68,21 +86,25 @@ p {
     width: 50%;
 }
 
+/*Estilos de los títulos*/
 h2 {
-    font-size: 33px;
+    font-size: 48px;
     font-family: "Anton SC", sans-serif;
     letter-spacing: 2px;
     color: #20BAE4;
 }
 
+/*Imagen de avatar adaptable al tamaño de la pantalla*/
 .avatar {
     width: 10vw;
 }
 
+/*Imagen superior con altura fija*/
 .imgTop {
     height: 500px;
 }
 
+/*Línea decorativa azul con degradado*/
 .blueLine {
     position: absolute;
     height: 6px;
@@ -93,6 +115,7 @@ h2 {
             rgba(0, 217, 255, 1));
 }
 
+/*Posiciones para las líneas decorativas*/
 .blueLine.top {
     top: -6px;
 }
@@ -109,28 +132,51 @@ h2 {
     right: 0;
 }
 
-@media (min-width: 1700px) {
-    #AboutInfo {
-        display: flex;
-        align-items: center;
-    }
-}
-
-@media (max-width: 1336px) {
-    p {
-        font-size: 33px;
+/*INICIO MEDIA QUERIES*/
+@media (max-width: 1537px) {
+    h2 {
+        font-size: 38px;
     }
 
-}
-
-@media (max-width: 920px) {
-
     p {
-        font-size: 27px;
+        font-size: 24px;
     }
 
     #fontSize {
+        font-size: 23px;
+    }
+}
+
+@media (max-width: 1366px) {
+    h2 {
+        font-size: 35px;
+    }
+
+    p {
+        font-size: 22px;
+    }
+
+    section {
+        height: 100%;
+        padding: 50px;
+    }
+
+    #fontSize {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 920px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
         font-size: 15px;
+    }
+
+    #fontSize {
+        font-size: 14px;
     }
 
     .imgTop {
@@ -143,10 +189,17 @@ h2 {
 }
 
 @media (max-width: 768px) {
-
     section {
         height: 100%;
         padding: 35px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    #fontSize {
+        font-size: 15px;
     }
 
     .aboutContainer {
@@ -167,21 +220,15 @@ h2 {
         flex-direction: column;
     }
 
-    #fontSize {
-        font-size: 18px;
+    h2 {
+        font-size: 23px;
     }
 }
 
 @media (max-width: 480px) {
-
     p {
         width: 100%;
-        font-size: 21px;
         margin: 0;
-    }
-
-    h2 {
-        font-size: 30px;
     }
 
     .locationInfo {
@@ -196,7 +243,6 @@ h2 {
         height: 293px;
     }
 
-
     .aboutContainer {
         height: 1251px;
     }
@@ -209,5 +255,15 @@ h2 {
 
     #fontSize {
         width: 100%;
+    }
+}
+
+@media (max-width: 430px) {
+    p {
+        font-size: 18px;
+    }
+
+    #fontSize {
+        font-size: 17px;
     }
 }

@@ -1,20 +1,33 @@
+<!-- BARRA DE NAVEGACIÓN -->
+ <!-- Recibe un input para definir el color de fondo -->
 <app-nav [colorBackground]="'backgroundNav1'" ></app-nav>
+
+<!-- SECCIÓN PRINCIPAL DEL PAGO -->
 <section>
+    <!-- Título principal de la sección -->
     <h1 id="title">Elige cómo pagar</h1>
 
+    <!-- Contenedor de métodos de pago recomendados -->
     <div class="payment-field">
         <h2 id="subTitle">Recomendados</h2>
 
+        <!-- Tarjeta de pago (Transferencia eléctronica) -->
+         <!-- Se aplica la clase 'selected' dinámicamente según isPseExpanded -->
         <div class="payment-card" [class.selected]="isPseExpanded">
 
+            <!-- Cabecera de la tarjeta: clic para expandir -->
             <div class="card-header" (click)="togglePse()">
                 <span>Transferencia con PSE</span>
+                <!-- Flecha que cambia de dirección según si la sección esta expandida -->
                 <i class="arrow" [class.up]="isPseExpanded"></i>
             </div>
 
+            <!-- Sección de selección de banco -->
+             <!-- Se muestra/oculta según el estado isPseExpanded -->
             <div class="bank-selection" [class.show]="isPseExpanded">
                 <p class="selection-title">Seleccione el banco</p>
 
+                <!-- Opciones de bancos como botones de radio -->
                 <label class="radio-option">
                     <input type="radio" name="bank" value="nequi">
                     <span class="radio-label">Nequi</span>
@@ -38,6 +51,7 @@
             </div>
         </div>
 
+        <!-- Tarjeta de pago alternativa: Efecty -->
         <div class="payment-card">
             <div class="card-header">
                 <span>Efecty</span>
@@ -46,6 +60,8 @@
 
     </div>
 
+    <!-- Botón para confirmar el pago seleccionado -->
     <button class="button-payment">Confirmar pago</button>
 </section>
+<!-- Footer general del sitio -->
 <app-footer></app-footer>

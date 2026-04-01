@@ -1,6 +1,7 @@
+/*Contenedor principal del carrusel*/
 .carousel-container {
-    width: 100%;
-    height: 400px;
+    width: 103%;
+    height: 450px;
     margin: 0 50px 0 0;
     perspective: 1000px;
     overflow: hidden;
@@ -8,12 +9,14 @@
     --tz: 250px
 }
 
+/*Área interna donde se posicionan las tarjetas*/
 .carousel {
     position: relative;
     width: 768px;
     height: 220px;
 }
 
+/*Estilo de cada tarjeta*/
 .card {
     position: absolute;
     top: 50%;
@@ -28,6 +31,7 @@
     opacity: 0.7;
 }
 
+/*Imagen dentro de la tarjeta*/
 .images {
     position: absolute;
     top: 207px;
@@ -38,6 +42,7 @@
     pointer-events: none;
 }
 
+/*Tarjeta activa o que esta alfrente*/
 .card.active {
     transform: translate(-50%, -50%) scale(1.2);
     filter: blur(0);
@@ -47,6 +52,7 @@
     z-index: 10;
 }
 
+/*Fondo negro detrás de la imagen*/
 .bg-black {
     position: absolute;
     top: 75px;
@@ -59,11 +65,13 @@
     z-index: 1;
 }
 
+/*Efecto aplicado a tarjetas que no estan activas*/
 .card:not(.active) .bg-black,
 .card:not(.active) .images {
     transform: scaleX(1.6);
 }
 
+/*Ajustes individuales cuando las tarjetas no estan activas*/
 .card:not(.active) .img1 {
     transform: translate(-60%, -60%) scaleX(-1.6);
 }
@@ -76,6 +84,7 @@
     transform: translate(-65%, -60%) scaleX(-1.6);
 }
 
+/*Tamaño y posiciones específicas para cada imagen*/
 .img1 {
     width: 20vw;
     top: 170px;
@@ -94,12 +103,12 @@
     left: 55%;
 }
 
+/*INICIO DE MEDIA QUERIES*/
 @media (min-width: 1538px) {
     .carousel {
         width: 843px;
+        top: 40px;
     }
-
-
 
     .card {
         left: 54%;
@@ -132,10 +141,9 @@
         left: 45%;
     }
 
-
-
     .carousel {
-        left: 63px;
+        left: 76px;
+        top: 25px;
     }
 }
 
@@ -410,6 +418,7 @@
 
     .carousel-container {
         --tz: 100px;
+        height: 303px;
     }
 }
 

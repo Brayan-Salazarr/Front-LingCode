@@ -1,26 +1,33 @@
+/*Fuente global para toda la página*/
 * {
     font-family: 'Poppins', sans-serif;
 }
 
+/*Contenedor principal de la sección de ayuda y soporte*/
 .supportContainer {
     display: flex;
     flex-direction: column;
 }
 
+/*Título principal centrado*/
 .title {
     display: flex;
     justify-content: center;
+    font-size: 48px;
     font-weight: normal;
     margin: 50px 0 0 0;
     width: 100%;
 }
 
+/*Subtítulo alineado con margen lateral*/
 .subtitle {
     font-weight: normal;
+    font-size: 40px;
     margin: 20px 0 30px 10vw;
 }
 
 /* ===== BLOQUE PRINCIPAL ===== */
+/*Caja contenedora de todo el grupo de preguntas*/
 .groupBox {
     border-radius: 14px;
     padding: 30px 30px 10px 30px;
@@ -29,22 +36,24 @@
     width: 80%;
 }
 
+/*Estilo del título dentro del bloque principal*/
 .mainTitle h2 {
     font-family: "Poppins", sans-serif;
-    font-size: 20px;
+    font-size: 33px;
     font-weight: normal;
     margin-bottom: 25px;
     color: #111;
 }
 
 /* ===== PREGUNTAS ===== */
+/*Contenedor individual de cada pregunta*/
 .questionBox {
     border-top: 1px solid #00000027;
     padding: 18px 0;
-    
 }
 
 /* ===== CABECERA DE PREGUNTA ===== */
+/*Parte visible de la pregunta (la que se puede hacer clic)*/
 .questionHeader {
     display: flex;
     justify-content: space-between;
@@ -52,37 +61,43 @@
     cursor: pointer;
 }
 
+/*Texto de la pregunta*/
 .questionHeader p {
     font-family: "Poppins", sans-serif;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: 500;
     margin: 0;
     color: #222;
 }
 
 /* ===== FLECHA ===== */
+/*Ícono que indica si está expandido o no*/
 .arrow {
     font-size: 18px;
     transition: transform 0.3s ease;
 }
 
+/*Rotación cuando la pregunta está abierta*/
 .arrow.rotate {
     transform: rotate(180deg);
 }
 
 /* ===== RESPUESTA ===== */
+/*Contenedor de la respuesta desplegable*/
 .answer {
     margin-top: 15px;
     animation: fadeIn 0.25s ease;
 }
 
+/*Texto de la respuesta*/
 .answer p {
     font-family: "Poppins", sans-serif;
-    font-size: 16px;
+    font-size: 24px;
     white-space: pre-line;
 }
 
 /* ===== ANIMACIÓN ===== */
+/*Animación para que la respuesta aparezca gradualmente*/
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -95,20 +110,103 @@
     }
 }
 
+/* ===== INICIO DE MEDIA QUERIES ===== */
+@media (max-width: 1537px) {
+    .title {
+        font-size: 38px;
+    }
+
+    .subtitle {
+        font-size: 30px;
+    }
+
+    .mainTitle h2 {
+        font-size: 24px;
+    }
+
+    .questionHeader p {
+        font-size: 18px;
+    }
+
+    .answer p {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .title {
+        font-size: 35px;
+    }
+
+    .subtitle {
+        font-size: 28px;
+    }
+
+    .mainTitle h2 {
+        font-size: 22px;
+    }
+
+    .questionHeader p {
+        font-size: 17px;
+    }
+
+    .answer p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 920px) {
+    .title {
+        font-size: 20px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    .mainTitle h2 {
+        font-size: 15px;
+    }
+
+    .questionHeader p {
+        font-size: 13px;
+    }
+
+    .answer p {
+        font-size: 12px;
+    }
+}
+
 @media (max-width: 768px) {
-    .groupBox{
+    .groupBox {
         margin: 0 0 53px 6vw;
+    }
+
+    .title {
+        font-size: 23px;
+    }
+
+    .subtitle {
+        font-size: 21px;
+    }
+
+    .mainTitle h2 {
+        font-size: 16px;
     }
 }
 
 @media (max-width: 480px) {
-    .groupBox{
+    .groupBox {
         width: 74%;
+    }
+
+    .mainTitle h2 {
+        font-size: 18px;
     }
 }
 
 @media (max-width: 380px) {
-    .groupBox{
+    .groupBox {
         width: 70%;
     }
 }

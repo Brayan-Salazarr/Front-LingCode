@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 60px;
   padding: 60px;
 }
 
@@ -19,7 +21,7 @@
 .moduleRow.right {
   flex-direction: row-reverse;
   justify-content: center;
-  gap: 504px;
+  gap: 618px;
 }
 
 .moduleRow.right .path-horizontal {
@@ -34,7 +36,6 @@
   font-size: 18px;
   gap: 20px;
   align-items: center;
-  margin: 50px 0 0 0;
   position: relative;
   margin-left: 20px;
 }
@@ -49,17 +50,33 @@
   justify-content: center;
   font-weight: bold;
   transition: 0.3s ease;
+  cursor: pointer;
   color: black;
 }
 
-/*.step.active {
+.step.active {
   background-color: #ccc;
   border: 4px solid #0066FF;
-}*/
+}
 
 .step.completed {
   background: #0066FF;
   color: white;
+  animation: stepComplete 0.4s ease;
+}
+
+@keyframes stepComplete {
+  0% {
+    transform: scale(0.8);
+  }
+
+  60% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .moduleCard {
@@ -85,7 +102,7 @@
   position: relative;
   justify-content: space-evenly;
   z-index: 1;
-  height: 85%;
+  height: 100%;
   padding: 10px 20px 10px 20px;
   display: flex;
   flex-direction: column;
@@ -111,11 +128,13 @@ h3 {
   font-family: 'Poppins', sans-serif;
   margin: 0 0 0 0;
   font-size: 15px;
+  color: white;
 }
 
 img {
-  width: 15vw;
+  width: 235px;
 }
+
 
 button {
   cursor: pointer;
@@ -138,6 +157,15 @@ button:hover {
   border: none;
 }
 
+#download{
+  background: none;
+  border: none;
+  color: white;
+  font-size: 11px;
+  white-space: nowrap;
+  width: 100%;
+}
+
 .size-img {
   width: 170px;
 }
@@ -152,16 +180,27 @@ button:hover {
 }
 
 .progressBar {
+  display: flex;
   width: 70%;
-  height: 15px;
-  background-color: #ccc;
+  height: 27px;
   border-radius: 8px;
+}
+
+.progress-container {
+  width: 100%;
+  height: 15px;
+  background-color: #d9d9d9;
+  /* gris fondo */
+  border-radius: 35px;
+  overflow: hidden;
 }
 
 .progress {
   height: 100%;
-  background-color: #04C9FF;
-  border-radius: 8px;
+  width: 0%;
+  background-color: #2196f3;
+  /* 🔵 azul progreso */
+  transition: width 0.4s ease;
 }
 
 .space-steps {
@@ -187,7 +226,7 @@ button:hover {
   width: 25px;
   height: 18px;
   background-color: #ccc;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .line-step.h.completed {
@@ -239,8 +278,120 @@ button:hover {
   display: none;
 }
 
-.first-module .path-horizontal .step:first-of-type {
-  color: #000;
+.titleModule {
+  font-family: "Anton SC", sans-serif;
+  font-size: 48px;
+}
+
+.module-skeleton {
+  width: 200px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #f3f3f3;
+  margin: 10px;
+}
+
+.containerSkeleton {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 1000px;
+}
+
+.skeleton-card {
+  background: #f3f3f3;
+}
+
+.skeleton-bg {
+  height: 120px;
+  background: #ddd;
+  border-radius: 10px;
+}
+
+.skeleton-img {
+  width: 100%;
+  height: 80px;
+  background: #ddd;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.skeleton-text {
+  width: 60%;
+  height: 15px;
+  background: #ddd;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.skeleton-bar {
+  width: 100%;
+  height: 10px;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+/* animación */
+.skeleton-bg,
+.skeleton-img,
+.skeleton-text,
+.skeleton-bar {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-bg::after,
+.skeleton-img::after,
+.skeleton-text::after,
+.skeleton-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px;
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: loading 1.2s infinite;
+}
+
+.emptyState {
+  min-height: 60vh; /* 🔥 ocupa pantalla */
+  display: flex;
+   font-family: 'Poppins', sans-serif;
+  flex-direction: column;
+  justify-content: center; /* vertical */
+  align-items: center; /* horizontal */
+  text-align: center;
+  gap: 10px;
+}
+
+@keyframes loading {
+  0% {
+    left: -150px;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@media (min-width: 1537px) {
+  .moduleCard {
+    width: 422px;
+  }
+
+  .textProgres {
+    margin: 0 193px 0 0;
+  }
+
+  img {
+    width: 268px;
+  }
+
+  .cardContent {
+    height: 95%;
+  }
 }
 
 @media (max-width: 1279px) {
@@ -279,6 +430,10 @@ button:hover {
   .moduleRow.right .path-horizontal {
     padding: 0 0 0 8px;
   }
+
+  .titleModule {
+    font-size: 42px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -288,19 +443,29 @@ button:hover {
   .steps.reverse .path-horizontal {
     flex-direction: column;
     margin: 0;
+    padding: 0;
+  }
+
+  .moduleRow.left {
+    gap: 20px;
   }
 
   .moduleRow.right {
     flex-direction: column;
-    gap: 0;
+    gap: 20px;
   }
 
   .moduleCard {
     position: relative;
-    width: 60vw;
+    height: 310px;
+    width: 284px;
   }
 
   img {
     width: 145px;
+  }
+
+  .steps {
+    margin: 0;
   }
 }

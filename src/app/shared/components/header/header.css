@@ -1,3 +1,4 @@
+/*Contenedor principal del header, permite posicionar todos los elementos decorativos*/
 .header-wrapper {
     position: relative;
     height: 1000px;
@@ -5,6 +6,7 @@
     overflow: hidden;
 }
 
+/*Forma principal del header con diseño curvo e inclinado*/
 header {
     display: flex;
     background: black;
@@ -16,9 +18,9 @@ header {
     top: -735px;
     transform: skewY(-15deg);
     z-index: 2;
-
 }
 
+/*Imagen decorativa circular ubicada en el lado derecho*/
 #imgCircle {
     position: absolute;
     left: 79%;
@@ -26,6 +28,7 @@ header {
     z-index: 3;
 }
 
+/*Fondo azul decorativo*/
 #background {
     width: 2363px;
     height: 1342px;
@@ -38,6 +41,7 @@ header {
     z-index: 1;
 }
 
+/*Contenedor de la información principal del header*/
 .information {
     display: flex;
     flex-direction: column;
@@ -51,6 +55,7 @@ header {
     height: 310px;
 }
 
+/*Título principal visible en el header*/
 h1 {
     width: 52vw;
     font-size: 57px;
@@ -59,19 +64,24 @@ h1 {
     margin: 0 0 0 50px;
 }
 
+/*Variante de layout que ajusta el espaciado interno*/
 .space .information {
     justify-content: space-evenly;
 }
 
+/*Línea decorativa debajo del título*/
 .line {
+    position: relative;
     background: linear-gradient(to right,
             #FF00FB,
             #FFA109);
     border-radius: 30px;
     width: 272px;
     height: 20px;
+    top: -25px;
 }
 
+/*HEXÁGONOS DECORATIVOS QUE APORTAN ESTILO VISUAL*/
 .hexagon1 {
     width: 46px;
     height: 54px;
@@ -210,10 +220,23 @@ h1 {
     transform: rotate(90deg);
 }
 
-.avatar {
-    width: 310px;
+/*Imagen personalizada del usuario*/
+.img-custom {
+    position: absolute;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 270px;
+    height: 270px;
+    top: 72px;
+    left: 30px;
 }
 
+.avatar-default {
+    width: 501px;
+    height: 501px;
+}
+
+/*Contenedor principal de la información del usuario*/
 .user-header {
     position: relative;
     display: flex;
@@ -223,39 +246,46 @@ h1 {
     left: -3vw;
 }
 
+/*Información general del usuario como nombre y datos*/
 .user-data {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     font-size: 25px;
+    width: 550px;
     font-family: "Poppins", sans-serif;
     color: white;
 }
 
+/*Nombre o nickname destacado del usuario*/
 .nickname {
     font-size: 55px;
     font-family: "Anton SC", sans-serif;
 }
 
+/*Línea decorativa personalizada dentro del header*/
 #line {
     height: 10px;
     margin: 0 0 0 150px;
 }
 
+/*Imagen circular de fondo decorativa*/
 #imgCirclee {
-    position: absolute;
-    width: 550px;
-    top: -122px;
-    left: -69px;
+    position: relative;
+    width: 501px;
+    top: -45px;
+    left: -102px;
     z-index: -1;
     opacity: 0.9;
 }
 
+/*Contenedor que organiza elementos horizontalmente*/
 .field {
     display: flex;
     justify-content: space-around;
 }
 
+/*Botón que permite editar información del usuario*/
 .button-edit {
     width: 150px;
     height: 40px;
@@ -268,16 +298,19 @@ h1 {
     border: none;
 }
 
+/*Contenedor que centra elementos verticalmente*/
 .space {
     display: flex;
     align-items: center;
 }
 
+/*Iconos pequeños usados junto a textos*/
 .img {
     width: 30px;
     margin: 0 30px 0 0;
 }
 
+/*Ajustes de posición específicos para hexágonos en la vista home*/
 .move-hex-home.hexagon2 {
     left: 89vw;
     top: 27vh;
@@ -291,26 +324,42 @@ h1 {
     left: 87vw;
 }
 
-@media (min-width: 1700px) {
-
+/*INICIO DE MEDIA QUERIES*/
+@media (min-width: 1538px) {
     header {
         width: 2630px;
-        height: 1446px;
+        height: 1352px;
+    }
+
+    .information {
+        top: 790px;
+    }
+
+    .user-data {
+        position: relative;
+        top: 25px;
+        height: 340px;
     }
 
     h1 {
         font-size: 68px;
     }
 
+    .field {
+        position: relative;
+        top: 15px;
+        left: 5px;
+    }
+
     #background {
-        width: 2636px;
-        height: 1479px;
+        width: 2701px;
+        height: 1369px;
     }
 
     #imgCircle {
         top: 0%;
-        left: 76%;
-        width: 454px;
+        left: 81%;
+        width: 365px;
     }
 
     .information {
@@ -322,29 +371,29 @@ h1 {
     }
 
     .hexagon3 {
-        top: 733px;
+        top: 650px;
     }
 
     .hexagon4 {
-        top: 751px;
+        top: 695px;
         left: 184px;
     }
 
     .hexagon5 {
-        top: 671px;
+        top: 620px;
     }
 
     .hexagon6 {
-        left: 1193px;
+        left: 74vw;
     }
 
     .hexagon7 {
-        top: 534px;
+        top: 495px;
         left: 1304px;
     }
 
     .hexagon8 {
-        top: 634px;
+        top: 555px;
         left: 1016px;
     }
 
@@ -353,7 +402,7 @@ h1 {
     }
 
     .move-hex-home.hexagon7 {
-        top: 50vh;
+        top: 44vh;
     }
 
     #imgCirclee {
@@ -362,6 +411,10 @@ h1 {
 
     .button-edit {
         margin: 161px 0 0 189px;
+    }
+
+    .img-custom {
+        left: 226px;
     }
 }
 
@@ -379,19 +432,22 @@ h1 {
         left: 78%;
     }
 
-}
-
-
-@media (max-width: 1366px) {
-
-
-    #background {
-        height: 1331px;
+    .field {
+        position: relative;
+        top: -61px;
+        left: -14px;
     }
 
-    #imgCircle {
-        left: 75%;
-        top: 8%;
+    .user-data {
+        position: relative;
+        top: 25px;
+        height: 340px;
+    }
+}
+
+@media (max-width: 1366px) {
+    #background {
+        height: 1331px;
     }
 
     .hexagon7 {
@@ -416,17 +472,22 @@ h1 {
         width: 230px;
     }
 
-    .avatar {
-        position: relative;
-        width: 255px;
-        left: -27px;
+    .img-custom {
+        width: 250px;
+        height: 250px;
+        left: 24px;
+        top: 107px;
+    }
+
+    .avatar-default {
+        width: 462px;
+        height: 462px;
     }
 
     #imgCirclee {
         width: 462px;
-        top: -104px;
-        left: -54px;
-
+        top: 0px;
+        left: -97px;
     }
 
     .user-header {
@@ -440,10 +501,17 @@ h1 {
     .button-edit {
         margin: 110px 0 0 108px;
     }
+
+    .move-hex-home.hexagon6 {
+        left: 1120px;
+    }
+
+    .move-hex-home.hexagon2 {
+        left: 90vw;
+    }
 }
 
 @media (max-width: 1279px) {
-
     header {
         height: 1226px;
     }
@@ -525,10 +593,16 @@ h1 {
         width: 415px;
     }
 
-    .avatar {
-        width: 227px;
-        left: -20px;
-        top: -9px;
+    .img-custom {
+        width: 220px;
+        height: 220px;
+        top: 100px;
+        left: 69px;
+    }
+
+    .avatar-default {
+        width: 415px;
+        height: 415px;
     }
 
     .button-edit {
@@ -538,11 +612,12 @@ h1 {
     .move-hex-home.hexagon7 {
         left: 91vw;
         top: 47vh;
-
     }
 
+    .name {
+        width: 100%;
+    }
 }
-
 
 @media (max-width: 1180px) {
     #imgCircle {
@@ -556,6 +631,55 @@ h1 {
     .hexagon8 {
         top: 493px;
         left: 734px;
+    }
+
+    .img-custom {
+        width: 350px;
+        left: -125px;
+        height: 350px;
+        top: 35px;
+    }
+
+    .avatar-default {
+        width: 360px;
+        height: 360px;
+    }
+
+    .user-data {
+        left: -105px;
+    }
+
+    .move-hex-home.hexagon6 {
+        left: 720px;
+    }
+
+    .move-hex-home.hexagon2 {
+        left: 835px;
+        top: 188px;
+    }
+
+    .move-hex-home.hexagon7 {
+        display: none;
+    }
+
+    #imgCirclee {
+        left: -2px;
+        width: 360px;
+    }
+
+    .img-custom {
+        width: 190px;
+        left: 95px;
+        height: 190px;
+        top: 86px;
+    }
+
+    .user-data {
+        left: 11px;
+    }
+
+    .field {
+        left: -125px;
     }
 }
 
@@ -582,6 +706,7 @@ h1 {
 
     .line {
         height: 12px;
+        top: -10px;
     }
 
     #imgCircle {
@@ -611,7 +736,6 @@ h1 {
         width: 33px;
         top: 398px;
         left: 71px;
-        ;
     }
 
     .hexagon4 {
@@ -628,7 +752,7 @@ h1 {
     }
 
     .hexagon6 {
-        top: 150px;
+        top: 117px;
         width: 35px;
         left: 626px;
         height: 40px;
@@ -653,26 +777,34 @@ h1 {
     }
 
     #line {
-        margin: 0 0 0 80px;
+        margin: 0 0 0 140px;
         width: 180px;
     }
 
     .name {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .email {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .date {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     #imgCirclee {
-        width: 296px;
-        top: 6px;
-        left: -33px;
+        width: 290px;
+        top: 60px;
+        left: -70px;
+    }
+
+    .avatar-default {
+        position: relative;
+        width: 290px;
+        height: 290px;
+        left: -89px;
+        top: 61px
     }
 
     .user-header {
@@ -683,6 +815,7 @@ h1 {
 
     .field {
         justify-content: center;
+        left: 45px;
     }
 
     .button-edit {
@@ -692,17 +825,17 @@ h1 {
         height: 34px;
     }
 
-    .avatar {
-        position: relative;
-        top: 72px;
-        width: 165px;
-        height: 165px;
-        left: -102px;
+    .img-custom {
+        top: 130px;
+        width: 150px;
+        height: 150px;
+        left: 10px;
     }
 
     .user-data {
-        margin-top: 24px;
-        height: 193px;
+        top: 80px;
+        left: -45px;
+        height: 190px;
     }
 
     .move-hex-home.hexagon2 {
@@ -712,13 +845,13 @@ h1 {
     }
 
     .move-hex-home.hexagon6 {
-        left: 93vw;
+        left: 736px;
         width: 24px;
         height: 30px;
     }
 
     .move-hex-home.hexagon7 {
-        top: 30vh;
+        top: 220px;
         width: 26px;
         height: 32px;
     }
@@ -745,10 +878,19 @@ h1 {
     .hexagon6 {
         display: none
     }
+
+    .move-hex-home.hexagon2 {
+        top: 130px;
+        left: 675px;
+    }
+
+    .move-hex-home.hexagon7 {
+        top: 280px;
+        left: 722px;
+    }
 }
 
 @media (max-width: 768px) {
-
     .header-wrapper {
         height: 545px;
     }
@@ -788,36 +930,45 @@ h1 {
 
     .nickname {
         text-align: center;
-        font-size: 25px;
-    }
-
-    .name,
-    .email,
-    .date {
-        font-size: 13px;
+        font-size: 35px;
+        width: 273px;
     }
 
     .img {
         width: 24px;
     }
 
-    .avatar {
-        width: 131px;
-        height: 131px;
-        left: 0;
-        top: 0;
+    .img-custom {
+        width: 122px;
+        height: 122px;
+        left: 92px;
+        top: 37px;
     }
 
     #imgCirclee {
+        position: absolute;
         width: 240px;
         top: -23px;
-        left: -37px;
+        left: 25px;
+    }
+
+    .avatar-default {
+        position: absolute;
+        width: 240px;
+        height: 240px;
+        left: 45px;
+        top: -15px;
+    }
+
+    .space2 {
+        width: 120px;
     }
 
     .user-data {
         margin: 0;
         position: relative;
-        left: 4px;
+        left: 180px;
+        top: -20px;
     }
 
     .button-edit {
@@ -830,21 +981,24 @@ h1 {
     }
 
     .move-hex-home.hexagon7 {
-        top: 35vh;
+        top: 295px;
+        left: 650px;
     }
 
     .field {
         justify-content: space-around;
         position: relative;
         align-items: center;
-        top: -1vh;
-        left: 12vw;
+        top: 5vh;
+        left: 1vw;
     }
 
+    .move-hex-home.hexagon2 {
+        left: 586px;
+    }
 }
 
 @media (max-width: 723px) {
-
     h1 {
         width: 464px;
     }
@@ -853,14 +1007,57 @@ h1 {
         display: none;
     }
 
+    .img-custom {
+        width: 115px;
+        height: 115px;
+        left: 75px;
+        top: 17px;
+
+    }
+
+    .user-data {
+        left: 170px;
+        top: -40px;
+    }
+
+    .nickname {
+        text-align: start;
+    }
+
+    .name,
+    .date,
+    .email {
+        font-size: 15px;
+    }
+
     .field {
-        justify-content: space-evenly;
-        top: 2vh;
-        left: 2vw;
+        top: 8vh;
+    }
+
+    .move-hex-home.hexagon7 {
+        top: 330px;
+        left: 545px;
+    }
+
+    .move-hex-home.hexagon2 {
+        left: 445px;
     }
 
     #imgCirclee {
-        left: -6px;
+        width: 220px;
+        top: -36px;
+        left: 15px;
+    }
+
+    .avatar-default {
+        left: 15px;
+        top: -47px;
+        width: 220px;
+        height: 220px;
+    }
+
+    .space2 {
+        width: 105px;
     }
 }
 
@@ -872,6 +1069,25 @@ h1 {
     .hexagon8 {
         left: 444px;
         top: 315px;
+    }
+
+    .field {
+        left: -4vw;
+        top: 25px;
+    }
+
+    .move-hex-home.hexagon7 {
+        top: 350px;
+        left: 495px;
+    }
+
+    #line {
+        height: 7px;
+        width: 110px;
+    }
+
+    .user-data {
+        width: 100%;
     }
 }
 
@@ -896,16 +1112,45 @@ h1 {
 
     .field {
         justify-content: space-around;
-        top: -1vh;
-        left: 13vw;
+        left: 10vw;
+        top: 8px;
     }
 
     #imgCirclee {
-        left: -37px;
+        width: 190px;
+        left: 4px;
     }
 
     .img {
         margin: 0 16px 0 0;
+    }
+
+    .img-custom {
+        width: 100px;
+        height: 100px;
+        left: 55px;
+        top: 9px;
+    }
+
+    .move-hex-home.hexagon7 {
+        top: 363px;
+        left: 425px;
+    }
+
+    .user-data {
+        left: 120px;
+        top: -35px;
+    }
+
+    .avatar-default {
+        left: 12px;
+        top: -30px;
+        width: 190px;
+        height: 190px;
+    }
+
+    .space2 {
+        width: 105px;
     }
 }
 
@@ -914,6 +1159,18 @@ h1 {
         display: none;
     }
 
+    .move-hex-home.hexagon2 {
+        display: none;
+    }
+
+    .field {
+        left: 5vw;
+        top: 16px;
+    }
+
+    #line {
+        margin: 0 0 0 100px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -934,6 +1191,7 @@ h1 {
     .line {
         height: 8px;
         width: 144px;
+        top: -5px;
     }
 
     #imgCircle {
@@ -955,7 +1213,7 @@ h1 {
 
     .hexagon1 {
         width: 23px;
-        height: 26px
+        height: 26px;
     }
 
     .hexagon2 {
@@ -985,13 +1243,6 @@ h1 {
         left: 93px;
     }
 
-    .hexagon7 {
-        height: 27px;
-        width: 24px;
-        top: 286px;
-        left: 408px;
-    }
-
     .hexagon8 {
         height: 25px;
         width: 23px;
@@ -1000,16 +1251,16 @@ h1 {
     }
 
     #imgCirclee {
-        width: 168px;
-        left: 64px;
-        top: -1px;
+        width: 130px;
+        left: 170px;
+        top: -35px;
     }
 
-    .avatar {
-        width: 92px;
-        height: 92px;
-        left: 76px;
-        top: 23px;
+    .img-custom {
+        width: 68px;
+        height: 68px;
+        left: 205px;
+        top: -4px;
     }
 
     .user-header {
@@ -1017,7 +1268,7 @@ h1 {
     }
 
     .nickname {
-        text-align: center;
+        text-align: start;
         font-size: 25px;
     }
 
@@ -1029,14 +1280,16 @@ h1 {
 
     #line {
         width: 102px;
-        margin: 0px 0 0 44px;
+        height: 5px;
+        margin: 0 0 0 75px
     }
 
     .user-data {
         position: relative;
         height: 121px;
-        top: 20px;
-        left: 68px;
+        top: 18px;
+        left: 55px;
+        width: 210px;
     }
 
     .img {
@@ -1068,23 +1321,35 @@ h1 {
     }
 
     .field {
-        left: 2vw;
+        flex-direction: column;
+        top: -6px;
+        left: 9vw;
+    }
+
+    .avatar-default {
+        left: 158px;
+        width: 130px;
+        height: 130px;
+    }
+
+    .space2 {
+        height: 75px;
+        width: 105px;
     }
 }
 
 @media (max-width: 410px) {
-
-    .avatar {
-        width: 84px;
-        height: 84px;
-        left: -7px;
-        top: -12px;
+    .img-custom {
+        width: 80px;
+        height: 80px;
+        left: 122px;
+        top: -3px;
     }
 
     #imgCirclee {
-        width: 156px;
-        left: 111px;
-        top: -48px;
+        width: 145px;
+        left: 85px;
+        top: -35px;
     }
 
     .user-header {
@@ -1101,8 +1366,8 @@ h1 {
     }
 
     .nickname {
-        text-align: center;
-        font-size: 25px;
+        text-align: start;
+        font-size: 22px;
     }
 
     .name,
@@ -1118,18 +1383,28 @@ h1 {
 
     .user-data {
         height: 121px;
-        top: 22px;
-        left: -7px;
+        top: 8px;
+        left: -8px;
     }
 
     .hexagon8 {
         top: 328px;
         left: 348px;
     }
+
+    .avatar-default {
+        left: 95px;
+        width: 145px;
+        height: 145px;
+    }
+
+    .space2 {
+        height: 100px;
+        width: 105px;
+    }
 }
 
 @media (max-width: 400px) {
-
     h1 {
         width: 316px;
         font-size: 22px;
@@ -1149,17 +1424,33 @@ h1 {
 
     .user-data {
         height: 121px;
-        top: 22px;
-        left: 40px;
+        top: 20px;
+        left: 15px;
     }
 
-    .avatar {
-        left: 41px;
+    .img-custom {
+        width: 60px;
+        height: 60px;
+        left: 119px;
+        top: 5px;
+    }
+
+    #imgCirclee {
+        width: 120px;
+        top: -25px;
+    }
+
+    .avatar-default {
+        width: 120px;
+        height: 120px;
+    }
+
+    .space2 {
+        height: 80px;
     }
 }
 
 @media (max-width: 350px) {
-
     h1 {
         width: 100%;
         font-size: 17px;
@@ -1180,9 +1471,8 @@ h1 {
         width: 97px;
     }
 
-
     #imgCirclee {
-        left: 86px;
+        left: 59px;
     }
 
     .user-header {
@@ -1194,7 +1484,7 @@ h1 {
     }
 
     .nickname {
-        text-align: center;
+        text-align: start;
         font-size: 19px;
     }
 
@@ -1212,5 +1502,23 @@ h1 {
     .hexagon8 {
         left: 266px;
         top: 289px;
+    }
+
+    .img-custom {
+        width: 60px;
+        height: 60px;
+        top: 5px;
+        left: 93px;
+    }
+
+    .user-data {
+        height: 121px;
+        top: 20px;
+        left: 10vw;
+        width: 202px;
+    }
+
+    .avatar-default {
+        left: 60px;
     }
 }

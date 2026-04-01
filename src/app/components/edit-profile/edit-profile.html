@@ -1,23 +1,51 @@
 <!-- Barra de navegación con fondo personalizado -->
+<!-- Se reutiliza componente de navegación y se envía un color como input-->
 <app-nav [colorBackground]="'backgroundNav1'"></app-nav>
 
 <!-- SECCIÓN SUPERIOR: AVATAR -->
+<!-- Contenedor principal con fondo decorativo -->
 <div id="Back">
     <div id="location">
-        <img src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png" alt="">
+
+        <div class="container-img">
+            <!-- Imagen decorativa lateral -->
+            <img class="img-shared" *ngIf="isCostumImage"
+                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png" alt="">
+            <!-- Contenedor que muestra la imagen seleccionada -->
+            <!-- Muestra:        
+            La imagen subida desde el dispositivo (previewUrl)-->
+            <div class="preview-container">
+                <img *ngIf="previewUrl" [src]="previewUrl" class="preview-img">
+            </div>
+
+            <!-- Muestra el avatar seleccionado por el usuario -->
+            <img *ngIf="!previewUrl"
+                [src]="previewUrl || selectedAvatarUrl || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'"
+                class="avatar-img">
+        </div>
+
+        <!-- Input oculto para subir imagen desde el dispositivo -->
+        <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" hidden />
+        <!-- Bloque de información y selección -->
         <div id="info">
             <h2 class="colorTittle">Elige un avatar</h2>
             <div class="line"></div>
 
-            <app-carousel-avatar carouselWidth="45vw" carouselHeight="35vh" imageSize="14vw"></app-carousel-avatar>
+            <!-- Componente reutilizable de carrusel para seleccionar avatar -->
+            <app-carousel-avatar (avatarSelected)="selectAvatar($event)" carouselWidth="45vw"
+                carouselHeight="35vh"></app-carousel-avatar>
 
             <h2 class="colorTittle">O elige tu propia foto</h2>
             <div class="line" id="lineId"></div>
-            <button id="UpdatePhoto">Subir imagen</button>
+            <!-- Botón para subir imagen personalizada -->
+            <button id="UpdatePhoto" (click)="fileInput.click()">Subir imagen</button>
+            <!-- Mensaje de error en caso de que supere el peso máximo y que no sea una foto -->
+            <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
             <p id="textSize">Tamaño máximo= 1MB</p>
         </div>
     </div>
 </div>
+<!-- Línea decorativa que separa secciones -->
 <div id="line"></div>
 
 <!-- SECCIÓN: EDICIÓN DE PERFIL -->
@@ -26,16 +54,22 @@
 
     <!-- Dropdown de configuraciones -->
     <div class="dropdownContainer">
-        <button id="gear" (click)="toggleDropdown()"><img id="styleGear"
-                src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765828524/image-removebg-preview_pacdbd.png"
-                alt=""></button>
+        <!-- Botón que abre/cierra el menú de configuraciones -->
+        <div class="gearWrapper">
+            <button id="gear" (click)="toggleDropdown()"><img id="styleGear"
+                    src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765828524/image-removebg-preview_pacdbd.png"
+                    alt=""></button>
+        </div>
 
         <!-- Menú desplegable -->
+        <!-- Se muestra solo si isDropdownOpen es true -->
         <div class="dropdownM" *ngIf="isDropdownOpen">
+
+            <!-- Configuración de sonido -->
             <div class="setting-row" id="settingSound">
                 <label class="switch">
-                    <input type="checkbox" id="email-alerts">
-                    <span class="slider round"></span>
+                    <input type="checkbox" checked id="email-alerts" [checked]="soundEnabled" (change)="onToggleSound($event)">
+                    <span class=" slider round"></span>
                 </label>
                 <label for="sound">Sonido</label>
             </div>
@@ -43,7 +77,7 @@
             <!-- Configuración notificaciones -->
             <div class="setting-row">
                 <label class="switch">
-                    <input type="checkbox" id="notification-alerts">
+                    <input type="checkbox" checked id="notification-alerts">
                     <span class="slider round"></span>
                 </label>
                 <label for="email-alerts">Notificaciones</label>
@@ -52,32 +86,53 @@
     </div>
 
     <!-- Información editable -->
+    <!-- Sección dividida en etiquetas (izquierda) y campos (derecha) -->
     <div class="infoBox">
+        <!-- Textos descriptivos y campos de entrada -->
         <div class="regisInfo">
             <p class="textEdit">Nombre completo</p>
-            <p class="textEdit">Apodo</p>
-            <p class="textEdit">Correo eléctronico</p>
-            <p class="textEdit">Contraseña</p>
-            <p class="textEdit">Confirmar contraseña</p>
+            <input class="field" id="name" [(ngModel)]="fullName">
         </div>
 
-        <div class="recordFields">
-            <input class="field" id="name">
-            <input class="field" id="nickname">
-            <input class="field" id="email" type="email">
-            <input class="field" id="password" type="password">
-            <input class="field" id="confirmPass" type="password">
+        <div class="regisInfo">
+            <p class="textEdit">Nueva contraseña</p>
+            <input class="field" id="password" type="password" [(ngModel)]="password"
+                (ngModelChange)="onPasswordChange($event)" placeholder="Opcional">
+        </div>
+
+        <!-- El disabled bloquea el campo de confirmar contraseña hasta que se escriba en el input de contraseña -->
+        <div class="regisInfo">
+            <p class="textEdit">Confirmar contraseña</p>
+            <input class="field" id="confirmPass" type="password" [(ngModel)]="confirmPass"
+                (ngModelChange)="passwordValidation(password, confirmPass)" [disabled]="isConfirmDisabled">
         </div>
     </div>
 
+    <!-- MENSAJES DE ERROR DINÁMICOS -->
+    <p class="textTerms" id="textPass" *ngIf="errorPassw">
+        Las contraseñas ingresadas no coinciden.
+    </p>
+
+    <p class="textTerms" id="requieFields" *ngIf="caractPassw">
+        La contraseña debe contener al menos 8 caracteres, incluyendo una letra mayúscula y un número.
+    </p>
+
+    <!-- Botones principales de acción -->
     <div class="buttons">
-        <button id="Save">Guardar cambios</button>
+        <!-- Botón que guarda la información actualizada por el usuario -->
+        <button id="Save" (click)="saveChanges()">Guardar cambios</button>
+        <!-- Botón que abre el modal de confirmación -->
         <button id="Cancel" (click)="openModal()">Eliminar mi cuenta</button>
 
         <!-- MODAL DE ELIMINACIÓN -->
+        <!-- Se muestra solo sí isModalOpen es true -->
         <div *ngIf="isModalOpen" class="modal" (click)="onBackdropClick($event)">
+
+            <!-- Contenido interno del modal -->
+            <!-- stopPropagation evita que se cierre al hacer click dentro -->
             <div class="modalContent" (click)="$event.stopPropagation()">
 
+                <!-- Vista de configuración -->
                 <div *ngIf="!isAccountDeleted">
                     <h3 id="question">¿Estas seguro de eliminar tu cuenta?</h3>
                     <div class="modalExit">
@@ -87,9 +142,11 @@
                 </div>
 
                 <!-- Mensaje de éxito -->
+                <!-- se muestra después de eliminar la cuenta -->
                 <div *ngIf="isAccountDeleted" class="succes-message">
                     <h3>Cuenta eliminada exitosamente</h3>
-                    <p id="textMod">Lamentamos verte ir. Estaremos aquí si decides volver.</p>
+                    <p id="textMod">Lamentamos verte ir. Estaremos aquí si decides volver.
+                    </p>
                 </div>
             </div>
         </div>

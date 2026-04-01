@@ -1,54 +1,65 @@
+/*Contenedor principal con imagen decorativa*/
 #Back {
     background-color: black;
     background-image: url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765758301/Group_62_1_hlbzur.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center bottom;
-    height: 90vh;
+    height: 791px;
 }
 
+/*Contenedor principal alineado horizontalmente*/
 #location {
     display: flex;
-    justify-content: space-around;
+    position: relative;
     align-items: center;
     height: 100%;
 }
 
+/*Imagen principal adaptable al ancho de la pantalla*/
 img {
-    width: 35vw;
+    width: 478px;
 }
 
+/*Información organizada en columna*/
 #info {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     height: 100%;
+    width: 850px;
 }
 
+/*TÍTULOS Y LÍNEAS DECORATIVAS*/
 h2 {
     font-size: 33px;
     font-family: "Anton SC", sans-serif;
 }
 
+/*Texto con efecto degradado*/
 .colorTittle {
     background: linear-gradient(90deg, white 0%, #AFA9A9 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+/*Línea decorativa debajo del título*/
 .line {
     background: linear-gradient(90deg, #006FFF 0%, #B0ACCD 100%);
     border-radius: 5px;
-    margin-top: -25px;
+    margin-top: -60px;
     height: 1vh;
     width: 15vw;
 }
 
+/*Variante de línea mas ancha*/
 #lineId {
     width: 21vw;
 }
 
+/*CARRUSEL*/
+/*Contenedor del carrusel*/
 .carousel-wrapper {
     display: flex;
     align-items: center;
@@ -60,6 +71,7 @@ h2 {
     height: 40vh;
 }
 
+/*Tarjetas del carrusel*/
 .card {
     display: flex;
     flex-direction: column;
@@ -71,11 +83,13 @@ h2 {
     z-index: 1;
 }
 
+/*Imagen cickleable*/
 .img {
     width: 15vw;
     cursor: pointer;
 }
 
+/*Botones de navegación (flechas)*/
 .nav {
     background: #1e90ff;
     color: white;
@@ -101,120 +115,187 @@ h2 {
     margin-left: 20px;
 }
 
+/*BOTONES Y FORMULARIO*/
+/*Botón para actualizar foto*/
 #UpdatePhoto {
     cursor: pointer;
     font-weight: bold;
-    height: 5vh;
-    width: 10vw;
+    height: 28px;
+    width: 133px;
     font-family: "Poppins", sans-serif;
-    font-size: clamp(16px, 1vw, 30px);
+    font-size: 16px;
     border-radius: 8px;
     background-color: #04C9FF;
     border: #04C9FF 1px solid;
 }
 
+/*Características del mensaje de error*/
+.error {
+    position: relative;
+    color: #fa7171;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 11.5px;
+    top: -50px;
+}
+
+/*Características del contenedor de la imagen*/
+.preview-container {
+    position: absolute;
+    left: 126px;
+    top: 272px;
+    border-radius: 50%;
+    height: 255px;
+    width: 258px;
+    transform: translate(0%, -1%);
+    overflow: hidden;
+}
+
+/*Caracteristicas de la imagen personalizada*/
+.preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*Características del texto*/
 #textSize {
     font-family: "Poppins", sans-serif;
     font-size: 10px;
     color: white;
-    margin-top: -25px;
+    margin-top: -60px;
 }
 
+/*Características de linea decorativa*/
 #line {
     background: linear-gradient(to right, rgba(190, 177, 248, 1), rgba(0, 217, 255, 1));
     height: 5px;
 }
 
+/*Sección blanca de información*/
 section {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 35px;
     align-items: center;
     background-color: white;
-    min-height: 90vh;
+    min-height: 70vh;
 }
 
 #textColor {
+    margin: 45px 0 0 0;
     letter-spacing: 2px;
     color: #20BAE4;
+    text-align: center;
+    width: 100%;
 }
 
+/*Contenedor de datos*/
 .infoBox {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
     font-family: "Poppins", sans-serif;
     font-weight: bold;
     margin: 0;
-    width: 59vw;
+    width: 100%;
 }
 
 .regisInfo {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     color: black;
-    height: 20vw;
+    height: 79px;
+    width: 800px;
 }
 
+/*Tamaño de fuente del texto que acompaña inputs*/
 .textEdit {
-    font-size: clamp(10px, 1.1vw, 30px);
+    font-size: 20px;
     margin: 0 0 0 0;
 }
 
-.recordFields {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 21vw;
-    width: 60%;
-}
-
+/*Inputs con bordes degradados*/
 input {
     color: black;
     font-family: "Poppins", sans-serif;
-    font-size: clamp(10px, 1.1vw, 30px);
+    font-size: 18px;
     border: 2px solid transparent;
     border-radius: 7.5px;
     background: linear-gradient(#F4F4F4) padding-box,
         linear-gradient(90deg, #AF02FF, #0051FF) border-box;
     padding: 0 0 0 5px;
-    height: 5vh;
+    height: 42px;
+    width: 505px;
 }
 
+/*Se asigna tamaño y estilo de fuente al placeholder*/
+input::placeholder {
+    font-size: 14px;
+    font-style: italic;
+}
+
+/*Color del input "bloqueado"*/
+input:disabled {
+    border: solid 2px gray
+}
+
+/*Ubicación y tamaño de los botones*/
 .buttons {
     display: flex;
     justify-content: space-around;
+    margin: 30px;
     width: 50%;
 }
 
+/*Botones guardar/cancelar*/
 #Save {
     cursor: pointer;
     font-weight: bold;
-    height: 7vh;
-    width: 12vw;
+    height: 45px;
+    width: 170px;
     font-family: "Poppins", sans-serif;
-    font-size: clamp(15px, 1vw, 30px);
+    font-size: 16px;
     border-radius: 8px;
     background-color: #04C9FF;
     border: 2px solid transparent;
 }
 
+/*Hover del botón guardar*/
 #Save:hover {
     color: white;
     background: linear-gradient(#000000) padding-box,
         linear-gradient(90deg, #EA02FF, #00D9FF) border-box;
 }
 
+/*Características de botón de eliminar cuenta*/
 #Cancel {
     cursor: pointer;
     background: none;
     border: none;
     color: red;
     font-weight: bold;
-    font-size: clamp(15px, 1vw, 30px);
+    font-size: 16px;
 }
 
+/*Mensajes de error o alerta*/
+.textTerms {
+    position: relative;
+    color: #dd4e4e;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 11.5px;
+    top: -30px;
+    left: 20px;
+    width: 265px;
+}
+
+#requieFields {
+    top: -50px;
+}
+
+/*MODAL (VENTAJA EMERGENTE)*/
+/*Fondo oscuro que cubre toda la pantalla*/
 .modal {
     position: fixed;
     top: 0;
@@ -228,6 +309,7 @@ input {
     z-index: 1000;
 }
 
+/*Caja blanca del modal*/
 .modalContent {
     display: flex;
     flex-direction: column;
@@ -240,9 +322,10 @@ input {
     color: black;
     padding: 18px;
     height: 15%;
-    width: 20%;
+    width: 23%;
 }
 
+/*Ubicación de botones del modal*/
 .modalExit {
     display: flex;
     justify-content: space-evenly;
@@ -250,16 +333,18 @@ input {
     margin: 30px 0 0 0;
 }
 
+/*Características de texto de pregunta*/
 #question {
     font-weight: normal;
 }
 
+/*Características de botones del modal*/
 .buttonStyle {
     cursor: pointer;
     font-family: "Poppins", sans-serif;
     border-radius: 10px;
-    height: 3vh;
-    width: 5vw;
+    height: 26px;
+    width: 98px;
 }
 
 .buttonStyle:hover {
@@ -286,13 +371,21 @@ input {
 }
 
 #styleGear {
-    width: 2vw;
+    width: 37px;
 }
 
+/*CONFIGURACIONES (SWITCH)*/
+/*Contenedor de opciones*/
 .dropdownContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.gearWrapper {
+    display: flex;
+    justify-content: center;
     width: 100%;
 }
 
@@ -306,6 +399,7 @@ input {
     border-radius: 10px;
     height: 10vh;
     width: 30%;
+    align-self: center;
 }
 
 .switch input {
@@ -314,6 +408,7 @@ input {
     height: 0;
 }
 
+/*Switch personalizado*/
 .switch {
     position: relative;
     display: inline-block;
@@ -322,6 +417,7 @@ input {
     float: right;
 }
 
+/*Fila de ajustes*/
 .setting-row {
     display: flex;
     justify-content: space-evenly;
@@ -352,6 +448,7 @@ input {
     border-radius: 20%;
 }
 
+/*Cuando el switch esta activo*/
 input:checked+.slider {
     background-color: #2196F3;
 }
@@ -376,6 +473,62 @@ input:checked+.slider:before {
     width: 40%;
 }
 
+.container-img {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 450px;
+}
+
+/*INICIO MEDIA QUERIES*/
+@media(max-width: 1698px) {
+    .textEdit {
+        font-size: 16px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    input::placeholder {
+        font-size: 13px;
+    }
+
+    #styleGear {
+        width: 30px;
+    }
+}
+
+@media(min-width: 1620px) {
+    #location {
+        width: 1450px;
+    }
+}
+
+@media(min-width: 1415px) {
+
+    .preview-container {
+        left: 0;
+        top: 272px;
+        transform: translate(49%, -1%);
+    }
+
+    .container-img {
+        width: 100%;
+        position: relative;
+        left: -55px;
+    }
+
+    #Back {
+        display: flex;
+        justify-content: center;
+    }
+
+    #location {
+        justify-content: space-around;
+    }
+}
+
 @media(max-width: 1366px) {
     #textMod {
         text-align: center;
@@ -387,11 +540,359 @@ input:checked+.slider:before {
     }
 
     .buttonStyle {
-        height: 4vh;
-        width: 6.5vw;
+        height: 30px;
+        width: 100px;
+    }
+
+    .modalExit {
+        justify-content: space-between;
     }
 
     #textColor {
-        margin: 0 0 -35px 0;
+        margin: 35px 0 -35px 0;
+    }
+
+    #settingSound {
+        width: 35%;
+    }
+
+    .setting-row {
+        width: 50%;
+    }
+}
+
+@media(max-width: 1245px) {
+    #UpdatePhoto {
+        font-size: 14px;
+        width: 145px;
+    }
+
+    #Save {
+        font-size: 14px;
+    }
+
+    #Cancel {
+        font-size: 14px;
+    }
+
+    #settingSound {
+        width: 40%;
+    }
+
+    .setting-row {
+        width: 60%;
+    }
+
+    #question {
+        font-size: 14px;
+    }
+
+    .buttonStyle {
+        font-size: 13px;
+    }
+
+    .modalContent {
+        width: 32%;
+    }
+
+    h3 {
+        font-size: 14px;
+    }
+
+    #textMod {
+        font-size: 13px;
+    }
+
+    img {
+        width: 350px;
+    }
+
+    .preview-container {
+        left: 95px;
+        top: 312px;
+        height: 173px;
+        width: 182px;
+    }
+
+    #location {
+        justify-content: center;
+    }
+}
+
+@media(max-width: 920px) {
+    input {
+        height: 34px;
+        width: 400px;
+    }
+
+    .regisInfo {
+        width: 630px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    .switch {
+        width: 30px;
+        height: 19px;
+    }
+
+    .slider:before {
+        height: 15px;
+        width: 15px;
+        bottom: 2px;
+    }
+
+    .dropdownM {
+        height: 60px;
+        width: 368px
+    }
+
+    .modalContent {
+        width: 34%;
+    }
+
+    img {
+        width: 285px;
+    }
+
+    .preview-container {
+        left: 77px;
+        top: 322px;
+        height: 150px;
+        width: 150px;
+    }
+
+    .textTerms {
+        width: 240px;
+        left: 27px;
+    }
+}
+
+@media(max-width: 768px) {
+    #Back {
+        height: 940px;
+    }
+
+    #location {
+        flex-direction: column;
+    }
+
+    .line {
+        margin-top: -35px;
+        width: 30vw;
+    }
+
+    #lineId {
+        width: 35vw;
+    }
+
+    .regisInfo {
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 95px;
+    }
+
+    .textEdit {
+        font-size: 15px;
+        width: 405px;
+    }
+
+    input {
+        font-size: 13px;
+    }
+
+    input::placeholder {
+        font-size: 12px;
+    }
+
+    #styleGear {
+        margin: 0;
+    }
+
+    .buttons {
+        width: 70%;
+    }
+
+    .modalContent {
+        width: 48%;
+    }
+
+    #info {
+        width: 100%;
+        height: 800px;
+    }
+
+    .container-img {
+        width: 100%;
+        height: 400px;
+        justify-content: center;
+    }
+
+    .preview-container {
+        left: auto;
+        top: 86px;
+        height: 145px;
+        width: 150px;
+        transform: translate(9px, -4px);
+    }
+
+    #textSize {
+        margin-top: -25px;
+    }
+
+    .error {
+        top: -24px;
+    }
+
+    .textTerms {
+        left: -70px;
+        width: 265px;
+    }
+}
+
+@media(max-width: 545px) {
+    .line {
+        margin-top: -40px;
+        width: 40vw;
+    }
+
+    #lineId {
+        width: 55vw;
+    }
+
+    .buttons {
+        width: 100%;
+    }
+
+    .modalContent {
+        width: 55%;
+    }
+
+    #Back {
+        height: 870px;
+    }
+
+    .preview-container {
+        transform: translate(9px, -14px);
+    }
+}
+
+@media(max-width: 480px) {
+    img {
+        margin: 50px 0 0 0;
+    }
+
+    input {
+        width: 310px;
+    }
+
+    .textEdit {
+        width: 315px;
+    }
+
+    #settingSound {
+        width: 38%;
+    }
+
+    .setting-row {
+        width: 55%;
+    }
+
+    .dropdownM {
+        height: 55px;
+        width: 305px;
+    }
+
+    .modalContent {
+        width: 75%;
+    }
+
+    .preview-img {
+        margin: 0;
+    }
+
+    .preview-container {
+        transform: translate(9px, 34px);
+    }
+
+    .textTerms {
+        left: -25px;
+    }
+}
+
+@media(max-width: 355px) {
+    .line {
+        margin-top: -34px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    #info {
+        justify-content: center;
+        gap: 33px;
+    }
+
+    #Back {
+        height: 650px;
+    }
+
+    img {
+        margin: 20px 0 0 0;
+        width: 159px;
+    }
+
+    input {
+        width: 240px;
+    }
+
+    .textEdit {
+        width: 245px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 105px;
+        margin: 10px;
+    }
+
+    .dropdownM {
+        display: flex;
+        flex-direction: column;
+        height: 75px;
+        width: 240px;
+    }
+
+    #settingSound {
+        width: 100%;
+    }
+
+    label {
+        width: 100px;
+    }
+
+    .setting-row {
+        width: 100%;
+    }
+
+    .modalContent {
+        width: 80%;
+    }
+
+    .preview-container {
+        height: 81px;
+        width: 83px;
+        transform: translate(5px, -8px);
+    }
+
+    .textTerms {
+        left: -19px;
+        width: 208px;
     }
 }

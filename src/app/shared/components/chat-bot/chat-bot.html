@@ -1,28 +1,56 @@
-<div class="chat-container">
+<!-- Contenedor general del chatbot -->
+<div *ngIf="showChat" class="chat-container">
+  <!-- Ventana del chat (solo se muestra si isOpen es true) -->
   <div class="chat-window" *ngIf="isOpen">
+    <!-- Encabezado del chat -->
     <div class="chat-header">
-      <span>Asistente Cybro</span>
+      <span class="title">Asistente Cybro</span>
+      <!-- Botón para cerrar el chat -->
       <button id="button-cancel" (click)="toggleChat()">×</button>
     </div>
-   <div class="chat-body">
-      <div *ngFor="let msg of messages" [ngClass]="['msg-bubble', msg.type]">
-        {{ msg.text }}
+    <!-- Cuerpo del chat donde se muestran los mensajes -->
+    <div class="chat-body" #chatBody>
+      <!-- Recorre el historial de mensajes -->
+      <div *ngFor="let msg of messages; let i = index" [ngClass]="['msg-bubble', msg.type]">
+        <!-- Avatar del bot -->
+        <img *ngIf="msg.type === 'bot'" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765915938/Gemini_Generated_Image_oq1gh0oq1gh0oq1g-removebg-preview_2_h5rmq9.png" alt="Cybro" class="bot-avatar">
+        <!-- Texto del mensaje -->
+        <span class="msg-text">{{ msg.text }}</span>
+        <!-- Botón de audio para mensajes del bot -->
+        <button *ngIf="msg.type === 'bot'" class="audio-btn" (click)="speakMessage(msg.text)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M15.54 8.46a5 5 0 010 7.07"/>
+          </svg>
+        </button>
       </div>
     </div>
 
+    <!-- Pie del chat (input + botón enviar + micrófono) -->
     <div class="chat-footer">
+      <!-- Campo de texto -->
       <input 
         type="text" 
         placeholder="Escribe un mensaje..." 
         [(ngModel)]="newMessage" 
         (keyup.enter)="sendMessage()">
+      <!-- Botón de micrófono -->
+      <button class="mic-btn" (click)="toggleVoiceRecording()" [class.recording]="isRecording">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+          <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+        </svg>
+      </button>
+      <!-- Botón para enviar mensaje -->
       <button (click)="sendMessage()">
         <i class="send-icon">➤</i>
       </button>
     </div>
   </div>
 
-  <button class="floating-btn" (click)="toggleChat()" [class.active]="isOpen">
+  <!-- Botón flotante que abre/cierra el chat -->
+  <button class="floating-btn" (click)="toggleChat()" [class.active]="isOpen" [class.listening]="isRecording">
     <img src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765915938/Gemini_Generated_Image_oq1gh0oq1gh0oq1g-removebg-preview_2_h5rmq9.png" alt="Bot">
+    <span class="recording-indicator" *ngIf="isRecording"></span>
   </button>
 </div>

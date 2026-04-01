@@ -1,3 +1,4 @@
+/*Sección principal que contiene todos los bloques del método de enseñanza*/
 section {
     display: flex;
     flex-direction: column;
@@ -6,12 +7,14 @@ section {
     gap: 130px;
 }
 
+/*Contenedor de cada bloque informativo (imagen + texto)*/
 .teaching-information {
     display: flex;
     justify-content: space-evenly;
     overflow: hidden;
 }
 
+/*Contenedor del texto explicativo*/
 .teaching-text {
     display: flex;
     flex-direction: column;
@@ -21,10 +24,12 @@ section {
     width: 50vw;
 }
 
+/*Imagen representativa de cada bloque*/
 .teaching-img {
     width: 400px;
 }
 
+/*Título principal de cada método de enseñanza*/
 .caption {
     color: #20BAE4;
     font-family: "Anton SC", sans-serif;
@@ -33,24 +38,45 @@ section {
     width: 100%;
 }
 
+/*Texto descriptivo del método*/
 .text {
     font-family: "Poppins", sans-serif;
     font-size: 33px;
 }
 
+/*Línea decorativa debajo del texto*/
 .line {
     position: relative;
     background: linear-gradient(to left, rgba(0, 217, 255, 1), rgba(202, 75, 214, 1));
     height: 10px;
     width: 30vw;
     border-radius: 30px;
+    /*Ajuste de posición*/
     left: 10vw;
 }
 
+/*Variante de la línea decorativa para el segundo bloque*/
 #line-two {
     top: 3vh;
     left: -30vw;
+    /*Degrado invertido para variar el diseño*/
     background: linear-gradient(to left, rgba(101, 75, 214, 1), rgba(0, 217, 255, 1));
+}
+
+/*INICIO DE MEDIA QUERIES*/
+@media (min-width: 1538px) {
+    .teaching-text {
+        height: 590px;
+    }
+
+    .teaching-img {
+        width: 400px;
+        height: 400px;
+    }
+
+    .teaching-information {
+        align-items: center;
+    }
 }
 
 @media (max-width: 1537px) {
@@ -63,16 +89,17 @@ section {
     }
 }
 
-@media (max-width: 1279px) {
-
-    .text {
-        font-size: 22px;
-    }
-
+@media (max-width: 1366px) {
     .caption {
         font-size: 35px;
     }
 
+    .text {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 1279px) {
     .teaching-text {
         height: 427px;
     }
@@ -88,9 +115,9 @@ section {
 }
 
 @media (max-width: 920px) {
-
     section {
         padding: 0 0 50px 0;
+        gap: 0;
     }
 
     .teaching-img {
@@ -119,7 +146,6 @@ section {
 }
 
 @media (max-width: 768px) {
-
     section {
         gap: 38px;
     }
@@ -159,7 +185,7 @@ section {
 
 @media (max-width: 480px) {
     .teaching-text {
-        height: 425px;
+        height: 480px;
     }
 
     section {
@@ -172,5 +198,11 @@ section {
 
     .line {
         left: 72px;
+    }
+}
+
+@media (max-width: 430px) {
+    .text {
+        font-size: 18px;
     }
 }

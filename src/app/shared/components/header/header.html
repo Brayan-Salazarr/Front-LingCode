@@ -1,64 +1,79 @@
+<!-- Contenedor principal del header y elementos decorativos -->
 <div class="header-wrapper">
+  <!-- Imagen decorativa circular superior -->
   <img id="imgCircle" *ngIf="showDecorativeCircle"
-      src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763574993/Gemini_Generated_Image_f60f2qf60f2qf60f-removebg-preview_1_zgnbfa.png"
-      alt="" >
+    src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763574993/Gemini_Generated_Image_f60f2qf60f2qf60f-removebg-preview_1_zgnbfa.png"
+    alt="">
+  <!-- Header principal (clase dinámica según el contexto) -->
   <header [ngClass]="classSpace">
-     
 
+    <!-- Contenedor interno de la información del header -->
     <div class="information">
 
-      <h1 [innerHTML]="title"  *ngIf="showTitle && !(hideTitleWhenLogged && user)"></h1>
-      <div class="line" *ngIf="showLine"></div>
+      <!-- Título dinámico del header -->
+      <h1 [innerHTML]="title" *ngIf="showTitle && !(hideTitleWhenLogged && (user$ | async))"></h1>
+      <!-- Línea decorativa debajo del título -->
+      <div class="line" *ngIf="showLine && !(hideTitleWhenLogged && (user$ | async))"></div>
 
       <!-- INFO DEL USUARIO -->
-      <div class="user-header" *ngIf="showUserInfo && user">
+      <!-- Contenedor de información del usuario autenticado -->
+      <div class="user-header" *ngIf="showUserInfo && (user$ | async) as user">
 
+        <!-- Agrupador general de avatar y datos -->
         <div class="field">
 
-            <img class="avatar" [src]="user?.avatar || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png'" />
-            <img id="imgCirclee" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png"
-              alt="">
-         
-
-
-          <div class="user-data">
-            <p class="nickname">{{ user?.nickName }}</p>
-            <div class="line" id="line"></div>
-
-            <div class="space">
-              <img class="img" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760082/image-Photoroom_4_1_veuvti.png" alt="">
-              <p class="name">{{ user?.fullName }}</p>
-            </div>
-            
-            
-            <div class="space">
-              <img class="img" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760081/image-Photoroom_3_2_ervkjd.png" alt="">
-              <p class="email">{{ user?.email }}</p>
-            </div>
-
-            <div class="space" *ngIf="user?.createdAt">
-              <img class="img" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760447/image-Photoroom_2_2_nzwcic.png" alt="">
-               <p class="date">
-              Registrado: {{ user?.createdAt | date: 'dd/MM/yyyy' }}
-            </p>
-            </div>
-           
+          <!-- Imagen de avatar/personalizada del usuario -->
+          <div class="space2">
+            <img [ngClass]="isCostumImage ? 'img-custom': 'avatar-default'"
+              [src]="profileImageValue || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'" />
           </div>
 
+          <!-- Imagen decorativa circular -->
+          <img *ngIf="showCircle" id="imgCirclee"
+            src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765757969/circle_fktop2.png" alt="">
+
+          <!-- Contenedor de datos del usuario -->
+            <div class="user-data">
+              <!-- Nickname del usuario -->
+              <p class="nickname">{{ (user$ | async)?.nickname }}</p>
+              <!-- Línea decorativa interna -->
+              <div class="line" id="line"></div>
+
+              <!-- Contenedor de dato individual (ícono + texto) -->
+              <div class="space">
+                <img class="img"
+                  src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760082/image-Photoroom_4_1_veuvti.png"
+                  alt="">
+                <p class="name">{{ (user$ | async)?.fullName }}</p>
+              </div>
+
+              <!-- Contenedor de email -->
+              <div class="space">
+                <img class="img"
+                  src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760081/image-Photoroom_3_2_ervkjd.png"
+                  alt="">
+                <p class="email">{{ (user$ | async)?.email }}</p>
+              </div>
+
+              <!-- Contenedor de fecha de registro -->
+              <div class="space" *ngIf="user?.createdAt">
+                <img class="img"
+                  src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765760447/image-Photoroom_2_2_nzwcic.png"
+                  alt="">
+                <p class="date">
+                  Registrado: {{ (user$ | async)?.createdAt | date: 'dd/MM/yyyy' }}
+                </p>
+              </div>
+            </div>
         </div>
-
-        
-
       </div>
     </div>
-
-
   </header>
+  <!-- Fondo decorativo inferior del header -->
   <div id="background"></div>
-  
 </div>
 
-
+<!-- Elementos decorativos hexágonales -->
 <div class="hexagon1" *ngIf="showHexagon1"></div>
 <div class="hexagon2" *ngIf="showHexagon2" [ngClass]="variantClass"></div>
 <div class="hexagon3" *ngIf="showHexagon3"></div>

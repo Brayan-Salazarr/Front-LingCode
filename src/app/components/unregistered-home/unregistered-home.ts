@@ -7,6 +7,8 @@ import { Footer } from '../../shared/components/footer/footer';
 import { CarouselAvatar } from '../../shared/components/carousel-avatar/carousel-avatar';
 import { CommonModule } from '@angular/common';
 import { Subscriptions } from '../../shared/components/subscriptions/subscriptions';
+import { AuthService } from '../../auth/services/authService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-unregistered-home',
@@ -16,5 +18,14 @@ import { Subscriptions } from '../../shared/components/subscriptions/subscriptio
 })
 export class UnregisteredHome {
 
-}
+  constructor( 
+    private authService: AuthService,
+    private router: Router
+  ){}
 
+  ngOnInit(): void{
+    if(this.authService.isAuthenticated()){
+      this.router.navigate(['/registered-home'])
+    }
+  }
+}

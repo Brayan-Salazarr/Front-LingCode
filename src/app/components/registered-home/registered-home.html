@@ -1,11 +1,22 @@
+<!-- BARRA DE NAVEGACIÓN -->
 <app-nav></app-nav>
-<app-header [showUserInfo]="true" [showTitle]="true" [showHexagon2]="true" [showHexagon6]="true" [showHexagon7]="true" variantClass="move-hex-home"></app-header>
+
+<!-- Header personalizado -->
+<!-- Muestra información del usuario, título, línea decorativa y figuras hexagonales -->
+<app-header [showUserInfo]="true" [showTitle]="true" [hideTitleWhenLogged]="true" [showLine]="true"
+    [showHexagon2]="true" [showHexagon6]="true" [showHexagon7]="true" variantClass="move-hex-home"></app-header>
 
 <section>
+    <!-- SECCIÓN: OBJETIVO Y RACHA -->
     <div class="content-target-streak">
+        <!-- Caja de saludo y objetivo -->
         <div class="content-box">
-            <h2 class="subTitle">¡Hola {{ user?.nickName }}!</h2>
+
+            <!-- Saludo dinámico con el nickname del usuario -->
+            <h2 class="subTitle">¡Hola {{ user?.nickname }}!</h2>
             <div class="target-box">
+
+                <!-- Parte superior con ícono y título -->
                 <div class="box-up">
                     <img id="img-trophy"
                         src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765767308/image_48_yjz4fs.png" alt="">
@@ -18,15 +29,19 @@
                     </div>
                 </div>
 
+                <!-- Descripción del objetivo actual -->
                 <p id="text-target">Practicar en el módulo</p>
 
+                <!-- Imagen del módulo actual -->
                 <img id="img-gitHub"
                     src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765767508/github_1_1_2_mnq7ct.png" alt="">
 
+                <!-- Botón para iniciar práctica -->
                 <button class="button-target">Empieza</button>
             </div>
         </div>
 
+        <!-- SECCIÓN DE RACHA -->
         <div class="border-streak">
             <div class="content-streak">
                 <h3 id="title-streak">Días de racha</h3>
@@ -35,76 +50,107 @@
                     <img id="img-Cybro"
                         src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765768099/Group_63_ielsay.png" alt="">
 
-                    <strong id="streak">0</strong>
+                    <strong id="streak">{{ (progress$ | async)?.currentStreak ?? 0 }}</strong>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Línea divisora -->
     <div class="line"></div>
+
+    <!-- SECCIÓN DE PROGRESO Y ENERGÍA -->
     <div class="content-progress">
 
+        <!-- Progreso general del usuario -->
         <div class="box-progress">
             <h2 class="title-progress">Asi va tu progreso</h2>
+
+            <!-- Barra de progreso visual -->
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 10%;">
-                    <img id="percentage" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765902113/Cybro_1_1_u15dlm.png" alt="">
-                </div>
+                <div class="progress-fill" [style.width.%]="(progress$ | async)?.progressPercent ?? 0"></div>
+
+                <img id="percentage"
+                    src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1773193944/Cybro_3_ixf7sb.png" alt=""
+                    [style.left.%]="getSafeProgress((progress$ | async)?.progressPercent)">
+
             </div>
-            <p id="progress">0% Completado</p>
+
+            <!-- Porcentaje -->
+            <p id="progress">{{ (progress$ | async)?.progressPercent ?? 0 }}% Completado</p>
+
+            <!-- Estado actual del sistema -->
             <p id="state">Sistema Operativo en modo <span class="different-color">Aprendizaje...</span></p>
         </div>
 
+        <!-- Energía del usuario -->
         <div class="box-energy">
             <img id="cybro-energy"
                 src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765829985/Group_64_hoogvs.png" alt="">
             <div class="field">
-                <h3 id="tilte-energy">Energía 20</h3>
+                <h3 id="tilte-energy">Energía {{ energy$ | async }}</h3>
                 <img id="img-energy"
                     src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765830002/image-removebg-preview_1_1_of8ae2.png"
                     alt="">
             </div>
 
+            <div class="energy-timer" *ngIf="(energy$ | async)! < 20" >
+                ⏳ Nueva energía en {{ formatTime(remainingTime$ | async) }}
+            </div>
+
         </div>
 
     </div>
+
+    <!-- Línea divisora -->
     <div class="line" id="line"></div>
 
+    <!-- SECCIÓN HISTORIAL -->
     <div class="content-record">
         <h2 class="title-record">Historial</h2>
 
         <div class="box-record">
-            <div *ngFor="let item of practicas" class="card"
-                [ngClass]="{'completada': item.estado === 'completado', 'pendiente': item.estado === 'pendiente'}">
+            <!-- Recorre dinámicamente el array "practicas" -->
+            <div *ngFor="let item of practice" class="card">
                 <h2 class="practical-degree">PRÁCTICA DE VOCABULARIO</h2>
 
                 <div class="content">
                     <p class="text-record">Módulo: <strong class="results">{{ item.modulo }}</strong></p>
-                    <p class="text-record">Resultado: <strong class="results">{{ item.resultado }}</strong></p>
+                    <p class="text-record">Lección: <strong class="results">{{ item.lessonName }}</strong></p>
+                    <p class="text-record">Progreso: <strong class="results">{{ item.resultado }}</strong></p>
                     <p class="text-record">Fecha: <strong class="results">{{ item.fecha }}</strong></p>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- SECCIÓN LOGROS -->
     <div class="content-achievement">
         <h2 class="title-record" id="title-achievement">Logros</h2>
         <div class="field-achievements">
-             <div class="achievement-card" *ngFor="let logro of logros"
-            [ngStyle]="{'box-shadow': '0 0 10px 1px ' + logro.bordeColor, 'border-color': logro.bordeColor}">
-            <div class="container-icon">
-                <img [src]="logro.icono" [ngClass]="logro.classIcon" alt="Icono de logro" class="achievement-icon" />
-            </div>
 
-            <p class="message-achievement">{{ logro.mensaje }}</p>
+            <!-- Recorre dinámicamente el array "logros" -->
+            <div class="achievement-card" *ngFor="let logro of logros"
+                [ngStyle]="{'box-shadow': '0 0 10px 1px ' + logro.bordeColor, 'border-color': logro.bordeColor}">
+
+                <!-- Ícono del logro -->
+                <div class="container-icon">
+                    <img [src]="logro.icono" [ngClass]="logro.classIcon" alt="Icono de logro"
+                        class="achievement-icon" />
+                </div>
+
+                <!-- Mensaje del logro -->
+                <p lass="message-achievement">{{ logro.mensaje }}
+                </p>
+            </div>
         </div>
-        </div>
-       
+
     </div>
 
-    
+    <!-- SECCIÓN DE SUSCRIPCIONES -->
     <app-subscriptions></app-subscriptions>
 
 </section>
 
+<!-- PIE DE PÁGINA -->
 <app-footer></app-footer>

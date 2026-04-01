@@ -1,7 +1,10 @@
+/*ESTILO GLOBAL*/
+/*Aplica la fuente "poppins" a todos los elementos del documentos*/
 * {
     font-family: 'Poppins', sans-serif;
 }
 
+/*CONTENEDOR PRINCIPAL DEL COMPONENTE*/
 .component {
     display: flex;
     justify-content: center;
@@ -9,15 +12,31 @@
 
 }
 
+/*SECCIÓN INTERNA*/
 section {
     margin: 70px;
 }
 
+/*TÍTULOS PRINCIPALES*/
 .title {
     display: flex;
     justify-content: center;
+    font-size: 48px;
 }
 
+.text {
+    font-size: 33px;
+}
+
+li {
+    font-size: 33px;
+}
+
+.subtitle {
+    font-size: 34px;
+}
+
+/*INFORMACIÓN DEL COMPONENTE*/
 .information {
     display: flex;
     flex-direction: column;
@@ -27,42 +46,98 @@ section {
     height: 100%;
 }
 
+/*TÍTULO DE NORMAS*/
 #titleNor {
-    margin: 70px 0 0 0;
+    margin: 50px 0 0 0;
+}
+
+/*INICIO DE MEDIA QUERIES*/
+@media (max-width: 1537px) {
+    .title {
+        font-size: 38px;
+    }
+
+    .text {
+        font-size: 24px;
+    }
+
+    li {
+        font-size: 24px;
+    }
+
+    .subtitle {
+        font-size: 25px;
+    }
 }
 
 @media (max-width: 1366px) {
-
     #titleNor {
         margin: 0 0 0 0;
+    }
+
+    .title {
+        font-size: 35px;
+    }
+
+    .text {
+        font-size: 22px;
+    }
+
+    li {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 23px;
     }
 }
 
 @media (max-width: 920px) {
-   
-    .information{
+    .information {
         width: 69vw;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .text {
+        font-size: 15px;
+    }
+
+    li {
+        font-size: 15px;
+    }
+
+    .subtitle {
+        font-size: 16px;
     }
 }
 
-@media (max-width: 590px) {
-   
-    .text{
-        font-size: 14px;
+@media (max-width:768px) {
+    .title {
+        font-size: 23px;
     }
 
-    .title{
-        font-size: 29px;
+    .text {
+        font-size: 16px;
     }
 
-    .subtitle{
+    li {
+        font-size: 16px;
+    }
+
+    .subtitle {
         font-size: 17px;
     }
 }
 
-@media (max-width: 480px) {
- 
-    .title{
-        font-size: 27px;
+@media (max-width: 430px) {
+    .text {
+        font-size: 14px;
+    }
+
+    li {
+        font-size: 14px;
     }
 }

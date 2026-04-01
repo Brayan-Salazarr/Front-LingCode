@@ -1,3 +1,4 @@
+/*Contenedor principal del navegador*/
 .component {
     display: flex;
     justify-content: space-around;
@@ -10,34 +11,49 @@
     z-index: 10;
 }
 
+/*Variante del navegador cuando se quiere un fondo más oscuro*/
 .backgroundNav.component {
     background: rgba(1, 1, 1, 0.88);
 }
 
+/*Logo de LingCode*/
 #img {
     width: 108px;
+    cursor: pointer;
 }
 
+/*Contenedor que agrupa los enlaces de navegación*/
 .nav {
     display: flex;
     justify-content: space-around;
     width: 30%;
 }
 
+/*Estilo individual de cada enlace*/
 .place {
     font-size: 18px;
     color: white;
     text-decoration: none;
     cursor: pointer;
     font-family: "Poppins", sans-serif;
+    border-bottom: 2px solid transparent;
 }
 
+/*Estilo de línea debajo de opciones de navegación*/
+.active-link {
+    border-bottom: 2px solid;
+    color: #04F7FF;
+    border-radius: 5px;
+}
+
+/*Contenedor que agrupa los botones*/
 .buttons {
     display: flex;
     justify-content: space-around;
     width: 384px;
 }
 
+/*Botón con estilo oscuro (iniciar sesión)*/
 .button1 {
     border-radius: 15px;
     font-size: 18px;
@@ -51,6 +67,7 @@
     height: 50px;
 }
 
+/*Botón con estilo celeste (registro)*/
 .button2 {
     border-radius: 15px;
     font-size: 18px;
@@ -63,29 +80,37 @@
     height: 50px;
 }
 
+/*Imagen del avatar del usuario*/
 .avatar {
     width: 70px;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
     border-radius: 50%;
 }
 
+/*Contenedor que agrupa el avatar y los datos del usuario*/
 .user-info {
     display: flex;
     justify-content: space-evenly;
     width: 250px;
 }
 
+/*Estilo general para textos dentro del navegador*/
 span {
     font-family: "Poppins", sans-serif;
     font-weight: bold;
     color: white;
 }
 
+/*Contenedor que organiza información en columna*/
 .separator {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
+/*Opción para cerrar sesión*/
 .close-button {
     display: flex;
     color: white;
@@ -97,16 +122,19 @@ span {
     cursor: pointer;
 }
 
+/*Efecto al pasar el mouse sobre la opción cerrar sesión*/
 .close-button:hover {
     color: rgb(249, 21, 21);
 }
 
+/*Variantes del navegador con fondo negro sólido*/
 .backgroundNav1.component,
 .backgroundNav2.component {
     background: black;
     position: relative;
 }
 
+/*Opción para editar perfil*/
 .button-edit {
     background: none;
     color: white;
@@ -118,11 +146,13 @@ span {
     cursor: pointer;
 }
 
+/*Contenedor del menú desplegable o tipo hamburguesa*/
 .hamburguer {
     display: none;
     position: relative;
 }
 
+/*Icono del menú tipo hamburguesa*/
 #iconMenu {
     position: relative;
     z-index: 1000;
@@ -130,10 +160,12 @@ span {
     width: 30px;
 }
 
+/*Clase base para íconos que se muestran en responsive*/
 .icon {
     display: none;
 }
 
+/*INICIO DE MEDIA QUERIES*/
 @media (min-width: 1700px) {
 
     .buttons {
@@ -254,6 +286,14 @@ span {
     a.place {
         padding: 3px;
     }
+
+    span {
+        font-size: 13px;
+    }
+
+    .button-edit {
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 792px) {
@@ -295,6 +335,15 @@ span {
         width: 159px;
         left: 50%;
     }
+
+    .avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .user-info {
+        width: 220px;
+    }
 }
 
 @media(max-width: 550px) {
@@ -335,12 +384,33 @@ span {
         display: flex;
     }
 
-    #userIcon{
+    #userIcon {
         height: 25px;
     }
 
-    .buttons{
+    .buttons {
         display: none;
+    }
+
+    .avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .user-info {
+        width: 190px;
+    }
+
+    span {
+        font-size: 12px;
+    }
+
+    .button-edit {
+        font-size: 11px;
+    }
+
+    .close-button {
+        font-size: 10px;
     }
 }
 
@@ -370,5 +440,21 @@ span {
 
     .nav {
         left: 53%;
+    }
+
+    .user-info {
+        width: 170px;
+    }
+
+    span {
+        font-size: 11px;
+    }
+
+    .button-edit {
+        font-size: 10px;
+    }
+
+    .close-button {
+        font-size: 9px;
     }
 }

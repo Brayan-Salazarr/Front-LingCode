@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, input, signal } from '@angular/core';
+import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../../auth/services/authService';
 
 interface ImagenItem {
   nombre: string;
@@ -14,15 +15,21 @@ interface ImagenItem {
   styleUrl: './carousel-avatar.css',
 })
 export class CarouselAvatar {
-  
+  //Permite definir el ancho del carrusel desde el componente padre
   @Input() carouselWidth: string = '70vw';
+  //Permite definir la altura del carrusel desde el componente padre
   @Input() carouselHeight: string = '70vh';
-
+  //Tamaño dinámico de las imágenes
   @Input() imageSize: string = '20vw';
 
-  constructor(private router: Router) { }
+  @Output() avatarSelected: EventEmitter<string> = new EventEmitter<string>();
 
-  // 1. Array de objetos que contiene la información de la imagen
+  //Inyectamos el Router para poder navegar entre rutas
+  constructor(private router: Router,
+    private authService: AuthService
+  ) { }
+
+  //Array de objetos que contiene la información de la imagen
   readonly items: ImagenItem[] = [
     { nombre: 'imagen1', ruta: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013632/Group_40_dkpsvv.png', clase: 'img' },
     { nombre: 'imagen2', ruta: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013630/Group_34_1_mq8ced.png', clase: 'img' },
@@ -33,16 +40,27 @@ export class CarouselAvatar {
     { nombre: 'imagen7', ruta: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013622/Group_39_1_nqqepa.png', clase: 'img' }
   ];
 
-  // 2. Signal que almacena el ÍNDICE de la imagen activa
+  selectAvatar(item: ImagenItem){
+    /*Condición que determina que sucede al seleccionar un avatar*/
+    if(this.authService.isAuthenticated()){
+      /*Si el usuario está autenticado, lo lleva al home de usuarios registrados*/
+      this.avatarSelected.emit(item.ruta);
+    } else {
+      /*Si no está autenticado, lo lleva al home público*/
+      this.router.navigate(['/login-registro'])
+    }
+  }
+
+  //Signal que almacena el ÍNDICE de la imagen activa
   protected readonly currentIndex = signal<number>(0); // Empieza en 0 (imagen1)
 
-  // 3. Lógica simplificada para cambiar la imagen (funciona como un bucle)
+  //Lógica simplificada para cambiar la imagen (funciona como un bucle)
   cambiarImagen() {
     const nextIndex = (this.currentIndex() + 1) % this.items.length;
     this.currentIndex.set(nextIndex);
   }
 
-  // Opcional: Para ir hacia atrás
+  //Opcional: Para ir hacia atrás
   cambiarImagenAtras() {
     const prevIndex = (this.currentIndex() - 1 + this.items.length) % this.items.length;
     this.currentIndex.set(prevIndex);
@@ -62,9 +80,5 @@ export class CarouselAvatar {
 
     // Combinamos las transformaciones
     return `translate(-50%, -50%) translateX(${translateX}px) scale(${scale})`;
-  }
-
-  toggleAuth(): void {
-    this.router.navigate(['/login-registro'])
   }
 }

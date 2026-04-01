@@ -1,46 +1,103 @@
+<!-- Contenedor principal del navegador -->
+<!-- La clase "component" define el estilo base -->
+<!-- [ngClass] "colorBackground" permite cambiar el fondo -->
 <div class="component" [ngClass]="colorBackground">
-    <img id="img" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763490191/Group_27_xduqke.png" alt="Logo">
 
+    <!-- Logo de LingCode -->
+    <!-- id="img" permite aplicar estilos específicos al logo -->
+    <a (click)="goHome()"><img id="img"
+            src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763490191/Group_27_xduqke.png" alt="Logo"></a>
+
+    <!-- Botón menú tipo hamburguesa (visible en responsive) -->
+    <!-- class= "hamburguer" define el contenedor del ícono -->
+    <!-- (click)="toggleMenu()" abre o cierra el menú -->
     <div class="hamburguer" (click)="toggleMenu()">
+        <!-- Icono visual del menú tipo hamburguesa -->
+        <!-- id="iconMenu" permite personalizar tamaño o posición -->
         <img id="iconMenu" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1770926768/barra-de-menus_jya4ei.png"
             alt="imgH">
     </div>
 
+    <!-- Contenedor de navegación principal -->
+    <!-- class="nav" define el estilo del menú -->
+    <!-- [class.active]="menuOpen" aplica una clase cuando el menú está abierto -->
     <nav class="nav" [class.active]="menuOpen">
-        <a class="place" (click)="goHome(); toggleMenu()">Inicio</a>
-        <a class="place" routerLink="/module-view" (click)="toggleMenu()">Módulos</a>
-        <a class="place" routerLink="/about-us" (click)="toggleMenu()">Sobre nosotros</a>
+        <!-- Enlace al inicio -->
+        <!-- Ejecuta goHome() para redirigir según el estado del usuario -->
+        <!-- closeMenu() cierra el menú tipo hamburguesa -->
+        <!-- Se agrega routerLink y demás para poder mostrar la opción seleccionada (línea) -->
+        <a class="place" [class.active-link]="isHomeActive()" (click)="goHome(); closeMenu()">Inicio</a>
+
+        <!-- Enlace a la vista de módulos -->
+        <!-- routerLink permite navegación sin recargar la página -->
+        <!-- closeMenu() cierra el menú después de navegar -->
+        <a class="place" routerLink="/module-view" routerLinkActive="active-link" (click)="closeMenu()">Módulos</a>
+
+        <!-- Enlace a la sección sobre nosotros -->
+        <a class="place" routerLink="/about-us" routerLinkActive="active-link" (click)="closeMenu()">Sobre nosotros</a>
     </nav>
 
-
+    <!-- Fondo oscuro que aparece cuando el menú tipo hamburguesa está abierto -->
+    <!-- class="overlay" se usa para oscurecer el fondo -->
+    <!-- *ngIf="menuOpen" solo aparece si el menú está abierto -->
+    <!-- Permite cerrar el menú al hacer clic fuera -->
     <div class="overlay" *ngIf="menuOpen" (click)="closeMenu()"></div>
 
-    <div class="buttons" *ngIf="!user">
+    <!-- Contenedor de botones cuando el usuario NO ha iniciado sesión -->
+    <!-- *ngIf="!(user$ | async)" solo aparece si no hay usuario autenticado -->
+    <div class="buttons" *ngIf="!(user$ | async)">
+
+        <!-- Botón para iniciar sesión -->
+        <!-- class="button1" define su estilo -->
+        <!-- Ejecuta goLogin() -->
         <button class="button1" (click)="goLogin()">
             Iniciar Sesión
         </button>
 
+        <!-- Botón para registrarse -->
+        <!-- class="button2" define su estilo -->
+        <!-- routerLink navega a la vista de registro -->
         <button class="button2" routerLink="/login-registro">
             Registrarme
         </button>
     </div>
 
-    <div class="icon" (click)="goLogin()">
-        <img id="userIcon" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1771021109/user_ojgle2.png" alt="user">
+    <!-- Icono alternativo de usuario cuando no hay sesión -->
+    <!-- class="icon" define el contenedor -->
+    <!-- (click)="goLogin()" permite abrir el login -->
+    <!-- Se muestra solo si el observable es null -->
+    <div class="icon" (click)="goLogin()" *ngIf="(authService.currentUser$ | async) === null">
+
+        <!-- Imagen del icono de usuario -->
+        <img id="userIcon" [src]="'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1771021109/user_ojgle2.png'"
+            alt="user">
     </div>
 
     <!-- LOGUEADO -->
-    <div class="user-info" *ngIf="user as u">
+    <!-- class="user-info" define el diseño del perfil -->
+    <!-- *ngIf="user$ | async as u" guarda el usuario en la variable local "u" -->
+    <div class="user-info" *ngIf="user$ | async as u">
+        <!-- Avatar del usuario -->
+        <!-- class="avatar" aplica forma circular y tamaño -->
+        <!-- Si no tiene avatar, usa una imagen por defecto -->
         <img class="avatar"
-            [src]="user.avatar || 'https://images-ext-1.discordapp.net/external/6YkuxX8P1o52p98xUBb42PdwR5XT0l-ZURiu6mbU-Qg/https/res.cloudinary.com/ddvjgyi3f/image/upload/v1765737833/image_46_kk56a6.png?format=webp&quality=lossless&width=930&height=930' " />
+            [src]="u.avatar || 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764013623/Group_38_1_nfsk1i.png'" />
 
+        <!-- Contenedor de datos del usuario -->
+        <!-- class="separator" organiza los elementos verticalmente -->
         <div class="separator">
-            <span>{{ u.nickName }}</span>
+
+            <!-- Muestra el nickname del usuario -->
+            <span>{{ u.nickname }}</span>
+
+            <!-- Botón para ir al perfil -->
+            <!-- class="button-edit" define estilo tipo enlace -->
             <button class="button-edit" routerLink="/edit-profile">Ver perfil</button>
+
+            <!-- Botón para cerrar sesión -->
+            <!-- class="close-button" define estilo -->
+            <!-- Ejecuta logout() -->
             <button class="close-button" (click)="logout()">Cerrar sesión</button>
-
         </div>
-
     </div>
-
 </div>

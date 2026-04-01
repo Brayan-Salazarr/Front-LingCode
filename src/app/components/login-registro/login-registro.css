@@ -1,3 +1,5 @@
+/*CONTENEDOR PRINCIPAL WRAPPER*/
+/*Contenedor general que ocupa toda la pantalla*/
 #panelWrapper {
     position: absolute;
     width: 100%;
@@ -5,6 +7,7 @@
     overflow: hidden;
 }
 
+/*Overlay negro para animación de transición entre login y registro*/
 #blackOverlay {
     position: absolute;
     top: 0;
@@ -38,6 +41,7 @@
     transform: translateX(-100%);
 }
 
+/*PANELES LOGIN / REGISTRO*/
 /* Paneles que están encima de uno al otro */
 .panel {
     position: absolute;
@@ -52,6 +56,7 @@
     /* Los paneles inician fuera de la vista */
 }
 
+/*Permite scroll vertical solo en registro*/
 #panelRegister {
     overflow-y: scroll;
 }
@@ -69,6 +74,18 @@
     transform: translateX(-100%);
 }
 
+/*Contenedor de icono de regreso a vista principal*/
+.spaceArrow {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+}
+
+/*Tamaño de icono (flecha)*/
+.arrow {
+    width: 30px;
+}
+
 #loginSection,
 #registerSection {
     min-height: 100dvh;
@@ -79,6 +96,8 @@
     transform: translateX(100%);
 }
 
+/*CONTENEDORES INTERNOS*/
+/*Contenedor principal interno con fondo y layout*/
 .authClass {
     display: flex;
     flex-direction: row;
@@ -89,6 +108,7 @@
     position: relative;
 }
 
+/*Contenedores internos centrados*/
 .containers {
     display: flex;
     flex-direction: column;
@@ -96,6 +116,8 @@
     align-items: center;
 }
 
+/*TÍTULOS Y TEXTOS*/
+/*Título principal con efecto degradado*/
 .tittle {
     font-family: "Anton SC", sans-serif;
     font-size: clamp(38px, 27px, 50px);
@@ -106,6 +128,7 @@
     letter-spacing: 2px;
 }
 
+/*Línea decorativa debajo del título*/
 .spaceLine {
     margin-bottom: 40px;
 }
@@ -118,6 +141,8 @@
     width: 163px;
 }
 
+/*FORMULARIOS*/
+/*Contenedor de inputs*/
 .infoBox {
     display: flex;
     align-items: center;
@@ -129,6 +154,7 @@
     height: 300px;
 }
 
+/*Fila de label + input*/
 .regisInfo {
     display: flex;
     justify-content: space-between;
@@ -143,6 +169,7 @@
     font-size: clamp(10px, 15px, 30px);
 }
 
+/*Estilo general de inputs*/
 input {
     color: black;
     -webkit-text-fill-color: black;
@@ -155,8 +182,12 @@ input {
     padding: 0 0 0 5px;
     height: 28px;
     width: 443px;
+    text-overflow: ellipsis !important;
 }
 
+
+/*BOTONES*/
+/*Contenedor de botones*/
 .spaceButton {
     display: flex;
     justify-content: center;
@@ -168,6 +199,7 @@ input {
     margin: 0;
 }
 
+/*Botón principal*/
 .buttonRegist {
     cursor: pointer;
     font-family: "Poppins", sans-serif;
@@ -184,6 +216,8 @@ input {
     z-index: 1000;
 }
 
+/*BLOQUES DE SEPARADORES*/
+/*Contenedor para dividir secciones con líneas y letra O*/
 .division {
     display: flex;
     align-items: center;
@@ -192,12 +226,14 @@ input {
     width: 100%;
 }
 
+/*Línea horizontal de la división*/
 .line1 {
     background: #6e6d6d8c;
     width: 68px;
     height: 1px;
 }
 
+/*Letra central O en la división*/
 .letter {
     font-size: 13px;
     color: #6e6d6d57;
@@ -205,21 +241,28 @@ input {
     margin: 13px 0 13px 0;
 }
 
+
+/*ICONOS DE REDES SOCIALES*/
+/*Contenedor de botones sociales*/
 .socialAuth {
     display: flex;
     justify-content: space-evenly;
     width: 20%;
 }
 
+/*Iconos individuales*/
 .social {
     transition: transform 0.2s ease;
     width: 30px;
 }
 
+/*Escala el icono al pasar el cursor*/
 .social:hover {
     transform: scale(1.15);
 }
 
+/*SECCIÓN DE TÉRMINOS Y CHECKBOX*/
+/*Contenedor de términos de uso con checkbox*/
 .terms {
     display: flex;
     justify-content: space-evenly;
@@ -229,11 +272,13 @@ input {
     width: 220px;
 }
 
+/*Checkbox pequeño*/
 .checkbox {
     width: 15px;
     margin: 0 0 0 0;
 }
 
+/*Mensajes de error o alerta*/
 .textTerms {
     color: #fa7171;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -241,22 +286,27 @@ input {
     margin: 10px 0 0 0;
 }
 
+/*Ajuste específico de textos en campos*/
 .textFields {
     font-weight: normal;
     margin: 0 0 0 54px;
     width: 237px;
 }
 
-#requieFields {
+/*Margen adicional para mensajes de requerimiento*/
+#requieFields,
+#requieFields2 {
     margin: 10px 0 0 54px;
 }
 
+/*Span decorativo dentro de textos*/
 span {
     font-size: 12px;
     margin-right: 4px;
     color: white;
 }
 
+/*Estilos para links dentro de términos*/
 a {
     font-size: 12px;
     cursor: pointer;
@@ -264,6 +314,7 @@ a {
     color: #00BBFF;
 }
 
+/*LÍNEAS DECORATIVAS VERTICALES*/
 .line2 {
     background: linear-gradient(150deg, #00D9FF, #EA02FF);
     top: 0;
@@ -287,11 +338,13 @@ a {
 }
 
 /*INICIO DE CSS DE LOGIN*/
+/*Fondo blanco centrado*/
 #WhiteBackg {
     display: flex;
     justify-content: center;
 }
 
+/*Título de pregunta/indicación en login o registro*/
 .questionTittle {
     font-family: "Anton SC", sans-serif;
     font-size: clamp(38px, 27px, 50px);
@@ -301,12 +354,14 @@ a {
     -webkit-text-fill-color: transparent;
 }
 
+/*Sección de login con fondo degradado e imagen*/
 #loginSection {
     background:
         linear-gradient(90deg, #f5f5f500 40%, #000 40%),
         url("https://res.cloudinary.com/ddvjgyi3f/image/upload/v1764471004/Gemini_Generated_Image_nk3tv7nk3tv7nk3t-removebg-preview_3_cvled4.png") no-repeat -19px -10px / 750px;
 }
 
+/*Contenedor blanco interno en login*/
 #WhiteBackgLogin {
     display: flex;
     justify-content: center;
@@ -314,6 +369,7 @@ a {
     width: 40%;
 }
 
+/*Títlo de sección blanca dentro de login*/
 #Whitetittle {
     font-size: clamp(38px, 27px, 50px);
     background: linear-gradient(90deg, rgb(48, 48, 48) 0%, #AFA9A9 100%);
@@ -321,6 +377,7 @@ a {
     -webkit-text-fill-color: transparent;
 }
 
+/*Contenedor negro dentro del login*/
 #BlackBackgLogin {
     display: flex;
     justify-content: center;
@@ -328,11 +385,12 @@ a {
     width: 1140px;
 }
 
-
+/*Contenedor de inputs dentro del login*/
 #infoLogin {
     height: 189px;
 }
 
+/*Ajustes de títulos y líneas en login*/
 #tittleLogin {
     margin: 0 0 0 0;
 }
@@ -346,14 +404,17 @@ a {
     width: 204px;
 }
 
+/*Contenedor de fila de login*/
 #loginP {
     width: 740px;
 }
 
+/*Espacio para botón de login*/
 #spaceButtonLogin {
     margin: 0 0 0 0;
 }
 
+/*Estilo para los términos en login*/
 .termsUse {
     display: flex;
     justify-content: center;
@@ -367,10 +428,12 @@ a {
     height: 63px;
 }
 
+/*Contenedor de división inferior en login*/
 #divisionLogin {
     height: 50px;
 }
 
+/*Posición de líneas verticales en login*/
 #line2Login {
     left: 40.2%;
 }
@@ -379,6 +442,8 @@ a {
     left: 40%;
 }
 
+/*MODALES*/
+/*Fondo oscuro del modal*/
 .modal {
     display: flex;
     justify-content: center;
@@ -391,11 +456,13 @@ a {
     transition: opacity 0.3s ease;
 }
 
+/*Oculta el modal*/
 .modal.hidden {
     display: none;
     opacity: 0;
 }
 
+/*Contenido interno del modal*/
 .modalContent {
     display: flex;
     flex-direction: column;
@@ -498,11 +565,13 @@ h3 {
     border: #04C9FF 1px solid;
 }
 
+/*CAMPOS DE CÓDIGO DE VERIFICACIÓN*/
 #spaceInputs {
     display: flex;
     justify-content: space-around;
 }
 
+/*Inputs pequeños para código*/
 .inputs {
     text-align: center;
     height: 31px;
@@ -510,6 +579,7 @@ h3 {
     padding: 0 0 0 0;
 }
 
+/*INICIA MEDIA QUERIES*/
 @media(min-width: 1720px) {
     .authClass {
         display: flex;

@@ -1,3 +1,5 @@
+/*SECCIÓN PRINCIPAL SUSCRIPCIONES*/
+/*Contenedor general de toda la sección*/
 .content-subscriptions {
     display: flex;
     flex-direction: column;
@@ -7,6 +9,7 @@
     height: 800px;
 }
 
+/*CONTENEDOR DE LAS TARJETAS*/
 .box-card {
     display: flex;
     justify-content: space-evenly;
@@ -15,6 +18,17 @@
     height: 550px;
 }
 
+.title-record{
+    font-size: 36px;
+    letter-spacing: 1px;
+    font-family: "Anton SC", sans-serif;
+    background-image: linear-gradient(to bottom, #A9A9A9 10%, #282828 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/*TARJETAS DE SUSCRIPCIÓN*/
 .card-sus {
     display: flex;
     flex-direction: column;
@@ -29,14 +43,17 @@
     z-index: 1;
     border-radius: 20px;
     overflow: hidden;
+    /*Animación cuando el usuario pasa el mouse*/
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/*Efecto hover para tarjeta */
 .card-sus:hover {
     transform: scale(1.03);
     box-shadow: 1px 1px 10px 11px rgba(255, 191, 239, 0.43)
 }
 
+/*Capa externa con degradado*/
 .card-sus::before {
     content: '';
     position: absolute;
@@ -46,12 +63,15 @@
     bottom: 0;
     z-index: -2;
     border-radius: 20px;
+    /*Degradado diagonal rojo-morado*/
     background: linear-gradient(135deg,
             #DF2B2E,
             #8E19DB);
+    /*Brillo externo*/
     filter: drop-shadow(0 0 10px rgba(223, 43, 46, 0.7));
 }
 
+/*Capa interna que simula el fondo real de la tarjeta*/
 .card-sus::after {
     content: '';
     position: absolute;
@@ -64,6 +84,8 @@
     border-radius: 13px;
 }
 
+/*ELEMENTOS INTERNOS*/
+/*Línea decorativa debajo del título del plan*/
 .line-susbsc {
     background: linear-gradient(to right,
             #FF00FB,
@@ -73,31 +95,37 @@
     height: 7px;
 }
 
+/*Precio*/
 .cost {
     font-size: 26px;
     font-family: 'Poppins', sans-serif;
 }
 
+/*Número grande del precio*/
 .size-number {
     font-size: 36px;
 }
 
+/*Texto "Mensual"*/
 .type {
     font-size: 26px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
 }
 
+/*Imagen central decorativa*/
 #img-avatar {
     width: 400px;
 }
 
+/*Título del plan (Basic/Premium)*/
 .suntitle-subsc {
     font-size: 46px;
     font-family: 'Anton SC', sans-serif;
     letter-spacing: 1px;
 }
 
+/*Contenedor del bloque de precio*/
 .price-field {
     display: flex;
     flex-direction: column;
@@ -106,6 +134,7 @@
     height: 170px;
 }
 
+/*Lista de beneficios*/
 .information-field {
     display: flex;
     flex-direction: column;
@@ -113,6 +142,7 @@
     height: 130px;
 }
 
+/*Estilo de los textos dentro de la lista*/
 li {
     list-style: none;
     font-family: 'Poppins', sans-serif;
@@ -120,26 +150,31 @@ li {
     margin: 0 0 0 20px;
 }
 
+/*Contenedor que agrupa ícono + texto*/
 .space {
     display: flex;
     width: 100%;
 }
 
+/*Ícono de beneficio incluido*/
 .icons {
     width: 27px;
 }
 
+/*Ícono alternativo (por ejemplo, no incluido)*/
 .iconss {
     width: 21px;
     margin: 0 6px 0 0;
 }
 
+/*BOTÓN DE SUSCRIPCIÓN*/
 .button-subscription {
     width: 80%;
     height: 60px;
     border: none;
     border-radius: 15px;
     cursor: pointer;
+    /*Degradado*/
     background: linear-gradient(90deg, #ff00ff, #ff9900);
     color: #000;
     font-family: 'Poppins', sans-serif;
@@ -148,6 +183,7 @@ li {
     letter-spacing: 1px;
 }
 
+/*LÍNEA SUPERIOR DECORATIVA*/
 .line {
     width: 100%;
     height: 4px;
@@ -155,8 +191,8 @@ li {
     margin: 30px 0 0 0;
 }
 
+/*INICIO DE MEDIA QUERIES*/
 @media (max-width: 1279px) {
-
     .card-sus {
         width: 350px;
         height: 500px;

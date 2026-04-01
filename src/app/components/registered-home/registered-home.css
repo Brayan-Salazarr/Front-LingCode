@@ -1,9 +1,11 @@
+/*Contenedor principal que organiza las secciones Target y Streak horizontalmente*/
 .content-target-streak {
     display: flex;
     justify-content: space-around;
     margin: 0 0 100px 0;
 }
 
+/*Contenedor vertical general para cada bloque*/
 .content-box {
     display: flex;
     flex-direction: column;
@@ -12,6 +14,7 @@
     height: 750px;
 }
 
+/*Subtítulo con estilo llamativo usando degradado*/
 .subTitle {
     font-family: "Anton SC", sans-serif;
     font-size: 3em;
@@ -24,6 +27,7 @@
 
 }
 
+/*Tarjera principal del target con borde degradado*/
 .target-box {
     display: flex;
     flex-direction: column;
@@ -39,6 +43,7 @@
     height: 600px;
 }
 
+/*Contenedor superior con elementos alineados horizontalmente*/
 .box-up {
     display: flex;
     width: 80%;
@@ -49,12 +54,14 @@
     width: 100px;
 }
 
+/*Título principal del Target*/
 .title-target {
     font-size: 36px;
     font-family: "Anton SC", sans-serif;
     letter-spacing: 1px;
 }
 
+/*Imagenes decorativas*/
 #img-gitHub {
     width: 300px;
 }
@@ -68,22 +75,22 @@
     width: 200px;
 }
 
-.box-title {
-    justify-content: end;
-}
-
+/*Contenedor del título y texto dentro del Target*/
 .box-title {
     display: flex;
     flex-direction: column;
+    justify-content: end;
     margin: 0 20% 0 0;
 }
 
+/*Texto descriptivo del objetivo o meta*/
 #text-target {
     font-size: 18px;
     font-family: "Poppins", sans-serif;
     font-weight: bold;
 }
 
+/*Botón interactivo con efecto de presión*/
 .button-target {
     color: white;
     background-color: rgba(61, 61, 61, 1);
@@ -99,11 +106,13 @@
     transform: translateY(0);
 }
 
+/*Efecto cuando el usuario presiona el botón*/
 .button-target:active {
     transform: translateY(4px);
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
 }
 
+/*Contenedor externo del Streak con forma personalizada*/
 .border-streak {
     background-color: #0099ff;
     width: 600px;
@@ -113,6 +122,7 @@
     border-radius: 30px;
 }
 
+/*Contenido interno del streak*/
 .content-streak {
     display: flex;
     flex-direction: column;
@@ -128,24 +138,27 @@
     border-radius: 30px;
 }
 
+/*Número grande que muestra el streak*/
 #streak {
     font-size: 11em;
     font-family: "Anton SC", sans-serif;
 }
 
+/*Contenedor que agrupa imágenes dentro de la sección streak*/
 .box-img {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
+/*Título de la sección streak con efecto degradado*/
 #title-streak {
     position: relative;
     font-family: "Anton SC", sans-serif;
     font-weight: bold;
     font-size: 34px;
     letter-spacing: 1px;
-    top: 10vh;
+    top: 85px;
     background-image: linear-gradient(to bottom,
             #a0a0a0 50%,
             #696969 70%);
@@ -154,6 +167,7 @@
     background-clip: text;
 }
 
+/*Sección de progreso general*/
 .content-progress {
     display: flex;
     justify-content: space-around;
@@ -162,34 +176,60 @@
     height: 650px;
 }
 
+/*Barra base del progreso*/
 .progress-bar {
+    position: relative;
     width: 100%;
     height: 70px;
     background-color: #e0e0e0;
     border-radius: 15px;
-    overflow: hidden;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+
 }
 
+.energy-timer {
+  font-size: 14px;
+  color: white;
+  margin-top: 5px;
+}
+
+/*Barra que representa el progreso actual con animación*/
 .progress-fill {
     display: flex;
     align-items: center;
     color: black;
     height: 70px;
-    margin: 0 0 0 10px;
-    background-image: linear-gradient(45deg,
-            rgba(255, 255, 255, 0.15) 25%,
-            transparent 25%,
-            transparent 50%,
-            rgba(255, 255, 255, 0.15) 50%,
-            rgba(255, 255, 255, 0.15) 75%,
-            transparent 75%,
-            transparent);
-    background-size: 40px 40px;
-    animation: move-stripes 2s linear infinite;
-    position: absolute;
+    border-radius: 15px;
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 15px rgba(79, 172, 254, 0.4);
+    overflow: hidden;
+    position: relative;
 }
 
+/* El brillo */
+.progress-fill::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+/*Contenedor que agrupa la información de energía*/
 .box-energy {
     display: flex;
     flex-direction: column;
@@ -199,26 +239,31 @@
     height: 100%;
 }
 
+/*Fila que contiene los indicadores o valores de energía*/
 .field {
     display: flex;
     justify-content: space-evenly;
     width: 200px;
 }
 
+/*Imagen de robot*/
 #cybro-energy {
     width: 450px;
 }
 
+/*Imagen que representa energía*/
 #img-energy {
     height: 50px;
 }
 
+/*Animación que mueve el patrón*/
 @keyframes move-stripes {
     100% {
         background-position: 40px 0;
     }
 }
 
+/*Título principal de la sección de progreso*/
 .title-progress {
     font-size: 36px;
     font-family: "Anton SC", sans-serif;
@@ -226,6 +271,7 @@
     color: #20BAE4;
 }
 
+/*Contenedor que agrupa toda la información del progreso*/
 .box-progress {
     display: flex;
     justify-content: space-evenly;
@@ -234,16 +280,24 @@
     height: 500px;
 }
 
+/*Elemento que muestra el porcentaje visual*/
 #percentage {
     width: 85px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.6s ease;
+    z-index: 10;
 }
 
+/*Texto que muestra el porcentaje de progreso con estilo degradado*/
 #progress {
     display: flex;
     justify-content: center;
     font-family: "Anton SC", sans-serif;
     letter-spacing: 1px;
     font-size: 30px;
+    /*Degradado aplicado al texto*/
     background-image: linear-gradient(to right,
             #d3d3d3 0%,
             #a9a9a9 30%,
@@ -255,15 +309,18 @@
     font-weight: bold;
 }
 
+/*Texto que muestra el estado actual*/
 #state {
     font-size: 30px;
     font-family: "Poppins", sans-serif;
 }
 
+/*Título de la sección de energía con efecto degradado*/
 #tilte-energy {
     font-size: 30px;
     font-family: "Anton SC", sans-serif;
     letter-spacing: 1px;
+    /*Degradado aplicado al texto*/
     background-image: linear-gradient(to right,
             #818080 5%,
             #585858 100%);
@@ -273,6 +330,7 @@
     font-weight: bold;
 }
 
+/*Clase que aplica un color diferente para destacar texto importante*/
 .different-color {
     font-family: "Anton SC", sans-serif;
     font-weight: bold;
@@ -285,6 +343,7 @@
     background-clip: text;
 }
 
+/*Línea decorativa*/
 .line {
     width: 100%;
     height: 4px;
@@ -296,6 +355,7 @@
     margin: 0 0 80px 0;
 }
 
+/*Contenedor principal de la sección de records*/
 .content-record {
     display: flex;
     flex-direction: column;
@@ -304,18 +364,20 @@
     height: 350px;
 }
 
+/*Contenedor que agrupa las tarjetas de records*/
 .box-record {
     display: flex;
     justify-content: space-around;
     width: 100%;
 }
 
+/*Tarjetas de logros o records*/
 .card {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     width: 400px;
-    height: 200px;
+    height: 255px;
     padding: 20px;
     border: 2px solid black;
     border-radius: 10px;
@@ -323,6 +385,7 @@
     transition: box-shadow 0.3s;
 }
 
+/*Título del tipo de logro o práctica*/
 .practical-degree {
     font-size: 23px;
     margin-bottom: 20px;
@@ -330,19 +393,23 @@
     font-family: 'Anton SC', sans-serif;
 }
 
+/*Texto descriptivo dentro de la tarjeta de record*/
 .text-record {
     margin: 5px 0;
     font-size: 16px;
 }
 
+/*Estilo cuando el logro está completado*/
 .tarjeta.completada {
     box-shadow: 0 0 0 4px black;
 }
 
+/*Estilo cuando está pendiente*/
 .tarjeta.pendiente {
     box-shadow: 0 0 0 2px black, 0 0 0 4px #ff00ff;
 }
 
+/*Contenedor interno que organiza el contenido del record en columna*/
 .content {
     display: flex;
     flex-direction: column;
@@ -350,20 +417,24 @@
     height: 136px;
 }
 
+/*Texto que muestra el resultado o estado*/
 .results {
     font-size: 20px;
     font-weight: normal;
 }
 
+/*Texto principal del record (más destacado)*/
 .text-record {
     font-size: 22px;
     font-family: "Poppins", sans-serif;
 }
 
+/*Título de la sección de records con efecto degradado*/
 .title-record {
     font-size: 36px;
     letter-spacing: 1px;
     font-family: 'Anton SC', sans-serif;
+    /*Degradado aplicado al texto*/
     background-image: linear-gradient(to bottom,
             #A9A9A9 10%,
             #282828 100%);
@@ -372,6 +443,7 @@
     background-clip: text;
 }
 
+/*Contenedor general de logros*/
 .content-achievement {
     display: flex;
     flex-direction: column;
@@ -384,6 +456,8 @@
     margin: 150px 0 0 0;
 }
 
+/*Contenedor principal de los logros.
+Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no caben*/
 .field-achievements {
     display: flex;
     justify-content: space-around;
@@ -392,6 +466,7 @@
     height: 400px;
 }
 
+/*Tarjeta individual de cada logro*/
 .achievement-card {
     display: flex;
     align-items: center;
@@ -400,19 +475,23 @@
     gap: 15px;
     padding: 15px 30px;
     border-radius: 12px;
+    color: white;
     max-width: 400px;
     min-height: 70px;
     background-color: #000;
     border: 1px solid;
+    font-family: 'Poppins', sans-serif;
     transition: box-shadow 0.3s ease;
 }
 
+/*Texto descriptivo del logro*/
 .message-achievement {
     color: #fff;
     font-family: 'Poppins', sans-serif;
     font-size: 25px;
 }
 
+/*Contenedor del ícono para centrarlo correctamente*/
 .container-icon {
     display: flex;
     align-items: center;
@@ -422,17 +501,19 @@
     padding: 5px;
 }
 
+/*Tamaño específico cuando el icono tiene ambas clases*/
 .achievement-icon.icon {
     height: 65px;
 }
 
+/*Tamaño general de los iconos de logros*/
 .achievement-icon {
     width: 80px;
     height: 80px;
 }
 
+/*INICIO DE MEDIA QUERIES*/
 @media (max-width: 1279px) {
-
     .content-box {
         justify-content: start;
         gap: 56px;
@@ -481,6 +562,13 @@
         height: 73px;
     }
 
+    .box-progress {
+        padding: 0 70px 0 0;
+    }
+
+    .content-progress {
+        padding: 75px;
+    }
 }
 
 @media (max-width: 1086px) {
@@ -782,6 +870,10 @@
         align-items: center;
         gap: 40px;
     }
+
+    .box-progress {
+        padding: 0;
+    }
 }
 
 @media (max-width: 600px) {
@@ -964,5 +1056,47 @@
 
     .content-achievement {
         padding: 20px 26px 50px 26px
+    }
+}
+
+@media(max-width: 350px) {
+    .subTitle {
+        font-size: 32px;
+    }
+
+    .target-box {
+        width: 270px;
+    }
+
+    .border-streak {
+        width: 270px;
+    }
+
+    #streak {
+        font-size: 95px;
+    }
+
+    #img-Cybro {
+        width: 180px;
+    }
+
+    .title-progress {
+        font-size: 23px;
+    }
+
+    .card {
+        width: 215px;
+    }
+
+    .text-record {
+        font-size: 15px;
+    }
+
+    .results {
+        font-size: 15px;
+    }
+
+    .achievement-card {
+        font-size: 15px;
     }
 }

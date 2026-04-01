@@ -6,21 +6,30 @@ import { AuthService, User } from '../../auth/services/authService';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { Subscriptions } from '../../shared/components/subscriptions/subscriptions';
+import { ProgressService } from '../../service/progress-service';
+import { Observable } from 'rxjs';
+import { ProgressResponse } from '../../models/progressResponse';
+import { EnergyService } from '../../service/energy-service';
+import { PracticeHistory } from '../../models/practiceHistory';
 
+//INTERFACES PARA TIPADO
+//Representa cada práctica o módulo que el usuario puede realizar
 interface Practica {
-  modulo: string;
-  resultado: string;
-  fecha: string;
-  estado: 'completado' | 'pendiente';
+  modulo: string; //Nombre del módulo
+  resultado: string; //Resultado o progreso en porcentaje
+  fecha: string; //Fecha de realización
+  estado: 'completado' | 'pendiente'; //Estado de la práctica
 }
 
+//Representa cada logro o recompensa del usuario
 interface Logro {
-  icono: string; // Clase CSS para el ícono (ej: fa-check, fa-fire, ruta de imagen)
-  mensaje: string;
-  bordeColor: string;
-  classIcon?: string; 
+  icono: string; // URL de la imagen o clase CSS del ícono del logro
+  mensaje: string; //Texto descriptivo del logro
+  bordeColor: string; //Color del borde para destacar el logro
+  classIcon?: string; //Clase CSS opcional para personalizar el ícono 
 }
 
+//COMPONENTE PRINCIPAL
 @Component({
   selector: 'app-registered-home',
   imports: [Nav, Header, Footer, RouterModule, CommonModule, Subscriptions],
@@ -28,14 +37,33 @@ interface Logro {
   styleUrl: './registered-home.css',
 })
 export class RegisteredHome {
-   user: User | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {
+  //Información del usuario actual (puede ser null si no hay usuario logueado)
+  user: User | null = null;
+
+  progress$!: Observable<ProgressResponse | null>;
+
+  energy$!: Observable<number>;
+
+  remainingTime$!: Observable<number>;
+
+  practice: PracticeHistory[] = [];
+
+  constructor(private authService: AuthService, //Servicio de autenticación para obtener el usuario.
+    //Router para navegación programática
+    private router: Router,
+
+    private progressService: ProgressService,
+
+    private energyService: EnergyService
+  ) {
+    //Nos suscribimos al observable del usuario actual
     this.authService.currentUser$.subscribe(user => {
-      this.user = user;
+      this.user = user; //Guardamos los datos del usuario en la variable 'user'
     });
   }
 
+  //DATOS DE PRÁCTICAS
   practicas: Practica[] = [
     {
       modulo: 'GitHub',
@@ -47,11 +75,12 @@ export class RegisteredHome {
       modulo: 'MySQL',
       resultado: '0%',
       fecha: '00/00/0000',
-      estado: 'pendiente' 
+      estado: 'pendiente'
     }
-   
+
   ];
 
+  //DATOS DE LOGROS
   logros: Logro[] = [
     {
       icono: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765857108/image-removebg-preview_6_1_jcpsse.png', // Asumiendo que usarás algún sistema de íconos o rutas
@@ -62,7 +91,7 @@ export class RegisteredHome {
       icono: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765857109/image-removebg-preview_1_mx3asn.png',
       mensaje: '¡Lograste una racha de 3 días!',
       bordeColor: '#00ffff',
-      classIcon: 'icon'
+      classIcon: 'icon' //Clase CSS personalizad para este ícono
     },
     {
       icono: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765857109/image-removebg-preview_4_1_xggd4v.png',
@@ -70,16 +99,73 @@ export class RegisteredHome {
       bordeColor: '#00ffff'
     },
     {
-      icono: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765857110/image-removebg-preview_5_1_a2scpd.png', 
+      icono: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765857110/image-removebg-preview_5_1_a2scpd.png',
       mensaje: '¡Hiciste 5 actividades sin errores!',
       bordeColor: '#00ffff'
     }
   ];
 
 
-   ngOnInit(): void {
+  //MÉTODOS DEL COMPONENTE
+  ngOnInit(): void {
+    //Si el usuario no está autenticado. redirigimos al login
     if (!this.authService.isAuthenticated()) {
       this.router.navigate(['/login-registro'], { queryParams: { view: 'login' } });
+      return;
     }
+
+
+    this.energy$ = this.energyService.energy$;
+    this.remainingTime$ = this.energyService.remainingTime$;
+
+    const userId = this.authService.getCurrentUser()?.userId;
+    if (!userId) return;
+
+    this.progress$ = this.progressService.getProgress(userId);
+
+    this.progressService.getHistory(userId).subscribe(history => {
+
+      const moduleCount: { [key: string]: number } = {};
+
+      this.practice = history
+        .sort((a, b) => new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime())
+        .map(item => {
+
+          if (!moduleCount[item.moduleName]) {
+            moduleCount[item.moduleName] = 1;
+          } else {
+            moduleCount[item.moduleName]++;
+          }
+
+          return {
+            modulo: item.moduleName,
+            lessonName: 'Lección ' + moduleCount[item.moduleName],
+            resultado: item.progress + '%',
+            fecha: new Date(item.updatedAt).toLocaleDateString()
+          };
+        });
+
+    });
   }
+
+  onLessonCompleted(lessonId: string, xp: number) {
+    this.progressService.completeLesson(lessonId, xp).subscribe();
+  }
+
+  getSafeProgress(progressPercent: number | undefined): number {
+    if (!progressPercent) return 5;
+    return Math.min(progressPercent, 95);
+  }
+
+  formatTime(ms: number | null): string {
+
+    if (!ms) return '0:00';
+
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  }
+
 }

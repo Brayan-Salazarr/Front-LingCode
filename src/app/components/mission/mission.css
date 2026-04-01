@@ -1,3 +1,5 @@
+/*SECCIÓN GENERAL DE CONTENIDO*/
+/*Cada sección ocupa un bloque vertical con espacios distribuidos equitativamente*/
 section {
     display: flex;
     flex-direction: column;
@@ -5,11 +7,21 @@ section {
     margin: 0 0 100px 0;
 }
 
+/*Contenedor específico para información de la misión*/
 .mission-information {
     display: flex;
     justify-content: end;
 }
 
+.subtitle {
+    color: #20BAE4;
+    font-family: "Anton SC", sans-serif;
+    font-size: 48px;
+    letter-spacing: 1px;
+    width: 94%;
+}
+
+/*Estilo de texto principal dentro de la sección*/
 .text {
     font-family: "Poppins", sans-serif;
     width: 52vw;
@@ -17,13 +29,15 @@ section {
     margin: 0 80PX 0 0;
 }
 
+/*Línea decorativa horizontal con degradado*/
 .line {
-    background: linear-gradient(to left, rgba(255, 161, 9, 0.5), rgba(255, 0, 251, 0.5));
+    background: linear-gradient(to left, rgba(0, 217, 255, 1), rgba(202, 75, 214, 1));
     height: 10px;
     width: 60vw;
     border-radius: 30px;
 }
 
+/*Contenedor de separación para agrupar elementos de forma centrada y vertical*/
 .separation {
     display: flex;
     flex-direction: column;
@@ -33,6 +47,8 @@ section {
     width: 60vw;
 }
 
+/*CONTENEDORES TRIANGULARES DECORATIVOS*/
+/*Contenedor principal con forma de triángulo usando clip-path*/
 .container-with-triangle {
     position: relative;
     width: 90vw;
@@ -44,6 +60,7 @@ section {
     margin-top: 50px;
 }
 
+/*Segundo contenedor triangular decorativo*/
 .container-with-triangle1 {
     position: absolute;
     top: 1340px;
@@ -51,6 +68,7 @@ section {
     height: 943px;
 }
 
+/*Capa antes (::before) para borde en el contenedor*/
 .container-with-triangle1::before {
     content: '';
     position: absolute;
@@ -63,6 +81,7 @@ section {
     z-index: 1;
 }
 
+/*Capa después (::after) para rellenar con negro*/
 .container-with-triangle1::after {
     content: '';
     position: absolute;
@@ -76,15 +95,19 @@ section {
     z-index: 2;
 }
 
+/*TEXTO PRINCIPAL SOBRE TRIÁNGULOS*/
+/*Texto absoluto dentro de contenedor triangular*/
 #text {
     position: absolute;
     color: white;
     top: 24%;
+    font-size: 33px;
     width: 45vw;
     margin: 0 0 0 7vw;
     z-index: 10;
 }
 
+/*HEXÁGONOS DECORATIVOS*/
 .hexagon3 {
     width: 46px;
     height: 51px;
@@ -139,14 +162,15 @@ section {
     transform: rotate(90deg);
 }
 
+/*INICIO DE MEDIA QUERIES*/
 @media (min-width: 1538px) {
-
     .container-with-triangle {
-        height: 1095px;
+        height: 1065px;
+        top: -77px;
     }
 
     .container-with-triangle1 {
-        top: 1545px;
+        top: 1548px;
     }
 
     .container-with-triangle1::before {
@@ -158,7 +182,7 @@ section {
     }
 
     #text {
-        top: 22%;
+        top: 23%;
     }
 
     .hexagon3 {
@@ -166,11 +190,7 @@ section {
     }
 
     .separation {
-        height: 266px;
-    }
-
-    #text {
-        top: 18%;
+        height: 370px;
     }
 
     .hexagon5 {
@@ -179,33 +199,57 @@ section {
 }
 
 @media (max-width: 1537px) {
+    .subtitle {
+        font-size: 38px;
+    }
+
     .text {
         font-size: 24px;
+    }
+
+    #text {
+        top: 23%;
+        font-size: 24px;
+    }
+
+    .separation {
+        height: 260px;
+    }
+
+    .container-with-triangle1 {
+        top: 1376px;
     }
 }
 
 @media (max-width: 1366px) {
     .separation {
         align-items: end;
-        height: 213px;
+        gap: 26px;
+        justify-content: normal;
         width: 70vw;
     }
 
     .container-with-triangle1 {
-        top: 1333px;
+        top: 1380px;
+    }
+
+    .subtitle {
+        font-size: 35px;
     }
 
     .text {
+        font-size: 22px;
         margin: 0 80px 0 0;
         width: 60vw;
     }
 
     .line {
-        width: 928px;
+        width: 100%;
     }
 
     #text {
-        top: 21%;
+        font-size: 22px;
+        top: 23%;
     }
 }
 
@@ -214,19 +258,55 @@ section {
         width: 100%;
     }
 
-    #text,
     .text {
         font-size: 22px;
+    }
+
+    #text {
+        font-size: 22px;
+        width: 44vw;
+    }
+
+    .separation {
+        height: 300px;
+    }
+
+    .container-with-triangle {
+        height: 915px;
+        margin-top: 22px;
+    }
+
+    .container-with-triangle1 {
+        height: 824px;
+        top: 1394px;
+    }
+
+    .container-with-triangle1::after {
+        height: 834px;
+    }
+
+    .hexagon3 {
+        top: 465px;
+    }
+
+    .subtitle {
+        width: 60vw;
+        margin: 0 80px 0 0;
     }
 }
 
 @media (max-width: 920px) {
+    section {
+        margin: 0;
+    }
+
     .container-with-triangle {
-        height: 749px;
+        height: 600px;
     }
 
     .separation {
-        height: 125px;
+        height: 230px;
+        gap: 18px;
     }
 
     .line {
@@ -234,14 +314,13 @@ section {
     }
 
     .container-with-triangle1 {
-        top: 905px;
-        height: 641px;
+        top: 947px;
+        height: 560px;
     }
 
     .container-with-triangle1::after {
-        height: 654px;
+        height: 573px;
     }
-
 
     .text {
         margin: 0 64px 0 0;
@@ -250,19 +329,24 @@ section {
 
     #text {
         font-size: 15px;
-        top: 14%;
+        top: 9%;
+    }
+
+    .subtitle {
+        margin: 0 64px 0 0;
+        font-size: 20px;
     }
 
     .hexagon6 {
         width: 35px;
         height: 41px;
-        top: 6px;
+        top: -39px;
     }
 
     .hexagon5 {
         width: 38px;
         height: 45px;
-        top: 30px;
+        top: -15px;
     }
 
     .hexagon3 {
@@ -273,15 +357,20 @@ section {
 }
 
 @media (max-width: 768px) {
-
     .text {
         width: 82%;
         font-size: 16px;
     }
 
     #text {
-        width: 330px;
-        top: 12%;
+        font-size: 16px;
+        width: 300px;
+        top: 7%;
+    }
+
+    .subtitle {
+        width: 82%;
+        font-size: 23px;
     }
 
     .hexagon5 {
@@ -299,41 +388,56 @@ section {
     .hexagon3 {
         width: 30px;
         height: 37px;
-        top: 294px;
+        top: 240px;
     }
 
     .separation {
-        width: 90%;
-        height: 173px;
+        width: 93%;
     }
 
     .container-with-triangle1 {
-        top: 998px;
-        height: 641px;
+        top: 958px;
+        height: 552px;
         width: 92vw;
     }
 
     .container-with-triangle {
+        height: 604px;
         width: 95vw;
+        top: -40px;
+    }
+
+    .container-with-triangle1::after {
+        top: -179px;
+        height: 560px;
+    }
+
+    section {
+        margin: 0;
     }
 }
 
 @media (max-width: 480px) {
-
     .container-with-triangle {
-        background: transparent;
+        display: none;
     }
 
     .container-with-triangle1 {
-        top: 868px;
+        position: relative;
+        top: 172px;
         width: 100%;
+        height: 560px;
     }
 
-    /*.container-with-triangle1::before,
     .container-with-triangle1::after {
         clip-path: none;
+        left: 0;
+        height: 560px;
+    }
 
-    }*/
+    .container-with-triangle1::before {
+        content: none;
+    }
 
     .mission-information {
         justify-content: center;
@@ -348,7 +452,8 @@ section {
     #text {
         font-size: 18px;
         margin: 0 0 0 25px;
-        width: 286px;
+        width: 90%;
+        top: 0%;
     }
 
     .separation {
@@ -362,6 +467,57 @@ section {
     }
 
     .hexagon3 {
-        top: 337px;
+        top: 265px;
+    }
+
+    .hexagon5 {
+        top: -128px;
+    }
+
+    .hexagon6 {
+        top: -80px;
+    }
+}
+
+@media (max-width: 430px) {
+
+    .text,
+    #text {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 350px) {
+    .container-with-triangle1::after {
+        top: -110px;
+    }
+
+    .container-with-triangle1 {
+        position: relative;
+        top: 112px;
+    }
+
+    .hexagon3 {
+        top: 370px;
+    }
+
+    #text {
+        top: 8%;
+    }
+
+    .hexagon5 {
+        top: -85px;
+    }
+
+    .hexagon6 {
+        top: -41px;
+    }
+
+    #text {
+        margin: 0 0 0 19px;
+    }
+
+    .separation {
+        height: 100%;
     }
 }
