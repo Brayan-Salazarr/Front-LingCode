@@ -56,6 +56,7 @@ export class ModuleView {
   selectedLessonId: string | null = null;
 
   loading = true;
+  isDownloading = false;
 
   constructor(
     public authService: AuthService,
@@ -245,39 +246,55 @@ export class ModuleView {
 
   downloadGuie(module: ModuleViewModel) {
 
-  console.log("MODULE RECIBIDO:", module);
+    console.log("MODULE RECIBIDO:", module);
 
-  const user = this.authService.getCurrentUser();
+    const user = this.authService.getCurrentUser();
+    let path = '';
 
-  let path = '';
+    // 🔎 Construimos el path primero
+    if (module.title?.toLowerCase().includes('git')) {
+      path = user
+        ? 'git/git-guide-full-github.pdf'
+        : 'git/git-guide-preview.pdf';
+    }
 
-  // 🔎 SOLO PARA PROBAR
-  if (module.title?.toLowerCase().includes('git')) {
-    path = user
-      ? 'git/git-guide-full-github.pdf'
-      : 'git/git-guide-preview.pdf';
-  }
+    if (module.title?.toLowerCase().includes('mysql')) {
+      path = 'mysql/mysql-guide-full.pdf';
+    }
 
-  if (module.title?.toLowerCase().includes('mysql')) {
-    path = 'mysql/git-guide-full-mysql.pdf';
-  }
+    console.log("PATH FINAL:", path);
 
-  console.log("PATH FINAL:", path);
+    if (!path) {
+      console.error("PATH VACÍO ❌");
+      return;
+    }
 
-  if (!path) {
-    console.error("PATH VACÍO ❌");
-    return;
-  }
+    this.isDownloading = true;
 
-  this.material
-    .getDownloadLink(path)
-    .subscribe({
+    this.material.getDownloadLink(path).subscribe({
       next: (res) => {
-        window.open(res.downloadUrl, '_blank');
+
+        const isPreview = !user;
+
+        if (isPreview) {
+          // Solo visualizar
+          window.open(res.downloadUrl, '_blank');
+        } else {
+          // ⬇ Descargar directamente
+          const link = document.createElement('a');
+          link.href = res.downloadUrl;
+          link.download = module.title + '.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+
+        this.isDownloading = false;
       },
       error: (err) => {
         console.error("ERROR BACKEND:", err);
+        this.isDownloading = false;
       }
     });
-}
+  }
 }
