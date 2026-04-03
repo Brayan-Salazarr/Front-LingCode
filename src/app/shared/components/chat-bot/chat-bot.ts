@@ -5,6 +5,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { filter } from 'rxjs';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../../auth/services/authService';
 
 interface Message {
   text: string;
@@ -21,7 +22,7 @@ interface Message {
 export class ChatBot implements OnInit, OnDestroy {
   @ViewChild('chatBody') chatBody!: ElementRef;
   
-  isOpen = true;
+  isOpen = false;
   showChat = true;
   newMessage = '';
   messages: Message[] = [];
@@ -34,12 +35,13 @@ export class ChatBot implements OnInit, OnDestroy {
   private mediaRecorder: any;
   private audioChunks: Blob[] = [];
   private subscriptions: Subscription[] = [];
-  private baseUrl = 'http://localhost:8081/api/cybro';
+  private baseUrl = 'http://localhost:8088/api/cybro';
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private http: HttpClient,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -54,7 +56,11 @@ export class ChatBot implements OnInit, OnDestroy {
         })
     );
 
-    this.messages.push({ text: 'Hola! Soy Cybro, tu asistente para aprender ingles tecnico. Como te puedo ayudar? Si quieres, puedes usar el microfono para hablarme!', type: 'bot' });
+    const user = this.authService.getCurrentUser();
+    const greeting = user
+      ? `¡Hola, ${user.nickname}! Soy Cybro 🤖, tu asistente de inglés técnico. ¿En qué te puedo ayudar hoy? Puedes usar el micrófono para hablarme!`
+      : '¡Hola! Soy Cybro 🤖, tu asistente de inglés técnico para developers. ¿En qué te puedo ayudar?';
+    this.messages.push({ text: greeting, type: 'bot' });
   }
 
   ngOnDestroy() {
@@ -128,12 +134,17 @@ export class ChatBot implements OnInit, OnDestroy {
     this.interimTranscript = '';
     this.scrollToBottom();
 
-    this.http.post<any>(`${this.baseUrl}/chat`, { message: userText }).subscribe({
+    const user = this.authService.getCurrentUser();
+    const userContext = user ? { nickname: user.nickname, fullName: user.fullName } : null;
+
+    this.http.post<any>(`${this.baseUrl}/chat`, { message: userText, userContext }).subscribe({
       next: (response) => {
         this.messages.push({ text: response.text, type: 'bot' });
         this.cdr.markForCheck();
         this.scrollToBottom();
-        this.checkNavigation(response.text);
+        if (response.navigateTo) {
+          setTimeout(() => this.router.navigate([response.navigateTo]), 500);
+        }
       },
       error: () => {
         this.messages.push({ text: 'Lo siento, no pude procesar tu mensaje.', type: 'bot' });
@@ -213,7 +224,8 @@ export class ChatBot implements OnInit, OnDestroy {
     if (this.isSpeaking) {
       this.stopSpeaking();
     } else {
-      const utterance = new SpeechSynthesisUtterance(text);
+      const spokenText = text.replace(/Cybro/gi, 'Saibro');
+      const utterance = new SpeechSynthesisUtterance(spokenText);
       utterance.lang = 'es-ES';
       utterance.rate = 0.95;
       utterance.onstart = () => {
