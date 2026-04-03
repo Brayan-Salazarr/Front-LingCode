@@ -79,6 +79,22 @@
             <!-- Porcentaje -->
             <p id="progress">{{ (progress$ | async)?.progressPercent ?? 0 }}% Completado</p>
 
+            <!-- Stats de progreso -->
+            <div class="progress-stats" *ngIf="progress$ | async as progress">
+                <div class="stat-item">
+                    <span class="stat-value">{{ progress.totalXp }}</span>
+                    <span class="stat-label">XP Total</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">{{ progress.completedLessons?.length ?? 0 }}</span>
+                    <span class="stat-label">Lecciones</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">{{ progress.longestStreak }}</span>
+                    <span class="stat-label">Mejor racha</span>
+                </div>
+            </div>
+
             <!-- Estado actual del sistema -->
             <p id="state">Sistema Operativo en modo <span class="different-color">Aprendizaje...</span></p>
         </div>
