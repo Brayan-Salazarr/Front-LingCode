@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LessonC, Exercise, Option, MatchPair } from '../components/lesson/lesson';
-import { environment } from '../auth/services/authService';
+import { environment } from '../../environments/environment';
 
 const EXERCISE_TYPE_MAP: Record<string, string> = {
   'MULTIPLE_CHOICE': 'multiple',

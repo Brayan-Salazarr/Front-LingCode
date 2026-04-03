@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface User {
   userId: string;
@@ -13,11 +14,6 @@ export interface User {
   emailVerified?: boolean;
   createdAt?: string;
 }
-
-export const environment = {
-  production: false,
-  apiUrl: 'https://lingcode-api-gateway-1.onrender.com/api/v1',
-};
 
 // Respuesta del backend en POST /auth/login y /auth/refresh
 interface AuthResponse {

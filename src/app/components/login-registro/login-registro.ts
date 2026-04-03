@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { AuthService, environment } from '../../auth/services/authService';
+import { AuthService } from '../../auth/services/authService';
+import { environment } from '../../../environments/environment';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { ChangeDetectorRef } from '@angular/core';

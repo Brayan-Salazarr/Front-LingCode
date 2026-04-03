@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserProgress } from '../models/progress';
-import { AuthService, environment } from '../auth/services/authService';
+import { AuthService } from '../auth/services/authService';
+import { environment } from '../../environments/environment';
 import { ProgressResponse } from '../models/progressResponse';
 
 

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Nav } from '../../shared/components/nav/nav';
 import { Footer } from '../../shared/components/footer/footer';
-import { environment } from '../../auth/services/authService';
+import { environment } from '../../../environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({

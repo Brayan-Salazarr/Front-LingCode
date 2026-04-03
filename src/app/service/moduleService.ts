@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from '../auth/services/authService';
+import { environment } from '../../environments/environment';
 
 /*
   Interfaz que representa la estructura de un módulo
