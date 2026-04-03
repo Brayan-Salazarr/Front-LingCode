@@ -359,15 +359,19 @@
 .content-record {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    height: 350px;
+    gap: 30px;
+    padding: 40px 60px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /*Contenedor que agrupa las tarjetas de records*/
 .box-record {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     width: 100%;
 }
 
@@ -376,13 +380,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 400px;
-    height: 255px;
+    width: 280px;
+    min-height: 220px;
     padding: 20px;
     border: 2px solid black;
     border-radius: 10px;
     box-shadow: 0 0 0 4px transparent;
     transition: box-shadow 0.3s;
+    box-sizing: border-box;
 }
 
 /*Título del tipo de logro o práctica*/
@@ -413,8 +418,7 @@
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    height: 136px;
+    gap: 6px;
 }
 
 /*Texto que muestra el resultado o estado*/
@@ -756,7 +760,8 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
 
     .card {
         width: 264px;
-        height: 170px;
+        min-height: 200px;
+        height: auto;
     }
 
     .practical-degree {
@@ -1021,7 +1026,8 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
 
     .card {
         width: 230px;
-        height: 157px;
+        min-height: 180px;
+        height: auto;
     }
 
     .practical-degree {

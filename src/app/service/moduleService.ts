@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from '../auth/services/authService';
 
 /*
@@ -12,24 +13,26 @@ import { environment } from '../auth/services/authService';
 export interface Module {
   id: string;
   title: string;
-  title_es?: string | null;
+  titleEs?: string | null;
   description?: string | null;
-  description_es?: string | null;
-  short_description?: string | null;
-  thumbnail_url?: string | null;
-  icon_name?: string | null;
+  shortDescription?: string | null;
+  thumbnailUrl?: string | null;
+  iconName?: string | null;
   category: string;
-  difficulty_level: string;
-  estimated_hours?: number | null;
-  total_lessons: number;
-  total_xp: number;
-  display_order: number;
-  is_premium: boolean;
-  is_published: boolean;
-  is_featured: boolean;
+  difficultyLevel: string;
+  estimatedHours?: number | null;
+  totalLessons: number;
+  totalXp: number;
+  premium: boolean;
+  featured: boolean;
   tags: string[];
-  progressPercentaje: number;
   prerequisiteModuleIds: string[];
+  userProgress?: {
+    completedLessons: number;
+    totalLessons: number;
+    progressPercent: number;
+    xpEarned: number;
+  } | null;
 }
 
 /*
@@ -49,7 +52,7 @@ export class ModuleService {
     Todas las peticiones relacionadas con módulos
     se construyen a partir de esta ruta.
    */
-  private baseUrl = `${environment.apiUrl}/modules`;
+  private baseUrl = `${environment.apiUrl}/learning/modules`;
 
   constructor(private http: HttpClient) { }
 
@@ -58,7 +61,9 @@ export class ModuleService {
     @returns Observable con un arreglo de módulos
    */
   getModules(): Observable<Module[]> {
-    return this.http.get<Module[]>(this.baseUrl);
+    return this.http.get<{ content: Module[] }>(this.baseUrl).pipe(
+      map(page => page.content)
+    );
   }
 
   getCurrentStep() {

@@ -91,7 +91,7 @@ export class ModuleView {
 
     this.modules$ = this.moduleService.getModules().pipe(
 
-      map(data => data.filter(m => m.is_published)),
+      map(data => data.filter(m => !m.premium || true)), // backend solo retorna publicados
 
       switchMap(modules => {
 
@@ -109,7 +109,7 @@ export class ModuleView {
                 map(lessons => ({
                   ...module,
                   lessons, // 🔥 AHORA SÍ
-                  image: module.thumbnail_url || '',
+                  image: module.thumbnailUrl || '',
                   bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
                   size: '',
                   text: 'Progreso',
@@ -132,7 +132,7 @@ export class ModuleView {
               map(({ progress, lessons }) => ({
                 ...module,
                 lessons, // 🔥 AQUÍ LAS AGREGAS
-                image: module.thumbnail_url || '',
+                image: module.thumbnailUrl || '',
                 bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
                 size: '',
                 text: 'Progreso',

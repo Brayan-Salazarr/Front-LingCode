@@ -9,25 +9,18 @@
 
 .moduleRow {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  width: 100%;
 }
 
 .moduleRow.left {
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .moduleRow.right {
   flex-direction: row-reverse;
-  justify-content: center;
-  gap: 618px;
-}
-
-.moduleRow.right .path-horizontal {
-  padding: 0 0 0 23px;
-  margin-right: -600px;
-  /* ajusta este valor */
+  justify-content: flex-start;
 }
 
 .steps {
@@ -419,16 +412,8 @@ button:hover {
     width: 110px;
   }
 
-  .moduleRow.right {
-    gap: 401px;
-  }
-
   .path-horizontal {
     gap: 7px;
-  }
-
-  .moduleRow.right .path-horizontal {
-    padding: 0 0 0 8px;
   }
 
   .titleModule {
