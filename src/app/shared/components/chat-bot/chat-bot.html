@@ -10,6 +10,14 @@
     </div>
     <!-- Cuerpo del chat donde se muestran los mensajes -->
     <div class="chat-body" #chatBody>
+      <!-- Indicador de escritura -->
+      <div class="msg-bubble bot typing-bubble" *ngIf="isTyping">
+        <img src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765915938/Gemini_Generated_Image_oq1gh0oq1gh0oq1g-removebg-preview_2_h5rmq9.png" alt="Cybro" class="bot-avatar">
+        <div class="typing-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
       <!-- Recorre el historial de mensajes -->
       <div *ngFor="let msg of messages; let i = index" [ngClass]="['msg-bubble', msg.type]">
 
@@ -128,6 +136,18 @@
       <button (click)="sendMessage()">
         <i class="send-icon">➤</i>
       </button>
+    </div>
+    <!-- Herramientas admin -->
+    <div class="admin-toolbar" *ngIf="isAdmin">
+      <button class="tools-toggle" (click)="toggleTools()">
+        🛠️ Herramientas admin <span class="tools-arrow" [class.open]="toolsOpen">▲</span>
+      </button>
+      <div class="tools-menu" *ngIf="toolsOpen">
+        <button class="tool-item" (click)="sendQuickAction('Muéstrame el panel de administrador con todos los datos de la plataforma')">🛡️ Panel de usuarios</button>
+        <button class="tool-item" (click)="sendQuickAction('¿Cuánto dinero se ha recaudado? Muéstrame los ingresos estimados')">💰 Ingresos estimados</button>
+        <button class="tool-item" (click)="sendQuickAction('Muéstrame los usuarios nuevos de esta semana y este mes')">📈 Nuevos registros</button>
+        <button class="tool-item" (click)="sendQuickAction('Genera el reporte PDF con toda la información de la plataforma')">📄 Generar reporte PDF</button>
+      </div>
     </div>
   </div>
 
