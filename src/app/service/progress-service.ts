@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, tap } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { UserProgress } from '../models/progress';
-import { AuthService, environment } from '../auth/services/authService';
+import { AuthService } from '../auth/services/authService';
+import { environment } from '../../environments/environment';
 import { ProgressResponse } from '../models/progressResponse';
 
 
@@ -12,7 +14,7 @@ import { ProgressResponse } from '../models/progressResponse';
 export class ProgressService {
 
   // URL base del backend para el progreso del usuario
-  private baseUrl = `${environment.apiUrl}/progress`;
+  private baseUrl = `${environment.apiUrl}/learning`;
 
 
   // Estado global del progreso del usuario en la aplicación
@@ -31,7 +33,7 @@ export class ProgressService {
    y actualiza el estado global de la aplicación.
   */
   getProgress(userId: string): Observable<ProgressResponse> {
-    return this.http.get<ProgressResponse>(`${this.baseUrl}/${userId}/total`)
+    return this.http.get<ProgressResponse>(`${this.baseUrl}/progress/summary`)
       .pipe(
         tap(progress => this.progressSubject.next(progress))
       );
@@ -42,32 +44,33 @@ export class ProgressService {
    Devuelve el porcentaje de progreso del módulo.
   */
   getModuleProgress(userId: string, moduleId: string): Observable<number> {
-    return this.http.get<number>(
-      `${this.baseUrl}/${userId}/modules/${moduleId}`
+    return this.http.get<{ content: any[] }>(`${this.baseUrl}/modules`).pipe(
+      map(page => {
+        const module = page.content?.find((m: any) => m.id === moduleId);
+        return module?.userProgress?.progressPercent ?? 0;
+      })
     );
   }
 
   /*
     Marca una lección como completada.
-    También suma XP y actualiza el progreso global.
+    El backend auto-registra la completación a través del flujo de submitAnswer.
+    Aquí refrescamos el progreso actualizado.
    */
   completeLesson(lessonId: string, xp: number): Observable<ProgressResponse | null> {
 
     const currentUser = this.authService.getCurrentUser();
-    // 👇 INVITADO → no rompe, solo no guarda
-  if (!currentUser) {
-    console.log("Invitado - no se guarda progreso");
-    return of(null); 
-  }
+    if (!currentUser) {
+      console.log("Invitado - no se guarda progreso");
+      return of(null);
+    }
 
-    return this.http.post<ProgressResponse>(
-      `${this.baseUrl}/${currentUser.userId}/complete/${lessonId}?xp=${xp}`,
-      {}
-    ).pipe(
-      tap(progress => {
-        this.progressSubject.next(progress); // Actualiza el progreso global en toda la app
-      })
-    );
+    return this.http.get<ProgressResponse>(`${this.baseUrl}/progress/summary`)
+      .pipe(
+        tap(progress => {
+          this.progressSubject.next(progress);
+        })
+      );
   }
 
   /*
@@ -79,6 +82,13 @@ export class ProgressService {
   }
 
   getHistory(userId: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/history/${userId}`);
+    return this.http.get<{ recentActivity: any[] }>(`${this.baseUrl}/stats`).pipe(
+      map(res => (res.recentActivity || []).map(item => ({
+        moduleName: item.moduleTitle,
+        lessonName: item.lessonTitle,
+        progress: 100,
+        updatedAt: item.timestamp
+      })))
+    );
   }
 }

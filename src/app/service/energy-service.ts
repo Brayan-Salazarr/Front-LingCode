@@ -78,7 +78,8 @@ export class EnergyService {
   // Cargar energía
   private loadEnergy(): number {
 
-  const savedEnergy = +localStorage.getItem('energy')! || this.MAX_ENERGY;
+  const stored = localStorage.getItem('energy');
+  const savedEnergy = stored !== null ? +stored : this.MAX_ENERGY;
   const lastTime = +localStorage.getItem(this.lastEnergyTimeKey)!;
 
   if (!lastTime) return savedEnergy;

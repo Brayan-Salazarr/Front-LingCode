@@ -47,7 +47,7 @@ export interface CybroResponse {
 })
 export class CybroService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:8081/api/cybro';
+  private baseUrl = 'http://localhost:8088/api/cybro';
 
   private messagesSubject = new BehaviorSubject<CybroMessage[]>([]);
   messages$ = this.messagesSubject.asObservable();

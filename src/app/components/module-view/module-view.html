@@ -2,32 +2,19 @@
 <app-nav [colorBackground]="(authService.currentUser$ | async) ? 'backgroundNav1' : ''"></app-nav>
 
 <!-- Header -->
-<app-header *ngIf="(authService.currentUser$ | async) === null"
-  title="Módulos"
-  [showTitle]="true"
-  [showLine]="true"
-  [classSpace]="'space'"
-  [showUserInfo]="true"
-  [showDecorativeCircle]="true"
-  [hideTitleWhenLogged]="true"
-  [showHexagon1]="true"
-  [showHexagon2]="true"
-  [showHexagon3]="true"
-  [showHexagon4]="true"
-  [showHexagon5]="true"
-  [showHexagon6]="true"
-  [showHexagon7]="true">
+<app-header *ngIf="(authService.currentUser$ | async) === null" title="Módulos" [showTitle]="true" [showLine]="true"
+  [classSpace]="'space'" [showUserInfo]="true" [showDecorativeCircle]="true" [hideTitleWhenLogged]="true"
+  [showHexagon1]="true" [showHexagon2]="true" [showHexagon3]="true" [showHexagon4]="true" [showHexagon5]="true"
+  [showHexagon6]="true" [showHexagon7]="true">
 </app-header>
 
-<section class="modulesContainer"
-  [class.registered]="(authService.currentUser$ | async) !== null">
+<section class="modulesContainer" [class.registered]="(authService.currentUser$ | async) !== null">
 
-  <h1 class="titleModule"
-    *ngIf="(authService.currentUser$ | async) !== null">
+  <h1 class="titleModule" *ngIf="(authService.currentUser$ | async) !== null">
     Módulos
   </h1>
 
-  
+
 
   <!-- 🔥 CONTROL TOTAL CON ASYNC -->
   <div *ngIf="(modules$ | async) as modules; else loadingTpl">
@@ -38,17 +25,13 @@
     </div>
 
     <!-- ✅ MÓDULOS REALES -->
-    <div class="moduleRow"
-      *ngFor="let module of modules; let i = index; let isLast = last; let isFirst = first"
-      [class.left]="i % 2 === 0"
-      [class.right]="i % 2 !== 0"
-      [class.last-module]="isLast"
+    <div class="moduleRow" *ngFor="let module of modules; let i = index; let isLast = last; let isFirst = first"
+      [class.left]="i % 2 === 0" [class.right]="i % 2 !== 0" [class.last-module]="isLast"
       [class.first-module]="isFirst">
 
       <div class="moduleCard">
 
-        <div class="cardBg"
-          [style.backgroundImage]="'url(' + module.bgImage + ')'">
+        <div class="cardBg" [style.backgroundImage]="'url(' + module.bgImage + ')'">
         </div>
 
         <div class="cardContent">
@@ -61,8 +44,7 @@
 
           <div class="progressBar">
             <div class="progress-container">
-              <div class="progress"
-                [style.width.%]="module.progress">
+              <div class="progress" [style.width.%]="module.progress">
               </div>
             </div>
           </div>
@@ -77,58 +59,49 @@
       </div>
 
       <!-- 🔵 STEPS -->
-     <div class="steps"
-  [ngClass]="i % 2 === 0 ? 'normal' : 'reverse'">
+      <div class="steps" [ngClass]="i % 2 === 0 ? 'normal' : 'reverse'">
 
-  <div class="path-horizontal">
+        <div class="path-horizontal">
 
-     <ng-container *ngFor="let lesson of module.lessons; let idx = index; let last = last">
+          <ng-container *ngFor="let lesson of module.lessons; let idx = index; let last = last">
 
-      <!-- 3 LÍNEAS SOLO ANTES DEL PRIMER CÍRCULO -->
-      <ng-container *ngIf="idx === 0">
+            <!-- 3 LÍNEAS SOLO ANTES DEL PRIMER CÍRCULO -->
+            <ng-container *ngIf="idx === 0">
 
-        <div class="line-step h"
-          [class.completed]="isLineCompleted(idx, module, 'before')"></div>
+              <div class="line-step h" [class.completed]="isLineCompleted(idx, module, 'before')"></div>
 
-        <div class="line-step h"
-          [class.completed]="isLineCompleted(idx, module, 'before')"></div>
+              <div class="line-step h" [class.completed]="isLineCompleted(idx, module, 'before')"></div>
 
-        <div class="line-step h"
-          [class.completed]="isLineCompleted(idx, module, 'before')"></div>
+              <div class="line-step h" [class.completed]="isLineCompleted(idx, module, 'before')"></div>
 
-      </ng-container>
+            </ng-container>
 
-      <!-- 🔵 CÍRCULO -->
-      <span class="step"
-        (click)="goToLesson(module.id, lesson.id)"
-        [class.completed]="isLessonCompleted(lesson.id, module)"
-        [class.active]="isLessonActive(idx, lesson)">
+            <!-- 🔵 CÍRCULO -->
+            <span class="step" (click)="goToLesson(module.id, lesson.id)"
+              [class.completed]="isLessonCompleted(lesson.id, module)" [class.active]="isLessonActive(idx, lesson)">
 
-        {{ idx + 1 }}
+              {{ idx + 1 }}
 
-      </span>
+            </span>
 
-      <!-- 3 LÍNEAS DESPUÉS DE CADA CÍRCULO (menos el último) -->
-      <ng-container *ngIf="!last">
+            <!-- 3 LÍNEAS DESPUÉS DE CADA CÍRCULO (menos el último) -->
+            <ng-container *ngIf="!last">
 
-        <div class="line-step h"
-          [class.completed]="isLineCompleted(idx, module, 'after')">
+              <div class="line-step h" [class.completed]="isLineCompleted(idx, module, 'after')">
+              </div>
+
+              <div class="line-step h" [class.completed]="isLineCompleted(idx, module, 'after')">
+              </div>
+
+              <div class="line-step h" [class.completed]="isLineCompleted(idx, module, 'after')">
+              </div>
+
+            </ng-container>
+
+          </ng-container>
+
         </div>
-
-        <div class="line-step h"
-          [class.completed]="isLineCompleted(idx, module, 'after')">
-        </div>
-
-        <div class="line-step h"
-          [class.completed]="isLineCompleted(idx, module, 'after')">
-        </div>
-
-      </ng-container>
-
-    </ng-container>
-
-  </div>
-</div>
+      </div>
 
     </div>
 
@@ -139,9 +112,7 @@
 
     <div class="containerSkeleton">
 
-      <div class="moduleRow"
-        *ngFor="let item of [1,2]; let i = index"
-        [class.left]="i % 2 === 0"
+      <div class="moduleRow" *ngFor="let item of [1,2]; let i = index" [class.left]="i % 2 === 0"
         [class.right]="i % 2 !== 0">
 
         <div class="moduleCard skeleton-card">

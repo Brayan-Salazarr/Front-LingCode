@@ -5,10 +5,25 @@ import { NavigationEnd, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { filter } from 'rxjs';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../../auth/services/authService';
+import { ProgressService } from '../../../service/progress-service';
+import { AdminService, AdminStats } from '../../../service/admin.service';
+import { environment } from '../../../../environments/environment';
+
+interface UserStats {
+  totalXp: number;
+  completedLessons: number;
+  progressPercent: number;
+  currentStreak: number;
+  longestStreak: number;
+  daysSince: number | null;
+}
 
 interface Message {
   text: string;
-  type: 'user' | 'bot';
+  type: 'user' | 'bot' | 'chart' | 'admin-chart';
+  chartData?: UserStats;
+  adminData?: AdminStats & { estimatedRevenue: number };
 }
 
 @Component({
@@ -20,8 +35,8 @@ interface Message {
 })
 export class ChatBot implements OnInit, OnDestroy {
   @ViewChild('chatBody') chatBody!: ElementRef;
-  
-  isOpen = true;
+
+  isOpen = false;
   showChat = true;
   newMessage = '';
   messages: Message[] = [];
@@ -29,22 +44,26 @@ export class ChatBot implements OnInit, OnDestroy {
   isSpeaking = false;
   isListening = false;
   interimTranscript = '';
+  isAdmin = false;
 
   private recognition: any;
-  private mediaRecorder: any;
-  private audioChunks: Blob[] = [];
   private subscriptions: Subscription[] = [];
-  private baseUrl = 'http://localhost:8081/api/cybro';
+  private baseUrl = environment.cybroUrl;
+  private userStats: UserStats | null = null;
+  private adminStats: (AdminStats & { estimatedRevenue: number }) | null = null;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private http: HttpClient,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private authService: AuthService,
+    private progressService: ProgressService,
+    private adminService: AdminService
   ) {}
 
   ngOnInit() {
     this.initSpeechRecognition();
-    
+
     this.subscriptions.push(
       this.router.events
         .pipe(filter(event => event instanceof NavigationEnd))
@@ -54,7 +73,49 @@ export class ChatBot implements OnInit, OnDestroy {
         })
     );
 
-    this.messages.push({ text: 'Hola! Soy Cybro, tu asistente para aprender ingles tecnico. Como te puedo ayudar? Si quieres, puedes usar el microfono para hablarme!', type: 'bot' });
+    const user = this.authService.getCurrentUser();
+
+    if (user) {
+      this.isAdmin = user.roles?.includes('ADMIN') ?? false;
+
+      // Suscribirse al progreso del usuario
+      this.subscriptions.push(
+        this.progressService.progress$.subscribe(progress => {
+          if (progress) {
+            const daysSince = user.createdAt
+              ? Math.floor((Date.now() - new Date(user.createdAt).getTime()) / 86400000)
+              : null;
+            this.userStats = {
+              totalXp: progress.totalXp,
+              completedLessons: progress.completedLessons.length,
+              progressPercent: progress.progressPercent,
+              currentStreak: progress.currentStreak,
+              longestStreak: progress.longestStreak,
+              daysSince
+            };
+          }
+        })
+      );
+      this.progressService.getProgress(user.userId).subscribe({ error: () => {} });
+
+      // Cargar stats admin si corresponde
+      if (this.isAdmin) {
+        this.adminService.getStats().subscribe({
+          next: stats => {
+            this.adminStats = {
+              ...stats,
+              estimatedRevenue: this.adminService.estimatedMonthlyRevenue(stats.usersByPlan)
+            };
+          },
+          error: () => {}
+        });
+      }
+    }
+
+    const greeting = user
+      ? `¡Hola, ${user.nickname}! Soy Cybro 🤖, tu asistente de inglés técnico. ¿En qué te puedo ayudar hoy? Puedes usar el micrófono para hablarme!`
+      : '¡Hola! Soy Cybro 🤖, tu asistente de inglés técnico para developers. ¿En qué te puedo ayudar?';
+    this.messages.push({ text: greeting, type: 'bot' });
   }
 
   ngOnDestroy() {
@@ -67,7 +128,7 @@ export class ChatBot implements OnInit, OnDestroy {
 
   private initSpeechRecognition() {
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    
+
     if (SpeechRecognition) {
       this.recognition = new SpeechRecognition();
       this.recognition.lang = 'es-ES';
@@ -85,7 +146,7 @@ export class ChatBot implements OnInit, OnDestroy {
         for (let i = event.resultIndex; i < event.results.length; i++) {
           transcript += event.results[i][0].transcript;
         }
-        
+
         if (event.results[event.results.length - 1].isFinal) {
           this.interimTranscript = '';
           if (transcript.trim()) {
@@ -128,12 +189,33 @@ export class ChatBot implements OnInit, OnDestroy {
     this.interimTranscript = '';
     this.scrollToBottom();
 
-    this.http.post<any>(`${this.baseUrl}/chat`, { message: userText }).subscribe({
+    const user = this.authService.getCurrentUser();
+    const userContext = user ? { nickname: user.nickname, fullName: user.fullName } : null;
+    const sessionId = user?.userId ?? 'anonymous';
+
+    this.http.post<any>(`${this.baseUrl}/chat`, {
+      message: userText,
+      sessionId,
+      userContext,
+      userStats: this.userStats,
+      adminStats: this.isAdmin ? this.adminStats : null
+    }).subscribe({
       next: (response) => {
         this.messages.push({ text: response.text, type: 'bot' });
+
+        if (response.showChart && this.userStats) {
+          this.messages.push({ text: '', type: 'chart', chartData: this.userStats });
+        }
+        if (response.showAdminChart && this.adminStats) {
+          this.messages.push({ text: '', type: 'admin-chart', adminData: this.adminStats });
+        }
+
         this.cdr.markForCheck();
         this.scrollToBottom();
-        this.checkNavigation(response.text);
+
+        if (response.navigateTo) {
+          setTimeout(() => this.router.navigate([response.navigateTo]), 500);
+        }
       },
       error: () => {
         this.messages.push({ text: 'Lo siento, no pude procesar tu mensaje.', type: 'bot' });
@@ -160,46 +242,6 @@ export class ChatBot implements OnInit, OnDestroy {
     }
   }
 
-  private checkNavigation(text: string) {
-    const lower = text.toLowerCase();
-    
-    if (lower.includes('ir a') || lower.includes('ve a') || lower.includes('navega') || lower.includes('abre') || lower.includes('llevame') || lower.includes('muéstrame') || lower.includes('mostrame')) {
-      setTimeout(() => {
-        if (lower.includes('inicio') || lower.includes('home') || lower.includes('principal')) {
-          this.router.navigate(['/registered-home']);
-        }
-        else if (lower.includes('misión') || lower.includes('mision') || lower.includes('visión')) {
-          this.router.navigate(['/mission']);
-        }
-        else if (lower.includes('módulo') || lower.includes('modulo') || lower.includes('clases') || lower.includes('leccione')) {
-          this.router.navigate(['/module-view']);
-        }
-        else if (lower.includes('perfil') || lower.includes('cuenta')) {
-          this.router.navigate(['/edit-profile']);
-        }
-        else if (lower.includes('método') || lower.includes('metodo') || lower.includes('enseñanza')) {
-          this.router.navigate(['/teaching-method']);
-        }
-        else if (lower.includes('término') || lower.includes('termino') || lower.includes('condicione') || lower.includes('política') || lower.includes('normas')) {
-          this.router.navigate(['/norms-politics']);
-        }
-        else if (lower.includes('nosotros') || lower.includes('about') || lower.includes('acerca')) {
-          this.router.navigate(['/about-us']);
-        }
-        else if (lower.includes('ayuda') || lower.includes('soporte') || lower.includes('help')) {
-          this.router.navigate(['/help-support']);
-        }
-        else if (lower.includes('pago') || lower.includes('precio') || lower.includes('tarifa')) {
-          this.router.navigate(['/payment-methods']);
-        }
-        else if (lower.includes('registro') || lower.includes('registrar') || lower.includes('crear cuenta')) {
-          this.router.navigate(['/login-registro']);
-        }
-        this.cdr.markForCheck();
-      }, 500);
-    }
-  }
-
   private scrollToBottom() {
     setTimeout(() => {
       if (this.chatBody) {
@@ -213,7 +255,8 @@ export class ChatBot implements OnInit, OnDestroy {
     if (this.isSpeaking) {
       this.stopSpeaking();
     } else {
-      const utterance = new SpeechSynthesisUtterance(text);
+      const spokenText = text.replace(/Cybro/gi, 'Saibro');
+      const utterance = new SpeechSynthesisUtterance(spokenText);
       utterance.lang = 'es-ES';
       utterance.rate = 0.95;
       utterance.onstart = () => {
@@ -236,5 +279,112 @@ export class ChatBot implements OnInit, OnDestroy {
     speechSynthesis.cancel();
     this.isSpeaking = false;
     this.cdr.markForCheck();
+  }
+
+  getStrokeDasharray(percent: number): string {
+    return `${percent} 100`;
+  }
+
+  getPlanEntries(usersByPlan: { [key: string]: number }): { plan: string; count: number }[] {
+    return Object.entries(usersByPlan).map(([plan, count]) => ({ plan, count }));
+  }
+
+  downloadAdminPDF(adminData: AdminStats & { estimatedRevenue: number }) {
+    const date = new Date().toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' });
+    const planRows = Object.entries(adminData.usersByPlan)
+      .map(([plan, count]) => `<tr><td>${plan}</td><td>${count}</td></tr>`)
+      .join('');
+    const providerRows = Object.entries(adminData.usersByProvider)
+      .map(([p, count]) => `<tr><td>${p}</td><td>${count}</td></tr>`)
+      .join('');
+
+    const html = `
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+        <meta charset="UTF-8">
+        <title>Reporte Admin — LingCode</title>
+        <style>
+          body { font-family: Arial, sans-serif; color: #1a1a2e; padding: 40px; }
+          h1 { color: #7c3aed; margin-bottom: 4px; }
+          .date { color: #666; font-size: 13px; margin-bottom: 30px; }
+          .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+          .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; }
+          .card h3 { margin: 0 0 4px; font-size: 13px; color: #6b7280; }
+          .card .value { font-size: 28px; font-weight: 700; color: #1a1a2e; }
+          .card .sub { font-size: 12px; color: #9ca3af; }
+          table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+          th { background: #f3f4f6; text-align: left; padding: 8px 12px; font-size: 12px; }
+          td { padding: 8px 12px; border-bottom: 1px solid #f3f4f6; font-size: 13px; }
+          .revenue { color: #059669; font-size: 32px; font-weight: 700; }
+          .section { margin-bottom: 24px; }
+          .section h2 { font-size: 15px; margin-bottom: 12px; border-bottom: 2px solid #7c3aed; padding-bottom: 6px; }
+        </style>
+      </head>
+      <body>
+        <h1>📊 Reporte Administrativo — LingCode</h1>
+        <div class="date">Generado el ${date}</div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Total de usuarios</h3>
+            <div class="value">${adminData.totalUsers}</div>
+            <div class="sub">+${adminData.newUsersThisMonth} este mes</div>
+          </div>
+          <div class="card">
+            <h3>Ingresos estimados (MRR)</h3>
+            <div class="value revenue">$${adminData.estimatedRevenue.toFixed(2)} USD</div>
+            <div class="sub">basado en planes activos</div>
+          </div>
+          <div class="card">
+            <h3>Usuarios activos (últimas 24h)</h3>
+            <div class="value">${adminData.activeUsersLast24h}</div>
+            <div class="sub">${adminData.activeUsersLast7d} en los últimos 7 días</div>
+          </div>
+          <div class="card">
+            <h3>Verificación de email</h3>
+            <div class="value">${adminData.verifiedUsers}</div>
+            <div class="sub">${adminData.unverifiedUsers} sin verificar</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Distribución por plan</h2>
+          <table>
+            <thead><tr><th>Plan</th><th>Usuarios</th></tr></thead>
+            <tbody>${planRows}</tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <h2>Distribución por proveedor</h2>
+          <table>
+            <thead><tr><th>Proveedor</th><th>Usuarios</th></tr></thead>
+            <tbody>${providerRows}</tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <h2>Nuevos registros</h2>
+          <table>
+            <thead><tr><th>Período</th><th>Usuarios</th></tr></thead>
+            <tbody>
+              <tr><td>Hoy</td><td>${adminData.newUsersToday}</td></tr>
+              <tr><td>Esta semana</td><td>${adminData.newUsersThisWeek}</td></tr>
+              <tr><td>Este mes</td><td>${adminData.newUsersThisMonth}</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </body>
+      </html>
+    `;
+
+    const win = window.open('', '_blank');
+    if (win) {
+      win.document.write(html);
+      win.document.close();
+      win.focus();
+      setTimeout(() => win.print(), 500);
+    }
   }
 }

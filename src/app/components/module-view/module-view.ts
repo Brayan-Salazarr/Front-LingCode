@@ -56,6 +56,7 @@ export class ModuleView {
   selectedLessonId: string | null = null;
 
   loading = true;
+  isDownloading = false;
 
   constructor(
     public authService: AuthService,
@@ -90,7 +91,7 @@ export class ModuleView {
 
     this.modules$ = this.moduleService.getModules().pipe(
 
-      map(data => data.filter(m => m.is_published)),
+      map(data => data.filter(m => !m.premium || true)), // backend solo retorna publicados
 
       switchMap(modules => {
 
@@ -108,7 +109,7 @@ export class ModuleView {
                 map(lessons => ({
                   ...module,
                   lessons, // 🔥 AHORA SÍ
-                  image: module.thumbnail_url || '',
+                  image: module.thumbnailUrl || '',
                   bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
                   size: '',
                   text: 'Progreso',
@@ -131,7 +132,7 @@ export class ModuleView {
               map(({ progress, lessons }) => ({
                 ...module,
                 lessons, // 🔥 AQUÍ LAS AGREGAS
-                image: module.thumbnail_url || '',
+                image: module.thumbnailUrl || '',
                 bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
                 size: '',
                 text: 'Progreso',
@@ -243,28 +244,57 @@ export class ModuleView {
     return Array.from({ length: totalLessons }, (_, i) => i + 1);
   }
 
-  downloadGuie(module: ModuleViewModel){
-    const user= this.authService.getCurrentUser();
+  downloadGuie(module: ModuleViewModel) {
+
+    console.log("MODULE RECIBIDO:", module);
+
+    const user = this.authService.getCurrentUser();
     let path = '';
 
-    if(!user){
-      //Documento para no registrados
-      if(module.id === 'git'){
-        path = 'git/git-guide-preview.pdf';
-      }
-    } else {
-      //Documento para registrados
-      if(module.id === 'git'){
-        path = 'git/git-guide-full-github.pdf';
-      } else if(module.id === 'mysql'){
-        path = 'git/git-guide-full-github.pdf';
-      }
+    // 🔎 Construimos el path primero
+    if (module.title?.toLowerCase().includes('git')) {
+      path = user
+        ? 'git/git-guide-full-github.pdf'
+        : 'git/git-guide-preview.pdf';
     }
 
-    this.material
-    .getDownloadLink(path)
-    .subscribe(res => {
-      window.open(res.downloadUrl,'_blank');
+    if (module.title?.toLowerCase().includes('mysql')) {
+      path = 'mysql/mysql-guide-full.pdf';
+    }
+
+    console.log("PATH FINAL:", path);
+
+    if (!path) {
+      console.error("PATH VACÍO ❌");
+      return;
+    }
+
+    this.isDownloading = true;
+
+    this.material.getDownloadLink(path).subscribe({
+      next: (res) => {
+
+        const isPreview = !user;
+
+        if (isPreview) {
+          // Solo visualizar
+          window.open(res.downloadUrl, '_blank');
+        } else {
+          // ⬇ Descargar directamente
+          const link = document.createElement('a');
+          link.href = res.downloadUrl;
+          link.download = module.title + '.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+
+        this.isDownloading = false;
+      },
+      error: (err) => {
+        console.error("ERROR BACKEND:", err);
+        this.isDownloading = false;
+      }
     });
   }
 }

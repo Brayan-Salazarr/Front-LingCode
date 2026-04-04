@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { AuthService, environment } from '../../auth/services/authService';
+import { AuthService } from '../../auth/services/authService';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-oauth2-callback',

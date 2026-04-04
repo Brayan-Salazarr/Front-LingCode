@@ -9,24 +9,152 @@
     /* Espaciado interno */
 }
 
+/* TARJETA DE VOCABULARIO INTRO */
+.vocab-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 20px 0 40px 0;
+}
+
+.vocab-intro-subtitle {
+    font-size: 18px;
+    color: #555;
+    margin: 0;
+}
+
+.vocab-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.vocab-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #f8f9fa;
+    border: 2px solid rgba(0, 140, 255, 0.2);
+    border-radius: 12px;
+    padding: 14px 24px;
+    font-size: 20px;
+}
+
+.vocab-word {
+    font-weight: 700;
+    color: #111;
+    min-width: 120px;
+    font-family: 'Courier New', monospace;
+}
+
+.vocab-arrow {
+    color: rgba(0, 140, 255, 1);
+    font-size: 18px;
+}
+
+.vocab-translation {
+    color: #444;
+}
+
+.start-lesson-btn {
+    margin-top: 8px;
+    padding: 16px 48px;
+    background-color: rgba(0, 140, 255, 1);
+    color: white;
+    border: none;
+    border-radius: 35px;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.start-lesson-btn:hover {
+    background-color: rgba(0, 110, 220, 1);
+}
+
+/*REFERENCIA DE VOCABULARIO (toggle durante ejercicios)*/
+.vocab-ref-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.vocab-ref-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    background: none;
+    border: 1px solid rgba(0, 140, 255, 0.4);
+    border-radius: 20px;
+    padding: 6px 16px;
+    color: rgba(0, 140, 255, 1);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.vocab-ref-btn:hover {
+    background-color: rgba(0, 140, 255, 0.08);
+}
+
+.vocab-ref-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    background: #f8f9fa;
+    border: 1px solid rgba(0, 140, 255, 0.15);
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.vocab-ref-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vocab-ref-word {
+    font-weight: 600;
+    color: #111;
+    font-family: 'Courier New', monospace;
+}
+
+.vocab-ref-sep {
+    color: rgba(0, 140, 255, 0.8);
+}
+
+.vocab-ref-translation {
+    color: #555;
+}
+
 /*OPCIONES DE EJERCICIO (MULTIPLE CHOICE)*/
 .optionsLess {
     display: flex;
     justify-content: center;
-    gap: 150px;
+    flex-wrap: wrap;
+    gap: 20px;
     width: 100%;
 }
 
 /* Botones de opciones */
 .buttonOptions {
-    height: 100px;
-    width: 163px;
+    min-height: 80px;
+    width: 200px;
     background-color: rgba(217, 217, 217, 1);
     border: solid 2px rgba(0, 140, 255, 1);
     border-radius: 10px;
     font-family: 'Poppins', sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     position: relative;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .tooltip {
@@ -138,10 +266,38 @@
 /* Contenedor del botón */
 .button-field {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
     flex-direction: column;
-    height: 120px;
+    align-items: center;
+    gap: 16px;
+    padding-top: 8px;
+}
+
+.buttons-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.back-button {
+    font-family: 'Poppins', sans-serif;
+    width: 130px;
+    height: 55px;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 140, 255, 1);
+    background-color: white;
+    color: rgba(0, 140, 255, 1);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.back-button:hover {
+    background-color: rgba(0, 140, 255, 0.1);
+}
+
+.back-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 
 /* Línea decorativa */
@@ -175,6 +331,7 @@
     font-family: 'Poppins', sans-serif;
     font-size: 25px;
 }
+
 
 .text-progress {
     font-size: 20px;
@@ -277,17 +434,28 @@
 .fill-container {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 40px -90px 0 -90px; /* cancela el margin-left del h2.introduction */
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
 }
 
 .fill-input {
-    width: 100px;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 10px;
+    width: 180px;
+    padding: 10px 14px;
+    font-size: 18px;
+    border-radius: 8px;
     border: 2px solid #ccc;
     font-family: "JetBrains Mono", sans-serif;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.fill-input:focus {
+    border-color: #0066FF;
 }
 
 .fill-input.correct {

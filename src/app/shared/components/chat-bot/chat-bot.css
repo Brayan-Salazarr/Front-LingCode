@@ -341,6 +341,223 @@
   cursor: not-allowed;
 }
 
+/* ---- Tarjeta admin ---- */
+.msg-bubble.admin-chart {
+  background: none;
+  padding: 0;
+  align-self: stretch;
+}
+
+.admin-chart-card {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  border: 1px solid rgba(124, 58, 237, 0.4);
+  border-radius: 16px;
+  padding: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.admin-stat-box {
+  border-radius: 10px;
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.admin-stat-box.accent-purple { background: rgba(139, 92, 246, 0.15); border: 1px solid rgba(139, 92, 246, 0.3); }
+.admin-stat-box.accent-green  { background: rgba(5, 150, 105, 0.15);  border: 1px solid rgba(5, 150, 105, 0.3); }
+.admin-stat-box.accent-blue   { background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); }
+.admin-stat-box.accent-orange { background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3); }
+
+.admin-stat-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.admin-stat-label {
+  font-size: 9px;
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+}
+
+.admin-plans-section {
+  margin-bottom: 10px;
+}
+
+.admin-section-title {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.plan-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.plan-name {
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+}
+
+.plan-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: #a78bfa;
+}
+
+.pdf-download-btn {
+  width: 100%;
+  padding: 8px;
+  background: linear-gradient(90deg, #7c3aed, #2563eb);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.pdf-download-btn:hover {
+  opacity: 0.9;
+}
+
+/* ---- Tarjeta de progreso (chart) ---- */
+.msg-bubble.chart {
+  background: none;
+  padding: 0;
+  align-self: stretch;
+}
+
+.progress-chart-card {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 16px;
+  padding: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.chart-title {
+  color: #a78bfa;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* Gráfica circular */
+.chart-ring-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.circular-chart {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  transform: rotate(-90deg);
+}
+
+.circle-bg {
+  fill: none;
+  stroke: rgba(255,255,255,0.08);
+  stroke-width: 3;
+}
+
+.circle-fill {
+  fill: none;
+  stroke: url(#chartGradient);
+  stroke: #a78bfa;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.6s ease;
+}
+
+.percentage-text {
+  fill: #fff;
+  font-size: 7px;
+  font-weight: 700;
+  text-anchor: middle;
+  transform: rotate(90deg);
+  transform-origin: 18px 18px;
+}
+
+.percentage-label {
+  fill: rgba(255,255,255,0.5);
+  font-size: 3.5px;
+  text-anchor: middle;
+  transform: rotate(90deg);
+  transform-origin: 18px 18px;
+}
+
+.ring-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.legend-item {
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+}
+
+.legend-item.completed { color: #a78bfa; }
+.legend-item.remaining { color: rgba(255,255,255,0.35); }
+
+/* Stats de la tarjeta */
+.chart-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.chart-stat-item {
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.chart-stat-icon {
+  font-size: 14px;
+}
+
+.chart-stat-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.chart-stat-label {
+  font-size: 9px;
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+}
+
 @media (max-width: 1537px) {
   .chat-window {
     width: 328px;

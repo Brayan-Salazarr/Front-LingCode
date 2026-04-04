@@ -26,12 +26,17 @@ export interface Option {
   Representa un ejercicio dentro de una lección.
  */
 export interface Exercise {
-  question: string; // Pregunta del ejercicio
+  id: string; // ID del ejercicio (requerido por el backend)
+  question: string;
+  questionEs?: string;
   description: string;
   options?: Option[];
-  type: 'multiple' | 'order' | 'translate' | 'fill' | 'match'; // Lista de opciones disponibles
+  type: 'multiple' | 'order' | 'translate' | 'fill' | 'match';
+  exerciseType?: string;
   pairs?: MatchPair[];
   correctAnswer?: string;
+  orderIndex?: number;
+  hint?: string | null;
 }
 
 export interface MatchPair {
@@ -45,10 +50,19 @@ export interface MatchPair {
 export interface LessonC {
   id: string;
   moduleId: string;
+  moduleTitle?: string;
   title: string;
+  titleEs?: string;
   xpReward: number;
-  isPublished: boolean;
+  energyCost?: number;
+  orderIndex?: number;
+  lessonType?: string;
+  premium?: boolean;
   exercises: Exercise[];
+  hasNext?: boolean;
+  hasPrevious?: boolean;
+  nextLessonId?: string;
+  previousLessonId?: string;
 }
 @Component({
   selector: 'app-lesson',
@@ -75,6 +89,20 @@ export class Lesson {
 
   feedbackWords: { word: string, status: 'correct' | 'wrong' | 'missing' }[] = [];
 
+  // Estado guardado por ejercicio para poder retroceder sin rehacer
+  exerciseStates: {
+    selectedOption: string | null;
+    selectedWords: (string | null)[];
+    wordStates: ('correct' | 'wrong' | 'normal')[];
+    matchedPairs: MatchPair[];
+    shuffledRight: string[];
+    isAnswered: boolean;
+    isCorrectAnswer: boolean;
+    feedbackWords: { word: string, status: 'correct' | 'wrong' | 'missing' }[];
+  }[] = [];
+
+  showVocabRef = false;
+
   // Control reactivo del índice de ejercicio
   private exerciseIndex$ = new BehaviorSubject<number>(0);
 
@@ -87,6 +115,24 @@ export class Lesson {
     this.selectedWords = [];
     this.wordStates = [];
     this.isProcessing = false;
+  }
+
+  /*TARJETA DE VOCABULARIO INTRO */
+  showVocabIntro = true;
+
+
+  getVocabFromLesson(lesson: LessonC): { word: string, translation: string }[] {
+    const matchExercise = lesson.exercises.find(e => e.type === 'match');
+    if (!matchExercise?.pairs?.length) return [];
+    return matchExercise.pairs.map(p => ({ word: p.left, translation: p.right }));
+  }
+
+  startLesson() {
+    this.showVocabIntro = false;
+  }
+
+  toggleVocabRef() {
+    this.showVocabRef = !this.showVocabRef;
   }
 
   /*ESTADOS DEL EJERCICIO */
@@ -303,6 +349,12 @@ export class Lesson {
    */
   submitAnswer(lesson: LessonC) {
 
+    // Al volver a un ejercicio ya completado, solo avanzar sin gastar energía ni ir al backend
+    if (this.isAnswered && this.isCorrectAnswer) {
+      this.nextExercise(lesson, true);
+      return;
+    }
+
     if (this.isProcessing) return;
     this.isProcessing = true;
 
@@ -326,9 +378,12 @@ export class Lesson {
     }
 
     this.lessonService
-      .submitAnswer(lesson.id, this.currentExerciseIndex, answer)
+      .submitAnswer(lesson.id, exercise.id, answer)
       .subscribe({
-        next: (res) => this.handleResponse(res, lesson, exercise),
+        next: (res) => {
+          if (res.correctAnswer) exercise.correctAnswer = res.correctAnswer;
+          this.handleResponse(res.correct, lesson, exercise);
+        },
         error: () => this.isProcessing = false
       });
   }
@@ -364,8 +419,14 @@ export class Lesson {
   // Maneja la respuesta después de validar si es correcta o incorrecta
   handleResponse(res: boolean, lesson: LessonC, exercise: Exercise) {
 
-    this.isAnswered = true; // Marca que ya fue respondido
-    this.isCorrectAnswer = res; // Guarda si fue correcta o no
+    this.isAnswered = true;
+    this.isCorrectAnswer = res;
+
+    // Marca visualmente la opción correcta seleccionada
+    if (res && exercise.options) {
+      const selected = exercise.options.find(o => o.text === this.selectedOption);
+      if (selected) selected.correct = true;
+    }
 
     if (exercise.type === 'order') {
       this.evaluateOrder(exercise);
@@ -395,7 +456,7 @@ export class Lesson {
   }
 
   getFillParts(text: string): string[] {
-    return text.split('____');
+    return text.split(/_{2,}/);
   }
 
   onUserTyping() {
@@ -410,14 +471,14 @@ export class Lesson {
 
     if (!exercise || exercise.type !== 'order') return;
 
-    const correct = (exercise as any).correctOrder;
-    // ⚠️ MEJOR: usa correctOrder si lo tienes separado
+    const correct = (exercise as any).correctOrder ?? exercise.correctAnswer?.split(' ');
+    if (!correct) return;
 
     this.wordStates = (this.selectedWords ?? []).map((word, i) => {
 
       if (!word) return 'normal';
 
-      return word.trim().toLowerCase() === correct[i].trim().toLowerCase()
+      return word.trim().toLowerCase() === correct[i]?.trim().toLowerCase()
         ? 'correct'
         : 'wrong';
     });
@@ -560,17 +621,63 @@ export class Lesson {
     return !!this.wrongPair && this.wrongPair.right === word;
   }
 
+  /*Retrocede al ejercicio anterior restaurando su estado completado*/
+  previousExercise() {
+    if (this.currentExerciseIndex <= 0) return;
+
+    this.currentExerciseIndex--;
+    this.exerciseIndex$.next(this.currentExerciseIndex);
+
+    const saved = this.exerciseStates[this.currentExerciseIndex];
+    if (saved) {
+      this.selectedOption = saved.selectedOption;
+      this.selectedWords = [...saved.selectedWords];
+      this.wordStates = [...saved.wordStates];
+      this.matchedPairs = [...saved.matchedPairs];
+      this.shuffledRight = [...saved.shuffledRight];
+      this.isAnswered = saved.isAnswered;
+      this.isCorrectAnswer = saved.isCorrectAnswer;
+      this.feedbackWords = [...saved.feedbackWords];
+    } else {
+      this.isAnswered = false;
+      this.isCorrectAnswer = false;
+      this.selectedOption = null;
+      this.selectedWords = [];
+      this.wordStates = [];
+      this.matchedPairs = [];
+      this.feedbackWords = [];
+    }
+    this.isProcessing = false;
+    this.wrongPair = null;
+    this.selectedLeft = null;
+    this.feedback = '';
+  }
+
   /*Controla los estados de los ejercicios*/
-  nextExercise(lesson: LessonC) {
-    // 🔒 BLOQUEO DE ENERGÍA
-    if (!this.energyService.canPlay()) {
+  nextExercise(lesson: LessonC, skipEnergy = false) {
+    // Guarda el estado del ejercicio actual antes de avanzar
+    this.exerciseStates[this.currentExerciseIndex] = {
+      selectedOption: this.selectedOption,
+      selectedWords: [...(this.selectedWords || [])],
+      wordStates: [...this.wordStates],
+      matchedPairs: [...this.matchedPairs],
+      shuffledRight: [...this.shuffledRight],
+      isAnswered: this.isAnswered,
+      isCorrectAnswer: this.isCorrectAnswer,
+      feedbackWords: [...this.feedbackWords],
+    };
+
+    // 🔒 BLOQUEO DE ENERGÍA (no aplica al re-avanzar ejercicios ya completados)
+    if (!skipEnergy && !this.energyService.canPlay()) {
       alert('Sin energía 😢');
       return;
     }
 
     // CONSUMIR ENERGÍA
-    const used = this.energyService.useEnergy();
-    if (!used) return;
+    if (!skipEnergy) {
+      const used = this.energyService.useEnergy();
+      if (!used) return;
+    }
 
     const total = lesson.exercises.length;
 
@@ -584,13 +691,13 @@ export class Lesson {
       this.exerciseIndex$.next(this.currentExerciseIndex);
       this.selectedOption = null;
       this.feedback = '';
+      this.matchedPairs = [];
 
       const currentExercise = this.getCurrentExercise(lesson);
       if (currentExercise?.type === 'match' && currentExercise.pairs) {
         this.shuffledRight = this.shuffleArray(
           currentExercise.pairs.map(p => p.right)
         );
-        this.matchedPairs = [];
       }
 
     } else {
@@ -703,6 +810,9 @@ export class Lesson {
 
   /* Reinicia el estado del ejercicio */
   resetLessonState() {
+    this.showVocabIntro = true;
+    this.showVocabRef = false;
+    this.exerciseStates = [];
     this.currentExerciseIndex = 0;
     this.exerciseIndex$.next(0);
 
