@@ -10,6 +10,14 @@
     </div>
     <!-- Cuerpo del chat donde se muestran los mensajes -->
     <div class="chat-body" #chatBody>
+      <!-- Indicador de escritura -->
+      <div class="msg-bubble bot typing-bubble" *ngIf="isTyping">
+        <img src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765915938/Gemini_Generated_Image_oq1gh0oq1gh0oq1g-removebg-preview_2_h5rmq9.png" alt="Cybro" class="bot-avatar">
+        <div class="typing-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
       <!-- Recorre el historial de mensajes -->
       <div *ngFor="let msg of messages; let i = index" [ngClass]="['msg-bubble', msg.type]">
 

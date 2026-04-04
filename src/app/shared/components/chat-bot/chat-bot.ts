@@ -46,6 +46,7 @@ export class ChatBot implements OnInit, OnDestroy {
   interimTranscript = '';
   isAdmin = false;
   toolsOpen = false;
+  isTyping = false;
 
   private recognition: any;
   private subscriptions: Subscription[] = [];
@@ -200,6 +201,10 @@ export class ChatBot implements OnInit, OnDestroy {
     const userContext = user ? { nickname: user.nickname, fullName: user.fullName } : null;
     const sessionId = user?.userId ?? 'anonymous';
 
+    this.isTyping = true;
+    this.cdr.markForCheck();
+    this.scrollToBottom();
+
     this.http.post<any>(`${this.baseUrl}/chat`, {
       message: userText,
       sessionId,
@@ -208,6 +213,7 @@ export class ChatBot implements OnInit, OnDestroy {
       adminStats: this.isAdmin ? this.adminStats : null
     }).subscribe({
       next: (response) => {
+        this.isTyping = false;
         this.messages.push({ text: response.text, type: 'bot' });
 
         if (response.showChart && this.userStats) {
@@ -225,6 +231,7 @@ export class ChatBot implements OnInit, OnDestroy {
         }
       },
       error: () => {
+        this.isTyping = false;
         this.messages.push({ text: 'Lo siento, no pude procesar tu mensaje.', type: 'bot' });
         this.cdr.markForCheck();
       }
