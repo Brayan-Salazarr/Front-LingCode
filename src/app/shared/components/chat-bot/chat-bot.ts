@@ -45,6 +45,7 @@ export class ChatBot implements OnInit, OnDestroy {
   isListening = false;
   interimTranscript = '';
   isAdmin = false;
+  toolsOpen = false;
 
   private recognition: any;
   private subscriptions: Subscription[] = [];
@@ -73,49 +74,55 @@ export class ChatBot implements OnInit, OnDestroy {
         })
     );
 
-    const user = this.authService.getCurrentUser();
-
-    if (user) {
-      this.isAdmin = user.roles?.includes('ADMIN') ?? false;
-
-      // Suscribirse al progreso del usuario
-      this.subscriptions.push(
-        this.progressService.progress$.subscribe(progress => {
-          if (progress) {
-            const daysSince = user.createdAt
-              ? Math.floor((Date.now() - new Date(user.createdAt).getTime()) / 86400000)
-              : null;
-            this.userStats = {
-              totalXp: progress.totalXp,
-              completedLessons: progress.completedLessons.length,
-              progressPercent: progress.progressPercent,
-              currentStreak: progress.currentStreak,
-              longestStreak: progress.longestStreak,
-              daysSince
-            };
-          }
-        })
-      );
-      this.progressService.getProgress(user.userId).subscribe({ error: () => {} });
-
-      // Cargar stats admin si corresponde
-      if (this.isAdmin) {
-        this.adminService.getStats().subscribe({
-          next: stats => {
-            this.adminStats = {
-              ...stats,
-              estimatedRevenue: this.adminService.estimatedMonthlyRevenue(stats.usersByPlan)
-            };
-          },
-          error: () => {}
-        });
-      }
-    }
-
-    const greeting = user
-      ? `¡Hola, ${user.nickname}! Soy Cybro 🤖, tu asistente de inglés técnico. ¿En qué te puedo ayudar hoy? Puedes usar el micrófono para hablarme!`
+    const initialUser = this.authService.getCurrentUser();
+    const greeting = initialUser
+      ? `¡Hola, ${initialUser.nickname}! Soy Cybro 🤖, tu asistente de inglés técnico. ¿En qué te puedo ayudar hoy? Puedes usar el micrófono para hablarme!`
       : '¡Hola! Soy Cybro 🤖, tu asistente de inglés técnico para developers. ¿En qué te puedo ayudar?';
     this.messages.push({ text: greeting, type: 'bot' });
+
+    this.subscriptions.push(
+      this.authService.currentUser$.subscribe(user => {
+        this.isAdmin = user?.roles?.includes('ADMIN') ?? false;
+
+        if (user) {
+          this.subscriptions.push(
+            this.progressService.progress$.subscribe(progress => {
+              if (progress) {
+                const daysSince = user.createdAt
+                  ? Math.floor((Date.now() - new Date(user.createdAt).getTime()) / 86400000)
+                  : null;
+                this.userStats = {
+                  totalXp: progress.totalXp,
+                  completedLessons: progress.completedLessons.length,
+                  progressPercent: progress.progressPercent,
+                  currentStreak: progress.currentStreak,
+                  longestStreak: progress.longestStreak,
+                  daysSince
+                };
+              }
+            })
+          );
+          this.progressService.getProgress(user.userId).subscribe({ error: () => {} });
+
+          if (this.isAdmin) {
+            this.adminService.getStats().subscribe({
+              next: stats => {
+                this.adminStats = {
+                  ...stats,
+                  estimatedRevenue: this.adminService.estimatedMonthlyRevenue(stats.usersByPlan)
+                };
+              },
+              error: () => {}
+            });
+          }
+        } else {
+          this.userStats = null;
+          this.adminStats = null;
+        }
+
+        this.cdr.markForCheck();
+      })
+    );
   }
 
   ngOnDestroy() {
@@ -224,6 +231,17 @@ export class ChatBot implements OnInit, OnDestroy {
     });
   }
 
+  toggleTools() {
+    this.toolsOpen = !this.toolsOpen;
+    this.cdr.markForCheck();
+  }
+
+  sendQuickAction(message: string) {
+    this.toolsOpen = false;
+    this.newMessage = message;
+    this.sendMessage();
+  }
+
   toggleVoiceRecording() {
     if (!this.recognition) {
       this.messages.push({ text: 'Tu navegador no soporta reconocimiento de voz.', type: 'bot' });
@@ -305,75 +323,215 @@ export class ChatBot implements OnInit, OnDestroy {
         <meta charset="UTF-8">
         <title>Reporte Admin — LingCode</title>
         <style>
-          body { font-family: Arial, sans-serif; color: #1a1a2e; padding: 40px; }
-          h1 { color: #7c3aed; margin-bottom: 4px; }
-          .date { color: #666; font-size: 13px; margin-bottom: 30px; }
-          .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
-          .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; }
-          .card h3 { margin: 0 0 4px; font-size: 13px; color: #6b7280; }
-          .card .value { font-size: 28px; font-weight: 700; color: #1a1a2e; }
-          .card .sub { font-size: 12px; color: #9ca3af; }
-          table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-          th { background: #f3f4f6; text-align: left; padding: 8px 12px; font-size: 12px; }
-          td { padding: 8px 12px; border-bottom: 1px solid #f3f4f6; font-size: 13px; }
-          .revenue { color: #059669; font-size: 32px; font-weight: 700; }
-          .section { margin-bottom: 24px; }
-          .section h2 { font-size: 15px; margin-bottom: 12px; border-bottom: 2px solid #7c3aed; padding-bottom: 6px; }
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+
+          body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 0;
+            min-height: 100vh;
+          }
+
+          .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            border-bottom: 2px solid #04C9FF;
+            padding: 28px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+
+          .header-left { display: flex; align-items: center; gap: 20px; }
+
+          .header img { height: 48px; }
+
+          .header-title { }
+          .header-title h1 {
+            font-size: 22px;
+            font-weight: 900;
+            background: linear-gradient(90deg, #04C9FF, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+          .header-title p { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+
+          .badge {
+            background: rgba(4, 201, 255, 0.1);
+            border: 1px solid #04C9FF;
+            color: #04C9FF;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+          }
+
+          .content { padding: 36px 48px; }
+
+          .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+          }
+
+          .card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 20px 24px;
+          }
+
+          .card.accent { border-color: rgba(4, 201, 255, 0.3); }
+
+          .card h3 {
+            font-size: 11px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+          }
+
+          .card .value {
+            font-size: 36px;
+            font-weight: 900;
+            color: #f1f5f9;
+          }
+
+          .card.accent .value {
+            background: linear-gradient(90deg, #04C9FF, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+
+          .card .sub { font-size: 12px; color: #475569; margin-top: 4px; }
+
+          .section { margin-bottom: 28px; }
+
+          .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #04C9FF;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(4, 201, 255, 0.2);
+          }
+
+          table { width: 100%; border-collapse: collapse; }
+
+          thead tr { background: rgba(4, 201, 255, 0.06); }
+
+          th {
+            text-align: left;
+            padding: 10px 16px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+          }
+
+          td {
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #cbd5e1;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+          }
+
+          tr:last-child td { border-bottom: none; }
+
+          .footer {
+            margin-top: 40px;
+            padding: 20px 48px;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .footer p { font-size: 11px; color: #334155; }
+
+          @media print {
+            body { background: #0f172a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          }
         </style>
       </head>
       <body>
-        <h1>📊 Reporte Administrativo — LingCode</h1>
-        <div class="date">Generado el ${date}</div>
+        <div class="header">
+          <div class="header-left">
+            <img src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763490191/Group_27_xduqke.png" alt="LingCode Logo" />
+            <div class="header-title">
+              <h1>Reporte Administrativo</h1>
+              <p>Panel de control — LingCode Platform</p>
+            </div>
+          </div>
+          <span class="badge">ADMIN</span>
+        </div>
 
-        <div class="grid">
-          <div class="card">
-            <h3>Total de usuarios</h3>
-            <div class="value">${adminData.totalUsers}</div>
-            <div class="sub">+${adminData.newUsersThisMonth} este mes</div>
+        <div class="content">
+          <div class="grid">
+            <div class="card">
+              <h3>Total de usuarios</h3>
+              <div class="value">${adminData.totalUsers}</div>
+              <div class="sub">+${adminData.newUsersThisMonth} nuevos este mes</div>
+            </div>
+            <div class="card accent">
+              <h3>Ingresos estimados (MRR)</h3>
+              <div class="value">$${adminData.estimatedRevenue.toFixed(2)}</div>
+              <div class="sub">USD · basado en planes activos</div>
+            </div>
+            <div class="card">
+              <h3>Activos últimas 24h</h3>
+              <div class="value">${adminData.activeUsersLast24h}</div>
+              <div class="sub">${adminData.activeUsersLast7d} en los últimos 7 días</div>
+            </div>
+            <div class="card">
+              <h3>Emails verificados</h3>
+              <div class="value">${adminData.verifiedUsers}</div>
+              <div class="sub">${adminData.unverifiedUsers} sin verificar</div>
+            </div>
           </div>
-          <div class="card">
-            <h3>Ingresos estimados (MRR)</h3>
-            <div class="value revenue">$${adminData.estimatedRevenue.toFixed(2)} USD</div>
-            <div class="sub">basado en planes activos</div>
+
+          <div class="section">
+            <div class="section-title">Distribución por plan</div>
+            <table>
+              <thead><tr><th>Plan</th><th>Usuarios</th></tr></thead>
+              <tbody>${planRows}</tbody>
+            </table>
           </div>
-          <div class="card">
-            <h3>Usuarios activos (últimas 24h)</h3>
-            <div class="value">${adminData.activeUsersLast24h}</div>
-            <div class="sub">${adminData.activeUsersLast7d} en los últimos 7 días</div>
+
+          <div class="section">
+            <div class="section-title">Distribución por proveedor</div>
+            <table>
+              <thead><tr><th>Proveedor</th><th>Usuarios</th></tr></thead>
+              <tbody>${providerRows}</tbody>
+            </table>
           </div>
-          <div class="card">
-            <h3>Verificación de email</h3>
-            <div class="value">${adminData.verifiedUsers}</div>
-            <div class="sub">${adminData.unverifiedUsers} sin verificar</div>
+
+          <div class="section">
+            <div class="section-title">Nuevos registros</div>
+            <table>
+              <thead><tr><th>Período</th><th>Usuarios</th></tr></thead>
+              <tbody>
+                <tr><td>Hoy</td><td>${adminData.newUsersToday}</td></tr>
+                <tr><td>Esta semana</td><td>${adminData.newUsersThisWeek}</td></tr>
+                <tr><td>Este mes</td><td>${adminData.newUsersThisMonth}</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <div class="section">
-          <h2>Distribución por plan</h2>
-          <table>
-            <thead><tr><th>Plan</th><th>Usuarios</th></tr></thead>
-            <tbody>${planRows}</tbody>
-          </table>
-        </div>
-
-        <div class="section">
-          <h2>Distribución por proveedor</h2>
-          <table>
-            <thead><tr><th>Proveedor</th><th>Usuarios</th></tr></thead>
-            <tbody>${providerRows}</tbody>
-          </table>
-        </div>
-
-        <div class="section">
-          <h2>Nuevos registros</h2>
-          <table>
-            <thead><tr><th>Período</th><th>Usuarios</th></tr></thead>
-            <tbody>
-              <tr><td>Hoy</td><td>${adminData.newUsersToday}</td></tr>
-              <tr><td>Esta semana</td><td>${adminData.newUsersThisWeek}</td></tr>
-              <tr><td>Este mes</td><td>${adminData.newUsersThisMonth}</td></tr>
-            </tbody>
-          </table>
+        <div class="footer">
+          <p>LingCode Platform · Reporte generado el ${date}</p>
+          <p>Confidencial — Solo para uso interno</p>
         </div>
       </body>
       </html>
