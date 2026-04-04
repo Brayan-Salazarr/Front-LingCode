@@ -50,7 +50,7 @@ export class ChatBot implements OnInit, OnDestroy {
 
   private recognition: any;
   private subscriptions: Subscription[] = [];
-  private baseUrl = environment.cybroUrl;
+  private baseUrl = `${environment.apiUrl}/cybro`;
   private userStats: UserStats | null = null;
   private adminStats: (AdminStats & { estimatedRevenue: number }) | null = null;
 
