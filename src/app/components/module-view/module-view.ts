@@ -187,27 +187,31 @@ export class ModuleView {
   }
 
   goToLessons(moduleId: string) {
-    this.lessonService.getLessonsByModule(moduleId)
-      .pipe(take(1))
-      .subscribe(lessons => {
+    const user = this.authService.getCurrentUser();
+    const progress$ = user
+      ? this.progressService.getProgress(user.userId).pipe(catchError(() => of(null)))
+      : of(null);
 
-        if (!lessons.length) return;
+    forkJoin({
+      lessons: this.lessonService.getLessonsByModule(moduleId).pipe(take(1), catchError(() => of([]))),
+      progress: progress$
+    }).subscribe(({ lessons, progress }) => {
+      if (!lessons.length) return;
 
-        const completed = (this.progress?.completedLessons || []).map(String);
+      const completed = (progress?.completedLessons || []).map(String);
 
-        // buscar la PRIMERA lección NO completada
-        const nextLesson = lessons.find(
-          lesson => !completed.includes(String(lesson.id))
-        );
+      // buscar la PRIMERA lección NO completada
+      const nextLesson = lessons.find(
+        lesson => !completed.includes(String(lesson.id))
+      );
 
-        const lessonToGo = nextLesson || lessons[lessons.length - 1];
-        // si ya completó todo → lo manda a la última
+      const lessonToGo = nextLesson || lessons[lessons.length - 1];
 
-        this.router.navigate(
-          ['/modules', moduleId, 'lessons'],
-          { queryParams: { lessonId: lessonToGo.id } }
-        );
-      });
+      this.router.navigate(
+        ['/modules', moduleId, 'lessons'],
+        { queryParams: { lessonId: lessonToGo.id } }
+      );
+    });
   }
 
   isLineCompleted(index: number, module: any, type: 'before' | 'after'): boolean {
