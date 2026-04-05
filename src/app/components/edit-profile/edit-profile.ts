@@ -282,65 +282,50 @@ export class EditProfile {
     const finalImage = this.previewUrl || this.selectedAvatarUrl || currentUser?.avatar;
 
     if (this.password) {
-      //Expresión para validar contraseña.
-      //mínimo 8 caracteres, 1 mayúscula y 1 número.
       const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
-      //Valida que la contraseña contenga los caracteres adecuados.
       this.caractPassw = !passRegex.test(this.password);
-
       if (this.caractPassw) return;
 
-      //Valida que las contraseñas ingresadas coincidan.
       this.errorPassw = this.password !== this.confirmPass;
-
       if (this.errorPassw) return;
     }
 
-    //Datos del usuario que se actualizan
-    //Si el usuario no cambio información, se conserva el valor anterior.
-    const updatedUser: Partial<User> = {
+    const payload = {
       fullName: this.fullName || currentUser.fullName,
       nickname: this.nickname || currentUser.nickname,
-      email: this.email || currentUser.email,
-      avatar: finalImage
-    }
+      avatarUrl: finalImage
+    };
 
-    //Se actualizan los datos.
-    const wasUpdate: boolean = this.authService.updateCurrentUser(updatedUser);
+    this.authService.updateProfile(payload).subscribe({
+      next: () => {
+        this.caractPassw = false;
+        this.errorPassw = false;
+        this.errorMessage = '';
+        this.password = '';
+        this.confirmPass = '';
 
-    if (!wasUpdate) {
-      Swal.fire({
-        icon: 'error',
-        title: 'No se pudo actualizar',
-        text: 'Ocurrión un problema al actualizar la información',
-        confirmButtonText: 'Entendido'
-      });
-      return;
-    }
-
-    //Limpiar los mensajes de error y campos de contraseña.
-    this.caractPassw = false;
-    this.errorPassw = false;
-    this.errorMessage = '';
-    this.password = '';
-    this.confirmPass = '';
-    
-    //Mensaje para el usuario indicando que se actualizaron los datos.
-    Swal.fire({
-      icon: 'success',
-      title: 'Actualizado exitosamente',
-      text: 'Tu información ha sido actualizada con éxito',
-      confirmButtonText: 'Aceptar',
-      scrollbarPadding: false,
-      heightAuto: false,
-      didClose: () => {
-        //Subre el scroll despues de actualizar
-        globalThis.scroll({
-          top: 0,
-          behavior: 'smooth'
+        Swal.fire({
+          icon: 'success',
+          title: 'Actualizado exitosamente',
+          text: 'Tu información ha sido actualizada con éxito',
+          confirmButtonText: 'Aceptar',
+          scrollbarPadding: false,
+          heightAuto: false,
+          didClose: () => {
+            globalThis.scroll({ top: 0, behavior: 'smooth' });
+          }
+        });
+      },
+      error: (err) => {
+        const msg = err?.error?.message || 'Ocurrió un problema al actualizar la información';
+        Swal.fire({
+          icon: 'error',
+          title: 'No se pudo actualizar',
+          text: msg,
+          confirmButtonText: 'Entendido'
         });
       }
-    })
+    });
   }
 
   //Indica si la imagen seleccionada es personalizada.

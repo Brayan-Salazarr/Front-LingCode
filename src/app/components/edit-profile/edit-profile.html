@@ -42,6 +42,9 @@
             <!-- Mensaje de error en caso de que supere el peso máximo y que no sea una foto -->
             <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
             <p id="textSize">Tamaño máximo= 1MB</p>
+            <p id="textSize" *ngIf="previewUrl" style="color:#f59e0b; margin-top:6px;">
+              ⚠️ Las fotos subidas solo duran hasta cerrar sesión. Usa un avatar para que persista.
+            </p>
         </div>
     </div>
 </div>

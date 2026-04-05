@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 export interface User {
@@ -168,5 +168,27 @@ export class AuthService {
     localStorage.setItem(this.USER_KEY, JSON.stringify(updatedUser));
     this.currentUserSubject.next(updatedUser);
     return true;
+  }
+
+  updateProfile(data: { fullName?: string; nickname?: string; avatarUrl?: string }): Observable<any> {
+    const isBase64 = data.avatarUrl?.startsWith('data:image') ?? false;
+
+    // Only send Cloudinary URLs to the backend — base64 stays local only
+    const payload: any = { fullName: data.fullName, nickname: data.nickname };
+    if (data.avatarUrl && !isBase64) {
+      payload.avatarUrl = data.avatarUrl;
+    }
+
+    return this.http.put(`${this.api}/me`, payload).pipe(
+      tap((response: any) => {
+        this.updateCurrentUser({
+          fullName: response.fullName,
+          nickname: response.nickname,
+          // base64: keep it in localStorage for this session (lost after logout by design)
+          // Cloudinary URL: use the one confirmed by the backend
+          avatar: isBase64 ? data.avatarUrl : (response.avatarUrl ?? this.currentUserSubject.value?.avatar)
+        });
+      })
+    );
   }
 }

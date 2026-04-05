@@ -50,7 +50,7 @@ export class ChatBot implements OnInit, OnDestroy {
 
   private recognition: any;
   private subscriptions: Subscription[] = [];
-  private baseUrl = environment.cybroUrl;
+  private baseUrl = `${environment.apiUrl}/cybro`;
   private userStats: UserStats | null = null;
   private adminStats: (AdminStats & { estimatedRevenue: number }) | null = null;
 
@@ -205,6 +205,21 @@ export class ChatBot implements OnInit, OnDestroy {
     this.cdr.markForCheck();
     this.scrollToBottom();
 
+    // If admin but stats not loaded yet, fetch them first
+    if (this.isAdmin && !this.adminStats) {
+      this.adminService.getStats().subscribe({
+        next: stats => {
+          this.adminStats = { ...stats, estimatedRevenue: this.adminService.estimatedMonthlyRevenue(stats.usersByPlan) };
+          this.dispatchCybroMessage(userText, sessionId, userContext);
+        },
+        error: () => this.dispatchCybroMessage(userText, sessionId, userContext)
+      });
+    } else {
+      this.dispatchCybroMessage(userText, sessionId, userContext);
+    }
+  }
+
+  private dispatchCybroMessage(userText: string, sessionId: string, userContext: any) {
     this.http.post<any>(`${this.baseUrl}/chat`, {
       message: userText,
       sessionId,

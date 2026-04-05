@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, tap } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { UserProgress } from '../models/progress';
 import { AuthService } from '../auth/services/authService';
 import { environment } from '../../environments/environment';
@@ -65,12 +65,12 @@ export class ProgressService {
       return of(null);
     }
 
-    return this.http.get<ProgressResponse>(`${this.baseUrl}/progress/summary`)
-      .pipe(
-        tap(progress => {
-          this.progressSubject.next(progress);
-        })
-      );
+    return this.http.post<void>(`${this.baseUrl}/lessons/${lessonId}/complete`, {}).pipe(
+      switchMap(() => this.http.get<ProgressResponse>(`${this.baseUrl}/progress/summary`)),
+      tap(progress => {
+        this.progressSubject.next(progress);
+      })
+    );
   }
 
   /*

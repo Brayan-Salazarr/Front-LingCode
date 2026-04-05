@@ -126,6 +126,10 @@
         </div>
       </div>
 
+      <div *ngIf="isAnswered && !isCorrectAnswer && currentExercise.correctAnswer" class="correct-answer-hint">
+        Respuesta correcta: <strong>{{ currentExercise.correctAnswer }}</strong>
+      </div>
+
     </ng-container>
 
     <!-- EJERCICIO TIPO ORDER -->
@@ -168,6 +172,10 @@
         </button>
       </div>
 
+      <div *ngIf="isAnswered && !isCorrectAnswer && currentExercise.correctAnswer" class="correct-answer-hint">
+        Orden correcto: <strong>{{ currentExercise.correctAnswer }}</strong>
+      </div>
+
     </ng-container>
 
     <!-- EJERCICIO TIPO TRANSLATE -->
@@ -204,6 +212,10 @@
         <!-- 🔥 MENSAJE -->
         <div class="hint" *ngIf="!isCorrectAnswer">
           Revisa las palabras en rojo.
+        </div>
+
+        <div *ngIf="!isCorrectAnswer && currentExercise.correctAnswer" class="correct-answer-hint">
+          Traducción correcta: <strong>{{ currentExercise.correctAnswer }}</strong>
         </div>
 
       </div>
