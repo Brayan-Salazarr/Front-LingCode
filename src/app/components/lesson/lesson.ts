@@ -2,7 +2,7 @@ import { Component, HostListener, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LessonService } from '../../service/lessonService';
 import { CommonModule } from '@angular/common';
-import { BehaviorSubject, combineLatest, map, Observable, switchMap, take } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, Observable, shareReplay, switchMap, take } from 'rxjs';
 import { Nav } from '../../shared/components/nav/nav';
 import { FormsModule } from '@angular/forms';
 import { UserProgress } from '../../models/progress';
@@ -202,12 +202,20 @@ export class Lesson {
   ngOnInit() {
     this.resetLessonState();
 
-    // Cargar lecciones del módulo
+    // Cargar lecciones del módulo (shuffle MC options on load)
     this.lesson$ = this.route.paramMap.pipe(
       map(params => params.get('moduleId')!),
-      switchMap(moduleId =>
-        this.lessonService.getLessonsByModule(moduleId)
-      )
+      switchMap(moduleId => this.lessonService.getLessonsByModule(moduleId)),
+      map(lessons => lessons.map(lesson => ({
+        ...lesson,
+        exercises: lesson.exercises.map(ex => ({
+          ...ex,
+          options: (ex.type === 'multiple' || ex.type === 'order') && ex.options
+            ? this.shuffleArray([...ex.options])
+            : ex.options
+        }))
+      }))),
+      shareReplay(1)
     );
 
     combineLatest([
@@ -338,8 +346,13 @@ export class Lesson {
   }
   /*
    Guarda la opción seleccionada por el usuario.
+   Si cambia de opción después de una respuesta incorrecta, limpia el estado.
   */
   selectOption(option: string) {
+    if (this.selectedOption !== option && this.isAnswered && !this.isCorrectAnswer) {
+      this.isAnswered = false;
+      this.isCorrectAnswer = false;
+    }
     this.selectedOption = option;
   }
 
@@ -543,7 +556,7 @@ export class Lesson {
     }
   }
   /* Mezcla un arreglo aleatoriamente */
-  shuffleArray(array: string[]): string[] {
+  shuffleArray<T>(array: T[]): T[] {
     return [...array].sort(() => Math.random() - 0.5);
   }
 
@@ -708,26 +721,25 @@ export class Lesson {
   /*Finaliza las lecciones*/
   finishLesson(lesson: LessonC) {
     const user = this.authService.getCurrentUser();
+    const alreadyCompleted = this.progress?.completedLessons?.includes(lesson.id) ?? false;
 
     this.soundService.playSuccess();
+    this.moduleService.completeLesson();
+
+    // Si la lección ya fue completada, no otorgar XP nuevamente
+    if (alreadyCompleted) {
+      setTimeout(() => this.router.navigate(['/module-view']), 800);
+      return;
+    }
 
     this.progressService
       .completeLesson(lesson.id, lesson.xpReward)
       .subscribe(progress => {
-
         if (user && progress) {
           this.handleStreak(progress);
         }
-
-        console.log("progreso recibido", progress);
-
-        setTimeout(() => {
-          this.router.navigate(['/module-view']);
-        }, 800);
-
+        setTimeout(() => this.router.navigate(['/module-view']), 800);
       });
-
-    this.moduleService.completeLesson();
   }
 
   /* Maneja actualización de racha */
