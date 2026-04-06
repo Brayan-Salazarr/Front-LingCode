@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { ChangeDetectorRef } from '@angular/core';
 import { ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login-registro',
@@ -28,14 +29,14 @@ export class LoginRegistro {
   isConfirmModal: boolean = false;
   forgotPasswordEmail: string = '';
 
-
   /*Contructor - Inyección de dependencias*/
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private authService: AuthService,
     private cd: ChangeDetectorRef,
-    private http: HttpClient
+    private http: HttpClient,
+    private location: Location
   ) { }
 
   @ViewChild('name') nameInput?: ElementRef<HTMLInputElement>;
@@ -422,5 +423,9 @@ export class LoginRegistro {
         });
       }
     });
+  }
+
+  goBack(){
+    this.location.back();
   }
 }
