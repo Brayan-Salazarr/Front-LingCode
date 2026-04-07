@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { ChangeDetectorRef } from '@angular/core';
 import { ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login-registro',
@@ -28,14 +29,14 @@ export class LoginRegistro {
   isConfirmModal: boolean = false;
   forgotPasswordEmail: string = '';
 
-
   /*Contructor - Inyección de dependencias*/
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private authService: AuthService,
     private cd: ChangeDetectorRef,
-    private http: HttpClient
+    private http: HttpClient,
+    private location: Location
   ) { }
 
   @ViewChild('name') nameInput?: ElementRef<HTMLInputElement>;
@@ -95,23 +96,31 @@ export class LoginRegistro {
     });
   }*/
 
+  //Inicia sesión con el identificador (correo o usuario) y contraseña
   login() {
+    //Llama al servicio de autenticación
     this.authService.login(this.loginData.identifier, this.loginData.password).subscribe({
+      //Si el login es exitoso, redirige al home del usuario registrado
       next: () => {
         this.router.navigate(['/registered-home']);
       },
+      //Si ocurre un error, muestra el mensaje correspondiente
       error: err => {
         const code = err.error?.code;
         let message = err.error?.message || 'Ocurrió un error inesperado';
 
+        //Verifica si el correo no ha sido confirmado
         if (code === 'EMAIL_NOT_VERIFIED') {
           message = 'Debes verificar tu correo electrónico antes de iniciar sesión.';
+        //Verifica si las credenciales son incorrectas
         } else if (code === 'INVALID_CREDENTIALS' || err.status === 401) {
           message = 'Usuario o contraseña incorrectos.';
+        //Verifica si la cuenta esta bloqueada
         } else if (code === 'ACCOUNT_LOCKED') {
           message = 'Tu cuenta está bloqueada. Intenta más tarde.';
         }
 
+        //Muestra alerta con el error
         Swal.fire({ icon: 'error', title: 'Error al iniciar sesión', text: message, confirmButtonText: 'Aceptar' });
       }
     });
@@ -297,24 +306,27 @@ export class LoginRegistro {
   //Cambia entre Login y Registro
   toggleAuth(): void {
     const overlay = document.getElementById("blackOverlay");
+    //Si no existe no hace nada
     if (!overlay) return;
+    //Verifica hacia que vista se va a cambiar
     const goingToLogin = !this.showLogin;
 
     //Cambia estado de vista
     this.showLogin = !this.showLogin;
 
-    //Aplica animación correspondiente
+    //Aplica animación al cambiar de vista
     if (goingToLogin) {
 
+      //Si va hacia login, se mueve a la derecha
       overlay?.classList.add("slide-right");
       overlay?.classList.remove("slide-left", "exit-left", "exit-right");
     } else {
-
+      //Si va hacia registro, se mueve a la izquierda
       overlay?.classList.add("slide-left");
       overlay?.classList.remove("slide-right", "exit-left", "exit-right");
     }
 
-    //Maneja transición
+    //Maneja la transición
     setTimeout(() => {
       let exitClass: string;
       let slideClass: string;
@@ -327,18 +339,22 @@ export class LoginRegistro {
         exitClass = "exit-left";
       }
 
+      //Quita la clase inicial de moviento 
       overlay!.classList.remove(slideClass);
 
+      //Escucha cuando la animación termina
       const listener = (event: Event) => {
+        //Solo actúa cuando termina la transición del transform
         if ((event as TransitionEvent).propertyName === 'transform') {
+          //Limpia las clases usadas en la animación
           overlay!.classList.remove(exitClass);
           overlay!.classList.remove(slideClass);
 
-          // --- MODIFICACIÓN AQUÍ ---
-          // Llamamos al foco cuando el overlay ya terminó de moverse 
+          // Se llama al foco cuando el overlay ya terminó de moverse 
           // y no está bloqueando visualmente los inputs.
           this.setFocus(goingToLogin ? 'login' : 'register');
 
+          //Elimina el listener para evitar que se repita
           overlay!.removeEventListener('transitionend', listener);
         }
       };
@@ -383,7 +399,7 @@ export class LoginRegistro {
     this.router.navigate(['/new-password'])
   }
 
-  // OAuth2
+  // Inicia sesión con GitHub - OAuth2
   loginWithGithub() {
     this.http.get<{ data: string }>(`${environment.apiUrl}/auth/oauth2/github`).subscribe({
       next: res => window.location.href = res.data,
@@ -391,6 +407,7 @@ export class LoginRegistro {
     });
   }
 
+  // Inicia sesión con Google
   loginWithGoogle() {
     this.http.get<{ data: string }>(`${environment.apiUrl}/auth/oauth2/google`).subscribe({
       next: res => window.location.href = res.data,
@@ -422,5 +439,10 @@ export class LoginRegistro {
         });
       }
     });
+  }
+
+  // Regresa a la página anterior
+  goBack() {
+    this.location.back();
   }
 }

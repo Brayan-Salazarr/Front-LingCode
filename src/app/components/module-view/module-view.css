@@ -168,13 +168,14 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Poppins', sans-serif;
   font-weight: bold;
   font-size: 17px;
   transition: 0.3s ease;
   cursor: pointer;
   color: #333;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .step.active {
@@ -186,14 +187,21 @@ button:hover {
 .step.completed {
   background: linear-gradient(135deg, #0066FF, #00D9FF);
   color: white;
-  box-shadow: 0 4px 16px rgba(0, 102, 255, 0.4);
   animation: stepComplete 0.4s ease;
 }
 
 @keyframes stepComplete {
-  0%   { transform: scale(0.8); }
-  60%  { transform: scale(1.15); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0.8);
+  }
+
+  60% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .line-step.h {
@@ -217,7 +225,7 @@ button:hover {
 }
 
 /* ── Separador entre módulos ── */
-.moduleRow + .moduleRow {
+.moduleRow+.moduleRow {
   padding-top: 16px;
   border-top: 1px solid #f0f0f0;
 }
@@ -269,13 +277,18 @@ button:hover {
   left: -150px;
   width: 150px;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
   animation: loading 1.2s infinite;
 }
 
 @keyframes loading {
-  0%   { left: -150px; }
-  100% { left: 100%; }
+  0% {
+    left: -150px;
+  }
+
+  100% {
+    left: 100%;
+  }
 }
 
 /* ── Empty state ── */
@@ -290,18 +303,35 @@ button:hover {
   gap: 10px;
 }
 
+@media (max-width: 1279px) {
+
+  .moduleRow,
+  .moduleRow.left,
+  .moduleRow.right {
+    flex-direction: column;
+    height: auto;
+    /* Evita que se corten los círculos */
+  }
+
+  .path-horizontal {
+    flex-direction: column;
+  }
+
+  .steps.reverse .path-horizontal {
+    flex-direction: column;
+  }
+
+  .line-step.h{
+    width: 10px;
+    height: 12px;
+  }
+}
+
 /* ── Media queries ── */
 @media (max-width: 768px) {
   .modulesContainer {
     padding: 24px 20px 60px;
     gap: 32px;
-  }
-
-  .cardContent {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-    gap: 16px;
   }
 
   .cardContent img {
@@ -312,21 +342,23 @@ button:hover {
     width: 100%;
   }
 
-  button {
-    width: 100%;
-  }
-
   .step {
     width: 60px;
     height: 60px;
     font-size: 15px;
   }
 
-  .line-step.h {
-    width: 14px;
-  }
+  
 
   .titleModule {
     font-size: 36px;
   }
+}
+
+@media (max-width: 350px) {
+  .moduleCard{
+    width: 240px;
+    height: 310px;
+  }
+
 }
