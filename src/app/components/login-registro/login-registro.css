@@ -187,7 +187,6 @@ input {
 
 .input-wrapper {
     position: relative;
-    width: 450px;
     isolation: isolate;
 }
 
