@@ -230,7 +230,12 @@
 
                         <div class="regisInfo" id="loginP">
                             <p class="text">Contraseña</p>
-                            <input id="password" type="password" [(ngModel)]="loginData.password">
+                            <div class="input-wrapper">
+                                <input id="password" [type]="showPassword ? 'text' : 'password'"
+                                    [(ngModel)]="loginData.password">
+
+                                <span class="eye-icon" (click)="togglePassword()">👁️</span>
+                            </div>
                         </div>
 
                     </div>
