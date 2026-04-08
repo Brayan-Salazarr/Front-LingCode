@@ -245,6 +245,10 @@ li {
         height: 430px;
     }
 
+    #title-achievement{
+        font-size: 30px;
+    }
+
     .suntitle-subsc {
         font-size: 32px;
     }
