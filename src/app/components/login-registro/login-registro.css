@@ -185,6 +185,31 @@ input {
     text-overflow: ellipsis !important;
 }
 
+.input-wrapper {
+    position: relative;
+    width: 450px;
+    isolation: isolate;
+}
+
+.input-wrapper input {
+    position: relative;
+    z-index: 1;
+    /* Espacio para el icono */
+}
+
+/*Diseño de icono para ver la contraseña*/
+.eye-icon {
+    position: absolute;
+    z-index: 20;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    color: black;
+    -webkit-text-fill-color: black;
+}
 
 /*BOTONES*/
 /*Contenedor de botones*/

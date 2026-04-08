@@ -33,7 +33,8 @@
                         <!-- Cada bloque contiene etiqueta + input -->
                         <div class="regisInfo">
                             <p class="text">Nombre completo</p>
-                            <input #name name="registerName" class="field" id="name" [(ngModel)]="registerData.fullName">
+                            <input #name name="registerName" class="field" id="name"
+                                [(ngModel)]="registerData.fullName">
                         </div>
 
                         <div class="regisInfo">
@@ -49,28 +50,39 @@
                         <!-- Validación de contraseña en tiempo real -->
                         <div class="regisInfo">
                             <p class="text">Contraseña</p>
-                            <input class="field" id="password" type="password" [(ngModel)]="registerData.password"
-                                (ngModelChange)="caracterPassword(registerData.password)">
+                            <div class="input-wrapper">
+                                <input class="field" id="password" [type]="showPassword ? 'text' : 'password'"
+                                    [(ngModel)]="registerData.password"
+                                    (ngModelChange)="caracterPassword(registerData.password)">
+
+                                <span class="eye-icon" (click)="togglePassword()">👁️</span>
+                            </div>
                         </div>
 
                         <!-- Validación de coincidencia  -->
                         <div class="regisInfo">
                             <p class="text">Confirmar contraseña</p>
-                            <input class="field" id="confirmPass" type="password"
-                                [(ngModel)]="registerData.confirmPassword"
-                                (ngModelChange)="passwordValidation(registerData.password, registerData.confirmPassword)">
+                            <div class="input-wrapper">
+                                <input class="field" id="confirmPass" [type]="showConfirmPassword ? 'text' : 'password'"
+                                    [(ngModel)]="registerData.confirmPassword"
+                                    (ngModelChange)="passwordValidation(registerData.password, registerData.confirmPassword)">
+
+                                <span class="eye-icon" (click)="toggleConfirmPassword()">👁️</span>
+                            </div>
+
                         </div>
                     </div>
 
                     <!-- MENSAJES DE ERROR DINÁMICOS -->
                     @if (errorPassw) {
-                        <p class="textTerms textFields" id="textPass">Las contraseñas ingresadas no coinciden.</p>
+                    <p class="textTerms textFields" id="textPass">Las contraseñas ingresadas no coinciden.</p>
                     }
                     @if (emptyF && fieldsEmpty()) {
-                        <p class="textTerms textFields" id="requieFields">Todos los campos son obligatorios.</p>
+                    <p class="textTerms textFields" id="requieFields">Todos los campos son obligatorios.</p>
                     }
                     @if (caractPassw) {
-                        <p class="textTerms textFields" id="requieFields2">La contraseña debe contener al menos 8 caracteres, incluyendo una letra mayúscula y un número.</p>
+                    <p class="textTerms textFields" id="requieFields2">La contraseña debe contener al menos 8
+                        caracteres, incluyendo una letra mayúscula y un número.</p>
                     }
 
                     <!-- Botón principal de registro -->
@@ -106,7 +118,7 @@
 
                     <!-- Error si no acepta términos -->
                     @if (disError) {
-                        <p class="textTerms">Debes aceptar los términos de uso para continuar.</p>
+                    <p class="textTerms">Debes aceptar los términos de uso para continuar.</p>
                     }
                 </div>
 
@@ -212,7 +224,8 @@
                     <div class="infoBox" id="infoLogin">
                         <div class="regisInfo" id="loginP">
                             <p class="text">Correo eléctronico o Apodo</p>
-                            <input #emailNickname name="identifier" id="email" type="text" [(ngModel)]="loginData.identifier">
+                            <input #emailNickname name="identifier" id="email" type="text"
+                                [(ngModel)]="loginData.identifier">
                         </div>
 
                         <div class="regisInfo" id="loginP">
@@ -258,10 +271,12 @@
 
                         <div class="modalBody" id="modalBodyLogin">
                             <p id="textModal">Ingresa tu correo electrónico para enviarte un enlace de recuperación.</p>
-                            <input type="email" id="inputSize" [(ngModel)]="forgotPasswordEmail" placeholder="tu@correo.com">
+                            <input type="email" id="inputSize" [(ngModel)]="forgotPasswordEmail"
+                                placeholder="tu@correo.com">
                             <div class="modalFooter" id="modalFooterLogin">
                                 <button class="buttons" id="buttonCancel" (click)="closeModal()">Cancelar</button>
-                                <button class="buttons" id="buttonAccept" (click)="sendForgotPassword()">Aceptar</button>
+                                <button class="buttons" id="buttonAccept"
+                                    (click)="sendForgotPassword()">Aceptar</button>
                             </div>
                         </div>
                     </div>
