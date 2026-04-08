@@ -28,6 +28,9 @@ export class LoginRegistro {
   showLogin: boolean = false;
   isConfirmModal: boolean = false;
   forgotPasswordEmail: string = '';
+  // Control visibilidad contraseñas
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
 
   /*Contructor - Inyección de dependencias*/
   constructor(
@@ -112,10 +115,10 @@ export class LoginRegistro {
         //Verifica si el correo no ha sido confirmado
         if (code === 'EMAIL_NOT_VERIFIED') {
           message = 'Debes verificar tu correo electrónico antes de iniciar sesión.';
-        //Verifica si las credenciales son incorrectas
+          //Verifica si las credenciales son incorrectas
         } else if (code === 'INVALID_CREDENTIALS' || err.status === 401) {
           message = 'Usuario o contraseña incorrectos.';
-        //Verifica si la cuenta esta bloqueada
+          //Verifica si la cuenta esta bloqueada
         } else if (code === 'ACCOUNT_LOCKED') {
           message = 'Tu cuenta está bloqueada. Intenta más tarde.';
         }
@@ -444,5 +447,16 @@ export class LoginRegistro {
   // Regresa a la página anterior
   goBack() {
     this.location.back();
+  }
+
+  // Alternar visibilidad contraseña
+  togglePassword(): void {
+    console.log("click funcionando");
+    this.showPassword = !this.showPassword;
+  }
+
+  // Alternar visibilidad confirmar contraseña
+  toggleConfirmPassword(): void {
+    this.showConfirmPassword = !this.showConfirmPassword;
   }
 }
