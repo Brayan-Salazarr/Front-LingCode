@@ -57,6 +57,7 @@
 }
 
 .vocab-translation {
+    font-family: 'Poppins', sans-serif;
     color: #444;
 }
 
@@ -670,16 +671,65 @@
     .energies {
         width: 110px;
     }
+
+    .introduction {
+        font-size: 40px;
+        margin: 0;
+    }
+
+    .buttonOptions {
+        min-height: 75px;
+        width: 150px;
+    }
+
+    .exercise-description {
+        font-size: 16px;
+    }
+
+    .component {
+        gap: 25px;
+    }
 }
 
 @media (max-width: 480px) {
     .component {
-        padding: 20px;
+        padding: 30px;
+    }
+
+    .confirmation-button,
+    .back-button {
+        width: 135px;
+        height: 50px;
+        font-size: 17px;
+    }
+
+    .buttonOptions {
+        min-height: 70px;
+        width: 120px;
     }
 }
 
-@media (max-width: 290px) {
-    .vocab-item{
+@media (max-width: 350px) {
+    .vocab-item {
         width: 100%;
+    }
+
+    .start-lesson-btn {
+        padding: 17px 21px;
+        font-size: 15px;
+    }
+
+    .vocab-grid {
+        width: 80%;
+    }
+
+    .buttonOptions {
+        min-height: 64px;
+        width: 100px;
+        font-size: 15px;
+    }
+
+    .confirmation-button,.back-button {
+        width: 108px;
     }
 }

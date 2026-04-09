@@ -175,7 +175,6 @@ button:hover {
   cursor: pointer;
   color: #333;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .step.active {
