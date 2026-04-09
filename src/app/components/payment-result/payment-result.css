@@ -1,0 +1,126 @@
+.result-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 140px);
+  background-color: #000;
+  padding: 40px 20px;
+}
+
+.result-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -2;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #DF2B2E, #8E19DB);
+}
+
+.result-card::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px; right: 3px; bottom: 3px;
+  z-index: -1;
+  background: #111;
+  border-radius: 17px;
+}
+
+/* ÍCONO */
+.icon-wrapper {
+  margin-bottom: 24px;
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #DF2B2E, #8E19DB);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s infinite;
+}
+
+.icon {
+  font-size: 36px;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* TEXTOS */
+.title {
+  font-family: 'Anton SC', sans-serif;
+  font-size: 30px;
+  color: #fff;
+  letter-spacing: 1px;
+  margin: 0 0 16px 0;
+}
+
+.message {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: #ccc;
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+}
+
+.transaction-id {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  color: #666;
+  margin: 0 0 20px 0;
+}
+
+.note {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 32px 0;
+  line-height: 1.5;
+}
+
+/* BOTÓN */
+.btn-home {
+  width: 100%;
+  height: 54px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #ff00ff, #ff9900);
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: opacity 0.2s;
+}
+
+.btn-home:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 520px) {
+  .result-card {
+    padding: 32px 20px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}

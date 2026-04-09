@@ -2,83 +2,46 @@
 <div class="line"></div>
 <!-- Contenedor principal de la sección de suscripciones -->
 <div class="content-subscriptions">
-        <!-- Título principal de la sección -->
-        <h2 class="title-record" id="title-achievement">Suscripciones</h2>
+    <!-- Título principal de la sección -->
+    <h2 class="title-record" id="title-achievement">Suscripciones</h2>
 
-        <!-- Contenedor que agrupa las dos tarjetas (basic y premium) -->
-        <div class="box-card">
-            <!-- TARJETA PLAN BÁSICO -->
-            <div class="card-sus">
-                <!-- Sección donde se muestra el precio y tipo de plan -->
-                <div class="price-field">
-                    <h2 class="suntitle-subsc">Basic</h2>
-                    <div class="line-susbsc"></div> <!-- Línea decorativa debajo del títiulo -->
-                    <strong class="cost">$ <span class="size-number">9.900</span> COP  </strong>
-                    <p class="type">Mensual</p> <!-- Tipo de facturación -->
-                </div>
+    <!-- Contenedor que agrupa imagen y tarjeta -->
+    <div class="box-card">
+        <!-- Imagen decorativa -->
+        <img id="img-avatar" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765858158/image-Photoroom_1_1_xctvke.png" alt="">
 
-                <!-- Lista de beneficios incluidos en el plan -->
-                <ul class="information-field">
-                    <!-- Beneficio 1 -->
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Energía ilimitada</li>
-                    </div>
-                    <!-- Beneficio 2 -->
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Una interacción sin anuncios</li>
-                    </div>
-                    <!-- Beneficio 3 -->
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Interactúar con cualquier módulo</li>
-                    </div>
-                    <!-- Beneficio NO incluido (por eso cambia el ícono) -->
-                    <div class="space">
-                        <img class="iconss" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861264/image-Photoroom_2_3_3_vnea0z.png" alt="">
-                        <li>Interacción por voz con IA</li>
-                    </div>
-                </ul>
-
-                <!-- Botón para suscribirse al plan -->
-                <button class="button-subscription" (click)="handleSubscription()">Suscribirse</button>
+        <!-- TARJETA PLAN PREMIUM -->
+        <div class="card-sus">
+            <!-- Sección donde se muestra el precio y tipo de plan -->
+            <div class="price-field">
+                <h2 class="suntitle-subsc">Premium</h2>
+                <div class="line-susbsc"></div>
+                <strong class="cost">$ <span class="size-number">19.900</span> COP</strong>
+                <p class="type">Mensual</p>
             </div>
-            <!-- Imagen decorativa central entre los dos planes -->
-            <img id="img-avatar" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765858158/image-Photoroom_1_1_xctvke.png" alt="">
-            <!-- TARJETA PLAN PREMIUM -->
-            <div class="card-sus">
-                <!-- Sección del precio -->
-                  <div class="price-field">
-                    <h2 class="suntitle-subsc">Premium</h2>
-                    <div class="line-susbsc"></div>
-                    <strong class="cost">$ <span class="size-number">19.900</span> COP  </strong>
-                    <p class="type">Mensual</p>
+
+            <!-- Lista de beneficios -->
+            <ul class="information-field">
+                <div class="space">
+                    <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                    <li>Energía ilimitada</li>
                 </div>
+                <div class="space">
+                    <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                    <li>Sin anuncios</li>
+                </div>
+                <div class="space">
+                    <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                    <li>Acceso a todos los módulos</li>
+                </div>
+                <div class="space">
+                    <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
+                    <li>Interacción por voz con IA</li>
+                </div>
+            </ul>
 
-                <!-- Lista de beneficiios del plan premium -->
-                <ul class="information-field">
-                    <!-- En este plan todos los beneficios están incluidos -->
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Energía ilimitadas</li>
-                    </div>
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Una interacción sin anuncios</li>
-                    </div>
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Interactúar con cualquier módulo</li>
-                    </div>
-                    <div class="space">
-                        <img class="icons" src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765861012/image-Photoroom_4_1_djlhvz.png" alt="">
-                        <li>Interacción por voz con IA</li>
-                    </div>
-                </ul>
-
-                <!-- Botón para suscribirse al plan premium -->
-                <button class="button-subscription" (click)="handleSubscription()">Suscribirse</button>
-            </div>
+            <!-- Botón para suscribirse -->
+            <button class="button-subscription" (click)="handleSubscription()">Suscribirse</button>
         </div>
     </div>
+</div>

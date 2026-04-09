@@ -14,6 +14,7 @@ import { ModuleView } from './components/module-view/module-view';
 import { Lesson } from './components/lesson/lesson';
 import { OAuth2Callback } from './components/oauth2-callback/oauth2-callback';
 import { VerifyEmail } from './components/verify-email/verify-email';
+import { PaymentResult } from './components/payment-result/payment-result';
 
 export const routes: Routes = [
     { path: '', component: UnregisteredHome },
@@ -33,4 +34,5 @@ export const routes: Routes = [
     { path: 'modules/:moduleId/lessons', component: Lesson },
     { path: 'oauth2/callback', component: OAuth2Callback },
     { path: 'verify-email', component: VerifyEmail },
+    { path: 'payment-result', component: PaymentResult },
 ];

@@ -1,0 +1,32 @@
+<app-nav [colorBackground]="'backgroundNav1'"></app-nav>
+
+<section class="result-section">
+  <div class="result-card">
+
+    <!-- Ícono animado -->
+    <div class="icon-wrapper">
+      <div class="icon-circle">
+        <span class="icon">⏳</span>
+      </div>
+    </div>
+
+    <h1 class="title">¡Pago recibido!</h1>
+    <p class="message">
+      Tu pago está siendo procesado. Recibirás una confirmación en tu correo
+      electrónico en los próximos minutos.
+    </p>
+
+    @if (transactionId) {
+      <p class="transaction-id">Referencia: {{ transactionId }}</p>
+    }
+
+    <p class="note">
+      Una vez confirmado, tu plan Premium quedará activo automáticamente.
+    </p>
+
+    <button class="btn-home" (click)="goHome()">Ir al inicio</button>
+
+  </div>
+</section>
+
+<app-footer></app-footer>
