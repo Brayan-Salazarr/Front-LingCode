@@ -77,11 +77,15 @@
             </ng-container>
 
             <!-- 🔵 CÍRCULO -->
-            <span class="step" (click)="goToLesson(module.id, lesson.id)"
-              [class.completed]="isLessonCompleted(lesson.id, module)" [class.active]="isLessonActive(idx, lesson)">
-
-              {{ idx + 1 }}
-
+            <span class="step"
+              (click)="handleLessonClick(module.id, lesson.id, idx)"
+              [class.completed]="isLessonCompleted(lesson.id, module) || isGuestLessonCompleted(lesson.id)"
+              [class.active]="isLessonActive(idx, lesson)"
+              [class.locked]="isLessonLockedForGuest(idx)">
+              <ng-container *ngIf="isLessonLockedForGuest(idx); else stepNumber">
+                🔒
+              </ng-container>
+              <ng-template #stepNumber>{{ idx + 1 }}</ng-template>
             </span>
 
             <!-- 3 LÍNEAS DESPUÉS DE CADA CÍRCULO (menos el último) -->
@@ -134,5 +138,16 @@
   </ng-template>
 
 </section>
+
+<!-- Modal login para guests -->
+<div class="login-modal-overlay" *ngIf="showLoginModal" (click)="showLoginModal = false">
+  <div class="login-modal" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="showLoginModal = false">×</button>
+    <div class="modal-icon">🔒</div>
+    <h2 class="modal-title">Lección bloqueada</h2>
+    <p class="modal-text">Crea una cuenta gratis para desbloquear todas las lecciones y guardar tu progreso.</p>
+    <button class="modal-btn-primary" (click)="goToLogin()">Iniciar sesión / Registrarse</button>
+  </div>
+</div>
 
 <app-footer></app-footer>

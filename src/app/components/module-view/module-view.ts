@@ -58,6 +58,10 @@ export class ModuleView {
   loading = true;
   isDownloading = false;
 
+  isGuest = false;
+  showLoginModal = false;
+  guestCompletedLessons: Set<string> = new Set();
+
   constructor(
     public authService: AuthService,
     private moduleService: ModuleService,
@@ -80,6 +84,12 @@ export class ModuleView {
     console.log("Usuario:", user);
 
     this.currentStep = this.moduleService.getCurrentStep();
+
+    this.isGuest = !user;
+    if (this.isGuest) {
+      const stored = JSON.parse(localStorage.getItem('guestCompletedLessons') || '[]');
+      this.guestCompletedLessons = new Set(stored);
+    }
 
     if (user) {
       this.progressService.getProgress(user.userId).subscribe();
@@ -176,6 +186,26 @@ export class ModuleView {
     Navega a la vista de lecciones
     del módulo seleccionado.
    */
+  isLessonLockedForGuest(idx: number): boolean {
+    return this.isGuest && idx > 0;
+  }
+
+  isGuestLessonCompleted(lessonId: string): boolean {
+    return this.guestCompletedLessons.has(lessonId);
+  }
+
+  handleLessonClick(moduleId: string, lessonId: string, idx: number) {
+    if (this.isLessonLockedForGuest(idx)) {
+      this.showLoginModal = true;
+      return;
+    }
+    this.goToLesson(moduleId, lessonId);
+  }
+
+  goToLogin() {
+    this.router.navigate(['/login-registro']);
+  }
+
   goToLesson(moduleId: string, lessonId: string) {
 
     this.selectedLessonId = lessonId;
