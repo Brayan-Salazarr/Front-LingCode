@@ -179,7 +179,7 @@ export class AuthService {
       payload.avatarUrl = data.avatarUrl;
     }
 
-    return this.http.put(`${this.api}/me`, payload).pipe(
+    return this.http.patch(`${this.api}/me`, payload).pipe(
       tap((response: any) => {
         this.updateCurrentUser({
           fullName: response.fullName,
