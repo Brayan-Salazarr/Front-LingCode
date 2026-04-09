@@ -81,7 +81,7 @@
 }
 
 .card:not(.active) .img3 {
-    transform: translate(-65%, -60%) scaleX(-1.6);
+    transform: translate(-73%, -61%) scaleX(-1.6);
 }
 
 /*Tamaño y posiciones específicas para cada imagen*/
@@ -98,9 +98,9 @@
 }
 
 .img3 {
-    width: 27vw;
-    top: 236px;
-    left: 55%;
+    width: 26vw;
+    top: 205px;
+    left: 56%;
 }
 
 /*INICIO DE MEDIA QUERIES*/
