@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface CybroMessage {
   id: string;
@@ -47,7 +48,7 @@ export interface CybroResponse {
 })
 export class CybroService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:8088/api/cybro';
+  private baseUrl = environment.apiUrl + '/cybro';
 
   private messagesSubject = new BehaviorSubject<CybroMessage[]>([]);
   messages$ = this.messagesSubject.asObservable();
@@ -202,10 +203,13 @@ export class CybroService {
         error: (err) => {
           console.error('Error sending message:', err);
           this.isTypingSubject.next(false);
-          
+
+          const isRateLimit = err.status === 429;
           const assistantMessage: CybroMessage = {
             id: `error-${Date.now()}`,
-            content: 'Lo siento, tuve un problema al procesar tu mensaje. Podrias intentarlo de nuevo?',
+            content: isRateLimit
+              ? 'Estoy recibiendo demasiadas solicitudes. Espera unos segundos e intenta de nuevo.'
+              : 'Lo siento, tuve un problema al procesar tu mensaje. ¿Puedes intentarlo de nuevo?',
             role: 'assistant',
             timestamp: new Date()
           };
