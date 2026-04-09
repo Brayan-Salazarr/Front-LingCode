@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/api/v1',
+  apiUrl: 'https://lingcode-api-gateway-1.onrender.com/api/v1',
+  appUrl: 'http://localhost:4200',
 };

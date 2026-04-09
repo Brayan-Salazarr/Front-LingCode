@@ -55,7 +55,7 @@
                                     [(ngModel)]="registerData.password"
                                     (ngModelChange)="caracterPassword(registerData.password)">
 
-                                <span class="eye-icon" (click)="togglePassword()">👁️</span>
+                                <span class="eye-icon" (click)="togglePassword()">👁</span>
                             </div>
                         </div>
 
@@ -68,7 +68,7 @@
                                     (ngModelChange)="passwordValidation(registerData.password, registerData.confirmPassword)"
                                     (keyup.enter)="register()">
 
-                                <span class="eye-icon" (click)="toggleConfirmPassword()">👁️</span>
+                                <span class="eye-icon" (click)="toggleConfirmPassword()">👁</span>
                             </div>
 
                         </div>
@@ -233,7 +233,7 @@
                                 <input id="password" [type]="showPassword ? 'text' : 'password'"
                                     [(ngModel)]="loginData.password" (keyup.enter)="login()">
 
-                                <span class="eye-icon" (click)="togglePassword()">👁️</span>
+                                <span class="eye-icon" (click)="togglePassword()">👁</span>
                             </div>
                         </div>
 

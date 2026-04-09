@@ -1,67 +1,59 @@
-<!-- BARRA DE NAVEGACIÓN -->
- <!-- Recibe un input para definir el color de fondo -->
-<app-nav [colorBackground]="'backgroundNav1'" ></app-nav>
+<app-nav [colorBackground]="'backgroundNav1'"></app-nav>
 
-<!-- SECCIÓN PRINCIPAL DEL PAGO -->
-<section>
-    <!-- Título principal de la sección -->
-    <h1 id="title">Elige cómo pagar</h1>
+<section class="payment-section">
 
-    <!-- Contenedor de métodos de pago recomendados -->
-    <div class="payment-field">
-        <h2 id="subTitle">Recomendados</h2>
-
-        <!-- Tarjeta de pago (Transferencia eléctronica) -->
-         <!-- Se aplica la clase 'selected' dinámicamente según isPseExpanded -->
-        <div class="payment-card" [class.selected]="isPseExpanded">
-
-            <!-- Cabecera de la tarjeta: clic para expandir -->
-            <div class="card-header" (click)="togglePse()">
-                <span>Transferencia con PSE</span>
-                <!-- Flecha que cambia de dirección según si la sección esta expandida -->
-                <i class="arrow" [class.up]="isPseExpanded"></i>
-            </div>
-
-            <!-- Sección de selección de banco -->
-             <!-- Se muestra/oculta según el estado isPseExpanded -->
-            <div class="bank-selection" [class.show]="isPseExpanded">
-                <p class="selection-title">Seleccione el banco</p>
-
-                <!-- Opciones de bancos como botones de radio -->
-                <label class="radio-option">
-                    <input type="radio" name="bank" value="nequi">
-                    <span class="radio-label">Nequi</span>
-                </label>
-
-                <label class="radio-option">
-                    <input type="radio" name="bank" value="daviplata">
-                    <span class="radio-label">Daviplata</span>
-                </label>
-
-                  <label class="radio-option">
-                    <input type="radio" name="bank" value="daviplata">
-                    <span class="radio-label">Bancolombia </span>
-                </label>
-
-                  <label class="radio-option">
-                    <input type="radio" name="bank" value="daviplata">
-                    <span class="radio-label">Davivienda</span>
-                </label>
-
-            </div>
-        </div>
-
-        <!-- Tarjeta de pago alternativa: Efecty -->
-        <div class="payment-card">
-            <div class="card-header">
-                <span>Efecty</span>
-            </div>
-        </div>
-
+  <!-- Ya tiene suscripción activa -->
+  @if (alreadySubscribed) {
+    <div class="payment-card">
+      <h1 class="title">¡Ya tienes un plan activo!</h1>
+      <p class="subtitle">Ya cuentas con una suscripción Premium activa.</p>
+      <button class="btn-confirm" (click)="goBack()">Volver al inicio</button>
     </div>
+  }
 
-    <!-- Botón para confirmar el pago seleccionado -->
-    <button class="button-payment">Confirmar pago</button>
+  <!-- Confirmación de pago -->
+  @if (!alreadySubscribed) {
+    <div class="payment-card">
+      <h1 class="title">Confirma tu suscripción</h1>
+
+      <!-- Resumen del plan -->
+      <div class="plan-summary">
+        <h2 class="plan-name">Plan Premium</h2>
+        <div class="plan-price">
+          <span class="price-amount">$19.900</span>
+          <span class="price-period">COP / mes</span>
+        </div>
+        <ul class="plan-features">
+          <li>✓ Energía ilimitada</li>
+          <li>✓ Sin anuncios</li>
+          <li>✓ Acceso a todos los módulos</li>
+          <li>✓ Interacción por voz con IA</li>
+        </ul>
+      </div>
+
+      <!-- Error -->
+      @if (error) {
+        <p class="error-text">{{ error }}</p>
+      }
+
+      <!-- Botón confirmar -->
+      <button
+        class="btn-confirm"
+        (click)="confirmPayment()"
+        [disabled]="loading">
+        @if (loading) {
+          Procesando...
+        } @else {
+          Continuar al pago
+        }
+      </button>
+
+      <p class="wompi-info">Serás redirigido a Wompi para completar el pago de forma segura.</p>
+
+      <button class="btn-back" (click)="goBack()">Cancelar</button>
+    </div>
+  }
+
 </section>
-<!-- Footer general del sitio -->
+
 <app-footer></app-footer>
