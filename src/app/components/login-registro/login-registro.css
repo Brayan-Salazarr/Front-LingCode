@@ -313,7 +313,7 @@ input {
 /*Ajuste específico de textos en campos*/
 .textFields {
     font-weight: normal;
-    margin: 0 0 0 54px;
+    margin: 0 0 30px 60px;
     width: 237px;
 }
 
