@@ -45,6 +45,7 @@ export class ChatBot implements OnInit, OnDestroy {
   isListening = false;
   interimTranscript = '';
   isAdmin = false;
+  isAuthenticated = false;
   toolsOpen = false;
   isTyping = false;
 
@@ -83,6 +84,7 @@ export class ChatBot implements OnInit, OnDestroy {
 
     this.subscriptions.push(
       this.authService.currentUser$.subscribe(user => {
+        this.isAuthenticated = !!user;
         this.isAdmin = user?.roles?.includes('ADMIN') ?? false;
 
         if (user) {
