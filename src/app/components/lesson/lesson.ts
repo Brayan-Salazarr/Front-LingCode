@@ -726,6 +726,17 @@ export class Lesson {
     this.soundService.playSuccess();
     this.moduleService.completeLesson();
 
+    // Guest: guardar lección completada en localStorage
+    if (!user) {
+      const stored = JSON.parse(localStorage.getItem('guestCompletedLessons') || '[]');
+      if (!stored.includes(lesson.id)) {
+        stored.push(lesson.id);
+        localStorage.setItem('guestCompletedLessons', JSON.stringify(stored));
+      }
+      setTimeout(() => this.router.navigate(['/module-view']), 800);
+      return;
+    }
+
     // Si la lección ya fue completada, no otorgar XP nuevamente
     if (alreadyCompleted) {
       setTimeout(() => this.router.navigate(['/module-view']), 800);

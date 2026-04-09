@@ -361,3 +361,79 @@ button:hover {
   }
 
 }
+/* Lección bloqueada para guests */
+.step.locked {
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+  font-size: 16px;
+}
+
+/* Modal de login */
+.login-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.login-modal {
+  background: #1a1a2e;
+  border: 1px solid rgba(4, 201, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px 32px;
+  max-width: 360px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.modal-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.modal-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.modal-text {
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.modal-btn-primary {
+  background: linear-gradient(135deg, #04C9FF, #7c3aed);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+}
+
+.modal-btn-primary:hover {
+  opacity: 0.9;
+}
