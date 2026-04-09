@@ -20,6 +20,8 @@ import { Location } from '@angular/common';
 export class LoginRegistro {
   /*Variables de control de errores*/
   emptyF: boolean = false;
+  loginEmptyF: boolean = false;
+  loginShortPass: boolean = false;
   accepTerms: boolean = false;
   disError: boolean = false;
   errorPassw: boolean = false;
@@ -101,6 +103,10 @@ export class LoginRegistro {
 
   //Inicia sesión con el identificador (correo o usuario) y contraseña
   login() {
+    this.loginEmptyF = !this.loginData.identifier?.trim() || !this.loginData.password;
+    this.loginShortPass = this.loginData.password.length > 0 && this.loginData.password.length < 8;
+
+    if (this.loginEmptyF || this.loginShortPass) return;
     //Llama al servicio de autenticación
     this.authService.login(this.loginData.identifier, this.loginData.password).subscribe({
       //Si el login es exitoso, redirige al home del usuario registrado

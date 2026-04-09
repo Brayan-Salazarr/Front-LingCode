@@ -65,7 +65,8 @@
                             <div class="input-wrapper">
                                 <input class="field" id="confirmPass" [type]="showConfirmPassword ? 'text' : 'password'"
                                     [(ngModel)]="registerData.confirmPassword"
-                                    (ngModelChange)="passwordValidation(registerData.password, registerData.confirmPassword)">
+                                    (ngModelChange)="passwordValidation(registerData.password, registerData.confirmPassword)"
+                                    (keyup.enter)="register()">
 
                                 <span class="eye-icon" (click)="toggleConfirmPassword()">👁️</span>
                             </div>
@@ -86,10 +87,8 @@
                     }
 
                     <!-- Botón principal de registro -->
-                    <div (document:keyup.enter)="register()">
-                        <div class="spaceButton">
-                            <button class="buttonRegist" id="buttonRegist" (click)="register()">Registrarme</button>
-                        </div>
+                    <div class="spaceButton">
+                        <button class="buttonRegist" id="buttonRegist" (click)="register()">Registrarme</button>
                     </div>
 
                     <!-- División visual -->
@@ -225,14 +224,14 @@
                         <div class="regisInfo" id="loginP">
                             <p class="text">Correo eléctronico o Apodo</p>
                             <input #emailNickname name="identifier" id="email" type="text"
-                                [(ngModel)]="loginData.identifier">
+                                [(ngModel)]="loginData.identifier" (keyup.enter)="login()">
                         </div>
 
                         <div class="regisInfo" id="loginP">
                             <p class="text">Contraseña</p>
                             <div class="input-wrapper">
                                 <input id="password" [type]="showPassword ? 'text' : 'password'"
-                                    [(ngModel)]="loginData.password">
+                                    [(ngModel)]="loginData.password" (keyup.enter)="login()">
 
                                 <span class="eye-icon" (click)="togglePassword()">👁️</span>
                             </div>
@@ -240,12 +239,17 @@
 
                     </div>
 
+                    @if (loginEmptyF) {
+                    <p class="textTerms textFields">Todos los campos son obligatorios.</p>
+                    }
+                    @if (!loginEmptyF && loginShortPass) {
+                    <p class="textTerms textFields">La contraseña debe tener al menos 8 caracteres.</p>
+                    }
+
                     <div class="spaceButton" id="spaceButtonLogin">
-                        <div (document:keyup.enter)="login()">
-                            <!-- Botón login -->
-                            <button class="buttonRegist" id="buttonRegist" (click)="login()">Inicia
-                                Sesión</button>
-                        </div>
+                        <!-- Botón login -->
+                        <button class="buttonRegist" id="buttonRegist" (click)="login()">Inicia
+                            Sesión</button>
                     </div>
 
                     <div class="terms" id="termsLogin">
