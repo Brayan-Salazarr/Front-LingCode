@@ -521,9 +521,10 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
 
 /*Texto descriptivo del logro*/
 .message-achievement {
+    text-align: center;
     color: #fff;
     font-family: 'Poppins', sans-serif;
-    font-size: 25px;
+    font-size: 22px;
 }
 
 /*Contenedor del ícono para centrarlo correctamente*/
@@ -582,10 +583,6 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
 
     .content-achievement {
         height: 100%;
-    }
-
-    .message-achievement {
-        font-size: 22px;
     }
 
     .achievement-icon.icon {
