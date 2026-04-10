@@ -12,6 +12,7 @@ import { EnergyService } from '../../service/energy-service';
 import { SoundService } from '../../service/soundService';
 import { ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../auth/services/authService';
+import { AdRewardModal } from '../ad-reward-modal/ad-reward-modal';
 
 /*
   Representa una opción de respuesta dentro de un ejercicio.
@@ -66,7 +67,7 @@ export interface LessonC {
 }
 @Component({
   selector: 'app-lesson',
-  imports: [CommonModule, Nav, FormsModule],
+  imports: [CommonModule, Nav, FormsModule, AdRewardModal],
   templateUrl: './lesson.html',
   styleUrl: './lesson.css',
 })
@@ -102,6 +103,7 @@ export class Lesson {
   }[] = [];
 
   showVocabRef = false;
+  showAdModal = false;
 
   // Control reactivo del índice de ejercicio
   private exerciseIndex$ = new BehaviorSubject<number>(0);
@@ -682,7 +684,7 @@ export class Lesson {
 
     // 🔒 BLOQUEO DE ENERGÍA (no aplica al re-avanzar ejercicios ya completados)
     if (!skipEnergy && !this.energyService.canPlay()) {
-      alert('Sin energía 😢');
+      this.showAdModal = true;
       return;
     }
 
@@ -870,7 +872,7 @@ export class Lesson {
 
     // bloqueo por energía
     if (!this.energyService.canPlay()) {
-      this.feedback = "⚡ Te quedaste sin energía";
+      this.showAdModal = true;
       return;
     }
 
