@@ -22,6 +22,7 @@ export interface CybroFeedback {
 
 export interface CybroRequest {
   message: string;
+  sessionId: string;
   audioData?: string;
   lessonId?: string;
   lessonContext?: LessonContext;
@@ -49,6 +50,16 @@ export interface CybroResponse {
 export class CybroService {
   private http = inject(HttpClient);
   private baseUrl = environment.apiUrl + '/cybro';
+  private sessionId = this.getOrCreateSessionId();
+
+  private getOrCreateSessionId(): string {
+    let id = sessionStorage.getItem('cybro_session_id');
+    if (!id) {
+      id = crypto.randomUUID();
+      sessionStorage.setItem('cybro_session_id', id);
+    }
+    return id;
+  }
 
   private messagesSubject = new BehaviorSubject<CybroMessage[]>([]);
   messages$ = this.messagesSubject.asObservable();
@@ -175,6 +186,7 @@ export class CybroService {
 
     const request: CybroRequest = {
       message: content,
+      sessionId: this.sessionId,
       lessonContext: lessonContext
     };
 
