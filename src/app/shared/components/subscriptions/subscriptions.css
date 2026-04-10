@@ -19,7 +19,7 @@
     height: 550px;
 }
 
-.title-record{
+.title-record {
     font-size: 36px;
     letter-spacing: 1px;
     font-family: "Anton SC", sans-serif;
@@ -116,7 +116,7 @@
 
 /*Imagen central decorativa*/
 #img-avatar {
-    width: 400px;
+    width: 270px;
 }
 
 /*Título del plan (Basic/Premium)*/
@@ -248,7 +248,7 @@ li {
         height: 430px;
     }
 
-    #title-achievement{
+    #title-achievement {
         font-size: 30px;
     }
 
@@ -261,7 +261,7 @@ li {
     }
 
     .size-number {
-       font-size: 32px
+        font-size: 32px
     }
 
     .cost,
@@ -281,10 +281,10 @@ li {
         width: 17px;
     }
 
-    .button-subscription{
-    width: 73%;
-    height: 52px;
-    margin: 0 0 12px 0;
+    .button-subscription {
+        width: 73%;
+        height: 52px;
+        margin: 0 0 12px 0;
     }
 }
 
@@ -323,9 +323,9 @@ li {
         width: 17px;
     }
 
-    .button-subscription{
-    width: 73%;
-    height: 46px;
-    margin: 0 0 12px 0;
+    .button-subscription {
+        width: 73%;
+        height: 46px;
+        margin: 0 0 12px 0;
     }
 }
