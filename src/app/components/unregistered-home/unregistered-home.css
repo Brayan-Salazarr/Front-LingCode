@@ -503,10 +503,6 @@ section {
     #text1 {
         width: 450px;
     }
-
-    .information-modules {
-        width: 400px;
-    }
 }
 
 @media (max-width: 920px) {

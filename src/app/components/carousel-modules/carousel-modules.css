@@ -128,7 +128,7 @@
     }
 
     .img3 {
-        width: 34vw;
+        width: 26vw;
         top: 231px;
         left: 55%;
     }
@@ -159,7 +159,7 @@
         perspective: 800px;
         margin: 0;
         width: 680px;
-        --tz: 200px;
+        --tz: 168px;
         --y-offset: -210px;
     }
 
@@ -180,22 +180,25 @@
     }
 
     .img1 {
-        top: 163px;
+        top: 138px;
         width: 19vw;
         left: 348px;
 
     }
 
     .img2 {
-        top: 163px;
+        top: 153px;
         width: 26vw;
-        left: 38%;
+        left: 41%;
     }
 
     .img3 {
-        top: 214px;
-        width: 28vw;
-        left: 47%;
+        top: 170px;
+        left: 48%;
+    }
+
+    .card:not(.active) .img3 {
+        transform: translate(-70%, -61%) scaleX(-1.6);
     }
 }
 
@@ -212,6 +215,20 @@
     .card.active {
         left: 230px;
         top: 271px;
+    }
+
+    .img1 {
+        top: 140px;
+        left: 338px;
+    }
+
+    .card:not(.active) .img1 {
+        transform: translate(-51%, -61%) scaleX(-1.4);
+    }
+
+    .img2 {
+        top: 163px;
+        left: 41%;
     }
 }
 
@@ -233,8 +250,31 @@
         --tz: 177px;
     }
 
-}
+    .img1 {
+        top: 145px;
+        left: 337px;
+    }
 
+    .img2 {
+        left: 42%;
+    }
+
+    .img3 {
+        left: 45%;
+    }
+
+    .card:not(.active) .img2 {
+        transform: translate(-32%, -65%) scaleX(-1.4);
+    }
+
+    .card:not(.active) .img1 {
+        transform: translate(-52%, -60%) scaleX(-1.4);
+    }
+
+    .card:not(.active) .img3 {
+        transform: translate(-58%, -59%) scaleX(-1.4);
+    }
+}
 
 @media (max-width: 1011px) {
     .carousel-container {
@@ -244,6 +284,10 @@
 
     .carousel {
         left: 45px;
+    }
+
+    .card:not(.active) .img2 {
+        transform: translate(-33%, -60%) scaleX(-1.4);
     }
 }
 
@@ -269,27 +313,37 @@
         height: 163px;
     }
 
-    .images {
-        top: 150px;
-        width: 200px;
-        transform: translate(-70%, -70%);
+    .img1 {
+        top: 151px;
+        width: 17vw;
+        transform: translate(-66%, -70%) scaleX(1.4);
     }
 
     .img2 {
-        width: 250px;
-        top: 150px;
-        left: 35%;
+        top: 160px;
+        left: 38%;
     }
 
     .img3 {
         width: 250px;
-        top: 170px;
-        left: 43%;
+        top: 165px;
+        left: 41%;
+    }
+
+    .card:not(.active) .img1 {
+        transform: translate(-70%, -68%) scaleX(-1.4);
+    }
+
+    .card:not(.active) .img2 {
+        transform: translate(-37%, -65%) scaleX(-1.4);
+    }
+
+    .card:not(.active) .img3 {
+        transform: translate(-60%, -61%) scaleX(-1.4);
     }
 }
 
 @media (max-width: 920px) {
-
     .carousel-container {
         left: -7px;
         top: -42px;
@@ -300,27 +354,39 @@
         height: 124px;
     }
 
-    .images {
-        top: 130px;
-        width: 180px;
-        transform: translate(-80%, -70%);
+    .img1 {
+        top: 133px;
+        width: 135px;
+        transform: translate(-84%, -70%) scaleX(1.4);
     }
 
     .img2 {
         width: 220px;
         top: 130px;
-        left: 34%;
+        left: 36%;
     }
 
     .img3 {
         width: 220px;
-        top: 150px;
-        left: 41%;
+        top: 145px;
+        left: 39%;
     }
 
     .card.active {
         top: 234px;
         left: 313px;
+    }
+
+    .card:not(.active) .img3 {
+        transform: translate(-58%, -66%) scaleX(-1.4);
+    }
+
+    .card:not(.active) .img2 {
+        transform: translate(-27%, -60%) scaleX(-1.4);
+    }
+
+    .card:not(.active) .img1 {
+        transform: translate(-80%, -68%) scaleX(-1.4);
     }
 }
 
@@ -345,32 +411,32 @@
     }
 
     .images {
-        width: 190px;
-        transform: translate(-83%, -60%);
+        width: 135px;
+        transform: translate(-90%, -50%) scaleX(1.4);
     }
 
     .img2 {
-        width: 240px;
+        width: 145px;
         top: 150px;
-        left: 340px;
+        left: 330px;
     }
 
     .img3 {
-        width: 250px;
-        top: 180px;
-        left: 380px;
+        width: 145px;
+        top: 150px;
+        left: 350px;
     }
 
     .card:not(.active) .img1 {
-        transform: translate(-90%, -60%) scaleX(-1.6);
+        transform: translate(-90%, -60%) scaleX(-1.4);
     }
 
     .card:not(.active) .img2 {
-        transform: translate(-60%, -75%) scaleX(-1.6);
+        transform: translate(-72%, -62%) scaleX(-1.4);
     }
 
     .card:not(.active) .img3 {
-        transform: translate(-90%, -70%) scaleX(-1.6);
+        transform: translate(-103%, -55%) scaleX(-1.4);
     }
 }
 
@@ -380,30 +446,34 @@
         height: 117px;
     }
 
-    .images {
-        width: 150px;
-        transform: translate(-100%, -70%);
+    .img1 {
+        width: 110px;
+        transform: translate(-113%, -70%) scaleX(1.4);
     }
 
     .img2 {
-        left: 350px;
+        width: 130px;
+        top: 130px;
+        left: 310px;
     }
 
     .img3 {
-        width: 220px;
-        left: 400px;
+        width: 140px;
+        top: 135px;
+        left: 338px;
     }
 
     .card:not(.active) .img1 {
-        transform: translate(-100%, -60%) scaleX(-1.6);
+        transform: translate(-120%, -60%) scaleX(-1.6);
     }
 
     .card:not(.active) .img2 {
-        transform: translate(-95%, -75%) scaleX(-1.6);
+        transform: translate(-74%, -50%) scaleX(-1.6);
     }
 
     .card:not(.active) .img3 {
-        transform: translate(-110%, -70%) scaleX(-1.6);
+        width: 150px;
+        transform: translate(-105%, -55%) scaleX(-1.6);
     }
 
     .carousel {
@@ -433,19 +503,19 @@
         height: 84px;
     }
 
-    .images {
-        width: 120px;
-        transform: translate(-130%, -90%);
+    .img1 {
+        width: 90px;
+        transform: translate(-147%, -103%) scaleX(1.6);
     }
 
     .img2 {
         width: 150px;
-        transform: translate(-125%, -110%);
+        transform: translate(-95%, -90%);
     }
 
     .img3 {
         width: 160px;
-        transform: translate(-140%, -110%);
+        transform: translate(-96%, -80%);
     }
 
     .carousel-container {
@@ -457,15 +527,15 @@
         left: 315px;
     }
 
-     .card:not(.active) .img1 {
+    .card:not(.active) .img1 {
         transform: translate(-140%, -90%) scaleX(-1.6);
     }
 
     .card:not(.active) .img2 {
-        transform: translate(-100%, -110%) scaleX(-1.6);
+        transform: translate(-80%, -90%) scaleX(-1.6);
     }
 
     .card:not(.active) .img3 {
-        transform: translate(-150%, -110%) scaleX(-1.6);
+        transform: translate(-122%, -85%) scaleX(-1.6);
     }
 }
