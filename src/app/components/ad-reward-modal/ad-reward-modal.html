@@ -1,0 +1,54 @@
+<!-- Overlay oscuro de fondo -->
+<div class="ad-overlay">
+
+  <div class="ad-modal">
+
+    <!-- Encabezado -->
+    <div class="ad-header">
+      <span class="ad-tag">⚡ Anuncio</span>
+      <p class="ad-title">Mira el video para recuperar <strong>+5 energía</strong></p>
+    </div>
+
+    <!-- Contenedor del video de YouTube -->
+    <div class="video-wrapper">
+      <div id="yt-player"></div>
+
+      <!-- Overlay que bloquea el video mientras no se puede reclamar -->
+      <div class="video-block-overlay" *ngIf="!canClaim">
+        <div class="countdown-badge">{{ countdown }}s</div>
+      </div>
+    </div>
+
+    <!-- Footer con botón y estado -->
+    <div class="ad-footer">
+
+      <div class="energy-reward">
+        <img
+          src="https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765830002/image-removebg-preview_1_1_of8ae2.png"
+          alt="energía"
+          class="energy-icon" />
+        <span>+5 energía</span>
+      </div>
+
+      <!-- Botón deshabilitado mientras cuenta regresiva -->
+      <button
+        class="claim-btn"
+        [class.ready]="canClaim"
+        [disabled]="!canClaim || energyClaimed"
+        (click)="claimEnergy()">
+        <ng-container *ngIf="!canClaim">
+          Espera {{ countdown }}s...
+        </ng-container>
+        <ng-container *ngIf="canClaim && !energyClaimed">
+          ✅ Obtener +5 ⚡
+        </ng-container>
+        <ng-container *ngIf="energyClaimed">
+          ¡Energía añadida!
+        </ng-container>
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

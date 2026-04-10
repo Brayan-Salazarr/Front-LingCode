@@ -228,10 +228,32 @@
 
 .no-energy {
     margin-top: 10px;
-    left: 50%;
     color: black;
     font-family: 'Poppins', sans-serif;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.watch-ad-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 2px solid rgba(0, 140, 255, 1);
+    background: white;
+    color: rgba(0, 140, 255, 1);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.watch-ad-btn:hover {
+    background: rgba(0, 140, 255, 1);
+    color: white;
 }
 
 /* Contenedor gris de la barra */

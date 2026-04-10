@@ -1,0 +1,167 @@
+/* Overlay de fondo oscuro */
+.ad-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Tarjeta del modal */
+.ad-modal {
+  background: #1a1a2e;
+  border: 2px solid rgba(0, 140, 255, 0.4);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 540px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Encabezado */
+.ad-header {
+  padding: 16px 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(0, 140, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 140, 255, 0.2);
+}
+
+.ad-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(0, 140, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ad-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: #e0e0e0;
+  margin: 0;
+}
+
+.ad-title strong {
+  color: #fff;
+}
+
+/* Contenedor del video */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.video-wrapper #yt-player {
+  width: 100%;
+  height: 100%;
+}
+
+/* Overlay que bloquea el video (no se puede cerrar) */
+.video-block-overlay {
+  position: absolute;
+  inset: 0;
+  cursor: not-allowed;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 12px;
+}
+
+/* Badge de cuenta regresiva */
+.countdown-badge {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 52px;
+  text-align: center;
+}
+
+/* Footer */
+.ad-footer {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid rgba(0, 140, 255, 0.2);
+}
+
+.energy-reward {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  color: #e0e0e0;
+}
+
+.energy-icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* Botón de reclamar */
+.claim-btn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: none;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.1);
+  color: #888;
+  transition: background 0.3s, color 0.3s, transform 0.15s;
+  min-width: 170px;
+  text-align: center;
+}
+
+.claim-btn.ready {
+  background: rgba(0, 140, 255, 1);
+  color: #fff;
+  cursor: pointer;
+}
+
+.claim-btn.ready:hover {
+  background: rgba(0, 110, 220, 1);
+  transform: scale(1.03);
+}
+
+.claim-btn:disabled {
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .ad-modal {
+    margin: 16px;
+    max-width: 100%;
+  }
+
+  .ad-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .claim-btn {
+    width: 100%;
+  }
+}

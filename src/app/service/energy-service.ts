@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, interval } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -53,6 +53,14 @@ export class EnergyService {
   const remaining = this.REGEN_TIME - (diff % this.REGEN_TIME);
 
   this.remainingTimeSubject.next(remaining);
+  }
+
+  // Recuperar energía al ver un anuncio (+5, máximo MAX_ENERGY)
+  addEnergyFromAd(): void {
+    const current = this.loadEnergy();
+    const newEnergy = Math.min(this.MAX_ENERGY, current + 5);
+    this.saveEnergy(newEnergy);
+    this.energySubject.next(newEnergy);
   }
 
   // Usar energía
