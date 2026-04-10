@@ -386,6 +386,7 @@ button:hover {
   border: 1px solid rgba(4, 201, 255, 0.3);
   border-radius: 20px;
   padding: 40px 32px;
+  font-family: 'Poppins', sans-serif;
   max-width: 360px;
   width: 90%;
   text-align: center;
@@ -427,7 +428,6 @@ button:hover {
   color: #fff;
   border: none;
   border-radius: 12px;
-  padding: 14px 28px;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
