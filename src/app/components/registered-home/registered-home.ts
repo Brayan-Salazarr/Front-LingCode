@@ -84,23 +84,23 @@ export class RegisteredHome {
   logros: Logro[] = [
     {
       icono: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765857108/image-removebg-preview_6_1_jcpsse.png', // Asumiendo que usarás algún sistema de íconos o rutas
-      mensaje: '¡Cumpliste con el objetivo semanal!',
+      mensaje: '¡Te registraste con éxito!',
       bordeColor: '#00ffff'
     },
     {
       icono: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765857109/image-removebg-preview_1_mx3asn.png',
-      mensaje: '¡Lograste una racha de 3 días!',
+      mensaje: '¡Perfil creado!',
       bordeColor: '#00ffff',
       classIcon: 'icon' //Clase CSS personalizad para este ícono
     },
     {
       icono: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765857109/image-removebg-preview_4_1_xggd4v.png',
-      mensaje: '¡Completaste el módulo de GitHub!',
+      mensaje: '¡Primer ingreso realizado!',
       bordeColor: '#00ffff'
     },
     {
       icono: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765857110/image-removebg-preview_5_1_a2scpd.png',
-      mensaje: '¡Hiciste 5 actividades sin errores!',
+      mensaje: '¡Inicio de tu camino!',
       bordeColor: '#00ffff'
     }
   ];

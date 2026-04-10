@@ -188,9 +188,9 @@
 }
 
 .energy-timer {
-  font-size: 14px;
-  color: white;
-  margin-top: 5px;
+    font-size: 14px;
+    color: white;
+    margin-top: 5px;
 }
 
 /*Barra que representa el progreso actual con animación*/
@@ -215,18 +215,25 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.3), 
-        transparent);
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent);
     animation: shine 3s infinite;
 }
 
 @keyframes shine {
-    0% { left: -100%; }
-    20% { left: 100%; }
-    100% { left: 100%; }
+    0% {
+        left: -100%;
+    }
+
+    20% {
+        left: 100%;
+    }
+
+    100% {
+        left: 100%;
+    }
 }
 
 /*Contenedor que agrupa la información de energía*/
@@ -521,9 +528,10 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
 
 /*Texto descriptivo del logro*/
 .message-achievement {
+    text-align: center;
     color: #fff;
     font-family: 'Poppins', sans-serif;
-    font-size: 25px;
+    font-size: 22px;
 }
 
 /*Contenedor del ícono para centrarlo correctamente*/
@@ -582,10 +590,6 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
 
     .content-achievement {
         height: 100%;
-    }
-
-    .message-achievement {
-        font-size: 22px;
     }
 
     .achievement-icon.icon {
@@ -828,6 +832,15 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
     .achievement-icon.icon {
         height: 50px;
     }
+
+    #text-target {
+        padding: 0 0 0 35px;
+    }
+
+    .target-box {
+        height: 400px;
+        padding: 0 0 15px 0;
+    }
 }
 
 @media (max-width: 800px) {
@@ -951,7 +964,6 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
     #streak {
         font-size: 145px;
     }
-
 }
 
 @media (max-width: 480px) {
@@ -1103,6 +1115,7 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
 
     .target-box {
         width: 270px;
+        height: 397px;
     }
 
     .border-streak {
@@ -1135,5 +1148,9 @@ Organiza las tarjetas en filas y permite que bajen a la siguiente línea si no c
 
     .achievement-card {
         font-size: 15px;
+    }
+
+    #text-target {
+        padding: 0 0 0 15px;
     }
 }
