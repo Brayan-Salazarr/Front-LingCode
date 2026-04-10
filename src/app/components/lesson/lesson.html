@@ -2,6 +2,12 @@
 <!-- Se pasa un color de fondo como input -->
 <app-nav [colorBackground]="'backgroundNav1'"></app-nav>
 
+<!-- Modal de anuncio para recuperar energía -->
+<app-ad-reward-modal
+  *ngIf="showAdModal"
+  (closed)="showAdModal = false">
+</app-ad-reward-modal>
+
 <!-- Contenedor principal del componente -->
 <!-- Solo se muestra si existe una lección actual -->
 <div class="component" *ngIf="currentLesson$ | async as lesson">
@@ -278,7 +284,8 @@
     </div>
 
     <div *ngIf="(energy$ | async) === 0" class="no-energy">
-      ⚡ Sin energía. Espera para continuar.
+      ⚡ Sin energía.
+      <button class="watch-ad-btn" (click)="showAdModal = true">Ver anuncio para recuperar +5 ⚡</button>
     </div>
   </ng-container>
 
