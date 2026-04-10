@@ -39,11 +39,11 @@ export class AboutUs {
     },
     {
      //Integrante 2 
-      title: 'Laura Aguirre García', imgAvatar: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765855755/image_18_mgmxfw.png', text: 'Ella se desempeña como Product Owner del equipo y forma parte del área de front-end. Destaca por su aporte constante de ideas creativas para el diseño, asegurando que las interfaces sean funcionales y atractivas. Además, impulsa al equipo a mantenerse activo y organizado en el cumplimiento de las tareas, velando porque cada actividad se realice correctamente, contribuyendo así a un trabajo colaborativo y eficiente.', img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765855794/Group_69_cs83ue.png'
+      title: 'Laura Aguirre García', imgAvatar: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765855755/image_18_mgmxfw.png', text: 'Ella se desempeña como Product Owner del equipo y forma parte del área de front-end. Destaca por su aporte constante de ideas creativas para el diseño, asegurando que las interfaces sean funcionales y atractivas. Además, impulsa al equipo a mantenerse activo y organizado en el cumplimiento de las tareas, velando porque cada actividad se realice correctamente, contribuyendo así a un trabajo colaborativo y eficiente.', img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1775790976/Group_69_1_izilnp.png'
     },
     {
       //Integrante 3
-      img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765855824/Group_67_e08nz2.png', title: 'Brayan Salazar Sánchez', imgAvatar: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765855850/image_30_2_aaebco.png', text: 'Es desarrollador full stack, con un enfoque principal en el front-end. Siempre está dispuesto a ayudar y aportar al equipo en cualquier área que lo necesite, demostrando su compromiso y colaboración. Aunque es una persona reservada, en los momentos cruciales comparte ideas valiosas y soluciones efectivas que marcan la diferencia en el progreso del proyecto.'
+      img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1775784080/photoo_xfcuhk.png', title: 'Brayan Salazar Sánchez', imgAvatar: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765855850/image_30_2_aaebco.png', text: 'Es desarrollador full stack, con un enfoque principal en el front-end. Siempre está dispuesto a ayudar y aportar al equipo en cualquier área que lo necesite, demostrando su compromiso y colaboración. Aunque es una persona reservada, en los momentos cruciales comparte ideas valiosas y soluciones efectivas que marcan la diferencia en el progreso del proyecto.'
     },
     {
       //Integrante 4
