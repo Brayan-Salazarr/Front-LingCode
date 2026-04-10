@@ -131,22 +131,16 @@ export class ModuleView {
         }
         return forkJoin(
           modules.map(module =>
-            forkJoin({
-              progress: this.progressService.getModuleProgress(user.userId, module.id).pipe(
-                catchError(() => of(0))
-              ),
-              lessons: this.lessonService.getLessonsByModule(module.id).pipe(
-                catchError(() => of([]))
-              )
-            }).pipe(
-              map(({ progress, lessons }) => ({
+            this.lessonService.getLessonsByModule(module.id).pipe(
+              catchError(() => of([])),
+              map(lessons => ({
                 ...module,
-                lessons, // 🔥 AQUÍ LAS AGREGAS
+                lessons,
                 image: module.thumbnailUrl || '',
                 bgImage: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1765929029/image-removebg-preview_16_2_ag1deb.png',
                 size: '',
                 text: 'Progreso',
-                progress
+                progress: module.userProgress?.progressPercent ?? 0
               }))
             )
           )
