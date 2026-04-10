@@ -244,13 +244,41 @@ export class LoginRegistro {
           text: 'Revisa tu correo electrónico para verificar tu cuenta antes de iniciar sesión.',
           confirmButtonText: 'Ir al login'
         });
+        
         this.registerData = { fullName: '', nickName: '', email: '', password: '', confirmPassword: '' };
         this.accepTerms = false;
         this.emptyF = false;
         this.errorPassw = false;
-        this.caractPassw = false;
-        this.showLogin = true;
-        this.cd.detectChanges();
+
+       setTimeout(() => {
+    this.showLogin = true;
+
+    const overlay = document.getElementById("blackOverlay");
+    const panelLogin = document.getElementById("panelLogin");
+    const panelRegister = document.getElementById("panelRegister");
+
+    if (overlay && panelLogin && panelRegister) {
+      // Forzamos al overlay a desaparecer instantáneamente (sin transición)
+      overlay.style.transition = 'none'; 
+      overlay.className = ''; 
+      overlay.classList.add('exit-right');
+
+      // Posicionamos los paneles en su estado de "Login Activo"
+      panelLogin.classList.remove('inactive');
+      panelLogin.classList.add('active');
+      panelRegister.classList.remove('active');
+      panelRegister.classList.add('inactive');
+
+      // Devolvemos la transición al overlay para futuros clics manuales
+      setTimeout(() => {
+        overlay.style.transition = 'transform 0.6s cubic-bezier(.4, 0, .2, 1)';
+      }, 50);
+    }
+
+    this.cd.detectChanges();
+    this.setFocus('login');
+  }, 100);
+  
       },
       error: err => {
         const code = err.error?.code;
