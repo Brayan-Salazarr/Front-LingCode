@@ -20,15 +20,15 @@ export class CarouselModules {
   //Arreglo que contiene las imagenes del carrusel
   //Cada objeto tiene tiene la URL de la imagen y una clase personalizada
   items = [
-    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763695172/mysql-removebg-preview-removebg-preview_2_hc65ln.png', class: 'img1', router: '/login-registro' },
-    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696348/Group_25_fnpomn.png', class: 'img2', router: '/login-registro' },
-    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696367/Group_31_mmwojn.png', class: 'img3', router: '/login-registro' }
+    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763695172/mysql-removebg-preview-removebg-preview_2_hc65ln.png', class: 'img1', router: '/module-view' },
+    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1763696348/Group_25_fnpomn.png', class: 'img2', router: '/module-view' },
+    { img: 'https://res.cloudinary.com/ddvjgyi3f/image/upload/v1775772841/Group_31_1_n9fipj.png', class: 'img3', router: '/module-view' }
   ];
 
   //Método que cambia la tarjeta activa cuando se hace clic
   setActive(index: number) {
     if (this.currentIndex === index) {
-      this.router.navigate([this.items[index].router]);
+      this.router.navigate(['/module-view']);
       return;
     }
 
